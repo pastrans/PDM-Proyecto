@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Grupo9PDM115</string>
+    <string name="prompt_email">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in_short">Contraseña</string>
+    <string name="action_sign_in">Ingresar</string>
 </resources>

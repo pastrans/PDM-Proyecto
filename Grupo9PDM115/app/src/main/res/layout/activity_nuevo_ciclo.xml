@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1">>
+
+
+    <TextView
+        android:text="@string/NuevoCiclo"
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
+    <TableRow>
+        <TextView android:text="@string/nombreCiclo" />
+        <EditText
+            android:id="@+id/editNombreCiclo"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="@string/inicio_ciclo"
+            android:textSize="14sp" />
+
+        <DatePicker
+            android:id="@+id/datePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="@string/finCiclo"
+            android:textSize="14sp" />
+
+        <DatePicker
+            android:id="@+id/datePicker2"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:text="@string/inicioPeriodoClase"
+            android:textSize="14sp" />
+
+        <DatePicker
+            android:id="@+id/datePicker3"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:text="@string/finPeriodoClase"
+            android:textSize="14sp" />
+
+        <DatePicker
+            android:id="@+id/datePicker4"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+    </TableRow>
+
+    <RadioButton
+        android:id="@+id/radiobutton1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/estadoRadioButton" />
+    <TableRow>
+
+        <Button
+            android:onClick="agregarCiclo"
+            android:text="@string/agregarCiclo" />
+
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiarCiclo" />
+    </TableRow>
+    <Button
+        android:onClick="atrasCiclo"
+        android:text="@string/atrasCiclo" />
+
+</TableLayout>

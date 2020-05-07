@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NuevoFeriado"></activity>
+        <activity android:name=".EditarTipoLocal"></activity>
+        <activity android:name=".NuevoTipoLocal" />
+        <activity android:name=".GestionarTipoLocal" />
+        <activity android:name=".EditarMateria" />
+        <activity android:name=".NuevoMateria" />
+        <activity android:name=".GestionarMateria" />
+        <activity android:name=".EditarUnidad" />
+        <activity android:name=".NuevoUnidad" />
+        <activity android:name=".GestionarUnidad" />
+        <activity android:name=".NuevoFeriado" />
         <activity android:name=".GestionarFeriado" />
         <activity android:name=".EditarFeriado" />
         <activity android:name=".EditarCiclo" />

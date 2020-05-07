@@ -36,4 +36,48 @@
     <string name="text_nombre">Nombre</string>
     <string name="text_descripcion">Descripcion</string>
 
+    //Variables Unidad
+    <string name="gestionarUnidad">Gestionar Unidad</string>
+    <string name="nombreent">Nombre Unidad</string>
+    <string name="descripcionent">Descripción</string>
+    <string name="prioridad">Prioridad</string>
+    <string name="nuevoUnidad">Nuevo</string>
+    <string name="editarUnidad">Editar</string>
+    <string name="eliminarUnidad">Eliminar</string>
+    <string name="regresarUnidad">Regresar</string>
+    <string name="NuevoUnidad">Nuevo Unidad</string>
+    <string name="agregarUnidad">Agregar</string>
+    <string name="limpiarUnidad">Limpiar</string>
+    <string name="atrasUnidad">Regresar</string>
+    <string name="EditarUnidad">Editar Unidad</string>
+
+    //Variables Materia
+    <string name="gestionarMatertia">Gestionar Materia</string>
+    <string name="nombremat">Nombre Materia</string>
+    <string name="nuevoMateria">Nuevo</string>
+    <string name="editarMateria">Editar</string>
+    <string name="eliminarMateria">Eliminar</string>
+    <string name="regresarMateria">Regresar</string>
+    <string name="NuevoMateria">Nueva Materia</string>
+    <string name="unidad">Unidad</string>
+    <string name="masiva">Masiva</string>
+    <string name="agregarMateria">Agregar</string>
+    <string name="limpiarMateria">Limpiar</string>
+    <string name="atrasMateria">Regresar</string>
+    <string name="EditarMateria">Editar Materia</string>
+
+    //Variables Tipo Local
+    <string name="gestionarTipoLocal">Gestionar Tipo Local</string>
+    <string name="nombreTipoLocal">Nombre </string>
+    <string name="nuevoTipoLocal">Nuevo</string>
+    <string name="editarTipoLocal">Editar</string>
+    <string name="eliminarTipoLocal">Eliminar</string>
+    <string name="regresarTipoLocal">Regresar</string>
+    <string name="NuevoTipoLocal">Nuevo Tipo Local</string>
+    <string name="encargado">Encargado</string>
+    <string name="agregarTipoLocal">Agregar</string>
+    <string name="limpiarTipoLocal">Limpiar</string>
+    <string name="atrasTipoLocal">Regresar</string>
+    <string name="EditarTipoLocal">Editar Tipo Local</string>
+
 </resources>

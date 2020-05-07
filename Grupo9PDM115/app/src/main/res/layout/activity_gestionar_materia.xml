@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".GestionarMateria">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gestionarMatertia"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp" />
+
+    <TableRow>
+
+        <TextView android:text="@string/nombremat" />
+        <EditText
+            android:id="@+id/nombreMat"
+            android:inputType="text"
+            android:maxLength="25" />
+    </TableRow>
+
+    <Button
+        android:onClick="nuevoMateria"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nuevoMateria"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="editarMateria"
+        android:text="@string/editarMateria"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="eliminarMateria"
+        android:text="@string/eliminarMateria"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="atrasMateria"
+        android:text="@string/regresarUnidad"
+        tools:ignore="OnClick" />
+
+</TableLayout>

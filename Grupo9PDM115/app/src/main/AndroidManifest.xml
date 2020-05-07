@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarCiclo"></activity>
+        <activity android:name=".NuevoFeriado"></activity>
+        <activity android:name=".GestionarFeriado" />
+        <activity android:name=".EditarFeriado" />
+        <activity android:name=".EditarCiclo" />
         <activity android:name=".NuevoCiclo" />
         <activity android:name=".GestionarCiclo" />
         <activity android:name=".iniciarSesion" />

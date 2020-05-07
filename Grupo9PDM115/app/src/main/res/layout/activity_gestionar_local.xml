@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".GestionarLocal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gestionarLocal"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp" />
+
+    <TableRow>
+
+        <TextView android:text="@string/nombreLocal" />
+        <EditText
+            android:id="@+id/nombreLocal"
+            android:inputType="text"
+            android:maxLength="25" />
+    </TableRow>
+
+    <Button
+        android:onClick="nuevoLocal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nuevoLocal"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="editarLocal"
+        android:text="@string/editarLocal"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="eliminarLocal"
+        android:text="@string/eliminarLocal"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="atrasLocal"
+        android:text="@string/regresarLocal"
+        tools:ignore="OnClick" />
+
+</TableLayout>

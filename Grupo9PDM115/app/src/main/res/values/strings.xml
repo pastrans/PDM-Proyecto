@@ -80,4 +80,19 @@
     <string name="atrasTipoLocal">Regresar</string>
     <string name="EditarTipoLocal">Editar Tipo Local</string>
 
+    //Variables Local
+    <string name="gestionarLocal">Gestionar Local</string>
+    <string name="nombreLocal">Nombre </string>
+    <string name="nuevoLocal">Nuevo</string>
+    <string name="editarLocal">Editar</string>
+    <string name="eliminarLocal">Eliminar</string>
+    <string name="regresarLocal">Regresar</string>
+    <string name="NuevoLocal">Nuevo Local</string>
+    <string name="capacidad">Capacidad</string>
+    <string name="tipoLocal">Tipo Local</string>
+    <string name="agregarLocal">Agregar</string>
+    <string name="limpiarLocal">Limpiar</string>
+    <string name="atrasLocal">Regresar</string>
+    <string name="EditarLocal">Editar Local</string>
+
 </resources>

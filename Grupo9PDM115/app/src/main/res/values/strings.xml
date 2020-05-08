@@ -95,4 +95,11 @@
     <string name="atrasLocal">Regresar</string>
     <string name="EditarLocal">Editar Local</string>
 
+    //Variables Tipo Grupo
+    <string name="editar_tipo_grupo">Editar Tipo Grupo</string>
+    <string name="gestionar_grupo">Gestionar Grupo</string>
+    <string name="gestionar_tipo_de_grupo">Gestionar Tipo de Grupo</string>
+    <string name="nuevo_tipo_grupo">Nuevo Tipo Grupo</string>
+
+
 </resources>

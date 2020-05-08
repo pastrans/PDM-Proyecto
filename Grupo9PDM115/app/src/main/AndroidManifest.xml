@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarLocal"></activity>
+        <activity android:name=".NuevoTipoGrupo"></activity>
+        <activity android:name=".GestionarTipoGrupo" />
+        <activity android:name=".GestionarGrupo" />
+        <activity android:name=".EditarTipoGrupo" />
+        <activity android:name=".EditarLocal" />
         <activity android:name=".NuevoLocal" />
         <activity android:name=".GestionarLocal" />
         <activity android:name=".EditarTipoLocal" />

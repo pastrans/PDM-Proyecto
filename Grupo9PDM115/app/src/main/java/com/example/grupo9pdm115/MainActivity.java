@@ -12,9 +12,9 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     //Variables
-    TextView tv;
+    /*TextView tv;
     Calendar mCurrentDate;
-    int day, month, year;
+    int day, month, year;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_nuevo_ciclo);
         //setContentView(R.layout.activity_editar_ciclo);
         setContentView(R.layout.activity_nuevo_feriado);
-        tv=(TextView) findViewById(R.id.fechaInicio);
+
+        /*tv=(TextView) findViewById(R.id.fechaInicio);
 
         mCurrentDate= Calendar.getInstance();
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 },year, month, day);
                 datePickerDialog.show();
             }
-        });
+        });*/
 
     }
 }

@@ -1,105 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
     tools:context=".EditarFeriado">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/editar_feriado"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <TableRow>
+        <TextView
+            android:text="Nombre:" />
 
-        <LinearLayout
-            android:layout_width="134dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+        <EditText
+            android:id="@+id/txtnombreEdit"
+            android:hint="@string/textnombreEdit" />
+    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Nombre:" />
+    <TableRow>
+        <TextView
+            android:text="Descripcion:" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Descripcion:" />
+        <EditText
+            android:id="@+id/txtdescripcionEdit"
+            android:layout_height="100dp"
+            android:hint="@string/textdescripcionEdit" />
+    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="160dp"
-                android:text="Fecha Inicio:" />
+    <TableRow>
+        <TextView
+            android:text="Fecha Inicio:" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Fecha Finalizacion:" />
-        </LinearLayout>
+        <TextView
+            android:text="Fecha" />
+    </TableRow>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginRight="15dp">
+    <TableRow>
+        <TextView
+            android:text="Fecha Finalizacion:" />
 
-            <EditText
-                android:id="@+id/txtnombreEdit"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:hint="@string/textnombreEdit" />
+        <TextView
+            android:text="Fecha" />
+    </TableRow>
+    <Button
+        android:id="@+id/btEditar"
+        android:text="Editar" />
+    <Button
+        android:id="@+id/btCancelarEdit"
+        android:text="Cancelar" />
 
-            <EditText
-                android:id="@+id/txtdescripcionEdit"
-                android:layout_width="250dp"
-                android:layout_height="170dp"
-                android:layout_marginTop="5dp"
-                android:hint="@string/textdescripcionEdit" />
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Fecha" />
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Fecha" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/btEditar"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Editar" />
-
-        <Button
-            android:id="@+id/btCancelarEdit"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Cancelar" />
-    </LinearLayout>
-
-</LinearLayout>
+</TableLayout>

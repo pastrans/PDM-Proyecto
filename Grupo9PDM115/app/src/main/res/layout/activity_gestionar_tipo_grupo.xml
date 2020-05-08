@@ -1,86 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
     tools:context=".GestionarTipoGrupo">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/gestionar_tipo_de_grupo"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <TableRow>
+        <TextView
+            android:text="Grupo" />
 
-        <LinearLayout
-            android:layout_width="99dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Grupo" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Grupo" />
-        </LinearLayout>
-    </LinearLayout>
+        <EditText
+            android:id="@+id/editText"
+            android:text="Grupo" />
+    </TableRow>
 
     <Button
         android:id="@+id/btConsultarTipoGrupo"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
         android:text="Consultar"
         android:textSize="10dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Nuevo"
-            android:textSize="10dp"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Editar"
-            android:textSize="10dp"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Eliminar"
-            android:textSize="10dp"/>
-    </LinearLayout>
     <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:text="Nuevo"
+        android:textSize="10dp"/>
+    <Button
+        android:text="Editar"
+        android:textSize="10dp"/>
+    <Button
+        android:text="Eliminar"
+        android:textSize="10dp"/>
+    <Button
         android:text="Regresar"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
         android:textSize="10dp"/>
 
-</LinearLayout>
+
+</TableLayout>

@@ -1,88 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".GestionarGrupo">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingTop="30dip"
+android:stretchColumns="1"
+tools:context=".GestionarGrupo">
 
+<TextView
+    android:text="@string/gestionar_grupo"
+    android:textSize="30sp"
+    android:paddingBottom="5dp"/>
+
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gestionar_grupo"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp"/>
-    <LinearLayout
+        android:text="Materia:"/>
+
+    <EditText
+        android:text="Materia"/>
+</TableRow>
+
+<TableRow>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Numero:"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Materia:"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Numero:"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tipo de Grupo:"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ciclo:"/>
-        </LinearLayout>
+    <EditText
+        android:text="Numero"/>
+</TableRow>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Consultar"
-        android:textSize="10dp" />
-
-    <LinearLayout
+<TableRow>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center_horizontal">
+        android:text="Tipo de Grupo:"/>
+</TableRow>
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Nuevo"
-            android:textSize="10dp"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Editar"
-            android:textSize="10dp"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Eliminar"
-            android:textSize="10dp"/>
-    </LinearLayout>
-    <Button
-        android:layout_width="100dp"
+<TableRow>
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Regresar"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textSize="10dp"/>
+        android:text="Ciclo:"/>
+</TableRow>
 
-</LinearLayout>
+<Button
+    android:text="Consultar"
+    android:textSize="10dp" />
+
+<Button
+    android:text="Nuevo"
+    android:textSize="10dp"/>
+<Button
+    android:text="Editar"
+    android:textSize="10dp"/>
+<Button
+    android:text="Eliminar"
+    android:textSize="10dp"/>
+
+<Button
+    android:text="Regresar"
+    android:textSize="10dp"/>
+
+</TableLayout>

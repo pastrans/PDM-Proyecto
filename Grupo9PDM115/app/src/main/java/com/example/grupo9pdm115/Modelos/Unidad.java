@@ -1,6 +1,14 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.ContentValues;
+
 public class Unidad {
+
+    // Atributos para BD
+    private final String nombreTabla = "unidad";
+    private ContentValues valores = new ContentValues();
+
+    // Atributos
     private int idUnidad;
     private String   nombreent;
     private String  descripcionent;
@@ -47,9 +55,23 @@ public class Unidad {
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
+    public String getNombreTabla() {
+        return nombreTabla;
+    }
     // -------------Fin de Métodos getter y setter---------------
 
+    // -------------Métodos para BD ------------------------------
 
+    public ContentValues getValores(){
+        // Agregando los valores de los atributos al content value
+        valores.put("codMateria", getIdUnidad());
+        valores.put("idUnidad", getNombreent());
+        valores.put("nombreMateria", getDescripcionent());
+        valores.put("masiva", getPrioridad());
+
+        return valores;
+    }
+    // -------------Fin de métodos para BD ------------------------------
 
 
 }

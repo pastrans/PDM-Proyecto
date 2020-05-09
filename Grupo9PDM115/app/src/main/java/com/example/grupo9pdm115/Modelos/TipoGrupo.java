@@ -1,6 +1,15 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.ContentValues;
+
 public class TipoGrupo {
+
+
+    // Atributos para BD
+    private final String nombreTabla = "unidad";
+    private ContentValues valores = new ContentValues();
+
+    // Atributos
     private String nombreTipoGrupo;
     private int  idTipoGrupo;
 
@@ -31,7 +40,20 @@ public class TipoGrupo {
     public void setIdTipoGrupo(int idTipoGrupo) {
         this.idTipoGrupo = idTipoGrupo;
     }
+
+    public String getNombreTabla() {
+        return nombreTabla;
+    }
     // -------------Fin de Métodos getter y setter---------------
+
+    // -------------Métodos para BD ------------------------------
+    public ContentValues getValores() {
+        // Agregando los valores de los atributos al content value
+        valores.put("codMateria", getIdTipoGrupo());
+        valores.put("idUnidad", getNombreTipoGrupo());
+        return valores;
+    }
+    // -------------Fin de métodos para BD ------------------------------
 
 
 }

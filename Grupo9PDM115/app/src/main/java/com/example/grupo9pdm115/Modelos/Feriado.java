@@ -1,6 +1,13 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.ContentValues;
+
 public class Feriado {
+
+    // Atributos para BD
+    private final String nombreTabla = "feriados";
+    private ContentValues valores = new ContentValues();
+
     private int idFeriado;
     private int idCiclo;
     private String fechaInicioFeriado;
@@ -76,4 +83,20 @@ public class Feriado {
     public void setBloquearReservas(boolean bloquearReservas) {
         this.bloquearReservas = bloquearReservas;
     }
+
+    // Métodos para BD
+    public String getNombreTabla() { return nombreTabla; }
+
+    public ContentValues getValores(){
+        // Agregando los valores de los atributos al content value
+        valores.put("idCiclo", getIdCiclo());
+        valores.put("fechaInicioFeriado", getFechaInicioFeriado());
+        valores.put("fecchaFinFeriado", getFecchaFinFeriado());
+        valores.put("nombreFeriado", getNombreFeriado());
+        valores.put("descripcionFeriado", getDescripcionFeriado());
+        valores.put("bloquearReservas", isBloquearReservas());
+
+        return valores;
+    }
+
 }

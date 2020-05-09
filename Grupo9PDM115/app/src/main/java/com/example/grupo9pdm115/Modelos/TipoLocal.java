@@ -1,6 +1,12 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.ContentValues;
+
 public class TipoLocal {
+
+    // Atributos para BD
+    private final String nombreTabla = "tipolocal";
+    private ContentValues valores = new ContentValues();
 
     private int idTipoLocal;
     private int idEncargado;
@@ -37,4 +43,14 @@ public class TipoLocal {
     public void setNombreTipo(String nombreTipo) {
         this.nombreTipo = nombreTipo;
     }
+
+    public String getNombreTabla() { return nombreTabla; }
+
+    public ContentValues getValores(){
+        // Agregando los valores de los atributos al content value
+        valores.put("idEncargado", getIdEncargado());
+        valores.put("nombreTipo", getNombreTipo());
+        return valores;
+    }
+
 }

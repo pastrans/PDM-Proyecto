@@ -28,8 +28,8 @@
         android:onClick="nuevoUnidad"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/nuevoUnidad"
-        tools:ignore="OnClick" />
+        android:text="@string/nuevoUnidad" />
+        <!--tools:ignore="OnClick" /-->
 
     <Button
         android:onClick="editarUnidad"

@@ -14,6 +14,10 @@ public class Unidad {
     private String  descripcionent;
     private int  prioridad;
 
+    public Unidad(){
+
+    }
+
     // -------------Constructor---------------
     public Unidad(int idUnidad, String nombreent, String descripcionent, int prioridad) {
         this.idUnidad = idUnidad;
@@ -64,10 +68,10 @@ public class Unidad {
 
     public ContentValues getValores(){
         // Agregando los valores de los atributos al content value
-        valores.put("codMateria", getIdUnidad());
-        valores.put("idUnidad", getNombreent());
-        valores.put("nombreMateria", getDescripcionent());
-        valores.put("masiva", getPrioridad());
+        //valores.put("codMateria", getIdUnidad());
+        valores.put("nombreent", getNombreent());
+        valores.put("descripcionent", getDescripcionent());
+        valores.put("prioridad", getPrioridad());
 
         return valores;
     }

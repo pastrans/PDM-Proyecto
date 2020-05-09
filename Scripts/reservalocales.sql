@@ -1,6 +1,6 @@
 ﻿---=============================================================
 ---CAMBIOS
-/* 
+/*
 1. LAS LLAVES INTEGER SON AUTOINCREMENTABLES
 2. CAMBIO DE NOMBRE DEL CAMPO "FECHAFINPERIADO" POR "FECHAFINFERIADO"
 */
@@ -349,316 +349,115 @@ DROP TRIGGER IF EXISTS fk_usuario_unidad;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL LOCAL-TIPOLOCAL
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal
-BEFORE INSERT ON local
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de local')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal BEFORE INSERT ON local FOR EACH ROW
+BEGIN       SELECT CASE      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL)      THEN RAISE(ABORT, 'No existe el tipo de local') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL RESERVA-SOLICITUD
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_reserva_solicitud
-BEFORE INSERT ON reserva
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idsolicitud FROM solicitud WHERE idsolicitud = NEW.idsolicitud) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de local')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_reserva_solicitud BEFORE INSERT ON reserva FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idsolicitud FROM solicitud WHERE idsolicitud = NEW.idsolicitud) IS NULL)      THEN RAISE(ABORT, 'No existe el tipo de local') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-USUARIO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_coordinacion_usuario
-BEFORE INSERT ON coordinacion
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idusuario FROM usuario WHERE idusuario = NEW.idusuario) IS NULL)
-      THEN RAISE(ABORT, 'No existe el usuario.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_coordinacion_usuario BEFORE INSERT ON coordinacion FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idusuario FROM usuario WHERE idusuario = NEW.idusuario) IS NULL)      THEN RAISE(ABORT, 'No existe el usuario.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-CICLOMATERIA
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_coordinacion_ciclomateria
-BEFORE INSERT ON coordinacion
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)
-      THEN RAISE(ABORT, 'La materia no se está impartiendo en ese ciclo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_coordinacion_ciclomateria BEFORE INSERT ON coordinacion FOR EACH ROW BEGIN      SELECT CASE       WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)      THEN RAISE(ABORT, 'La materia no se está impartiendo en ese ciclo.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL CICLOMATERIA-MATERIA
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_materia
-BEFORE INSERT ON ciclomateria
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT codmateria FROM materia WHERE codmateria = NEW.codmateria) IS NULL)
-      THEN RAISE(ABORT, 'No existe la materia.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_materia BEFORE INSERT ON ciclomateria FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT codmateria FROM materia WHERE codmateria = NEW.codmateria) IS NULL)      THEN RAISE(ABORT, 'No existe la materia.') END;END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL CICLOMATERIA-CICLO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_ciclo
-BEFORE INSERT ON ciclomateria
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)
-      THEN RAISE(ABORT, 'No existe el ciclo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_ciclo BEFORE INSERT ON ciclomateria FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)      THEN RAISE(ABORT, 'No existe el ciclo.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL FERIADO-CICLO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_feriados_ciclo
-BEFORE INSERT ON feriados
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)
-      THEN RAISE(ABORT, 'No existe el ciclo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_feriados_ciclo BEFORE INSERT ON feriados FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)      THEN RAISE(ABORT, 'No existe el ciclo.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-TIPOGRUPO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_grupo_tipogrupo
-BEFORE INSERT ON grupo
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idTipoGrupo FROM tipogrupo WHERE idTipoGrupo = NEW.idTipoGrupo) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de grupo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_grupo_tipogrupo BEFORE INSERT ON grupo FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idTipoGrupo FROM tipogrupo WHERE idTipoGrupo = NEW.idTipoGrupo) IS NULL)      THEN RAISE(ABORT, 'No existe el tipo de grupo.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-CICLOMATERIA
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_grupo_ciclomateria
-BEFORE INSERT ON grupo
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de grupo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_grupo_ciclomateria BEFORE INSERT ON grupo FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)      THEN RAISE(ABORT, 'No existe el tipo de grupo.') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL EVENTOESPECIAL-CICLOMATERIA
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_eventoespecial_ciclomateria
-BEFORE INSERT ON eventoespecial
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de grupo.')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_eventoespecial_ciclomateria BEFORE INSERT ON eventoespecial FOR EACH ROW BEGIN  SELECT CASE   WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL) THEN RAISE(ABORT, 'No existe el tipo de grupo.') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL SOLICITUD-ENCARGADO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_solicitud_encargado
-BEFORE INSERT ON solicitud
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDENCARGADO FROM ENCARGADO WHERE IDENCARGADO = NEW.IDENCARGADO) IS NULL)
-      THEN RAISE(ABORT, 'No existe el encargado')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_solicitud_encargado BEFORE INSERT ON solicitud FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT IDENCARGADO FROM ENCARGADO WHERE IDENCARGADO = NEW.IDENCARGADO) IS NULL) THEN RAISE(ABORT, 'No existe el encargado') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL SOLICITUD-USUARIO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_solicitud_usuario
-BEFORE INSERT ON solicitud
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL)
-      THEN RAISE(ABORT, 'No existe el usuario')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_solicitud_usuario BEFORE INSERT ON solicitud FOR EACH ROW BEGIN  SELECT CASE  WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL)  THEN RAISE(ABORT, 'No existe el usuario') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL ENCARGADO-USUARIO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_encargado_usuario
-BEFORE INSERT ON encargado
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL)
-      THEN RAISE(ABORT, 'No existe el usuario')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_encargado_usuario BEFORE INSERT ON encargado FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL) THEN RAISE(ABORT, 'No existe el usuario') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL ACCESOUSUARIO-USUARIO
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_accesousuario_usuario
-BEFORE INSERT ON accesousuario
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL)
-      THEN RAISE(ABORT, 'No existe el usuario')
-END;
-END;
-
+CREATE TRIGGER IF NOT EXISTS fk_accesousuario_usuario BEFORE INSERT ON accesousuario FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = NEW.IDUSUARIO) IS NULL) THEN RAISE(ABORT, 'No existe el usuario') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL ACCESOUSUARIO-OPERACIONCRUD
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_accesousuario_operacioncrud
-BEFORE INSERT ON accesousuario
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDOPCION FROM OPERACIONCRUD WHERE IDOPCION = NEW.IDOPCION) IS NULL)
-      THEN RAISE(ABORT, 'No existe la operacion')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_accesousuario_operacioncrud BEFORE INSERT ON accesousuario FOR EACH ROW BEGIN SELECT CASE  WHEN ((SELECT IDOPCION FROM OPERACIONCRUD WHERE IDOPCION = NEW.IDOPCION) IS NULL) THEN RAISE(ABORT, 'No existe la operacion') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL USUARIO-UNIDAD
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_usuario_unidad
-BEFORE INSERT ON usuario
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDUNIDAD FROM UNIDAD WHERE IDUNIDAD = NEW.IDUNIDAD) IS NULL)
-      THEN RAISE(ABORT, 'No existe la unidad')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_usuario_unidad BEFORE INSERT ON usuario FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT IDUNIDAD FROM UNIDAD WHERE IDUNIDAD = NEW.IDUNIDAD) IS NULL)  THEN RAISE(ABORT, 'No existe la unidad')END;END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL MATERIA-UNIDAD
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_materia_unidad
-BEFORE INSERT ON materia
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDUNIDAD FROM UNIDAD WHERE IDUNIDAD = NEW.IDUNIDAD) IS NULL)
-      THEN RAISE(ABORT, 'No existe la unidad')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_materia_unidad BEFORE INSERT ON materia FOR EACH ROW BEGIN  SELECT CASE   WHEN ((SELECT IDUNIDAD FROM UNIDAD WHERE IDUNIDAD = NEW.IDUNIDAD) IS NULL) THEN RAISE(ABORT, 'No existe la unidad') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL LOCAL-TIPOLOCAL
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal
-BEFORE INSERT ON local
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de local')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal BEFORE INSERT ON local FOR EACH ROW BEGIN      SELECT CASE      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL) THEN RAISE(ABORT, 'No existe el tipo de local') END;END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Dia
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Dia
-BEFORE INSERT ON dia
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idDia FROM DetalleReserva WHERE idDia = NEW.idDia) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de día')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Dia BEFORE INSERT ON dia FOR EACH ROW BEGIN   SELECT CASE WHEN ((SELECT idDia FROM DetalleReserva WHERE idDia = NEW.idDia) IS NULL)  THEN RAISE(ABORT, 'No existe el tipo de día') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Grupo
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Grupo
-BEFORE INSERT ON grupo
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idGrupo FROM DetalleReserva WHERE idGrupo = NEW.idGrupo) IS NULL)
-      THEN RAISE(ABORT, 'No existe el tipo de día')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Grupo BEFORE INSERT ON grupo FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idGrupo FROM DetalleReserva WHERE idGrupo = NEW.idGrupo) IS NULL)  THEN RAISE(ABORT, 'No existe el tipo de día') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-EventoEspecial
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_EventoEspecial
-BEFORE INSERT ON eventoespecial
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT ideventoespecial FROM DetalleReserva WHERE ideventoespecial = NEW.ideventoespecial) IS NULL)
-      THEN RAISE(ABORT, 'No existe evento especial')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_EventoEspecial BEFORE INSERT ON eventoespecial FOR EACH ROW BEGIN  SELECT CASE  WHEN ((SELECT ideventoespecial FROM DetalleReserva WHERE ideventoespecial = NEW.ideventoespecial) IS NULL)  THEN RAISE(ABORT, 'No existe evento especial') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Horario
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Horario
-BEFORE INSERT ON horario
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idhorario FROM DetalleReserva WHERE idhorario = NEW.idhorario) IS NULL)
-      THEN RAISE(ABORT, 'No existe ese horario')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Horario BEFORE INSERT ON horario FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idhorario FROM DetalleReserva WHERE idhorario = NEW.idhorario) IS NULL)  THEN RAISE(ABORT, 'No existe ese horario') END; END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Local
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Local
-BEFORE INSERT ON Local
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idLocal FROM DetalleReserva WHERE idLocal = NEW.idLocal) IS NULL)
-      THEN RAISE(ABORT, 'No existe ese local')
-END;
-END;
-
+CREATE TRIGGER IF NOT EXISTS fk_DetalleReserva_Local BEFORE INSERT ON Local FOR EACH ROW BEGIN  SELECT CASE WHEN ((SELECT idLocal FROM DetalleReserva WHERE idLocal = NEW.idLocal) IS NULL) THEN RAISE(ABORT, 'No existe ese local') END; END;
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL TipoLocal-Encargado
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_TipoLocal_Encargado
-BEFORE INSERT ON Encargado
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idEncargado FROM TipoLocal WHERE idEncargado = NEW.idLocal) IS NULL)
-      THEN RAISE(ABORT, 'No existe ese tipo de local')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_TipoLocal_Encargado BEFORE INSERT ON Encargado FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idEncargado FROM TipoLocal WHERE idEncargado = NEW.idLocal) IS NULL)      THEN RAISE(ABORT, 'No existe ese tipo de local') END; END;
 
 
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL Reserva-DetalleReserva
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_Reserva_DetalleReserva
-BEFORE INSERT ON DetalleReserva
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idDetalleReserva FROM Reserva WHERE idDetalleReserva = NEW.idDetalleReserva) IS NULL)
-      THEN RAISE(ABORT, 'No existe ese detalle de reserva')
-END;
-END;
+CREATE TRIGGER IF NOT EXISTS fk_Reserva_DetalleReserva BEFORE INSERT ON DetalleReserva FOR EACH ROW BEGIN SELECT CASE  WHEN ((SELECT idDetalleReserva FROM Reserva WHERE idDetalleReserva = NEW.idDetalleReserva) IS NULL)  THEN RAISE(ABORT, 'No existe ese detalle de reserva') END; END;
 
 --=============================================================
 -- HABILITANDO LAS LLAVES FORÁNEAS

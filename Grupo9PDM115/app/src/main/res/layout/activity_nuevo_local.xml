@@ -35,7 +35,7 @@
 
         <TextView android:text="@string/tipoLocal" />
         <Spinner
-            android:id="@+id/planets_spinner"
+            android:id="@+id/tipoLocalSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </TableRow>
@@ -44,7 +44,7 @@
         <Button
             android:onClick="agregarLocal"
             android:text="@string/agregarLocal"
-            tools:ignore="OnClick" />
+            />
 
         <Button
             android:onClick="limpiarTexto"

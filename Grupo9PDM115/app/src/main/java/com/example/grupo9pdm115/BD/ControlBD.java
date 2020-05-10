@@ -12,6 +12,10 @@ public class ControlBD {
     private DatabaseHelper DBHelper; // Nuestro Auxiliador de BD
     private SQLiteDatabase db; // Instancia de nuestra BD
 
+    public SQLiteDatabase getDb(){
+        return this.db;
+    }
+
     // Métodos
     // Constructor
     public ControlBD(Context ctx) {

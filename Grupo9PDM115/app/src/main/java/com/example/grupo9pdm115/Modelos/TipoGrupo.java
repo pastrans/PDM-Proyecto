@@ -6,7 +6,7 @@ public class TipoGrupo {
 
 
     // Atributos para BD
-    private final String nombreTabla = "unidad";
+    private final String nombreTabla = "tipoGrupo";
     private ContentValues valores = new ContentValues();
 
     // Atributos
@@ -49,8 +49,8 @@ public class TipoGrupo {
     // -------------Métodos para BD ------------------------------
     public ContentValues getValores() {
         // Agregando los valores de los atributos al content value
-        valores.put("codMateria", getIdTipoGrupo());
-        valores.put("idUnidad", getNombreTipoGrupo());
+        //valores.put("tipoGrupo", getIdTipoGrupo());
+        valores.put("nombreTipoGrupo", getNombreTipoGrupo());
         return valores;
     }
     // -------------Fin de métodos para BD ------------------------------

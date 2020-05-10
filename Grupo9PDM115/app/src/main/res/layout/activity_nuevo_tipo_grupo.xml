@@ -19,7 +19,7 @@
             android:text="Nombre Tipo de Grupo:" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txtnombreEdit"
             android:text="Nombre" />
     </TableRow>
 
@@ -48,10 +48,11 @@
         android:layout_height="wrap_content"
         android:text="Discusion" />
 
+
     <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Crear" />
+        android:onClick="agregarTipoGrupo"
+        android:text="@string/crear_tipo_grupo"
+        tools:ignore="OnClick" />
 
     <Button
         android:layout_width="100dp"

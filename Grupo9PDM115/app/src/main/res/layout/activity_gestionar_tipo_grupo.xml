@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,8 +28,10 @@
         android:text="Consultar"
         android:textSize="10dp" />
     <Button
-        android:text="Nuevo"
-        android:textSize="10dp"/>
+        android:onClick="nuevoTipoGrupo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nuevo_tipo_grupo" />
     <Button
         android:text="Editar"
         android:textSize="10dp"/>

@@ -72,7 +72,6 @@ public class Unidad {
         valores.put("nombreent", getNombreent());
         valores.put("descripcionent", getDescripcionent());
         valores.put("prioridad", getPrioridad());
-
         return valores;
     }
     // -------------Fin de métodos para BD ------------------------------

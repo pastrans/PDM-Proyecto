@@ -102,6 +102,7 @@
     <string name="nuevo_tipo_grupo">Nuevo Tipo Grupo</string>
     <string name="crear_tipo_grupo">Crear </string>
     <string name="nuevo_grupo">Nuevo Grupo</string>
+    <string name="editar_grupo">Editar Grupo</string>
 
 
 </resources>

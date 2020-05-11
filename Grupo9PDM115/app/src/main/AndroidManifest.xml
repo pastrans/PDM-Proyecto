@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NuevoTipoGrupo"></activity>
+        <activity android:name=".NuevoGrupo"></activity>
+        <activity android:name=".NuevoTipoGrupo" />
         <activity android:name=".GestionarTipoGrupo" />
         <activity android:name=".GestionarGrupo" />
         <activity android:name=".EditarTipoGrupo" />

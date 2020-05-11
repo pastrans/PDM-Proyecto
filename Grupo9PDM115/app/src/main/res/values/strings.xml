@@ -4,6 +4,7 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in_short">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
+    <string name="txtagregar">Agregar</string>
     //Variables para Ciclo
     <string name="inicio_ciclo">Inicio del Ciclo</string>
     <string name="agregarCiclo">Agregar</string>
@@ -35,6 +36,8 @@
     <string name="nuevo_feriado">Nuevo Feriado</string>
     <string name="text_nombre">Nombre</string>
     <string name="text_descripcion">Descripcion</string>
+
+    <string name="txtCiclo">Ciclo</string>
 
     //Variables Unidad
     <string name="gestionarUnidad">Gestionar Unidad</string>

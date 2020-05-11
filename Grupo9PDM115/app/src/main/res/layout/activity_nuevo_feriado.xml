@@ -18,7 +18,7 @@
             android:text="Nombre:" />
 
         <EditText
-            android:id="@+id/text_nombre"
+            android:id="@+id/edtNombreFeriado"
             android:hint="@string/text_nombre" />
     </TableRow>
 
@@ -26,7 +26,7 @@
         <TextView
             android:text="Descripcion:" />
         <EditText
-            android:id="@+id/text_descripcion"
+            android:id="@+id/edtDescripcionFeriado"
             android:layout_height="100dp"
             android:hint="@string/text_descripcion" />
     </TableRow>
@@ -34,22 +34,31 @@
     <TableRow>
         <TextView
             android:text="Fecha Inicio:" />
-        <TextView
-            android:id="@+id/fechaInicio"
-            android:text="Fecha" />
+        <EditText
+            android:id="@+id/fechaInicioFeriado" />
     </TableRow>
 
     <TableRow>
         <TextView
             android:text="Fecha Finalizacion:" />
+        <EditText
+            android:id="@+id/fechaFinFeriado" />
+    </TableRow>
+
+    <TableRow>
         <TextView
-            android:id="@+id/fechaFin"
-            android:text="Fecha" />
+            android:text="@string/txtCiclo"/>
+        <Spinner
+            android:id="@+id/spinnerCicloFeriadoNuevo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
     </TableRow>
 
     <Button
+        android:onClick="agregarFeriado"
         android:id="@+id/btCrearFeriado"
-        android:text="Crear" />
+        android:text="@string/txtagregar" />
     <Button
         android:id="@+id/btCancelar"
         android:text="Cancelar" />

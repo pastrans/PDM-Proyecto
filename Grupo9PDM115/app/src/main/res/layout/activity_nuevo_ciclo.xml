@@ -8,11 +8,11 @@
 
 
     <TextView
-        android:text="@string/NuevoCiclo"
+        android:text="@string/titNuevoCiclo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
     <TableRow>
-        <TextView android:text="@string/nombreCiclo" />
+        <TextView android:text="@string/txtNombreCiclo"/>
         <EditText
             android:id="@+id/editNombreCiclo"
             android:inputType="text"
@@ -20,11 +20,11 @@
     </TableRow>
     <TableRow>
         <TextView
-            android:text="@string/inicio_ciclo"
+            android:text="@string/txtInicioCiclo"
             android:textSize="14sp" />
 
         <DatePicker
-            android:id="@+id/datePicker1"
+            android:id="@+id/inicioCicloDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:calendarViewShown="false"
@@ -34,11 +34,11 @@
     <TableRow>
 
         <TextView
-            android:text="@string/finCiclo"
+            android:text="@string/txtFinCiclo"
             android:textSize="14sp" />
 
         <DatePicker
-            android:id="@+id/datePicker2"
+            android:id="@+id/finCicloDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:calendarViewShown="false"
@@ -47,11 +47,11 @@
     <TableRow>
 
         <TextView
-            android:text="@string/inicioPeriodoClase"
+            android:text="@string/txtInicioPeriodoClase"
             android:textSize="14sp" />
 
         <DatePicker
-            android:id="@+id/datePicker3"
+            android:id="@+id/inicioPeriodoClaseDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:calendarViewShown="false"
@@ -60,11 +60,11 @@
     <TableRow>
 
         <TextView
-            android:text="@string/finPeriodoClase"
+            android:text="@string/txtFinPeriodoClase"
             android:textSize="14sp" />
 
         <DatePicker
-            android:id="@+id/datePicker4"
+            android:id="@+id/finPeriodoClaseDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:calendarViewShown="false"
@@ -72,22 +72,22 @@
     </TableRow>
 
     <RadioButton
-        android:id="@+id/radiobutton1"
+        android:id="@+id/estadoRadioButton1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/estadoRadioButton" />
     <TableRow>
 
         <Button
-            android:onClick="agregarCiclo"
-            android:text="@string/agregarCiclo" />
+            android:onClick="btnAgregarNCiclo"
+            android:text="@string/btnAgregarNCiclo" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarCiclo" />
+            android:onClick="btnLimpiarTextoNCiclo"
+            android:text="@string/btnLimpiarTextoNCiclo" />
     </TableRow>
     <Button
-        android:onClick="atrasCiclo"
-        android:text="@string/atrasCiclo" />
+        android:onClick="btnRegresarNCiclo"
+        android:text="@string/btnRegresarNCiclo"/>
 
 </TableLayout>

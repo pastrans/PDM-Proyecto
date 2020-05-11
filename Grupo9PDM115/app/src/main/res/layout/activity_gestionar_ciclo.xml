@@ -8,12 +8,12 @@
     // cambiar a wrap_content el height
 
     <TextView
-        android:text="@string/gestionarCiclo"
+        android:text="@string/titGestionarCiclo"
         android:textSize="30sp"
         android:paddingBottom="5dp"
         />
     <TableRow>
-        <TextView android:text="@string/idCiclo" />
+        <TextView android:text="@string/txtIdCiclo" />
         <EditText
             android:id="@+id/editIdciclo"
             android:inputType="numberDecimal"
@@ -22,7 +22,7 @@
 
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/nombreCiclo" />
+        <TextView android:text="@string/txtNombreCiclo" />
         <EditText
             android:id="@+id/editNombreCiclo"
             android:inputType="text"
@@ -30,25 +30,25 @@
     </TableRow>
     <TableRow>
         <Button
-            android:onClick="consultarCiclo"
-            android:text="@string/consultarCiclo" />
+            android:onClick="btnConsultarGCiclo"
+            android:text="@string/btnConsultarGCiclo" />
     </TableRow>
 
     <Button
-        android:onClick="nuevoCiclo"
-        android:text="@string/nuevoCiclo" />
+        android:onClick="btnNuevoGCiclo"
+        android:text="@string/btnNuevoGCiclo" />
 
     <Button
-        android:onClick="editarCiclo"
-        android:text="@string/editarCiclo" />
+        android:onClick="btnEditarGCiclo"
+        android:text="@string/btnEditarGCiclo" />
 
     <Button
-        android:onClick="eliminarCiclo"
-        android:text="@string/eliminarCiclo" />
+        android:onClick="btnEliminarGCiclo"
+        android:text="@string/btnEliminarGCiclo" />
 
     <Button
-        android:onClick="atrasCiclo"
-        android:text="@string/atrasCiclo" />
+        android:onClick="btnRegresarGCiclo"
+        android:text="@string/btnRegresarGCiclo" />
 
 
 </TableLayout>

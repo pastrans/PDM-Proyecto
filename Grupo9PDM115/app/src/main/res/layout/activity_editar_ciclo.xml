@@ -9,11 +9,11 @@
     android:stretchColumns="1">
     tools:context=".EditarCiclo">
     <TextView
-        android:text="@string/EditarCiclo"
+        android:text="@string/titEditarCiclo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
     <TableRow>
-        <TextView android:text="@string/nombreCiclo" />
+        <TextView android:text="@string/txtNombreCiclo" />
         <EditText
             android:id="@+id/editNombreCiclo"
             android:inputType="text"
@@ -22,33 +22,32 @@
     <TableRow>
 
         <TextView
-            android:text="@string/finCiclo"
+            android:text="@string/txtFinCiclo"
             android:textSize="14sp" />
 
         <DatePicker
-            android:id="@+id/datePicker1"
+            android:id="@+id/finCicloDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:calendarViewShown="false"
             android:datePickerMode="spinner" />
     </TableRow>
     <RadioButton
-        android:id="@+id/radiobutton1"
+        android:id="@+id/estadoRadiobutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/estadoRadioButton" />
     <TableRow>
 
         <Button
-            android:onClick="editartCiclo"
-            android:text="@string/editarCiclo" />
+            android:onClick="btnEditarECiclo"
+            android:text="@string/btnEditarECiclo" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarCiclo" />
+            android:onClick="btnLimpiarTextoECiclo"
+            android:text="@string/btnLimpiarTextoECiclo" />
     </TableRow>
     <Button
-        android:onClick="atrasCiclo"
-        android:text="@string/atrasCiclo" />
-
+        android:onClick="btnRegresarECiclo"
+        android:text="@string/btnRegresarECiclo" />
 </TableLayout>

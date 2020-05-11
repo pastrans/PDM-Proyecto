@@ -4,26 +4,37 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in_short">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
-    //Variables para Ciclo
-    <string name="inicio_ciclo">Inicio del Ciclo</string>
-    <string name="agregarCiclo">Agregar</string>
-    <string name="limpiarCiclo">Limpiar</string>
-    <string name="atrasCiclo">Regresar</string>
-    <string name="gestionarCiclo">Gestionar Ciclo</string>
-    <string name="idCiclo">Id Ciclo:</string>
-    <string name="nombreCiclo">Nombre Ciclo</string>
-    <string name="consultarCiclo">Consultar</string>
-    <string name="nuevoCiclo">Nuevo</string>
-    <string name="editarCiclo">Editar</string>
-    <string name="eliminarCiclo">Eliminar</string>
-    <string name="regresarCiclo">Regresar</string>
-    <string name="NuevoCiclo">Nuevo Ciclo</string>
-    <string name="estadoRadioButton">Activo/Inactivo</string>
-    <string name="finCiclo">Fin del Ciclo</string>
-    <string name="inicioPeriodoClase">Inicio del periodo de Clases</string>
-    <string name="finPeriodoClase">Fin del periodo de Clases</string>
-    <string name="EditarCiclo">Editar Ciclo</string>
 
+    //Variables para Ciclo
+    //Etiquetas
+    <string name="txtIdCiclo">Id Ciclo:</string>
+    <string name="txtNombreCiclo">Nombre ciclo</string>
+    <string name="txtInicioCiclo">Inicio del ciclo</string>
+    <string name="txtFinCiclo">Fin del Ciclo</string>
+    <string name="txtInicioPeriodoClase">Inicio del periodo de Clases</string>
+    <string name="txtFinPeriodoClase">Fin del periodo de Clases</string>
+    <string name="estadoRadioButton">Activo/Inactivo</string>
+    //Gestionar Ciclo
+    <string name="titGestionarCiclo">Gestionar Ciclo</string>
+    <string name="btnConsultarGCiclo">Consultar</string>
+    <string name="btnNuevoGCiclo">Nuevo</string>
+    <string name="btnEditarGCiclo">Editar</string>
+    <string name="btnEliminarGCiclo">Eliminar</string>
+    <string name="btnRegresarGCiclo">Regresar</string>
+    //Nuevo Ciclo
+    <string name="titNuevoCiclo">Nuevo Ciclo</string>
+    <string name="btnAgregarNCiclo">Agregar</string>
+    <string name="btnLimpiarTextoNCiclo">Limpiar</string>
+    <string name="btnRegresarNCiclo">Regresar</string>
+
+    //Editar Ciclo
+    <string name="titEditarCiclo">Editar Ciclo</string>
+    <string name="btnEditarECiclo">Editar</string>
+    <string name="btnLimpiarTextoECiclo">Limpiar</string>
+    <string name="btnRegresarECiclo">Regresar</string>
+
+
+    
     //Variables para Feriado
     <string name="editar_feriado">Editar Feriado</string>
     <string name="textnombreEdit">Nombre</string>

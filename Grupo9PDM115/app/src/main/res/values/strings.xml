@@ -46,6 +46,8 @@
     <string name="nuevo_feriado">Nuevo Feriado</string>
     <string name="text_nombre">Nombre</string>
     <string name="text_descripcion">Descripcion</string>
+    <string name="txtagregar">Agregar</string>
+    <string name="txtCiclo">Ciclo</string>
 
     //Variables Unidad
     <string name="gestionarUnidad">Gestionar Unidad</string>

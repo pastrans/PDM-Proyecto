@@ -60,7 +60,7 @@ public class TipoLocal {
         valores.put("nombreTipo", getNombreTipo());
         return valores;
     }
-    
+
     public List<TipoLocal> getTiposLocales(Context context){
         List<TipoLocal> listaTipoLocal = new ArrayList<TipoLocal>();
         helper = new ControlBD(context);
@@ -74,6 +74,7 @@ public class TipoLocal {
                 listaTipoLocal.add(tipoLocal);
             }while (cursor.moveToNext());
         }
+        helper.cerrar();
         return listaTipoLocal;
     }
 

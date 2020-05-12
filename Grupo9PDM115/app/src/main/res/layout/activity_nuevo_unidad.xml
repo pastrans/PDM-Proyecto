@@ -12,29 +12,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/NuevoUnidad"
+        android:text="@string/titNuevoUnidad"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/nombreent" />
+        <TextView android:text="@string/txtNombreUnidad" />
         <EditText
             android:id="@+id/editNombreUnidad"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/descripcionent" />
+        <TextView android:text="@string/txtDescripcion" />
         <EditText
-            android:id="@+id/txtdescripcionEdit"
+            android:id="@+id/editDescripcion"
             android:layout_width="250dp"
             android:layout_height="170dp"
-            android:layout_marginTop="5dp"
-            android:hint="@string/textdescripcionEdit" />
+            android:layout_marginTop="5dp" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/prioridad" />
+        <TextView android:text="@string/txtPrioridad" />
         <EditText
             android:id="@+id/editPrioridad"
             android:inputType="numberDecimal"
@@ -44,17 +43,18 @@
     <TableRow>
 
         <Button
-            android:onClick="agregarUnidad"
-            android:text="@string/agregarUnidad"
+            android:onClick="@string/btnAgregarNUnidad"
+            android:text="Agregar"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarUnidad"
+            android:onClick="@string/btnLimpiarNUnidad"
+            android:text="Limpiar"
             tools:ignore="OnClick" />
     </TableRow>
+
     <Button
-        android:onClick="atrasUnidad"
-        android:text="@string/atrasUnidad"
+        android:onClick="@string/btnRegresarNUnidad"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 </TableLayout>

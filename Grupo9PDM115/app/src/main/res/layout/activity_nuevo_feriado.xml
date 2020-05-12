@@ -67,7 +67,7 @@
 
     <Button
         android:onClick="@string/btnAgregarNFeriado"
-        android:text="@string/txtagregar" />
+        android:text="Agregar" />
 
     <Button
         android:onClick="@string/btnCancelarNFeriado"

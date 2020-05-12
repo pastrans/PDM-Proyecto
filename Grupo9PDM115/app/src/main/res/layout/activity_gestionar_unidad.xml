@@ -12,38 +12,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gestionarUnidad"
+        android:text="@string/titGestionarUnidad"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/nombreent" />
+        <TextView android:text="@string/txtNombreUnidad" />
         <EditText
             android:id="@+id/editNombreUnidad"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
+
     <Button
-        android:onClick="nuevoUnidad"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/nuevoUnidad" />
+        android:onClick="@string/btnNuevoGUnidad"
+        android:text="Nuevo" />
         <!--tools:ignore="OnClick" /-->
 
     <Button
-        android:onClick="editarUnidad"
-        android:text="@string/editarUnidad"
+        android:onClick="@string/btnEditarGUnidad"
+        android:text="Editar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="eliminarUnidad"
-        android:text="@string/eliminarUnidad"
+        android:onClick="@string/btnEliminarGUnidad"
+        android:text="Eliminar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="atrasUnidad"
-        android:text="@string/atrasUnidad"
+        android:onClick="@string/btnRegresarGUnidad"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 
 </TableLayout>

@@ -12,39 +12,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gestionarMatertia"
+        android:text="@string/titGestionarMateria"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/nombremat" />
+        <TextView android:text="@string/txtNombreMateria" />
         <EditText
-            android:id="@+id/nombreMat"
+            android:id="@+id/editNombreMateria"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
 
     <Button
-        android:onClick="nuevoMateria"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/nuevoMateria"
+        android:onClick="@string/btnNuevoGMateria"
+        android:text="Nuevo"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="editarMateria"
-        android:text="@string/editarMateria"
+        android:onClick="@string/btnEditarGMateria"
+        android:text="Editar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="eliminarMateria"
-        android:text="@string/eliminarMateria"
+        android:onClick="@string/btnEliminarGMateria"
+        android:text="Eliminar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="atrasMateria"
-        android:text="@string/regresarUnidad"
+        android:onClick="@string/btnRegresarGMateria"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 
 </TableLayout>

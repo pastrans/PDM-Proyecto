@@ -58,34 +58,56 @@
     <string name="btnCancelarEFeriado">Cancelar</string>
 
     //Variables Unidad
-    <string name="gestionarUnidad">Gestionar Unidad</string>
-    <string name="nombreent">Nombre Unidad</string>
-    <string name="descripcionent">Descripción</string>
-    <string name="prioridad">Prioridad</string>
-    <string name="nuevoUnidad">Nuevo</string>
-    <string name="editarUnidad">Editar</string>
-    <string name="eliminarUnidad">Eliminar</string>
-    <string name="regresarUnidad">Regresar</string>
-    <string name="NuevoUnidad">Nuevo Unidad</string>
-    <string name="agregarUnidad">Agregar</string>
-    <string name="limpiarUnidad">Limpiar</string>
-    <string name="atrasUnidad">Regresar</string>
-    <string name="EditarUnidad">Editar Unidad</string>
+    //Etiquetas
+    <string name="txtNombreUnidad">Nombre unidad</string>
+    <string name="editDescripcion">Descripción</string>
+    <string name="txtPrioridad">Prioridad</string>
+    //Gestionar Unidad
+    <string name="titGestionarUnidad">Gestionar Unidad</string>
+    <string name="btnNuevoGUnidad">Nuevo</string>
+    <string name="btnEditarGUnidad">Editar</string>
+    <string name="btnEliminarGUnidad">Eliminar</string>
+    <string name="btnRegresarGUnidad">Regresar</string>
+    //Nuevo Unidad
+    <string name="titNuevoUnidad">Nuevo Unidad</string>
+    <string name="btnRegresarNUnidad">Regresar</string>
+    <string name="btnAgregarNUnidad">Agregar</string>
+    <string name="btnLimpiarNUnidad">Limpiar</string>
+    //Editar Unidad
+    <string name="titEditarUnidad">Editar Unidad</string>
+    <string name="btnEditarEUnidad">Agregar</string>
+    <string name="btnLimpiarEUnidad">Limpiar</string>
+    <string name="btnRegresarEUnidad">Regresar</string>
 
     //Variables Materia
-    <string name="gestionarMatertia">Gestionar Materia</string>
-    <string name="nombremat">Nombre Materia</string>
-    <string name="nuevoMateria">Nuevo</string>
-    <string name="editarMateria">Editar</string>
-    <string name="eliminarMateria">Eliminar</string>
-    <string name="regresarMateria">Regresar</string>
-    <string name="NuevoMateria">Nueva Materia</string>
-    <string name="unidad">Unidad</string>
-    <string name="masiva">Masiva</string>
-    <string name="agregarMateria">Agregar</string>
-    <string name="limpiarMateria">Limpiar</string>
-    <string name="atrasMateria">Regresar</string>
-    <string name="EditarMateria">Editar Materia</string>
+    //Etiquetas
+    <string name="txtNombreMateria">Nombre materia</string>
+    <string name="txtMasiva">Masiva</string>
+    <string name="txtUnidad">Unidad</string>
+    //Gestionar Materia
+    <string name="titGestionarMateria">Gestionar Materia</string>
+    <string name="btnNuevoGMateria">Nuevo</string>
+    <string name="btnEditarGMateria">Editar</string>
+    <string name="btnEliminarGMateria">Eliminar</string>
+    <string name="btnRegresarGMateria">Regresar</string>
+    //Nuevo Materia
+    <string name="titNuevoMateria">Nueva Materia</string>
+    <string name="btnAgregarNMateria">Agregar</string>
+    <string name="btnLimpiarNMateria">Limpiar</string>
+    <string name="btnRegresarNMateria">Regresar</string>
+
+    //Editar Materia
+    <string name="titEditarMateria">Editar Materia</string>
+    <string name="btnEditarEMateria">Editar</string>
+    <string name="btnLimpiarEMateria">Limpiar</string>
+    <string name="btnRegresarEMateria">Regresar</string>
+
+
+
+
+
+
+
 
     //Variables Tipo Local
     <string name="gestionarTipoLocal">Gestionar Tipo Local</string>

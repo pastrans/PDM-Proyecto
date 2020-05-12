@@ -12,21 +12,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EditarMateria"
+        android:text="@string/titEditarMateria"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/nombremat" />
+        <TextView android:text="@string/txtNombreMateria" />
         <EditText
-            android:id="@+id/nombreMat"
+            android:id="@+id/editNombreMateria"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/unidad" />
+        <TextView android:text="@string/txtUnidad" />
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
@@ -34,25 +34,26 @@
 
     </TableRow>
     <RadioButton
-        android:id="@+id/radiobutton1"
+        android:id="@+id/masivaRadiobutton1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/masiva" />
+        android:text="@string/txtMasiva" />
     <TableRow>
 
         <Button
-            android:onClick="editarMateria"
-            android:text="@string/editarMateria"
+            android:onClick="@string/btnEditarEMateria"
+            android:text="Editar"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarMateria"
+            android:onClick="@string/btnLimpiarEMateria"
+            android:text="Limpiar"
             tools:ignore="OnClick" />
     </TableRow>
+
     <Button
-        android:onClick="atrasMateria"
-        android:text="@string/atrasMateria"
+        android:onClick="@string/btnRegresarEMateria"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 
 

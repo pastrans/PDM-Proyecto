@@ -12,36 +12,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gestionarTipoLocal"
+        android:text="@string/titGestionarTipoLocal"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
     <TableRow>
 
-        <TextView android:text="@string/nombreTipoLocal" />
+        <TextView android:text="@string/txtNombre" />
         <EditText
-            android:id="@+id/nombreTipoLocal"
+            android:id="@+id/editNombre"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
+
     <Button
-        android:onClick="nuevoTipoLocal"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/nuevoTipoLocal"
+        android:onClick="@string/btnNuevoGTipoLocal"
+        android:text="Nuevo"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="editarTipoLocal"
-        android:text="@string/editarTipoLocal"
+        android:onClick="@string/btnEditarGTipoLocal"
+        android:text="Editar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="eliminarTipoLocal"
-        android:text="@string/eliminarTipoLocal"
+        android:onClick="@string/btnEliminarGTipoLocal"
+        android:text="Eliminar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="atrasTipoLocal"
-        android:text="@string/regresarTipoLocal"
+        android:onClick="@string/btnRegresarGTipoLocal"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 </TableLayout>

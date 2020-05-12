@@ -12,21 +12,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/EditarTipoLocal"
+        android:text="@string/titEditarTipoLocal"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
     <TableRow>
 
-        <TextView android:text="@string/nombreTipoLocal" />
+        <TextView android:text="@string/txtNombreTipoLocal" />
         <EditText
-            android:id="@+id/nombreTipoLocal"
+            android:id="@+id/editNombreTipoLocal"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
 
     <TableRow>
 
-        <TextView android:text="@string/encargado" />
+        <TextView android:text="@string/txtEncargado" />
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
@@ -35,17 +35,18 @@
     <TableRow>
 
         <Button
-            android:onClick="editarTipoLocal"
-            android:text="@string/editarTipoLocal"
+            android:onClick="@string/btnEditarETipoLocal"
+            android:text="Editar"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarTipoLocal"
+            android:onClick="@string/btnLimpiarETipoLocal"
+            android:text="Limpiar"
             tools:ignore="OnClick" />
     </TableRow>
+
     <Button
-        android:onClick="atrasTipoLocal"
-        android:text="@string/atrasTipoLocal"
+        android:onClick="@string/btnRegresarETipoLocal"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 </TableLayout>

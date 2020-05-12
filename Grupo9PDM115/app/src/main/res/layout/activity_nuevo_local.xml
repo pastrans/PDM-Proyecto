@@ -12,28 +12,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/NuevoLocal"
+        android:text="@string/titNuevoLocal"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
     <TableRow>
 
-        <TextView android:text="@string/nombreLocal" />
+        <TextView android:text="@string/txtNombreLocal" />
         <EditText
-            android:id="@+id/nombreLocal"
+            android:id="@+id/editNombreLocal"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/capacidad" />
+        <TextView android:text="@string/txtCapacidad" />
         <EditText
-            android:id="@+id/capacidad"
+            android:id="@+id/editCapacidad"
             android:inputType="numberDecimal"
             android:maxLength="30"
             />
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/tipoLocal" />
+        <TextView android:text="@string/txtTipoLocal" />
         <Spinner
             android:id="@+id/tipoLocalSpinner"
             android:layout_width="fill_parent"
@@ -42,18 +42,18 @@
     <TableRow>
 
         <Button
-            android:onClick="agregarLocal"
-            android:text="@string/agregarLocal"
-            />
+            android:onClick="btnAgregarNLocal"
+            android:text="Agregar"
+            tools:ignore="OnClick" />
 
         <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiarLocal"
+            android:onClick="btnLimpiarNLocal"
+            android:text="Limpiar"
             tools:ignore="OnClick" />
     </TableRow>
     <Button
-        android:onClick="atrasLocal"
-        android:text="@string/atrasLocal"
+        android:onClick="btnRegresarNLocal"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 
 

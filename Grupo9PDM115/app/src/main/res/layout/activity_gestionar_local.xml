@@ -12,39 +12,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gestionarLocal"
+        android:text="@string/titGestionarLocal"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/nombreLocal" />
+        <TextView android:text="@string/txtNombreLocal" />
         <EditText
-            android:id="@+id/nombreLocal"
+            android:id="@+id/editNombreLocal"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
 
     <Button
-        android:onClick="nuevoLocal"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/nuevoLocal"
+        android:onClick="@string/btnNuevoGLocal"
+        android:text="Nuevo"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="editarLocal"
-        android:text="@string/editarLocal"
+        android:onClick="btnEditarGLocal"
+        android:text="Editar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="eliminarLocal"
-        android:text="@string/eliminarLocal"
+        android:onClick="btnEliminarGLocal"
+        android:text="Eliminar"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="atrasLocal"
-        android:text="@string/regresarLocal"
+        android:onClick="btnRegresarGLocal"
+        android:text="Regresar"
         tools:ignore="OnClick" />
 
 </TableLayout>

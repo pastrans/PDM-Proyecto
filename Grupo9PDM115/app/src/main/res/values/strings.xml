@@ -95,50 +95,60 @@
     <string name="btnAgregarNMateria">Agregar</string>
     <string name="btnLimpiarNMateria">Limpiar</string>
     <string name="btnRegresarNMateria">Regresar</string>
-
     //Editar Materia
     <string name="titEditarMateria">Editar Materia</string>
     <string name="btnEditarEMateria">Editar</string>
     <string name="btnLimpiarEMateria">Limpiar</string>
     <string name="btnRegresarEMateria">Regresar</string>
 
-
-
-
-
-
-
-
     //Variables Tipo Local
-    <string name="gestionarTipoLocal">Gestionar Tipo Local</string>
-    <string name="nombreTipoLocal">Nombre </string>
-    <string name="nuevoTipoLocal">Nuevo</string>
-    <string name="editarTipoLocal">Editar</string>
-    <string name="eliminarTipoLocal">Eliminar</string>
-    <string name="regresarTipoLocal">Regresar</string>
-    <string name="NuevoTipoLocal">Nuevo Tipo Local</string>
-    <string name="encargado">Encargado</string>
-    <string name="agregarTipoLocal">Agregar</string>
-    <string name="limpiarTipoLocal">Limpiar</string>
-    <string name="atrasTipoLocal">Regresar</string>
-    <string name="EditarTipoLocal">Editar Tipo Local</string>
+    //Etiquetas
+    <string name="txtNombreTipoLocal">Nombre </string>
+    <string name="txtEncargado">Encargado</string>
+    //Gestionar Tipo Local
+    <string name="titGestionarTipoLocal">Gestionar Tipo Local</string>
+    <string name="btnNuevoGTipoLocal">Nuevo</string>
+    <string name="btnEditarGTipoLocal">Editar</string>
+    <string name="btnEliminarGTipoLocal">Eliminar</string>
+    <string name="btnRegresarGTipoLocal">Regresar</string>
+    //Nuevo Tipo Local
+    <string name="titNuevoTipoLocal">Nuevo Tipo Local</string>
+    <string name="btnAgregarNTipoLocal">Agregar</string>
+    <string name="btnLimpiarNTipoLocal">Limpiar</string>
+    <string name="btnRegresarNTipoLocal">Regresar</string>
+    //Editar Tipo Local
+    <string name="titEditarTipoLocal">Editar Tipo Local</string>
+    <string name="btnEditarETipoLocal">Agregar</string>
+    <string name="btnLimpiarETipoLocal">Limpiar</string>
+    <string name="btnRegresarETipoLocal">Regresar</string>
 
     //Variables Local
-    <string name="gestionarLocal">Gestionar Local</string>
-    <string name="nombreLocal">Nombre </string>
-    <string name="nuevoLocal">Nuevo</string>
-    <string name="editarLocal">Editar</string>
-    <string name="eliminarLocal">Eliminar</string>
-    <string name="regresarLocal">Regresar</string>
-    <string name="NuevoLocal">Nuevo Local</string>
-    <string name="capacidad">Capacidad</string>
-    <string name="tipoLocal">Tipo Local</string>
-    <string name="agregarLocal">Agregar</string>
-    <string name="limpiarLocal">Limpiar</string>
-    <string name="atrasLocal">Regresar</string>
-    <string name="EditarLocal">Editar Local</string>
+    //Etiquetas
+    <string name="txtNombreLocal">Nombre </string>
+    <string name="txtCapacidad">Capacidad</string>
+    <string name="txtTipoLocal">Tipo local</string>
+    //Gestionar Local
+    <string name="titGestionarLocal">Gestionar Local</string>
+    <string name="btnNuevoGLocal">Nuevo</string>
+    <string name="btnEditarGLocal">Editar</string>
+    <string name="btnEliminarGLocal">Eliminar</string>
+    <string name="btnRegresarGLocal">Regresar</string>
+    //Nuevo Local
+    <string name="titNuevoLocal">Nuevo Local</string>
+    <string name="btnAgregarNLocal">Agregar</string>
+    <string name="btnLimpiarNLocal">Limpiar</string>
+    <string name="btnRegresarNLocal">Regresar</string>
+    //Editar Local
+    <string name="titEditarLocal">Editar Local</string>
+    <string name="btnEditarELocal">Agregar</string>
+    <string name="btnLimpiarELocal">Limpiar</string>
+    <string name="btnRegresarELocal">Regresar</string>
 
     //Variables Tipo Grupo
+    //Etiquetas
+    //Gestionar Grupo
+    //Nuevo Grupo
+    //Editar Grupo
     <string name="editar_tipo_grupo">Editar Tipo Grupo</string>
     <string name="gestionar_grupo">Gestionar Grupo</string>
     <string name="gestionar_tipo_de_grupo">Gestionar Tipo de Grupo</string>

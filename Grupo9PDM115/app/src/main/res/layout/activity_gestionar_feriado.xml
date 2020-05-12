@@ -9,42 +9,49 @@
     tools:context=".GestionarFeriado">
 
     <TextView
-        android:text="@string/gestionar_feriado"
+        android:text="@string/titGestionarFeriado"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:text="Nombre:" />
+            android:text="@string/txtNombre" />
 
         <EditText
-            android:id="@+id/textnombreGesti"
-            android:hint="@string/textnombreGesti" />
+            android:id="@+id/editNombre"
+            android:inputType="text"
+            android:maxLength="30"  />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Fecha:" />
-        <TextView
-            android:text="Fecha" />
+            android:text="@string/txtFecha" />
+        <DatePicker
+            android:id="@+id/fechaDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
     </TableRow>
 
     <Button
-        android:id="@+id/btConsultar"
-        android:text="Consultar"
-        android:textSize="10dp" />
+        android:onClick="@string/btnConsultarGFeriado"
+        android:text="Consultar" />
+
     <Button
-        android:onClick="nuvoFeriadoActivity"
-        android:text="Nuevo"
-        android:textSize="10dp"/>
+        android:onClick="@string/btnNuevoGFeriado"
+        android:text="Nuevo" />
+
     <Button
-        android:text="Editar"
-        android:textSize="10dp"/>
+        android:onClick="@string/btnEditarGFeriado"
+        android:text="Editar" />
+
     <Button
-        android:text="Eliminar"
-        android:textSize="10dp"/>
+        android:onClick="@string/btnEliminarGFeriado"
+        android:text="Eliminar" />
+
     <Button
-        android:text="Regresar"
-        android:textSize="10dp"/>
+        android:onClick="@string/btnRegresarGFeriado"
+        android:text="Regresar" />
 
 </TableLayout>

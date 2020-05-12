@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="30dip"
-    android:stretchColumns="1">>
-
+    android:stretchColumns="1">
 
     <TextView
         android:text="@string/titNuevoCiclo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
+
     <TableRow>
         <TextView android:text="@string/txtNombreCiclo"/>
         <EditText

@@ -26,7 +26,6 @@
     <string name="btnAgregarNCiclo">Agregar</string>
     <string name="btnLimpiarTextoNCiclo">Limpiar</string>
     <string name="btnRegresarNCiclo">Regresar</string>
-
     //Editar Ciclo
     <string name="titEditarCiclo">Editar Ciclo</string>
     <string name="btnEditarECiclo">Editar</string>
@@ -36,18 +35,41 @@
 
     
     //Variables para Feriado
+    //Etiquetas
+    <string name="txtNombre">Nombre</string>
+    <string name="txtFecha">Fecha</string>
+    <string name="txtDescripcion">Descripcion</string>
+    <string name="txtFechaInicio">Fecha inicio</string>
+    <string name="txtFechaFinalizacion">Fecha Finalización</string>
+    <string name="txtCiclo">Ciclo</string>
+
+
+    //Gestionar Feriado
+    <string name="titGestionarFeriado">Gestionar Feriado</string>
+    <string name="editNombre">Nombre</string>
+    <string name="btnConsultarGFeriado">Consultar</string>
+    <string name="btnNuevoGFeriado">Nuevo</string>
+    <string name="btnEditarGFeriado">Editar</string>
+    <string name="btnEliminarGFeriado">Eliminar</string>
+    <string name="btnRegresarGFeriado">Regresar</string>
+    //Nuevo Feriado
+    <string name="titNuevoFeriado">Nuevo Feriado</string>
+    <string name="btnAgregarNFeriado">Agregar</string>
+    <string name="btnCancelarNFeriado">Cancelar</string>
+    //Editar Feriado
+
+
+
     <string name="editar_feriado">Editar Feriado</string>
     <string name="textnombreEdit">Nombre</string>
     <string name="textdescripcionEdit">Descripcion</string>
 
-    <string name="gestionar_feriado">Gestionar Feriado</string>
-    <string name="textnombreGesti">Nombre</string>
 
-    <string name="nuevo_feriado">Nuevo Feriado</string>
+
     <string name="text_nombre">Nombre</string>
     <string name="text_descripcion">Descripcion</string>
     <string name="txtagregar">Agregar</string>
-    <string name="txtCiclo">Ciclo</string>
+
 
     //Variables Unidad
     <string name="gestionarUnidad">Gestionar Unidad</string>
@@ -116,6 +138,7 @@
     <string name="crear_tipo_grupo">Crear </string>
     <string name="nuevo_grupo">Nuevo Grupo</string>
     <string name="editar_grupo">Editar Grupo</string>
+
 
 
 </resources>

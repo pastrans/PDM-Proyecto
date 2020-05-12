@@ -9,40 +9,50 @@
     tools:context=".NuevoFeriado">
 
     <TextView
-        android:text="@string/nuevo_feriado"
+        android:text="@string/titNuevoFeriado"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:text="Nombre:" />
+            android:text="@string/txtNombre" />
 
         <EditText
-            android:id="@+id/edtNombreFeriado"
-            android:hint="@string/text_nombre" />
+            android:id="@+id/editNombreFeriado"
+            android:inputType="text"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Descripcion:" />
+            android:text="@string/txtDescripcion" />
         <EditText
-            android:id="@+id/edtDescripcionFeriado"
+            android:id="@+id/editDescripcionFeriado"
             android:layout_height="100dp"
-            android:hint="@string/text_descripcion" />
+            android:inputType="text"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Fecha Inicio:" />
-        <EditText
-            android:id="@+id/fechaInicioFeriado" />
+            android:text="@string/txtFechaInicio" />
+        <DatePicker
+            android:id="@+id/inicioFeriadoDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Fecha Finalizacion:" />
-        <EditText
-            android:id="@+id/fechaFinFeriado" />
+            android:text="@string/txtFechaFinalizacion" />
+        <DatePicker
+            android:id="@+id/finalizacionFeriadoDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
     </TableRow>
 
     <TableRow>
@@ -56,10 +66,10 @@
     </TableRow>
 
     <Button
-        android:onClick="agregarFeriado"
-        android:id="@+id/btCrearFeriado"
+        android:onClick="@string/btnAgregarNFeriado"
         android:text="@string/txtagregar" />
+
     <Button
-        android:id="@+id/btCancelar"
+        android:onClick="@string/btnCancelarNFeriado"
         android:text="Cancelar" />
 </TableLayout>

@@ -32,8 +32,6 @@
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
     <string name="btnRegresarECiclo">Regresar</string>
 
-
-    
     //Variables para Feriado
     //Etiquetas
     <string name="txtNombre">Nombre</string>
@@ -42,8 +40,6 @@
     <string name="txtFechaInicio">Fecha inicio</string>
     <string name="txtFechaFinalizacion">Fecha Finalización</string>
     <string name="txtCiclo">Ciclo</string>
-
-
     //Gestionar Feriado
     <string name="titGestionarFeriado">Gestionar Feriado</string>
     <string name="editNombre">Nombre</string>
@@ -57,19 +53,9 @@
     <string name="btnAgregarNFeriado">Agregar</string>
     <string name="btnCancelarNFeriado">Cancelar</string>
     //Editar Feriado
-
-
-
-    <string name="editar_feriado">Editar Feriado</string>
-    <string name="textnombreEdit">Nombre</string>
-    <string name="textdescripcionEdit">Descripcion</string>
-
-
-
-    <string name="text_nombre">Nombre</string>
-    <string name="text_descripcion">Descripcion</string>
-    <string name="txtagregar">Agregar</string>
-
+    <string name="titEditarFeriado">Editar Feriado</string>
+    <string name="btnEditarEFeriado">Editar</string>
+    <string name="btnCancelarEFeriado">Cancelar</string>
 
     //Variables Unidad
     <string name="gestionarUnidad">Gestionar Unidad</string>

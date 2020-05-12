@@ -9,49 +9,59 @@
     tools:context=".EditarFeriado">
 
     <TextView
-        android:text="@string/editar_feriado"
+        android:text="@string/titEditarFeriado"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:text="Nombre:" />
+            android:text="@string/txtNombre" />
 
         <EditText
-            android:id="@+id/txtnombreEdit"
-            android:hint="@string/textnombreEdit" />
+            android:id="@+id/editNombre"
+            android:inputType="text"
+            android:maxLength="30"  />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Descripcion:" />
+            android:text="@string/txtDescripcion" />
 
         <EditText
-            android:id="@+id/txtdescripcionEdit"
+            android:id="@+id/editDescripcion"
             android:layout_height="100dp"
-            android:hint="@string/textdescripcionEdit" />
+            android:inputType="text"
+            android:maxLength="30"  />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Fecha Inicio:" />
-
-        <TextView
-            android:text="Fecha" />
+            android:text="@string/txtFechaInicio" />
+        <DatePicker
+            android:id="@+id/inicioFeriadoDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Fecha Finalizacion:" />
-
-        <TextView
-            android:text="Fecha" />
+            android:text="@string/txtFechaFinalizacion" />
+        <DatePicker
+            android:id="@+id/finalizacionFeriadoDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
     </TableRow>
+
     <Button
-        android:id="@+id/btEditar"
+        android:onClick="@string/btnEditarEFeriado"
         android:text="Editar" />
+
     <Button
-        android:id="@+id/btCancelarEdit"
+        android:onClick="@string/btnCancelarEFeriado"
         android:text="Cancelar" />
 
 </TableLayout>

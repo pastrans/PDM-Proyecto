@@ -9,26 +9,22 @@
     tools:context=".EditarTipoGrupo">
 
     <TextView
-        android:text="@string/editar_tipo_grupo"
+        android:text="@string/titEditarTipoGrupo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nuevo Nombre:" />
+            android:text="@string/txtNuevoNombre" />
         <EditText
-            android:layout_width="251dp"
-            android:layout_height="wrap_content"
-            android:text="Nombre" />
+            android:id="@+id/editNuevoNombre"
+            android:inputType="text"
+            android:maxLength="25" />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nuevo Tipo de Grupo:" />
+            android:text="@string/txtNuevoTipoGrupo" />
     </TableRow>
 
     <CheckBox
@@ -42,11 +38,22 @@
     <CheckBox
         android:id="@+id/checkBox3"
         android:text="Discusion" />
+    <TableRow>
+
+        <Button
+            android:onClick="@string/btnEditarETipoGrupo"
+            android:text="Editar"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:onClick="@string/btnLimpiarETipoGrupo"
+            android:text="Limpiar"
+            tools:ignore="OnClick" />
+    </TableRow>
 
     <Button
-        android:text="Editar" />
-
-    <Button
-        android:text="Cancelar" />
+        android:onClick="@string/btnRegresarETipoGrupo"
+        android:text="Regresar"
+        tools:ignore="OnClick" />
 
 </TableLayout>

@@ -10,37 +10,40 @@
     tools:context=".GestionarTipoGrupo">
 
     <TextView
-        android:text="@string/gestionar_tipo_de_grupo"
+        android:text="@string/titGestionarTipoGrupo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:text="Grupo" />
+            android:text="@string/txtTipoGrupo" />
 
         <EditText
-            android:id="@+id/editText"
-            android:text="Grupo" />
+            android:id="@+id/editTipoGrupo"
+            android:inputType="text"
+            android:maxLength="25"/>
     </TableRow>
 
     <Button
-        android:id="@+id/btConsultarTipoGrupo"
+        android:onClick="btnConsultarGTipoGrupo"
         android:text="Consultar"
-        android:textSize="10dp" />
+        tools:ignore="OnClick"  />
     <Button
-        android:onClick="nuevoTipoGrupo"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/nuevo_tipo_grupo" />
+        android:onClick="btnNuevoGTipoGrupo"
+        android:text="Nuevo"
+        tools:ignore="OnClick" />
     <Button
+        android:onClick="btnEditarGTipoGrupo"
         android:text="Editar"
-        android:textSize="10dp"/>
+        tools:ignore="OnClick" />
     <Button
+        android:onClick="btnEliminarGTipoGrupo"
         android:text="Eliminar"
-        android:textSize="10dp"/>
+        tools:ignore="OnClick" />
     <Button
+        android:onClick="btnRegresarGTipoGrupo"
         android:text="Regresar"
-        android:textSize="10dp"/>
+        tools:ignore="OnClick" />
 
 
 </TableLayout>

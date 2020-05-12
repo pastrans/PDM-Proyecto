@@ -146,16 +146,40 @@
 
     //Variables Tipo Grupo
     //Etiquetas
+    <string name="txtTipoGrupo">Grupo</string>
+    <string name="txtNombreTipoGrupo">Nombre tipo grupo</string>
+    <string name="txtNuevoNombre">Nuevo nombre</string>
+    <string name="txtNuevoTipoGrupo">Nuevo tipo grupo</string>
+    //Gestionar Tipo Grupo
+    <string name="titGestionarTipoGrupo">Gestionar Tipo de Grupo</string>
+    <string name="btnConsultarGTipoGrupo">Consultar</string>
+    <string name="btnNuevoGTipoGrupo">Nuevo</string>
+    <string name="btnEditarGTipoGrupo">Editar</string>
+    <string name="btnEliminarGTipoGrupo">Eliminar</string>
+    <string name="btnRegresarGTipoGrupo">Regresar</string>
+    //Nuevo Tipo Grupo
+    <string name="titNuevoTipoGrupo">Nuevo Tipo Grupo</string>
+    <string name="btnAgregarNTipoGrupo">Agregar</string>
+    <string name="btnLimpiarNTipoGrupo">Limpiar</string>
+    <string name="btnRegresarNTipoGrupo">Regresar</string>
+    //Editar Tipo Grupo
+    <string name="titEditarTipoGrupo">Editar Tipo Grupo</string>
+    <string name="btnEditarETipoGrupo">Editar</string>
+    <string name="btnLimpiarETipoGrupo">Limpiar</string>
+    <string name="btnRegresarETipoGrupo">Regresar</string>
+
+    //Variables Grupo
+    //Etiquetas
+
     //Gestionar Grupo
-    //Nuevo Grupo
-    //Editar Grupo
-    <string name="editar_tipo_grupo">Editar Tipo Grupo</string>
     <string name="gestionar_grupo">Gestionar Grupo</string>
-    <string name="gestionar_tipo_de_grupo">Gestionar Tipo de Grupo</string>
-    <string name="nuevo_tipo_grupo">Nuevo Tipo Grupo</string>
-    <string name="crear_tipo_grupo">Crear </string>
+
+    //Nuevo Grupo
     <string name="nuevo_grupo">Nuevo Grupo</string>
+
+    //Editar Grupo
     <string name="editar_grupo">Editar Grupo</string>
+    <string name="txtTipoDeGrupo">Tipo de grupo</string>
 
 
 

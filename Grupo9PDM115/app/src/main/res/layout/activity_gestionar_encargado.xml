@@ -7,42 +7,44 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".GestionarTipoLocal">
+    tools:context=".GestionarEncargado">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarTipoLocal"
+        android:text="@string/titGestionarEncargado"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
+
     <TableRow>
 
-        <TextView android:text="@string/txtNombre" />
+        <TextView android:text="@string/txtEncargadoE" />
         <EditText
-            android:id="@+id/editNombre"
+            android:id="@+id/editEncargadoE"
             android:inputType="text"
-            android:maxLength="25" />
+            android:maxLength="30" />
     </TableRow>
 
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGTipoLocal"
-        android:text="@string/btnNuevoGTipoLocal"
+        android:onClick="btnNuevoGEncargado"
+        android:text="@string/btnNuevoGEncargado"
+        tools:ignore="OnClick"/>
+
+    <Button
+        android:onClick="btnEditarGEncargado"
+        android:text="@string/btnEditarGEncargado"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnEditarGTipoLocal"
-        android:text="@string/btnEditarGTipoLocal"
+        android:onClick="btnEliminarGEncargado"
+        android:text="@string/btnEliminarGEncargado"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnEliminarGTipoLocal"
-        android:text="@string/btnEliminarGTipoLocal"
+        android:onClick="btnRegresarGEncargado"
+        android:text="@string/btnRegresarGEncargado"
         tools:ignore="OnClick" />
 
-    <Button
-        android:onClick="btnRegresarGTipoLocal"
-        android:text="@string/btnRegresarGTipoLocal"
-        tools:ignore="OnClick" />
 </TableLayout>

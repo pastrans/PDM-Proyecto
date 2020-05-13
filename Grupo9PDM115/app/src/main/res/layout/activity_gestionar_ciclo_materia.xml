@@ -28,22 +28,22 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGCicloMateria"
+        android:onClick="btnNuevoGCicloMateria"
         android:text="@string/btnNuevoGCicloMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEditarGCicloMateria"
+        android:onClick="btnEditarGCicloMateria"
         android:text="@string/btnEditarGCicloMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGCicloMateria"
+        android:onClick="btnEliminarGCicloMateria"
         android:text="@string/btnEliminarGCicloMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGCicloMateria"
+        android:onClick="btnRegresarGCicloMateria"
         android:text="@string/btnRegresarGCicloMateria"
         tools:ignore="OnClick" />
 

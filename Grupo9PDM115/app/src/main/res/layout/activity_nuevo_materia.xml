@@ -41,19 +41,19 @@
     <TableRow>
 
         <Button
-            android:onClick="@string/btnAgregarNMateria"
-            android:text="Agregar"
+            android:onClick="btnAgregarNMateria"
+            android:text="@string/btnAgregarNMateria"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarNMateria"
-            android:text="Limpiar"
+            android:onClick="btnLimpiarNMateria"
+            android:text="@string/btnLimpiarNMateria"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarNMateria"
-        android:text="Regresar"
+        android:onClick="btnRegresarNMateria"
+        android:text="@string/btnRegresarNMateria"
         tools:ignore="OnClick" />
 
 

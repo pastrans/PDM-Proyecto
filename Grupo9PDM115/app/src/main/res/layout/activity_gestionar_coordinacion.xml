@@ -7,42 +7,45 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".GestionarTipoLocal">
+    tools:context=".GestionarCoordinacion">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarTipoLocal"
+        android:text="@string/titGestionarCoordinador"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
+
     <TableRow>
 
-        <TextView android:text="@string/txtNombre" />
+        <TextView android:text="@string/txtTipoCoordinacion" />
         <EditText
-            android:id="@+id/editNombre"
+            android:id="@+id/editTipoCoordinacion"
             android:inputType="text"
-            android:maxLength="25" />
+            android:maxLength="30" />
     </TableRow>
 
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGTipoLocal"
-        android:text="@string/btnNuevoGTipoLocal"
+        android:onClick="btnNuevoGCoordinador"
+        tools:ignore="OnClick"
+        android:text="@string/btnNuevoGCoordinador" />
+
+
+    <Button
+        android:onClick="btnEditarGCoordinador"
+        android:text="@string/btnEditarGCoordinador"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnEditarGTipoLocal"
-        android:text="@string/btnEditarGTipoLocal"
+        android:onClick="btnEliminarGCoordinador"
+        android:text="@string/btnEliminarGCoordinador"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnEliminarGTipoLocal"
-        android:text="@string/btnEliminarGTipoLocal"
+        android:onClick="btnRegresarGCoordinador"
+        android:text="@string/btnRegresarGCoordinador"
         tools:ignore="OnClick" />
 
-    <Button
-        android:onClick="btnRegresarGTipoLocal"
-        android:text="@string/btnRegresarGTipoLocal"
-        tools:ignore="OnClick" />
 </TableLayout>

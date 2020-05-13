@@ -28,25 +28,25 @@
 
         <TextView android:text="@string/txtEncargado" />
         <Spinner
-            android:id="@+id/planets_spinner"
+            android:id="@+id/spinnerEncargado"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </TableRow>
     <TableRow>
 
         <Button
-            android:onClick="@string/btnEditarETipoLocal"
-            android:text="Editar"
+            android:onClick="btnEditarETipoLocal"
+            android:text="@string/btnEditarETipoLocal"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarETipoLocal"
-            android:text="Limpiar"
+            android:onClick="btnLimpiarETipoLocal"
+            android:text="@string/btnLimpiarETipoLocal"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarETipoLocal"
-        android:text="Regresar"
+        android:onClick="btnRegresarETipoLocal"
+        android:text="@string/btnRegresarETipoLocal"
         tools:ignore="OnClick" />
 </TableLayout>

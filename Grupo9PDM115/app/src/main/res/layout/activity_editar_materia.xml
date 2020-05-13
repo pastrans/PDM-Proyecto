@@ -28,7 +28,7 @@
 
         <TextView android:text="@string/txtUnidad" />
         <Spinner
-            android:id="@+id/planets_spinner"
+            android:id="@+id/spinnerUnidad"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -41,19 +41,19 @@
     <TableRow>
 
         <Button
-            android:onClick="@string/btnEditarEMateria"
-            android:text="Editar"
+            android:onClick="btnEditarEMateria"
+            android:text="@string/btnEditarEMateria"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarEMateria"
-            android:text="Limpiar"
+            android:onClick="btnLimpiarEMateria"
+            android:text="@string/btnLimpiarEMateria"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarEMateria"
-        android:text="Regresar"
+        android:onClick="btnRegresarEMateria"
+        android:text="@string/btnRegresarEMateria"
         tools:ignore="OnClick" />
 
 

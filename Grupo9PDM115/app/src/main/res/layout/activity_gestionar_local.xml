@@ -28,23 +28,23 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGLocal"
-        android:text="Nuevo"
+        android:onClick="btnNuevoGLocal"
+        android:text="@string/btnNuevoGLocal"
         tools:ignore="OnClick" />
 
     <Button
         android:onClick="btnEditarGLocal"
-        android:text="Editar"
+        android:text="@string/btnEditarGLocal"
         tools:ignore="OnClick" />
 
     <Button
         android:onClick="btnEliminarGLocal"
-        android:text="Eliminar"
+        android:text="@string/btnEliminarGLocal"
         tools:ignore="OnClick" />
 
     <Button
         android:onClick="btnRegresarGLocal"
-        android:text="Regresar"
+        android:text="@string/btnRegresarGLocal"
         tools:ignore="OnClick" />
 
 </TableLayout>

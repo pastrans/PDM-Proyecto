@@ -35,23 +35,28 @@
     </TableRow>
 
     <Button
-        android:onClick="@string/btnConsultarGFeriado"
-        android:text="Consultar" />
+        android:onClick="btnConsultarGFeriado"
+        android:text="@string/btnConsultarGFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnNuevoGFeriado"
-        android:text="Nuevo" />
+        android:onClick="btnNuevoGFeriado"
+        android:text="@string/btnNuevoGFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEditarGFeriado"
-        android:text="Editar" />
+        android:onClick="btnEditarGFeriado"
+        android:text="@string/btnEditarGFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGFeriado"
-        android:text="Eliminar" />
+        android:onClick="btnEliminarGFeriado"
+        android:text="@string/btnEliminarGFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGFeriado"
-        android:text="Regresar" />
+        android:onClick="btnRegresarGFeriado"
+        android:text="@string/btnRegresarGFeriado"
+        tools:ignore="OnClick" />
 
 </TableLayout>

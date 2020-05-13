@@ -7,53 +7,53 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".NuevoLocal">
+    tools:context=".NuevoCoordinacion">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titNuevoLocal"
+        android:text="@string/titNuevoCoordinador"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
     <TableRow>
 
-        <TextView android:text="@string/txtNombreLocal" />
+        <TextView android:text="@string/txtTipoCoordinacion" />
         <EditText
-            android:id="@+id/editNombreLocal"
+            android:id="@+id/editTipoCoordinacion"
             android:inputType="text"
             android:maxLength="25" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/txtCapacidad" />
-        <EditText
-            android:id="@+id/editCapacidad"
-            android:inputType="numberDecimal"
-            android:maxLength="30"
-            />
+
+        <TextView android:text="@string/txtUsuario" />
+        <Spinner
+            android:id="@+id/UsuarioSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/txtTipoLocal" />
+        <TextView android:text="@string/txtCMateria" />
         <Spinner
-            android:id="@+id/tipoLocalSpinner"
+            android:id="@+id/CMateriaSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </TableRow>
     <TableRow>
 
         <Button
-            android:onClick="btnAgregarNLocal"
-            android:text="@string/btnAgregarNLocal"
+            android:onClick="btnAgregarNCoordinador"
+            android:text="@string/btnAgregarNCoordinador"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="btnLimpiarNLocal"
-            android:text="@string/btnLimpiarNLocal"
+            android:onClick="btnLimpiarNCoordinador"
+            android:text="@string/btnLimpiarNCoordinador"
             tools:ignore="OnClick" />
     </TableRow>
     <Button
-        android:onClick="btnRegresarNLocal"
-        android:text="@string/btnRegresarNLocal"
+        android:onClick="btnRegresarNCoordinador"
+        android:text="@string/btnRegresarNCoordinador"
         tools:ignore="OnClick" />
 
 

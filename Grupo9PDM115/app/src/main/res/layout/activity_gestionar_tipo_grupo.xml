@@ -26,23 +26,23 @@
 
     <Button
         android:onClick="btnConsultarGTipoGrupo"
-        android:text="Consultar"
+        android:text="@string/btnConsultarGTipoGrupo"
         tools:ignore="OnClick"  />
     <Button
         android:onClick="btnNuevoGTipoGrupo"
-        android:text="Nuevo"
+        android:text="@string/btnNuevoGTipoGrupo"
         tools:ignore="OnClick" />
     <Button
         android:onClick="btnEditarGTipoGrupo"
-        android:text="Editar"
+        android:text="@string/btnEditarGTipoGrupo"
         tools:ignore="OnClick" />
     <Button
         android:onClick="btnEliminarGTipoGrupo"
-        android:text="Eliminar"
+        android:text="@string/btnEliminarGTipoGrupo"
         tools:ignore="OnClick" />
     <Button
         android:onClick="btnRegresarGTipoGrupo"
-        android:text="Regresar"
+        android:text="@string/btnRegresarGTipoGrupo"
         tools:ignore="OnClick" />
 
 

@@ -161,7 +161,7 @@
     <string name="btnRegresarNLocal">Regresar</string>
     //Editar Local
     <string name="titEditarLocal">Editar Local</string>
-    <string name="btnEditarELocal">Agregar</string>
+    <string name="btnEditarELocal">Editar</string>
     <string name="btnLimpiarELocal">Limpiar</string>
     <string name="btnRegresarELocal">Regresar</string>
 
@@ -226,5 +226,47 @@
     <string name="btnEditarEUsuario">Editar</string>
     <string name="btnLimpiarEUsuario">Limpiar</string>
     <string name="btnRegresarEUsuario">Regresar</string>
+
+    //Variables Coordinación
+    //Etiquetas
+    <string name="txtTipoCoordinacion">Coordinación:</string>
+    <string name="txtUsuario">Usuario:</string>
+    <string name="txtCMateria">Ciclo Materia:</string>
+    //Gestionar Coordinación
+    <string name="titGestionarCoordinador">Gestionar Coordinador</string>
+    <string name="btnNuevoGCoordinador">Nuevo</string>
+    <string name="btnEditarGCoordinador">Editar</string>
+    <string name="btnEliminarGCoordinador">Eliminar</string>
+    <string name="btnRegresarGCoordinador">Regresar</string>
+    //Nuevo Coordinación
+    <string name="titNuevoCoordinador">Nuevo Coordinador</string>
+    <string name="btnAgregarNCoordinador">Agregar</string>
+    <string name="btnRegresarNCoordinador">Regresar</string>
+    <string name="btnLimpiarNCoordinador">Limpiar</string>
+    //Editar Coordinación
+    <string name="titEditarCoordinador">Editar Coordinador</string>
+    <string name="btnEditarECoordinador">Editar</string>
+    <string name="btnLimpiarECoordinador">Limpiar</string>
+    <string name="btnRegresarECoordinador">Regresar</string>
+
+    //Variables Encargado
+    //Etiquetas
+    <string name="txtEncargadoE">Encargado:</string>
+    //Gestionar Encargado
+    <string name="titGestionarEncargado">Gestionar Encargado</string>
+    <string name="btnNuevoGEncargado">Nuevo</string>
+    <string name="btnEditarGEncargado">Editar</string>
+    <string name="btnEliminarGEncargado">Eliminar</string>
+    <string name="btnRegresarGEncargado">Regresar</string>
+    //Nuevo Encargado
+    <string name="titNuevoEncargado">Nuevo Encargado</string>
+    <string name="btnAgregarNEncargado">Agregar</string>
+    <string name="btnRegresarNEncargado">Regresar</string>
+    <string name="btnLimpiarNEncargado">Limpiar</string>
+    //Editar Encargado
+    <string name="titEditarEncargado">Editar Encargado</string>
+    <string name="btnEditarEEncargado">Editar</string>
+    <string name="btnLimpiarEEncargado">Limpiar</string>
+    <string name="btnRegresarEEncargado">Regresar</string>
 
 </resources>

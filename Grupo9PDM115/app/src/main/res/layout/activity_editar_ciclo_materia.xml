@@ -37,18 +37,18 @@
     <TableRow>
 
         <Button
-            android:onClick="@string/btnEditarECicloMateria"
+            android:onClick="btnEditarECicloMateria"
             android:text="@string/btnEditarECicloMateria"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarECicloMateria"
+            android:onClick="btnLimpiarECicloMateria"
             android:text="@string/btnLimpiarECicloMateria"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarECicloMateria"
+        android:onClick="btnRegresarECicloMateria"
         android:text="@string/btnRegresarECicloMateria"
         tools:ignore="OnClick" />
 

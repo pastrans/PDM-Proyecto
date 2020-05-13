@@ -32,8 +32,8 @@ public class NuevoLocal extends AppCompatActivity {
         helper = new ControlBD(this);
         tipoLocalClass = new TipoLocal();
         tipoLocalSpinner = (Spinner) findViewById(R.id.tipoLocalSpinner);
-        nombreLocal = (EditText) findViewById(R.id.nombreLocal);
-        capcidad = (EditText) findViewById(R.id.capacidad);
+        nombreLocal = (EditText) findViewById(R.id.editNombreLocal);
+        capcidad = (EditText) findViewById(R.id.editCapacidad);
         llenarTipoLocalSpinner(this);
 
     }

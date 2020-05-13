@@ -57,11 +57,13 @@
     </TableRow>
 
     <Button
-        android:onClick="@string/btnEditarEFeriado"
-        android:text="Editar" />
+        android:onClick="btnEditarEFeriado"
+        android:text="@string/btnEditarEFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnCancelarEFeriado"
-        android:text="Cancelar" />
+        android:onClick="btnCancelarEFeriado"
+        android:text="@string/btnCancelarEFeriado"
+        tools:ignore="OnClick" />
 
 </TableLayout>

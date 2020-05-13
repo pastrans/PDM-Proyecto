@@ -66,10 +66,12 @@
     </TableRow>
 
     <Button
-        android:onClick="@string/btnAgregarNFeriado"
-        android:text="Agregar" />
+        android:onClick="btnAgregarNFeriado"
+        android:text="@string/btnAgregarNFeriado"
+        tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnCancelarNFeriado"
-        android:text="Cancelar" />
+        android:onClick="btnCancelarNFeriado"
+        android:text="@string/btnCancelarNFeriado"
+        tools:ignore="OnClick" />
 </TableLayout>

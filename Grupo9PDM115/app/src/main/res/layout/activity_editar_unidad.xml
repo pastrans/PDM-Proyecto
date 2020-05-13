@@ -43,18 +43,18 @@
     <TableRow>
 
         <Button
-            android:onClick="@string/btnEditarEUnidad"
-            android:text="Editar"
+            android:onClick="btnEditarEUnidad"
+            android:text="@string/btnEditarEUnidad"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarEUnidad"
-            android:text="Limpiar"
+            android:onClick="btnLimpiarEUnidad"
+            android:text="@string/btnLimpiarEUnidad"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarEUnidad"
-        android:text="Regresar"
+        android:onClick="btnRegresarEUnidad"
+        android:text="@string/btnRegresarEUnidad"
         tools:ignore="OnClick" />
 </TableLayout>

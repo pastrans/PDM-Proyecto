@@ -25,19 +25,19 @@
     <TableRow>
 
         <Button
-            android:onClick="@string/btnEditarETipoGrupo"
-            android:text="Editar"
+            android:onClick="btnEditarETipoGrupo"
+            android:text="@string/btnEditarETipoGrupo"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="@string/btnLimpiarETipoGrupo"
-            android:text="Limpiar"
+            android:onClick="btnLimpiarETipoGrupo"
+            android:text="@string/btnLimpiarETipoGrupo"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="@string/btnRegresarETipoGrupo"
-        android:text="Regresar"
+        android:onClick="btnRegresarETipoGrupo"
+        android:text="@string/btnRegresarETipoGrupo"
         tools:ignore="OnClick" />
 
 </TableLayout>

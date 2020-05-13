@@ -28,23 +28,23 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGMateria"
-        android:text="Nuevo"
+        android:onClick="btnNuevoGMateria"
+        android:text="@string/btnNuevoGMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEditarGMateria"
-        android:text="Editar"
+        android:onClick="btnEditarGMateria"
+        android:text="@string/btnEditarGMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGMateria"
-        android:text="Eliminar"
+        android:onClick="btnEliminarGMateria"
+        android:text="@string/btnEliminarGMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGMateria"
-        android:text="Regresar"
+        android:onClick="btnRegresarGMateria"
+        android:text="@string/btnRegresarGMateria"
         tools:ignore="OnClick" />
 
 </TableLayout>

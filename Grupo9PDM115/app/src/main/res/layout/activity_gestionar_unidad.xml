@@ -28,22 +28,23 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGUnidad"
-        android:text="@string/btnNuevoGUnidad" />
-        <!--tools:ignore="OnClick" /-->
+        android:onClick="btnNuevoGUnidad"
+        android:text="@string/btnNuevoGUnidad"
+        tools:ignore="OnClick"/>
+
 
     <Button
-        android:onClick="@string/btnEditarGUnidad"
+        android:onClick="btnEditarGUnidad"
         android:text="@string/btnEditarGUnidad"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGUnidad"
+        android:onClick="btnEliminarGUnidad"
         android:text="@string/btnEliminarGUnidad"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGUnidad"
+        android:onClick="btnRegresarGUnidad"
         android:text="@string/btnRegresarGUnidad"
         tools:ignore="OnClick" />
 

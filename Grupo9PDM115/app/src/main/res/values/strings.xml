@@ -191,17 +191,27 @@
 
     //Variables Grupo
     //Etiquetas
-
-    //Gestionar Grupo
-    <string name="gestionar_grupo">Gestionar Grupo</string>
-
-    //Nuevo Grupo
-    <string name="nuevo_grupo">Nuevo Grupo</string>
-
-    //Editar Grupo
-    <string name="editar_grupo">Editar Grupo</string>
+    <string name="txtCicloGrupo">Ciclo</string>
+    <string name="txtNumero">Numero</string>
+    <string name="txtNuevoNumero">Nuevo numero</string>
     <string name="txtTipoDeGrupo">Tipo de grupo</string>
-
+    //Gestionar Grupo
+    <string name="titGestionarGrupo">Gestionar Grupo</string>
+    <string name="btnConsultarGGrupo">Consultar</string>
+    <string name="btnNuevoGGrupo">Nuevo</string>
+    <string name="btnEditarGGrupo">Editar</string>
+    <string name="btnEliminarGGrupo">Eliminar</string>
+    <string name="btnRegresarGGrupo">Regresar</string>
+    //Nuevo Grupo
+    <string name="titNuevoGrupo">Nuevo Grupo</string>
+    <string name="btnNuevoNGrupo">Nuevo</string>
+    <string name="btnLimpiarNGrupo">Limpiar</string>
+    <string name="btnRegresarNGrupo">Regresar</string>
+    //Editar Grupo
+    <string name="titEditarGrupo">Editar Grupo</string>
+    <string name="btnEditarEGrupo">Editar</string>
+    <string name="btnLimpiarEGrupo">Limpiar</string>
+    <string name="btnRegresarEGrupo">Regresar</string>
     //Variables Usuario
     //Etiquetas
     <string name="txtNombreUsuario">Usuario:</string>
@@ -210,6 +220,7 @@
     <string name="txtApellidoPersona">Apellido:</string>
     <string name="txtCorreoPersona">Correo:</string>
     <string name="txtUnidadU">Unidad:</string>
+    //Variables Usuario
     //Gestionar Usuario
     <string name="titGestionarUsuario">Gestionar Usuario</string>
     <string name="btnNuevoGUsuario">Nuevo</string>

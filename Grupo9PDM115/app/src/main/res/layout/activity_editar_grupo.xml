@@ -9,47 +9,55 @@
     tools:context=".EditarGrupo">
 
     <TextView
-        android:text="@string/editar_grupo"
+        android:text="@string/titEditarGrupo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nuevo Numero:"/>
+            android:text="@string/txtNuevoNumero"/>
 
         <EditText
-            android:text="Numero"/>
+            android:id="@+id/editNumero"
+            android:inputType="number"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Materia:"/>
+            android:text="@string/txtMateria"/>
 
         <EditText
-            android:text="Materia"/>
+            android:id="@+id/editMateria"
+            android:inputType="text"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nuevo Tipo de Grupo:"/>
+            android:text="@string/txtNuevoTipoGrupo"/>
 
         <Spinner
             android:id="@+id/spinTipoGrupo" />
     </TableRow>
 
+    <TableRow>
+
+        <Button
+            android:onClick="btnEditarEGrupo"
+            android:text="@string/btnEditarEGrupo"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:onClick="btnLimpiarEGrupo"
+            android:text="@string/btnLimpiarEGrupo"
+            tools:ignore="OnClick" />
+    </TableRow>
+
 
     <Button
-        android:text="Editar"
-        android:textSize="10dp"/>
-
-    <Button
-        android:text="Regresar"
-        android:textSize="10dp"/>
+        android:onClick="btnRegresarEGrupo"
+        android:text="@string/btnRegresarEGrupo"
+        tools:ignore="OnClick" />
 
 </TableLayout>

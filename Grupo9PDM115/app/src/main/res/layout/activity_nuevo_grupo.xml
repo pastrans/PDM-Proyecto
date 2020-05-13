@@ -9,47 +9,55 @@
     tools:context=".NuevoGrupo">
 
     <TextView
-        android:text="@string/nuevo_grupo"
+        android:text="@string/titNuevoGrupo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Numero:"/>
+            android:text="@string/txtNumero"/>
 
         <EditText
-            android:text="Numero"/>
+            android:id="@+id/editNumero"
+            android:inputType="number"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Materia:"/>
+            android:text="@string/txtMateria"/>
 
         <EditText
-            android:text="Materia"/>
+            android:id="@+id/editMateria"
+            android:inputType="text"
+            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo de Grupo:"/>
+            android:text="@string/txtTipoDeGrupo"/>
 
         <Spinner
             android:id="@+id/spinTipoGrupo" />
     </TableRow>
 
+<TableRow>
 
     <Button
-        android:text="Nuevo"
-        android:textSize="10dp"/>
+        android:onClick="btnNuevoNGrupo"
+        android:text="@string/btnNuevoNGrupo"
+        tools:ignore="OnClick" />
 
     <Button
-        android:text="Regresar"
-        android:textSize="10dp"/>
+        android:onClick="btnLimpiarNGrupo"
+        android:text="@string/btnLimpiarNGrupo"
+        tools:ignore="OnClick" />
+</TableRow>
+
+
+    <Button
+        android:onClick="btnRegresarNGrupo"
+        android:text="@string/btnRegresarNGrupo"
+        tools:ignore="OnClick" />
 
 </TableLayout>

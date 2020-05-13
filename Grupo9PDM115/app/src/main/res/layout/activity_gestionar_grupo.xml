@@ -9,35 +9,33 @@ android:stretchColumns="1"
 tools:context=".GestionarGrupo">
 
 <TextView
-    android:text="@string/gestionar_grupo"
+    android:text="@string/titGestionarGrupo"
     android:textSize="30sp"
     android:paddingBottom="5dp"/>
 
 <TableRow>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Materia:"/>
+        android:text="@string/txtMateria"/>
 
     <EditText
-        android:text="Materia"/>
+        android:id="@+id/editMateria"
+        android:inputType="text"
+        android:maxLength="30"/>
 </TableRow>
 
 <TableRow>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Numero:"/>
+        android:text="@string/txtNumero"/>
 
     <EditText
-        android:text="Numero"/>
+        android:id="@+id/editNumero"
+        android:inputType="number"
+        android:maxLength="30"/>
 </TableRow>
 
 <TableRow>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tipo de Grupo:"/>
+        android:text="@string/txtTipoDeGrupo"/>
 
     <Spinner
         android:id="@+id/spinTipoGrupo" />
@@ -45,31 +43,37 @@ tools:context=".GestionarGrupo">
 
 <TableRow>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ciclo:"/>
+        android:text="@string/txtCicloGrupo"/>
     <Spinner
         android:id="@+id/spinCiclo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 </TableRow>
 
-<Button
-    android:text="Consultar"
-    android:textSize="10dp" />
+    <Button
+        android:onClick="btnConsultarGGrupo"
+        android:text="@string/btnConsultarGGrupo"
+        tools:ignore="OnClick" />
 
-<Button
-    android:text="Nuevo"
-    android:textSize="10dp"/>
-<Button
-    android:text="Editar"
-    android:textSize="10dp"/>
-<Button
-    android:text="Eliminar"
-    android:textSize="10dp"/>
+    <Button
+        android:onClick="btnNuevoGGrupo"
+        android:text="@string/btnNuevoGGrupo"
+        tools:ignore="OnClick" />
 
-<Button
-    android:text="Regresar"
-    android:textSize="10dp"/>
+    <Button
+        android:onClick="btnEditarGGrupo"
+        android:text="@string/btnEditarGGrupo"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="btnEliminarGGrupo"
+        android:text="@string/btnEliminarGGrupo"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="btnRegresarGGrupo"
+        android:text="@string/btnRegresarGGrupo"
+        tools:ignore="OnClick" />
+
 
 </TableLayout>

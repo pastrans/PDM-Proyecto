@@ -7,20 +7,20 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".GestionarUnidad">
+    tools:context=".GestionarUsuario">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarUnidad"
+        android:text="@string/titGestionarUsuario"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/txtNombreUnidad" />
+        <TextView android:text="@string/txtNombreUsuario" />
         <EditText
-            android:id="@+id/editNombreUnidad"
+            android:id="@+id/editNombreUsuario"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -28,23 +28,23 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGUnidad"
-        android:text="@string/btnNuevoGUnidad" />
-        <!--tools:ignore="OnClick" /-->
+        android:onClick="@string/btnNuevoGUsuario"
+        android:text="@string/btnNuevoGUsuario" />
+    <!--tools:ignore="OnClick" /-->
 
     <Button
-        android:onClick="@string/btnEditarGUnidad"
-        android:text="@string/btnEditarGUnidad"
+        android:onClick="@string/btnEditarGUsuario"
+        android:text="@string/btnEditarGUsuario"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGUnidad"
-        android:text="@string/btnEliminarGUnidad"
+        android:onClick="@string/btnEliminarGUsuario"
+        android:text="@string/btnEliminarGUsuario"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGUnidad"
-        android:text="@string/btnRegresarGUnidad"
+        android:onClick="@string/btnRegresarGUsuario"
+        android:text="@string/btnRegresarGUsuario"
         tools:ignore="OnClick" />
 
 </TableLayout>

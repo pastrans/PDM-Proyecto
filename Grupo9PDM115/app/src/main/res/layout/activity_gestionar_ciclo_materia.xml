@@ -7,44 +7,44 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".GestionarUnidad">
+    tools:context=".GestionarCicloMateria">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarUnidad"
+        android:text="@string/titGestionarCicloMateria"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/txtNombreUnidad" />
+        <TextView android:text="@string/txtMateria" />
         <EditText
-            android:id="@+id/editNombreUnidad"
+            android:id="@+id/editNombreMateria"
             android:inputType="text"
-            android:maxLength="30" />
+            android:maxLength="25" />
     </TableRow>
 
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="@string/btnNuevoGUnidad"
-        android:text="@string/btnNuevoGUnidad" />
-        <!--tools:ignore="OnClick" /-->
-
-    <Button
-        android:onClick="@string/btnEditarGUnidad"
-        android:text="@string/btnEditarGUnidad"
+        android:onClick="@string/btnNuevoGCicloMateria"
+        android:text="@string/btnNuevoGCicloMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnEliminarGUnidad"
-        android:text="@string/btnEliminarGUnidad"
+        android:onClick="@string/btnEditarGCicloMateria"
+        android:text="@string/btnEditarGCicloMateria"
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="@string/btnRegresarGUnidad"
-        android:text="@string/btnRegresarGUnidad"
+        android:onClick="@string/btnEliminarGCicloMateria"
+        android:text="@string/btnEliminarGCicloMateria"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="@string/btnRegresarGCicloMateria"
+        android:text="@string/btnRegresarGCicloMateria"
         tools:ignore="OnClick" />
 
 </TableLayout>

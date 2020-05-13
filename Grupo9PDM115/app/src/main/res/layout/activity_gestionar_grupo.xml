@@ -38,6 +38,9 @@ tools:context=".GestionarGrupo">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo de Grupo:"/>
+
+    <Spinner
+        android:id="@+id/spinTipoGrupo" />
 </TableRow>
 
 <TableRow>
@@ -45,6 +48,10 @@ tools:context=".GestionarGrupo">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ciclo:"/>
+    <Spinner
+        android:id="@+id/spinCiclo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 </TableRow>
 
 <Button

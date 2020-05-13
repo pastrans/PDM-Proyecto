@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditarGrupo"></activity>
+        <activity android:name=".EditarUsuario"></activity>
+        <activity android:name=".NuevoUsuario" />
+        <activity android:name=".GestionarUsuario" />
+        <activity android:name=".EditarCicloMateria" />
+        <activity android:name=".NuevoCicloMateria" />
+        <activity android:name=".GestionarCicloMateria" />
+        <activity android:name=".EditarGrupo" />
         <activity android:name=".NuevoGrupo" />
         <activity android:name=".NuevoTipoGrupo" />
         <activity android:name=".GestionarTipoGrupo" />

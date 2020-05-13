@@ -24,7 +24,7 @@ public class NuevoUnidad extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_unidad);
         helper = new ControlBD(this);
         nombreUnidad = (EditText) findViewById(R.id.editNombreUnidad);
-        descripcionUnidad = (EditText) findViewById(R.id.txtdescripcionEdit);
+        descripcionUnidad = (EditText) findViewById(R.id.editDescripcion);
         prioridad = (EditText) findViewById(R.id.editPrioridad);
     }
 

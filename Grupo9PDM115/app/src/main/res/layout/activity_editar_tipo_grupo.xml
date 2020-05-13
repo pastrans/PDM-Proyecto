@@ -23,22 +23,6 @@
     </TableRow>
 
     <TableRow>
-        <TextView
-            android:text="@string/txtNuevoTipoGrupo" />
-    </TableRow>
-
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:text="Teorico" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:text="Laboratorio" />
-
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:text="Discusion" />
-    <TableRow>
 
         <Button
             android:onClick="@string/btnEditarETipoGrupo"

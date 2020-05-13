@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".EditarUsuario">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titEditarUsuario"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp" />
+    <TableRow>
+
+        <TextView android:text="@string/txtNombreUsuario" />
+        <EditText
+            android:id="@+id/editNombreUsuario"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/txtClaveUsuario" />
+        <EditText
+            android:id="@+id/editClaveUsuario"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/txtNombrePersona" />
+        <EditText
+            android:id="@+id/edittxtNombrePersona"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/txtApellidoPersona" />
+        <EditText
+            android:id="@+id/editApellidoPersona"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/txtCorreoPersona" />
+        <EditText
+            android:id="@+id/editCorreoPersona"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+
+        <TextView android:text="@string/txtUnidadU" />
+        <Spinner
+            android:id="@+id/spinnerUnidadU"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:onClick="@string/btnEditarEUsuario"
+            android:text="@string/btnEditarEUsuario"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:onClick="@string/btnLimpiarEUsuario"
+            android:text="@string/btnLimpiarEUsuario"
+            tools:ignore="OnClick" />
+    </TableRow>
+
+    <Button
+        android:onClick="@string/btnRegresarEUsuario"
+        android:text="@string/btnRegresarEUsuario"
+        tools:ignore="OnClick" />
+</TableLayout>

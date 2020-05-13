@@ -69,7 +69,7 @@
     <string name="btnEliminarGUnidad">Eliminar</string>
     <string name="btnRegresarGUnidad">Regresar</string>
     //Nuevo Unidad
-    <string name="titNuevoUnidad">Nuevo Unidad</string>
+    <string name="titNuevoUnidad">Nueva Unidad</string>
     <string name="btnRegresarNUnidad">Regresar</string>
     <string name="btnAgregarNUnidad">Agregar</string>
     <string name="btnLimpiarNUnidad">Limpiar</string>
@@ -96,6 +96,27 @@
     <string name="btnLimpiarNMateria">Limpiar</string>
     <string name="btnRegresarNMateria">Regresar</string>
     //Editar Materia
+    <string name="titEditarCicloMateria">Editar Ciclo Materia</string>
+    <string name="btnEditarECicloMateria">Editar</string>
+    <string name="btnLimpiarECicloMateria">Limpiar</string>
+    <string name="btnRegresarECicloMateria">Regresar</string>
+
+    //Variables CicloMateria
+    //Etiquetas
+    <string name="txtMateria">Nombre materia</string>
+    <string name="txtCicloMateria">Ciclo</string>
+    //Gestionar CicloMateria
+    <string name="titGestionarCicloMateria">Gestionar Ciclo Materia</string>
+    <string name="btnNuevoGCicloMateria">Nuevo</string>
+    <string name="btnEditarGCicloMateria">Editar</string>
+    <string name="btnEliminarGCicloMateria">Eliminar</string>
+    <string name="btnRegresarGCicloMateria">Regresar</string>
+    //Nuevo CicloMateria
+    <string name="titNuevoCicloMateria">Nuevo Ciclo Materia</string>
+    <string name="btnAgregarNCicloMateria">Agregar</string>
+    <string name="btnLimpiarNCicloMateria">Limpiar</string>
+    <string name="btnRegresarNCicloMateria">Regresar</string>
+    //Editar CicloMateria
     <string name="titEditarMateria">Editar Materia</string>
     <string name="btnEditarEMateria">Editar</string>
     <string name="btnLimpiarEMateria">Limpiar</string>
@@ -181,6 +202,29 @@
     <string name="editar_grupo">Editar Grupo</string>
     <string name="txtTipoDeGrupo">Tipo de grupo</string>
 
-
+    //Variables Usuario
+    //Etiquetas
+    <string name="txtNombreUsuario">Usuario:</string>
+    <string name="txtClaveUsuario">Clave:</string>
+    <string name="txtNombrePersona">Nombre:</string>
+    <string name="txtApellidoPersona">Apellido:</string>
+    <string name="txtCorreoPersona">Correo:</string>
+    <string name="txtUnidadU">Unidad:</string>
+    //Gestionar Usuario
+    <string name="titGestionarUsuario">Gestionar Usuario</string>
+    <string name="btnNuevoGUsuario">Nuevo</string>
+    <string name="btnEditarGUsuario">Editar</string>
+    <string name="btnEliminarGUsuario">Eliminar</string>
+    <string name="btnRegresarGUsuario">Regresar</string>
+    //Nuevo Usuario
+    <string name="titNuevoUsuario">Nuevo Usuario</string>
+    <string name="btnRegresarNUsuario">Regresar</string>
+    <string name="btnAgregarNUsuario">Agregar</string>
+    <string name="btnLimpiarNUsuario">Limpiar</string>
+    //Editar Usuario
+    <string name="titEditarUsuario">Editar Usuario</string>
+    <string name="btnEditarEUsuario">Editar</string>
+    <string name="btnLimpiarEUsuario">Limpiar</string>
+    <string name="btnRegresarEUsuario">Regresar</string>
 
 </resources>

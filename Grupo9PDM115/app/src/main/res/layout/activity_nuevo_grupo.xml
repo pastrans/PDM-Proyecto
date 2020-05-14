@@ -38,7 +38,9 @@
             android:text="@string/txtTipoDeGrupo"/>
 
         <Spinner
-            android:id="@+id/spinTipoGrupo" />
+            android:id="@+id/spinTipoGrupo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
 
 <TableRow>

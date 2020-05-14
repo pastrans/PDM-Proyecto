@@ -6,21 +6,24 @@ public class Grupo {
 
 
     // Atributos para BD
-    private final String nombreTabla = "unidad";
+    private final String nombreTabla = "grupo";
     private ContentValues valores = new ContentValues();
 
 
     // Atributos
     private int idGrupo;
     private int numero;
-    private TipoGrupo idTipoGrupo;
-    private CicloMateria idCicloMateria;
+    private int idTipoGrupo;
+    private int idCicloMateria;
     // -------------Constructor---------------
     public Grupo(int idGrupo, int numero) {
 
 
         this.idGrupo = idGrupo;
         this.numero = numero;
+    }
+    public Grupo() {
+
     }
     // -------------Fin del Constructor---------------
     // -------------Métodos getter y setter---------------
@@ -42,19 +45,19 @@ public class Grupo {
 
     public String getNombreTabla() { return nombreTabla; }
 
-    public TipoGrupo getIdTipoGrupo() {
+    public int getIdTipoGrupo() {
         return idTipoGrupo;
     }
 
-    public void setIdTipoGrupo(TipoGrupo idTipoGrupo) {
+    public void setIdTipoGrupo(int idTipoGrupo) {
         this.idTipoGrupo = idTipoGrupo;
     }
 
-    public CicloMateria getIdCicloMateria() {
+    public int getIdCicloMateria() {
         return idCicloMateria;
     }
 
-    public void setIdCicloMateria(CicloMateria idCicloMateria) {
+    public void setIdCicloMateria(int idCicloMateria) {
         this.idCicloMateria = idCicloMateria;
     }
 
@@ -64,8 +67,8 @@ public class Grupo {
     public ContentValues getValores() {
 //        valores.put("codMateria",getIdGrupo());
         valores.put("numero", getNumero());
-        valores.put("idCicloMateria", getIdCicloMateria().getIdCicloMateria());
-        valores.put("idTipoGrupo", getIdTipoGrupo().getIdTipoGrupo());
+        valores.put("idCicloMateria", getIdCicloMateria());
+        valores.put("idTipoGrupo", getIdTipoGrupo());
         return valores;
     }
     // -------------Fin de métodos para BD ------------------------------

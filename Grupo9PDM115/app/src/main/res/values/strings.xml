@@ -202,6 +202,11 @@
     <string name="btnEditarGGrupo">Editar</string>
     <string name="btnEliminarGGrupo">Eliminar</string>
     <string name="btnRegresarGGrupo">Regresar</string>
+    <string-array name="contenidoTipoGrupo">// los items en el spinner
+        <item id="1">Teórico</item> // agregue el atributo el id
+        <item id="2">Laboratorio</item>
+        <item id="3">Discusión</item>
+    </string-array>
     //Nuevo Grupo
     <string name="titNuevoGrupo">Nuevo Grupo</string>
     <string name="btnNuevoNGrupo">Nuevo</string>

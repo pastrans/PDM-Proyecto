@@ -56,7 +56,7 @@ tools:context=".GestionarGrupo">
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnNuevoGGrupo"
+        android:onClick="nuevo"
         android:text="@string/btnNuevoGGrupo"
         tools:ignore="OnClick" />
 

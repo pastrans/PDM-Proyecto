@@ -27,8 +27,8 @@ public class NuevoFeriado extends AppCompatActivity {
 
     EditText nombrFeriado;
     EditText descripcionFeriado;
-    EditText fechaInicioFeriado;
-    EditText fechaFinFeriado;
+    DatePicker fechaInicioFeriado;
+    DatePicker fechaFinFeriado;
     Spinner cicloFeriado;
     ControlBD helper;
 
@@ -36,10 +36,10 @@ public class NuevoFeriado extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_feriado);
-        nombrFeriado = (EditText) findViewById(R.id.edtNombreFeriado);
-        descripcionFeriado = (EditText) findViewById(R.id.edtDescripcionFeriado);
-        fechaInicioFeriado = (EditText) findViewById(R.id.fechaInicioFeriado);
-        fechaFinFeriado = (EditText) findViewById(R.id.fechaFinFeriado);
+        nombrFeriado = (EditText) findViewById(R.id.editNombreFeriado);
+        descripcionFeriado = (EditText) findViewById(R.id.editDescripcionFeriado);
+        fechaInicioFeriado = (DatePicker) findViewById(R.id.inicioFeriadoDatePicker);
+        fechaFinFeriado = (DatePicker) findViewById(R.id.finalizacionFeriadoDatePicker);
         cicloFeriado = (Spinner) findViewById(R.id.spinnerCicloFeriadoNuevo);
         helper = new ControlBD(this);
         llenarCicloSpinner(this);
@@ -64,14 +64,17 @@ public class NuevoFeriado extends AppCompatActivity {
         });
     }
 
-    public void agregarFeriado(View v){
+    public void btnNuevoFeriado(View v){
+        String cadena = "";
         Feriado feriado = new Feriado();
         Ciclo ciclo = (Ciclo) cicloFeriado.getSelectedItem();
         String regInsertados;
         feriado.setNombreFeriado(nombrFeriado.getText().toString());
         feriado.setDescripcionFeriado(descripcionFeriado.getText().toString());
-        feriado.setFechaInicioFeriado(fechaInicioFeriado.getText().toString());
-        feriado.setFecchaFinFeriado(fechaFinFeriado.getText().toString());
+        cadena = String.valueOf(fechaInicioFeriado.getMaxDate()) ;
+        feriado.setFechaInicioFeriado(cadena);
+        cadena = String.valueOf(fechaFinFeriado.getMaxDate()) ;
+        feriado.setFecchaFinFeriado(cadena);
         feriado.setIdCiclo(ciclo.getIdCiclo());
         feriado.setBloquearReservas(true);
         helper.abrir();

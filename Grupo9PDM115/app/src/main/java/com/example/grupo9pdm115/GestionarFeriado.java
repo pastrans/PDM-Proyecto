@@ -14,7 +14,7 @@ public class GestionarFeriado extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_feriado);
     }
 
-    public void nuvoFeriadoActivity(View v){
+    public void btnNuevoFeriado(View v){
         Intent inte = new Intent(this, NuevoFeriado.class);
         startActivity(inte);
     }

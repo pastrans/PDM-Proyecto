@@ -13,7 +13,7 @@ public class GestionarGrupo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_grupo);
     }
-    public void nuevo(View v){
+    public void btnNuevoGrupo(View v){
         Intent inte = new Intent(this, NuevoGrupo.class);
         startActivity(inte);
     }

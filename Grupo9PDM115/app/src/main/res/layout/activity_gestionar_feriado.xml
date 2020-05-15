@@ -40,7 +40,7 @@
         tools:ignore="OnClick" />
 
     <Button
-        android:onClick="btnNuevoGFeriado"
+        android:onClick="btnNuevoFeriado"
         android:text="@string/btnNuevoGFeriado"
         tools:ignore="OnClick" />
 

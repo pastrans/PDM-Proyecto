@@ -14,7 +14,7 @@ public class GestionarTipoGrupo extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_tipo_grupo);
     }
 
-    public void nuevoTipoGrupo(View v){
+    public void btnNuevoTipoGrupo(View v){
         Intent inte = new Intent(this, NuevoTipoGrupo.class);
         startActivity(inte);
     }

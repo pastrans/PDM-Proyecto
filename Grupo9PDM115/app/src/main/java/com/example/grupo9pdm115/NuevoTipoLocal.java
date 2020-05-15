@@ -30,7 +30,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_tipo_local);
         helper = new ControlBD(this);
-        nombreTipo = (EditText) findViewById(R.id.nombreTipoLocal);
+        nombreTipo = (EditText) findViewById(R.id.editNombre);
         encargadoSpinner = (Spinner) findViewById(R.id.encargadoSpinner);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
@@ -38,7 +38,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
         Toast.makeText(this, "Datos de prueba cargados", Toast.LENGTH_SHORT).show();
     }
 
-    public void agregarTipoLocal(View v){
+    public void btnAgregarNTipoLocal(View v){
         String regInsertados;
         TipoLocal tipoLocal = new TipoLocal();
         Encargado encargado = (Encargado) encargadoSpinner.getSelectedItem();

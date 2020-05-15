@@ -21,7 +21,7 @@ public class NuevoTipoGrupo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_tipo_grupo);
         helper = new ControlBD(this);
-        nombreTipoGrupo = (EditText) findViewById(R.id.txtnombreEdit);
+        nombreTipoGrupo = (EditText) findViewById(R.id.editNombreTipoGrupo);
 
     }
 

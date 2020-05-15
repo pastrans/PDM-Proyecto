@@ -108,7 +108,50 @@ public class ControlBD {
 
     }
 
+    // Métodos de inserción, actualización, eliminación y consulta
+    // Inserción
+    public long insertar2(String nombreTabla, ContentValues valores){
+        long contador = 0;
 
+        contador=db.insert(nombreTabla, null, valores);
+
+        return contador;
+    }
+
+    // Actualización
+    public int actualizar(String nombreTabla, ContentValues valores, String tablaPK, String valorPK){
+        int contador = 0;
+
+        contador = db.update(nombreTabla, valores, tablaPK + "= '" + valorPK + "'", null);
+
+        return contador;
+    }
+
+    // Eliminación
+    public int eliminar(String nombreTabla, String tablaPK, String valorPK){
+        int contador=0;
+
+        contador+=db.delete(nombreTabla, tablaPK + "= '" + valorPK + "'" , null);
+
+        return contador;
+    }
+
+
+    // Consulta *** falta cuando tiene rablas relacionadas -llaves foráneas-
+    public Cursor consultar(String nombreTabla, String[] camposTabla, String tablaPK, String valorPK){
+        Cursor cursor = db.query(nombreTabla, camposTabla, tablaPK + " = '" + valorPK + "'",
+                null, null, null, null, null);
+
+        return cursor;
+    }
+
+    // Obtiene todos los registros de esa tabla
+    public Cursor getAll(String nombreTabla, String[] camposTabla){
+        Cursor cursor = db.query(nombreTabla, camposTabla, null, null,
+                null, null, null, null);
+
+        return cursor;
+    }
 
     // código para llenar un sppiner con la base de datos
     private ArrayList<TipoGrupo> lisTipoGrupo;

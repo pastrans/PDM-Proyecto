@@ -203,7 +203,8 @@
     <string name="btnEliminarGGrupo">Eliminar</string>
     <string name="btnRegresarGGrupo">Regresar</string>
     <string-array name="contenidoTipoGrupo">// los items en el spinner
-        <item id="1">Teórico</item> // agregue el atributo el id
+        <item id="1">Teórico</item>
+        // agregue el atributo el id
         <item id="2">Laboratorio</item>
         <item id="3">Discusión</item>
     </string-array>
@@ -284,5 +285,15 @@
     <string name="btnEditarEEncargado">Editar</string>
     <string name="btnLimpiarEEncargado">Limpiar</string>
     <string name="btnRegresarEEncargado">Regresar</string>
+
+    // Variables para Dia
+    // Gestionar Dia
+    <string name="titGestionarDia">Gestionar Día</string>
+    <string name="btnNuevoDia">Nuevo</string>
+    <string name="txtListaDias">Listado de días ingresados:</string>
+    // Menú contextual lista días
+    <string name="ctxListaDiasActualizar">Actualizar</string>
+    <string name="ctxListaDiasEliminar">Eliminar</string>
+
 
 </resources>

@@ -34,7 +34,7 @@ public class DiaGestionar extends Activity {
         // Llamar método para llenar lista
         llenarListaDia();
 
-        // Asociamos el menú contextual al list view
+        // Asociamos el menú contextual al listview
         registerForContextMenu(listaDias);
     }
 
@@ -52,7 +52,6 @@ public class DiaGestionar extends Activity {
 
     // Método para agregar un día
     public void agregarDia(View v){
-
     }
 
     // Para que actualice la lista cuando se regrese a la ventana
@@ -105,6 +104,4 @@ public class DiaGestionar extends Activity {
                 return super.onContextItemSelected(item);
         }
     }
-
-
 }

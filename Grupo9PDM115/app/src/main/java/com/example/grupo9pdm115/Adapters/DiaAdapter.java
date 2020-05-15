@@ -32,13 +32,13 @@ public class DiaAdapter extends ArrayAdapter<Dia> {
                     false);
         }
 
-        // Referencias UI -list_item_dia
+        // Referencias UI - list_item_dia -
         TextView nombreDia = (TextView) convertView.findViewById(R.id.txtNombreDia);
 
         // Dia actual
         Dia dia = getItem(position);
 
-        // Setup
+        // Setup view
         nombreDia.setText(dia.getNombreDia());
 
         return convertView;

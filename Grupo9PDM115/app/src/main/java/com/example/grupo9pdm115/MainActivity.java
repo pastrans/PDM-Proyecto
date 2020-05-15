@@ -21,7 +21,7 @@ public class MainActivity extends ListActivity  {
     int day, month, year;*/
 
     String[] menu = {"Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo"};
-    String[] activities = {"GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo"};
+    String[] activities = {"GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo","GestionarCicloMateria"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

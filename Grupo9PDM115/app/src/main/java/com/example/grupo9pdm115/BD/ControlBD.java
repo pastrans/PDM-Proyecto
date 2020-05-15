@@ -2,9 +2,14 @@ package com.example.grupo9pdm115.BD;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.grupo9pdm115.Modelos.TipoGrupo;
+
+import java.util.ArrayList;
 
 public class ControlBD {
     // Manejo de la BD
@@ -99,5 +104,33 @@ public class ControlBD {
         }
 
         return regInsertados;
+
+
     }
+
+
+
+    // código para llenar un sppiner con la base de datos
+    private ArrayList<TipoGrupo> lisTipoGrupo;
+    public ArrayList<TipoGrupo> getLisTipoGrupo() {
+        return lisTipoGrupo;
+    }
+
+    public void setLisTipoGrupo(ArrayList<TipoGrupo> lisTipoGrupo) {
+        this.lisTipoGrupo = lisTipoGrupo;
+    }
+
+    public void consultarListaTipoGrupo(){
+        TipoGrupo tipoGrupo = null;
+        lisTipoGrupo = new ArrayList<TipoGrupo>();
+        Cursor cursor = db.rawQuery("SELECT * FROM TIPOGRUPO", null );
+        while(cursor.moveToNext()){
+            tipoGrupo= new TipoGrupo();
+            tipoGrupo.setIdTipoGrupo(cursor.getInt(0));
+            tipoGrupo.setNombreTipoGrupo(cursor.getString(1));
+            lisTipoGrupo.add(tipoGrupo);
+        }
+    }
+
+
 }

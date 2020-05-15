@@ -25,7 +25,7 @@ public class NuevoTipoGrupo extends AppCompatActivity {
 
     }
 
-    public void agregarTipoGrupo(View v){
+    public void btnAgregarNTipoGrupo(View v){
         String reginsertados;
         TipoGrupo tipoGrupo = new TipoGrupo();
         tipoGrupo.setNombreTipoGrupo(nombreTipoGrupo.getText().toString());

@@ -26,11 +26,11 @@
     <TableRow>
         <TextView
             android:text="@string/txtMateria"/>
+        <Spinner
+            android:id="@+id/spinMateria"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/editMateria"
-            android:inputType="text"
-            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>

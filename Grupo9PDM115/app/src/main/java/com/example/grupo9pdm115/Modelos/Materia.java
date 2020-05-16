@@ -10,6 +10,8 @@ public class Materia {
     private final String nombreTabla = "materia";
     private ContentValues valores = new ContentValues();
 
+
+
     // Atributos
     private String codMateria;
     private int idUnidad;
@@ -43,6 +45,7 @@ public class Materia {
 
     public void setMasiva(boolean masiva) { this.masiva = masiva; }
 
+    public void setValores(ContentValues valores) { this.valores = valores; }
     // Métodos para BD
     public String getNombreTabla() { return nombreTabla; }
 

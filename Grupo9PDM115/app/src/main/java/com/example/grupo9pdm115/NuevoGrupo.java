@@ -15,7 +15,7 @@ public class NuevoGrupo extends AppCompatActivity {
     ControlBD helper;
     EditText numero;
     Spinner idTipoGrupo;
-    EditText idCicloMateria;
+    Spinner idCicloMateria;
     NuevoGrupoSpinners control;
 
     @Override
@@ -26,33 +26,42 @@ public class NuevoGrupo extends AppCompatActivity {
         helper = new ControlBD(this);
         numero = (EditText) findViewById(R.id.editNumero);
         idTipoGrupo = (Spinner)  findViewById(R.id.spinTipoGrupo);
+        idCicloMateria = (Spinner) findViewById(R.id.spinMateria);
         helper.abrir();
         control= new NuevoGrupoSpinners(helper);
         helper.cerrar();
         idTipoGrupo.setAdapter(control.getAdapterTipoGrupo(getApplicationContext()));
-        idCicloMateria = (EditText) findViewById(R.id.editMateria);
+        idCicloMateria.setAdapter(control.getAdapterMateria(getApplicationContext()));
+
     }
     public void btnNuevoNGrupo(View v){
         String reginsertados;
         Grupo grupo = new Grupo();
-        int posicion = 0, id = 0;
-        posicion = idTipoGrupo.getSelectedItemPosition();
+        int posicionTipoGrupo = 0, idTP = 0,posicionMateria= 0,idCM =0;
+        posicionTipoGrupo = idTipoGrupo.getSelectedItemPosition();
+        posicionMateria= idCicloMateria.getSelectedItemPosition();
+        if (posicionMateria!= 0 ) {
+            if (posicionTipoGrupo!= 0) {
+                //Log.i("posicion: ", String.valueOf(posicion)  );
+                grupo.setNumero(Integer.parseInt(numero.getText().toString()));
+                idTP= control.getIdTipoGrupo(posicionTipoGrupo);
+                grupo.setIdTipoGrupo(idTP);
+                idCM= control.getIdCicloMateria(posicionMateria);//
+                grupo.setIdCicloMateria(idCM);
+                helper.abrir();
+                reginsertados = helper.insertar(grupo.getNombreTabla(), grupo.getValores());
+                helper.cerrar();
+                Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+            }
+            else {
 
-        if (posicion!= 0) {
-            //Log.i("posicion: ", String.valueOf(posicion)  );
-            grupo.setNumero(Integer.parseInt(numero.getText().toString()));
-            id= control.getIdTipoGrupo(posicion);
-            grupo.setIdTipoGrupo(id);
-            grupo.setIdCicloMateria(Integer.parseInt(idCicloMateria.getText().toString()));
-            helper.abrir();
-            reginsertados = helper.insertar(grupo.getNombreTabla(), grupo.getValores());
-            helper.cerrar();
-            Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Seleccione Tipo de grupo ", Toast.LENGTH_SHORT).show();
+            }
         }
-        else {
+        else{
+            Toast.makeText(this, "Seleccione una materia", Toast.LENGTH_SHORT).show();
+        }
 
-            Toast.makeText(this, "Seleccione Tipo de grupo ", Toast.LENGTH_SHORT).show();
-        }
 
 
 

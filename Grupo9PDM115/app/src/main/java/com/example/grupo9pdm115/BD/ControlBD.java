@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Dia;
+import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 
 import java.util.ArrayList;
@@ -172,9 +174,10 @@ public class ControlBD {
             final String[] ValoresUnidadesval = {"4","4","4","4"};
             Materia materia = new Materia();
             for(int i = 0; i < ValoresCodmateria.legth; i++){
-                materia.setCodmateria(ValoresCodmateria[i]);
-                materia.setNommateria(ValoresNommateria[i]);
-                materia.setUnidadesval(ValoresUnidadesval[i]);
+                materia.setIdUnidad(ValoresCodmateria[i]);
+                materia.setNombreMateria(ValoresNommateria[i]);
+                materia.setMasiva(ValoresUnidadesval[i]);
+                materia.setCodMateria(ValoresCodmateria[i]);
                 materia.guardar(context);
             }
          */
@@ -196,7 +199,17 @@ public class ControlBD {
             dia.setNombreDia(valor);
             dia.guardar(context);
         }
-
+        // CicloMateria
+        db.execSQL("DELETE FROM CILCOMATERIA");
+        String[] CODIGOMATEIRA = {"MAT115","PRN115","IEC115","TSI115"};
+        int[] IDCICLO= {1,2,3,4};
+        int[] IDCICLOMATERIA= {1,2,3,4};
+        CicloMateria cicloMateria = new CicloMateria();
+        for(int i = 0; i < CODIGOMATEIRA.length; i++){
+            cicloMateria.setIdCicloMateria(IDCICLO[i]);
+            cicloMateria.setIdCiclo(IDCICLOMATERIA[i]);
+            cicloMateria.setCodMateria(CODIGOMATEIRA[i]);
+        }
 
         // Va al final
         cerrar();

@@ -155,26 +155,10 @@ public class ControlBD {
         return cursor;
     }
 
-    // código para llenar un sppiner con la base de datos
-    private ArrayList<TipoGrupo> lisTipoGrupo;
-    public ArrayList<TipoGrupo> getLisTipoGrupo() {
-        return lisTipoGrupo;
-    }
 
-    public void setLisTipoGrupo(ArrayList<TipoGrupo> lisTipoGrupo) {
-        this.lisTipoGrupo = lisTipoGrupo;
-    }
-
-    public void consultarListaTipoGrupo(){
-        TipoGrupo tipoGrupo = null;
-        lisTipoGrupo = new ArrayList<TipoGrupo>();
+    public Cursor consultar(){
         Cursor cursor = db.rawQuery("SELECT * FROM TIPOGRUPO", null );
-        while(cursor.moveToNext()){
-            tipoGrupo= new TipoGrupo();
-            tipoGrupo.setIdTipoGrupo(cursor.getInt(0));
-            tipoGrupo.setNombreTipoGrupo(cursor.getString(1));
-            lisTipoGrupo.add(tipoGrupo);
-        }
+        return cursor;
     }
 
     public String llenarBD(Context context){

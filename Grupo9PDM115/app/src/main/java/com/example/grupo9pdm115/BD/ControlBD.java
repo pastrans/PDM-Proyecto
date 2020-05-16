@@ -156,8 +156,8 @@ public class ControlBD {
     }
 
 
-    public Cursor consultar(){
-        Cursor cursor = db.rawQuery("SELECT * FROM TIPOGRUPO", null );
+    public Cursor consultar(String consulta){
+        Cursor cursor = db.rawQuery(consulta, null );
         return cursor;
     }
 

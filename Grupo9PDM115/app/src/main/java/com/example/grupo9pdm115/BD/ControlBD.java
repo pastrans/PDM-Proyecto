@@ -179,11 +179,20 @@ public class ControlBD {
             }
          */
 
+        // TIPO GRUPO
+        db.execSQL("DELETE FROM tipogrupo");
+        String[] valoresTipoGrupo = {"Teórico", "Laboratorio", "Discusión"};
+        TipoGrupo tipoGrupo = new TipoGrupo();
+        for(String valor : valoresTipoGrupo){
+            tipoGrupo.setNombreTipoGrupo(valor);
+            tipoGrupo.guardar(context);
+        }
+
         // DIA
         db.execSQL("DELETE FROM dia");
-        String[] valores = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+        String[] valoresDia = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
         Dia dia = new Dia();
-        for(String valor : valores){
+        for(String valor : valoresDia){
             dia.setNombreDia(valor);
             dia.guardar(context);
         }

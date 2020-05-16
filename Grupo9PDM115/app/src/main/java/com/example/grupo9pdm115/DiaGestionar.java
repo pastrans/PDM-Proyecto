@@ -17,7 +17,6 @@ import com.example.grupo9pdm115.Modelos.Dia;
 import java.util.List;
 
 public class DiaGestionar extends Activity {
-
     // Declarando atributos para manejo del ListView
     ListView listaDias;
     DiaAdapter listaDiasAdapter;
@@ -52,6 +51,8 @@ public class DiaGestionar extends Activity {
 
     // Método para agregar un día
     public void agregarDia(View v){
+        Intent intent = new Intent(this, DiaInsertar.class);
+        startActivity(intent);
     }
 
     // Para que actualice la lista cuando se regrese a la ventana
@@ -86,7 +87,7 @@ public class DiaGestionar extends Activity {
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
                 if(diaActual != null){
-                    Intent intent = new Intent(getApplicationContext(), DiaGestionar.class);//DiaActualizarActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), DiaActualizar.class);
                     intent.putExtra("iddia", diaActual.getIdDia());
                     intent.putExtra("nombredia", diaActual.getNombreDia());
                     startActivity(intent);

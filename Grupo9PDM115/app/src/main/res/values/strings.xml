@@ -294,6 +294,14 @@
     // Menú contextual lista días
     <string name="ctxListaDiasActualizar">Actualizar</string>
     <string name="ctxListaDiasEliminar">Eliminar</string>
+    // Actualizar Dia
+    <string name="titActualizarDia">Actualizar Día</string>
+    <string name="nombreDia">Nombre:</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="regresar">Regresar</string>
+    // Insertar Dia
+    <string name="titInsertarDia">Insertar Día</string>
+    <string name="insertar">Insertar</string>
 
 
 </resources>

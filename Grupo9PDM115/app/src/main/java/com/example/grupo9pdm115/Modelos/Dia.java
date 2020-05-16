@@ -1,5 +1,8 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.Context;
+
+import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
 public class Dia extends TablaBD {
@@ -54,5 +57,27 @@ public class Dia extends TablaBD {
         Dia dia = new Dia();
         dia.setAttributesFromArray(arreglo);
         return dia;
+    }
+
+    @Override
+    public String guardar(Context context){
+        String mensaje = "Registro insertado N° = ";
+        long control = 0;
+        ControlBD helper = new ControlBD(context);
+        this.valoresCamposTabla.put("nombredia", getNombreDia());
+
+        helper.abrir();
+        control = helper.getDb().insert("dia", null, valoresCamposTabla);
+        helper.cerrar();
+
+        if(control==-1 || control==0)
+        {
+            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+        }
+        else {
+            mensaje = mensaje+control;
+        }
+
+        return mensaje;
     }
 }

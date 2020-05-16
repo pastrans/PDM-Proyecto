@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 
 import java.util.ArrayList;
@@ -175,5 +177,37 @@ public class ControlBD {
         }
     }
 
+    public String llenarBD(Context context){
+        // Va al principio
+        abrir();
+
+        /* EJEMPLO PARA TABLA "materia" con campos "codmateria", "nommateria" y "unidadesval"
+            db.execSQL("DELETE FROM materia");
+            final String[] ValoresCodmateria = {"MAT115","PRN115","IEC115","TSI115"};
+            final String[] ValoresNommateria = {"Matematica I","Programacion I","Ingenieria Economica","Teoria de Sistemas"};
+            final String[] ValoresUnidadesval = {"4","4","4","4"};
+            Materia materia = new Materia();
+            for(int i = 0; i < ValoresCodmateria.legth; i++){
+                materia.setCodmateria(ValoresCodmateria[i]);
+                materia.setNommateria(ValoresNommateria[i]);
+                materia.setUnidadesval(ValoresUnidadesval[i]);
+                materia.guardar(context);
+            }
+         */
+
+        // DIA
+        db.execSQL("DELETE FROM dia");
+        String[] valores = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+        Dia dia = new Dia();
+        for(String valor : valores){
+            dia.setNombreDia(valor);
+            dia.guardar(context);
+        }
+
+
+        // Va al final
+        cerrar();
+        return "Guardó Correctamente";
+    }
 
 }

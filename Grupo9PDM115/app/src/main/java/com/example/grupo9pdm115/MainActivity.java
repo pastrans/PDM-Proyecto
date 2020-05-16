@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.grupo9pdm115.BD.ControlBD;
 
 import java.util.Calendar;
 
@@ -19,14 +22,15 @@ public class MainActivity extends ListActivity  {
     /*TextView tv;
     Calendar mCurrentDate;
     int day, month, year;*/
-
-    String[] menu = {"Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias"};
-    String[] activities = {"GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo","GestionarCicloMateria", "DiaGestionar"};
+    ControlBD BDhelper;
+    String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias"};
+    String[] activities = {"Llenar BD", "GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo","GestionarCicloMateria", "DiaGestionar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
+        BDhelper = new ControlBD(this);
 
 
         //setContentView(R.layout.activity_main);
@@ -65,13 +69,21 @@ public class MainActivity extends ListActivity  {
     @Override
     protected void onListItemClick(ListView l, View v, int positon, long id){
         super.onListItemClick(l, v, positon, id);
-        String nombreValue = activities[positon];
-        try {
-            Class<?> clase = Class.forName("com.example.grupo9pdm115." + nombreValue);
-            Intent inte = new Intent(this, clase);
-            this.startActivity(inte);
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
+        if(positon!= 0){
+            String nombreValue = activities[positon];
+            try {
+                Class<?> clase = Class.forName("com.example.grupo9pdm115." + nombreValue);
+                Intent inte = new Intent(this, clase);
+                this.startActivity(inte);
+            }catch (ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        } else {
+            // CODIGO PARA LLENAR BASE DE DATOS
+            BDhelper.abrir();
+            String tost=BDhelper.llenarBD(this);
+            BDhelper.cerrar();
+            Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
         }
     }
 

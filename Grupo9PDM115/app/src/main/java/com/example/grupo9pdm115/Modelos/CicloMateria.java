@@ -53,7 +53,9 @@ public class CicloMateria extends TablaBD {
 
     @Override
     public void setValoresCamposTabla() {
-
+        this.valoresCamposTabla.put("idCicloMateria", getIdCicloMateria());
+        this.valoresCamposTabla.put("idCiclo", getIdCiclo());
+        this.valoresCamposTabla.put("codMateria", getCodMateria());
     }
 
     @Override

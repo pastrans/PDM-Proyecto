@@ -200,7 +200,7 @@ public class ControlBD {
             dia.guardar(context);
         }
         // CicloMateria
-        db.execSQL("DELETE FROM CILCOMATERIA");
+        db.execSQL("DELETE FROM CICLOMATERIA");
         String[] CODIGOMATEIRA = {"MAT115","PRN115","IEC115","TSI115"};
         int[] IDCICLO= {1,2,3,4};
         int[] IDCICLOMATERIA= {1,2,3,4};

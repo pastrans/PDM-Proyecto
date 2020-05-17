@@ -53,7 +53,7 @@ public class Materia {
         // Agregando los valores de los atributos al content value
         valores.put("codMateria", getCodMateria());
         valores.put("idUnidad", getIdUnidad());
-        valores.put("nombreMateria", getNombreMateria());
+        valores.put("nombreMat", getNombreMateria());
         valores.put("masiva", isMasiva());
 
         return valores;

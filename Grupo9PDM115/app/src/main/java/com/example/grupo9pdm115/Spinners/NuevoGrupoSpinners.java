@@ -41,7 +41,7 @@ public class NuevoGrupoSpinners {
         }
 
         //código para llenar las listas de CilcoMateria y contenido
-        Consulta = "SELECT cm.IDCICLOMATERIA,cm.IDCICLO, cm.CODMATERIA, m.NOMBREMAT FROM ciclomateria cm, materia m where m.CODMATERIA = cm.CODMATERIA\n";
+        Consulta = "SELECT cm.IDCICLOMATERIA,cm.IDCICLO, cm.CODMATERIA, m.NOMBREMAT FROM ciclomateria cm, materia m where m.CODMATERIA = cm.CODMATERIA";
         cursor = helpercontexto.consultar(Consulta);
         CicloMateria cicloMateria;
         listCicloMateria = new ArrayList<CicloMateria>();

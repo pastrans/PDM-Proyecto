@@ -209,7 +209,21 @@ public class ControlBD {
             cicloMateria.setIdCicloMateria(IDCICLO[i]);
             cicloMateria.setIdCiclo(IDCICLOMATERIA[i]);
             cicloMateria.setCodMateria(CODIGOMATEIRA[i]);
+            insertar(cicloMateria.getNombreTabla(), cicloMateria.getValoresCamposTabla() );
         }
+        // Materia
+        db.execSQL("DELETE FROM MATERIA");
+        String[] CODMATEIRA = {"MAT115","PRN115","IEC115","TSI115"};
+        String[] NOMBREMATERIA = {"MAT","PRN","ASDF","XDFG"};
+        Boolean[] MASIVA= {true,false,true,false};
+        Materia materia = new Materia();
+        for(int i = 0; i < CODMATEIRA.length; i++){
+            materia.setCodMateria(CODMATEIRA[i]);
+            materia.setNombreMateria(NOMBREMATERIA[i]);
+            materia.setMasiva(MASIVA[i]);
+            insertar(materia.getNombreTabla(), materia.getValores() );
+        }
+
 
         // Va al final
         cerrar();

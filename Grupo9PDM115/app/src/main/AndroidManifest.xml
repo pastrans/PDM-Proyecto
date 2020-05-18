@@ -27,6 +27,7 @@
         <activity android:name=".EditarGrupo" />
         <activity android:name=".NuevoGrupo" />
         <activity android:name=".NuevoTipoGrupo" />
+        <activity android:name=".TipoGrupoActualizar" />
         <activity android:name=".GestionarTipoGrupo" />
         <activity android:name=".GestionarGrupo" />
         <activity android:name=".EditarTipoGrupo" />

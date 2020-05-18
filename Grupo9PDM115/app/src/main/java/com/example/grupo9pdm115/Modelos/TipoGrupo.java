@@ -8,25 +8,25 @@ import com.example.grupo9pdm115.BD.TablaBD;
 
 public class TipoGrupo extends TablaBD {
 
-
-    // Atributos para BD
-    private final String nombreTabla = "tipoGrupo";
-    private ContentValues valores = new ContentValues();
-
     // Atributos
     private String nombreTipoGrupo;
     private int  idTipoGrupo;
 
-    public TipoGrupo() {
-    }
+
     // -------------Constructor---------------
-    public TipoGrupo(String nombreTipoGrupo,int idTipoGrupo ) {
-        this.nombreTipoGrupo = nombreTipoGrupo;
-        this.idTipoGrupo = idTipoGrupo;
+    public TipoGrupo() {
+        setNombreTabla("TIPOGRUPO");
+        setNombreLlavePrimaria("idtipogrupo");
+        setCamposTabla(new String[]{"idtipogrupo", "nombretipogrupo"});
+    }
+    public TipoGrupo(int idTipoGrupo, String nombreTipoGrupo ) {
+        setIdTipoGrupo(idTipoGrupo);
+        setNombreTipoGrupo(nombreTipoGrupo);
     }
     // -------------Fin del Constructor---------------
 
     // -------------Métodos getter y setter---------------
+    //nombretipogrupo
     public String getNombreTipoGrupo() {
         return nombreTipoGrupo;
     }
@@ -34,9 +34,7 @@ public class TipoGrupo extends TablaBD {
     public void setNombreTipoGrupo(String nombreTipoGrupo) {
         this.nombreTipoGrupo = nombreTipoGrupo;
     }
-
-
-
+    //IdTipoGrupo
     public int getIdTipoGrupo() {
         return idTipoGrupo;
     }
@@ -44,40 +42,29 @@ public class TipoGrupo extends TablaBD {
     public void setIdTipoGrupo(int idTipoGrupo) {
         this.idTipoGrupo = idTipoGrupo;
     }
-
-    public String getNombreTabla() {
-        return nombreTabla;
-    }
-
     @Override
     public String getValorLlavePrimaria() {
-        return null;
+        return Integer.toString(this.getIdTipoGrupo());
     }
 
     @Override
     public void setValoresCamposTabla() {
-
+        this.valoresCamposTabla.put("idtipogrupo", getIdTipoGrupo());
+        this.valoresCamposTabla.put("nombretipogrupo", getNombreTipoGrupo());
     }
 
     @Override
     public void setAttributesFromArray(String[] arreglo) {
-
+        setIdTipoGrupo(Integer.parseInt(arreglo[0]));
+        setNombreTipoGrupo(arreglo[1]);
     }
 
     @Override
-    public TablaBD getInstanceOfModel(String[] arreglo) {
-        return null;
+    public TipoGrupo getInstanceOfModel(String[] arreglo) {
+        TipoGrupo tipoGrupo = new TipoGrupo();
+        tipoGrupo.setAttributesFromArray(arreglo);
+        return tipoGrupo;
     }
-    // -------------Fin de Métodos getter y setter---------------
-
-    // -------------Métodos para BD ------------------------------
-    public ContentValues getValores() {
-        // Agregando los valores de los atributos al content value
-        //valores.put("tipoGrupo", getIdTipoGrupo());
-        valores.put("nombreTipoGrupo", getNombreTipoGrupo());
-        return valores;
-    }
-    // -------------Fin de métodos para BD ------------------------------
 
     @Override
     public String guardar(Context context){

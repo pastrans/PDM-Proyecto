@@ -26,13 +26,15 @@ public class NuevoTipoGrupo extends AppCompatActivity {
     }
 
     public void btnAgregarNTipoGrupo(View v){
-        String reginsertados;
+        // Obteniendo valores elementos
+        String nombreTG = nombreTipoGrupo.getText().toString();
+
+        // Instanciando dia para guardar
         TipoGrupo tipoGrupo = new TipoGrupo();
-        tipoGrupo.setNombreTipoGrupo(nombreTipoGrupo.getText().toString());
-        helper.abrir();
-        reginsertados = helper.insertar(tipoGrupo.getNombreTabla(), tipoGrupo.getValores());
-        helper.cerrar();
-        Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+        tipoGrupo.setNombreTipoGrupo(nombreTG);
+        String regInsertados = tipoGrupo.guardar(this);
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
     }
 
 }

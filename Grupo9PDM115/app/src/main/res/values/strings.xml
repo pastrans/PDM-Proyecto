@@ -303,5 +303,22 @@
     <string name="titInsertarDia">Insertar Día</string>
     <string name="insertar">Insertar</string>
 
+    // Variables para TipoGrupo
+    // Gestionar TipoGrupo
+    <string name="titGestionarTG">Gestionar Tipo de Grupo</string>
+    <string name="btnNuevoTG">Nuevo</string>
+    <string name="txtListaTG">Listado de Tipo de grupos ingresados:</string>
+    // Menú contextual listas de Tipos de grupo
+    <string name="ctxListaTGActualizar">Actualizar</string>
+    <string name="ctxListaTGEliminar">Eliminar</string>
+    // Actualizar Tipo Grupo
+    <string name="titActualizarTG">Actualizar tipo de grupo</string>
+    <string name="nombreTG">Nombre:</string>
+    <string name="actualizarTG">Actualizar</string>
+    <string name="regresarTG">Regresar</string>
+    // Insertar Tipo Grupo
+    <string name="titInsertarTG">Insertar Tipo Grupo</string>
+    <string name="insertarTG">Insertar</string>
+
 
 </resources>

@@ -1,49 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".GestionarTipoGrupo">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
+    <!-- Título -->
     <TextView
-        android:text="@string/titGestionarTipoGrupo"
+        android:text="@string/titGestionarTG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtTipoGrupo" />
+    <!-- Botón nuevo -->
+    <Button
+        android:id="@+id/btnNuevoTG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnNuevoTG"
+        android:onClick="agregarTipoGrupo"/>
 
-        <EditText
-            android:id="@+id/editTipoGrupo"
-            android:inputType="text"
-            android:maxLength="25"/>
-    </TableRow>
+    <!-- Lista días -->
+    <TextView
+        android:text="@string/txtListaTG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+    <ListView
+        android:id="@+id/listTG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
 
-    <Button
-        android:onClick="btnConsultarGTipoGrupo"
-        android:text="@string/btnConsultarGTipoGrupo"
-        tools:ignore="OnClick"  />
-    <Button
-        android:onClick="btnNuevoTipoGrupo"
-        android:text="@string/btnNuevoGTipoGrupo"
-        tools:ignore="OnClick" />
-    <Button
-        android:onClick="btnEditarGTipoGrupo"
-        android:text="@string/btnEditarGTipoGrupo"
-        tools:ignore="OnClick" />
-    <Button
-        android:onClick="btnEliminarGTipoGrupo"
-        android:text="@string/btnEliminarGTipoGrupo"
-        tools:ignore="OnClick" />
-    <Button
-        android:onClick="btnRegresarGTipoGrupo"
-        android:text="@string/btnRegresarGTipoGrupo"
-        tools:ignore="OnClick" />
-
-
-</TableLayout>
+</LinearLayout>

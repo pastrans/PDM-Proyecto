@@ -23,12 +23,13 @@
             android:text="@string/txtInicioCiclo"
             android:textSize="14sp" />
 
-        <DatePicker
-            android:id="@+id/inicioCicloDatePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+        <EditText
+            android:id="@+id/editFechaInicio"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+
     </TableRow>
 
     <TableRow>

@@ -13,7 +13,7 @@ import com.example.grupo9pdm115.Modelos.Unidad;
 
 public class NuevoUnidad extends AppCompatActivity {
 
-    ControlBD helper;
+    //ControlBD helper;
     EditText nombreUnidad;
     EditText descripcionUnidad;
     EditText prioridad;
@@ -22,7 +22,7 @@ public class NuevoUnidad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_unidad);
-        helper = new ControlBD(this);
+        //helper = new ControlBD(this);
         nombreUnidad = (EditText) findViewById(R.id.editNombreUnidad);
         descripcionUnidad = (EditText) findViewById(R.id.editDescripcion);
         prioridad = (EditText) findViewById(R.id.editPrioridad);
@@ -34,10 +34,16 @@ public class NuevoUnidad extends AppCompatActivity {
         unidad.setNombreent(nombreUnidad.getText().toString());
         unidad.setDescripcionent(descripcionUnidad.getText().toString());
         unidad.setPrioridad(Integer.parseInt(prioridad.getText().toString()));
-        helper.abrir();
-        reginsertados = helper.insertar(unidad.getNombreTabla(), unidad.getValores());
-        helper.cerrar();
-        Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+        String regInsertados = unidad.guardar(this);
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        //helper.abrir();
+        //reginsertados = helper.insertar(unidad.getNombreTabla(), unidad.getValores());
+        //helper.cerrar();
+        //Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+    }
+    // Método para regresar al activity anterior
+    public void regresar(View v){
+        super.onBackPressed();
     }
 
 }

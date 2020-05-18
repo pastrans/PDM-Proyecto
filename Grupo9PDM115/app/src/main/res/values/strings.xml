@@ -64,10 +64,8 @@
     <string name="txtPrioridad">Prioridad</string>
     //Gestionar Unidad
     <string name="titGestionarUnidad">Gestionar Unidad</string>
+    <string name="txtListaUnidad">Listado de unidades ingresadas:</string>
     <string name="btnNuevoGUnidad">Nuevo</string>
-    <string name="btnEditarGUnidad">Editar</string>
-    <string name="btnEliminarGUnidad">Eliminar</string>
-    <string name="btnRegresarGUnidad">Regresar</string>
     //Nuevo Unidad
     <string name="titNuevoUnidad">Nueva Unidad</string>
     <string name="btnRegresarNUnidad">Regresar</string>
@@ -75,7 +73,7 @@
     <string name="btnLimpiarNUnidad">Limpiar</string>
     //Editar Unidad
     <string name="titEditarUnidad">Editar Unidad</string>
-    <string name="btnEditarEUnidad">Agregar</string>
+    <string name="btnEditarEUnidad">Editar</string>
     <string name="btnLimpiarEUnidad">Limpiar</string>
     <string name="btnRegresarEUnidad">Regresar</string>
 

@@ -1,8 +1,12 @@
 package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
+import android.content.Context;
 
-public class Unidad {
+import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.BD.TablaBD;
+
+public class Unidad extends TablaBD {
 
     // Atributos para BD
     private final String nombreTabla = "unidad";
@@ -15,7 +19,9 @@ public class Unidad {
     private int  prioridad;
 
     public Unidad(){
-
+        setNombreTabla("unidad");
+        setNombreLlavePrimaria("idunidad");
+        setCamposTabla(new String[]{"idunidad", "nombreent","descripcionent","prioridad"});
     }
 
     // -------------Constructor---------------
@@ -64,17 +70,53 @@ public class Unidad {
     }
     // -------------Fin de Métodos getter y setter---------------
 
-    // -------------Métodos para BD ------------------------------
-
-    public ContentValues getValores(){
-        // Agregando los valores de los atributos al content value
-        //valores.put("codMateria", getIdUnidad());
-        valores.put("nombreent", getNombreent());
-        valores.put("descripcionent", getDescripcionent());
-        valores.put("prioridad", getPrioridad());
-        return valores;
+    //---------------Sobrescritura de métodos
+    @Override
+    public String getValorLlavePrimaria() {
+        return Integer.toString(this.getIdUnidad());
     }
-    // -------------Fin de métodos para BD ------------------------------
+    @Override
+    public void setValoresCamposTabla() {
+        this.valoresCamposTabla.put("idunidad", getIdUnidad());
+        this.valoresCamposTabla.put("nombreent", getNombreent());
+        this.valoresCamposTabla.put("descripcionent", getDescripcionent());
+        this.valoresCamposTabla.put("prioridad", getPrioridad());
+    }
+    @Override
+    public void setAttributesFromArray(String[] arreglo) {
+        setIdUnidad(Integer.parseInt(arreglo[0]));
+        setNombreent(arreglo[1]);
+        setDescripcionent(arreglo[2]);
+        setPrioridad(Integer.parseInt(arreglo[3]));
+    }
+    @Override
+    public Unidad getInstanceOfModel(String[] arreglo) {
+        Unidad unidad = new Unidad();
+        unidad.setAttributesFromArray(arreglo);
+        return unidad;
+    }
+    @Override
+    public String guardar(Context context){
+        String mensaje = "Registro insertado N° = ";
+        long control = 0;
+        ControlBD helper = new ControlBD(context);
+        this.valoresCamposTabla.put("nombreent", getNombreent());
+        this.valoresCamposTabla.put("descripcionent", getDescripcionent());
+        this.valoresCamposTabla.put("prioridad", getPrioridad());
 
+        helper.abrir();
+        control = helper.getDb().insert("unidad", null, valoresCamposTabla);
+        helper.cerrar();
+
+        if(control==-1 || control==0)
+        {
+            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+        }
+        else {
+            mensaje = mensaje+control;
+        }
+
+        return mensaje;
+    }
 
 }

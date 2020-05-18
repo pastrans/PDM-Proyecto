@@ -11,12 +11,28 @@
     android:paddingTop="8dp">
 
     <TextView
-        android:id="@+id/txtNombreDia"
+        android:id="@+id/txtNombreUnidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:text="Nombre"
         android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Lunes" />
+        tools:text="Unidad" />
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtNombreUnidad"
+        android:layout_below="@id/txtNombreUnidad"
+        android:text="Nombre"
+        tools:text="Descripción" />
+    <TextView
+        android:id="@+id/txtPrioridad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtNombreUnidad"
+        android:layout_below="@id/txtDescripcion"
+        android:text="Nombre"
 
+        tools:text="Prioridad" />
 </RelativeLayout>

@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".GestionarUnidad">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,37 +17,25 @@
         android:text="@string/titGestionarUnidad"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-
-    <TableRow>
-
-        <TextView android:text="@string/txtNombreUnidad" />
-        <EditText
-            android:id="@+id/editNombreUnidad"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
-
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGUnidad"
+        android:onClick="agregarUnidad"
         android:text="@string/btnNuevoGUnidad"
-        tools:ignore="OnClick"/>
+       />
+    <!-- Lista unidad -->
+    <TextView
+        android:text="@string/txtListaUnidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+    <ListView
+        android:id="@+id/listUnidad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
 
 
-    <Button
-        android:onClick="btnEditarGUnidad"
-        android:text="@string/btnEditarGUnidad"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEliminarGUnidad"
-        android:text="@string/btnEliminarGUnidad"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGUnidad"
-        android:text="@string/btnRegresarGUnidad"
-        tools:ignore="OnClick" />
 
 </TableLayout>

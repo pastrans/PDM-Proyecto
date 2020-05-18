@@ -2,13 +2,51 @@ package com.example.grupo9pdm115;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class EditarUnidad extends AppCompatActivity {
+import com.example.grupo9pdm115.Modelos.Unidad;
+
+public class EditarUnidad extends Activity {
+    EditText nombreent;
+    EditText descripcion;
+    EditText prioridad;
+    Unidad unidad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_unidad);
+        unidad = new Unidad();
+        nombreent = (EditText) findViewById(R.id.editNombreUnidad);
+        descripcion = (EditText) findViewById(R.id.editDescripcion);
+        prioridad = (EditText) findViewById(R.id.editPrioridad);
+
+        // Verificando paso de datos por intent
+        if(getIntent().getExtras() != null){
+            nombreent.setText(getIntent().getStringExtra("nombreent"));
+            descripcion.setText(getIntent().getStringExtra("descripcionent"));
+            prioridad.setText(getIntent().getStringExtra("prioridad"));
+            unidad.setIdUnidad(getIntent().getIntExtra("idunidad", 0));
+        }
+    }
+    // Método para actualizar día
+    public void actualizar(View v) {
+        String nombreuni = nombreent.getText().toString();
+        unidad.setNombreent(nombreuni);
+        String desc  = descripcion.getText().toString();
+        unidad.setDescripcionent(desc);
+        Integer prio = Integer.parseInt(prioridad.getText().toString());
+        unidad.setPrioridad(prio);
+        String estado = unidad.actualizar(this);
+        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+    }
+
+    // Método para regresar al activity anterior
+    public void regresar(View v) {
+        super.onBackPressed();
     }
 }

@@ -40,21 +40,20 @@
             android:maxLength="30"
             />
     </TableRow>
-    <TableRow>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
-            android:onClick="btnAgregarNUnidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/btnAgregarNUnidad"
-            tools:ignore="OnClick" />
-
+            android:onClick="agregarUnidad"/>
         <Button
-            android:onClick="btnLimpiarNUnidad"
-            android:text="@string/btnLimpiarNUnidad"
-            tools:ignore="OnClick" />
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRegresarNUnidad"
+            android:onClick="regresar"/>
+    </LinearLayout>
 
-    <Button
-        android:onClick="btnRegresarNUnidad"
-        android:text="@string/btnRegresarNUnidad"
-        tools:ignore="OnClick" />
 </TableLayout>

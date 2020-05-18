@@ -40,21 +40,20 @@
             android:maxLength="30"
             />
     </TableRow>
-    <TableRow>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
-            android:onClick="btnEditarEUnidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/btnEditarEUnidad"
-            tools:ignore="OnClick" />
-
+            android:onClick="actualizar"
+             />
         <Button
-            android:onClick="btnLimpiarEUnidad"
-            android:text="@string/btnLimpiarEUnidad"
-            tools:ignore="OnClick" />
-    </TableRow>
-
-    <Button
-        android:onClick="btnRegresarEUnidad"
-        android:text="@string/btnRegresarEUnidad"
-        tools:ignore="OnClick" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRegresarNUnidad"
+            android:onClick="regresar"/>
+    </LinearLayout>
 </TableLayout>

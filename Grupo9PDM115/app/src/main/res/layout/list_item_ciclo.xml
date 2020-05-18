@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/txtNombreCiclo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="Nombre"
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="Ciclo I" />
+
+    <TextView
+        android:id="@+id/txtInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtNombreCiclo"
+        android:layout_below="@id/txtNombreCiclo"
+        android:text="Inicio"
+        tools:text="01/01/2020"/>
+
+    <TextView
+        android:id="@+id/txtFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtInicio"
+        android:layout_alignLeft="@id/txtNombreCiclo"
+        android:text="Fin"
+        tools:text="01/07/2020" />
+
+    <TextView
+        android:id="@+id/txtEstadoCiclo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtNombreCiclo"
+        android:layout_below="@id/txtFin"
+        android:text="Estado Ciclo"
+        tools:text="Activo"/>
+
+    <TextView
+        android:id="@+id/txtInicioPeriodoClase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtNombreCiclo"
+        android:layout_below="@id/txtEstadoCiclo"
+        android:text="Inicio Periodo Clase"
+        tools:text="20/02/2020"/>
+
+    <TextView
+        android:id="@+id/txtFinPeriodoClase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtNombreCiclo"
+        android:layout_below="@id/txtInicioPeriodoClase"
+        android:text="Fin Periodo Clase"
+        tools:text="20/06/2020"/>
+</RelativeLayout>

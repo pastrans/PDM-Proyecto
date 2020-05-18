@@ -1,54 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1">
-    // cambiar a wrap_content el height
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
+    <!-- Título -->
     <TextView
         android:text="@string/titGestionarCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:paddingBottom="5dp"
-        />
-    <TableRow>
-        <TextView android:text="@string/txtIdCiclo" />
-        <EditText
-            android:id="@+id/editIdciclo"
-            android:inputType="numberDecimal"
-            android:maxLength="30"
-            />
+        android:paddingBottom="5dp"/>
 
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/txtNombreCiclo" />
-        <EditText
-            android:id="@+id/editNombreCiclo"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
-    <TableRow>
-        <Button
-            android:onClick="btnConsultarGCiclo"
-            android:text="@string/btnConsultarGCiclo" />
-    </TableRow>
-
+    <!-- Botón nuevo -->
     <Button
+        android:id="@+id/btnNuevoCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="btnNuevoGCiclo"
         android:text="@string/btnNuevoGCiclo" />
 
-    <Button
-        android:onClick="btnEditarGCiclo"
-        android:text="@string/btnEditarGCiclo" />
+    <!-- Lista días -->
+    <TextView
+        android:text="@string/txtListaCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
 
-    <Button
-        android:onClick="btnEliminarGCiclo"
-        android:text="@string/btnEliminarGCiclo" />
-
-    <Button
-        android:onClick="btnRegresarGCiclo"
-        android:text="@string/btnRegresarGCiclo" />
-
-
-</TableLayout>
-
+    <ListView
+        android:id="@+id/listaCiclos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+</LinearLayout>

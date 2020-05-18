@@ -16,11 +16,8 @@
     <string name="estadoRadioButton">Activo/Inactivo</string>
     //Gestionar Ciclo
     <string name="titGestionarCiclo">Gestionar Ciclo</string>
-    <string name="btnConsultarGCiclo">Consultar</string>
     <string name="btnNuevoGCiclo">Nuevo</string>
-    <string name="btnEditarGCiclo">Editar</string>
-    <string name="btnEliminarGCiclo">Eliminar</string>
-    <string name="btnRegresarGCiclo">Regresar</string>
+    <string name="txtListaCiclo">Listado de Ciclos ingresados</string>
     //Nuevo Ciclo
     <string name="titNuevoCiclo">Nuevo Ciclo</string>
     <string name="btnAgregarNCiclo">Agregar</string>
@@ -31,6 +28,10 @@
     <string name="btnEditarECiclo">Editar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
     <string name="btnRegresarECiclo">Regresar</string>
+    // Menú contextual lista ciclos
+    <string name="ctxListaCiclosActualizar">Actualizar</string>
+    <string name="ctxListaCiclosEliminar">Eliminar</string>
+
 
     //Variables para Feriado
     //Etiquetas

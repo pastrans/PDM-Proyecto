@@ -83,11 +83,8 @@
             android:text="@string/btnAgregarNCiclo" />
 
         <Button
-            android:onClick="btnLimpiarTextoNCiclo"
-            android:text="@string/btnLimpiarTextoNCiclo" />
+            android:onClick="btnRegresarNCiclo"
+            android:text="@string/btnRegresarNCiclo"/>
     </TableRow>
-    <Button
-        android:onClick="btnRegresarNCiclo"
-        android:text="@string/btnRegresarNCiclo"/>
 
 </TableLayout>

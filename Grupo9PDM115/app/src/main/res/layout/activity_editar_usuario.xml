@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
+    android:padding="15dp"
     tools:context=".EditarUsuario">
 
     <TextView
@@ -35,7 +36,7 @@
 
         <TextView android:text="@string/txtNombrePersona" />
         <EditText
-            android:id="@+id/edittxtNombrePersona"
+            android:id="@+id/editNombrePersona"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -59,7 +60,7 @@
 
         <TextView android:text="@string/txtUnidadU" />
         <Spinner
-            android:id="@+id/spinnerUnidadU"
+            android:id="@+id/spinnerEditarUnidadUsuario"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -69,8 +70,7 @@
 
         <Button
             android:onClick="btnEditarEUsuario"
-            android:text="@string/btnEditarEUsuario"
-            tools:ignore="OnClick" />
+            android:text="@string/btnEditarEUsuario" />
 
         <Button
             android:onClick="btnLimpiarEUsuario"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/txtNombreCompletoPersonal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Oscar Omar Lizama Escobar"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        />
+    <TextView
+        android:id="@+id/txtNombreUsuarioList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        tools:text="oslizama"
+
+        />
+    <TextView
+        android:id="@+id/txtCorreoPersonalList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        tools:text="oslizama@gmail.com"
+
+        />
+
+</LinearLayout>

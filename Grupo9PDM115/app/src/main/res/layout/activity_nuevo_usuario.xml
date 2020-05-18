@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
+    android:padding="15dp"
     tools:context=".NuevoUsuario">
 
     <TextView
@@ -28,14 +29,14 @@
         <TextView android:text="@string/txtClaveUsuario" />
         <EditText
             android:id="@+id/editClaveUsuario"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
 
         <TextView android:text="@string/txtNombrePersona" />
         <EditText
-            android:id="@+id/edittxtNombrePersona"
+            android:id="@+id/editNombrePersona"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
@@ -52,16 +53,16 @@
         <TextView android:text="@string/txtCorreoPersona" />
         <EditText
             android:id="@+id/editCorreoPersona"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
 
         <TextView android:text="@string/txtUnidadU" />
         <Spinner
-            android:id="@+id/spinnerUnidadU"
+            android:id="@+id/spinnerUnidadNuevoUsuario"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="30dp" />
 
     </TableRow>
 
@@ -70,12 +71,11 @@
         <Button
             android:onClick="btnAgregarNUsuario"
             android:text="@string/btnAgregarNUsuario"
-            tools:ignore="OnClick" />
+            />
 
         <Button
             android:onClick="btnLimpiarNUsuario"
-            android:text="@string/btnLimpiarNUsuario"
-            tools:ignore="OnClick" />
+            android:text="@string/btnLimpiarNUsuario" />
     </TableRow>
 
     <Button

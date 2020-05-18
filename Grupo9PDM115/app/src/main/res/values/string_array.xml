@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tablas">
+        <item>Dia</item>
+        <item>Local</item>
+        <item>Tipo local</item>
+        <item>Grupo</item>
+        <item>Tipo grupo</item>
+        <item>Unidad</item>
+        <item>Materia</item>
+        <item>Ciclo</item>
+        <item>Ciclo-Materia</item>
+        <item>Feriados</item>
+    </string-array>
+</resources>

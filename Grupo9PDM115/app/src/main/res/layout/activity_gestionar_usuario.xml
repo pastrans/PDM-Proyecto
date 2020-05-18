@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
+    android:padding="15dp"
     tools:context=".GestionarUsuario">
 
     <TextView
@@ -16,14 +17,6 @@
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
-    <TableRow>
-
-        <TextView android:text="@string/txtNombreUsuario" />
-        <EditText
-            android:id="@+id/editNombreUsuario"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
 
     <Button
         android:layout_width="100dp"
@@ -33,19 +26,20 @@
         tools:ignore="OnClick"/>
     <!--tools:ignore="OnClick" /-->
 
-    <Button
-        android:onClick="btnEditarGUsuario"
-        android:text="@string/btnEditarGUsuario"
-        tools:ignore="OnClick" />
+    <TextView
+        android:paddingTop="15dp"
+        android:text="Usuarios ingresados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
-    <Button
-        android:onClick="btnEliminarGUsuario"
-        android:text="@string/btnEliminarGUsuario"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGUsuario"
-        android:text="@string/btnRegresarGUsuario"
-        tools:ignore="OnClick" />
+    <ListView
+        android:paddingTop="15dp"
+        android:id="@+id/idListadoUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"
+        />
 
 </TableLayout>

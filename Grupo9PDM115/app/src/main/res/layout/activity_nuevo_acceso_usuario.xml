@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccesoUsuarioNuevo"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nuevo permiso a usuario"
+        android:textSize="20dp"
+        android:paddingBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuario:"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerUsuarioNuevoAcceso"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        />
+    <TextView
+        android:text="Tabla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Spinner
+        android:id="@+id/spinnerNombreTabla"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:entries="@array/tablas"
+        />
+    <TextView
+        android:text="Permisos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <CheckBox
+        android:id="@+id/chkNuevoInsertar"
+        android:text="Insertar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/chkNuevoEditar"
+        android:text="Editar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/chkNuevoEliminar"
+        android:text="Eliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/chkNuevoConsultar"
+        android:text="Consultar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinnerNuevoAcceso"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        />
+    <Button
+        android:text="Agregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="agregarLista"/>
+
+</LinearLayout>

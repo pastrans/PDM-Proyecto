@@ -1,5 +1,6 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.Context;
 import android.content.Intent;
 
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -72,6 +73,75 @@ public class OpcionCrud extends TablaBD {
         oc.setAttributesFromArray(arreglo);
         return oc;
     }
-    
+
+    public void insertarOpcionesCrud(Context context){
+        String[] idOpcion = new String[]{
+                "IAU", "EAU", "DAU", "CAU",
+                "ICL", "ECL", "DCL", "CCL",
+                "ICM", "ECM", "DCM", "CCM",
+                "ICO", "ECO", "DCO", "CCO",
+                "IDR", "EDR", "DDR", "CDR",
+                "IDI", "EDI", "DDI", "CDI",
+                "IEN", "EEN", "DEN", "CEN",
+                "IEE", "EEE", "DEE", "CEE",
+                "IFE", "EFI", "DFE", "CFE",
+                "IGR", "EGR", "DGR", "CGR",
+                "IHO", "EHO", "DHO", "CHO",
+                "ILO", "ELO", "DLO", "CLO",
+                "IMA", "EMA", "DMA", "CMA",
+                "ISO", "ESO", "DSO", "CSO",
+                "ITG", "ETG", "DTG", "CTG",
+                "ITL", "ETL", "DTL", "CTL",
+                "IUS", "EUS", "DUS", "CUS",
+                "IUN", "EUN", "DUN", "CUN"
+        };
+        String[] desOpcion = new String[]{
+                "Insertar acceso usuario", "Editar acceso usuario", "Eliminar acceso usuario", "Consultar acceso usuario",
+                "Insertar ciclo", "Editar ciclo", "Eliminar cilo", "Consultar ciclo",
+                "Insertar ciclo-materia", "Editar ciclo-materia", "Eliminar ciclo-materia", "Consultar ciclo-materia",
+                "Insertar coordinación", "Editar coordinación", "Eliminar coordinación", "Consultar coordinación",
+                "Insertar detalle reserva", "Editar detalle reserva", "Eliminar detalle reserva", "Consultar detalle reserva",
+                "Insertar día", "Editar día", "Eliminar día", "Consultar día",
+                "Insertar encargado", "Editar encargado", "Eliminar encargado", "Consultar encargado",
+                "Insertar evento especial", "Editar evento especial", "Eliminar evento especial", "Consultar evento especial",
+                "Insertar feriado", "Editar feriado", "Eliminar feriado", "Consultar feriado",
+                "Insertar grupo", "Editar grupo", "Eliminar grupo", "Consultar grupo",
+                "Insertar horario", "Editar horario", "Eliminar horario", "Consultar horario",
+                "Insertar local", "Editar local", "Eliminar local", "Consultar local",
+                "Insertar materia", "Editar materia", "Eliminar materia", "Consultar materia",
+                "Insertar solicitud", "Editar solicitud", "Eliminar solicitud", "Consultar solicitud",
+                "Insertar tipo grupo", "Editar tipo grupo", "Eliminar tipo grupo", "Consultar tipo grupo",
+                "Insertar tipo local", "Editar tipo local", "Eliminar tipo local", "Consultar tipo local",
+                "Insertar usuario", "Editar usuario", "Eliminar usuario", "Consultar usuario",
+                "Insertar unidad", "Editar unidad", "Eliminar unidad", "Consultar unidad",
+        };
+        int[] numCrud = new int[]{
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+        };
+        OpcionCrud oc = new OpcionCrud();
+        for(int i = 0; i < idOpcion.length; i++){
+            oc.setIdOpcion(idOpcion[i]);
+            oc.setDescripcion(desOpcion[i]);
+            oc.setNumCrud(numCrud[i]);
+            oc.guardar(context);
+        }
+    }
 
 }

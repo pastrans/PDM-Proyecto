@@ -11,63 +11,41 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nuevo permiso a usuario"
+        android:text="Gestionar acceso a usuario"
         android:textSize="20dp"
         android:paddingBottom="10dp"
         />
 
     <TextView
+        android:id="@+id/txtUsuarioAcceso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Usuario:"
+        android:paddingBottom="15dp"
         />
 
-    <Spinner
-        android:id="@+id/spinnerUsuarioNuevoAcceso"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        />
-    <TextView
-        android:text="Tabla"
+    <Button
+        android:id="@+id/btnGuardarAcceso"
+        android:text="Guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="guardarAccesoUsuario"
         />
-    <Spinner
-        android:id="@+id/spinnerNombreTabla"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:entries="@array/tablas"
-        />
+
     <TextView
         android:text="Permisos"
+        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-    <CheckBox
-        android:id="@+id/chkNuevoInsertar"
-        android:text="Insertar"
+    <ListView
+        android:id="@+id/listViewOpcionCrud"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <CheckBox
-        android:id="@+id/chkNuevoEditar"
-        android:text="Editar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <CheckBox
-        android:id="@+id/chkNuevoEliminar"
-        android:text="Eliminar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <CheckBox
-        android:id="@+id/chkNuevoConsultar"
-        android:text="Consultar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Spinner
-        android:id="@+id/spinnerNuevoAcceso"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"
         />
+
     <Button
         android:text="Agregar"
         android:layout_width="match_parent"

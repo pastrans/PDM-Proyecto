@@ -15,8 +15,7 @@ public class GestionarMateria extends AppCompatActivity {
     }
 
     public void btnNuevoGMateria(View view){
-        Intent inte = new Intent(this, GestionarUsuario.class);
-        startActivity(inte);
+
     }
 
 }

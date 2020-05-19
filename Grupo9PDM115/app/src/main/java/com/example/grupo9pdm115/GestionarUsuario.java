@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.UsuarioAdapter;
+import com.example.grupo9pdm115.Modelos.AccesoUsuario;
 import com.example.grupo9pdm115.Modelos.Usuario;
 
 import java.util.List;
@@ -88,6 +89,13 @@ public class GestionarUsuario extends AppCompatActivity {
                 }
                 //Toast.makeText(this, "Eliminar User", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.ctxAsignarAcceso:
+                if(usuarioSeleccionado != null){
+                    Intent in = new Intent(this, AccesoUsuarioNuevo.class);
+                    in.putExtra("idUsuario", usuarioSeleccionado.getIdUsuario());
+                    in.putExtra("nombrePersonal", usuarioSeleccionado.getNombrePersonal() + " " + usuarioSeleccionado.getApellidoPersonal());
+                    startActivity(in);
+                }
             default:
                 return super.onContextItemSelected(item);
         }

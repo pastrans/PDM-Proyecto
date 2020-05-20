@@ -27,10 +27,10 @@ public class EditarUnidad extends Activity {
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
+            unidad.setIdUnidad(getIntent().getIntExtra("idunidad", 0));
             nombreent.setText(getIntent().getStringExtra("nombreent"));
             descripcion.setText(getIntent().getStringExtra("descripcionent"));
             prioridad.setText(getIntent().getStringExtra("prioridad"));
-            unidad.setIdUnidad(getIntent().getIntExtra("idunidad", 0));
         }
     }
     // Método para actualizar día

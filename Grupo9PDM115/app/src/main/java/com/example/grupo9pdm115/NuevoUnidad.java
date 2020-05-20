@@ -30,10 +30,14 @@ public class NuevoUnidad extends AppCompatActivity {
 
     public void agregarUnidad(View v){
         String reginsertados;
+        String nombreU = nombreUnidad.getText().toString();
+        String descripcion = descripcionUnidad.getText().toString();
+        Integer priori = Integer.parseInt(prioridad.getText().toString());
+
         Unidad unidad = new Unidad();
-        unidad.setNombreent(nombreUnidad.getText().toString());
-        unidad.setDescripcionent(descripcionUnidad.getText().toString());
-        unidad.setPrioridad(Integer.parseInt(prioridad.getText().toString()));
+        unidad.setNombreent(nombreU);
+        unidad.setDescripcionent(descripcion);
+        unidad.setPrioridad(priori);
         String regInsertados = unidad.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
         //helper.abrir();

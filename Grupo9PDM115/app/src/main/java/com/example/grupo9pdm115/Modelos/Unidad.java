@@ -9,8 +9,8 @@ import com.example.grupo9pdm115.BD.TablaBD;
 public class Unidad extends TablaBD {
 
     // Atributos para BD
-    private final String nombreTabla = "unidad";
-    private ContentValues valores = new ContentValues();
+    //private final String nombreTabla = "unidad";
+    //private ContentValues valores = new ContentValues();
 
     // Atributos
     private int idUnidad;
@@ -65,9 +65,9 @@ public class Unidad extends TablaBD {
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
-    public String getNombreTabla() {
-        return nombreTabla;
-    }
+    //public String getNombreTabla() {
+        //return nombreTabla;
+    //}
     // -------------Fin de Métodos getter y setter---------------
 
     //---------------Sobrescritura de métodos

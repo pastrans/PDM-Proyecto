@@ -110,7 +110,7 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
     }
 
     // Consulta
-    public boolean consultar(Context context, String valorLlavePrimaria){
+    public boolean consultar (Context context, String valorLlavePrimaria){
         boolean resultado = false;
         String[] valores = new String[getCamposTabla().length];
         ControlBD helper = new ControlBD(context);

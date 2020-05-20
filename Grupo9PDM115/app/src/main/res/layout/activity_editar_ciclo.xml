@@ -21,16 +21,19 @@
     </TableRow>
     <TableRow>
 
-        <TextView
-            android:text="@string/txtFinCiclo"
-            android:textSize="14sp" />
-
-        <DatePicker
-            android:id="@+id/finCicloDatePicker"
+        <Button
+            android:id="@+id/btnFinCiclo"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Fin Ciclo"
+            />
+
+        <EditText
+            android:id="@+id/editFinCiclo"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
     </TableRow>
     <RadioButton
         android:id="@+id/estadoRadiobutton"

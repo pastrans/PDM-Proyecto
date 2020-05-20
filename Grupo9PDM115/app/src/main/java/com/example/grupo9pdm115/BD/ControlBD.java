@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.Modelos.Materia;
@@ -181,7 +182,24 @@ public class ControlBD {
                 materia.guardar(context);
             }
          */
-
+        //CICLO
+        db.execSQL("DELETE FROM ciclo");
+        String[] NOMBRECICLO = {"CICLO I", "CICLO II"};
+        String[] INICIO = {"2020/02/16", "2020/07/25"};
+        String[] FIN = {"2020/02/16", "2020/07/25"};
+        Boolean[] ESTADO = {true, false};
+        String[] INICIOPERIODOCLASE = {"2020/02/16", "2020/07/25"};
+        String[] FINPERIODOCLASE = {"2020/02/16", "2020/07/25"};
+        Ciclo ciclo = new Ciclo();
+        for (int i = 0; i < NOMBRECICLO.length; i++) {
+            ciclo.setNombreCiclo(NOMBRECICLO[i]);
+            ciclo.setInicio(INICIO[i]);
+            ciclo.setFin(FIN[i]);
+            ciclo.setEstadoCiclo(ESTADO[i]);
+            ciclo.setInicioPeriodoClase(INICIOPERIODOCLASE[i]);
+            ciclo.setFinPeriodoClase(FINPERIODOCLASE[i]);
+            insertar(ciclo.getNombreTabla(), ciclo.getValoresCamposTabla());
+        }
         // TIPO GRUPO
         db.execSQL("DELETE FROM tipogrupo");
         String[] valoresTipoGrupo = {"Teórico", "Laboratorio", "Discusión"};

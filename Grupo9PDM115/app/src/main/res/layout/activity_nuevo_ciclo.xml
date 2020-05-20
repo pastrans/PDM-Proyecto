@@ -19,12 +19,15 @@
             android:maxLength="30" />
     </TableRow>
     <TableRow>
-        <TextView
-            android:text="@string/txtInicioCiclo"
-            android:textSize="14sp" />
+        <Button
+            android:id="@+id/btnInicioCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inicio Ciclo"
+            />
 
         <EditText
-            android:id="@+id/editFechaInicio"
+            android:id="@+id/editInicioCiclo"
             android:inputType="date"
             android:maxLength="30"
             android:focusable="false"
@@ -34,42 +37,51 @@
 
     <TableRow>
 
-        <TextView
-            android:text="@string/txtFinCiclo"
-            android:textSize="14sp" />
-
-        <DatePicker
-            android:id="@+id/finCicloDatePicker"
+        <Button
+            android:id="@+id/btnFinCiclo"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Fin Ciclo"
+            />
+
+        <EditText
+            android:id="@+id/editFinCiclo"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
     </TableRow>
     <TableRow>
 
-        <TextView
-            android:text="@string/txtInicioPeriodoClase"
-            android:textSize="14sp" />
-
-        <DatePicker
-            android:id="@+id/inicioPeriodoClaseDatePicker"
+        <Button
+            android:id="@+id/btnInicioClases"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Inicio Clases"
+            />
+
+        <EditText
+            android:id="@+id/editInicioClases"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
     </TableRow>
     <TableRow>
 
-        <TextView
-            android:text="@string/txtFinPeriodoClase"
-            android:textSize="14sp" />
-
-        <DatePicker
-            android:id="@+id/finPeriodoClaseDatePicker"
+        <Button
+            android:id="@+id/btnFinClases"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Fin Clases"
+            />
+
+        <EditText
+            android:id="@+id/editFinClases"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
     </TableRow>
 
     <RadioButton
@@ -84,8 +96,11 @@
             android:text="@string/btnAgregarNCiclo" />
 
         <Button
-            android:onClick="btnRegresarNCiclo"
-            android:text="@string/btnRegresarNCiclo"/>
+            android:onClick="btnLimpiarTextoNCiclo"
+            android:text="@string/btnLimpiarTextoNCiclo" />
     </TableRow>
+    <Button
+        android:onClick="btnRegresarNCiclo"
+        android:text="@string/btnRegresarNCiclo"/>
 
 </TableLayout>

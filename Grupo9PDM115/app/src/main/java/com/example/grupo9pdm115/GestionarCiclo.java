@@ -90,9 +90,10 @@ public class GestionarCiclo extends Activity {
         switch (item.getItemId()) {
             case R.id.ctxActualizarCiclo:
                 if(cicloActual != null){
-                    Intent intent = new Intent(getApplicationContext(), NuevoCiclo.class);
+                    Intent intent = new Intent(getApplicationContext(), EditarCiclo.class);
                     intent.putExtra("idciclo", cicloActual.getIdCiclo());
                     intent.putExtra("nombreciclo", cicloActual.getNombreCiclo());
+                    intent.putExtra("finciclo", cicloActual.getFin());
                     startActivity(intent);
                 }
                 return true;

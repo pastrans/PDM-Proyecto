@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Ciclo;
@@ -19,6 +20,7 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
     //Declarando
     EditText editNombreCiclo, editFinCiclo;
     Button btnFinCiclo;
+    RadioButton estado;
     Ciclo ciclo;
     private int diafc, mesfc, anofc;
 
@@ -30,15 +32,20 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
         ciclo = new Ciclo();
         editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
         editFinCiclo = (EditText) findViewById(R.id.editFinCiclo);
+        estado = (RadioButton) findViewById(R.id.estadoRadiobutton);
         btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
 
         btnFinCiclo.setOnClickListener(this);
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
-            editNombreCiclo.setText(getIntent().getStringExtra("nombreciclo"));
-            editFinCiclo.setText(getIntent().getStringExtra("finciclo"));
             ciclo.setIdCiclo(getIntent().getIntExtra("idciclo", 0));
+            editNombreCiclo.setText(getIntent().getStringExtra("nombreciclo"));
+            ciclo.setInicio(getIntent().getStringExtra("iniciociclo"));
+            editFinCiclo.setText(getIntent().getStringExtra("finciclo"));
+            estado.setText(getIntent().getStringExtra("estadociclo"));
+            ciclo.setInicioPeriodoClase(getIntent().getStringExtra("inicioclases"));
+            ciclo.setInicioPeriodoClase(getIntent().getStringExtra("finclases"));
         }
     }
 
@@ -67,6 +74,8 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
         ciclo.setNombreCiclo(nombreCiclo);
         String finCiclo = editFinCiclo.getText().toString();
         ciclo.setFin(finCiclo);
+        Boolean est = Boolean.parseBoolean(estado.getText().toString());
+        ciclo.setEstadoCiclo(est);
         String estado = ciclo.actualizar(this);
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }

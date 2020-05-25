@@ -30,7 +30,7 @@ public class EditarUnidad extends Activity {
             unidad.setIdUnidad(getIntent().getIntExtra("idunidad", 0));
             nombreent.setText(getIntent().getStringExtra("nombreent"));
             descripcion.setText(getIntent().getStringExtra("descripcionent"));
-            prioridad.setText(getIntent().getStringExtra("prioridad"));
+            prioridad.setText(Integer.toString(getIntent().getIntExtra("prioridad",0)));
         }
     }
     // Método para actualizar día
@@ -39,7 +39,7 @@ public class EditarUnidad extends Activity {
         unidad.setNombreent(nombreuni);
         String desc  = descripcion.getText().toString();
         unidad.setDescripcionent(desc);
-        Integer prio = Integer.parseInt(prioridad.getText().toString());
+        int prio = Integer.parseInt(prioridad.getText().toString().trim());
         unidad.setPrioridad(prio);
         String estado = unidad.actualizar(this);
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,27 +12,27 @@
     android:paddingTop="8dp">
 
     <TextView
-        android:id="@+id/txtNombreUnidad"
+        android:id="@+id/txtIdHorario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:text="Nombre"
         android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Unidad" />
+        tools:text="Id Horario" />
     <TextView
-        android:id="@+id/txtDescripcion"
+        android:id="@+id/txtHoraInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtNombreUnidad"
-        android:layout_below="@id/txtNombreUnidad"
+        android:layout_alignLeft="@+id/txtIdHorario"
+        android:layout_below="@id/txtIdHorario"
         android:text="Nombre"
-        tools:text="Descripción" />
+        tools:text="Hora inicio" />
     <TextView
-        android:id="@+id/txtPrioridad"
+        android:id="@+id/txtHoraFin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtNombreUnidad"
-        android:layout_below="@id/txtDescripcion"
+        android:layout_alignLeft="@+id/txtIdHorario"
+        android:layout_below="@id/txtHoraInicio"
         android:text="Nombre"
-        tools:text="Prioridad" />
+        tools:text="Hora final" />
 </RelativeLayout>

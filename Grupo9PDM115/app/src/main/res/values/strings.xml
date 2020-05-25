@@ -319,5 +319,28 @@
     <string name="titInsertarTG">Insertar Tipo Grupo</string>
     <string name="insertarTG">Insertar</string>
 
+    //Variables Horario
+    //Etiquetas
+    <string name="txtHoraInicial">Hora de inicio</string>
+    <string name="txtHoraFin">Hora de final</string>
+    //Gestionar Horario
+    <string name="txtListaHorario">Listado de horarios ingresados</string>
+    <string name="titGestionarHorario">Gestionar Horario</string>
+    <string name="btnNuevoGHorario">Nuevo</string>
+    <string name="btnEditarGHorario">Editar</string>
+    <string name="btnEliminarGHorario">Eliminar</string>
+    <string name="btnRegresarGHorario">Regresar</string>
+    //Nuevo Horario
+    <string name="titNuevoHorario">Nuevo Horario</string>
+    <string name="btnAgregarNHorario">Agregar</string>
+    <string name="btnLimpiarNHorario">Limpiar</string>
+    <string name="btnRegresarNHorario">Regresar</string>
+    //Editar Horario
+    <string name="titEditarEHorario">Editar Horario</string>
+    <string name="btnEditarEHorario">Editar</string>
+    <string name="btnLimpiarEHorario">Limpiar</string>
+    <string name="btnRegresarEHorario">Regresar</string>
+
+
 
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1">
+
+    <TextView
+        android:text="@string/titNuevoHorario"
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btnHInicio"
+            android:text="@string/txtHoraInicial"
+            tools:ignore="OnClick" />
+
+        <EditText
+            android:id="@+id/editHoraInicio"
+            android:inputType="text"
+            android:maxLength="30"  />
+    </TableRow>
+    <TableRow>
+
+        <Button
+            android:id="@+id/btnHFinal"
+            android:text="@string/txtHoraFin"
+            tools:ignore="OnClick" />
+        <EditText
+            android:id="@+id/editHoraFinal"
+            android:inputType="text"
+            android:maxLength="30"  />
+    </TableRow>
+
+    <Button
+        android:onClick="agregarHorario"
+        android:text="@string/btnAgregarNHorario"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:onClick="regresar"
+        android:text="@string/btnCancelarEFeriado"
+        tools:ignore="OnClick" />
+
+</TableLayout>

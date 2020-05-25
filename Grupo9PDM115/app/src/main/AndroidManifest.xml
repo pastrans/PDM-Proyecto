@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccesoUsuarioNuevo"></activity>
+        <activity android:name=".NuevoHorario"></activity>
+        <activity android:name=".EditarHorario" />
+        <activity android:name=".GestionarHorario" />
+        <activity android:name=".AccesoUsuarioNuevo" />
         <activity android:name=".AccesoUsuarioGestionar" />
         <activity android:name=".DiaInsertar" />
         <activity android:name=".DiaActualizar" />

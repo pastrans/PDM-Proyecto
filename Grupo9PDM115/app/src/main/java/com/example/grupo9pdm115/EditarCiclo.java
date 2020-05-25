@@ -32,9 +32,8 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
         ciclo = new Ciclo();
         editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
         editFinCiclo = (EditText) findViewById(R.id.editFinCiclo);
-        estado = (RadioButton) findViewById(R.id.estadoRadiobutton);
         btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
-
+        estado = (RadioButton) findViewById(R.id.estadoRadiobutton);
         btnFinCiclo.setOnClickListener(this);
 
         // Verificando paso de datos por intent
@@ -45,8 +44,19 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
             editFinCiclo.setText(getIntent().getStringExtra("finciclo"));
             estado.setText(getIntent().getStringExtra("estadociclo"));
             ciclo.setInicioPeriodoClase(getIntent().getStringExtra("inicioclases"));
-            ciclo.setInicioPeriodoClase(getIntent().getStringExtra("finclases"));
+            ciclo.setFinPeriodoClase(getIntent().getStringExtra("finclases"));
         }
+    }
+    // Método para actualizar día
+    public void btnEditarECiclo(View v) {
+        String nombreCiclo = editNombreCiclo.getText().toString();
+        ciclo.setNombreCiclo(nombreCiclo);
+        String finCiclo = editFinCiclo.getText().toString();
+        ciclo.setFin(finCiclo);
+        Boolean est = Boolean.parseBoolean(estado.getText().toString());
+        ciclo.setEstadoCiclo(est);
+        String estado = ciclo.actualizar(this);
+        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -68,17 +78,6 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
         }
     }
 
-    // Método para actualizar día
-    public void btnEditarECiclo(View v) {
-        String nombreCiclo = editNombreCiclo.getText().toString();
-        ciclo.setNombreCiclo(nombreCiclo);
-        String finCiclo = editFinCiclo.getText().toString();
-        ciclo.setFin(finCiclo);
-        Boolean est = Boolean.parseBoolean(estado.getText().toString());
-        ciclo.setEstadoCiclo(est);
-        String estado = ciclo.actualizar(this);
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-    }
 
     // Método para regresar al activity anterior
     public void btnRegresarECiclo(View v) {

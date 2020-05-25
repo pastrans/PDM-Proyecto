@@ -84,11 +84,23 @@
             android:clickable="true"/>
     </TableRow>
 
-    <RadioButton
-        android:id="@+id/estadoRadioButton1"
-        android:layout_width="match_parent"
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/estadoRadioButton" />
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/estadoRadioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activo" />
+
+        <RadioButton
+            android:id="@+id/estadoRadioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inactivo" />
+    </RadioGroup>
     <TableRow>
 
         <Button

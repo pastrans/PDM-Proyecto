@@ -23,7 +23,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
     //Declarando
     ControlBD helper;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
-    RadioButton estadoRadioButton1;
+    RadioButton estadoRadioButton1, estadoRadioButton2;
     Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;
     private int diaic, mesic, anoic, diafc, mesfc, anofc, diaicl, mesicl, anoicl, diafcl, mesfcl, anofcl;
 
@@ -42,6 +42,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         btnInicioClases = (Button) findViewById(R.id.btnInicioClases);
         btnFinClases = (Button) findViewById(R.id.btnFinClases);
         estadoRadioButton1 = (RadioButton) findViewById(R.id.estadoRadioButton1);
+        estadoRadioButton2 = (RadioButton) findViewById(R.id.estadoRadioButton2);
 
         btnInicioCiclo.setOnClickListener(this);
         btnFinCiclo.setOnClickListener(this);
@@ -110,10 +111,20 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
 
     //Metodo para insertar ciclo
     public void btnAgregarNCiclo(View v){
+        //Verificando Radio Button
+        if (estadoRadioButton1.isChecked()){
+            final String text = "Activo";
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+
+        }else if(estadoRadioButton2.isChecked()){
+            final String text = "Inactivo";
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        }
         //Obteniendo valores elementos
         String nombreCiclo = editNombreCiclo.getText().toString();
         String inicioCiclo = editInicioCiclo.getText().toString();
         String finCiclo = editFinCiclo.getText().toString();
+        Boolean estado = Boolean.parseBoolean(estadoRadioButton1.getText().toString());
         String inicioClases = editInicioClases.getText().toString();
         String finClases = editFinClases.getText().toString();
         //Instanciando ciclo para guardar
@@ -121,6 +132,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         ciclo.setNombreCiclo(nombreCiclo);
         ciclo.setInicio(inicioCiclo);
         ciclo.setFin(finCiclo);
+        ciclo.setEstadoCiclo(estado);
         ciclo.setInicioPeriodoClase(inicioClases);
         ciclo.setFinPeriodoClase(finClases);
         String regInsertados = ciclo.guardar(this);

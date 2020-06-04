@@ -55,7 +55,7 @@
         <activity android:name=".EditarCiclo" />
         <activity android:name=".NuevoCiclo" />
         <activity android:name=".GestionarCiclo" />
-        <activity android:name=".iniciarSesion" />
+        <activity android:name=".IniciarSesion" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

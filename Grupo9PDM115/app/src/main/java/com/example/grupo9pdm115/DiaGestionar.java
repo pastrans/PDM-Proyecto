@@ -17,6 +17,8 @@ import com.example.grupo9pdm115.Modelos.Dia;
 import java.util.List;
 
 public class DiaGestionar extends Activity {
+    // public static final int ACTIVITY_GESTIONAR_DIA = 1;
+
     // Declarando atributos para manejo del ListView
     ListView listaDias;
     DiaAdapter listaDiasAdapter;
@@ -24,6 +26,15 @@ public class DiaGestionar extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario
+
+        if(true){ // !usuario.tieneAcceso(ACTIVITY_GESTIONAR_DIA)
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_dia);
 

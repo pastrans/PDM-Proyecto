@@ -341,6 +341,10 @@
     <string name="btnLimpiarEHorario">Limpiar</string>
     <string name="btnRegresarEHorario">Regresar</string>
 
+    // Error de usuario
+    <string name="titErrorUsuario">Ajá prro</string>
+    <string name="txtErrorUsuario">Creiste que podrías con mi app pero no baby hacker, presiona el botón para tener otra oportunidad de ingresar... soy un dios misericordioso</string>
+    <string name="btnIrALogin">Ir a inicio de sesión</string>
 
 
 </resources>

@@ -17,7 +17,6 @@ import com.example.grupo9pdm115.Modelos.Dia;
 import java.util.List;
 
 public class DiaGestionar extends Activity {
-    // public static final int ACTIVITY_GESTIONAR_DIA = 1;
 
     // Declarando atributos para manejo del ListView
     ListView listaDias;

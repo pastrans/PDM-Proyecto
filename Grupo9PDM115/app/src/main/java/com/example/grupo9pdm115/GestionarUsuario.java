@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.UsuarioAdapter;
 import com.example.grupo9pdm115.Modelos.AccesoUsuario;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 
 import java.util.List;
+import java.util.Set;
 
 public class GestionarUsuario extends AppCompatActivity {
 
@@ -52,6 +55,21 @@ public class GestionarUsuario extends AppCompatActivity {
     public void btnNuevoGUsuario(View v){
         Intent inte = new Intent(this, NuevoUsuario.class);
         startActivity(inte);
+    }
+
+    public void prueba(View v){
+        if(Sesion.getLoggedIn(getApplicationContext())){
+            Set<String> accesoUsuario = Sesion.getAllAccesoUsuario(getApplicationContext());
+            String accesos = "Los accesos son: \n";
+            //Toast.makeText(this, "HOLAAA", Toast.LENGTH_SHORT).show();
+            for (String acceso : accesoUsuario){
+                acceso += "Acceso a : " + acceso +"\n";
+            }
+            Log.i("ACCESOS", accesos);
+            Toast.makeText(this, accesos, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "No se ha iniciado sesión", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

@@ -79,7 +79,7 @@ public class Sesion {
         helper = new ControlBD(context);
         Cursor cursor;
         helper.abrir();
-        String sql = "SELECT idUsuario FROM usuario WHERE nombreusuario='" + usuario.getNombreUsuario() + "' AND claveusuario='" + usuario.getClaveUsuario() +"'";
+        String sql = "SELECT idusuario FROM usuario WHERE nombreusuario='" + usuario.getNombreUsuario() + "' AND claveusuario='" + usuario.getClaveUsuario() +"'";
         String idUsuario = "";
         cursor = helper.consultar(sql);
         while (cursor.moveToNext()){

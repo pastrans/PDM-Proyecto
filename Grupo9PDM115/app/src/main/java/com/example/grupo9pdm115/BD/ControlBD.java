@@ -51,29 +51,20 @@ public class ControlBD {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            String cadena = "";
             try {
                 // Ejecutar script para crear bd
                 InputStream is = contextDBH.getResources().getAssets().open("crear_bd.sql");
 
                 String[] instrucciones = FileHelper.parseSqlFile(is);
-                cadena = instrucciones[6];
-                // db.execSQL(cadena);
                 db.beginTransaction();
                 try {
                     for (String instruccion : instrucciones) {
                         db.execSQL(instruccion);
-
                     }
-                    /*
-                    for (int i = 0; i < instrucciones.length; i++) {
-                        db.execSQL(instrucciones[i]);
-                    }*/
                     db.setTransactionSuccessful();
                 } finally {
                     db.endTransaction();
                 }
-
                 // Llamando método para llenar bd
                 llenarBD(db);
 
@@ -86,6 +77,7 @@ public class ControlBD {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             // TODO Auto-generated method stub
+            onCreate(db);
         }
 
         public void llenarBD(SQLiteDatabase db){

@@ -2,6 +2,7 @@ package com.example.grupo9pdm115;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
@@ -24,6 +26,14 @@ public class NuevoUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_usuario);
+
+        if(!Sesion.getAccesoUsuario(getApplicationContext(), "IUS")){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+            startActivity(intent);
+            finish();
+        }
+
         helper = new ControlBD(this);
         nombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
         claveUsuario = (EditText) findViewById(R.id.editClaveUsuario);

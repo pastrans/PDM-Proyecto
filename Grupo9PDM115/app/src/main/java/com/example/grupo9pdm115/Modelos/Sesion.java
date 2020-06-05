@@ -22,6 +22,16 @@ public class Sesion {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public static void setNombreUsuario(Context context, String nombreUsuario){
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putString("nombre_usuario", nombreUsuario);
+        editor.apply();
+    }
+
+    public static String getNombreUsuario(Context context){
+        return getPreferences(context).getString("nombre_usuario", "No existe");
+    }
+
     public static void setLooggedIn(Context context, boolean loggedIn){
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putBoolean(LOGGED_IN_PREF, loggedIn);
@@ -82,7 +92,7 @@ public class Sesion {
             opcionesAcceso.add(cursor.getString(0));
         }
         helper.cerrar();
-        setAccesoUsuario(context, opcionesAcceso);
+        Sesion.setAccesoUsuario(context, opcionesAcceso);
     }
 
 }

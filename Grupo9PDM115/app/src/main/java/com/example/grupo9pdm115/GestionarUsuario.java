@@ -63,7 +63,7 @@ public class GestionarUsuario extends AppCompatActivity {
             String accesos = "Los accesos son: \n";
             //Toast.makeText(this, "HOLAAA", Toast.LENGTH_SHORT).show();
             for (String acceso : accesoUsuario){
-                acceso += "Acceso a : " + acceso +"\n";
+                accesos += "Acceso a : " + acceso +"\n";
             }
             Log.i("ACCESOS", accesos);
             Toast.makeText(this, accesos, Toast.LENGTH_SHORT).show();

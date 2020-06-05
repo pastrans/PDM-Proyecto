@@ -10,8 +10,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -27,12 +27,11 @@
         android:id="@+id/txtNombreUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:autofillHints="ignore"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        android:layout_margin="15dp"
-        />
+        android:selectAllOnFocus="true" />
 
     <EditText
         android:id="@+id/txtClaveUsuario"
@@ -46,20 +45,80 @@
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        />
+        android:selectAllOnFocus="true" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_margin="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
-        android:text="@string/action_sign_in"
         android:onClick="ingresar"
-        />
+        android:text="@string/action_sign_in" />
 
+    <!--
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="117dp"
+                    android:layout_height="198dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="15dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/logoues" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/txtNombreUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:autofillHints="ignore"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:id="@+id/txtClaveUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints="ignore"
+
+                android:hint="@string/prompt_password"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true" />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
+                android:onClick="ingresar"
+                android:text="@string/action_sign_in" />
+
+
+        </LinearLayout>
+    </ScrollView> -->
 
 
 </LinearLayout>

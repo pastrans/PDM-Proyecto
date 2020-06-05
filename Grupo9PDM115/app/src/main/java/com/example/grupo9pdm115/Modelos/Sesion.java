@@ -61,6 +61,20 @@ public class Sesion {
         return false;
     }
 
+    public void setPermisosUsuario(Usuario user, Context context){
+        helper = new ControlBD(context);
+        Cursor cursor;
+        helper.abrir();
+        String sql = "SELECT idopcion FROM accesousuario, USUARIO WHERE usuario.NOMBREUSUARIO='" + user.getNombreUsuario() + "' and USUARIO.IDUSUARIO = ACCESOUSUARIO.IDUSUARIO";
+        Set<String> opcionesAcceso = new HashSet<String>();
+        cursor = helper.consultar(sql);
+        while (cursor.moveToNext()){
+            opcionesAcceso.add(cursor.getString(0));
+        }
+        helper.cerrar();
+        Sesion.setAccesoUsuario(context, opcionesAcceso);
+    }
+
     public boolean iniciarSesion(Usuario usuario, Context context){
         helper = new ControlBD(context);
         Cursor cursor;
@@ -81,18 +95,5 @@ public class Sesion {
             return false;
     }
 
-    public void setPermisosUsuario(Usuario user, Context context){
-        helper = new ControlBD(context);
-        Cursor cursor;
-        helper.abrir();
-        String sql = "SELECT idopcion FROM accesousuario, USUARIO WHERE usuario.NOMBREUSUARIO='" + user.getNombreUsuario() + "' and USUARIO.IDUSUARIO = ACCESOUSUARIO.IDUSUARIO";
-        Set<String> opcionesAcceso = new HashSet<String>();
-        cursor = helper.consultar(sql);
-        while (cursor.moveToNext()){
-            opcionesAcceso.add(cursor.getString(0));
-        }
-        helper.cerrar();
-        Sesion.setAccesoUsuario(context, opcionesAcceso);
-    }
 
 }

@@ -27,6 +27,12 @@ public class IniciarSesion extends AppCompatActivity {
         helper = new ControlBD(this);
         nombreUsuario = (EditText) findViewById(R.id.txtNombreUsuario);
         claveUsuario = (EditText) findViewById(R.id.txtClaveUsuario);
+        if (Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void ingresar(View v){
@@ -40,6 +46,7 @@ public class IniciarSesion extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
+            finish();
         }
         else
             Toast.makeText(this, "El usuario no existe o la contraseña es incorrecta", Toast.LENGTH_SHORT).show();

@@ -57,7 +57,7 @@ public class GestionarUsuario extends AppCompatActivity {
         startActivity(inte);
     }
 
-    public void prueba(View v){
+    /*public void prueba(View v){
         if(Sesion.getLoggedIn(getApplicationContext())){
             Set<String> accesoUsuario = Sesion.getAllAccesoUsuario(getApplicationContext());
             String accesos = "Los accesos son: \n";
@@ -70,7 +70,7 @@ public class GestionarUsuario extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No se ha iniciado sesión", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

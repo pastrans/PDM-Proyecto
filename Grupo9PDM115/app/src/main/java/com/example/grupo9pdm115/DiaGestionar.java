@@ -27,13 +27,13 @@ public class DiaGestionar extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Validando usuario
-
+/*
         if(true){ // !usuario.tieneAcceso(ACTIVITY_GESTIONAR_DIA)
             Intent intent = new Intent(this, ErrorDeUsuario.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
             finish();
-        }
+        }*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_dia);
@@ -52,7 +52,6 @@ public class DiaGestionar extends Activity {
     public void llenarListaDia(){
         dia = new Dia();
         List objects = dia.getAll(this);
-
         // Inicializar el adaptador con la información a mostrar
         listaDiasAdapter = new DiaAdapter(this, objects);
 

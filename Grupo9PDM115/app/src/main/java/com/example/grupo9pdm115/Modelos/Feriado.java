@@ -125,6 +125,7 @@ public class Feriado {
         return listaCiclo;
     }
 
+    /*
     public void insertarCiclo(Context context){
         helper = new ControlBD(context);
         ContentValues ciclo1 = new ContentValues();
@@ -146,5 +147,7 @@ public class Feriado {
         helper.getDb().insert("ciclo", null, ciclo2);
         helper.cerrar();
     }
+    *(
+     */
 
 }

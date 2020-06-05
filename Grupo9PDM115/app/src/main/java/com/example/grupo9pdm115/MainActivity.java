@@ -78,11 +78,14 @@ public class MainActivity extends ListActivity  {
             }catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
-        } else {
+        }
+        else {
+            /*
             // CODIGO PARA LLENAR BASE DE DATOS
             BDhelper.abrir();
             String tost=BDhelper.llenarBD(this);
-            BDhelper.cerrar();
+            BDhelper.cerrar();*/
+            String tost = "No hago nada lol";
             Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
         }
     }

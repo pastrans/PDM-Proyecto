@@ -34,7 +34,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
         encargadoSpinner = (Spinner) findViewById(R.id.encargadoSpinner);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
-        llenarEncargados();
+        //llenarEncargados();
         Toast.makeText(this, "Datos de prueba cargados", Toast.LENGTH_SHORT).show();
     }
 
@@ -50,7 +50,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
-    private void llenarEncargados(){
+    /*private void llenarEncargados(){
         List<Encargado> encargados = encargadoClass.getEncargados(this);
         ArrayAdapter<Encargado> dataAdapter = new ArrayAdapter<Encargado>(this, android.R.layout.simple_spinner_item, encargados);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,7 +67,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
 
 }

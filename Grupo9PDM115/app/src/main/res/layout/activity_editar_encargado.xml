@@ -17,7 +17,7 @@
         android:textSize="30sp" />
     <TableRow>
 
-        <TextView android:text="@string/txtEncargadoE" />
+        <TextView android:text="@string/txtIdUsuarioE" />
         <Spinner
             android:id="@+id/EncargadoESpinner"
             android:layout_width="fill_parent"

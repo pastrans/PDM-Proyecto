@@ -17,28 +17,39 @@ import com.example.grupo9pdm115.Modelos.Unidad;
 
 import java.util.Calendar;
 
-public class NuevoHorario extends Activity {
+public class NuevoHorario extends Activity implements View.OnClickListener{
+    ControlBD helper;
     Button btnHoraInicio,btnHoraFinal;
     EditText editHInicio,editHFinal;
-    int Hinicio, Hfinal,Minicio, Mfinal;
-
-
-
+    private int Hinicio, Hfinal,Minicio, Mfinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_horario);
+        helper = new ControlBD(this);
         btnHoraInicio = (Button) findViewById(R.id.btnHInicio);
         btnHoraFinal = (Button) findViewById(R.id.btnHFinal);
         editHInicio = (EditText) findViewById(R.id.editHoraInicio);
         editHFinal = (EditText) findViewById(R.id.editHoraFinal);
+        btnHoraInicio.setOnClickListener(this);
+        btnHoraFinal.setOnClickListener(this);
 
     }
+    public void agregarHorario(View v){
+        Horario horario = new Horario();
+        horario.setHoraInicio(editHInicio.getText().toString());
+        horario.setHoraFinal(editHFinal.getText().toString());
+        String regInsertados = horario.guardar(this);
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+    }
+    // Método para regresar al activity anterior
+    public void regresar(View v){
+        super.onBackPressed();
+    }
 
-    public void setOnClickListener(View v){
-        this.setOnClickListener(btnHoraInicio);
-        this.setOnClickListener(btnHoraFinal);
+    @Override
+    public void onClick(View v) {
         if (v==btnHoraInicio){
             final Calendar c = Calendar.getInstance();
             Hinicio=c.get(Calendar.HOUR_OF_DAY);
@@ -67,18 +78,5 @@ public class NuevoHorario extends Activity {
         }
     }
 
-    public void agregarHorario(View v){
-        //this.setOnClickListener(btnHoraFinal);
-        //this.setOnClickListener(btnHoraInicio);
-        Horario horario1 = new Horario();
-        Horario horario2 = new Horario();
-        horario1.setHoraInicio(editHInicio.getText().toString());
-        horario2.setHoraFinal(editHFinal.getText().toString());
-        horario1.guardar(this);
-        horario2.guardar(this);
-    }
-    // Método para regresar al activity anterior
-    public void regresar(View v){
-        super.onBackPressed();
-    }
+
 }

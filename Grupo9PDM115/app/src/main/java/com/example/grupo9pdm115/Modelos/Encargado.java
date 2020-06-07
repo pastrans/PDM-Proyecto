@@ -4,22 +4,25 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.BD.TablaBD;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Encargado {
+public class Encargado extends TablaBD {
 
     private int idEncargado;
-    private Usuario usuario;
-    private ControlBD helper;
+    private String idUsuario;
 
-    public Encargado() {
+    public Encargado(){
+        setNombreTabla("encargado");
+        setNombreLlavePrimaria("idencargado");
+        setCamposTabla(new String[]{"idencargado","idusuario"});
     }
 
-    public Encargado(int idEncargado, Usuario usuario) {
+    public Encargado(int idEncargado, String idUsuario) {
         this.idEncargado = idEncargado;
-        this.usuario = usuario;
+        this.idUsuario = idUsuario;
     }
 
     public int getIdEncargado() {
@@ -30,20 +33,39 @@ public class Encargado {
         this.idEncargado = idEncargado;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
-    public String toString(){
-        return this.usuario.getNombrePersonal() + " " +this.usuario.getApellidoPersonal();
+    public String getValorLlavePrimaria() {
+        return Integer.toString(this.getIdEncargado());
+    }
+    @Override
+    public void setValoresCamposTabla() {
+        this.valoresCamposTabla.put("idEncargado",getIdEncargado());
+        this.valoresCamposTabla.put("idUsuario", getIdUsuario());
+    }
+    @Override
+    public void setAttributesFromArray(String[] arreglo) {
+        setIdEncargado(Integer.parseInt(arreglo[0]));
+        setIdUsuario(arreglo[1]);
+    }
+    @Override
+    public Encargado getInstanceOfModel(String[] arreglo) {
+        Encargado encargado = new Encargado();
+        encargado.setAttributesFromArray(arreglo);
+        return encargado;
     }
 
-    public List<Encargado> getEncargados(Context context){
+
+
+
+    /*public List<Encargado> getEncargados(Context context){
         helper = new ControlBD(context);
         List<Encargado> encargados = new ArrayList<Encargado>();
         helper.abrir();
@@ -63,6 +85,6 @@ public class Encargado {
         }
         helper.cerrar();
         return encargados;
-    }
+    }*/
 
 }

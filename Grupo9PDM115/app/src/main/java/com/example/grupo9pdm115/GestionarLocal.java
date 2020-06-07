@@ -14,7 +14,7 @@ public class GestionarLocal extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_local);
     }
 
-    public void nuevoLocal(View v){
+    public void btnNuevoGLocal(View v){
         Intent inte = new Intent(this, NuevoLocal.class);
         startActivity(inte);
     }

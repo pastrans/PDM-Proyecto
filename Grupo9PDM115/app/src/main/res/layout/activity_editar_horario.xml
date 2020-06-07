@@ -37,13 +37,13 @@
     </TableRow>
 
     <Button
-        android:onClick="agregarHorario"
-        android:text="@string/btnAgregarNHorario"
-        tools:ignore="OnClick" />
+        android:onClick="actualizarH"
+        android:text="@string/btnEditarGHorario"
+         />
 
     <Button
         android:onClick="regresar"
         android:text="@string/btnCancelarEFeriado"
-        tools:ignore="OnClick" />
+         />
 
 </TableLayout>

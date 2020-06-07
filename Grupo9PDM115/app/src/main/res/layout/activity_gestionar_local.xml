@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
+    android:padding="15dp"
     tools:context=".GestionarLocal">
 
     <TextView
@@ -16,35 +17,28 @@
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
-    <TableRow>
-
-        <TextView android:text="@string/txtNombreLocal" />
-        <EditText
-            android:id="@+id/editNombreLocal"
-            android:inputType="text"
-            android:maxLength="25" />
-    </TableRow>
-
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:onClick="btnNuevoGLocal"
         android:text="@string/btnNuevoGLocal"
-        tools:ignore="OnClick" />
+        tools:ignore="OnClick"/>
+    <TextView
+        android:paddingTop="15dp"
+        android:text="@string/idListadoLocales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
-    <Button
-        android:onClick="btnEditarGLocal"
-        android:text="@string/btnEditarGLocal"
-        tools:ignore="OnClick" />
+    <ListView
+        android:paddingTop="15dp"
+        android:id="@+id/idListadoLocales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"
+        />
 
-    <Button
-        android:onClick="btnEliminarGLocal"
-        android:text="@string/btnEliminarGLocal"
-        tools:ignore="OnClick" />
 
-    <Button
-        android:onClick="btnRegresarGLocal"
-        android:text="@string/btnRegresarGLocal"
-        tools:ignore="OnClick" />
 
 </TableLayout>

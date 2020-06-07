@@ -127,6 +127,7 @@
     <string name="txtEncargado">Encargado</string>
     //Gestionar Tipo Local
     <string name="titGestionarTipoLocal">Gestionar Tipo Local</string>
+    <string name="idListadoTiposLocales">Listado de tipos de local:</string>
     <string name="btnNuevoGTipoLocal">Nuevo</string>
     <string name="btnEditarGTipoLocal">Editar</string>
     <string name="btnEliminarGTipoLocal">Eliminar</string>
@@ -149,6 +150,7 @@
     <string name="txtTipoLocal">Tipo local</string>
     //Gestionar Local
     <string name="titGestionarLocal">Gestionar Local</string>
+    <string name="idListadoLocales">Listado de locales</string>
     <string name="btnNuevoGLocal">Nuevo</string>
     <string name="btnEditarGLocal">Editar</string>
     <string name="btnEliminarGLocal">Eliminar</string>
@@ -268,14 +270,17 @@
     //Variables Encargado
     //Etiquetas
     <string name="txtEncargadoE">Encargado:</string>
+    <string name="txtIdUsuarioE">Id Usuario:</string>
     //Gestionar Encargado
     <string name="titGestionarEncargado">Gestionar Encargado</string>
+    <string name="txtListaEncargados">Listado de encargados:</string>
     <string name="btnNuevoGEncargado">Nuevo</string>
     <string name="btnEditarGEncargado">Editar</string>
     <string name="btnEliminarGEncargado">Eliminar</string>
     <string name="btnRegresarGEncargado">Regresar</string>
     //Nuevo Encargado
     <string name="titNuevoEncargado">Nuevo Encargado</string>
+    <string name="txtIdUsuariooE">Id Usuario:</string>
     <string name="btnAgregarNEncargado">Agregar</string>
     <string name="btnRegresarNEncargado">Regresar</string>
     <string name="btnLimpiarNEncargado">Limpiar</string>

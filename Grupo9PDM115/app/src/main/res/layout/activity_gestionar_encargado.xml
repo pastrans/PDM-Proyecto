@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".GestionarEncargado">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,36 +17,23 @@
         android:text="@string/titGestionarEncargado"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-
-    <TableRow>
-
-        <TextView android:text="@string/txtEncargadoE" />
-        <EditText
-            android:id="@+id/editEncargadoE"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
-
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:onClick="btnNuevoGEncargado"
         android:text="@string/btnNuevoGEncargado"
-        tools:ignore="OnClick"/>
-
-    <Button
-        android:onClick="btnEditarGEncargado"
-        android:text="@string/btnEditarGEncargado"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEliminarGEncargado"
-        android:text="@string/btnEliminarGEncargado"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGEncargado"
-        android:text="@string/btnRegresarGEncargado"
-        tools:ignore="OnClick" />
+        />
+    <!-- Lista unidad -->
+    <TextView
+        android:text="@string/txtListaEncargados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+    <ListView
+        android:id="@+id/listEncargado"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
 
 </TableLayout>

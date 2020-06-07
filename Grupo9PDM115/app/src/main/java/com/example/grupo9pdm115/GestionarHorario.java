@@ -26,6 +26,7 @@ public class GestionarHorario extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_horario);
+        //Toast.makeText(getApplicationContext(), "mostrar", Toast.LENGTH_SHORT).show();
         // Inicializar elementos a manejar
         listHorario = (ListView) findViewById(R.id.listHorario);
 
@@ -34,16 +35,13 @@ public class GestionarHorario extends Activity {
 
         // Asociamos el menú contextual al listview
         registerForContextMenu(listHorario);
+
     }
     // Método para llenar lista de unidad
     public void llenarListaHorario(){
         horario = new Horario();
         List objects = horario.getAll(this);
-
-        // Inicializar el adaptador con la información a mostrar
         listaHorarioAdapter = new HorarioAdapter(this, objects);
-
-        // Relacionando la lista con el adaptador y llenándola
         listHorario.setAdapter(listaHorarioAdapter);
     }
     // Método para agregar una unidad
@@ -67,7 +65,7 @@ public class GestionarHorario extends Activity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
 
         // Modificable
-        menu.setHeaderTitle(listaHorarioAdapter.getItem(info.position).getIdHora());
+        menu.setHeaderTitle(listaHorarioAdapter.getItem(info.position).getHoraInicio());
 
         MenuInflater inflater = getMenuInflater();
         // Modificable

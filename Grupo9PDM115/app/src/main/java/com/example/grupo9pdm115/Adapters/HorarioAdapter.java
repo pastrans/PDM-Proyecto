@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.grupo9pdm115.Modelos.Horario;
-import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class HorarioAdapter extends ArrayAdapter<Horario> {
         TextView txtHoraInicio = (TextView) convertView.findViewById(R.id.txtHoraInicio);
         TextView txtHoraFin = (TextView) convertView.findViewById(R.id.txtHoraFin);
         Horario hora = getItem(position);
-        txtIdHorario.setText(hora.getIdHora());
+        txtIdHorario.setText(Integer.toString(hora.getIdHora()));
         txtHoraInicio.setText(hora.getHoraInicio());
         txtHoraFin.setText(hora.getHoraFinal());
         return  convertView;

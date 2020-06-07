@@ -3,13 +3,17 @@
     package="com.example.grupo9pdm115">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:fullBackupOnly="false"
+
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NuevoHorario"></activity>
+
+        <activity android:name=".ErrorDeUsuario"></activity>
+        <activity android:name=".NuevoHorario" />
         <activity android:name=".EditarHorario" />
         <activity android:name=".GestionarHorario" />
         <activity android:name=".AccesoUsuarioNuevo" />
@@ -54,14 +58,14 @@
         <activity android:name=".EditarCiclo" />
         <activity android:name=".NuevoCiclo" />
         <activity android:name=".GestionarCiclo" />
-        <activity android:name=".iniciarSesion" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".IniciarSesion" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

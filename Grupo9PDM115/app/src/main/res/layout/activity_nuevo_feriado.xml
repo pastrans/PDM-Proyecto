@@ -1,77 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".NuevoFeriado">
+    tools:context=".NuevoFeriado"
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/titNuevoFeriado"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <TableRow>
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/txtNombre" />
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/editNombreFeriado"
             android:inputType="text"
             android:maxLength="30"/>
-    </TableRow>
 
-    <TableRow>
+
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/txtDescripcion" />
         <EditText
+            android:layout_width="match_parent"
             android:id="@+id/editDescripcionFeriado"
             android:layout_height="100dp"
             android:inputType="text"
             android:maxLength="30"/>
-    </TableRow>
 
-    <TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnInicioFeriado"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Fecha inicio"
+            />
+        <EditText
+            android:layout_weight="1"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/editInicioFeriado"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnFinFeriado"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Fecha finalizacion"
+            />
+
+        <EditText
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/editFinFeriado"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
         <TextView
-            android:text="@string/txtFechaInicio" />
-        <DatePicker
-            android:id="@+id/inicioFeriadoDatePicker"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:text="@string/txtFechaFinalizacion" />
-        <DatePicker
-            android:id="@+id/finalizacionFeriadoDatePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
-    </TableRow>
-
-    <TableRow>
-        <TextView
+            android:layout_height="wrap_content"
             android:text="@string/txtCiclo"/>
         <Spinner
             android:id="@+id/spinnerCicloFeriadoNuevo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
-    </TableRow>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnAgregarNFeriado"
+            android:text="@string/btnAgregarNFeriado" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnLimpiarTextoNFeriado"
+            android:text="@string/btnLimpiarTextoNFeriado" />
+    </LinearLayout>
+
+
 
     <Button
-        android:onClick="btnAgregarNFeriado"
-        android:text="@string/btnAgregarNFeriado"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnCancelarNFeriado"
-        android:text="@string/btnCancelarNFeriado"
-        tools:ignore="OnClick" />
-</TableLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnRegresarNFeriado"
+        android:text="@string/btnRegresarNFeriado" />
+</LinearLayout>

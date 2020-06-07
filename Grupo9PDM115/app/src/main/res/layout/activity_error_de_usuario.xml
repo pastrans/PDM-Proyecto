@@ -10,31 +10,26 @@
 
     <!-- Título -->
     <TextView
-        android:text="@string/titGestionarFeriado"
+        android:text="@string/titErrorUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Botón nuevo -->
-    <Button
-        android:id="@+id/btnNuevoFeriado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnNuevoFeriado"
-        android:text="@string/btnNuevoGFeriado" />
-
-    <!-- Lista días -->
+    <!-- Texto de error -->
     <TextView
-        android:text="@string/txtListaFeriado"
+        android:text="@string/txtErrorUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
 
-    <ListView
-        android:id="@+id/listaFeriados"
+    <!-- Botón ir a inicio de sesión -->
+    <Button
+        android:id="@+id/btnIrALogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null" />
+        android:layout_height="wrap_content"
+        android:text="@string/btnIrALogin"
+        android:onClick="irALogin"/>
+
 </LinearLayout>

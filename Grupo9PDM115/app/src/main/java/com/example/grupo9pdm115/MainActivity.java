@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.Modelos.Sesion;
 
 import java.util.Calendar;
 
@@ -23,8 +24,10 @@ public class MainActivity extends ListActivity  {
     Calendar mCurrentDate;
     int day, month, year;*/
     ControlBD BDhelper;
+
     String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario","Encargado"};
     String[] activities = {"Llenar BD", "GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo","GestionarCicloMateria", "DiaGestionar", "GestionarUsuario","GestionarHorario","GestionarEncargado"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +81,22 @@ public class MainActivity extends ListActivity  {
             }catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
-        } else {
+        }
+        else {
+            /*
             // CODIGO PARA LLENAR BASE DE DATOS
             BDhelper.abrir();
             String tost=BDhelper.llenarBD(this);
-            BDhelper.cerrar();
+            BDhelper.cerrar();*/
+            Sesion.setLooggedIn(getApplicationContext(), false);
+            Sesion.setNombreUsuario(getApplicationContext(), "");
+            Sesion.setAccesoUsuario(getApplicationContext(), null);
+            Intent intent = new Intent(this, IniciarSesion.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+            startActivity(intent);
+            String tost = "No hago nada lol";
             Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

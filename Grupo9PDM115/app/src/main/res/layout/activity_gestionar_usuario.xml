@@ -22,8 +22,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:onClick="btnNuevoGUsuario"
-        android:text="@string/btnNuevoGUsuario"
-        tools:ignore="OnClick"/>
+        android:text="@string/btnNuevoGUsuario"/>
+
     <!--tools:ignore="OnClick" /-->
 
     <TextView

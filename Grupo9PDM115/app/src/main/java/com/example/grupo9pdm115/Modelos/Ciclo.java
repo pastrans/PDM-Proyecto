@@ -62,7 +62,7 @@ public class Ciclo extends TablaBD {
         this.nombreCiclo = nombreCiclo;
     }
     //EstadoCiclo
-    public boolean getEstadoCiclo() {
+    public boolean isEstadoCiclo() {
         return estadoCiclo;
     }
     public void setEstadoCiclo(boolean estadoCiclo) {
@@ -93,7 +93,7 @@ public class Ciclo extends TablaBD {
         this.valoresCamposTabla.put("inicio", getInicio());
         this.valoresCamposTabla.put("fin" , getFin());
         this.valoresCamposTabla.put("nombreciclo" , getNombreCiclo());
-        this.valoresCamposTabla.put("estadociclo" , getEstadoCiclo());
+        this.valoresCamposTabla.put("estadociclo" , isEstadoCiclo());
         this.valoresCamposTabla.put("inicioperiodoclase" , getInicioPeriodoClase());
         this.valoresCamposTabla.put("finperiodoclase" , getFinPeriodoClase());
     }
@@ -122,7 +122,7 @@ public class Ciclo extends TablaBD {
         this.valoresCamposTabla.put("inicio", getInicio());
         this.valoresCamposTabla.put("fin", getFin());
         this.valoresCamposTabla.put("nombreciclo", getNombreCiclo());
-        this.valoresCamposTabla.put("estadociclo", getEstadoCiclo());
+        this.valoresCamposTabla.put("estadociclo", isEstadoCiclo());
         this.valoresCamposTabla.put("inicioperiodoclase", getInicioPeriodoClase());
         this.valoresCamposTabla.put("finperiodoclase", getFinPeriodoClase());
 
@@ -140,4 +140,10 @@ public class Ciclo extends TablaBD {
 
         return mensaje;
     }
+
+    @Override
+    public String toString(){
+        return this.getNombreCiclo();
+    }
+
 }

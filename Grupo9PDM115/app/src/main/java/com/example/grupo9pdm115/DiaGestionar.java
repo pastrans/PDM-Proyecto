@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.DiaAdapter;
 import com.example.grupo9pdm115.Modelos.Dia;
+import com.example.grupo9pdm115.Modelos.Sesion;
 
 import java.util.List;
 
 public class DiaGestionar extends Activity {
+
     // Declarando atributos para manejo del ListView
     ListView listaDias;
     DiaAdapter listaDiasAdapter;
@@ -24,6 +26,16 @@ public class DiaGestionar extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CDI"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_dia);
 
@@ -41,7 +53,6 @@ public class DiaGestionar extends Activity {
     public void llenarListaDia(){
         dia = new Dia();
         List objects = dia.getAll(this);
-
         // Inicializar el adaptador con la información a mostrar
         listaDiasAdapter = new DiaAdapter(this, objects);
 

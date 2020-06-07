@@ -60,7 +60,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    editInicioCiclo.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+                    editInicioCiclo.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth);
                 }
             },anoic,mesic,diaic);
             datePickerDialog.show();
@@ -74,7 +74,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth2) {
-                    editFinCiclo.setText(dayOfMonth2+"/"+(monthOfYear+1)+"/"+year);
+                    editFinCiclo.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth2);
                 }
             },anofc,mesfc,diafc);
             datePickerDialog.show();
@@ -88,7 +88,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth3) {
-                    editInicioClases.setText(dayOfMonth3+"/"+(monthOfYear+1)+"/"+year);
+                    editInicioClases.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth3);
                 }
             },anoicl,mesicl,diaicl);
             datePickerDialog.show();
@@ -102,7 +102,7 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth4) {
-                    editFinClases.setText(dayOfMonth4+"/"+(monthOfYear+1)+"/"+year);
+                    editFinClases.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth4);
                 }
             },anofcl,mesfcl,diafcl);
             datePickerDialog.show();

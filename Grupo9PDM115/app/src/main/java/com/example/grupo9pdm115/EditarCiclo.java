@@ -71,7 +71,7 @@ public class EditarCiclo extends Activity implements View.OnClickListener {
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    editFinCiclo.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                    editFinCiclo.setText( year+ "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                 }
             }, anofc, mesfc, diafc);
             datePickerDialog.show();

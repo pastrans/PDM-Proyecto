@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/txtNombreFeriado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="Nombre"
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="Semana del Estudiante" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtNombreFeriado"
+        android:layout_alignLeft="@id/txtNombreFeriado"
+        android:text="Descripcion"
+        tools:text="Semana del estudiante" />
+
+    <TextView
+        android:id="@+id/txtInicioFeriado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescripcion"
+        android:layout_alignLeft="@id/txtNombreFeriado"
+        android:text="Inicio Feriado"
+        tools:text="01/07/2020" />
+
+    <TextView
+        android:id="@+id/txtFinFeriado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtInicioFeriado"
+        android:layout_alignLeft="@id/txtNombreFeriado"
+        android:text="Fin Feriado"
+        tools:text="01/14/2020"/>
+
+
+</RelativeLayout>

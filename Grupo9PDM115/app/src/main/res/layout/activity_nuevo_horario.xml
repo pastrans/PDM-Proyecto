@@ -43,7 +43,7 @@
 
     <Button
         android:onClick="regresar"
-        android:text="@string/btnCancelarEFeriado"
+        android:text="@string/btnRegresarNHorario"
         tools:ignore="OnClick" />
 
 </TableLayout>

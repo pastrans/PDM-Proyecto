@@ -34,25 +34,37 @@
     </TableRow>
 
     <TableRow>
-        <TextView
-            android:text="@string/txtFechaInicio" />
-        <DatePicker
-            android:id="@+id/inicioFeriadoDatePicker"
+        <Button
+            android:id="@+id/btnInicioFeriado"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Fecha inicio"
+            />
+
+        <EditText
+            android:id="@+id/editInicioFeriado"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+
     </TableRow>
 
     <TableRow>
-        <TextView
-            android:text="@string/txtFechaFinalizacion" />
-        <DatePicker
-            android:id="@+id/finalizacionFeriadoDatePicker"
+
+        <Button
+            android:id="@+id/btnFinFeriado"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner" />
+            android:layout_height="wrap_content"
+            android:text="Fecha finalizacion"
+            />
+
+        <EditText
+            android:id="@+id/editFinFeriado"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
     </TableRow>
 
     <TableRow>
@@ -65,13 +77,19 @@
             />
     </TableRow>
 
-    <Button
-        android:onClick="btnAgregarNFeriado"
-        android:text="@string/btnAgregarNFeriado"
-        tools:ignore="OnClick" />
+
 
     <Button
-        android:onClick="btnCancelarNFeriado"
-        android:text="@string/btnCancelarNFeriado"
-        tools:ignore="OnClick" />
+        android:onClick="btnAgregarNFeriado"
+        android:text="@string/btnAgregarNFeriado" />
+
+    <Button
+        android:onClick="btnLimpiarTextoNFeriado"
+        android:text="@string/btnLimpiarTextoNFeriado" />
+
+
+
+    <Button
+        android:onClick="btnRegresarNFeriado"
+        android:text="@string/btnRegresarNFeriado" />
 </TableLayout>

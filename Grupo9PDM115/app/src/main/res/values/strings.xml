@@ -46,17 +46,20 @@
     <string name="editNombre">Nombre</string>
     <string name="btnConsultarGFeriado">Consultar</string>
     <string name="btnNuevoGFeriado">Nuevo</string>
-    <string name="btnEditarGFeriado">Editar</string>
-    <string name="btnEliminarGFeriado">Eliminar</string>
-    <string name="btnRegresarGFeriado">Regresar</string>
+    <string name="txtListaFeriado">Listado de feriados ingresados</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>
-    <string name="btnCancelarNFeriado">Cancelar</string>
+    <string name="btnRegresarNFeriado">Regresar</string>
+    <string name="btnLimpiarTextoNFeriado">Limpiar</string>
     //Editar Feriado
     <string name="titEditarFeriado">Editar Feriado</string>
     <string name="btnEditarEFeriado">Editar</string>
-    <string name="btnCancelarEFeriado">Cancelar</string>
+    <string name="btnLimpiarTextoEFeriado">Limpiar</string>
+    <string name="btnRegresarEFeriado">Regresar</string>
+    // Menú contextual lista ciclos
+    <string name="ctxListaFeriadosActualizar">Actualizar</string>
+    <string name="ctxListaFeriadosEliminar">Eliminar</string>
 
     //Variables Unidad
     //Etiquetas

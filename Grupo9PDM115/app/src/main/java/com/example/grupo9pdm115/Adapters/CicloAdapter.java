@@ -32,7 +32,7 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         TextView nombreCiclo = (TextView) convertView.findViewById(R.id.txtNombreCiclo);
         TextView inicio = (TextView) convertView.findViewById(R.id.txtInicio);
         TextView fin = (TextView) convertView.findViewById(R.id.txtFin);
-        //TextView estadoCiclo = (TextView) convertView.findViewById(R.id.txtEstadoCiclo);
+        TextView estadoCiclo = (TextView) convertView.findViewById(R.id.txtEstadoCiclo);
         TextView inicioPeriodoClase = (TextView) convertView.findViewById(R.id.txtInicioPeriodoClase);
         TextView finPeriodoClase = (TextView) convertView.findViewById(R.id.txtFinPeriodoClase);
 
@@ -43,7 +43,7 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         nombreCiclo.setText(ciclo.getNombreCiclo());
         inicio.setText(ciclo.getInicio());
         fin.setText(ciclo.getFin());
-        //estadoCiclo.setText(ciclo.getEstadoCiclo());
+        estadoCiclo.setText(Boolean.toString(ciclo.isEstadoCiclo()));
         inicioPeriodoClase.setText(ciclo.getInicioPeriodoClase());
         finPeriodoClase.setText(ciclo.getFinPeriodoClase());
 

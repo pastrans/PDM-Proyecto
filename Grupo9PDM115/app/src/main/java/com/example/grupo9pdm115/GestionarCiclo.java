@@ -1,7 +1,5 @@
 package com.example.grupo9pdm115;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -95,7 +93,7 @@ public class GestionarCiclo extends Activity {
                     intent.putExtra("nombreciclo", cicloActual.getNombreCiclo());
                     intent.putExtra("iniciociclo", cicloActual.getInicio());
                     intent.putExtra("finciclo", cicloActual.getFin());
-                    intent.putExtra("estadociclo", cicloActual.getEstadoCiclo());
+                    intent.putExtra("estadociclo", cicloActual.isEstadoCiclo());
                     intent.putExtra("inicioclases", cicloActual.getInicioPeriodoClase());
                     intent.putExtra("finclases", cicloActual.getFinPeriodoClase());
                     startActivity(intent);

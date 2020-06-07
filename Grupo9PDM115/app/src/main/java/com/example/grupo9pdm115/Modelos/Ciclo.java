@@ -140,4 +140,10 @@ public class Ciclo extends TablaBD {
 
         return mensaje;
     }
+
+    @Override
+    public String toString(){
+        return this.getNombreCiclo();
+    }
+
 }

@@ -66,6 +66,7 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
 
         String estado = feriado.actualizar(this);
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, feriado.getFechaInicioFeriado() + " - " + feriado.getFechaFinFeriado(), Toast.LENGTH_SHORT).show();
     }
     //Metodo para fechas
     @Override

@@ -99,7 +99,7 @@ public class Feriado extends TablaBD {
         this.valoresCamposTabla.put("fechainicioferiado", getFechaInicioFeriado());
         this.valoresCamposTabla.put("fechafinferiado",getFechaFinFeriado());
         this.valoresCamposTabla.put("nombreferiado", getNombreFeriado());
-        this.valoresCamposTabla.put("descripcion", getDescripcionFeriado());
+        this.valoresCamposTabla.put("descripcionferiado", getDescripcionFeriado());
         this.valoresCamposTabla.put("bloquearreservas", isBloquearReservas());
     }
 

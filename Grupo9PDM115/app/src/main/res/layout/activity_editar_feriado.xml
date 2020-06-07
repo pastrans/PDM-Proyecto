@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".EditarFeriado">
+    tools:context=".EditarFeriado"
+    android:padding="15dp">
 
     <TextView
         android:text="@string/titEditarFeriado"

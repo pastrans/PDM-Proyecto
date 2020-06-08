@@ -38,7 +38,7 @@ public class AccesoUsuarioNuevo extends AppCompatActivity {
         accesoUsuario = new AccesoUsuario();
         if(getIntent().getExtras() != null){
             txtUsuarioAcceso.setText(getIntent().getStringExtra("nombrePersonal"));
-            accesoUsuario.setIdUsuario(getIntent().getStringExtra("idUsuario"));
+            //accesoUsuario.setIdRol(getIntent().getStringExtra("idUsuario"));
             //Toast.makeText(this, accesoUsuario.getIdUsuario() + " " + txtUsuarioAcceso.getText().toString(), Toast.LENGTH_SHORT).show();
         }
         llenarListaOpcionCrud();
@@ -60,7 +60,7 @@ public class AccesoUsuarioNuevo extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, opciones);
         listViewOpcionCrud.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listViewOpcionCrud.setAdapter(adapter);
-        listaAccesoUsuario = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdUsuario());
+        listaAccesoUsuario = accesoUsuario.obtenerAccesoUsuario(this, Integer.valueOf(accesoUsuario.getIdRol()));
         if(listaAccesoUsuario.size() > 0){
             posiciones = new int[listaAccesoUsuario.size()];
             for (int i = 0; i < listViewOpcionCrud.getCount(); i++){

@@ -65,7 +65,7 @@ public class Sesion {
         helper = new ControlBD(context);
         Cursor cursor;
         helper.abrir();
-        String sql = "SELECT idopcion FROM accesousuario, USUARIO WHERE usuario.NOMBREUSUARIO='" + user.getNombreUsuario() + "' and USUARIO.IDUSUARIO = ACCESOUSUARIO.IDUSUARIO";
+        String sql = "SELECT idopcion FROM accesousuario, ROL WHERE rol.IDROL='" + user.getNombreUsuario() + "' and ROL.IDROL = ACCESOUSUARIO.IDROL";
         Set<String> opcionesAcceso = new HashSet<String>();
         cursor = helper.consultar(sql);
         while (cursor.moveToNext()){
@@ -79,15 +79,18 @@ public class Sesion {
         helper = new ControlBD(context);
         Cursor cursor;
         helper.abrir();
-        String sql = "SELECT idusuario FROM usuario WHERE nombreusuario='" + usuario.getNombreUsuario() + "' AND claveusuario='" + usuario.getClaveUsuario() +"'";
+        String sql = "SELECT idusuario, idrol FROM usuario WHERE nombreusuario='" + usuario.getNombreUsuario() + "' AND claveusuario='" + usuario.getClaveUsuario() +"'";
         String idUsuario = "";
+        int idRol = 0;
         cursor = helper.consultar(sql);
         while (cursor.moveToNext()){
             idUsuario = cursor.getString(0);
+            idRol = cursor.getInt(1);
         }
         helper.cerrar();
-        if(!idUsuario.isEmpty()) {
+        if(!idUsuario.isEmpty() && idRol > 0) {
             usuario.setIdUsuario(idUsuario);
+            usuario.setIdRol(idRol);
             setPermisosUsuario(usuario, context);
             return true;
         }

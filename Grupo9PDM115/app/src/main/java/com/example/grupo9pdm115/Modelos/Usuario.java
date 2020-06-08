@@ -17,11 +17,12 @@ public class Usuario extends TablaBD {
     private String apellidoPersonal;
     private String correoPersonal;
     private int idUnidad;
+    private int idRol;
 
     public Usuario() {
         setNombreTabla("usuario");
         setNombreLlavePrimaria("idUsuario");
-        setCamposTabla(new String[]{"idUsuario", "claveUsuario", "nombreUsuario", "nombrePersonal", "apellidoPersonal", "correoPersonal", "idUnidad"});
+        setCamposTabla(new String[]{"idUsuario", "claveUsuario", "nombreUsuario", "nombrePersonal", "apellidoPersonal", "correoPersonal", "idUnidad", "idRol"});
     }
 
     public Usuario(String nombreUsuario, String claveUsuario, String nombrePersonal, String apellidoPersonal, String correoPersonal) {
@@ -89,6 +90,14 @@ public class Usuario extends TablaBD {
         this.idUnidad = idUnidad;
     }
 
+    public int getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
+    }
+
     @Override
     public String getValorLlavePrimaria() {
         return this.getIdUsuario();
@@ -103,6 +112,7 @@ public class Usuario extends TablaBD {
         this.valoresCamposTabla.put("apellidoPersonal", getApellidoPersonal());
         this.valoresCamposTabla.put("correoPersonal", getCorreoPersonal());
         this.valoresCamposTabla.put("idUnidad", getIdUnidad());
+        this.valoresCamposTabla.put("idRol", getIdRol());
     }
 
     @Override
@@ -114,6 +124,7 @@ public class Usuario extends TablaBD {
         setApellidoPersonal(arreglo[4]);
         setCorreoPersonal(arreglo[5]);
         setIdUnidad(Integer.parseInt(arreglo[6]));
+        setIdRol(Integer.parseInt(arreglo[7]));
     }
 
     @Override

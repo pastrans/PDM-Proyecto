@@ -5,14 +5,14 @@
     <application
         android:allowBackup="false"
         android:fullBackupOnly="false"
-
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ErrorDeUsuario"></activity>
+        <activity android:name=".NuevoRol"></activity>
+        <activity android:name=".GestionarRol" />
+        <activity android:name=".ErrorDeUsuario" />
         <activity android:name=".NuevoHorario" />
         <activity android:name=".EditarHorario" />
         <activity android:name=".GestionarHorario" />
@@ -58,7 +58,7 @@
         <activity android:name=".EditarCiclo" />
         <activity android:name=".NuevoCiclo" />
         <activity android:name=".GestionarCiclo" />
-        <activity android:name=".IniciarSesion" >
+        <activity android:name=".IniciarSesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

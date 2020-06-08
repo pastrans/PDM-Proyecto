@@ -4,47 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccesoUsuarioNuevo"
+    tools:context=".NuevoRol"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="15dp"
+    >
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gestionar acceso a usuario"
-        android:textSize="20dp"
-        android:paddingBottom="10dp"
-        />
-
-    <TextView
-        android:id="@+id/txtUsuarioAcceso"
+        android:text="Nombre del rol"/>
+    <EditText
+        android:id="@+id/edtNombreRol"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Usuario:"
-        android:paddingBottom="15dp"
-        />
+        android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btnGuardarAcceso"
-        android:text="Guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="guardarAccesoUsuario"
-        />
+        android:text="Agregar"
+        android:onClick="guardarRol"/>
+
+
 
     <TextView
-        android:text="Permisos"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:text="Accesos"/>
+
     <ListView
-        android:id="@+id/listViewOpcionCrud"
+        android:id="@+id/listViewAccesosRol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#E5E5E5"
         android:dividerHeight="2dp"
         />
-
 
 </LinearLayout>

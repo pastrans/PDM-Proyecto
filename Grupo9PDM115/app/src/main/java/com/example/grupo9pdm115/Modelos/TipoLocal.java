@@ -78,7 +78,7 @@ public class TipoLocal {
         return listaTipoLocal;
     }
 
-    public void insetarDatosPrueba(Context context){
+    /*public void insetarDatosPrueba(Context context){
         helper = new ControlBD(context);
         ContentValues values = new ContentValues();
         values.put("idUsuario", "A1");
@@ -96,7 +96,7 @@ public class TipoLocal {
         helper.abrir();
         helper.getDb().insert("encargado", null, valuesEncargado);
         helper.cerrar();
-    }
+    }*/
 
     @Override
     public String toString(){

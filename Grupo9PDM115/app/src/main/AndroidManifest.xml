@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Rol.NuevoRol"></activity>
+        <activity android:name=".Activities.EventoEspecial.NuevoEventoEspecial"></activity>
+        <activity android:name=".Activities.EventoEspecial.GestionarEventoEspecial" />
+        <activity android:name=".Activities.EventoEspecial.EditarEventoEspecial" />
+        <activity android:name=".Activities.Rol.NuevoRol" />
         <activity android:name=".Activities.Rol.GestionarRol" />
         <activity android:name=".Activities.ErrorDeUsuario" />
         <activity android:name=".Activities.Horario.NuevoHorario" />

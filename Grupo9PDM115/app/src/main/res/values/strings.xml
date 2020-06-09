@@ -357,5 +357,23 @@
     <string name="txtErrorUsuario">Creiste que podrías con mi app pero no baby hacker, presiona el botón para tener otra oportunidad de ingresar... soy un dios misericordioso</string>
     <string name="btnIrALogin">Ir a inicio de sesión</string>
 
+    //Variables para Evento Especial
+    //Etiquetas
+    <string name="txtNombreEventoEspecial">Nombre:</string>
+    <string name="txtDescripcionEventoEspecial">Descripción:</string>
+    <string name="txtCicloE">Ciclo/Materia</string>
+    //Gestionar Evento Especial
+    <string name="titGestionarEventoEspecial">Gestionar Evento Especial</string>
+    <string name="btnNuevoGEventoEspecial">Nuevo</string>
+    <string name="txtListaEventoEspecial">Listado de eventos especiales</string>
 
+    //Nuevo Evento Especial
+    <string name="titNuevoEventoEspecial">Nuevo Evento Especial</string>
+    <string name="btnLimpiarTextoNEventoEspecial">Limpiar</string>
+    <string name="btnAgregarNEventoEspecial">Agregar</string>
+
+    //Editar Evento Especial
+    <string name="titEditarEventoEspecial">Editar Evento Especial</string>
+    <string name="btnLimpiarTextoEEventoEspecial">Limpiar</string>
+    <string name="btnEditarEEventoEspecial">Editar</string>
 </resources>

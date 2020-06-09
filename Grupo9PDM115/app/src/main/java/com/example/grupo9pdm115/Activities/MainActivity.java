@@ -19,7 +19,10 @@ public class MainActivity extends ListActivity  {
     ControlBD BDhelper;
 
     String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario","Encargado", "Rol"};
-    String[] activities = {"Llenar BD", "GestionarCiclo", "GestionarFeriado", "GestionarLocal", "GestionarTipoLocal", "GestionarMateria", "GestionarUnidad", "GestionarGrupo","GestionarTipoGrupo","GestionarCicloMateria", "DiaGestionar", "GestionarUsuario","GestionarHorario","GestionarEncargado", "GestionarRol"};
+    String[] activities = {"Llenar BD", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
+            "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
+            "TipoGrupo.GestionarTipoGrupo","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
+            "Usuario.GestionarUsuario","Horario.GestionarHorario","Encargado.GestionarEncargado", "Rol.GestionarRol"};
 
 
     @Override
@@ -68,7 +71,7 @@ public class MainActivity extends ListActivity  {
         if(positon!= 0){
             String nombreValue = activities[positon];
             try {
-                Class<?> clase = Class.forName("com.example.grupo9pdm115." + nombreValue);
+                Class<?> clase = Class.forName("com.example.grupo9pdm115.Activities." + nombreValue);
                 Intent inte = new Intent(this, clase);
                 this.startActivity(inte);
             }catch (ClassNotFoundException e){

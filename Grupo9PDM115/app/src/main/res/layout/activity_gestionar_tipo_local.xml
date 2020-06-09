@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    android:padding="15dp"
-    tools:context=".Activities.TipoLocal.GestionarTipoLocal">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
+    <!-- Título -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/titGestionarTipoLocal"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
+
+    <!-- Botón nuevo -->
     <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:onClick="btnNuevoGTipoLocal"
+        android:id="@+id/btnNuevoTipoLocal"
         android:text="@string/btnNuevoGTipoLocal"
-        tools:ignore="OnClick"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="agregarTipoLocal" />
+
+    <!-- Lista tipos de local -->
     <TextView
         android:paddingTop="15dp"
         android:text="@string/idListadoTiposLocales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
-
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
     <ListView
         android:paddingTop="15dp"
         android:id="@+id/idListadoTiposLocales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#E5E5E5"
-        android:dividerHeight="2dp"
-        />
+        android:dividerHeight="2dp" />
 
-
-
-
-</TableLayout>
+</LinearLayout>

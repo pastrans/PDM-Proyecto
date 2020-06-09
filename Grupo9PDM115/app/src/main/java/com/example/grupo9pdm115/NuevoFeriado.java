@@ -101,6 +101,7 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
     //Metodo para insertar feriado
     public void btnAgregarNFeriado(View v){
         //Obteniendo Valores
+        String regInsertados;
         String nombreFeriado = editNombreFeriado.getText().toString();
         String descripcionFeriado= editDescripcionFeriado.getText().toString();
         String inicioFeriado = editInicioFeriado.getText().toString();
@@ -114,7 +115,28 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
         feriado.setFechaFinFeriado(finFeriado);
         feriado.setIdCiclo(ciclo.getIdCiclo());
         feriado.setBloquearReservas(true);
-        String regInsertados = feriado.guardar(this);
+        if(feriado.getNombreFeriado().isEmpty())
+        {
+            regInsertados = "Nombre está vacio";
+        }
+        else{
+            if(feriado.getDescripcionFeriado().isEmpty()){
+                regInsertados = "Descripción está vacio";
+            }
+            else{
+                if(feriado.getFechaInicioFeriado().isEmpty()){
+                    regInsertados = "La fecha inicial está vacia";
+                }
+                else {
+                    if (feriado.getFechaFinFeriado().isEmpty()) {
+                        regInsertados = "La fecha final está vacia";
+                    } else{
+                        regInsertados = feriado.guardar(this);
+                    }
+
+                }
+            }
+        }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
     /* public void btnAgregarNFeriado(View v){
@@ -135,9 +157,6 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
          //Toast.makeText(this, "El ciclo es: " + ciclo.getIdCiclo(), Toast.LENGTH_SHORT).show();
      }*/
     // Método para regresar al activity anterior
-    public void btnRegresarNFeriado(View v){
-        super.onBackPressed();
-    }
 
     //Limpiar campos
     public void btnLimpiarTextoNFeriado(View v) {

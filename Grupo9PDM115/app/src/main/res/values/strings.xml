@@ -376,4 +376,20 @@
     <string name="titEditarEventoEspecial">Editar Evento Especial</string>
     <string name="btnLimpiarTextoEEventoEspecial">Limpiar</string>
     <string name="btnEditarEEventoEspecial">Editar</string>
+
+    //Variables para Detalle Reserva
+    //Etiquetas
+    //Gestionar Detalle Reserva
+    <string name="titGestionarDetalleReserva">Gestionar Detalle Reserva</string>
+    <string name="btnNuevoGDetalleReserva">Nuevo</string>
+    <string name="txtListaDetalleReserva">Listado destalles de reservas</string>
+    //Nuevo Detalle Reserva
+    <string name="titNuevoDetalleReserva">Nuevo Detalle Reserva</string>
+    <string name="btnLimpiarTextoNDetalleReserva">Limpiar</string>
+    <string name="btnAgregarNDetalleReserva">Agregar</string>
+
+    //Editar Detalle Reserva
+    <string name="titEditarDetalleReserva">Editar Detalle Reserva</string>
+    <string name="btnLimpiarTextoEDetalleReserva">Limpiar</string>
+    <string name="btnEditarEDetalleReserva">Editar</string>
 </resources>

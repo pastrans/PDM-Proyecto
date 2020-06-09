@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".NuevoTipoGrupo">
+    tools:context=".Activities.TipoGrupo.NuevoTipoGrupo">
 
     <TextView
         android:text="@string/titNuevoTipoGrupo"

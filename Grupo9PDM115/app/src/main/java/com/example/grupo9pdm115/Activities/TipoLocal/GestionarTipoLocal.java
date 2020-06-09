@@ -16,7 +16,7 @@ public class GestionarTipoLocal extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_tipo_local);
     }
 
-    public void btnNuevoGTipoLocal(View v){
+    public void agregarTipoLocal (View v){
         Intent inte = new Intent(this, NuevoTipoLocal.class);
         startActivity(inte);
     }

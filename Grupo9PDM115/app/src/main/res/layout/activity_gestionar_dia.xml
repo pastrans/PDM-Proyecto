@@ -28,9 +28,9 @@
     <TextView
         android:text="@string/txtListaDias"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingBottom="5dp"/>
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:paddingBottom="5dp"/>
     <ListView
         android:id="@+id/listDias"
         android:layout_width="match_parent"

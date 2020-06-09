@@ -7,131 +7,216 @@
     tools:context=".Activities.Feriado.NuevoFeriado"
     android:orientation="vertical"
     android:padding="15dp">
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/titNuevoFeriado"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
-
-
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtNombre" />
+            android:text="@string/titNuevoFeriado"
+            android:textSize="30sp"
+            android:paddingBottom="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <EditText
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/txtNombre" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.15"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:id="@+id/editNombreFeriado"
+                android:inputType="text"
+                android:maxLength="30"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/txtDescripcion" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.15"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:id="@+id/editDescripcionFeriado"
+                android:inputType="text"
+                android:maxLength="30"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:id="@+id/btnInicioFeriado"
+                android:text="@string/txtFechaInicio"
+                />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.20"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:id="@+id/editInicioFeriado"
+                android:inputType="date"
+                android:maxLength="30"
+                android:focusable="false"
+                android:clickable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:id="@+id/btnFinFeriado"
+                android:text="@string/txtFechaFinalizacion"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.15"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:id="@+id/editFinFeriado"
+                android:inputType="date"
+                android:maxLength="30"
+                android:focusable="false"
+                android:clickable="true"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/txtCiclo"/>
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.15"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:id="@+id/spinnerCicloFeriadoNuevo"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editNombreFeriado"
-            android:inputType="text"
-            android:maxLength="30"/>
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:onClick="btnLimpiarTextoNFeriado"
+                android:text="@string/btnLimpiarTextoNFeriado" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:onClick="btnAgregarNFeriado"
+                android:text="@string/btnAgregarNFeriado" />
 
 
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txtDescripcion" />
-        <EditText
-            android:layout_width="match_parent"
-            android:id="@+id/editDescripcionFeriado"
-            android:layout_height="100dp"
-            android:inputType="text"
-            android:maxLength="30"/>
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.85"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                />
 
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1.15"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:singleLine="true"/>
+            </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnInicioFeriado"
-            android:layout_width="0px"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Fecha inicio"
-            />
-        <EditText
-            android:layout_weight="1"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:id="@+id/editInicioFeriado"
-            android:inputType="date"
-            android:maxLength="30"
-            android:focusable="false"
-            android:clickable="true"/>
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnFinFeriado"
-            android:layout_width="0px"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Fecha finalizacion"
-            />
-
-        <EditText
-            android:layout_width="0px"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/editFinFeriado"
-            android:inputType="date"
-            android:maxLength="30"
-            android:focusable="false"
-            android:clickable="true"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtCiclo"/>
-        <Spinner
-            android:id="@+id/spinnerCicloFeriadoNuevo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="btnAgregarNFeriado"
-            android:text="@string/btnAgregarNFeriado" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="btnLimpiarTextoNFeriado"
-            android:text="@string/btnLimpiarTextoNFeriado" />
-    </LinearLayout>
-
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnRegresarNFeriado"
-        android:text="@string/btnRegresarNFeriado" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

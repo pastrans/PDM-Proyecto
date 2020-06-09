@@ -53,6 +53,7 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
     }
     //Metodo para actualizar feriado
     public void btnEditarEFeriado(View v){
+        String regInsertados;
         String nombreFeriado = editNombreFeriado.getText().toString();
         feriado.setNombreFeriado(nombreFeriado);
 
@@ -64,10 +65,30 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
 
         String finFeriado = editFinFeriado.getText().toString();
         feriado.setFechaFinFeriado(finFeriado);
+        if(feriado.getNombreFeriado().isEmpty())
+        {
+            regInsertados = "Nombre está vacio";
+        }
+        else{
+            if(feriado.getDescripcionFeriado().isEmpty()){
+                regInsertados = "Descripción está vacio";
+            }
+            else{
+                if(feriado.getFechaInicioFeriado().isEmpty()){
+                    regInsertados = "La fecha inicial está vacia";
+                }
+                else {
+                    if (feriado.getFechaFinFeriado().isEmpty()) {
+                        regInsertados = "La fecha final está vacia";
+                    } else{
+                        regInsertados = feriado.actualizar(this);
+                    }
 
-        String estado = feriado.actualizar(this);
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, feriado.getFechaInicioFeriado() + " - " + feriado.getFechaFinFeriado(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, feriado.getFechaInicioFeriado() + " - " + feriado.getFechaFinFeriado(), Toast.LENGTH_SHORT).show();
     }
     //Metodo para fechas
     @Override

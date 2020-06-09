@@ -17,7 +17,7 @@
     //Gestionar Ciclo
     <string name="titGestionarCiclo">Gestionar Ciclo</string>
     <string name="btnNuevoGCiclo">Nuevo</string>
-    <string name="txtListaCiclo">Listado de Ciclos ingresados</string>
+    <string name="txtListaCiclo">Listado de ciclos ingresados</string>
     //Nuevo Ciclo
     <string name="titNuevoCiclo">Nuevo Ciclo</string>
     <string name="btnAgregarNCiclo">Agregar</string>
@@ -35,11 +35,10 @@
 
     //Variables para Feriado
     //Etiquetas
-    <string name="txtNombre">Nombre</string>
-    <string name="txtFecha">Fecha</string>
-    <string name="txtDescripcion">Descripcion</string>
-    <string name="txtFechaInicio">Fecha inicio</string>
-    <string name="txtFechaFinalizacion">Fecha Finalización</string>
+    <string name="txtNombre">Nombre:</string>
+    <string name="txtDescripcion">Descripción:</string>
+    <string name="txtFechaInicio">Fecha Inicio</string>
+    <string name="txtFechaFinalizacion">Fecha Final</string>
     <string name="txtCiclo">Ciclo</string>
     //Gestionar Feriado
     <string name="titGestionarFeriado">Gestionar Feriado</string>

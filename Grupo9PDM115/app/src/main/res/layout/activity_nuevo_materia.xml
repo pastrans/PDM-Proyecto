@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".NuevoMateria">
+    tools:context=".Activities.Materia.NuevoMateria">
 
     <TextView
         android:layout_width="wrap_content"

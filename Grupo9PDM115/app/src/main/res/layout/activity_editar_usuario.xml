@@ -8,7 +8,7 @@
     android:paddingTop="30dip"
     android:stretchColumns="1"
     android:padding="15dp"
-    tools:context=".EditarUsuario">
+    tools:context=".Activities.Usuario.EditarUsuario">
 
     <TextView
         android:layout_width="wrap_content"

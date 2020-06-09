@@ -24,26 +24,34 @@ create table UNIDAD (
     PRIORIDAD INTEGER not null
 );
 
+DROP TABLE IF EXISTS ROL;
+create table rol(
+    IDROL INTEGER PRIMARY KEY AUTOINCREMENT,
+    NOMBREROL VARCHAR(50) not null
+);
+
 DROP TABLE IF EXISTS USUARIO;
 create table USUARIO (
     IDUSUARIO CHAR(2) not null,
     IDUNIDAD INTEGER,
+    IDROL INTEGER,
     NOMBREUSUARIO VARCHAR(30) not null,
     CLAVEUSUARIO CHAR(5) not null,
     NOMBREPERSONAL VARCHAR(30) not null,
     APELLIDOPERSONAL VARCHAR(30) not null,
     CORREOPERSONAL VARCHAR(50),
     primary key (IDUSUARIO),
-    foreign key (IDUNIDAD) references UNIDAD (IDUNIDAD)
+    foreign key (IDUNIDAD) references UNIDAD (IDUNIDAD),
+    foreign key (IDROL) references ROL (IDROL)
 );
 
 DROP TABLE IF EXISTS ACCESOUSUARIO;
 create table ACCESOUSUARIO (
     IDACCESOUSUARIO INTEGER PRIMARY KEY AUTOINCREMENT,
     IDOPCION CHAR(3),
-    IDUSUARIO CHAR(2),
+    IDROL INTEGER,
     foreign key (IDOPCION) references OPCIONCRUD (IDOPCION),
-    foreign key (IDUSUARIO) references USUARIO (IDUSUARIO)
+    foreign key (IDROL) references ROL (IDROL)
 );
 
 DROP TABLE IF EXISTS CICLO;

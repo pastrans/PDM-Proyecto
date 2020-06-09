@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".NuevoCicloMateria">
+    tools:context=".Activities.CicloMateria.NuevoCicloMateria">
 
     <TextView
         android:layout_width="wrap_content"

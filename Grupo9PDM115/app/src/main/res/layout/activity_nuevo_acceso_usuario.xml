@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccesoUsuarioNuevo"
+    tools:context=".Activities.AccesoUsuario.NuevoAccesoUsuario"
     android:orientation="vertical"
     android:padding="15dp">
 
@@ -46,10 +46,5 @@
         android:dividerHeight="2dp"
         />
 
-    <Button
-        android:text="Agregar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="agregarLista"/>
 
 </LinearLayout>

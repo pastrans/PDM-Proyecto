@@ -177,7 +177,6 @@ public class ControlBD {
         return cursor;
     }
 
-
     public Cursor consultar(String consulta){
         Cursor cursor = db.rawQuery(consulta, null );
         return cursor;

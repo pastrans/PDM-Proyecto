@@ -14,14 +14,16 @@ import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Spinners.RolSpinner;
 import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
 public class NuevoUsuario extends AppCompatActivity {
 
     ControlBD helper;
     EditText nombreUsuario, claveUsuario, nombrePersonal, apellidoPersonal, correoPersonal;
-    Spinner spinnerUnidad;
+    Spinner spinnerUnidad, spinnerRol;
     UsuarioUnidadSpinner spinnerUsuarioUnidadAdapter;
+    RolSpinner spinnerRolAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +44,22 @@ public class NuevoUsuario extends AppCompatActivity {
         apellidoPersonal = (EditText) findViewById(R.id.editApellidoPersona);
         correoPersonal = (EditText) findViewById(R.id.editCorreoPersona);
         spinnerUnidad = (Spinner) findViewById(R.id.spinnerUnidadNuevoUsuario);
+        spinnerRol = (Spinner) findViewById(R.id.spinnerRolNuevoUsuario);
         helper.abrir();
         spinnerUsuarioUnidadAdapter = new UsuarioUnidadSpinner(helper);
+        spinnerRolAdapter = new RolSpinner(helper);
         helper.cerrar();
         spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()));
+        spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(getApplicationContext()));
         spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()).notifyDataSetChanged();
     }
 
     public void btnAgregarNUsuario(View v){
         String regInsertados;
         Usuario usuario = new Usuario();
-        int posicionUnidad = 0, idUnidad = 0;
+        int posicionUnidad = 0, idUnidad = 0, posicionRol;
         posicionUnidad = spinnerUnidad.getSelectedItemPosition();
+        posicionRol = spinnerRol.getSelectedItemPosition();
         usuario.setNombreUsuario(nombreUsuario.getText().toString());
         usuario.setNombrePersonal(nombrePersonal.getText().toString());
         usuario.setClaveUsuario(claveUsuario.getText().toString());
@@ -62,6 +68,8 @@ public class NuevoUsuario extends AppCompatActivity {
         usuario.setIdUsuario(String.valueOf(usuario.countUsuario(this, usuario)) + nombreUsuario.getText().toString().toUpperCase().charAt(0));
         if (posicionUnidad != 0)
             usuario.setIdUnidad(spinnerUsuarioUnidadAdapter.getIdUnidad(posicionUnidad));
+        if(posicionRol != 0)
+            usuario.setIdRol(spinnerRolAdapter.getIdRol(posicionRol));
         regInsertados = usuario.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
@@ -72,6 +80,7 @@ public class NuevoUsuario extends AppCompatActivity {
         apellidoPersonal.setText("");
         correoPersonal.setText("");
         spinnerUnidad.setSelection(0);
+        spinnerRol.setSelection(0);
         claveUsuario.setText("");
     }
 

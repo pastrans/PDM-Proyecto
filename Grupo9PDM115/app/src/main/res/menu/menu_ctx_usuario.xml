@@ -4,6 +4,4 @@
         android:title="@string/ctxListaDiasActualizar"/>
     <item android:id="@+id/ctxEliminar"
         android:title="@string/ctxListaDiasEliminar"/>
-    <item android:id="@+id/ctxAsignarAcceso"
-        android:title="Asginar acceso"/>
 </menu>

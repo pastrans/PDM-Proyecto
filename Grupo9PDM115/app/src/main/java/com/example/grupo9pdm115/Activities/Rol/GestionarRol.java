@@ -69,7 +69,10 @@ public class GestionarRol extends AppCompatActivity {
         Rol rolSeleccionado = (listaRolAdapter.getItem(info.position));
         switch (item.getItemId()){
             case R.id.ctxActualizarRol:
-
+                Intent inte = new Intent(this, EditarRol.class);
+                inte.putExtra("nombreRol", rolSeleccionado.getNombreRol());
+                inte.putExtra("idRol", rolSeleccionado.getIdRol());
+                startActivity(inte);
                 return true;
             case R.id.ctxEliminarRol:
                 if (rolSeleccionado != null){

@@ -13,7 +13,7 @@ public class CicloMateria extends TablaBD {
 
         setNombreTabla("CICLOMATERIA");
         setNombreLlavePrimaria("IDCICLOMATERIA");
-        setCamposTabla(new String[]{"IDCILCOMATERIA", "IDCICLO", "CODMATERIA"});
+        setCamposTabla(new String[]{"IDCICLOMATERIA", "IDCICLO", "CODMATERIA"});
     }
 
     public CicloMateria(int idCicloMateria, int idCiclo, String codMateria) {
@@ -60,11 +60,15 @@ public class CicloMateria extends TablaBD {
 
     @Override
     public void setAttributesFromArray(String[] arreglo) {
-
+        setIdCicloMateria(Integer.valueOf(arreglo[0]));
+        setIdCiclo(Integer.valueOf(arreglo[1]));
+        setCodMateria(arreglo[2]);
     }
 
     @Override
-    public TablaBD getInstanceOfModel(String[] arreglo) {
-        return null;
+    public CicloMateria getInstanceOfModel(String[] arreglo) {
+        CicloMateria cicloMateria = new CicloMateria();
+        cicloMateria.setAttributesFromArray(arreglo);
+        return cicloMateria;
     }
 }

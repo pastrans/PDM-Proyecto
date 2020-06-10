@@ -50,7 +50,7 @@ public class NuevoGrupo extends AppCompatActivity {
                 idCM= control.getIdCicloMateria(posicionMateria);//
                 grupo.setIdCicloMateria(idCM);
                 helper.abrir();
-                reginsertados = helper.insertar(grupo.getNombreTabla(), grupo.getValores());
+                reginsertados = grupo.guardar(this);
                 helper.cerrar();
                 Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
             }
@@ -62,17 +62,5 @@ public class NuevoGrupo extends AppCompatActivity {
         else{
             Toast.makeText(this, "Seleccione una materia", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
-
-
-
     }
-
-
-
-
 }

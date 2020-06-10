@@ -381,7 +381,40 @@
     <string name="btnEditarESolicitud">Editar</string>
     <string name="btnLimpiarESolicitud">Limpiar</string>
 
+    //Variables para Evento Especial
+    //Etiquetas
+    <string name="txtNombreEventoEspecial">Nombre:</string>
+    <string name="txtDescripcionEventoEspecial">Descripción:</string>
+    <string name="txtCicloE">Ciclo/Materia</string>
+    //Gestionar Evento Especial
+    <string name="titGestionarEventoEspecial">Gestionar Evento Especial</string>
+    <string name="btnNuevoGEventoEspecial">Nuevo</string>
+    <string name="txtListaEventoEspecial">Listado de eventos especiales</string>
+
+    //Nuevo Evento Especial
+    <string name="titNuevoEventoEspecial">Nuevo Evento Especial</string>
+    <string name="btnLimpiarTextoNEventoEspecial">Limpiar</string>
+    <string name="btnAgregarNEventoEspecial">Agregar</string>
+
+    //Editar Evento Especial
+    <string name="titEditarEventoEspecial">Editar Evento Especial</string>
+    <string name="btnLimpiarTextoEEventoEspecial">Limpiar</string>
+    <string name="btnEditarEEventoEspecial">Editar</string>
+
+    //Variables para Detalle Reserva
+    //Etiquetas
+    //Gestionar Detalle Reserva
+    <string name="titGestionarDetalleReserva">Gestionar Detalle Reserva</string>
+    <string name="btnNuevoGDetalleReserva">Nuevo</string>
+    <string name="txtListaDetalleReserva">Listado destalles de reservas</string>
+    //Nuevo Detalle Reserva
+    <string name="titNuevoDetalleReserva">Nuevo Detalle Reserva</string>
+    <string name="btnLimpiarTextoNDetalleReserva">Limpiar</string>
+    <string name="btnAgregarNDetalleReserva">Agregar</string>
 
 
-
+    //Editar Detalle Reserva
+    <string name="titEditarDetalleReserva">Editar Detalle Reserva</string>
+    <string name="btnLimpiarTextoEDetalleReserva">Limpiar</string>
+    <string name="btnEditarEDetalleReserva">Editar</string>
 </resources>

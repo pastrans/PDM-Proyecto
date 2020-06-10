@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
+
+    <!-- Título -->
+    <TextView
+        android:text="@string/titGestionarEventoEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
+
+    <!-- Botón nuevo -->
+    <Button
+        android:id="@+id/btnNuevoEventoEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnNuevoEventoEspecial"
+        android:text="@string/btnNuevoGEventoEspecial" />
+
+    <!-- Lista días -->
+    <TextView
+        android:text="@string/txtListaEventoEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+
+    <ListView
+        android:id="@+id/listaEventoEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+
+</LinearLayout>

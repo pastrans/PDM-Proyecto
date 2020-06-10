@@ -31,6 +31,13 @@
     // Menú contextual lista ciclos
     <string name="ctxListaCiclosActualizar">Actualizar</string>
     <string name="ctxListaCiclosEliminar">Eliminar</string>
+    <string name="ctxListaCiclosActivarr">Establecer como ciclo activo</string>
+    // Lista ciclos
+    <string name="txtInicioCicloLista">Inicio del ciclo:</string>
+    <string name="txtFinCicloLista">Fin del ciclo:</string>
+    <string name="txtInicioPeriodoClaseLista">Inicio de clases:</string>
+    <string name="txtFinPeriodoClaseLista">Fin de clases:</string>
+    <string name="txtEstadoCicloLista">Estado:</string>
 
 
     //Variables para Feriado

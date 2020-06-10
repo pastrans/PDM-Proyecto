@@ -161,4 +161,42 @@ public class Ciclo extends TablaBD {
         return this.getNombreCiclo();
     }
 
+    /*
+    Método que actualiza el estado del ciclo a activo (true), dejando el resto de ciclos como
+    inactivos (false).
+    Parámetros:
+    > contexto : contexto de la aplicación
+    Valores de retorno:
+    > -1 : el ciclo ya está activo
+    > 0 : No existe el registro
+    > 1 : Ciclo activado
+     */
+    public int activarCiclo(Context context){
+        int control = 0;
+
+        ControlBD helper = new ControlBD(context);
+        helper.abrir();
+
+        // Verificando que el ciclo no esté activo, si lo está, devolver -1
+        if(isEstadoCiclo()){
+            return -1;
+        }
+
+        // Actualizar todos los ciclos a estado inactivo (false -> 0)
+        valoresCamposTabla.put("estadociclo", 0);
+        control = helper.getDb().update(getNombreTabla(), valoresCamposTabla, "estadociclo = 1", null);
+
+        // Estableciendo ciclo actual como activo (true -> 1)
+        valoresCamposTabla.remove("estadociclo");
+        valoresCamposTabla.put("estadociclo", 1);
+        String[] whereArgs = {getValorLlavePrimaria()};
+        // Si no hay existe el registro retorno valdrá 0 porque no habrán registros afectados
+        // Si hace el cambio valdrá 1, porque solo debe actualizar a un registro
+        control = helper.getDb().update(getNombreTabla(), valoresCamposTabla, getNombreLlavePrimaria()+" = ?", whereArgs);
+
+        helper.cerrar();
+
+        return control;
+    }
+
 }

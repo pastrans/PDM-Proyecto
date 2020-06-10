@@ -1,6 +1,7 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +44,15 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         nombreCiclo.setText(ciclo.getNombreCiclo());
         inicio.setText(ciclo.getInicio());
         fin.setText(ciclo.getFin());
-        if(ciclo.isEstadoCiclo())
+
+        // Modificando el valor para mostrar estado en string y cambiando el color del background al activo
+        if(ciclo.isEstadoCiclo()){
             estadoCiclo.setText("Activo");
+            convertView.setBackgroundColor(Color.parseColor("#B2fF59"));
+        }
         else
             estadoCiclo.setText("Inactivo");
+
         inicioPeriodoClase.setText(ciclo.getInicioPeriodoClase());
         finPeriodoClase.setText(ciclo.getFinPeriodoClase());
 

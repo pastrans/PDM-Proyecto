@@ -100,6 +100,21 @@ public class GestionarCiclo extends Activity {
                     startActivity(intent);
                 }
                 return true;
+            case R.id.ctxActivarCiclo:
+                if(cicloActual != null){
+                    String mensaje = "";
+                    int resultado = cicloActual.activarCiclo(getApplicationContext());
+                    if(resultado == -1)
+                        mensaje = "El ciclo ya se encuentra activo.";
+                    else if(resultado == 0)
+                        mensaje = "El ciclo no existe.";
+                    else
+                        mensaje = "Nuevo ciclo activo: " + cicloActual.getNombreCiclo();
+
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    llenarListaCiclo();
+                }
+                return true;
             case R.id.ctxEliminarCiclo:
                 if(cicloActual != null){
                     String regEliminadas;

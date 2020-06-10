@@ -24,17 +24,23 @@ public class NuevoDia extends Activity {
     // Método para insertar día
     public void insertarDia(View v){
         // Obteniendo valores elementos
+        String regInsertados;
         String nombreDia = editNombreDia.getText().toString();
 
         // Instanciando dia para guardar
         Dia dia = new Dia();
         dia.setNombreDia(nombreDia);
-        String regInsertados = dia.guardar(this);
+        if(dia.getNombreDia().isEmpty()){
+            regInsertados = "Nombre está vacío";
+        }
+        else{
+            regInsertados = dia.guardar(this);
+        }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
-    // Método para regresar al activity anterior
-    public void regresar(View v){
-        super.onBackPressed();
+    //Limpiar campos
+    public void btnLimpiarTextoNDía(View v) {
+        editNombreDia.setText("");
     }
 }

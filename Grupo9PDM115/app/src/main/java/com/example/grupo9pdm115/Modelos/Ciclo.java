@@ -70,7 +70,6 @@ public class Ciclo extends TablaBD {
     }
     public void setEstadoCiclo(String estadoCiclo) {
         boolean estado = false;
-
         if(estadoCiclo.equals("1"))
             estado = true;
         else{
@@ -80,7 +79,6 @@ public class Ciclo extends TablaBD {
                 estado = Boolean.parseBoolean(estadoCiclo);
             }
         }
-
         this.estadoCiclo = estado;
     }
     //InicioPeriodoClase
@@ -158,7 +156,9 @@ public class Ciclo extends TablaBD {
 
     @Override
     public String toString(){
-        return this.getNombreCiclo();
+        String cadena = getIdCiclo() + " " + getInicio() + " " + getFin() + " " +
+                getInicioPeriodoClase() + " " + getFinPeriodoClase() + " " + isEstadoCiclo();
+        return cadena;
     }
 
     /*

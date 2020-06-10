@@ -13,7 +13,10 @@
     <string name="txtFinCiclo">Fin del Ciclo</string>
     <string name="txtInicioPeriodoClase">Inicio del periodo de Clases</string>
     <string name="txtFinPeriodoClase">Fin del periodo de Clases</string>
-    <string name="estadoRadioButton">Activo/Inactivo</string>
+    <string name="btnInicioCiclo">INICIO CICLO</string>
+    <string name="btnFinCiclo">FIN CICLO</string>
+    <string name="btnInicioClases">INICIO CLASES</string>
+    <string name="btnFinClases">FIN CLASES</string>
     //Gestionar Ciclo
     <string name="titGestionarCiclo">Gestionar Ciclo</string>
     <string name="btnNuevoGCiclo">Nuevo</string>
@@ -25,7 +28,7 @@
     <string name="btnRegresarNCiclo">Regresar</string>
     //Editar Ciclo
     <string name="titEditarCiclo">Editar Ciclo</string>
-    <string name="btnEditarECiclo">Editar</string>
+    <string name="btnActualizarCiclo">Guardar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
     <string name="btnRegresarECiclo">Regresar</string>
     // Menú contextual lista ciclos

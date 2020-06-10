@@ -1,6 +1,5 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Ciclo;
@@ -19,76 +17,100 @@ import java.util.Calendar;
 
 public class EditarCiclo extends Activity implements View.OnClickListener {
     //Declarando
-    EditText editNombreCiclo, editFinCiclo;
-    Button btnFinCiclo;
-    RadioButton estado;
     Ciclo ciclo;
-    private int diafc, mesfc, anofc;
+    EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
+    Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;
+    private int dia, mes, anio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ciclo);
-
         ciclo = new Ciclo();
+
         editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
+        editInicioCiclo = (EditText) findViewById(R.id.editInicioCiclo);
         editFinCiclo = (EditText) findViewById(R.id.editFinCiclo);
+        editInicioClases = (EditText) findViewById(R.id.editInicioClases);
+        editFinClases = (EditText) findViewById(R.id.editFinClases);
+        btnInicioCiclo = (Button) findViewById(R.id.btnInicioCiclo);
         btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
-        estado = (RadioButton) findViewById(R.id.estadoRadiobutton);
-        btnFinCiclo.setOnClickListener(this);
+        btnInicioClases = (Button) findViewById(R.id.btnInicioClases);
+        btnFinClases = (Button) findViewById(R.id.btnFinClases);
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
             ciclo.setIdCiclo(getIntent().getIntExtra("idciclo", 0));
             editNombreCiclo.setText(getIntent().getStringExtra("nombreciclo"));
-            ciclo.setInicio(getIntent().getStringExtra("iniciociclo"));
+            editInicioCiclo.setText(getIntent().getStringExtra("iniciociclo"));
             editFinCiclo.setText(getIntent().getStringExtra("finciclo"));
-            estado.setText(getIntent().getStringExtra("estadociclo"));
-            ciclo.setInicioPeriodoClase(getIntent().getStringExtra("inicioclases"));
-            ciclo.setFinPeriodoClase(getIntent().getStringExtra("finclases"));
+            ciclo.setEstadoCiclo(getIntent().getStringExtra("estadociclo"));
+            editInicioClases.setText(getIntent().getStringExtra("inicioclases"));
+            editFinClases.setText(getIntent().getStringExtra("finclases"));
         }
+
+        btnInicioCiclo.setOnClickListener(this);
+        btnFinCiclo.setOnClickListener(this);
+        btnInicioClases.setOnClickListener(this);
+        btnFinClases.setOnClickListener(this);
     }
-    // Método para actualizar día
-    public void btnEditarECiclo(View v) {
-        String nombreCiclo = editNombreCiclo.getText().toString();
-        ciclo.setNombreCiclo(nombreCiclo);
-        String finCiclo = editFinCiclo.getText().toString();
-        ciclo.setFin(finCiclo);
-        Boolean est = Boolean.parseBoolean(estado.getText().toString());
-        ciclo.setEstadoCiclo(est);
+
+    // Método para actualizar ciclo
+    public void actualizarCiclo(View v) {
+        ciclo.setNombreCiclo(editNombreCiclo.getText().toString());
+        ciclo.setInicio(editInicioCiclo.getText().toString());
+        ciclo.setFin(editFinCiclo.getText().toString());
+        ciclo.setInicioPeriodoClase(editInicioClases.getText().toString());
+        ciclo.setFinPeriodoClase(editFinClases.getText().toString());
         String estado = ciclo.actualizar(this);
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View v) {
-        if (v == btnFinCiclo) {
+        EditText ed = null;
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        anio = c.get(Calendar.YEAR);
 
-            final Calendar c = Calendar.getInstance();
-            diafc = c.get(Calendar.DAY_OF_MONTH);
-            mesfc = c.get(Calendar.MONTH);
-            anofc = c.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    editFinCiclo.setText( year+ "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                }
-            }, anofc, mesfc, diafc);
-            datePickerDialog.show();
+        if(v==btnInicioCiclo){
+            ed = editInicioCiclo;
         }
+        if(v==btnFinCiclo){
+            ed = editFinCiclo;
+        }
+        if(v==btnInicioClases){
+            ed = editInicioClases;
+        }
+        if(v==btnFinClases){
+            ed = editFinClases;
+        }
+
+        final EditText finalEd = ed;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                finalEd.setText(String.format("%d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+            }
+        },anio,mes,dia);
+
+        datePickerDialog.show();
     }
 
 
     // Método para regresar al activity anterior
-    public void btnRegresarECiclo(View v) {
+    public void regresar(View v) {
         super.onBackPressed();
     }
 
     //Limpiar campos
-    public void btnLimpiarTextoECiclo(View v) {
+    public void limpiarTexto(View v) {
         editNombreCiclo.setText("");
+        editInicioCiclo.setText("");
         editFinCiclo.setText("");
+        editInicioClases.setText("");
+        editFinClases.setText("");
     }
 }
 

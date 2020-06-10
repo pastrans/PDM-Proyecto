@@ -23,7 +23,7 @@
             android:id="@+id/btnInicioCiclo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicio Ciclo"
+            android:text="@string/btnInicioCiclo"
             />
 
         <EditText
@@ -41,7 +41,7 @@
             android:id="@+id/btnFinCiclo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fin Ciclo"
+            android:text="@string/btnFinCiclo"
             />
 
         <EditText
@@ -57,7 +57,7 @@
             android:id="@+id/btnInicioClases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicio Clases"
+            android:text="@string/btnInicioClases"
             />
 
         <EditText
@@ -73,7 +73,7 @@
             android:id="@+id/btnFinClases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fin Clases"
+            android:text="@string/btnFinClases"
             />
 
         <EditText
@@ -84,26 +84,6 @@
             android:clickable="true"/>
     </TableRow>
 
-    <!-- Se almacenarán como inactivo por defecto, ver si borrar después porque
-    no se utilizarán los radiobuttons
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/estadoRadioButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Activo" />
-
-        <RadioButton
-            android:id="@+id/estadoRadioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inactivo" />
-    </RadioGroup>
-    -->
     <TableRow>
 
         <Button

@@ -68,6 +68,21 @@ public class Ciclo extends TablaBD {
     public void setEstadoCiclo(boolean estadoCiclo) {
         this.estadoCiclo = estadoCiclo;
     }
+    public void setEstadoCiclo(String estadoCiclo) {
+        boolean estado = false;
+
+        if(estadoCiclo.equals("1"))
+            estado = true;
+        else{
+            if(estadoCiclo.equals("0"))
+                estado = false;
+            else{
+                estado = Boolean.parseBoolean(estadoCiclo);
+            }
+        }
+
+        this.estadoCiclo = estado;
+    }
     //InicioPeriodoClase
     public String getInicioPeriodoClase() {
         return inicioPeriodoClase;
@@ -104,7 +119,7 @@ public class Ciclo extends TablaBD {
         setInicio(arreglo[1]);
         setFin(arreglo[2]);
         setNombreCiclo(arreglo[3]);
-        setEstadoCiclo(Boolean.parseBoolean(arreglo[4]));
+        setEstadoCiclo(arreglo[4]);
         setInicioPeriodoClase(arreglo[5]);
         setFinPeriodoClase(arreglo[6]);
     }

@@ -43,7 +43,10 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         nombreCiclo.setText(ciclo.getNombreCiclo());
         inicio.setText(ciclo.getInicio());
         fin.setText(ciclo.getFin());
-        estadoCiclo.setText(Boolean.toString(ciclo.isEstadoCiclo()));
+        if(ciclo.isEstadoCiclo())
+            estadoCiclo.setText("Activo");
+        else
+            estadoCiclo.setText("Inactivo");
         inicioPeriodoClase.setText(ciclo.getInicioPeriodoClase());
         finPeriodoClase.setText(ciclo.getFinPeriodoClase());
 

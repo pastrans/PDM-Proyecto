@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".Activities.Materia.GestionarMateria">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
+    <!-- Título -->
     <TextView
-        android:layout_width="wrap_content"
+        android:text="Gestionar Materia"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarMateria"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:paddingBottom="5dp"/>
 
-    <TableRow>
-
-        <TextView android:text="@string/txtNombreMateria" />
-        <EditText
-            android:id="@+id/editNombreMateria"
-            android:inputType="text"
-            android:maxLength="25" />
-    </TableRow>
-
+    <!-- Botón nuevo -->
     <Button
-        android:layout_width="100dp"
+        android:id="@+id/btnNuevoMaterias"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGMateria"
-        android:text="@string/btnNuevoGMateria"
-        tools:ignore="OnClick" />
+        android:onClick="btnNuevoMateria"
+        android:text="Nuevo" />
 
-    <Button
-        android:onClick="btnEditarGMateria"
-        android:text="@string/btnEditarGMateria"
-        tools:ignore="OnClick" />
+    <!-- Lista días -->
+    <TextView
+        android:text="Listado de materias ingresadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
 
-    <Button
-        android:onClick="btnEliminarGMateria"
-        android:text="@string/btnEliminarGMateria"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGMateria"
-        android:text="@string/btnRegresarGMateria"
-        tools:ignore="OnClick" />
-
-</TableLayout>
+    <ListView
+        android:id="@+id/listaMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+</LinearLayout>

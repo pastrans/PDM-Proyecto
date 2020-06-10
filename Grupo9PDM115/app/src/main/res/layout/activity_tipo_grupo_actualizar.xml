@@ -1,49 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft= "16dp"
-    android:paddingRight= "16dp"
-    android:paddingTop="8dp">
+    android:padding="15dp">
 
-    <!-- Título -->
-    <TextView
-        android:text="@string/titActualizarTG"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
+        android:layout_height="match_parent">
 
-    <!-- Nombre día -->
-    <TextView
-        android:text="@string/nombreTG"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="5dp"/>
-    <EditText
-        android:id="@+id/editNombreTG"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="25"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- Título -->
+            <TextView
+                android:text="@string/titEditarTipoGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Nombre día -->
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtNombreTipoGrupo" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editNombreTG"
+                    android:inputType="text"
+                    android:maxLength="30"/>
+            </LinearLayout>
+            <!-- Botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnLimpiarETipoGrupo"
+                    android:text="@string/btnLimpiarETipoGrupo" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnEditarETipoGrupo"
+                    android:onClick="btnactualizar"/>
+            </LinearLayout>
 
-    <!-- Botones -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/actualizar"
-            android:onClick="btnactualizar"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/regresar"
-            android:onClick="btnregresar"/>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

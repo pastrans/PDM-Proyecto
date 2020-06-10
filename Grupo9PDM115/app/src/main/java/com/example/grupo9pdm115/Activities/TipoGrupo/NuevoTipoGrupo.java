@@ -26,24 +26,29 @@ public class NuevoTipoGrupo extends AppCompatActivity {
 
     }
 
+    //Metodo para insertar tipo de grupo
     public void btnAgregarNTipoGrupo(View v){
         // Obteniendo valores elementos
+        String regInsertados;
         String nombreTG = nombreTipoGrupo.getText().toString();
 
         // Instanciando dia para guardar
         TipoGrupo tipoGrupo = new TipoGrupo();
         tipoGrupo.setNombreTipoGrupo(nombreTG);
-        String regInsertados = tipoGrupo.guardar(this);
+
+        //Validando campos vacíos
+        if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
+            regInsertados ="Nombre está vacío";
+        }
+        else{
+            regInsertados = tipoGrupo.guardar(this);
+        }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-
     }
 
-    public void btnLimpiarNTipoGrupo(View v){
+    //Limpiar campos
+    public void btnLimpiarNTipoGrupo(View v) {
         nombreTipoGrupo.setText("");
-    }
-
-    public void btnRegresarNTipoGrupo(View v){
-        finish();
     }
 
 }

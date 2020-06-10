@@ -175,26 +175,24 @@
     //Variables Tipo Grupo
     //Etiquetas
     <string name="txtTipoGrupo">Grupo</string>
-    <string name="txtNombreTipoGrupo">Nombre tipo grupo</string>
+    <string name="txtNombreTipoGrupo">Nombre:</string>
     <string name="txtNuevoNombre">Nuevo nombre</string>
     <string name="txtNuevoTipoGrupo">Nuevo tipo grupo</string>
+    // Menú contextual listas de Tipos de grupo
+    <string name="ctxListaTGActualizar">Actualizar</string>
+    <string name="ctxListaTGEliminar">Eliminar</string>
     //Gestionar Tipo Grupo
     <string name="titGestionarTipoGrupo">Gestionar Tipo de Grupo</string>
-    <string name="btnConsultarGTipoGrupo">Consultar</string>
     <string name="btnNuevoGTipoGrupo">Nuevo</string>
-    <string name="btnEditarGTipoGrupo">Editar</string>
-    <string name="btnEliminarGTipoGrupo">Eliminar</string>
-    <string name="btnRegresarGTipoGrupo">Regresar</string>
+    <string name="txtListaTG">Listado de tipo de grupos ingresados:</string>
     //Nuevo Tipo Grupo
     <string name="titNuevoTipoGrupo">Nuevo Tipo Grupo</string>
     <string name="btnAgregarNTipoGrupo">Agregar</string>
     <string name="btnLimpiarNTipoGrupo">Limpiar</string>
-    <string name="btnRegresarNTipoGrupo">Regresar</string>
     //Editar Tipo Grupo
     <string name="titEditarTipoGrupo">Editar Tipo Grupo</string>
     <string name="btnEditarETipoGrupo">Editar</string>
     <string name="btnLimpiarETipoGrupo">Limpiar</string>
-    <string name="btnRegresarETipoGrupo">Regresar</string>
 
     //Variables Grupo
     //Etiquetas
@@ -233,6 +231,7 @@
     <string name="txtApellidoPersona">Apellido:</string>
     <string name="txtCorreoPersona">Correo:</string>
     <string name="txtUnidadU">Unidad:</string>
+
     //Variables Usuario
     //Gestionar Usuario
     <string name="titGestionarUsuario">Gestionar Usuario</string>
@@ -304,31 +303,15 @@
     // Menú contextual lista días
     <string name="ctxListaDiasActualizar">Actualizar</string>
     <string name="ctxListaDiasEliminar">Eliminar</string>
-    // Actualizar Dia
-    <string name="titActualizarDia">Actualizar Día</string>
+    // Editar Dia
+    <string name="titActualizarDia">Editar Día</string>
     <string name="nombreDia">Nombre:</string>
-    <string name="actualizar">Actualizar</string>
-    <string name="regresar">Regresar</string>
-    // Insertar Dia
-    <string name="titInsertarDia">Insertar Día</string>
-    <string name="insertar">Insertar</string>
-
-    // Variables para TipoGrupo
-    // Gestionar TipoGrupo
-    <string name="titGestionarTG">Gestionar Tipo de Grupo</string>
-    <string name="btnNuevoTG">Nuevo</string>
-    <string name="txtListaTG">Listado de Tipo de grupos ingresados:</string>
-    // Menú contextual listas de Tipos de grupo
-    <string name="ctxListaTGActualizar">Actualizar</string>
-    <string name="ctxListaTGEliminar">Eliminar</string>
-    // Actualizar Tipo Grupo
-    <string name="titActualizarTG">Actualizar tipo de grupo</string>
-    <string name="nombreTG">Nombre:</string>
-    <string name="actualizarTG">Actualizar</string>
-    <string name="regresarTG">Regresar</string>
-    // Insertar Tipo Grupo
-    <string name="titInsertarTG">Insertar Tipo Grupo</string>
-    <string name="insertarTG">Insertar</string>
+    <string name="actualizar">Editar</string>
+    <string name="btnLimpiarTextoEDía">Limpiar</string>
+    // Nuevo Dia
+    <string name="titInsertarDia">Nuevo Día</string>
+    <string name="insertar">Agregar</string>
+    <string name="btnLimpiarTextoNDía">Limpiar</string>
 
     //Variables Horario
     //Etiquetas

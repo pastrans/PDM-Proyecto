@@ -31,15 +31,21 @@ public class TipoGrupoActualizar extends Activity {
 
     // Método para actualizar día
     public void btnactualizar(View v) {
+        String estado;
         String nombreTG = editNombreTG.getText().toString();
         tipoGrupo.setNombreTipoGrupo(nombreTG);
-        String estado = tipoGrupo.actualizar(this);
+        if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
+            estado="Nombre está vacío";
+        }
+        else{
+            estado = tipoGrupo.actualizar(this);
+        }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
-    // Método para regresar al activity anterior
-    public void btnregresar(View v) {
-        super.onBackPressed();
+    //Limpiar campos
+    public void btnLimpiarETipoGrupo(View v) {
+        editNombreTG.setText("");
     }
 }
 

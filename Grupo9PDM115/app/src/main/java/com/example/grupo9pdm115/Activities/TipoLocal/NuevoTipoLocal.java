@@ -10,20 +10,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Adapters.UsuarioAdapter;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Encargado;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Spinners.UsuarioSpinner;
 
 import java.util.List;
 
 public class NuevoTipoLocal extends AppCompatActivity {
 
     ControlBD helper;
-    EditText nombreTipo;
+    EditText edtNombreTipo;
     Spinner encargadoSpinner;
     TipoLocal tipoLocalClass;
     Encargado encargadoClass;
+    UsuarioSpinner usuarioSpinnerAdapter;
 
 
     @Override
@@ -31,44 +34,34 @@ public class NuevoTipoLocal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_tipo_local);
         helper = new ControlBD(this);
-        nombreTipo = (EditText) findViewById(R.id.editNombre);
+        edtNombreTipo = (EditText) findViewById(R.id.editNombre);
         encargadoSpinner = (Spinner) findViewById(R.id.encargadoSpinner);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
-        //llenarEncargados();
-        Toast.makeText(this, "Datos de prueba cargados", Toast.LENGTH_SHORT).show();
+        helper.abrir();
+        usuarioSpinnerAdapter = new UsuarioSpinner(helper);
+        helper.cerrar();
+        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(getApplicationContext()));
+
     }
 
     public void btnAgregarNTipoLocal(View v){
         String regInsertados;
         TipoLocal tipoLocal = new TipoLocal();
-        Encargado encargado = (Encargado) encargadoSpinner.getSelectedItem();
-        tipoLocal.setNombreTipo(nombreTipo.getText().toString());
-        tipoLocal.setIdEncargado(encargado.getIdEncargado());
-        helper.abrir();
-        regInsertados = helper.insertar(tipoLocal.getNombreTabla(), tipoLocal.getValores());
-        helper.cerrar();
+        int posUsuario = encargadoSpinner.getSelectedItemPosition();
+        tipoLocal.setNombreTipo(edtNombreTipo.getText().toString());
+        tipoLocal.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
+        regInsertados = tipoLocal.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
-    /*private void llenarEncargados(){
-        List<Encargado> encargados = encargadoClass.getEncargados(this);
-        ArrayAdapter<Encargado> dataAdapter = new ArrayAdapter<Encargado>(this, android.R.layout.simple_spinner_item, encargados);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        encargadoSpinner.setAdapter(dataAdapter);
-        encargadoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Encargado encargado = (Encargado) parent.getSelectedItem();
-                Toast.makeText(parent.getContext(), "Se ha seleccionado: " + encargado.getIdEncargado(), Toast.LENGTH_SHORT).show();
-            }
+    public void btnLimpiarNTipoLocal(View v){
+        edtNombreTipo.setText("");
+        encargadoSpinner.setSelection(0);
+    }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }*/
-
+    public void btnRegresarNTipoLocal(View v){
+        finish();
+    }
 
 }

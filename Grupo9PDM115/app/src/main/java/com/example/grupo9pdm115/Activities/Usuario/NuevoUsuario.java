@@ -84,4 +84,8 @@ public class NuevoUsuario extends AppCompatActivity {
         claveUsuario.setText("");
     }
 
+    public void btnRegresarNUsuario(View v){
+        finish();
+    }
+
 }

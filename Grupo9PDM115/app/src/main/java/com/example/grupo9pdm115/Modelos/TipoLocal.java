@@ -5,11 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.BD.TablaBD;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TipoLocal {
+public class TipoLocal extends TablaBD {
 
     // Atributos para BD
     private final String nombreTabla = "tipolocal";
@@ -17,13 +18,16 @@ public class TipoLocal {
     private ControlBD helper;
 
     private int idTipoLocal;
-    private int idEncargado;
+    private String idEncargado;
     private String nombreTipo;
 
     public TipoLocal() {
+        setNombreLlavePrimaria("idTipoLocal");
+        setCamposTabla(new String[]{"idTipoLocal", "nombreTipo", "idEncargado"});
+        setNombreTabla("TipoLocal");
     }
 
-    public TipoLocal(int idEncargado, String nombreTipo) {
+    public TipoLocal(String idEncargado, String nombreTipo) {
         this.idEncargado = idEncargado;
         this.nombreTipo = nombreTipo;
     }
@@ -36,11 +40,11 @@ public class TipoLocal {
         this.idTipoLocal = idTipoLocal;
     }
 
-    public int getIdEncargado() {
+    public String getIdEncargado() {
         return idEncargado;
     }
 
-    public void setIdEncargado(int idEncargado) {
+    public void setIdEncargado(String idEncargado) {
         this.idEncargado = idEncargado;
     }
 
@@ -54,12 +58,38 @@ public class TipoLocal {
 
     public String getNombreTabla() { return nombreTabla; }
 
-    public ContentValues getValores(){
+    @Override
+    public String getValorLlavePrimaria() {
+        return String.valueOf(this.getIdTipoLocal());
+    }
+
+    @Override
+    public void setValoresCamposTabla() {
+        this.valoresCamposTabla.put("idTipoLocal", getIdTipoLocal());
+        this.valoresCamposTabla.put("nombreTipo", getNombreTipo());
+        this.valoresCamposTabla.put("idEncargado", getIdEncargado());
+    }
+
+    @Override
+    public void setAttributesFromArray(String[] arreglo) {
+        setIdTipoLocal(Integer.valueOf(arreglo[0]));
+        setNombreTipo(arreglo[1]);
+        setIdEncargado(arreglo[2]);
+    }
+
+    @Override
+    public TipoLocal getInstanceOfModel(String[] arreglo) {
+        TipoLocal tipoLocal = new TipoLocal();
+        tipoLocal.setAttributesFromArray(arreglo);
+        return tipoLocal;
+    }
+
+    /*public ContentValues getValores(){
         // Agregando los valores de los atributos al content value
         valores.put("idEncargado", getIdEncargado());
         valores.put("nombreTipo", getNombreTipo());
         return valores;
-    }
+    }*/
 
     public List<TipoLocal> getTiposLocales(Context context){
         List<TipoLocal> listaTipoLocal = new ArrayList<TipoLocal>();
@@ -76,6 +106,24 @@ public class TipoLocal {
         }
         helper.cerrar();
         return listaTipoLocal;
+    }
+
+    @Override
+    public String guardar(Context context) {
+        String mensaje = "Se ha insertado el registro con éxito. ";
+        long control = 0;
+        ControlBD helper = new ControlBD(context);
+        this.valoresCamposTabla.put("nombreTipo", getNombreTipo());
+        this.valoresCamposTabla.put("idEncargado", getIdEncargado());
+        helper.abrir();
+        control = helper.getDb().insert(getNombreTabla(), null, valoresCamposTabla);
+        helper.cerrar();
+
+        if(control==-1 || control==0) {
+            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+        }
+
+        return mensaje;
     }
 
     /*public void insetarDatosPrueba(Context context){

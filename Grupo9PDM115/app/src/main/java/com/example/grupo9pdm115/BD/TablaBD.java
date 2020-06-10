@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.example.grupo9pdm115.Modelos.Grupo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,4 +157,5 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
 
         return listaTablaBD;
     }
+
 }

@@ -94,6 +94,7 @@ public class GestionarUsuario extends AppCompatActivity {
                 inte.putExtra("claveUsuario", usuarioSeleccionado.getClaveUsuario());
                 inte.putExtra("correoPersona", usuarioSeleccionado.getCorreoPersonal());
                 inte.putExtra("unidad", usuarioSeleccionado.getIdUnidad());
+                inte.putExtra("rol", usuarioSeleccionado.getIdRol());
                 startActivity(inte);
                 return true;
             case R.id.ctxEliminar:
@@ -105,13 +106,13 @@ public class GestionarUsuario extends AppCompatActivity {
                 }
                 //Toast.makeText(this, "Eliminar User", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.ctxAsignarAcceso:
+            /*case R.id.ctxAsignarAcceso:
                 if(usuarioSeleccionado != null){
                     Intent in = new Intent(this, NuevoAccesoUsuario.class);
                     in.putExtra("idUsuario", usuarioSeleccionado.getIdUsuario());
                     in.putExtra("nombrePersonal", usuarioSeleccionado.getNombrePersonal() + " " + usuarioSeleccionado.getApellidoPersonal());
                     startActivity(in);
-                }
+                }*/
             default:
                 return super.onContextItemSelected(item);
         }

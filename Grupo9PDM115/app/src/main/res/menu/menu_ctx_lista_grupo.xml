@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ctxActualizarGrupo"
+        android:title="@string/ctxListaFeriadosActualizar"/>
+    <item android:id="@+id/ctxEliminarGrupo"
+        android:title="@string/ctxListaFeriadosEliminar"/>
+</menu>

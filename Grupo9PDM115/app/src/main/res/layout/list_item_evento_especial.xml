@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/txtNombreEventoEspecial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="Nombre"
+        android:textAppearance="?attr/textAppearanceListItem"
+        tools:text="Nombre Evento Especial" />
+
+    <TextView
+        android:id="@+id/txtDescripcionEventoEspecial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtNombreEventoEspecial"
+        android:layout_alignLeft="@id/txtNombreEventoEspecial"
+        android:text="Descripcion"
+        tools:text="Descripcion Evento" />
+
+    <TextView
+        android:id="@+id/txtFechaEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDescripcionEventoEspecial"
+        android:layout_alignLeft="@+id/txtNombreEventoEspecial"
+        android:text="Fecha Evento"
+        tools:text="2020/07/01"/>
+
+</RelativeLayout>

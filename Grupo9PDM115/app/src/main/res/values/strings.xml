@@ -357,5 +357,31 @@
     <string name="txtErrorUsuario">Creiste que podrías con mi app pero no baby hacker, presiona el botón para tener otra oportunidad de ingresar... soy un dios misericordioso</string>
     <string name="btnIrALogin">Ir a inicio de sesión</string>
 
+    //Variables Solicitud
+    //Etiquetas
+    <string name="txtidUsuario">Id usuario:</string>
+    <string name="txtasunto">Asunto:</string>
+    <string name="txtTipoSolicitud">Tipo de solicitud:</string>
+    <string name="txtFechaRealizada">Fecha realizada:</string>
+    <string name="txtEstadoSolicitud">Estado solicitud:</string>
+    <string name="txtFechaRespuesta">Fecha de respuesta:</string>
+    <string name="txtcomentario">Comentario: </string>
+    <string name="txtNuevoFinPeriodo">Nuevo fin de periodo:</string>
+
+    //Gestionar Solicitud
+    <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
+    <string name="titGestionarSolicitud">Gestionar Solicitud</string>
+    <string name="btnNuevoGSolicitud">Nuevo</string>
+    //Nuevo Solicitud
+    <string name="titNuevaSolicitud">Nueva Solicitud</string>
+    <string name="btnAgregarNSolicitud">Agregar</string>
+    <string name="btnLimpiarTextoNSolicitud">Limpiar</string>
+    //Editar Solicitud
+    <string name="titEditarESolicitud">Editar Solicitud</string>
+    <string name="btnEditarESolicitud">Editar</string>
+    <string name="btnLimpiarESolicitud">Limpiar</string>
+
+
+
 
 </resources>

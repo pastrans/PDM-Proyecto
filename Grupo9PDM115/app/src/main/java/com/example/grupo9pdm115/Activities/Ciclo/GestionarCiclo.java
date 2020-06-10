@@ -52,7 +52,7 @@ public class GestionarCiclo extends Activity {
     }
 
     //Metodo para agregar ciclo
-    public void btnNuevoGCiclo(View v){
+    public void agregarCiclo(View v){
         Intent intent = new Intent(this, NuevoCiclo.class);
         startActivity(intent);
     }

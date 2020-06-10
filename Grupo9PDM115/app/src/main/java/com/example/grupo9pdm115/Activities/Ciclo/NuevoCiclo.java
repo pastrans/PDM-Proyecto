@@ -24,7 +24,6 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
     //Declarando
     ControlBD helper;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
-    RadioButton estadoRadioButton1, estadoRadioButton2;
     Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;
     private int diaic, mesic, anoic, diafc, mesfc, anofc, diaicl, mesicl, anoicl, diafcl, mesfcl, anofcl;
 
@@ -42,110 +41,72 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
         btnInicioClases = (Button) findViewById(R.id.btnInicioClases);
         btnFinClases = (Button) findViewById(R.id.btnFinClases);
-        estadoRadioButton1 = (RadioButton) findViewById(R.id.estadoRadioButton1);
-        estadoRadioButton2 = (RadioButton) findViewById(R.id.estadoRadioButton2);
 
         btnInicioCiclo.setOnClickListener(this);
         btnFinCiclo.setOnClickListener(this);
         btnInicioClases.setOnClickListener(this);
         btnFinClases.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v){
-        if(v==btnInicioCiclo){
-            final Calendar c = Calendar.getInstance();
-            diaic = c.get(Calendar.DAY_OF_MONTH);
-            mesic = c.get(Calendar.MONTH);
-            anoic = c.get(Calendar.YEAR);
+        EditText ed = null;
+        final Calendar c = Calendar.getInstance();
+        diaic = c.get(Calendar.DAY_OF_MONTH);
+        mesic = c.get(Calendar.MONTH);
+        anoic = c.get(Calendar.YEAR);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    editInicioCiclo.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth);
-                }
-            },anoic,mesic,diaic);
-            datePickerDialog.show();
+        if(v==btnInicioCiclo){
+            ed = editInicioCiclo;
         }
         if(v==btnFinCiclo){
-            final Calendar c = Calendar.getInstance();
-            diafc = c.get(Calendar.DAY_OF_MONTH);
-            mesfc = c.get(Calendar.MONTH);
-            anofc = c.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth2) {
-                    editFinCiclo.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth2);
-                }
-            },anofc,mesfc,diafc);
-            datePickerDialog.show();
+            ed = editFinCiclo;
         }
         if(v==btnInicioClases){
-            final Calendar c = Calendar.getInstance();
-            diaicl = c.get(Calendar.DAY_OF_MONTH);
-            mesicl = c.get(Calendar.MONTH);
-            anoicl = c.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth3) {
-                    editInicioClases.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth3);
-                }
-            },anoicl,mesicl,diaicl);
-            datePickerDialog.show();
+           ed = editInicioClases;
         }
         if(v==btnFinClases){
-            final Calendar c = Calendar.getInstance();
-            diafcl = c.get(Calendar.DAY_OF_MONTH);
-            mesfcl = c.get(Calendar.MONTH);
-            anofcl = c.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth4) {
-                    editFinClases.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth4);
-                }
-            },anofcl,mesfcl,diafcl);
-            datePickerDialog.show();
+            ed = editFinClases;
         }
+
+        final EditText finalEd = ed;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                finalEd.setText(String.format("%d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+            }
+        },anoic,mesic,diaic);
+
+        datePickerDialog.show();
     }
 
-    //Metodo para insertar ciclo
-    public void btnAgregarNCiclo(View v){
-        //Verificando Radio Button
-        if (estadoRadioButton1.isChecked()){
-            final String text = "Activo";
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-
-        }else if(estadoRadioButton2.isChecked()){
-            final String text = "Inactivo";
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-        }
+    // Método para insertar ciclo
+    public void agregarCiclo(View v){
         //Obteniendo valores elementos
         String nombreCiclo = editNombreCiclo.getText().toString();
         String inicioCiclo = editInicioCiclo.getText().toString();
         String finCiclo = editFinCiclo.getText().toString();
-        Boolean estado = Boolean.parseBoolean(estadoRadioButton1.getText().toString());
         String inicioClases = editInicioClases.getText().toString();
         String finClases = editFinClases.getText().toString();
+
         //Instanciando ciclo para guardar
         Ciclo ciclo = new Ciclo();
         ciclo.setNombreCiclo(nombreCiclo);
         ciclo.setInicio(inicioCiclo);
         ciclo.setFin(finCiclo);
-        ciclo.setEstadoCiclo(estado);
+        ciclo.setEstadoCiclo(false); // Se almacena como inactivo por defecto
         ciclo.setInicioPeriodoClase(inicioClases);
         ciclo.setFinPeriodoClase(finClases);
         String regInsertados = ciclo.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
     // Método para regresar al activity anterior
-    public void btnRegresarNCiclo(View v){
+    public void regresar(View v){
         super.onBackPressed();
     }
 
     //Limpiar campos
-    public void btnLimpiarTextoNCiclo(View v) {
+    public void limpiarTexto(View v) {
         editNombreCiclo.setText("");
         editInicioCiclo.setText("");
         editFinCiclo.setText("");

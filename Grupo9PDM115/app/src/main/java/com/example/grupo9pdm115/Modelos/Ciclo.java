@@ -162,14 +162,15 @@ public class Ciclo extends TablaBD {
     }
 
     /*
-    Método que actualiza el estado del ciclo a activo (true), dejando el resto de ciclos como
-    inactivos (false).
+    Descripción:
+        Método que actualiza el estado del ciclo a activo (true), dejando el resto de ciclos como
+        inactivos (false).
     Parámetros:
-    > contexto : contexto de la aplicación
+        > contexto : contexto de la aplicación
     Valores de retorno:
-    > -1 : el ciclo ya está activo
-    > 0 : No existe el registro
-    > 1 : Ciclo activado
+        > -1 : el ciclo ya está activo
+        > 0 : No existe el registro
+        > 1 : Ciclo activado
      */
     public int activarCiclo(Context context){
         int control = 0;

@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    android:stretchColumns="1">
-    tools:context=".EditarCiclo">
+    android:stretchColumns="1"
+    android:padding="15dp">
+
     <TextView
         android:text="@string/titEditarCiclo"
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
+
     <TableRow>
-        <TextView android:text="@string/txtNombreCiclo" />
+        <TextView android:text="@string/txtNombreCiclo"/>
         <EditText
             android:id="@+id/editNombreCiclo"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
+        <Button
+            android:id="@+id/btnInicioCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnInicioCiclo"
+            />
+
+        <EditText
+            android:id="@+id/editInicioCiclo"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+
+    </TableRow>
+
+    <TableRow>
 
         <Button
             android:id="@+id/btnFinCiclo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fin Ciclo"
+            android:text="@string/btnFinCiclo"
             />
 
         <EditText
@@ -35,22 +51,51 @@
             android:focusable="false"
             android:clickable="true"/>
     </TableRow>
-    <RadioButton
-        android:id="@+id/estadoRadiobutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/estadoRadioButton" />
     <TableRow>
 
         <Button
-            android:onClick="btnEditarECiclo"
-            android:text="@string/btnEditarECiclo" />
+            android:id="@+id/btnInicioClases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnInicioClases"
+            />
+
+        <EditText
+            android:id="@+id/editInicioClases"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+    </TableRow>
+    <TableRow>
 
         <Button
-            android:onClick="btnLimpiarTextoECiclo"
-            android:text="@string/btnLimpiarTextoECiclo" />
+            android:id="@+id/btnFinClases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnFinClases"
+            />
+
+        <EditText
+            android:id="@+id/editFinClases"
+            android:inputType="date"
+            android:maxLength="30"
+            android:focusable="false"
+            android:clickable="true"/>
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:onClick="actualizarCiclo"
+            android:text="@string/btnActualizarCiclo" />
+
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/btnLimpiarTextoNCiclo" />
     </TableRow>
     <Button
-        android:onClick="btnRegresarECiclo"
-        android:text="@string/btnRegresarECiclo" />
+        android:onClick="regresar"
+        android:text="@string/btnRegresarNCiclo"/>
+
 </TableLayout>

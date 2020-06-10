@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".Activities.Solicitud.EditarSolicitud"></activity>
+        <activity android:name=".Activities.Solicitud.NuevoSolicitud" />
+        <activity android:name=".Activities.Solicitud.GestionarSolicitud" />
+
+
         <activity android:name=".Activities.Rol.EditarRol"></activity>
         <activity android:name=".Activities.DetalleReserva.NuevoDetalleReserva"></activity>
         <activity android:name=".Activities.DetalleReserva.GestionarDetalleReserva" />
@@ -18,6 +23,7 @@
         <activity android:name=".Activities.EventoEspecial.NuevoEventoEspecial" />
         <activity android:name=".Activities.EventoEspecial.GestionarEventoEspecial" />
         <activity android:name=".Activities.EventoEspecial.EditarEventoEspecial" />
+
         <activity android:name=".Activities.Rol.NuevoRol" />
         <activity android:name=".Activities.Rol.GestionarRol" />
         <activity android:name=".Activities.ErrorDeUsuario" />

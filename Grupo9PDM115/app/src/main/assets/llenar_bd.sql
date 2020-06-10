@@ -1,50 +1,26 @@
--- CICLO
-DELETE FROM ciclo;
-INSERT INTO CICLO (nombreciclo, inicio, fin, estadociclo, inicioperiodoclase, finperiodoclase)
-    VALUES ("CICLO I", "2020/02/16", "2020/02/16", 1, "2020/02/16", "2020/02/16");
-INSERT INTO CICLO (nombreciclo, inicio, fin, estadociclo, inicioperiodoclase, finperiodoclase)
-    VALUES ("CICLO II", "2020/07/25", "2020/07/25", 0, "2020/07/25", "2020/07/25");
-
--- TIPO GRUPO 
-DELETE FROM TIPOGRUPO;
-INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Teórico");
-INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Laboratorio");
-INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Discusión");
-
+--==============================================================
+-- TABLAS CATÁLOGO
+--==============================================================
 -- DIA 
 DELETE FROM DIA;
-INSERT INTO DIA (nombredia) VALUES ("Sunday");
-INSERT INTO DIA (nombredia) VALUES ("Lunes");
-INSERT INTO DIA (nombredia) VALUES ("Martes");
-INSERT INTO DIA (nombredia) VALUES ("Miércoles");
-INSERT INTO DIA (nombredia) VALUES ("Jueves");
-INSERT INTO DIA (nombredia) VALUES ("Viernes");
-INSERT INTO DIA (nombredia) VALUES ("Sábado");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Domingo");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Lunes");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Martes");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Miércoles");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Jueves");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Viernes");
+INSERT INTO DIA (NOMBREDIA) VALUES ("Sábado");
 
--- UNIDAD 
-DELETE FROM UNIDAD;
-INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)
-    VALUES ("EISI", "Escuela de Ingeniería de Sistemas Informáticos", 2);
-INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)
-    VALUES ("UCB", "Unidad de Ciencias Básicas", 1);
-
--- MATERIA 
-DELETE FROM MATERIA;
-INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
-    VALUES ("MAT115", "Matemáticas 1", 1, 2);
-INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
-    VALUES ("PRN115", "Programación para Dispositivos Móviles", 2, 1);
-INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
-    VALUES ("FIR115", "Física I", 1, 2);
-INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
-    VALUES ("TSI115", "Teoría de Sistemas", 2, 1);
-
--- CICLO MATERIA 
-DELETE FROM CICLOMATERIA;
-INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "MAT115");
-INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "PRN115");
-INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "IEC115");
-INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "TSI115");
+-- HORARIO
+DELETE FROM HORARIO;
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("06:20", "08:00");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("08:05", "09:45");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("09:50", "11:30");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("11:35", "13:15");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("13:20", "15:00");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("15:05", "16:45");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("16:50", "18:30");
+INSERT INTO HORARIO(HORAINICIO, HORAFINAL) VALUES ("18:35", "20:15");
 
 -- OPCIONCRUD
 DELETE FROM OPCIONCRUD;
@@ -121,14 +97,76 @@ INSERT INTO OPCIONCRUD(IDOPCION,DESOPCION,NUMCRUD) VALUES ('EUN','Editar unidad'
 INSERT INTO OPCIONCRUD(IDOPCION,DESOPCION,NUMCRUD) VALUES ('DUN','Eliminar unidad',3);
 INSERT INTO OPCIONCRUD(IDOPCION,DESOPCION,NUMCRUD) VALUES ('CUN','Consultar unidad',4);
 
+--==============================================================
+-- TABLAS ADMINISTRACIÓN ACADÉMICA
+--==============================================================
+-- CICLO
+DELETE FROM ciclo;
+INSERT INTO CICLO (NOMBRECICLO, INICIO, FIN, ESTADOCICLO, INICIOPERIODOCLASE, FINPERIODOCLASE)
+    VALUES ("CICLO I - 2020", "2020-01-01", "2020-06-30", 1, "2020-02-16", "2020-06-16");
+INSERT INTO CICLO (NOMBRECICLO, INICIO, FIN, ESTADOCICLO, INICIOPERIODOCLASE, FINPERIODOCLASE)
+    VALUES ("CICLO II - 2020", "2020-07-01", "2020-12-31", 0, "2020-08-15", "2020-12-15");
+
+-- FERIADOS
+DELETE FROM FERIADOS;
+INSERT INTO FERIADOS(IDCICLO, FECHAINICIOFERIADO, FECHAFINFERIADO, NOMBREFERIADO, DESCRIPCIONFERIADO, BLOQUEARRESERVAS)
+    VALUES (0, "2020-04-05", "2020-04-11", "Semana Santa", "Semana Santa", 1);
+INSERT INTO FERIADOS(IDCICLO, FECHAINICIOFERIADO, FECHAFINFERIADO, NOMBREFERIADO, DESCRIPCIONFERIADO, BLOQUEARRESERVAS)
+    VALUES (0, "2020-06-21", "2020-06-27", "Semana del Estudiante", "Semana del estudiante", 0);
+
+-- UNIDAD 
+DELETE FROM UNIDAD;
+INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)
+    VALUES ("EISI", "Escuela de Ingeniería de Sistemas Informáticos", 2);
+INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)
+    VALUES ("UCB", "Unidad de Ciencias Básicas", 1);
+
+-- MATERIA 
+DELETE FROM MATERIA;
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("MAT115", "Matemáticas 1", 1, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("PRN115", "Programación para Dispositivos Móviles", 2, 1);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("FIR115", "Física I", 1, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("TSI115", "Teoría de Sistemas", 2, 1);
+
+-- CICLOMATERIA 
+DELETE FROM CICLOMATERIA;
+INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "MAT115");
+INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "PRN115");
+INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "IEC115");
+INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "TSI115");
+
+-- TIPOGRUPO 
+DELETE FROM TIPOGRUPO;
+INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Teórico");
+INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Laboratorio");
+INSERT INTO TIPOGRUPO (nombretipogrupo) VALUES ("Discusión");
+
+-- GRUPO
+DELETE FROM GRUPO;
+-- Grupos para MAT115
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (1, 1, 01);
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (2, 1, 01);
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (3, 1, 01);
+-- Grupos para PRN115
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (1, 2, 01);
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (3, 2, 01);
+-- Grupos para IEC115
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (1, 3, 01);
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (2, 3, 01);
+-- Grupos para TSI115
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (1, 4, 01);
+INSERT INTO GRUPO (idtipogrupo, idciclomateria, numero) VALUES (2, 4, 01);
+
+--==============================================================
+-- TABLAS USUARIO
+--==============================================================
 --ROL
 DELETE FROM ROL;
 INSERT INTO ROL(NOMBREROL) VALUES ('Administrador');
-
--- USUARIO
-DELETE FROM USUARIO;
-INSERT INTO USUARIO(IDUSUARIO,IDUNIDAD,IDROL,NOMBREUSUARIO,CLAVEUSUARIO,NOMBREPERSONAL,APELLIDOPERSONAL,CORREOPERSONAL)
-    VALUES ('0A',1,1,'admin','admin','Administrador','App','administrador@admin.com');
 
 -- ACCESOUSUARIO
 DELETE FROM ACCESOUSUARIO;
@@ -205,6 +243,38 @@ INSERT INTO ACCESOUSUARIO(IDOPCION,IDROL) VALUES ('EUN',1);
 INSERT INTO ACCESOUSUARIO(IDOPCION,IDROL) VALUES ('DUN',1);
 INSERT INTO ACCESOUSUARIO(IDOPCION,IDROL) VALUES ('CUN',1);
 
--- TIPO LOCAL
+-- USUARIO
+DELETE FROM USUARIO;
+INSERT INTO USUARIO(IDUSUARIO,IDUNIDAD,IDROL,NOMBREUSUARIO,CLAVEUSUARIO,NOMBREPERSONAL,APELLIDOPERSONAL,CORREOPERSONAL)
+    VALUES ('0A',1,1,'admin','admin','Administrador','App','administrador@admin.com');
+
+-- COORDINACION
+
+--==============================================================
+-- TABLAS LOCALES
+--==============================================================
+-- TIPOLOCAL
+DELETE FROM TIPOLOCAL;
 INSERT INTO TIPOLOCAL (IDENCARGADO, NOMBRETIPO) VALUES ('0A', 'Aulas');
 INSERT INTO TIPOLOCAL (IDENCARGADO, NOMBRETIPO) VALUES ('0A', 'Centros de cómputo');
+
+-- LOCAL
+DELETE FROM LOCAL;
+INSERT INTO LOCAL(IDTIPOLOCAL, NOMBRELOCAL, CAPACIDAD) VALUES (1, "B11", 100);
+INSERT INTO LOCAL(IDTIPOLOCAL, NOMBRELOCAL, CAPACIDAD) VALUES (1, "B41", 50);
+INSERT INTO LOCAL(IDTIPOLOCAL, NOMBRELOCAL, CAPACIDAD) VALUES (2, "LCOMP-1", 25);
+INSERT INTO LOCAL(IDTIPOLOCAL, NOMBRELOCAL, CAPACIDAD) VALUES (2, "LCOMP-2", 25);
+
+--==============================================================
+-- TABLAS RESERVAS
+--==============================================================
+
+-- EVENTOESPECIAL
+
+-- DETALLERESERVA
+
+
+
+-- SOLICITUD
+
+-- RESERVA

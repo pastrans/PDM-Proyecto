@@ -406,12 +406,17 @@
     //Gestionar Detalle Reserva
     <string name="titGestionarDetalleReserva">Gestionar Detalle Reserva</string>
     <string name="btnNuevoGDetalleReserva">Nuevo</string>
-    <string name="txtListaDetalleReserva">Listado destalles de reservas</string>
+    <string name="txtListaDetalleReserva">Listado destalles de reservas:</string>
+    <string name="txtCupo">Cupo:</string>
+    <string name="txtDia">Día:</string>
+    <string name="txtHora">Hora:</string>
+    <string name="txtLocal">Local:</string>
+    <string name="txtGrupo">Grupo:</string>
+    <string name="txtEventoEspecial">Evento especial:</string>
     //Nuevo Detalle Reserva
     <string name="titNuevoDetalleReserva">Nuevo Detalle Reserva</string>
     <string name="btnLimpiarTextoNDetalleReserva">Limpiar</string>
     <string name="btnAgregarNDetalleReserva">Agregar</string>
-
 
     //Editar Detalle Reserva
     <string name="titEditarDetalleReserva">Editar Detalle Reserva</string>

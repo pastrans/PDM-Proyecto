@@ -38,4 +38,12 @@ public class NuevoTipoGrupo extends AppCompatActivity {
 
     }
 
+    public void btnLimpiarNTipoGrupo(View v){
+        nombreTipoGrupo.setText("");
+    }
+
+    public void btnRegresarNTipoGrupo(View v){
+        finish();
+    }
+
 }

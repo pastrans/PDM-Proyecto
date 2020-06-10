@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ctxActualizar"
+        android:title="@string/ctxListaTGActualizar"/>
+    <item android:id="@+id/ctxEliminar"
+        android:title="@string/ctxListaTGEliminar"/>
+</menu>

@@ -95,4 +95,18 @@ public class EditarUsuario extends AppCompatActivity {
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
     }
 
+    public void btnRegresarEUsuario(View v){
+        finish();
+    }
+
+    public void btnLimpiarEUsuario(View v){
+        editNombreUsuario.setText("");
+        editNombrePersona.setText("");
+        editApellidoPersona.setText("");
+        editCorreoPersona.setText("");
+        spinnerEditarUnidadUsuario.setSelection(0);
+        spinnerEditarRolUsuario.setSelection(0);
+        editClaveUsuario.setText("");
+    }
+
 }

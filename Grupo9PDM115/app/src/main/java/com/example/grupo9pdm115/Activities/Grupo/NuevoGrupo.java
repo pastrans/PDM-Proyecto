@@ -63,4 +63,15 @@ public class NuevoGrupo extends AppCompatActivity {
             Toast.makeText(this, "Seleccione una materia", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void btnLimpiarNGrupo(View v){
+        numero.setText("");
+        idTipoGrupo.setSelection(0);
+        idCicloMateria.setSelection(0);
+    }
+
+    public void btnRegresarNGrupo(View v){
+        finish();
+    }
+
 }

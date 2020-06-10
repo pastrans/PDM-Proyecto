@@ -68,4 +68,14 @@ public class EditarGrupo extends AppCompatActivity {
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
     }
 
+    public void btnLimpiarEGrupo(View v){
+        editNumero.setText("");
+        spinnerTipoGrupo.setSelection(0);
+        spinnerCicloMateria.setSelection(0);
+    }
+
+    public void btnRegresarEGrupo(View v){
+        finish();
+    }
+
 }

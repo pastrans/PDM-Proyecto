@@ -65,7 +65,7 @@ public class Sesion {
         helper = new ControlBD(context);
         Cursor cursor;
         helper.abrir();
-        String sql = "SELECT idopcion FROM accesousuario, ROL WHERE rol.IDROL='" + user.getNombreUsuario() + "' and ROL.IDROL = ACCESOUSUARIO.IDROL";
+        String sql = "SELECT idopcion FROM accesousuario, ROL WHERE rol.IDROL=" + user.getIdRol() + " and ROL.IDROL = ACCESOUSUARIO.IDROL";
         Set<String> opcionesAcceso = new HashSet<String>();
         cursor = helper.consultar(sql);
         while (cursor.moveToNext()){

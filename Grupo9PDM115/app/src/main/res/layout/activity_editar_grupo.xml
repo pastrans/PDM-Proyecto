@@ -26,11 +26,11 @@
     <TableRow>
         <TextView
             android:text="@string/txtMateria"/>
+        <Spinner
+            android:id="@+id/spinMateriaEdit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/editMateria"
-            android:inputType="text"
-            android:maxLength="30"/>
     </TableRow>
 
     <TableRow>
@@ -38,15 +38,14 @@
             android:text="@string/txtNuevoTipoGrupo"/>
 
         <Spinner
-            android:id="@+id/spinTipoGrupo" />
+            android:id="@+id/spinTipoGrupoEdit" />
     </TableRow>
 
     <TableRow>
 
         <Button
             android:onClick="btnEditarEGrupo"
-            android:text="@string/btnEditarEGrupo"
-            tools:ignore="OnClick" />
+            android:text="@string/btnEditarEGrupo" />
 
         <Button
             android:onClick="btnLimpiarEGrupo"

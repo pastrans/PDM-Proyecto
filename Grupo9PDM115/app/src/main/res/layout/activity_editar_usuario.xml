@@ -68,6 +68,16 @@
 
     <TableRow>
 
+        <TextView android:text="Rol" />
+        <Spinner
+            android:id="@+id/spinnerEditarRolUsuario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow>
+
         <Button
             android:onClick="btnEditarEUsuario"
             android:text="@string/btnEditarEUsuario" />

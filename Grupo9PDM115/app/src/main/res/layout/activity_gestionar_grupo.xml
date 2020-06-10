@@ -60,20 +60,14 @@ tools:context=".Activities.Grupo.GestionarGrupo">
         android:text="@string/btnNuevoGGrupo"
         tools:ignore="OnClick" />
 
-    <Button
-        android:onClick="btnEditarGGrupo"
-        android:text="@string/btnEditarGGrupo"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEliminarGGrupo"
-        android:text="@string/btnEliminarGGrupo"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGGrupo"
-        android:text="@string/btnRegresarGGrupo"
-        tools:ignore="OnClick" />
+    <ListView
+        android:paddingTop="15dp"
+        android:id="@+id/listViewGrupos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"
+        />
 
 
 </TableLayout>

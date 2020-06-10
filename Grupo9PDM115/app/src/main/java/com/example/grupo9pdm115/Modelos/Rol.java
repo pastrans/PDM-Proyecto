@@ -64,21 +64,16 @@ public class Rol extends TablaBD {
 
     @Override
     public String guardar(Context context) {
-        String mensaje = "Registro insertado N° = : ";
+        String mensaje = "Se ha insertado el registro con éxito. ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("nombreRol", getNombreRol());
-
         helper.abrir();
         control = helper.getDb().insert(getNombreTabla(), null, valoresCamposTabla);
         helper.cerrar();
 
-        if(control==-1 || control==0)
-        {
+        if(control==-1 || control==0) {
             mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
-        }
-        else {
-            mensaje = mensaje+control;
         }
 
         return mensaje;
@@ -86,6 +81,8 @@ public class Rol extends TablaBD {
 
     @Override
     public String eliminar(Context context){
+        if (getIdRol() == 1)
+            return "No se puede eliminar el rol del Administrador";
         String res = "";
         long control = 0;
         ControlBD helper = new ControlBD(context);

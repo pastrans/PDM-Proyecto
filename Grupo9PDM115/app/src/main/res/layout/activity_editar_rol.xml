@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Rol.NuevoRol"
+    android:orientation="vertical"
+    android:padding="15dp"
+    >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del rol"/>
+    <TextView
+        android:id="@+id/txtNombreRolEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rol 1"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:onClick="editarRolGuardar"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:text="Accesos"/>
+
+    <ListView
+        android:id="@+id/listViewAccesosRolEditar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"
+        />
+
+</LinearLayout>

@@ -1,13 +1,18 @@
 package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 
-public class Grupo {
+import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.BD.TablaBD;
+
+public class Grupo extends TablaBD {
 
 
     // Atributos para BD
-    private final String nombreTabla = "grupo";
-    private ContentValues valores = new ContentValues();
+    /*private final String nombreTabla = "grupo";
+    private ContentValues valores = new ContentValues();*/
 
 
     // Atributos
@@ -15,15 +20,17 @@ public class Grupo {
     private int numero;
     private int idTipoGrupo;
     private int idCicloMateria;
+    private CicloMateria cicloMateria;
+    private TipoGrupo tipoGrupo;
     // -------------Constructor---------------
     public Grupo(int idGrupo, int numero) {
-
-
         this.idGrupo = idGrupo;
         this.numero = numero;
     }
     public Grupo() {
-
+        setNombreTabla("grupo");
+        setNombreLlavePrimaria("idGrupo");
+        setCamposTabla(new String[]{"idGrupo", "idTipoGrupo", "idCicloMateria", "numero"});
     }
     // -------------Fin del Constructor---------------
     // -------------Métodos getter y setter---------------
@@ -43,7 +50,51 @@ public class Grupo {
         this.numero = numero;
     }
 
-    public String getNombreTabla() { return nombreTabla; }
+    //public String getNombreTabla() { return nombreTabla; }
+
+    public CicloMateria getCicloMateria() {
+        return cicloMateria;
+    }
+
+    public void setCicloMateria(CicloMateria cicloMateria) {
+        this.cicloMateria = cicloMateria;
+    }
+
+    public TipoGrupo getTipoGrupo() {
+        return tipoGrupo;
+    }
+
+    public void setTipoGrupo(TipoGrupo tipoGrupo) {
+        this.tipoGrupo = tipoGrupo;
+    }
+
+    @Override
+    public String getValorLlavePrimaria() {
+        return String.valueOf(getIdGrupo());
+    }
+
+    @Override
+    public void setValoresCamposTabla() {
+        this.valoresCamposTabla.put("idGrupo", getIdGrupo());
+        this.valoresCamposTabla.put("idTipoGrupo", getIdTipoGrupo());
+        this.valoresCamposTabla.put("idCicloMateria", getIdCicloMateria());
+        this.valoresCamposTabla.put("numero", getNumero());
+    }
+
+    @Override
+    public void setAttributesFromArray(String[] arreglo) {
+        setIdGrupo(Integer.valueOf(arreglo[0]));
+        setIdTipoGrupo(Integer.valueOf(arreglo[1]));
+        setIdCicloMateria(Integer.valueOf(arreglo[2]));
+        setNumero(Integer.valueOf(arreglo[3]));
+    }
+
+    @Override
+    public Grupo getInstanceOfModel(String[] arreglo) {
+        Grupo grupo = new Grupo();
+        grupo.setAttributesFromArray(arreglo);
+        return grupo;
+    }
 
     public int getIdTipoGrupo() {
         return idTipoGrupo;
@@ -64,16 +115,32 @@ public class Grupo {
 // -------------Fin de Métodos getter y setter---------------
     // -------------Métodos para BD ------------------------------
 
-    public ContentValues getValores() {
-//        valores.put("codMateria",getIdGrupo());
+    /*public ContentValues getValores() {
+        valores.put("idGrupo",getIdGrupo());
         valores.put("numero", getNumero());
         valores.put("idCicloMateria", getIdCicloMateria());
         valores.put("idTipoGrupo", getIdTipoGrupo());
         return valores;
-    }
+    }*/
     // -------------Fin de métodos para BD ------------------------------
 
+    @Override
+    public String guardar(Context context) {
+        String mensaje = "Se ha insertado el registro con éxito. ";
+        long control = 0;
+        ControlBD helper = new ControlBD(context);
+        this.valoresCamposTabla.put("numero", getNumero());
+        this.valoresCamposTabla.put("idTipoGrupo", getIdTipoGrupo());
+        this.valoresCamposTabla.put("idCicloMateria", getIdCicloMateria());
+        helper.abrir();
+        control = helper.getDb().insert(getNombreTabla(), null, valoresCamposTabla);
+        helper.cerrar();
 
+        if(control==-1 || control==0) {
+            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+        }
+        return mensaje;
+    }
 
 }
 

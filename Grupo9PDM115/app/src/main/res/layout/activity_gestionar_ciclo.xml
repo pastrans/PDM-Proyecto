@@ -21,7 +21,7 @@
         android:id="@+id/btnNuevoCiclo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGCiclo"
+        android:onClick="agregarCiclo"
         android:text="@string/btnNuevoGCiclo" />
 
     <!-- Lista días -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,58 +9,89 @@
     android:paddingLeft= "16dp"
     android:paddingRight= "16dp"
     android:paddingTop="8dp">
-
+    
+    <!-- NombreCiclo -->
     <TextView
         android:id="@+id/txtNombreCiclo"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Nombre"
         android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Ciclo I" />
+        tools:text="CICLO I - 2020" />
+    
+    <!-- InicioCiclo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtInicioCicloLista"/>
+        <TextView
+            android:id="@+id/txtInicio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="01/01/2020"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtNombreCiclo"
-        android:layout_below="@id/txtNombreCiclo"
-        android:text="Inicio"
-        tools:text="01/01/2020"/>
+    <!-- FinCiclo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtFinCicloLista"/>
+        <TextView
+            android:id="@+id/txtFin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="01/07/2020"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtFin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtInicio"
-        android:layout_alignLeft="@id/txtNombreCiclo"
-        android:text="Fin"
-        tools:text="01/07/2020" />
+    <!-- EstadoCiclo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtEstadoCicloLista"/>
+        <TextView
+            android:id="@+id/txtEstadoCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="Activo"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtEstadoCiclo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtNombreCiclo"
-        android:layout_below="@id/txtFin"
-        android:text="Estado Ciclo"
-        tools:text="Activo"/>
+    <!-- InicioClases -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtInicioPeriodoClaseLista"/>
+        <TextView
+            android:id="@+id/txtInicioPeriodoClase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="20/02/2020"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtInicioPeriodoClase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtNombreCiclo"
-        android:layout_below="@id/txtEstadoCiclo"
-        android:text="Inicio Periodo Clase"
-        tools:text="20/02/2020"/>
+    <!-- InicioClases -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtFinPeriodoClaseLista"/>
+        <TextView
+            android:id="@+id/txtFinPeriodoClase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="20/06/2020"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtFinPeriodoClase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtNombreCiclo"
-        android:layout_below="@id/txtInicioPeriodoClase"
-        android:text="Fin Periodo Clase"
-        tools:text="20/06/2020"/>
-</RelativeLayout>
+</LinearLayout>

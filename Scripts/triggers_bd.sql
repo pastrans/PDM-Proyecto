@@ -1,0 +1,2 @@
+-- CICLO
+-- Que no sea capaz de eliminar ciclos activos

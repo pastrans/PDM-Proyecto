@@ -84,6 +84,8 @@
             android:clickable="true"/>
     </TableRow>
 
+    <!-- Se almacenarán como inactivo por defecto, ver si borrar después porque
+    no se utilizarán los radiobuttons
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,18 +103,19 @@
             android:layout_height="wrap_content"
             android:text="Inactivo" />
     </RadioGroup>
+    -->
     <TableRow>
 
         <Button
-            android:onClick="btnAgregarNCiclo"
+            android:onClick="agregarCiclo"
             android:text="@string/btnAgregarNCiclo" />
 
         <Button
-            android:onClick="btnLimpiarTextoNCiclo"
+            android:onClick="limpiarTexto"
             android:text="@string/btnLimpiarTextoNCiclo" />
     </TableRow>
     <Button
-        android:onClick="btnRegresarNCiclo"
+        android:onClick="regresar"
         android:text="@string/btnRegresarNCiclo"/>
 
 </TableLayout>

@@ -29,7 +29,7 @@ public class NuevoMateria  extends Activity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuevo_ciclo);
+        setContentView(R.layout.activity_nuevo_materia);
         helper = new ControlBD(this);
         editCodMateria = (EditText) findViewById(R.id.editcodmateria);
         editNombre = (EditText) findViewById(R.id.nombreMat);

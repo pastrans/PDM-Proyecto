@@ -116,6 +116,8 @@ INSERT INTO FERIADOS(IDCICLO, FECHAINICIOFERIADO, FECHAFINFERIADO, NOMBREFERIADO
 
 -- UNIDAD 
 DELETE FROM UNIDAD;
+INSERT INTO UNIDAD(nombreent, descripcionent, prioridad)
+    VALUES ("Ninguna", "", 0);
 INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)
     VALUES ("EISI", "Escuela de Ingeniería de Sistemas Informáticos", 2);
 INSERT INTO UNIDAD (nombreent, descripcionent, prioridad)

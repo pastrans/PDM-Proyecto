@@ -18,11 +18,11 @@ public class MainActivity extends ListActivity  {
     int day, month, year;*/
     ControlBD BDhelper;
 
-    String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario","Encargado", "Rol","Solicitud"};
+    String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario","Encargado", "Rol","Solicitud","Detalle Reserva"};
     String[] activities = {"Llenar BD", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
             "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
             "TipoGrupo.GestionarTipoGrupo","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
-            "Usuario.GestionarUsuario","Horario.GestionarHorario","Encargado.GestionarEncargado", "Rol.GestionarRol","Solicitud.GestionarSolicitud"};
+            "Usuario.GestionarUsuario","Horario.GestionarHorario","Encargado.GestionarEncargado", "Rol.GestionarRol","Solicitud.GestionarSolicitud","DetalleReserva.GestionarDetalleReserva"};
 
 
     @Override

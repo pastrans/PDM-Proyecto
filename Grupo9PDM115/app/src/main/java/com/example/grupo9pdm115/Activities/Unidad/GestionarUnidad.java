@@ -11,13 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.UnidadAdapter;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarUnidad extends Activity {
+public class GestionarUnidad extends AppCompatActivity {
     ListView listUnidad;
     UnidadAdapter listaUnidadAdapter;
     Unidad unidad;

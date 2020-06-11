@@ -62,23 +62,21 @@
 
     //Variables Unidad
     //Etiquetas
-    <string name="txtNombreUnidad">Nombre unidad</string>
-    <string name="editDescripcion">Descripción</string>
-    <string name="txtPrioridad">Prioridad</string>
+    <string name="txtNombreUnidad">Nombre unidad:</string>
+    <string name="editDescripcion">Descripción:</string>
+    <string name="txtPrioridad">Prioridad:</string>
     //Gestionar Unidad
     <string name="titGestionarUnidad">Gestionar Unidad</string>
     <string name="txtListaUnidad">Listado de unidades ingresadas:</string>
     <string name="btnNuevoGUnidad">Nuevo</string>
     //Nuevo Unidad
     <string name="titNuevoUnidad">Nueva Unidad</string>
-    <string name="btnRegresarNUnidad">Regresar</string>
     <string name="btnAgregarNUnidad">Agregar</string>
-    <string name="btnLimpiarNUnidad">Limpiar</string>
+    <string name="btnLimpiarTextoNUnidad">Limpiar</string>
     //Editar Unidad
     <string name="titEditarUnidad">Editar Unidad</string>
     <string name="btnEditarEUnidad">Editar</string>
     <string name="btnLimpiarEUnidad">Limpiar</string>
-    <string name="btnRegresarEUnidad">Regresar</string>
 
     //Variables Materia
     //Etiquetas

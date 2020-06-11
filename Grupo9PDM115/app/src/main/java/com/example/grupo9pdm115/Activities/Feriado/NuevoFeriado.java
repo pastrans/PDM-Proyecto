@@ -18,7 +18,11 @@ import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.R;
 
+//import java.text.ParseException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NuevoFeriado extends Activity implements View.OnClickListener {
@@ -100,7 +104,7 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
         });
     }
     //Metodo para insertar feriado
-    public void btnAgregarNFeriado(View v){
+    public void btnAgregarNFeriado(View v) throws ParseException {
         //Obteniendo Valores
         String regInsertados;
         String nombreFeriado = editNombreFeriado.getText().toString();
@@ -134,11 +138,18 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
                     } else{
                         regInsertados = feriado.guardar(this);
                     }
-
                 }
             }
         }
+        //Ano-Mes-Dia
+        /*SimpleDateFormat sdformat = new SimpleDateFormat();
+        Date d1 = sdformat.parse(feriado.getFechaInicioFeriado());
+        Date d2 = sdformat.parse(feriado.getFechaFinFeriado());
+        if (d1.compareTo(d2) == 0){
+            regInsertados = "las fechas son iguales";
+        }else {regInsertados = feriado.guardar(this);}*/
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
     }
     /* public void btnAgregarNFeriado(View v){
          //Instanciando feriado para guardar

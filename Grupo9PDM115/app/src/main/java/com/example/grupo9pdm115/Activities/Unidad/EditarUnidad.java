@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 
-public class EditarUnidad extends Activity {
+public class EditarUnidad extends AppCompatActivity {
     EditText nombreent;
     EditText descripcion;
     EditText prioridad;
@@ -34,20 +34,34 @@ public class EditarUnidad extends Activity {
             prioridad.setText(Integer.toString(getIntent().getIntExtra("prioridad",0)));
         }
     }
-    // Método para actualizar día
-    public void actualizar(View v) {
+    // Método para actualizar
+    public void actualizarU(View v) {
+        String estado;
         String nombreuni = nombreent.getText().toString();
         unidad.setNombreent(nombreuni);
         String desc  = descripcion.getText().toString();
         unidad.setDescripcionent(desc);
         int prio = Integer.parseInt(prioridad.getText().toString().trim());
         unidad.setPrioridad(prio);
-        String estado = unidad.actualizar(this);
+        if(unidad.getNombreent().isEmpty()){
+            estado= "El nombre esta vacio";
+        }else{
+            if(unidad.getDescripcionent().isEmpty()){
+                estado = "La descripción esta vacia";
+            }else{
+                if(unidad.getPrioridad() == 0 ){
+                    estado= "Ingrese prioridad mayor a cero";
+                }else{
+                    estado = unidad.actualizar(this);
+                }
+            }
+        }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
-
-    // Método para regresar al activity anterior
-    public void regresar(View v) {
-        super.onBackPressed();
+    public void btnLimpiarTextoNUnidad(View c){
+        nombreent.setText("");
+        descripcion.setText("");
+        prioridad.setText("");
     }
+
 }

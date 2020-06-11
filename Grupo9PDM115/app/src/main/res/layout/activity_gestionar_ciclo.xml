@@ -42,10 +42,6 @@
             android:layout_height="match_parent"
             android:hint="Nombre del ciclo"
             android:inputType="time"/>
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_boton_buscar"/>
     </LinearLayout>
     <ListView
         android:id="@+id/listaCiclos"

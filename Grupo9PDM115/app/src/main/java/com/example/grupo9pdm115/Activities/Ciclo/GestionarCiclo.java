@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.CicloAdapter;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.R;
@@ -18,7 +20,7 @@ import com.example.grupo9pdm115.R;
 import java.util.List;
 
 
-public class GestionarCiclo extends Activity {
+public class GestionarCiclo extends AppCompatActivity {
     //Declarando atributos para manejo del ListView
     ListView listaCiclos;
     CicloAdapter listaCiclosAdapter;
@@ -28,6 +30,8 @@ public class GestionarCiclo extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_ciclo);
+
+        getActionBar().hide();
 
         //Inicializar elementos para llenar lista
         listaCiclos = (ListView) findViewById(R.id.listaCiclos);

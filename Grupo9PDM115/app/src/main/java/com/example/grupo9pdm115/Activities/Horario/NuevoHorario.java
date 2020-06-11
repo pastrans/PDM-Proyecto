@@ -38,10 +38,19 @@ public class NuevoHorario extends Activity implements View.OnClickListener{
 
     }
     public void agregarHorario(View v){
+        String regInsertados;
         Horario horario = new Horario();
         horario.setHoraInicio(editHInicio.getText().toString());
         horario.setHoraFinal(editHFinal.getText().toString());
-        String regInsertados = horario.guardar(this);
+        if (horario.getHoraInicio().isEmpty()) {
+            regInsertados = "Hora inicio está vacío";
+        } else {
+            if (horario.getHoraFinal().isEmpty()) {
+                regInsertados = "Hora final está vacío";
+            } else {
+                regInsertados = horario.guardar(this);
+            }
+        }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
     // Método para regresar al activity anterior
@@ -78,6 +87,9 @@ public class NuevoHorario extends Activity implements View.OnClickListener{
             timePickerDialog.show();
         }
     }
-
-
+    //Limpiar campos
+    public void btnLimpiarTextoNHorario(View v) {
+        editHInicio.setText("");
+        editHFinal.setText("");
+    }
 }

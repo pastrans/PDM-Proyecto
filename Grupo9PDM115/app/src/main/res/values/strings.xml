@@ -338,12 +338,10 @@
     <string name="titNuevoHorario">Nuevo Horario</string>
     <string name="btnAgregarNHorario">Agregar</string>
     <string name="btnLimpiarNHorario">Limpiar</string>
-    <string name="btnRegresarNHorario">Regresar</string>
     //Editar Horario
     <string name="titEditarEHorario">Editar Horario</string>
     <string name="btnEditarEHorario">Editar</string>
     <string name="btnLimpiarEHorario">Limpiar</string>
-    <string name="btnRegresarEHorario">Regresar</string>
 
     // Error de usuario
     <string name="titErrorUsuario">Ajá prro</string>

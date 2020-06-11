@@ -1,49 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1">
+    android:orientation="vertical"
+    android:padding="15dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titNuevoHorario"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/btnHInicio"
+                    android:text="@string/txtHoraInicial"/>
 
-    <TextView
-        android:text="@string/titNuevoHorario"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.20"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editHoraInicio"
+                    android:inputType="date"
+                    android:maxLength="30"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
 
-    <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/btnHFinal"
+                    android:text="@string/txtHoraFin"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editHoraFinal"
+                    android:inputType="date"
+                    android:maxLength="30"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnLimpiarTextoNHorario"
+                    android:text="@string/btnLimpiarNHorario" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="agregarHorario"
+                    android:text="@string/btnAgregarNHorario"/>
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btnHInicio"
-            android:text="@string/txtHoraInicial"
-            tools:ignore="OnClick" />
+        </LinearLayout>
+    </ScrollView>
 
-        <EditText
-            android:id="@+id/editHoraInicio"
-            android:inputType="text"
-            android:maxLength="30"  />
-    </TableRow>
-    <TableRow>
-
-        <Button
-            android:id="@+id/btnHFinal"
-            android:text="@string/txtHoraFin"
-            tools:ignore="OnClick" />
-        <EditText
-            android:id="@+id/editHoraFinal"
-            android:inputType="text"
-            android:maxLength="30"  />
-    </TableRow>
-
-    <Button
-        android:onClick="agregarHorario"
-        android:text="@string/btnAgregarNHorario"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="regresar"
-        android:text="@string/btnRegresarNHorario"
-        tools:ignore="OnClick" />
-
-</TableLayout>
+</LinearLayout>

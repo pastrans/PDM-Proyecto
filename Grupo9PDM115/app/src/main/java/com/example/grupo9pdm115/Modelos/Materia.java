@@ -22,6 +22,9 @@ public class Materia  extends TablaBD {
 
     // Métodos
     public Materia(){
+        setNombreTabla("materia");
+        setNombreLlavePrimaria("codMateria");
+        setCamposTabla(new String[]{"codMateria", "idUnidad","nombreMat","masiva"});
     }
 
     public Materia(String codMateria, int idUnidad, String nombreMateria, boolean masiva) {
@@ -44,7 +47,9 @@ public class Materia  extends TablaBD {
     public void setNombreMateria(String nombreMateria) { this.nombreMateria = nombreMateria; }
 
     public boolean isMasiva() { return masiva; }
-
+    public void setMasiva(boolean masividad) {
+        this.masiva = masividad;
+    }
     public void setMasiva(String masivaEstado) {
         boolean estado = false;
 
@@ -68,7 +73,7 @@ public class Materia  extends TablaBD {
 
     @Override
     public String getValorLlavePrimaria() {
-       return codMateria;    }
+        return codMateria;    }
 
     @Override
     public void setValoresCamposTabla() {

@@ -41,7 +41,7 @@ public class MateriaAdapter extends ArrayAdapter<Materia> {
         // Setup view
         codMateria.setText(materia.getCodMateria());
         nombre.setText(materia.getNombreMateria());
-        idUnidad.setText(materia.getIdUnidad());
+        idUnidad.setText(Integer.toString(materia.getIdUnidad()));
         if(materia.isMasiva())
             masividad.setText("Masiva");
         else

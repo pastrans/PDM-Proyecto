@@ -52,6 +52,7 @@ public class NuevoUsuario extends AppCompatActivity {
         spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()));
         spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(getApplicationContext()));
         spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()).notifyDataSetChanged();
+        spinnerUnidad.setSelection(1);
     }
 
     public void btnAgregarNUsuario(View v){

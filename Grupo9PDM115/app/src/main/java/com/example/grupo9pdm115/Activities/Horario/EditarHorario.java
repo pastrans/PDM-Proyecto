@@ -45,11 +45,20 @@ public class EditarHorario extends Activity implements View.OnClickListener{
     // Método para actualizar Horario
     public void actualizarH(View v) {
         //horario.setIdHora(horario.getIdHora());
+        String estado;
         String horai = editHInicio.getText().toString();
         horario.setHoraInicio(horai);
         String horaf = editHFinal.getText().toString();
         horario.setHoraFinal(horaf);
-        String estado = horario.actualizar(this);
+        if (horario.getHoraInicio().isEmpty()) {
+            estado = "Hora inicio está vacío";
+        } else {
+            if (horario.getHoraFinal().isEmpty()) {
+                estado = "Hora final está vacío";
+            } else {
+                estado = horario.actualizar(this);
+            }
+        }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
@@ -85,5 +94,10 @@ public class EditarHorario extends Activity implements View.OnClickListener{
             },Hfinal,Mfinal,false);
             timePickerDialog.show();
         }
+    }
+    //Limpiar campos
+    public void btnLimpiarTextoEHorario(View v) {
+        editHInicio.setText("");
+        editHFinal.setText("");
     }
 }

@@ -31,14 +31,19 @@ public class EditarDia extends Activity {
 
     // Método para actualizar día
     public void actualizarDia(View v) {
+        String estado;
         String nombreDia = editNombreDia.getText().toString();
         dia.setNombreDia(nombreDia);
-        String estado = dia.actualizar(this);
+        if(dia.getNombreDia().isEmpty()){
+            estado="Nombre está vacío";
+        }
+        else{
+            estado = dia.actualizar(this);
+        }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
-
-    // Método para regresar al activity anterior
-    public void regresar(View v) {
-        super.onBackPressed();
+    //Limpiar campos
+    public void btnLimpiarTextoEDia(View v) {
+        editNombreDia.setText("");
     }
 }

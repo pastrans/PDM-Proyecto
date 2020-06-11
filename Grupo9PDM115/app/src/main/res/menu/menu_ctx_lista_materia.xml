@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/ctxActualizarCiclo"
+    <item android:id="@+id/ctxActualizarMateria"
         android:title="@string/ctxListaCiclosActualizar"/>
-    <item android:id="@+id/ctxActivarCiclo"
-        android:title="@string/ctxListaCiclosActivarr"/>
-    <item android:id="@+id/ctxEliminarCiclo"
+    <item android:id="@+id/ctxEliminarMateria"
         android:title="@string/ctxListaCiclosEliminar"/>
 </menu>

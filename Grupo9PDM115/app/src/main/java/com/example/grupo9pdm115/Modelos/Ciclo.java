@@ -68,6 +68,19 @@ public class Ciclo extends TablaBD {
     public void setEstadoCiclo(boolean estadoCiclo) {
         this.estadoCiclo = estadoCiclo;
     }
+    public void setEstadoCiclo(String estadoCiclo) {
+        boolean estado = false;
+        if(estadoCiclo.equals("1"))
+            estado = true;
+        else{
+            if(estadoCiclo.equals("0"))
+                estado = false;
+            else{
+                estado = Boolean.parseBoolean(estadoCiclo);
+            }
+        }
+        this.estadoCiclo = estado;
+    }
     //InicioPeriodoClase
     public String getInicioPeriodoClase() {
         return inicioPeriodoClase;
@@ -104,7 +117,7 @@ public class Ciclo extends TablaBD {
         setInicio(arreglo[1]);
         setFin(arreglo[2]);
         setNombreCiclo(arreglo[3]);
-        setEstadoCiclo(Boolean.parseBoolean(arreglo[4]));
+        setEstadoCiclo(arreglo[4]);
         setInicioPeriodoClase(arreglo[5]);
         setFinPeriodoClase(arreglo[6]);
     }
@@ -143,7 +156,48 @@ public class Ciclo extends TablaBD {
 
     @Override
     public String toString(){
-        return this.getNombreCiclo();
+        String cadena = getIdCiclo() + " " + getInicio() + " " + getFin() + " " +
+                getInicioPeriodoClase() + " " + getFinPeriodoClase() + " " + isEstadoCiclo();
+        return cadena;
+    }
+
+    /*
+    Descripción:
+        Método que actualiza el estado del ciclo a activo (true), dejando el resto de ciclos como
+        inactivos (false).
+    Parámetros:
+        > contexto : contexto de la aplicación
+    Valores de retorno:
+        > -1 : el ciclo ya está activo
+        > 0 : No existe el registro
+        > 1 : Ciclo activado
+     */
+    public int activarCiclo(Context context){
+        int control = 0;
+
+        ControlBD helper = new ControlBD(context);
+        helper.abrir();
+
+        // Verificando que el ciclo no esté activo, si lo está, devolver -1
+        if(isEstadoCiclo()){
+            return -1;
+        }
+
+        // Actualizar todos los ciclos a estado inactivo (false -> 0)
+        valoresCamposTabla.put("estadociclo", 0);
+        control = helper.getDb().update(getNombreTabla(), valoresCamposTabla, "estadociclo = 1", null);
+
+        // Estableciendo ciclo actual como activo (true -> 1)
+        valoresCamposTabla.remove("estadociclo");
+        valoresCamposTabla.put("estadociclo", 1);
+        String[] whereArgs = {getValorLlavePrimaria()};
+        // Si no hay existe el registro retorno valdrá 0 porque no habrán registros afectados
+        // Si hace el cambio valdrá 1, porque solo debe actualizar a un registro
+        control = helper.getDb().update(getNombreTabla(), valoresCamposTabla, getNombreLlavePrimaria()+" = ?", whereArgs);
+
+        helper.cerrar();
+
+        return control;
     }
 
 }

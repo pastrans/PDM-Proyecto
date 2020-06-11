@@ -52,7 +52,7 @@ public class GestionarCiclo extends Activity {
     }
 
     //Metodo para agregar ciclo
-    public void btnNuevoGCiclo(View v){
+    public void agregarCiclo(View v){
         Intent intent = new Intent(this, NuevoCiclo.class);
         startActivity(intent);
     }
@@ -94,10 +94,25 @@ public class GestionarCiclo extends Activity {
                     intent.putExtra("nombreciclo", cicloActual.getNombreCiclo());
                     intent.putExtra("iniciociclo", cicloActual.getInicio());
                     intent.putExtra("finciclo", cicloActual.getFin());
-                    intent.putExtra("estadociclo", cicloActual.isEstadoCiclo());
+                    intent.putExtra("estadociclo", Boolean.toString(cicloActual.isEstadoCiclo()));
                     intent.putExtra("inicioclases", cicloActual.getInicioPeriodoClase());
                     intent.putExtra("finclases", cicloActual.getFinPeriodoClase());
                     startActivity(intent);
+                }
+                return true;
+            case R.id.ctxActivarCiclo:
+                if(cicloActual != null){
+                    String mensaje = "";
+                    int resultado = cicloActual.activarCiclo(getApplicationContext());
+                    if(resultado == -1)
+                        mensaje = "El ciclo ya se encuentra activo.";
+                    else if(resultado == 0)
+                        mensaje = "El ciclo no existe.";
+                    else
+                        mensaje = "Nuevo ciclo activo: " + cicloActual.getNombreCiclo();
+
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    llenarListaCiclo();
                 }
                 return true;
             case R.id.ctxEliminarCiclo:

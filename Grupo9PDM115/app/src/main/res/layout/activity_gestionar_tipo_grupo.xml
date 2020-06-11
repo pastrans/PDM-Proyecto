@@ -10,7 +10,7 @@
 
     <!-- Título -->
     <TextView
-        android:text="@string/titGestionarTG"
+        android:text="@string/titGestionarTipoGrupo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -21,7 +21,7 @@
         android:id="@+id/btnNuevoTG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnNuevoTG"
+        android:text="@string/btnNuevoGTipoGrupo"
         android:onClick="agregarTipoGrupo"/>
 
     <!-- Lista días -->

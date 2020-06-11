@@ -26,18 +26,38 @@
     </TableRow>
     <TableRow>
 
+        <TextView android:text="Código " />
+        <EditText
+            android:id="@+id/editcodmateria"
+            android:inputType="text"
+            android:maxLength="25" />
+    </TableRow>
+    <TableRow>
+
         <TextView android:text="@string/txtUnidad" />
         <Spinner
-            android:id="@+id/planets_spinner"
+            android:id="@+id/spnidUnidad"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
     </TableRow>
-    <RadioButton
-        android:id="@+id/masivaRadiobutton1"
-        android:layout_width="match_parent"
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtMasiva" />
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/masivaRadioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masiva" />
+
+        <RadioButton
+            android:id="@+id/masivaRadioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No masiva" />
+    </RadioGroup>
     <TableRow>
 
         <Button

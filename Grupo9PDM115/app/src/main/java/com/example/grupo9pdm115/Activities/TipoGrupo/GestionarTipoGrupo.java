@@ -95,6 +95,10 @@ public class GestionarTipoGrupo extends Activity {
                 return true;
             case R.id.ctxEliminar:
                 if(TGActual != null){
+                    if (TGActual.verificar(2, getApplicationContext())){
+                        Toast.makeText(this, "No se puede eliminar debido a dependecias del registro", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
                     String regEliminadas;
                     regEliminadas= TGActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();

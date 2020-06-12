@@ -15,7 +15,10 @@ import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditarHorario extends Activity implements View.OnClickListener{
     Button btnHoraInicio,btnHoraFinal;
@@ -43,29 +46,42 @@ public class EditarHorario extends Activity implements View.OnClickListener{
         }
     }
     // Método para actualizar Horario
-    public void actualizarH(View v) {
-        //horario.setIdHora(horario.getIdHora());
-        String estado;
+    public void actualizarH(View v) throws ParseException {
         String horai = editHInicio.getText().toString();
         horario.setHoraInicio(horai);
         String horaf = editHFinal.getText().toString();
         horario.setHoraFinal(horaf);
-        if (horario.getHoraInicio().isEmpty()) {
-            estado = "Hora inicio está vacío";
-        } else {
-            if (horario.getHoraFinal().isEmpty()) {
-                estado = "Hora final está vacío";
-            } else {
-                estado = horario.actualizar(this);
-            }
-        }
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        validarHora(horario.getHoraInicio(),horario.getHoraFinal(),horario);
     }
 
-    // Método para regresar al activity anterior
-    public void regresar(View v) {
-        super.onBackPressed();
+    public void validarHora(String horai, String horaf, Horario horario) throws ParseException {
+        String regInsertados;
+        SimpleDateFormat sdformat = new SimpleDateFormat("HH:mm");
+        if (horario.getHoraInicio().isEmpty()) {
+            regInsertados = "Hora inicio está vacío";
+        } else {
+            if (horario.getHoraFinal().isEmpty()) {
+                regInsertados = "Hora final está vacío";
+            } else {
+                Date t1 = sdformat.parse(horai);
+                Date t2 = sdformat.parse(horaf);
+                if (t1.compareTo(t2)==0){
+                    regInsertados = "Las horas son iguales";
+                }else{
+                    if (t1.compareTo(t2) > 0){
+                        regInsertados = "Las hora inicial es mayor que la hora final";
+                    }
+                    else{
+                        regInsertados = horario.actualizar(this);
+                    }
+                }
+            }
+        }
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
     }
+
+
     @Override
     public void onClick(View v) {
         if (v==btnHoraInicio){

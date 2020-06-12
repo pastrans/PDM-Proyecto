@@ -20,17 +20,15 @@
     //Gestionar Ciclo
     <string name="titGestionarCiclo">Gestionar Ciclo</string>
     <string name="btnNuevoGCiclo">Nuevo</string>
-    <string name="txtListaCiclo">Listado de ciclos ingresados</string>
+    <string name="txtListaCiclo">Listado de ciclos ingresados:</string>
     //Nuevo Ciclo
     <string name="titNuevoCiclo">Nuevo Ciclo</string>
     <string name="btnAgregarNCiclo">Agregar</string>
     <string name="btnLimpiarTextoNCiclo">Limpiar</string>
-    <string name="btnRegresarNCiclo">Regresar</string>
     //Editar Ciclo
     <string name="titEditarCiclo">Editar Ciclo</string>
     <string name="btnActualizarCiclo">Guardar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
-    <string name="btnRegresarECiclo">Regresar</string>
     // Menú contextual lista ciclos
     <string name="ctxListaCiclosActualizar">Actualizar</string>
     <string name="ctxListaCiclosEliminar">Eliminar</string>
@@ -326,12 +324,10 @@
     <string name="txtHoraInicial">Hora de inicio</string>
     <string name="txtHoraFin">Hora de final</string>
     //Gestionar Horario
-    <string name="txtListaHorario">Listado de horarios ingresados</string>
+    <string name="txtListaHorario">Listado de horarios ingresados:</string>
     <string name="titGestionarHorario">Gestionar Horario</string>
     <string name="btnNuevoGHorario">Nuevo</string>
-    <string name="btnEditarGHorario">Editar</string>
-    <string name="btnEliminarGHorario">Eliminar</string>
-    <string name="btnRegresarGHorario">Regresar</string>
+
     //Nuevo Horario
     <string name="titNuevoHorario">Nuevo Horario</string>
     <string name="btnAgregarNHorario">Agregar</string>

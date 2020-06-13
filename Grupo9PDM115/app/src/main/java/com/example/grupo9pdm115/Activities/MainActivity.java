@@ -19,7 +19,7 @@ public class MainActivity extends ListActivity  {
     ControlBD BDhelper;
 
 
-    String[] menu = {"Llenar BD", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Detalle Reserva"};
+    String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Detalle Reserva"};
     String[] activities = {"Cerrar Sesión", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
             "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
             "TipoGrupo.GestionarTipoGrupo","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
@@ -85,6 +85,8 @@ public class MainActivity extends ListActivity  {
             BDhelper.abrir();
             String tost=BDhelper.llenarBD(this);
             BDhelper.cerrar();*/
+
+            // Código para cerrar sesión
             Sesion.setLooggedIn(getApplicationContext(), false);
             Sesion.setNombreUsuario(getApplicationContext(), "");
             Sesion.setAccesoUsuario(getApplicationContext(), null);

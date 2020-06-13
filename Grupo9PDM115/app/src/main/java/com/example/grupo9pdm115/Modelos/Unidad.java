@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -117,6 +118,29 @@ public class Unidad extends TablaBD {
         }
 
         return mensaje;
+    }
+    @Override
+    public boolean consultar (Context context, String valorLlavePrimaria){
+        boolean resultado = false;
+        String[] valores = new String[getCamposTabla().length];
+        ControlBD helper = new ControlBD(context);
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(this.getNombreTabla(), this.getCamposTabla(),
+                this.getNombreLlavePrimaria(), valorLlavePrimaria);
+
+
+        if(cursor.moveToFirst()){
+            for(int i = 0; i < getCamposTabla().length; i++){
+                valores[i] = cursor.getString(i);
+            }
+            this.setAttributesFromArray(valores);
+            resultado = true;
+        }
+
+        helper.cerrar();
+
+        return resultado;
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Spinners;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.example.grupo9pdm115.Adapters.UnidadAdapter;
@@ -50,6 +51,19 @@ public class UnidadSpinner {
         int pos = 0;
         pos = posicion-1 ; // se resta 1 por el desfase generado con la lista de contendio
         return listUnidad.get(pos).getIdUnidad();
+    }
+    
+    public int buscarUnidad(int idUnidad){
+        int  posicion=0;
+        for (int i = 0; i<listUnidad.size()  ;i++){
+            Log.i("UnidadSpinner", "Comparamos con "+listUnidad.get(i).getIdUnidad() );
+            if(listUnidad.get(i).getIdUnidad() == idUnidad){
+                posicion=i + 1;
+                Log.i("UnidadSpinner", "Está en la posición:  "+posicion );
+            }
+        }
+
+        return posicion;
     }
 
     //Fin de métodos

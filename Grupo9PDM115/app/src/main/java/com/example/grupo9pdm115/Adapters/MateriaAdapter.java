@@ -1,6 +1,7 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.grupo9pdm115.Modelos.Materia;
+import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
 public class MateriaAdapter extends ArrayAdapter<Materia> {
     public MateriaAdapter (Context context, List<Materia> objects) {super(context, 0,objects);}
-
+    Unidad unidad;
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Obtener inflater.
@@ -37,11 +39,13 @@ public class MateriaAdapter extends ArrayAdapter<Materia> {
 
         // Dia actual
         Materia materia = getItem(position);
-
+        unidad = new Unidad();
         // Setup view
         codMateria.setText(materia.getCodMateria());
         nombre.setText(materia.getNombreMateria());
-        idUnidad.setText(Integer.toString(materia.getIdUnidad()));
+
+        unidad.consultar(getContext(), Integer.toString(materia.getIdUnidad()));
+        idUnidad.setText(unidad.getNombreent());
         if(materia.isMasiva())
             masividad.setText("Masiva");
         else

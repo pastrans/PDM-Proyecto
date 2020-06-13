@@ -66,8 +66,8 @@
     <TableRow>
 
         <Button
-            android:onClick="btnAgregarNMateria"
-            android:text="@string/btnAgregarNMateria"
+            android:onClick="actualizarMateria"
+            android:text="Actualizar"
             tools:ignore="OnClick" />
 
         <Button

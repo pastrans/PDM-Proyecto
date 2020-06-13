@@ -34,6 +34,13 @@ public class TipoGrupoActualizar extends Activity {
         String estado;
         String nombreTG = editNombreTG.getText().toString();
         tipoGrupo.setNombreTipoGrupo(nombreTG);
+
+        String verificar = verificarDatos(tipoGrupo);
+        if(!verificar.equals("")){
+            Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
             estado="Nombre está vacío";
         }
@@ -47,5 +54,14 @@ public class TipoGrupoActualizar extends Activity {
     public void btnLimpiarETipoGrupo(View v) {
         editNombreTG.setText("");
     }
+
+    public String verificarDatos(TipoGrupo tg){
+        if(tg.getNombreTipoGrupo().equals(""))
+            return "Ingrese un nombre al tipo de grupo";
+        if(tg.verificar(1, getApplicationContext()) && !tg.getNombreTipoGrupo().equals(getIntent().getStringExtra("nombretipogrupo")))
+            return "Ya existe el tipo de grupo";
+        return "";
+    }
+
 }
 

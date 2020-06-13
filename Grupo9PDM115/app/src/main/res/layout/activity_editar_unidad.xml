@@ -1,59 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Unidad.NuevoUnidad">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titEditarUnidad"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <TableRow>
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtNombreUnidad" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editNombreUnidad"
+                    android:inputType="text"
+                    android:maxLength="30" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <TextView android:text="@string/txtNombreUnidad" />
-        <EditText
-            android:id="@+id/editNombreUnidad"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/txtDescripcion" />
-        <EditText
-            android:id="@+id/editDescripcion"
-            android:layout_width="250dp"
-            android:layout_height="170dp"
-            android:layout_marginTop="5dp" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/txtPrioridad" />
-        <EditText
-            android:id="@+id/editPrioridad"
-            android:inputType="number"
-            android:maxLength="30"
-            />
-    </TableRow>
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtDescripcion" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editDescripcion"
+                    android:inputType="text"
+                    android:maxLength="500"/>
+                />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtPrioridad" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editPrioridad"
+                    android:inputType="number"
+                    />
+            </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="btnLimpiarTextoNUnidad"
+            android:text="@string/btnLimpiarEUnidad" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:text="@string/btnEditarEUnidad"
-            android:onClick="actualizar"
+            android:onClick="actualizarU"
             tools:ignore="OnClick" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnRegresarNUnidad"
-            android:onClick="regresar"/>
+
     </LinearLayout>
-</TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

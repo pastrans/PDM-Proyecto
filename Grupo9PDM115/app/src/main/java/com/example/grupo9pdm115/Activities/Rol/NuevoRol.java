@@ -70,26 +70,35 @@ public class NuevoRol extends AppCompatActivity {
     public void guardarRol(View v){
         String selected = "", opcion = "", regInsertados = "";
         Rol rol = new Rol();
-        rol.setNombreRol(edtNombreRol.getText().toString());
-        //List<AccesoUsuario> listaAccesoUsuarioActual = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdUsuario());
-        int choice = listViewAccesoRol.getCount();
-        SparseBooleanArray sparseBooleanArray = listViewAccesoRol.getCheckedItemPositions();
-        String cantidad = "";
-        String res = "";
-        res = rol.guardar(this);
-        if (!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")){
-            for (int i = 0; i < choice; i++){
-                if(sparseBooleanArray.get(i)) {
-                    accesoUsuario = new AccesoUsuario();
-                    accesoUsuario.setIdRol(rol.getLastRol(this).getIdRol());
-                    accesoUsuario.setIdOpcion(listViewAccesoRol.getItemAtPosition(i).toString().substring(0, 3));
-                    regInsertados = accesoUsuario.guardar(this);
+        if (!edtNombreRol.getText().toString().equals("")) {
+            rol.setNombreRol(edtNombreRol.getText().toString());
+            if (!rol.verificar(1, getApplicationContext())) {
+                //List<AccesoUsuario> listaAccesoUsuarioActual = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdUsuario());
+                int choice = listViewAccesoRol.getCount();
+                SparseBooleanArray sparseBooleanArray = listViewAccesoRol.getCheckedItemPositions();
+                String cantidad = "";
+                String res = "";
+                Toast.makeText(this, String.valueOf(listViewAccesoRol.getCheckedItemIds().length), Toast.LENGTH_SHORT).show();
+                res = rol.guardar(this);
+                if (!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")) {
+                    for (int i = 0; i < choice; i++) {
+                        if (sparseBooleanArray.get(i)) {
+                            accesoUsuario = new AccesoUsuario();
+                            accesoUsuario.setIdRol(rol.getLastRol(this).getIdRol());
+                            accesoUsuario.setIdOpcion(listViewAccesoRol.getItemAtPosition(i).toString().substring(0, 3));
+                            regInsertados = accesoUsuario.guardar(this);
+                        }
+                    }
+                } else {
+                    res = "Hubo un error al procesar el rol";
                 }
+                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Ya existe un registro con ese nombre", Toast.LENGTH_SHORT).show();
             }
         }else{
-            res = "Hubo un error al procesar el rol";
+            Toast.makeText(this, "Por favor ingrese un nombre al rol", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, res, Toast.LENGTH_LONG).show();
     }
 
 }

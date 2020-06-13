@@ -3,6 +3,7 @@ package com.example.grupo9pdm115.Modelos;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -140,6 +141,24 @@ public class Grupo extends TablaBD {
             mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         return mensaje;
+    }
+
+    public boolean verificar(int accion, Context context){
+        String sql = "";
+        Cursor cursor;
+        ControlBD helper = new ControlBD(context);
+        helper.abrir();
+        switch (accion){
+            case 1:
+                sql = "SELECT COUNT(idGrupo) FROM Grupo WHERE Numero=" + getNumero() + " AND IDTIPOGRUPO =" + getIdTipoGrupo() + " AND IDCICLOMATERIA =" + getIdCicloMateria();
+                cursor = helper.consultar(sql);
+                if(cursor.moveToFirst())
+                    if(cursor.getInt(0) > 0)
+                        return true;
+                break;
+        }
+        helper.cerrar();
+        return false;
     }
 
 }

@@ -43,19 +43,30 @@ public class NuevoGrupo extends AppCompatActivity {
         posicionMateria= idCicloMateria.getSelectedItemPosition();
         if (posicionMateria!= 0 ) {
             if (posicionTipoGrupo!= 0) {
+                int a;
+                try {
+                    a = Integer.parseInt(numero.getText().toString());
+                }catch (NumberFormatException e){
+                    Toast.makeText(this, "Número inválido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 //Log.i("posicion: ", String.valueOf(posicion)  );
                 grupo.setNumero(Integer.parseInt(numero.getText().toString()));
                 idTP= control.getIdTipoGrupo(posicionTipoGrupo);
                 grupo.setIdTipoGrupo(idTP);
                 idCM= control.getIdCicloMateria(posicionMateria);//
                 grupo.setIdCicloMateria(idCM);
+                String verificar = verificarDatos(grupo);
+                if(!verificar.equals("")){
+                    Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 helper.abrir();
                 reginsertados = grupo.guardar(this);
                 helper.cerrar();
                 Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
             }
             else {
-
                 Toast.makeText(this, "Seleccione Tipo de grupo ", Toast.LENGTH_SHORT).show();
             }
         }
@@ -72,6 +83,14 @@ public class NuevoGrupo extends AppCompatActivity {
 
     public void btnRegresarNGrupo(View v){
         finish();
+    }
+
+    public String verificarDatos(Grupo g){
+        if(g.getNumero() < 1)
+            return "Ingrese un número de grupo válido";
+        if(g.verificar(1, getApplicationContext()))
+            return "Ya existe un grupo";
+        return "";
     }
 
 }

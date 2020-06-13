@@ -94,8 +94,5 @@
             android:onClick="limpiarTexto"
             android:text="@string/btnLimpiarTextoNCiclo" />
     </TableRow>
-    <Button
-        android:onClick="regresar"
-        android:text="@string/btnRegresarNCiclo"/>
 
 </TableLayout>

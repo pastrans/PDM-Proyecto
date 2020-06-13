@@ -18,7 +18,11 @@ import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.R;
 
+//import java.text.ParseException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NuevoFeriado extends Activity implements View.OnClickListener {
@@ -100,9 +104,9 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
         });
     }
     //Metodo para insertar feriado
-    public void btnAgregarNFeriado(View v){
+    public void btnAgregarNFeriado(View v) throws ParseException {
         //Obteniendo Valores
-        String regInsertados;
+
         String nombreFeriado = editNombreFeriado.getText().toString();
         String descripcionFeriado= editDescripcionFeriado.getText().toString();
         String inicioFeriado = editInicioFeriado.getText().toString();
@@ -116,6 +120,11 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
         feriado.setFechaFinFeriado(finFeriado);
         feriado.setIdCiclo(ciclo.getIdCiclo());
         feriado.setBloquearReservas(true);
+        validarfecha(feriado.getFechaInicioFeriado(),feriado.getFechaFinFeriado(), feriado);
+    }
+    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
+        String regInsertados;
+        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
         if(feriado.getNombreFeriado().isEmpty())
         {
             regInsertados = "Nombre está vacio";
@@ -125,39 +134,23 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
                 regInsertados = "Descripción está vacio";
             }
             else{
-                if(feriado.getFechaInicioFeriado().isEmpty()){
-                    regInsertados = "La fecha inicial está vacia";
-                }
-                else {
-                    if (feriado.getFechaFinFeriado().isEmpty()) {
-                        regInsertados = "La fecha final está vacia";
-                    } else{
+                Date d1 = sdformat.parse(fechai);
+                Date d2 = sdformat.parse(fechaf);
+                if (d1.compareTo(d2)==0){
+                    regInsertados = "Las fechas son iguales";
+                }else{
+                    if (d1.compareTo(d2) > 0){
+                        regInsertados = "Las fecha inicial es mayor que la fecha final";
+                    }
+                    else{
                         regInsertados = feriado.guardar(this);
                     }
-
                 }
             }
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
-    /* public void btnAgregarNFeriado(View v){
-         //Instanciando feriado para guardar
-         Feriado feriado = new Feriado();
-         Ciclo ciclo = (Ciclo) cicloFeriado.getSelectedItem();
-         String regInsertados;
-         feriado.setNombreFeriado(nombrFeriado.getText().toString());
-         feriado.setDescripcionFeriado(descripcionFeriado.getText().toString());
-         feriado.setFechaInicioFeriado(editInicioFeriado.getText().toString());
-         feriado.setFechaFinFeriado(editFinFeriado.getText().toString());
-         feriado.setIdCiclo(ciclo.getIdCiclo());
-         feriado.setBloquearReservas(true);
-         helper.abrir();
-         regInsertados = helper.insertar(feriado.getNombreTabla(), feriado.getValores());
-         helper.cerrar();
-         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-         //Toast.makeText(this, "El ciclo es: " + ciclo.getIdCiclo(), Toast.LENGTH_SHORT).show();
-     }*/
-    // Método para regresar al activity anterior
+
 
     //Limpiar campos
     public void btnLimpiarTextoNFeriado(View v) {
@@ -166,5 +159,34 @@ public class NuevoFeriado extends Activity implements View.OnClickListener {
         editInicioFeriado.setText("");
         editFinFeriado.setText("");
     }
+
+    /*    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
+        String regInsertados;
+        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
+        if(feriado.getNombreFeriado().isEmpty())
+        {
+            regInsertados = "Nombre está vacio";
+        }
+        else{
+            if(feriado.getDescripcionFeriado().isEmpty()){
+                regInsertados = "Descripción está vacio";
+            }
+            else{
+                Date d1 = sdformat.parse(fechai);
+                Date d2 = sdformat.parse(fechaf);
+                if (d1.compareTo(d2)==0){
+                    regInsertados = "Las fechas son iguales";
+                }else{
+                    if (d1.compareTo(d2) > 0){
+                        regInsertados = "Las fecha inicial es mayor que la fecha final";
+                    }
+                    else{
+                        regInsertados = feriado.guardar(this);
+                    }
+                }
+            }
+        }
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+    }*/
 
 }

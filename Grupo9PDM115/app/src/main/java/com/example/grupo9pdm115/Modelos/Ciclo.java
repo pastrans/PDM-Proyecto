@@ -4,14 +4,16 @@ import android.content.Context;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 public class Ciclo extends TablaBD {
     // Atributos
     private int idCiclo;
-    private String inicio;
-    private String fin;
+
     private String nombreCiclo;
     private boolean estadoCiclo;
+    private String inicio;
+    private String fin;
     private String inicioPeriodoClase;
     private String finPeriodoClase;
 
@@ -40,20 +42,7 @@ public class Ciclo extends TablaBD {
     public void setIdCiclo(int idCiclo) {
         this.idCiclo = idCiclo;
     }
-    //Inicio
-    public String getInicio() {
-        return inicio;
-    }
-    public void setInicio(String inicio) {
-        this.inicio = inicio;
-    }
-    //Fin
-    public String getFin() {
-        return fin;
-    }
-    public void setFin(String fin) {
-        this.fin = fin;
-    }
+
     //NombreCiclo
     public String getNombreCiclo() {
         return nombreCiclo;
@@ -61,6 +50,7 @@ public class Ciclo extends TablaBD {
     public void setNombreCiclo(String nombreCiclo) {
         this.nombreCiclo = nombreCiclo;
     }
+
     //EstadoCiclo
     public boolean isEstadoCiclo() {
         return estadoCiclo;
@@ -81,6 +71,36 @@ public class Ciclo extends TablaBD {
         }
         this.estadoCiclo = estado;
     }
+
+    //Inicio
+    public String getInicio() {
+        return inicio;
+    }
+    public void setInicio(String inicio) {
+        this.inicio = inicio;
+    }
+
+    public String getInicioToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(inicio);
+    }
+    public void setInicioFromLocal(String inicio) {
+        this.inicio = FechasHelper.cambiarFormatoLocalAIso(inicio);
+    }
+
+    //Fin
+    public String getFin() {
+        return fin;
+    }
+    public void setFin(String fin) {
+        this.fin = fin;
+    }
+    public String getFinToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(fin);
+    }
+    public void setFinFromLocal(String fin) {
+        this.fin = FechasHelper.cambiarFormatoLocalAIso(fin);
+    }
+
     //InicioPeriodoClase
     public String getInicioPeriodoClase() {
         return inicioPeriodoClase;
@@ -88,6 +108,14 @@ public class Ciclo extends TablaBD {
     public void setInicioPeriodoClase(String inicioPeriodoClase) {
         this.inicioPeriodoClase = inicioPeriodoClase;
     }
+
+    public String getInicioPeriodoClaseToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(inicioPeriodoClase);
+    }
+    public void setInicioPeriodoClaseFromLocal(String inicioPeriodoClase) {
+        this.inicioPeriodoClase = FechasHelper.cambiarFormatoLocalAIso(inicioPeriodoClase);
+    }
+
     //FinPeriodoClase
     public String getFinPeriodoClase() {
         return finPeriodoClase;
@@ -95,6 +123,13 @@ public class Ciclo extends TablaBD {
     public void setFinPeriodoClase(String finPeriodoClase) {
         this.finPeriodoClase = finPeriodoClase;
     }
+    public String getFinPeriodoClaseToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(finPeriodoClase);
+    }
+    public void setFinPeriodoClaseFromLocal(String finPeriodoClase) {
+        this.finPeriodoClase = FechasHelper.cambiarFormatoLocalAIso(finPeriodoClase);
+    }
+
     @Override
     public String getValorLlavePrimaria() {
         return Integer.toString(this.getIdCiclo());
@@ -121,12 +156,14 @@ public class Ciclo extends TablaBD {
         setInicioPeriodoClase(arreglo[5]);
         setFinPeriodoClase(arreglo[6]);
     }
+
     @Override
     public Ciclo getInstanceOfModel(String[] arreglo) {
         Ciclo ciclo = new Ciclo();
         ciclo.setAttributesFromArray(arreglo);
         return ciclo;
     }
+
     @Override
     public String guardar(Context context){
         String mensaje = "Registro insertado N° = ";
@@ -156,9 +193,8 @@ public class Ciclo extends TablaBD {
 
     @Override
     public String toString(){
-        String cadena = getIdCiclo() + " " + getInicio() + " " + getFin() + " " +
+        return getIdCiclo() + " " + getInicio() + " " + getFin() + " " +
                 getInicioPeriodoClase() + " " + getFinPeriodoClase() + " " + isEstadoCiclo();
-        return cadena;
     }
 
     /*

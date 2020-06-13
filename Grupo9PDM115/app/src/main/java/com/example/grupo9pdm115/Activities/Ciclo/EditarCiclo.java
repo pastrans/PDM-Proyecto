@@ -1,6 +1,7 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +24,6 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
     //Declarando
     Ciclo ciclo;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
-    private int dia, mes, anio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,26 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         editFinClases.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        EditText ed = (EditText) v;
+        final Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int anio = c.get(Calendar.YEAR);
+
+        final EditText finalEd = ed;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                finalEd.setText(String.format("%02d/%02d/%d", dayOfMonth, monthOfYear + 1,  year));
+            }
+        }, anio, mes, dia);
+
+        datePickerDialog.show();
+    }
+
     // Método para actualizar ciclo
     public void actualizarCiclo(View v) {
         boolean error = false;
@@ -71,17 +91,19 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
 
         //Obteniendo valores elementos
         String nombreCiclo = editNombreCiclo.getText().toString();
-        String inicioCiclo = editInicioCiclo.getText().toString();
-        String finCiclo = editFinCiclo.getText().toString();
-        String inicioClases = editInicioClases.getText().toString();
-        String finClases = editFinClases.getText().toString();
+        String inicioCiclo = FechasHelper.cambiarFormatoLocalAIso(editInicioCiclo.getText().toString());
+        String finCiclo = FechasHelper.cambiarFormatoLocalAIso(editFinCiclo.getText().toString());
+        String inicioClases = FechasHelper.cambiarFormatoLocalAIso(editInicioClases.getText().toString());
+        String finClases = FechasHelper.cambiarFormatoLocalAIso(editFinClases.getText().toString());
 
         // Verificando fechas
-        if(!(FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
+        if(!(FechasHelper.fechaEsPosterior(inicioCiclo, finCiclo)
+                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
                 && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
                 && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
             error = true;
-            mensaje = "El periodo de clases debe estar dentro del tiempo de duración del ciclo." +
+            mensaje = "El fin de ciclo debe ser posterior al inicio de ciclo." +
+                    "\nEl periodo de clases debe estar dentro del tiempo de duración del ciclo." +
                     "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
         }
         // Verificando campos vacíos
@@ -92,7 +114,7 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         }
 
         // Operaciones si no hay errores
-        if(error == false){
+        if(!error){
             //Instanciando ciclo para guardar
             Ciclo ciclo = new Ciclo();
             ciclo.setNombreCiclo(nombreCiclo);
@@ -106,38 +128,6 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
 
         // Mensaje de salida
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onClick(View v) {
-        EditText ed = null;
-        final Calendar c = Calendar.getInstance();
-        dia = c.get(Calendar.DAY_OF_MONTH);
-        mes = c.get(Calendar.MONTH);
-        anio = c.get(Calendar.YEAR);
-
-        if(v==editInicioCiclo){
-            ed = editInicioCiclo;
-        }
-        if(v==editFinCiclo){
-            ed = editFinCiclo;
-        }
-        if(v==editInicioClases){
-            ed = editInicioClases;
-        }
-        if(v==editFinClases){
-            ed = editFinClases;
-        }
-
-        final EditText finalEd = ed;
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                finalEd.setText(String.format("%d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
-            }
-        },anio,mes,dia);
-
-        datePickerDialog.show();
     }
 
 

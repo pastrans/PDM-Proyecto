@@ -30,31 +30,31 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         }
 
         // Referencias UI - list_item_ciclo -
-        TextView nombreCiclo = (TextView) convertView.findViewById(R.id.txtNombreCiclo);
-        TextView inicio = (TextView) convertView.findViewById(R.id.txtInicio);
-        TextView fin = (TextView) convertView.findViewById(R.id.txtFin);
-        TextView estadoCiclo = (TextView) convertView.findViewById(R.id.txtEstadoCiclo);
-        TextView inicioPeriodoClase = (TextView) convertView.findViewById(R.id.txtInicioPeriodoClase);
-        TextView finPeriodoClase = (TextView) convertView.findViewById(R.id.txtFinPeriodoClase);
+        TextView txtNombreCiclo = (TextView) convertView.findViewById(R.id.txtNombreCiclo);
+        TextView txtInicio = (TextView) convertView.findViewById(R.id.txtInicio);
+        TextView txtFin = (TextView) convertView.findViewById(R.id.txtFin);
+        TextView txtEstadoCiclo = (TextView) convertView.findViewById(R.id.txtEstadoCiclo);
+        TextView txtInicioPeriodoClase = (TextView) convertView.findViewById(R.id.txtInicioPeriodoClase);
+        TextView txtFinPeriodoClase = (TextView) convertView.findViewById(R.id.txtFinPeriodoClase);
 
         // Dia actual
         Ciclo ciclo = getItem(position);
 
         // Setup view
-        nombreCiclo.setText(ciclo.getNombreCiclo());
-        inicio.setText(ciclo.getInicio());
-        fin.setText(ciclo.getFin());
+        txtNombreCiclo.setText(ciclo.getNombreCiclo());
+        txtInicio.setText(ciclo.getInicioToLocal());
+        txtFin.setText(ciclo.getFinToLocal());
 
         // Modificando el valor para mostrar estado en string y cambiando el color del background al activo
         if(ciclo.isEstadoCiclo()){
-            estadoCiclo.setText("Activo");
+            txtEstadoCiclo.setText("Activo");
             convertView.setBackgroundColor(Color.parseColor("#B2fF59"));
         }
         else
-            estadoCiclo.setText("Inactivo");
+            txtEstadoCiclo.setText("Inactivo");
 
-        inicioPeriodoClase.setText(ciclo.getInicioPeriodoClase());
-        finPeriodoClase.setText(ciclo.getFinPeriodoClase());
+        txtInicioPeriodoClase.setText(ciclo.getInicioPeriodoClaseToLocal());
+        txtFinPeriodoClase.setText(ciclo.getFinPeriodoClaseToLocal());
 
         return convertView;
     }

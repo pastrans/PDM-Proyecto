@@ -120,11 +120,11 @@ public class GestionarCiclo extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), EditarCiclo.class);
                     intent.putExtra("idciclo", cicloActual.getIdCiclo());
                     intent.putExtra("nombreciclo", cicloActual.getNombreCiclo());
-                    intent.putExtra("iniciociclo", cicloActual.getInicio());
-                    intent.putExtra("finciclo", cicloActual.getFin());
+                    intent.putExtra("iniciociclo", cicloActual.getInicioToLocal());
+                    intent.putExtra("finciclo", cicloActual.getFinToLocal());
                     intent.putExtra("estadociclo", Boolean.toString(cicloActual.isEstadoCiclo()));
-                    intent.putExtra("inicioclases", cicloActual.getInicioPeriodoClase());
-                    intent.putExtra("finclases", cicloActual.getFinPeriodoClase());
+                    intent.putExtra("inicioclases", cicloActual.getInicioPeriodoClaseToLocal());
+                    intent.putExtra("finclases", cicloActual.getFinPeriodoClaseToLocal());
                     startActivity(intent);
                 }
                 return true;

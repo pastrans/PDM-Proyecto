@@ -8,11 +8,11 @@
     //Variables para Ciclo
     //Etiquetas
     <string name="txtIdCiclo">Id Ciclo:</string>
-    <string name="txtNombreCiclo">Nombre ciclo</string>
-    <string name="txtInicioCiclo">Inicio del ciclo</string>
-    <string name="txtFinCiclo">Fin del Ciclo</string>
-    <string name="txtInicioPeriodoClase">Inicio del periodo de Clases</string>
-    <string name="txtFinPeriodoClase">Fin del periodo de Clases</string>
+    <string name="txtNombreCiclo">Nombre ciclo:</string>
+    <string name="txtInicioCiclo">Inicio del ciclo:</string>
+    <string name="txtFinCiclo">Fin del ciclo:</string>
+    <string name="txtInicioPeriodoClase">Inicio de clases:</string>
+    <string name="txtFinPeriodoClase">Fin de clase:s</string>
     <string name="btnInicioCiclo">INICIO CICLO</string>
     <string name="btnFinCiclo">FIN CICLO</string>
     <string name="btnInicioClases">INICIO CLASES</string>

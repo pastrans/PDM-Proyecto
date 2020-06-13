@@ -1,4 +1,4 @@
-package com.example.grupo9pdm115.BD;
+package com.example.grupo9pdm115.Utilidades;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

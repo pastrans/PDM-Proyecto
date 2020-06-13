@@ -1,19 +1,21 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Ciclo;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 import java.util.Calendar;
 
@@ -21,11 +23,20 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
     //Declarando
     Ciclo ciclo;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
-    Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;
     private int dia, mes, anio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ECL"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ciclo);
         ciclo = new Ciclo();
@@ -35,10 +46,6 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         editFinCiclo = (EditText) findViewById(R.id.editFinCiclo);
         editInicioClases = (EditText) findViewById(R.id.editInicioClases);
         editFinClases = (EditText) findViewById(R.id.editFinClases);
-        btnInicioCiclo = (Button) findViewById(R.id.btnInicioCiclo);
-        btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
-        btnInicioClases = (Button) findViewById(R.id.btnInicioClases);
-        btnFinClases = (Button) findViewById(R.id.btnFinClases);
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
@@ -51,21 +58,54 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
             editFinClases.setText(getIntent().getStringExtra("finclases"));
         }
 
-        btnInicioCiclo.setOnClickListener(this);
-        btnFinCiclo.setOnClickListener(this);
-        btnInicioClases.setOnClickListener(this);
-        btnFinClases.setOnClickListener(this);
+        editInicioCiclo.setOnClickListener(this);
+        editFinCiclo.setOnClickListener(this);
+        editInicioClases.setOnClickListener(this);
+        editFinClases.setOnClickListener(this);
     }
 
     // Método para actualizar ciclo
     public void actualizarCiclo(View v) {
-        ciclo.setNombreCiclo(editNombreCiclo.getText().toString());
-        ciclo.setInicio(editInicioCiclo.getText().toString());
-        ciclo.setFin(editFinCiclo.getText().toString());
-        ciclo.setInicioPeriodoClase(editInicioClases.getText().toString());
-        ciclo.setFinPeriodoClase(editFinClases.getText().toString());
-        String estado = ciclo.actualizar(this);
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        boolean error = false;
+        String mensaje = "";
+
+        //Obteniendo valores elementos
+        String nombreCiclo = editNombreCiclo.getText().toString();
+        String inicioCiclo = editInicioCiclo.getText().toString();
+        String finCiclo = editFinCiclo.getText().toString();
+        String inicioClases = editInicioClases.getText().toString();
+        String finClases = editFinClases.getText().toString();
+
+        // Verificando fechas
+        if(!(FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
+                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
+                && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
+            error = true;
+            mensaje = "El periodo de clases debe estar dentro del tiempo de duración del ciclo." +
+                    "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
+        }
+        // Verificando campos vacíos
+        if(nombreCiclo.equals("") || inicioCiclo.equals("") || finCiclo.equals("") || inicioClases.equals("")
+                || finClases.equals("")){
+            error = true;
+            mensaje = "Ningun campo debe estar vacío.";
+        }
+
+        // Operaciones si no hay errores
+        if(error == false){
+            //Instanciando ciclo para guardar
+            Ciclo ciclo = new Ciclo();
+            ciclo.setNombreCiclo(nombreCiclo);
+            ciclo.setInicio(inicioCiclo);
+            ciclo.setFin(finCiclo);
+            ciclo.setEstadoCiclo(false); // Se almacena como inactivo por defecto
+            ciclo.setInicioPeriodoClase(inicioClases);
+            ciclo.setFinPeriodoClase(finClases);
+            mensaje = ciclo.actualizar(this);
+        }
+
+        // Mensaje de salida
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -76,16 +116,16 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         mes = c.get(Calendar.MONTH);
         anio = c.get(Calendar.YEAR);
 
-        if(v==btnInicioCiclo){
+        if(v==editInicioCiclo){
             ed = editInicioCiclo;
         }
-        if(v==btnFinCiclo){
+        if(v==editFinCiclo){
             ed = editFinCiclo;
         }
-        if(v==btnInicioClases){
+        if(v==editInicioClases){
             ed = editInicioClases;
         }
-        if(v==btnFinClases){
+        if(v==editFinClases){
             ed = editFinClases;
         }
 

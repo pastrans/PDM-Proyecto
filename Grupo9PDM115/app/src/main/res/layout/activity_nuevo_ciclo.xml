@@ -12,38 +12,39 @@
         android:paddingBottom="5dp"/>
 
     <TableRow>
-        <TextView android:text="@string/txtNombreCiclo"/>
+        <TextView
+            android:text="@string/txtNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"/>
         <EditText
             android:id="@+id/editNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="10" />
+            android:maxLength="20"/>
     </TableRow>
     <TableRow>
-        <Button
-            android:id="@+id/btnInicioCiclo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnInicioCiclo"
-            />
-
+        <TextView
+            android:text="@string/txtInicioCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"            />
         <EditText
             android:id="@+id/editInicioCiclo"
-            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
             android:maxLength="10"
             android:focusable="false"
             android:clickable="true"/>
-
     </TableRow>
 
     <TableRow>
-
-        <Button
-            android:id="@+id/btnFinCiclo"
-            android:layout_width="wrap_content"
+        <TextView
+            android:text="@string/txtFinCiclo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnFinCiclo"
-            />
-
+            android:paddingBottom="5dp" />
         <EditText
             android:id="@+id/editFinCiclo"
             android:inputType="date"
@@ -51,15 +52,13 @@
             android:focusable="false"
             android:clickable="true"/>
     </TableRow>
+
     <TableRow>
-
-        <Button
-            android:id="@+id/btnInicioClases"
-            android:layout_width="wrap_content"
+        <TextView
+            android:text="@string/txtInicioPeriodoClase"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnInicioClases"
-            />
-
+            android:paddingBottom="5dp" />
         <EditText
             android:id="@+id/editInicioClases"
             android:inputType="date"
@@ -67,15 +66,13 @@
             android:focusable="false"
             android:clickable="true"/>
     </TableRow>
+
     <TableRow>
-
-        <Button
-            android:id="@+id/btnFinClases"
-            android:layout_width="wrap_content"
+        <TextView
+            android:text="@string/txtFinPeriodoClase"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnFinClases"
-            />
-
+            android:paddingBottom="5dp" />
         <EditText
             android:id="@+id/editFinClases"
             android:inputType="date"

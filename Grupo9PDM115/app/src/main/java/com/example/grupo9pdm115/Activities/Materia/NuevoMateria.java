@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Materia;
+import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 
@@ -34,6 +35,8 @@ public class NuevoMateria  extends Activity implements View.OnClickListener{
         control= new UnidadSpinner(helper);
         helper.cerrar();
         idUnidad.setAdapter(control.getAdapterUnidad(getApplicationContext()));
+
+
 
     }
     @Override
@@ -100,10 +103,6 @@ public class NuevoMateria  extends Activity implements View.OnClickListener{
                 else {
                     Toast.makeText(this, "Selecicone la masividad", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
 
             }
 

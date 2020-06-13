@@ -88,13 +88,9 @@ public class Rol extends TablaBD {
         ControlBD helper = new ControlBD(context);
         helper.abrir();
         Cursor cursor;
-        int cantidad = 0;
-        String sql = "SELECT COUNT(idUsuario) FROM usuario WHERE idRol = " + getIdRol();
-        cursor = helper.consultar(sql);
-        while (cursor.moveToNext()){
-            cantidad = cursor.getInt(0);
-        }
-        if (cantidad == 0){
+//        int cantidad = 0;
+
+        if (!verificar(2, context)){
             control = helper.getDb().delete("accesousuario", "idRol = " + getIdRol(), null);
             control = helper.getDb().delete(this.getNombreTabla(), "idRol = " + getIdRol(), null);
             helper.cerrar();
@@ -124,6 +120,35 @@ public class Rol extends TablaBD {
         }
         helper.cerrar();
         return rol;
+    }
+
+    public boolean verificar(int accion, Context context){
+        ControlBD helper = new ControlBD(context);
+        Cursor cursor;
+        String sql = "";
+        helper.abrir();
+        switch (accion){
+            //VERIFICAR QUE NO EXISTA EL ROL
+            case 1:
+                sql = "SELECT COUNT(idRol) FROM ROL WHERE NOMBREROL = '" + getNombreRol() + "'";
+                cursor = helper.consultar(sql);
+                if (cursor.moveToFirst()){
+                    if (cursor.getInt(0) > 0)
+                        return true;
+                }
+                break;
+            //VERIFICAR QUE NO EXISTA UN USUARIO RELACIONADO CON EL ROL
+            case 2:
+                sql = "SELECT COUNT(idUsuario) FROM usuario WHERE idRol = " + getIdRol();
+                cursor = helper.consultar(sql);
+                if(cursor.moveToFirst()){
+                    if (cursor.getInt(0) > 0)
+                        return true;
+                }
+                break;
+        }
+        helper.cerrar();
+        return false;
     }
 
 }

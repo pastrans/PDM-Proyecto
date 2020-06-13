@@ -14,7 +14,10 @@ import android.widget.Toast;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditarFeriado extends AppCompatActivity implements View.OnClickListener {
     //Declarando
@@ -52,7 +55,7 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
         }
     }
     //Metodo para actualizar feriado
-    public void btnEditarEFeriado(View v){
+    public void btnEditarEFeriado(View v) throws ParseException {
         String regInsertados;
         String nombreFeriado = editNombreFeriado.getText().toString();
         feriado.setNombreFeriado(nombreFeriado);
@@ -65,6 +68,12 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
 
         String finFeriado = editFinFeriado.getText().toString();
         feriado.setFechaFinFeriado(finFeriado);
+        validarfecha(feriado.getFechaInicioFeriado(), feriado.getFechaFinFeriado(),feriado);
+
+    }
+    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
+        String regInsertados;
+        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
         if(feriado.getNombreFeriado().isEmpty())
         {
             regInsertados = "Nombre está vacio";
@@ -74,21 +83,21 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
                 regInsertados = "Descripción está vacio";
             }
             else{
-                if(feriado.getFechaInicioFeriado().isEmpty()){
-                    regInsertados = "La fecha inicial está vacia";
-                }
-                else {
-                    if (feriado.getFechaFinFeriado().isEmpty()) {
-                        regInsertados = "La fecha final está vacia";
-                    } else{
+                Date d1 = sdformat.parse(fechai);
+                Date d2 = sdformat.parse(fechaf);
+                if (d1.compareTo(d2)==0){
+                    regInsertados = "Las fechas son iguales";
+                }else{
+                    if (d1.compareTo(d2) > 0){
+                        regInsertados = "Las fecha inicial es mayor que la fecha final";
+                    }
+                    else{
                         regInsertados = feriado.actualizar(this);
                     }
-
                 }
             }
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, feriado.getFechaInicioFeriado() + " - " + feriado.getFechaFinFeriado(), Toast.LENGTH_SHORT).show();
     }
     //Metodo para fechas
     @Override
@@ -121,10 +130,6 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
             }, anoff, mesff, diaff);
             datePickerDialog.show();
         }
-    }
-    // Método para regresar al activity anterior
-    public void btnRegresarEFeriado(View v) {
-        super.onBackPressed();
     }
 
     //Limpiar campos

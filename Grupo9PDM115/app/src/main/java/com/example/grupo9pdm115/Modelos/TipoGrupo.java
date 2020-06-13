@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -84,7 +85,30 @@ public class TipoGrupo extends TablaBD {
         else {
             mensaje = mensaje+control;
         }
-
         return mensaje;
+    }
+
+    public boolean verificar(int accion, Context context){
+        ControlBD helper = new ControlBD(context);
+        String sql = "";
+        Cursor cursor;
+        helper.abrir();
+        switch (accion){
+            case 1:
+                sql = "SELECT COUNT(IDTIPOGRUPO) FROM TIPOGRUPO WHERE NOMBRETIPOGRUPO= '" + getNombreTipoGrupo() + "'";
+                cursor = helper.consultar(sql);
+                if (cursor.moveToFirst())
+                    if (cursor.getInt(0) > 0)
+                        return true;
+                break;
+            case 2:
+                sql = "SELECT COUNT(IDGRUPO) FROM GRUPO WHERE IDTIPOGRUPO =" + getIdTipoGrupo();
+                cursor = helper.consultar(sql);
+                if (cursor.moveToFirst())
+                    if(cursor.getInt(0) > 0)
+                        return true;
+        }
+        helper.cerrar();
+        return false;
     }
 }

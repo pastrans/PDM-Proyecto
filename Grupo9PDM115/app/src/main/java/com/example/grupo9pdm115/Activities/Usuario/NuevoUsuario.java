@@ -52,6 +52,7 @@ public class NuevoUsuario extends AppCompatActivity {
         spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()));
         spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(getApplicationContext()));
         spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()).notifyDataSetChanged();
+        spinnerUnidad.setSelection(1);
     }
 
     public void btnAgregarNUsuario(View v){
@@ -65,11 +66,26 @@ public class NuevoUsuario extends AppCompatActivity {
         usuario.setClaveUsuario(claveUsuario.getText().toString());
         usuario.setApellidoPersonal(apellidoPersonal.getText().toString());
         usuario.setCorreoPersonal(correoPersonal.getText().toString());
-        usuario.setIdUsuario(String.valueOf(usuario.countUsuario(this, usuario)) + nombreUsuario.getText().toString().toUpperCase().charAt(0));
         if (posicionUnidad != 0)
             usuario.setIdUnidad(spinnerUsuarioUnidadAdapter.getIdUnidad(posicionUnidad));
         if(posicionRol != 0)
             usuario.setIdRol(spinnerRolAdapter.getIdRol(posicionRol));
+        String verifcar = verificarDatos(usuario);
+        if (!verifcar.equals("")){
+            Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String idUsuario = "";
+        int numUsuario = 0;
+        numUsuario = usuario.countUsuario(this, usuario);
+        if(numUsuario < 10)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%03d", numUsuario);
+        else if(numUsuario > 10 && numUsuario < 100)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%02d", numUsuario);
+        else if (numUsuario > 100)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.valueOf(numUsuario);
+        usuario.setIdUsuario(idUsuario);
+        //Toast.makeText(this, String.valueOf(usuario.countUsuario(this, usuario)), Toast.LENGTH_SHORT).show();
         regInsertados = usuario.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
@@ -86,6 +102,30 @@ public class NuevoUsuario extends AppCompatActivity {
 
     public void btnRegresarNUsuario(View v){
         finish();
+    }
+
+    public String verificarDatos(Usuario usuario){
+        if (usuario.getNombreUsuario().equals(""))
+            return "Se requiere de un nombre de usuario";
+        if (usuario.verificar(1, getApplicationContext()))
+            return "Ya existe el nombre de usuario";
+        if (usuario.getClaveUsuario().equals(""))
+            return "Se requiere una clave para el usuario";
+        if(usuario.getClaveUsuario().length() < 4)
+            return "La contraseña debe tener mínimo 5 caractéres";
+        if(usuario.getNombrePersonal().equals(""))
+            return "Se requiere del nombre de la persona";
+        if(usuario.getApellidoPersonal().equals(""))
+            return "Se requiere del apellido de la persona";
+        if(usuario.getCorreoPersonal().equals(""))
+            return "Se requiere de un correo para el usuario";
+        if(usuario.verificar(2, getApplicationContext()))
+            return "El correo ya está registrado";
+        if(usuario.getIdUnidad() == 0)
+            return "Seleccione una unidad al usuario";
+        if(usuario.getIdRol() == 0)
+            return "Seleccione un rol al usuario";
+        return "";
     }
 
 }

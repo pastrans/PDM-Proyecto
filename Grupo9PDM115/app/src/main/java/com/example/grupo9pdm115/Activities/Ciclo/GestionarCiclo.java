@@ -1,6 +1,5 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +23,7 @@ import java.util.List;
 public class GestionarCiclo extends AppCompatActivity {
     //Declarando atributos para manejo del ListView
     ListView listaCiclos;
+    EditText editNombreCiclo;
     CicloAdapter listaCiclosAdapter;
     Ciclo ciclo;
 
@@ -30,23 +31,30 @@ public class GestionarCiclo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_ciclo);
-
-        getActionBar().hide();
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
 
         //Inicializar elementos para llenar lista
         listaCiclos = (ListView) findViewById(R.id.listaCiclos);
 
         //Llamar método para llenar lista
-        llenarListaCiclo();
+        llenarListaCiclo(null);
+
 
         //Asociamos el menú contextual al listview
         registerForContextMenu(listaCiclos);
     }
 
     //Metodo parra llenar lista de ciclos
-    public void llenarListaCiclo(){
+    public void llenarListaCiclo(String filtro){
         ciclo = new Ciclo();
-        List objetcts = ciclo.getAll(this);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = ciclo.getAll(this);
+        }
+        else{
+            objetcts = ciclo.getAllFiltered(this,"nombreciclo", filtro);
+        }
 
         //Inicializar el adaptador con la información a mostrar
         listaCiclosAdapter = new CicloAdapter(this, objetcts);
@@ -61,11 +69,15 @@ public class GestionarCiclo extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void buscarCiclo(View v){
+        llenarListaCiclo(editNombreCiclo.getText().toString());
+    }
+
     // Para que actualice la lista cuando se regrese a la ventana
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaCiclo();
+        llenarListaCiclo(null);
     }
 
     // Para menú contextual
@@ -116,7 +128,7 @@ public class GestionarCiclo extends AppCompatActivity {
                         mensaje = "Nuevo ciclo activo: " + cicloActual.getNombreCiclo();
 
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-                    llenarListaCiclo();
+                    llenarListaCiclo(null);
                 }
                 return true;
             case R.id.ctxEliminarCiclo:
@@ -124,7 +136,7 @@ public class GestionarCiclo extends AppCompatActivity {
                     String regEliminadas;
                     regEliminadas= cicloActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaCiclo();
+                    llenarListaCiclo(null);
                 }
                 return true;
             default:
@@ -132,8 +144,3 @@ public class GestionarCiclo extends AppCompatActivity {
         }
     }
 }
-//Falta agregar la lista para mostrar los datos
-// Link para tablas dinámicas
-//https://programaressencillo.wordpress.com/2014/11/22/android-tablas-dinamicas-en-android/
-// Link para ListView
-//http://www.hermosaprogramacion.com/2014/10/android-listas-adaptadores/

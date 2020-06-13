@@ -16,33 +16,40 @@
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Botón nuevo -->
-    <Button
-        android:id="@+id/btnNuevoCiclo"
+    <!-- Lista días -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="agregarCiclo"
-        android:text="@string/btnNuevoGCiclo" />
-
-    <!-- Lista días -->
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnAgregarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="agregarCiclo"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCiclo"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <EditText
+            android:id="@+id/editNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del ciclo"
+            android:inputType="text"/>
+    </LinearLayout>
     <TextView
         android:text="@string/txtListaCiclo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/editNombreCiclo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Nombre del ciclo"
-            android:inputType="time"/>
-    </LinearLayout>
     <ListView
         android:id="@+id/listaCiclos"
         android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +8,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.BD.ControlBD;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.R;
 
 
 import java.util.Calendar;
 
-public class NuevoCiclo extends Activity implements View.OnClickListener{
+public class NuevoCiclo extends AppCompatActivity implements View.OnClickListener{
     //Declarando
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
     Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;

@@ -10,12 +10,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.R;
 
 import java.util.Calendar;
 
-public class EditarCiclo extends Activity implements View.OnClickListener {
+public class EditarCiclo extends AppCompatActivity implements View.OnClickListener {
     //Declarando
     Ciclo ciclo;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;

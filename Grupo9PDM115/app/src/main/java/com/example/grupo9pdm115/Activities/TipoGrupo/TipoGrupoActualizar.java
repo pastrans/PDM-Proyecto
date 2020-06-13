@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
 
-public class TipoGrupoActualizar extends Activity {
+public class TipoGrupoActualizar extends AppCompatActivity {
     // Declarando
     EditText editNombreTG;
     TipoGrupo tipoGrupo;

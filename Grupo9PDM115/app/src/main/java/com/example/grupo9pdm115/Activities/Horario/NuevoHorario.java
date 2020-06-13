@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class NuevoHorario extends Activity implements View.OnClickListener{
+public class NuevoHorario extends AppCompatActivity implements View.OnClickListener{
     ControlBD helper;
     Button btnHoraInicio,btnHoraFinal;
     EditText editHInicio,editHFinal;

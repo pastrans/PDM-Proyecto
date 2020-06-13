@@ -18,7 +18,7 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
-public class EditarMateria extends Activity implements View.OnClickListener  {
+public class EditarMateria extends AppCompatActivity implements View.OnClickListener  {
     //Declarando
     ControlBD helper;
     EditText editCodMateria, editNombre;

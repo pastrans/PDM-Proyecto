@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class EditarHorario extends Activity implements View.OnClickListener{
+public class EditarHorario extends AppCompatActivity implements View.OnClickListener{
     Button btnHoraInicio,btnHoraFinal;
     EditText editHInicio,editHFinal;
     int Hinicio, Hfinal,Minicio, Mfinal;

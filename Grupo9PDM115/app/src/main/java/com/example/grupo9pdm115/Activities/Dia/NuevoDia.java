@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.R;
 
-public class NuevoDia extends Activity {
+public class NuevoDia extends AppCompatActivity {
     // Declarando
     EditText editNombreDia;
 

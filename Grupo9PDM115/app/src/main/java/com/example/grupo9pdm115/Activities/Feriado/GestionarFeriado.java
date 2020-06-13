@@ -11,13 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.FeriadoAdapter;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarFeriado extends Activity {
+public class GestionarFeriado extends AppCompatActivity {
     //Declarando atributos para el manejo del listview
     ListView listaFeriados;
     FeriadoAdapter listaFeriadosAdapter;

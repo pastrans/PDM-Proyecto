@@ -11,13 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.HorarioAdapter;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarHorario extends Activity {
+public class GestionarHorario extends AppCompatActivity {
     ListView listHorario;
     Horario horario;
     HorarioAdapter listaHorarioAdapter;

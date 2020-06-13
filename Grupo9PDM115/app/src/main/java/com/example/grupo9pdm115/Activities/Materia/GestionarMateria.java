@@ -11,13 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.MateriaAdapter;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarMateria extends Activity {
+public class GestionarMateria extends AppCompatActivity {
 
     //Declarando atributos para manejo del ListView
     ListView listaMaterias;

@@ -7,13 +7,16 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 
-public class NuevoMateria  extends Activity implements View.OnClickListener{
+public class NuevoMateria  extends AppCompatActivity implements View.OnClickListener{
     //Declarando
     ControlBD helper;
     EditText editCodMateria, editNombre;

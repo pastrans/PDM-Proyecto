@@ -13,13 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Adapters.TipoGrupoAdapter;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarTipoGrupo extends Activity {
+public class GestionarTipoGrupo extends AppCompatActivity {
     // Declarando atributos para manejo del ListView
     ListView listaTipoGrupo;
     TipoGrupoAdapter listaTipoGrupoAdapter;

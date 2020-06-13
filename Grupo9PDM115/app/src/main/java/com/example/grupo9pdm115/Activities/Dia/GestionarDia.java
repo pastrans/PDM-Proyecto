@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.DiaAdapter;
 import com.example.grupo9pdm115.Modelos.Dia;
@@ -19,7 +21,7 @@ import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarDia extends Activity {
+public class GestionarDia extends AppCompatActivity {
 
     // Declarando atributos para manejo del ListView
     ListView listaDias;

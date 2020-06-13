@@ -16,25 +16,30 @@
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
+
     <TableRow>
 
-        <TextView android:text="@string/txtNombreMateria" />
+        <TextView android:text="Código: " />
+        <EditText
+            android:id="@+id/editcodmateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="Nombre: " />
         <EditText
             android:id="@+id/nombreMat"
             android:inputType="text"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
             android:maxLength="25" />
     </TableRow>
+
     <TableRow>
 
-        <TextView android:text="Código " />
-        <EditText
-            android:id="@+id/editcodmateria"
-            android:inputType="text"
-            android:maxLength="25" />
-    </TableRow>
-    <TableRow>
-
-        <TextView android:text="@string/txtUnidad" />
+        <TextView android:text="Unidad:" />
         <Spinner
             android:id="@+id/spnidUnidad"
             android:layout_width="fill_parent"

@@ -7,53 +7,78 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".Activities.Materia.EditarMateria">
+    tools:context=".Activities.Materia.NuevoMateria">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titEditarMateria"
+        android:text="Editar Materia"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
+
     <TableRow>
 
-        <TextView android:text="@string/txtNombreMateria" />
+        <TextView android:text="Código: " />
         <EditText
-            android:id="@+id/editNombreMateria"
+            android:id="@+id/editcodmateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
             android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="Nombre: " />
+        <EditText
+            android:id="@+id/nombreMat"
+            android:inputType="text"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
             android:maxLength="25" />
     </TableRow>
+
     <TableRow>
 
-        <TextView android:text="@string/txtUnidad" />
+        <TextView android:text="Unidad:" />
         <Spinner
-            android:id="@+id/spinnerUnidad"
+            android:id="@+id/spnidUnidad"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
     </TableRow>
-    <RadioButton
-        android:id="@+id/masivaRadiobutton1"
-        android:layout_width="match_parent"
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtMasiva" />
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/masivaRadioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masiva" />
+
+        <RadioButton
+            android:id="@+id/masivaRadioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No masiva" />
+    </RadioGroup>
     <TableRow>
 
         <Button
-            android:onClick="btnEditarEMateria"
-            android:text="@string/btnEditarEMateria"
+            android:onClick="btnAgregarNMateria"
+            android:text="@string/btnAgregarNMateria"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="btnLimpiarEMateria"
-            android:text="@string/btnLimpiarEMateria"
+            android:onClick="btnLimpiarNMateria"
+            android:text="@string/btnLimpiarNMateria"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="btnRegresarEMateria"
-        android:text="@string/btnRegresarEMateria"
+        android:onClick="btnRegresarNMateria"
+        android:text="@string/btnRegresarNMateria"
         tools:ignore="OnClick" />
 
 

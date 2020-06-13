@@ -158,4 +158,30 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
         return listaTablaBD;
     }
 
+    // Obtener todos los registros de la tabla
+    public List<ChildClass> getAllFiltered(Context context, String columna, String filtro){
+        List<ChildClass> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE "
+                + columna + " LIKE '%"+filtro+"%'";
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add(this.getInstanceOfModel(valores));
+            }while (cursor.moveToNext());
+        }
+
+        helper.cerrar();
+
+        return listaTablaBD;
+    }
+
 }

@@ -177,6 +177,14 @@ public class ControlBD {
         return cursor;
     }
 
+    // Obtiene todos los registros de esa tabla
+    public Cursor getAllFiltered(String nombreTabla, String[] camposTabla){
+        Cursor cursor = db.query(nombreTabla, camposTabla, null, null,
+                null, null, null, null);
+
+        return cursor;
+    }
+
     public Cursor consultar(String consulta){
         Cursor cursor = db.rawQuery(consulta, null );
         return cursor;

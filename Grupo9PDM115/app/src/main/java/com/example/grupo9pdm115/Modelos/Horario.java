@@ -100,16 +100,16 @@ public class Horario extends TablaBD {
         this.valoresCamposTabla.put("horainicio", getHoraInicio());
         this.valoresCamposTabla.put("horafinal", getHoraFinal());
         Horario h = new Horario();
-        hi = new String(h.horaInicio);
-        hf = new String(h.horaFinal);
+        //hi = new String(h.horaInicio);
+        //hf = new String(h.horaFinal);
         //hi =h.horaInicio;
         //hf = h.horaFinal;
         //if (hi.equals(hf)){
-            //mensaje = "Son horas iguales";
+        //mensaje = "Son horas iguales";
         //}else{
-            //if(hi.compareTo(hf) <0){
-                //mensaje= "La hora inicial es mayor que la  final";
-            //}else{
+        //if(hi.compareTo(hf) <0){
+        //mensaje= "La hora inicial es mayor que la  final";
+        //}else{
                 helper.abrir();
                 control = helper.actualizar("horario", valoresCamposTabla,"idhora",Integer.toString(this.getIdHora()));
                 helper.cerrar();

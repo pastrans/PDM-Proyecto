@@ -6,17 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
-import com.example.grupo9pdm115.Modelos.Ciclo;
-import com.example.grupo9pdm115.Modelos.CicloMateria;
-import com.example.grupo9pdm115.Modelos.Dia;
-import com.example.grupo9pdm115.Modelos.Materia;
-import com.example.grupo9pdm115.Modelos.TipoGrupo;
+import com.example.grupo9pdm115.Utilidades.FileHelper;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 public class ControlBD {
     // Manejo de la BD
@@ -171,6 +165,14 @@ public class ControlBD {
 
     // Obtiene todos los registros de esa tabla
     public Cursor getAll(String nombreTabla, String[] camposTabla){
+        Cursor cursor = db.query(nombreTabla, camposTabla, null, null,
+                null, null, null, null);
+
+        return cursor;
+    }
+
+    // Obtiene todos los registros de esa tabla
+    public Cursor getAllFiltered(String nombreTabla, String[] camposTabla){
         Cursor cursor = db.query(nombreTabla, camposTabla, null, null,
                 null, null, null, null);
 

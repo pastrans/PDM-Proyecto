@@ -155,7 +155,7 @@ public class Usuario extends TablaBD {
         ControlBD helper = new ControlBD(context);
         Cursor cursor;
         int cantidad = 0;
-        String sql = "SELECT COUNT(idUsuario) FROM usuario WHERE nombrePersonal = '" + usuario.getNombrePersonal() + "' AND apellidoPersonal = '" + usuario.getApellidoPersonal() +"'";
+        String sql = "SELECT COUNT(idUsuario) FROM usuario WHERE idUsuario LIKE '" + usuario.getNombrePersonal().substring(0, 1) + usuario.getApellidoPersonal().substring(0, 1) +"%'";
         helper.abrir();
         cursor = helper.consultar(sql);
         while (cursor.moveToNext()){
@@ -163,6 +163,30 @@ public class Usuario extends TablaBD {
         }
         helper.cerrar();
         return cantidad;
+    }
+
+    public boolean verificar(int accion, Context context){
+        ControlBD helper = new ControlBD(context);
+        String sql = "";
+        Cursor cursor;
+        helper.abrir();
+        switch (accion){
+            case 1:
+                sql = "SELECT COUNT(idUsuario) FROM USUARIO WHERE NOMBREUSUARIO = '" + getNombreUsuario() + "'";
+                cursor = helper.consultar(sql);
+                if (cursor.moveToFirst())
+                    if(cursor.getInt(0) > 0)
+                        return true;
+                break;
+            case 2:
+                sql = "SELECT COUNT(idUsuario) FROM USUARIO WHERE CORREOPERSONAL = '" + getCorreoPersonal() + "'";
+                cursor = helper.consultar(sql);
+                if (cursor.moveToFirst())
+                    if(cursor.getInt(0) > 0)
+                        return true;
+        }
+        helper.cerrar();
+        return false;
     }
 
 }

@@ -36,6 +36,12 @@ public class NuevoTipoGrupo extends AppCompatActivity {
         TipoGrupo tipoGrupo = new TipoGrupo();
         tipoGrupo.setNombreTipoGrupo(nombreTG);
 
+        String verificar = verificarDatos(tipoGrupo);
+        if(!verificar.equals("")){
+            Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         //Validando campos vacíos
         if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
             regInsertados ="Nombre está vacío";
@@ -49,6 +55,14 @@ public class NuevoTipoGrupo extends AppCompatActivity {
     //Limpiar campos
     public void btnLimpiarNTipoGrupo(View v) {
         nombreTipoGrupo.setText("");
+    }
+
+    public String verificarDatos(TipoGrupo tg){
+        if(tg.getNombreTipoGrupo().equals(""))
+            return "Ingrese un nombre al tipo de grupo";
+        if(tg.verificar(1, getApplicationContext()))
+            return "Ya existe el tipo de grupo";
+        return "";
     }
 
 }

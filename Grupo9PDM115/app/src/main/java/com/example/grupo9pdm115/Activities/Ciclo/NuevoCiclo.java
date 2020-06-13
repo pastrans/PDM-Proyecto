@@ -1,29 +1,41 @@
 package com.example.grupo9pdm115.Activities.Ciclo;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.BD.ControlBD;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Ciclo;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 
 import java.util.Calendar;
 
-public class NuevoCiclo extends Activity implements View.OnClickListener{
+public class NuevoCiclo extends AppCompatActivity implements View.OnClickListener{
     //Declarando
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
-    Button btnInicioCiclo, btnFinCiclo, btnInicioClases, btnFinClases;
     private int dia, mes, anio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ICL"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_ciclo);
 
@@ -32,15 +44,11 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         editFinCiclo = (EditText) findViewById(R.id.editFinCiclo);
         editInicioClases = (EditText) findViewById(R.id.editInicioClases);
         editFinClases = (EditText) findViewById(R.id.editFinClases);
-        btnInicioCiclo = (Button) findViewById(R.id.btnInicioCiclo);
-        btnFinCiclo = (Button) findViewById(R.id.btnFinCiclo);
-        btnInicioClases = (Button) findViewById(R.id.btnInicioClases);
-        btnFinClases = (Button) findViewById(R.id.btnFinClases);
 
-        btnInicioCiclo.setOnClickListener(this);
-        btnFinCiclo.setOnClickListener(this);
-        btnInicioClases.setOnClickListener(this);
-        btnFinClases.setOnClickListener(this);
+        editInicioCiclo.setOnClickListener(this);
+        editFinCiclo.setOnClickListener(this);
+        editInicioClases.setOnClickListener(this);
+        editFinClases.setOnClickListener(this);
     }
 
     @Override
@@ -51,16 +59,16 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         mes = c.get(Calendar.MONTH);
         anio = c.get(Calendar.YEAR);
 
-        if(v==btnInicioCiclo){
+        if(v==editInicioCiclo){
             ed = editInicioCiclo;
         }
-        if(v==btnFinCiclo){
+        if(v==editFinCiclo){
             ed = editFinCiclo;
         }
-        if(v==btnInicioClases){
+        if(v==editInicioClases){
            ed = editInicioClases;
         }
-        if(v==btnFinClases){
+        if(v==editFinClases){
             ed = editFinClases;
         }
 
@@ -77,6 +85,9 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
 
     // Método para insertar ciclo
     public void agregarCiclo(View v){
+        boolean error = false;
+        String mensaje = "";
+
         //Obteniendo valores elementos
         String nombreCiclo = editNombreCiclo.getText().toString();
         String inicioCiclo = editInicioCiclo.getText().toString();
@@ -84,20 +95,36 @@ public class NuevoCiclo extends Activity implements View.OnClickListener{
         String inicioClases = editInicioClases.getText().toString();
         String finClases = editFinClases.getText().toString();
 
-        //Instanciando ciclo para guardar
-        Ciclo ciclo = new Ciclo();
-        ciclo.setNombreCiclo(nombreCiclo);
-        ciclo.setInicio(inicioCiclo);
-        ciclo.setFin(finCiclo);
-        ciclo.setEstadoCiclo(false); // Se almacena como inactivo por defecto
-        ciclo.setInicioPeriodoClase(inicioClases);
-        ciclo.setFinPeriodoClase(finClases);
-        String regInsertados = ciclo.guardar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-    }
-    // Método para regresar al activity anterior
-    public void regresar(View v){
-        super.onBackPressed();
+        // Verificando fechas
+        if(!(FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
+                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
+                && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
+            error = true;
+            mensaje = "El periodo de clases debe estar dentro del tiempo de duración del ciclo." +
+                    "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
+        }
+        // Verificando campos vacíos
+        if(nombreCiclo.equals("") || inicioCiclo.equals("") || finCiclo.equals("") || inicioClases.equals("")
+                || finClases.equals("")){
+            error = true;
+            mensaje = "Ningun campo debe estar vacío.";
+        }
+
+        // Operaciones si no hay errores
+        if(error == false){
+            //Instanciando ciclo para guardar
+            Ciclo ciclo = new Ciclo();
+            ciclo.setNombreCiclo(nombreCiclo);
+            ciclo.setInicio(inicioCiclo);
+            ciclo.setFin(finCiclo);
+            ciclo.setEstadoCiclo(false); // Se almacena como inactivo por defecto
+            ciclo.setInicioPeriodoClase(inicioClases);
+            ciclo.setFinPeriodoClase(finClases);
+            mensaje = ciclo.guardar(this);
+        }
+
+        // Mensaje de salida
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //Limpiar campos

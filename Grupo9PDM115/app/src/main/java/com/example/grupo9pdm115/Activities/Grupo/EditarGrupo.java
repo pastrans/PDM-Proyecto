@@ -64,6 +64,11 @@ public class EditarGrupo extends AppCompatActivity {
         int posCicloMateria = spinnerCicloMateria.getSelectedItemPosition();
         grupo.setIdTipoGrupo(control.getIdTipoGrupo(posTipoGrupo));
         grupo.setIdCicloMateria(control.getIdCicloMateria(posCicloMateria));
+        String verificar = verificarDatos(grupo);
+        if(!verificar.equals("")){
+            Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
+            return;
+        }
         resultado = grupo.actualizar(this);
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
     }
@@ -76,6 +81,18 @@ public class EditarGrupo extends AppCompatActivity {
 
     public void btnRegresarEGrupo(View v){
         finish();
+    }
+
+    public String verificarDatos(Grupo g){
+        if(g.getNumero() < 1)
+            return "Ingrese un número de grupo válido";
+        if (g.getNumero() != getIntent().getIntExtra("numeroGrupo", 0)
+                || g.getIdCicloMateria() != getIntent().getIntExtra("idCicloMateria", 0)
+                || g.getIdTipoGrupo() != getIntent().getIntExtra("idTipoGrupo", 0)){
+            if(g.verificar(1, getApplicationContext()))
+                return "Ya existe un grupo";
+        }
+        return "";
     }
 
 }

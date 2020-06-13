@@ -8,11 +8,11 @@
     //Variables para Ciclo
     //Etiquetas
     <string name="txtIdCiclo">Id Ciclo:</string>
-    <string name="txtNombreCiclo">Nombre ciclo</string>
-    <string name="txtInicioCiclo">Inicio del ciclo</string>
-    <string name="txtFinCiclo">Fin del Ciclo</string>
-    <string name="txtInicioPeriodoClase">Inicio del periodo de Clases</string>
-    <string name="txtFinPeriodoClase">Fin del periodo de Clases</string>
+    <string name="txtNombreCiclo">Nombre ciclo:</string>
+    <string name="txtInicioCiclo">Inicio del ciclo:</string>
+    <string name="txtFinCiclo">Fin del ciclo:</string>
+    <string name="txtInicioPeriodoClase">Inicio de clases:</string>
+    <string name="txtFinPeriodoClase">Fin de clase:s</string>
     <string name="btnInicioCiclo">INICIO CICLO</string>
     <string name="btnFinCiclo">FIN CICLO</string>
     <string name="btnInicioClases">INICIO CLASES</string>
@@ -20,17 +20,15 @@
     //Gestionar Ciclo
     <string name="titGestionarCiclo">Gestionar Ciclo</string>
     <string name="btnNuevoGCiclo">Nuevo</string>
-    <string name="txtListaCiclo">Listado de ciclos ingresados</string>
+    <string name="txtListaCiclo">Listado de ciclos ingresados:</string>
     //Nuevo Ciclo
     <string name="titNuevoCiclo">Nuevo Ciclo</string>
     <string name="btnAgregarNCiclo">Agregar</string>
     <string name="btnLimpiarTextoNCiclo">Limpiar</string>
-    <string name="btnRegresarNCiclo">Regresar</string>
     //Editar Ciclo
     <string name="titEditarCiclo">Editar Ciclo</string>
     <string name="btnActualizarCiclo">Guardar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
-    <string name="btnRegresarECiclo">Regresar</string>
     // Menú contextual lista ciclos
     <string name="ctxListaCiclosActualizar">Actualizar</string>
     <string name="ctxListaCiclosEliminar">Eliminar</string>
@@ -72,23 +70,21 @@
 
     //Variables Unidad
     //Etiquetas
-    <string name="txtNombreUnidad">Nombre unidad</string>
-    <string name="editDescripcion">Descripción</string>
-    <string name="txtPrioridad">Prioridad</string>
+    <string name="txtNombreUnidad">Nombre unidad:</string>
+    <string name="editDescripcion">Descripción:</string>
+    <string name="txtPrioridad">Prioridad:</string>
     //Gestionar Unidad
     <string name="titGestionarUnidad">Gestionar Unidad</string>
     <string name="txtListaUnidad">Listado de unidades ingresadas:</string>
     <string name="btnNuevoGUnidad">Nuevo</string>
     //Nuevo Unidad
     <string name="titNuevoUnidad">Nueva Unidad</string>
-    <string name="btnRegresarNUnidad">Regresar</string>
     <string name="btnAgregarNUnidad">Agregar</string>
-    <string name="btnLimpiarNUnidad">Limpiar</string>
+    <string name="btnLimpiarTextoNUnidad">Limpiar</string>
     //Editar Unidad
     <string name="titEditarUnidad">Editar Unidad</string>
     <string name="btnEditarEUnidad">Editar</string>
     <string name="btnLimpiarEUnidad">Limpiar</string>
-    <string name="btnRegresarEUnidad">Regresar</string>
 
     //Variables Materia
     //Etiquetas
@@ -328,22 +324,18 @@
     <string name="txtHoraInicial">Hora de inicio</string>
     <string name="txtHoraFin">Hora de final</string>
     //Gestionar Horario
-    <string name="txtListaHorario">Listado de horarios ingresados</string>
+    <string name="txtListaHorario">Listado de horarios ingresados:</string>
     <string name="titGestionarHorario">Gestionar Horario</string>
     <string name="btnNuevoGHorario">Nuevo</string>
-    <string name="btnEditarGHorario">Editar</string>
-    <string name="btnEliminarGHorario">Eliminar</string>
-    <string name="btnRegresarGHorario">Regresar</string>
+
     //Nuevo Horario
     <string name="titNuevoHorario">Nuevo Horario</string>
     <string name="btnAgregarNHorario">Agregar</string>
     <string name="btnLimpiarNHorario">Limpiar</string>
-    <string name="btnRegresarNHorario">Regresar</string>
     //Editar Horario
     <string name="titEditarEHorario">Editar Horario</string>
     <string name="btnEditarEHorario">Editar</string>
     <string name="btnLimpiarEHorario">Limpiar</string>
-    <string name="btnRegresarEHorario">Regresar</string>
 
     // Error de usuario
     <string name="titErrorUsuario">Ajá prro</string>

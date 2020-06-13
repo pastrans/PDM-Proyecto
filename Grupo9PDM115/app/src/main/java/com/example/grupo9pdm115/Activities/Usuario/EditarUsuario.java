@@ -91,6 +91,11 @@ public class EditarUsuario extends AppCompatActivity {
         usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
         usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
         usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
+        String verifcar = verificarDatos(usuario);
+        if (!verifcar.equals("")){
+            Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
+            return;
+        }
         resultado = usuario.actualizar(this);
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
     }
@@ -107,6 +112,30 @@ public class EditarUsuario extends AppCompatActivity {
         spinnerEditarUnidadUsuario.setSelection(0);
         spinnerEditarRolUsuario.setSelection(0);
         editClaveUsuario.setText("");
+    }
+
+    public String verificarDatos(Usuario usuario){
+        if (usuario.getNombreUsuario().equals(""))
+            return "Se requiere de un nombre de usuario";
+        if (usuario.verificar(1, getApplicationContext()) && !usuario.getNombreUsuario().equals(getIntent().getStringExtra("nombreUsuario")))
+            return "Ya existe el nombre de usuario";
+        if (usuario.getClaveUsuario().equals(""))
+            return "Se requiere una clave para el usuario";
+        if(usuario.getClaveUsuario().length() < 4)
+            return "La contraseña debe tener mínimo 5 caractéres";
+        if(usuario.getNombrePersonal().equals(""))
+            return "Se requiere del nombre de la persona";
+        if(usuario.getApellidoPersonal().equals(""))
+            return "Se requiere del apellido de la persona";
+        if(usuario.getCorreoPersonal().equals(""))
+            return "Se requiere de un correo para el usuario";
+        if(usuario.verificar(2, getApplicationContext()) && !usuario.getCorreoPersonal().equals(getIntent().getStringExtra("correoPersona")))
+            return "El correo ya está registrado";
+        if(usuario.getIdUnidad() == 0)
+            return "Seleccione una unidad al usuario";
+        if(usuario.getIdRol() == 0)
+            return "Seleccione un rol al usuario";
+        return "";
     }
 
 }

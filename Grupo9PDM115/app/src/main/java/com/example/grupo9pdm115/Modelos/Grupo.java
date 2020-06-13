@@ -147,15 +147,17 @@ public class Grupo extends TablaBD {
         String sql = "";
         Cursor cursor;
         ControlBD helper = new ControlBD(context);
+        helper.abrir();
         switch (accion){
             case 1:
-                sql = "SELECT COUNT(idGrupo) FROM Grupo WHERE Numero=" + getNumero();
+                sql = "SELECT COUNT(idGrupo) FROM Grupo WHERE Numero=" + getNumero() + " AND IDTIPOGRUPO =" + getIdTipoGrupo() + " AND IDCICLOMATERIA =" + getIdCicloMateria();
                 cursor = helper.consultar(sql);
                 if(cursor.moveToFirst())
                     if(cursor.getInt(0) > 0)
                         return true;
                 break;
         }
+        helper.cerrar();
         return false;
     }
 

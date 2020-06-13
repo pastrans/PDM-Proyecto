@@ -138,7 +138,7 @@ INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
 DELETE FROM CICLOMATERIA;
 INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "MAT115");
 INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (1, "PRN115");
-INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "IEC115");
+INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "FIR115");
 INSERT INTO CICLOMATERIA (idciclo, codmateria) VALUES (2, "TSI115");
 
 -- TIPOGRUPO 

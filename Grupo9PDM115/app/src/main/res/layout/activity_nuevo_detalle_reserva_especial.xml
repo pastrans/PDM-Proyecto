@@ -5,23 +5,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Solicitud.NuevoSolicitud"
     android:orientation="vertical"
     android:padding="10dp">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titNuevaSolicitud"
+                android:text="@string/titNuevoDetalleReserva"
                 android:textSize="30sp"
-                android:paddingBottom="5dp"
-                />
+                android:paddingBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/layoutEventoEspecialDetalleREN">
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtEventoEspecial"/>
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/spinnerEventoDetalleRENuevo"
+                    />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -34,7 +61,57 @@
                     android:layout_weight="0.85"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="@string/txtUsuario"/>
+                    android:text="@string/txtHora"/>
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/spinnerHoraInicioDetalleRENuevo"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/layoutHoraFin">
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtHora"/>
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.15"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/spinnerHoraFinDetalleRENuevo"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.85"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtLocal"/>
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -43,19 +120,7 @@
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:id="@+id/edtEncargadoSolicitudNuevo"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <CheckBox
-                    android:id="@+id/chkIntermediarioNuevo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enviar a intermediario"
+                    android:id="@+id/editLocalDetalleRENuevo"
                     />
             </LinearLayout>
             <LinearLayout
@@ -71,7 +136,7 @@
                     android:layout_weight="0.85"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="@string/txtasunto" />
+                    android:text="@string/txtCupo" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -81,15 +146,17 @@
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:id="@+id/editAsuntoSolicitudNuevo"
-                    android:inputType="text"
-                    android:maxLength="100"/>
+                    android:id="@+id/editCupoDetalleRENuevo"
+                    android:inputType="numberDecimal"
+                    android:maxLength="30"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:id="@+id/layoutInicioReservaDetalleRN">
 
                 <TextView
                     android:layout_width="10dp"
@@ -98,125 +165,24 @@
                     android:layout_weight="0.85"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="@string/txtTipoSolicitud" />
-
-                <RadioGroup
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.15"
-                    android:id="@+id/radioGroupNuevaSolicitud">
-                    <RadioButton
-                        android:id="@+id/radioNormalNuevo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reserva normal"
-                        android:checked="true"
-                        />
-                    <RadioButton
-                        android:id="@+id/radioEspecialNuevo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reserva especial"
-                        />
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="0.85"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:id="@+id/btnFechaRespuesta"
-                    android:text="@string/txtFechaRespuesta"
+                    android:text="Fecha de reserva"
                     />
+
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_weight="1.20"
+                    android:layout_weight="1.15"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:id="@+id/editFechaRespuestaNuevo"
+                    android:id="@+id/editFechaDetalleRENuevo"
                     android:inputType="date"
-                    android:maxLength="30"
                     android:focusable="false"
                     android:clickable="true"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="0.85"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="@string/txtcomentario" />
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1.15"
-                    android:imeOptions="actionNext"
-                    android:paddingLeft="10dp"
-                    android:singleLine="true"
-                    android:id="@+id/editComentarioNuevo"
-                    android:inputType="text"
-                    android:maxLength="500"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="0.85"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="@string/txtEstadoSolicitud" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1.15"
-                    android:imeOptions="actionNext"
-                    android:paddingLeft="10dp"
-                    android:singleLine="true"
-                    android:id="@+id/textVEstadoSolicitudNuevo"
-                    android:text="Ninguno"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Agregar detalles de reserva"
-                    android:onClick="btnAgregarDetallerReservaSolicitud"
-                    />
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,19 +194,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:onClick="btnLimpiarTextoNSolicitud"
-                    android:text="@string/btnLimpiarTextoNSolicitud" />
+                    android:onClick="btnLimpiarTextoNDetalleReservaEspecial"
+                    android:text="@string/btnLimpiarTextoNDetalleReserva" />
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:onClick="btnAgregarNSolicitud"
-                    android:text="@string/btnAgregarNSolicitud" />
+                    android:onClick="btnAgregarNDetalleReservaEspecial"
+                    android:text="@string/btnAgregarNDetalleReserva" />
             </LinearLayout>
 
         </LinearLayout>
-
     </ScrollView>
 
 </LinearLayout>

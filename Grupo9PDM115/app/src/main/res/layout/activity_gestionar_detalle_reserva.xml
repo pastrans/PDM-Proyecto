@@ -28,6 +28,13 @@
         android:onClick="btnNuevoGDetalleReserva"
         android:text="@string/btnNuevoGDetalleReserva" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnNuevoGDetalleReservaE"
+        android:text="ESPECIAL"
+        />
+
     <!-- Lista días -->
     <TextView
         android:text="@string/txtListaDetalleReserva"

@@ -17,6 +17,7 @@ public class Sesion {
     ControlBD helper;
     public static final String LOGGED_IN_PREF = "logged_in_status";
     public static final String ACCESOS = "accesos_usuario";
+    public static final String IDUSUARIO = "idUsuario";
 
     static SharedPreferences getPreferences(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -40,6 +41,16 @@ public class Sesion {
 
     public static boolean getLoggedIn(Context context){
         return getPreferences(context).getBoolean(LOGGED_IN_PREF, false);
+    }
+
+    public static void setIdUsuario(Context context, String idUsuario){
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putString(IDUSUARIO, idUsuario);
+        editor.apply();
+    }
+
+    public static String getIdusuario(Context context){
+        return getPreferences(context).getString(IDUSUARIO, "");
     }
 
     public static void setAccesoUsuario(Context context, Set<String> accesos){

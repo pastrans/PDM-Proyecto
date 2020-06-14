@@ -16,6 +16,13 @@
         android:paddingBottom="5dp"
         />
     <TextView
+        android:id="@+id/txtIdUsuarioList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        tools:text="OL001"
+        />
+    <TextView
         android:id="@+id/txtNombreUsuarioList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

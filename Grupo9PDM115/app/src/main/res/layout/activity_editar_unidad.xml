@@ -61,7 +61,7 @@
                     android:layout_weight="0.85"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="@string/txtDescripcion" />
+                    android:text="@string/txtDescripcionFeriado" />
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="50dp"

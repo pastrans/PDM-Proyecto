@@ -9,10 +9,12 @@
     //Etiquetas
     <string name="txtIdCiclo">Id Ciclo:</string>
     <string name="txtNombreCiclo">Nombre ciclo:</string>
+    <string name="txtNombreCicloHint">Nombre del ciclo</string>
     <string name="txtInicioCiclo">Inicio del ciclo:</string>
     <string name="txtFinCiclo">Fin del ciclo:</string>
+    <string name="txtEstadoCiclo">Estado:</string>
     <string name="txtInicioPeriodoClase">Inicio de clases:</string>
-    <string name="txtFinPeriodoClase">Fin de clase:s</string>
+    <string name="txtFinPeriodoClase">Fin de clase:</string>
     <string name="btnInicioCiclo">INICIO CICLO</string>
     <string name="btnFinCiclo">FIN CICLO</string>
     <string name="btnInicioClases">INICIO CLASES</string>
@@ -33,27 +35,24 @@
     <string name="ctxListaCiclosActualizar">Actualizar</string>
     <string name="ctxListaCiclosEliminar">Eliminar</string>
     <string name="ctxListaCiclosActivarr">Establecer como ciclo activo</string>
-    // Lista ciclos
-    <string name="txtInicioCicloLista">Inicio del ciclo:</string>
-    <string name="txtFinCicloLista">Fin del ciclo:</string>
-    <string name="txtInicioPeriodoClaseLista">Inicio de clases:</string>
-    <string name="txtFinPeriodoClaseLista">Fin de clases:</string>
-    <string name="txtEstadoCicloLista">Estado:</string>
-
 
     //Variables para Feriado
     //Etiquetas
-    <string name="txtNombre">Nombre:</string>
-    <string name="txtDescripcion">Descripción:</string>
-    <string name="txtFechaInicio">Fecha Inicio</string>
-    <string name="txtFechaFinalizacion">Fecha Final</string>
-    <string name="txtCiclo">Ciclo</string>
+    <string name="txtNombreFeriado">Nombre:</string>
+    <string name="txtNombreFeriadoHint">Nombre de feriado</string>
+    <string name="txtDescripcionFeriado">Descripción:</string>
+    <string name="txtFechaInicioFeriado">Fecha de inicio:</string>
+    <string name="txtFechaFinFeriado">Fecha de fin:</string>
+    <string name="txtCicloFeriado">Ciclo:</string>
+    <string name="txtEstadoReservas">Reservas:</string>
+    <string name="spnCicloPrompt">Seleccione un ciclo</string>
+
     //Gestionar Feriado
     <string name="titGestionarFeriado">Gestionar Feriado</string>
     <string name="editNombre">Nombre</string>
     <string name="btnConsultarGFeriado">Consultar</string>
     <string name="btnNuevoGFeriado">Nuevo</string>
-    <string name="txtListaFeriado">Listado de feriados ingresados</string>
+    <string name="txtListaFeriado">Listado de feriados ingresados:</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>

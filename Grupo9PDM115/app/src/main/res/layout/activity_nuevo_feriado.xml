@@ -34,7 +34,7 @@
                 android:layout_weight="0.85"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="@string/txtNombre" />
+                android:text="@string/txtNombreFeriado" />
 
             <EditText
                 android:layout_width="0dp"
@@ -62,7 +62,7 @@
                 android:layout_weight="0.85"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="@string/txtDescripcion" />
+                android:text="@string/txtDescripcionFeriado" />
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -81,16 +81,14 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:weightSum="2">
-            <Button
+            <TextView
                 android:layout_width="10dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="0dp"
                 android:layout_weight="0.85"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:id="@+id/btnInicioFeriado"
-                android:text="@string/txtFechaInicio"
-                />
+                android:text="@string/txtFechaInicioFeriado"/>
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -113,15 +111,14 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <Button
+            <TextView
                 android:layout_width="10dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="0dp"
                 android:layout_weight="0.85"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:id="@+id/btnFinFeriado"
-                android:text="@string/txtFechaFinalizacion"
+                android:text="@string/txtFechaFinFeriado"
                 />
 
             <EditText
@@ -153,7 +150,7 @@
                 android:layout_weight="0.85"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="@string/txtCiclo"/>
+                android:text="@string/txtCicloFeriado"/>
             <Spinner
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -162,8 +159,9 @@
                 android:imeOptions="actionNext"
                 android:paddingLeft="10dp"
                 android:singleLine="true"
-                android:id="@+id/spinnerCicloFeriadoNuevo"
-                />
+                android:prompt="@string/spnCicloPrompt"
+                android:spinnerMode="dropdown"
+                android:id="@+id/spinnerCicloFeriadoNuevo"/>
         </LinearLayout>
 
 
@@ -178,46 +176,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:onClick="btnLimpiarTextoNFeriado"
+                android:onClick="limpiarTexto"
                 android:text="@string/btnLimpiarTextoNFeriado" />
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:onClick="btnAgregarNFeriado"
+                android:onClick="agregarFeriado"
                 android:text="@string/btnAgregarNFeriado" />
-
-
         </LinearLayout>
-
-
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-            <TextView
-                android:layout_width="10dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="0.85"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-
-                />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="0dp"
-                android:layout_weight="1.15"
-                android:imeOptions="actionNext"
-                android:paddingLeft="10dp"
-                android:singleLine="true"/>
-            </LinearLayout>-->
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

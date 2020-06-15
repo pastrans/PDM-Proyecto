@@ -14,13 +14,33 @@
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Botón nuevo -->
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="nuevoHorario"
-        android:text="@string/btnNuevoGUnidad"
-        />
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnNuevoHorario"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="nuevoHorario"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCiclo"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <EditText
+            android:id="@+id/editNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Id del horario"
+            android:inputType="text"/>
+    </LinearLayout>
     <!-- Lista horarios -->
     <TextView
         android:text="@string/txtListaHorario"

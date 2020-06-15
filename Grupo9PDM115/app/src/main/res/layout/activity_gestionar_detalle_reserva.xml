@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,14 +17,33 @@
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Botón nuevo -->
-    <Button
-        android:id="@+id/btnNuevoDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnNuevoGDetalleReserva"
-        android:text="@string/btnNuevoGDetalleReserva" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="rtl"
+                android:paddingBottom="5dp">
+                <Button
+                    android:id="@+id/btnNuevoGDetalleReserva"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="btnNuevoGDetalleReserva"
+                    android:drawableStart="@drawable/ic_boton_agregar"
+                    android:drawableLeft="@drawable/ic_boton_agregar"/>
+                <Button
+                    android:id="@+id/btnBuscarDetalleReserva"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="btnBuscarDetalleReserva"
+                    android:drawableStart="@drawable/ic_boton_buscar"
+                    android:drawableLeft="@drawable/ic_boton_buscar"/>
+                <EditText
+                    android:id="@+id/editNombreCiclo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Detalle de reserva"
+                    android:inputType="text"/>
+            </LinearLayout>
     <!-- Lista días -->
     <TextView
         android:text="@string/txtListaDetalleReserva"
@@ -42,6 +58,5 @@
         android:layout_height="match_parent"
         android:divider="@null" />
         </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

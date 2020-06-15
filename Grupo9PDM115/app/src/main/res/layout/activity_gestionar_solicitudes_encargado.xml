@@ -5,33 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.Solicitud.GestionarSolicitud"
+    tools:context=".Activities.Solicitud.GestionarSolicitudesEncargado"
     android:padding="10dp">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/titGestionarSolicitud"
-                android:textSize="30sp"
-                android:paddingBottom="5dp"
-                />
-            <Button
-                android:id="@+id/btnNuevoFeriado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="btnNuevoGSolicitud"
-                android:text="@string/btnNuevoGSolicitud"
-                tools:ignore="OnClick" />
 
-        </LinearLayout>
-
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="wrap_content"

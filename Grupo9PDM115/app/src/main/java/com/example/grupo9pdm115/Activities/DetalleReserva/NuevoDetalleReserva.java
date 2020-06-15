@@ -25,6 +25,7 @@ import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Reserva;
+import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.DiaSpinner;
 import com.example.grupo9pdm115.Spinners.EventoEspecialSpinner;
@@ -52,8 +53,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
     TipoGrupoSpinner tipoGrupoSpinnerAdapter;
     Ciclo cicloActual;
     List<Integer> listaIdsDetalles;
+    Solicitud solicitud;
     int idSolicitud = 0;
-
+    boolean revision;
     private int dia, mes, anio;
 
     @Override
@@ -63,6 +65,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
 
         if(getIntent().getExtras() != null){
             idSolicitud = getIntent().getIntExtra("idSolicitud", 0);
+            revision = getIntent().getBooleanExtra("revision", false);
+            solicitud = new Solicitud();
+            solicitud.consultar(this, String.valueOf(idSolicitud));
         }
 
         helper = new ControlBD(this);
@@ -200,13 +205,15 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         }
 
         int local = getIdlocal();
-        if(local != 0)
-            detalleReserva.setIdLocal(local);
-        else{
+        if(local == 0){
             Toast.makeText(this, "No existe el local", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        if(local == -1)
+            detalleReserva.setIdLocal(0);
+        else
+            detalleReserva.setIdLocal(local);
+        //detalleReserva.setIdLocal(0);
         detalleReserva.setIdEventoEspecial(0);
         detalleReserva.setIdDia(diaSpinnerAdapter.getIdDia(posDia));
         detalleReserva.setCupo(Integer.valueOf(edtCupo.getText().toString()));
@@ -256,6 +263,8 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
 
     public int getIdlocal(){
         int idLocal = 0;
+        if (edtLocal.getText().toString().trim().equals(""))
+            return -1;
         String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "'";
         helper.abrir();
         Cursor c2 = helper.consultar(sqlLocal);

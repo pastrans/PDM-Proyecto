@@ -52,8 +52,6 @@ public class NuevoSolicitud extends AppCompatActivity {
 
     }
 
-
-
     public void btnAgregarDetallerReservaSolicitud(View v){
         Intent intent = new Intent(this, NuevoDetalleReserva.class);
         startActivityForResult(intent, 1);
@@ -78,6 +76,10 @@ public class NuevoSolicitud extends AppCompatActivity {
             Toast.makeText(this, "Ingrese un código de encargado", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(!selfEncargado(tipo) && chkIntermediario.isChecked()){
+            Toast.makeText(this, "No se puede enviar la solicitud a sí mismo", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(!getEncargado(encargado, tipo)){
             Toast.makeText(this, "No existe el usuario o no es un encargado de un local", Toast.LENGTH_SHORT).show();
             return;
@@ -99,7 +101,7 @@ public class NuevoSolicitud extends AppCompatActivity {
         solicitud.setFechaRespuesta("");
         solicitud.setNuevoFinPeriodo("");
         String res = solicitud.guardar(this);
-        //Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
         Intent intent;
         if (tipoSolicitud == 1){
             intent = new Intent(this, NuevoDetalleReserva.class);
@@ -110,6 +112,23 @@ public class NuevoSolicitud extends AppCompatActivity {
             intent.putExtra("idSolicitud", solicitud.getLast(getApplication()));
             startActivity(intent);
         }
+    }
+
+    public boolean selfEncargado(int tipo){
+        boolean mismo = false;
+        String sql = "";
+        if(tipo == 1)
+            mismo = false;
+        if (tipo == 2){
+            sql = "SELECT COUNT(idEncargado) FROM TipoLocal WHERE idEncargado ='" + Sesion.getIdusuario(getApplicationContext()).toUpperCase() + "'";
+            helper.abrir();
+            Cursor cursor = helper.consultar(sql);
+            if(cursor.moveToFirst())
+                if(cursor.getInt(0) > 0)
+                    mismo = true;
+        }
+        helper.cerrar();
+        return mismo;
     }
 
     public boolean getEncargado(String usuario, int tipo){

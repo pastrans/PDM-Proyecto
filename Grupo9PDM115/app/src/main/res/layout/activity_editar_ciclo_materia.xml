@@ -7,29 +7,30 @@
     android:layout_height="match_parent"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".Activities.CicloMateria.EditarCicloMateria">
+    tools:context=".Activities.CicloMateria.NuevoCicloMateria">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titEditarCicloMateria"
+        android:text="Actualizar materia del ciclo"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/txtMateria" />
-        <Spinner
-            android:id="@+id/spinnerMateria"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <TextView android:text="Código de materia:" />
+        <EditText
+            android:id="@+id/editMateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="6" />
 
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/txtCicloMateria" />
+        <TextView android:text="Ciclo:" />
         <Spinner
-            android:id="@+id/spinnerCicloMateria"
+            android:id="@+id/spinnerCiclo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -37,19 +38,19 @@
     <TableRow>
 
         <Button
-            android:onClick="btnEditarECicloMateria"
-            android:text="@string/btnEditarECicloMateria"
+            android:onClick="btnactualizarCicloMateria"
+            android:text="Actualizar"
             tools:ignore="OnClick" />
 
         <Button
-            android:onClick="btnLimpiarECicloMateria"
-            android:text="@string/btnLimpiarECicloMateria"
+            android:onClick="btnLimpiarNCicloMateria"
+            android:text="@string/btnLimpiarNCicloMateria"
             tools:ignore="OnClick" />
     </TableRow>
 
     <Button
-        android:onClick="btnRegresarECicloMateria"
-        android:text="@string/btnRegresarECicloMateria"
+        android:onClick="btnRegresar"
+        android:text="@string/btnRegresarNCicloMateria"
         tools:ignore="OnClick" />
 
 

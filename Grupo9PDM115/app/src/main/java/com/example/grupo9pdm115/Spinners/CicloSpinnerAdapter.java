@@ -4,9 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.widget.ArrayAdapter;
 
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Ciclo;
-import com.example.grupo9pdm115.Modelos.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +12,6 @@ import java.util.List;
 public class CicloSpinnerAdapter {
     private List<Ciclo> listaCiclos;
     private ArrayList<String> contenidoSpinner;
-    private Cursor cursor;
 
     // Constructor
     public CicloSpinnerAdapter (Context context){
@@ -35,12 +32,10 @@ public class CicloSpinnerAdapter {
     }
 
     public int getIdCiclo(int posicion){
-        int pos = posicion - 1;
-        return listaCiclos.get(pos).getIdCiclo();
+        return listaCiclos.get(posicion - 1).getIdCiclo();
     }
 
     public Ciclo getCiclo(int posicion){
-        Ciclo c = listaCiclos.get(posicion - 1);
-        return c;
+        return listaCiclos.get(posicion - 1);
     }
 }

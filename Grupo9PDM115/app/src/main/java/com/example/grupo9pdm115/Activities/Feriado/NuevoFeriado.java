@@ -59,13 +59,15 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         editFinFeriado = (EditText) findViewById(R.id.editFinFeriado);
         spnCicloFeriado = (Spinner) findViewById(R.id.spinnerCicloFeriadoNuevo);
 
+        // Llenar spiner ciclo feriado
+        cicloSpinnerAdapter = new CicloSpinnerAdapter(this);
+        spnCicloFeriado.setAdapter(cicloSpinnerAdapter.getAdapterCiclo(this));
+
         editInicioFeriado.setOnClickListener(this);
         editFinFeriado.setOnClickListener(this);
-
-        llenarCicloSpinner();
     }
 
-    //Metodo para fechas
+    // Método para fechas
     @Override
     public void onClick(View v) {
         final EditText ed = (EditText) v;
@@ -83,14 +85,6 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         }, anio, mes, dia);
 
         datePickerDialog.show();
-    }
-
-    public void llenarCicloSpinner(){
-        Ciclo ciclo = new Ciclo();
-        CicloAdapter cicloAdapter = new CicloAdapter(this, ciclo.getAll(this));
-        cicloSpinnerAdapter = new CicloSpinnerAdapter(this);
-        //spnCicloFeriado.setAdapter(cicloSpinnerAdapter.getAdapterCiclo(this));
-        spnCicloFeriado.setAdapter(cicloAdapter);
     }
 
     //Metodo para insertar feriado
@@ -148,35 +142,6 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         editDescripcionFeriado.setText("");
         editInicioFeriado.setText("");
         editFinFeriado.setText("");
+        spnCicloFeriado.setSelection(0);
     }
-
-    /*    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
-        String regInsertados;
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
-        if(feriado.getNombreFeriado().isEmpty())
-        {
-            regInsertados = "Nombre está vacio";
-        }
-        else{
-            if(feriado.getDescripcionFeriado().isEmpty()){
-                regInsertados = "Descripción está vacio";
-            }
-            else{
-                Date d1 = sdformat.parse(fechai);
-                Date d2 = sdformat.parse(fechaf);
-                if (d1.compareTo(d2)==0){
-                    regInsertados = "Las fechas son iguales";
-                }else{
-                    if (d1.compareTo(d2) > 0){
-                        regInsertados = "Las fecha inicial es mayor que la fecha final";
-                    }
-                    else{
-                        regInsertados = feriado.guardar(this);
-                    }
-                }
-            }
-        }
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-    }*/
-
 }

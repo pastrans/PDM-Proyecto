@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,11 +10,11 @@
     tools:context=".Activities.CicloMateria.GestionarCicloMateria">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:text="Gestionar Materias del ciclo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarCicloMateria"
         android:textSize="30sp" />
-
+    <!-- Lista días -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,28 +22,35 @@
         android:layoutDirection="rtl"
         android:paddingBottom="5dp">
         <Button
-            android:id="@+id/btnNuevoGCicloMateria"
+            android:id="@+id/btnAgregarCicloMateria"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="btnNuevoGCicloMateria"
+            android:onClick="agregarCicloMateria"
             android:drawableStart="@drawable/ic_boton_agregar"
-            android:drawableLeft="@drawable/ic_boton_agregar"
-            tools:ignore="OnClick" />
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
         <Button
-            android:id="@+id/btnBuscarCiclo"
+            android:id="@+id/btnBuscarCicloMateria"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarCiclo"
+            android:onClick="buscarMateria"
             android:drawableStart="@drawable/ic_boton_buscar"
-            android:drawableLeft="@drawable/ic_boton_buscar"
-            tools:ignore="OnClick" />
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText
-            android:id="@+id/editNombreCiclo"
+            android:id="@+id/editcodmateria"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Ciclo materia"
+            android:hint="Nombre del ciclo"
             android:inputType="text"/>
     </LinearLayout>
-
-
+    <TextView
+        android:text="Registros ingresados: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+    <ListView
+        android:id="@+id/listaCicloMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
 </LinearLayout>

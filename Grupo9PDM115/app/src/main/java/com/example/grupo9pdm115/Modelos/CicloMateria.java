@@ -1,5 +1,9 @@
 package com.example.grupo9pdm115.Modelos;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
 public class CicloMateria extends TablaBD {
@@ -48,7 +52,7 @@ public class CicloMateria extends TablaBD {
 
     @Override
     public String getValorLlavePrimaria() {
-        return null;
+        return Integer.toString(getIdCicloMateria());
     }
 
     @Override
@@ -70,5 +74,49 @@ public class CicloMateria extends TablaBD {
         CicloMateria cicloMateria = new CicloMateria();
         cicloMateria.setAttributesFromArray(arreglo);
         return cicloMateria;
+    }
+
+    @Override
+    public String guardar(Context context){
+        String mensaje = "Registro insertado N° = ";
+        long control = 0;
+        ControlBD helper = new ControlBD(context);
+        this.valoresCamposTabla.put("IDCICLO", getIdCiclo());
+        this.valoresCamposTabla.put("CODMATERIA", getCodMateria());
+
+
+        helper.abrir();
+        control = helper.getDb().insert("CICLOMATERIA", null, valoresCamposTabla);
+        helper.cerrar();
+
+        if(control==-1 || control==0)
+        {
+            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+        }
+        else {
+            mensaje = mensaje+control;
+        }
+
+        return mensaje;
+    }
+    public boolean verificarRegistro (Context context, String codMateria, int idCiclo){
+        boolean resultado = false;
+        ControlBD helper = new ControlBD(context);
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE "
+                + "codmateria = "+ "\"" +codMateria +"\"" + " AND  "+ "idciclo = " +idCiclo;
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+        if(cursor.moveToNext()){
+            resultado = true;
+        }
+        helper.cerrar();
+
+        return resultado;
+    }
+
+    @Override
+    public String toString(){
+        return getIdCicloMateria() + " " + getIdCiclo() + " " + getCodMateria() ;
     }
 }

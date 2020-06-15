@@ -33,7 +33,7 @@
         <EditText
             android:id="@+id/nombreMat"
             android:inputType="text"
-            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
+            android:digits="QWERTYUIOPASDFGHJKL ÑZXCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
             android:maxLength="25" />
     </TableRow>
 

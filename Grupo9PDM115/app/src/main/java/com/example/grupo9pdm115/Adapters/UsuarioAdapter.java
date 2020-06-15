@@ -31,10 +31,12 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
         TextView txtNombreCompletoPersonal = (TextView) convertView.findViewById(R.id.txtNombreCompletoPersonal);
         TextView txtNombreUsuario = (TextView) convertView.findViewById(R.id.txtNombreUsuarioList);
         TextView txtCorreoUsuaario = (TextView) convertView.findViewById(R.id.txtCorreoPersonalList);
+        TextView txtIdUsuario = (TextView) convertView.findViewById(R.id.txtIdUsuarioList);
         Usuario usuario = getItem(position);
         txtNombreCompletoPersonal.setText(usuario.getNombrePersonal() + " " + usuario.getApellidoPersonal());
         txtNombreUsuario.setText(usuario.getNombreUsuario());
         txtCorreoUsuaario.setText(usuario.getCorreoPersonal());
+        txtIdUsuario.setText(usuario.getIdUsuario());
         return  convertView;
     }
 }

@@ -12,24 +12,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titNuevoCicloMateria"
+        android:text="Agregar materia al ciclo"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
     <TableRow>
 
-        <TextView android:text="@string/txtMateria" />
-        <Spinner
-            android:id="@+id/spinnerMateria"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <TextView android:text="Código de materia:" />
+        <EditText
+            android:id="@+id/editMateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="6" />
 
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/txtCicloMateria" />
+        <TextView android:text="Ciclo:" />
         <Spinner
-            android:id="@+id/spinnerCicloMateria"
+            android:id="@+id/spinnerCiclo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 

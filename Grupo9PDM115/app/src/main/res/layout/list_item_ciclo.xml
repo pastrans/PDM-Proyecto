@@ -10,31 +10,8 @@ android:paddingLeft= "16dp"
 android:paddingRight= "16dp"
 android:paddingTop="8dp">
 
-<!-- NombreCiclo -->
-<TextView
-    android:id="@+id/txtNombreCiclo"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?attr/textAppearanceListItem"
-    tools:text="CICLO I - 2020" />
-
-<!-- InicioCiclo -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <!-- NombreCiclo -->
     <TextView
-        android:layout_width="110dp"
-        android:layout_height="match_parent"
-        android:text="@string/txtInicioCicloLista"/>
-    <TextView
-<<<<<<< HEAD
-        android:id="@+id/txtInicio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="01/01/2020"/>
-</LinearLayout>
-=======
         android:id="@+id/txtNombreCiclo"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -55,24 +32,9 @@ android:paddingTop="8dp">
             android:layout_height="match_parent"
             tools:text="01/01/2020"/>
     </LinearLayout>
->>>>>>> mod_feriado
-
-<!-- FinCiclo -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="match_parent"
-        android:text="@string/txtFinCicloLista"/>
-    <TextView
-        android:id="@+id/txtFin"
+    <!-- FinCiclo -->
+    <LinearLayout
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent"
-        tools:text="01/07/2020"/>
-</LinearLayout>
-=======
         android:layout_height="match_parent">
         <TextView
             android:layout_width="110dp"
@@ -84,24 +46,10 @@ android:paddingTop="8dp">
             android:layout_height="match_parent"
             tools:text="01/07/2020"/>
     </LinearLayout>
->>>>>>> mod_feriado
 
-<!-- EstadoCiclo -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="match_parent"
-        android:text="@string/txtEstadoCicloLista"/>
-    <TextView
-        android:id="@+id/txtEstadoCiclo"
-        android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent"
-        tools:text="Activo"/>
-</LinearLayout>
-=======
+    <!-- EstadoCiclo -->
+    <LinearLayout
+         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:layout_width="110dp"
@@ -113,24 +61,10 @@ android:paddingTop="8dp">
             android:layout_height="match_parent"
             tools:text="Activo"/>
     </LinearLayout>
->>>>>>> mod_feriado
 
-<!-- InicioClases -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="match_parent"
-        android:text="@string/txtInicioPeriodoClaseLista"/>
-    <TextView
-        android:id="@+id/txtInicioPeriodoClase"
+    <!-- InicioClases -->
+    <LinearLayout
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent"
-        tools:text="20/02/2020"/>
-</LinearLayout>
-=======
         android:layout_height="match_parent">
         <TextView
             android:layout_width="110dp"
@@ -142,24 +76,10 @@ android:paddingTop="8dp">
             android:layout_height="match_parent"
             tools:text="20/02/2020"/>
     </LinearLayout>
->>>>>>> mod_feriado
 
 <!-- InicioClases -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="match_parent"
-        android:text="@string/txtFinPeriodoClaseLista"/>
-    <TextView
-        android:id="@+id/txtFinPeriodoClase"
+    <LinearLayout
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent"
-        tools:text="20/06/2020"/>
-</LinearLayout>
-=======
         android:layout_height="match_parent">
         <TextView
             android:layout_width="110dp"
@@ -171,6 +91,5 @@ android:paddingTop="8dp">
             android:layout_height="match_parent"
             tools:text="20/06/2020"/>
     </LinearLayout>
->>>>>>> mod_feriado
 
 </LinearLayout>

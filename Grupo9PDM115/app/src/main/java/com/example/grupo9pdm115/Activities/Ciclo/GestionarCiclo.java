@@ -51,7 +51,6 @@ public class GestionarCiclo extends AppCompatActivity {
         //Llamar método para llenar lista
         llenarListaCiclo(null);
 
-
         //Asociamos el menú contextual al listview
         registerForContextMenu(listaCiclos);
     }
@@ -75,12 +74,13 @@ public class GestionarCiclo extends AppCompatActivity {
         listaCiclos.setAdapter(listaCiclosAdapter);
     }
 
-    //Metodo para agregar ciclo
+    // Método para agregar ciclo
     public void agregarCiclo(View v){
         Intent intent = new Intent(this, NuevoCiclo.class);
         startActivity(intent);
     }
 
+    // Método para buscar ciclo filtrado
     public void buscarCiclo(View v){
         llenarListaCiclo(editNombreCiclo.getText().toString());
     }

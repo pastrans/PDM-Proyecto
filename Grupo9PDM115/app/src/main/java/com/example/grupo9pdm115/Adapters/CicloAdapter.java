@@ -37,7 +37,7 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         TextView txtInicioPeriodoClase = (TextView) convertView.findViewById(R.id.txtInicioPeriodoClase);
         TextView txtFinPeriodoClase = (TextView) convertView.findViewById(R.id.txtFinPeriodoClase);
 
-        // Dia actual
+        // Ciclo actual
         Ciclo ciclo = getItem(position);
 
         // Setup view
@@ -48,7 +48,8 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         // Modificando el valor para mostrar estado en string y cambiando el color del background al activo
         if(ciclo.isEstadoCiclo()){
             txtEstadoCiclo.setText("Activo");
-            convertView.setBackgroundColor(Color.parseColor("#B2fF59"));
+            // convertView.setBackgroundColor(Color.parseColor("#B2fF59"));
+            convertView.setBackgroundColor(Color.parseColor("#90caf9"));
         }
         else
             txtEstadoCiclo.setText("Inactivo");

@@ -116,11 +116,9 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         // Operaciones si no hay errores
         if(!error){
             //Instanciando ciclo para guardar
-            Ciclo ciclo = new Ciclo();
             ciclo.setNombreCiclo(nombreCiclo);
             ciclo.setInicio(inicioCiclo);
             ciclo.setFin(finCiclo);
-            ciclo.setEstadoCiclo(false); // Se almacena como inactivo por defecto
             ciclo.setInicioPeriodoClase(inicioClases);
             ciclo.setFinPeriodoClase(finClases);
             mensaje = ciclo.actualizar(this);

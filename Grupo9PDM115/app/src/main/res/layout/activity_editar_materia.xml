@@ -22,7 +22,7 @@
         <TextView android:text="Código: " />
         <EditText
             android:id="@+id/editcodmateria"
-            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCV BNMqwertyuiopasdfghjklñzxcvbnm1234567890"
             android:inputType="text"
             android:maxLength="6" />
     </TableRow>
@@ -33,7 +33,7 @@
         <EditText
             android:id="@+id/nombreMat"
             android:inputType="text"
-            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
+            android:digits="QWERTYUIOPASDFGHJKLÑZ XCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
             android:maxLength="25" />
     </TableRow>
 

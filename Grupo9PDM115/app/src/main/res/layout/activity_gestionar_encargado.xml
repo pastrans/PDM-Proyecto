@@ -6,10 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft= "16dp"
-    android:paddingRight= "16dp"
-    android:paddingTop="8dp">
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,12 +14,33 @@
         android:text="@string/titGestionarEncargado"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-    <Button
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGEncargado"
-        android:text="@string/btnNuevoGEncargado"
-        />
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnNuevoGEncargado"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="btnNuevoGEncargado"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCiclo"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <EditText
+            android:id="@+id/editNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del encargado"
+            android:inputType="text"/>
+    </LinearLayout>
     <!-- Lista unidad -->
     <TextView
         android:text="@string/txtListaEncargados"

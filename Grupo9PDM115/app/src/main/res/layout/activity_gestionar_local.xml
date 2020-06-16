@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    android:padding="15dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Local.GestionarLocal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titGestionarLocal"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-
-    <Button
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGLocal"
-        android:text="@string/btnNuevoGLocal"
-        tools:ignore="OnClick"/>
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnNuevoGLocal"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="btnNuevoGLocal"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCiclo"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"
+            tools:ignore="OnClick" />
+        <EditText
+            android:id="@+id/editNombreLocal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del local"
+            android:inputType="text"/>
+    </LinearLayout>
+
     <TextView
         android:paddingTop="15dp"
         android:text="@string/idListadoLocales"
@@ -41,4 +60,4 @@
 
 
 
-</TableLayout>
+</LinearLayout>

@@ -19,11 +19,19 @@ public class MainActivity extends ListActivity  {
     ControlBD BDhelper;
 
 
+<<<<<<< HEAD
     String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Solicitudes recibidas"};
     String[] activities = {"Cerrar Sesión", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
             "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
             "TipoGrupo.GestionarTipoGrupo","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
             "Usuario.GestionarUsuario","Horario.GestionarHorario","Rol.GestionarRol","Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado"};
+=======
+    String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo","Coordinación", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Detalle Reserva"};
+    String[] activities = {"Cerrar Sesión", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
+            "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
+            "TipoGrupo.GestionarTipoGrupo","Coordinacion.GestionarCoordinacion","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
+            "Usuario.GestionarUsuario","Horario.GestionarHorario","Rol.GestionarRol","Solicitud.GestionarSolicitud","DetalleReserva.GestionarDetalleReserva"};
+>>>>>>> 00b0a0c9e9582032c7e87252f1c7a02831584121
 
 
     @Override

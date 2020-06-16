@@ -60,7 +60,8 @@ public class NuevoMateria  extends AppCompatActivity implements View.OnClickList
         Boolean masividad = Boolean.FALSE;
         Boolean bandera= Boolean.TRUE;
         codMaateria.trim();
-        nombreMateria.trim();
+        codMaateria.trim();
+        codMaateria = codMaateria.toUpperCase ();
         if(codMaateria.isEmpty()){
             Toast.makeText(this, "Ingrese un código", Toast.LENGTH_LONG).show();
         }else {

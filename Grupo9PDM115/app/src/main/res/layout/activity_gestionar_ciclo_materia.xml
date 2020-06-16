@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.CicloMateria.GestionarCicloMateria">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:text="Gestionar Materias del ciclo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titGestionarCicloMateria"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-
-    <TableRow>
-
-        <TextView android:text="@string/txtMateria" />
-        <EditText
-            android:id="@+id/editNombreMateria"
-            android:inputType="text"
-            android:maxLength="25" />
-    </TableRow>
-
-    <Button
-        android:layout_width="100dp"
+    <!-- Lista días -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGCicloMateria"
-        android:text="@string/btnNuevoGCicloMateria"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEditarGCicloMateria"
-        android:text="@string/btnEditarGCicloMateria"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEliminarGCicloMateria"
-        android:text="@string/btnEliminarGCicloMateria"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGCicloMateria"
-        android:text="@string/btnRegresarGCicloMateria"
-        tools:ignore="OnClick" />
-
-</TableLayout>
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnAgregarCicloMateria"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="agregarCicloMateria"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCicloMateria"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarMateria"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <EditText
+            android:id="@+id/editcodmateria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del ciclo"
+            android:inputType="text"/>
+    </LinearLayout>
+    <TextView
+        android:text="Registros ingresados: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
+    <ListView
+        android:id="@+id/listaCicloMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+</LinearLayout>

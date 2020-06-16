@@ -1,6 +1,7 @@
 package com.example.grupo9pdm115.Activities.Solicitud;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.grupo9pdm115.Activities.DetalleReserva.GestionarDetalleReserva;
 import com.example.grupo9pdm115.Adapters.SolicitudAdapter;
+import com.example.grupo9pdm115.Modelos.Local;
+import com.example.grupo9pdm115.Modelos.Reserva;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
@@ -60,6 +63,8 @@ public class GestionarSolicitudesEncargado extends AppCompatActivity {
         if(tipoLocal.size() > 0){
             MenuItem item = menu.findItem(R.id.ctxEnviarEncargado);
             item.setVisible(false);
+            /*MenuItem item2 = menu.findItem(R.id.ctxRevisar);
+            item2.setVisible(false);*/
         }
     }
 
@@ -77,17 +82,29 @@ public class GestionarSolicitudesEncargado extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxConsultar:
-                Toast.makeText(this, "Consultar", Toast.LENGTH_SHORT).show();
+                Intent consultarInte = new Intent(this, GestionarDetalleReserva.class);
+                consultarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
+                consultarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
+                consultarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                consultarInte.putExtra("accion", 1);
+                startActivity(consultarInte);
                 return true;
             case R.id.ctxRevisar:
                 Intent revisarInte = new Intent(this, GestionarDetalleReserva.class);
                 revisarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
                 revisarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
                 revisarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                revisarInte.putExtra("accion", 2);
                 startActivity(revisarInte);
                 return true;
             case R.id.ctxEnviarEncargado:
+                String encargado = solicitudSeleccionada.getEnargadoLocal(this);
+                solicitudSeleccionada.setIdEncargado(encargado);
+                String res = solicitudSeleccionada.actualizar(this);
+                Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+                llenarListaSolicitudes();
                 //solicitudSeleccionada.setIdEncargado();
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

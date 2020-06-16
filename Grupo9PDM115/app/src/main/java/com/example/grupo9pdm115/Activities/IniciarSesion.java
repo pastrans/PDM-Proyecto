@@ -39,10 +39,10 @@ public class IniciarSesion extends AppCompatActivity {
         usuario.setNombreUsuario(nombreUsuario.getText().toString());
         usuario.setClaveUsuario(claveUsuario.getText().toString());
         if (sesion.iniciarSesion(usuario, this)){
-            Sesion.setLooggedIn(getApplicationContext(), true);
-            Sesion.setNombreUsuario(getApplicationContext(), usuario.getNombreUsuario());
-            Sesion.setIdUsuario(getApplicationContext(), usuario.getIdUsuario());
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Sesion.setLooggedIn(this, true);
+            Sesion.setNombreUsuario(this, usuario.getNombreUsuario());
+            Sesion.setIdUsuario(this, usuario.getIdUsuario());
+            Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
             finish();

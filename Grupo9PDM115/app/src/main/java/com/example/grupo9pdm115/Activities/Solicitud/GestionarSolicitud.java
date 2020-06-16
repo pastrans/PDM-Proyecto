@@ -59,6 +59,10 @@ public class GestionarSolicitud extends AppCompatActivity {
             MenuItem item = menu.findItem(R.id.ctxEnviarEncargado);
             item.setVisible(false);
         }
+        if(!solicitud.getIdEncargado().equals(Sesion.getIdusuario(this))){
+            MenuItem item = menu.findItem(R.id.ctxRevisar);
+            item.setVisible(false);
+        }
     }
 
     @Override
@@ -66,20 +70,14 @@ public class GestionarSolicitud extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
         switch (item.getItemId()) {
-            /*case R.id.ctxEditar:
-                Intent inte = new Intent(this, EditarSolicitud.class);
-                inte.putExtra("idUsuario", solicitudSeleccionada.getIdUsuario());
-                inte.putExtra("idEncargado", solicitudSeleccionada.getIdEncargado());
-                inte.putExtra("asunto", solicitudSeleccionada.getAsuntoSolicitud());
-                inte.putExtra("comentario", solicitudSeleccionada.getComentario());
-                inte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
-                inte.putExtra("fechaRealizada", solicitudSeleccionada.getFechaRealizada());
-                inte.putExtra("fechaRespuesta", solicitudSeleccionada.getFechaRespuesta());
-                inte.putExtra("nuevoFinPeriodo", solicitudSeleccionada.getNuevoFinPeriodo());
-                inte.putExtra("estadoSolicitud", String.valueOf(solicitudSeleccionada.isEstadoSolicitud()));
-                inte.putExtra("aprobadoTotal", String.valueOf(solicitudSeleccionada.isAprobadoTotal()));
-                startActivity(inte);
-                return true;*/
+            case R.id.ctxConsultar:
+                Intent consultarInte = new Intent(this, GestionarDetalleReserva.class);
+                consultarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
+                consultarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
+                consultarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                consultarInte.putExtra("accion", 1);
+                startActivity(consultarInte);
+                return true;
             case R.id.ctxEliminar:
                 if (solicitudSeleccionada != null){
                     String regEliminados;
@@ -93,6 +91,7 @@ public class GestionarSolicitud extends AppCompatActivity {
                 revisarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
                 revisarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
                 revisarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                revisarInte.putExtra("accion", 2);
                 startActivity(revisarInte);
                 return true;
             default:

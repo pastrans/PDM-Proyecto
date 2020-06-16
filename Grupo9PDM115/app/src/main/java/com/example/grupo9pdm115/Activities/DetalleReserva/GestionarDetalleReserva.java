@@ -44,8 +44,8 @@ public class GestionarDetalleReserva extends AppCompatActivity {
     Button btnDetalleNormal, btnDetalleEspecial;
     TextView txtTitulo;
     EditText edtComentarioSolicitud;
-    LinearLayout layoutComentario;
-    int idSolicitud = 0, totalDetalles = 0, totalAprobados = 0;
+    LinearLayout layoutComentario, layoutBusquedaDR;
+    int idSolicitud = 0, totalDetalles = 0, totalAprobados = 0, accion = 1, totalAprobadosAntes = 0, total = 0;
     List<Integer> idsAgrupados, posRemover;
 
     @Override
@@ -55,8 +55,11 @@ public class GestionarDetalleReserva extends AppCompatActivity {
         txtTitulo = (TextView) findViewById(R.id.txtTituloGestionarDetalle);
         edtComentarioSolicitud = (EditText) findViewById(R.id.edtComentarioSolicitud);
         layoutComentario = (LinearLayout) findViewById(R.id.layoutComentarioSolicitud);
+        layoutBusquedaDR = (LinearLayout) findViewById(R.id.layoutBusquedaDR);
+        layoutBusquedaDR.setVisibility(View.GONE);
         if(getIntent().getExtras() != null){
             idSolicitud = getIntent().getIntExtra("idSolicitud", 0);
+            accion = getIntent().getIntExtra("accion", 1);
             txtTitulo.setVisibility(View.GONE);
             layoutComentario.setVisibility(View.VISIBLE);
             edtComentarioSolicitud.setText(getIntent().getStringExtra("comentario"));
@@ -85,7 +88,10 @@ public class GestionarDetalleReserva extends AppCompatActivity {
                 posRemover.add(i);
             }
             if(d.isAprobado())
-                totalAprobados++;
+                if(totalAprobados == 0)
+                    totalAprobados++;
+                else
+                    totalAprobadosAntes++;
             idEventoEspecialAnterior = d.getIdEventoEspecial();
             idLocalAnterior = d.getIdLocal();
             idDiaAnterior = d.getIdDia();
@@ -97,7 +103,8 @@ public class GestionarDetalleReserva extends AppCompatActivity {
         }
         detalleReservaAdapter = new DetalleReservaAdapter(this, detalles);
         listaDetalleReserva.setAdapter(detalleReservaAdapter);
-        registerForContextMenu(listaDetalleReserva);
+        if(accion == 2)
+            registerForContextMenu(listaDetalleReserva);
     }
 
     @Override
@@ -153,6 +160,7 @@ public class GestionarDetalleReserva extends AppCompatActivity {
                         DetalleReserva dr = new DetalleReserva();
                         dr.consultar(getApplication(), String.valueOf(idsAgrupados.get(i)));
                         detalles.add(dr);
+                        totalAprobados++;
                     }
                 }
                 DetalleReserva d = new DetalleReserva();
@@ -160,9 +168,9 @@ public class GestionarDetalleReserva extends AppCompatActivity {
                 if(!res.equals("")){
                     Toast.makeText(this, "Local asignado correctamente", Toast.LENGTH_SHORT).show();
                     totalAprobados++;
-                    if(idsAgrupados.size() > 0)
-                        totalAprobados += idsAgrupados.size();
+                    total = totalAprobados + totalAprobadosAntes;
                     guardar();
+                    Toast.makeText(this, String.valueOf(totalAprobados) + " - " + String.valueOf(totalDetalles), Toast.LENGTH_SHORT).show();
                     llenarListaDetalleReserva();
                 }
                 else
@@ -181,10 +189,12 @@ public class GestionarDetalleReserva extends AppCompatActivity {
         Solicitud solicitud = new Solicitud();
         solicitud.consultar(this, String.valueOf(idSolicitud));
         solicitud.setComentario(edtComentarioSolicitud.getText().toString());
-        solicitud.setFechaRespuesta(FechasHelper.cambiarFormatoLocalAIso(getAhora()));
-        solicitud.setEstadoSolicitud(true);
-        if(totalAprobados == totalDetalles && totalAprobados > 0 && totalDetalles > 0){
-            solicitud.setAprobadoTotal(true);
+        if (accion == 2){
+            solicitud.setFechaRespuesta(FechasHelper.cambiarFormatoLocalAIso(getAhora()));
+            solicitud.setEstadoSolicitud(true);
+            if(totalAprobados == totalDetalles && totalAprobados > 0 && totalDetalles > 0){
+                solicitud.setAprobadoTotal(true);
+            }
         }
         String res = solicitud.actualizar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();

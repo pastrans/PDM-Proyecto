@@ -51,10 +51,11 @@ public class AsignarLocalDetalleReserva extends AppCompatActivity {
             Materia materia = new Materia();
             idDetalleReserva = getIntent().getIntExtra("id", 0);
             detalleReserva.consultar(this, String.valueOf(idDetalleReserva));
-            cicloMateria.consultar(this, String.valueOf(grupo.getIdCicloMateria()));
-            materia.consultar(this, String.valueOf(cicloMateria.getCodMateria()));
             if(detalleReserva.getIdGrupo() != 0){
                 grupo.consultar(this, String.valueOf(detalleReserva.getIdGrupo()));
+                cicloMateria.consultar(this, String.valueOf(grupo.getIdCicloMateria()));
+                materia.consultar(this, String.valueOf(cicloMateria.getCodMateria()));
+                //txtMateria.setText(String.valueOf(detalleReserva.getIdGrupo()));
                 txtMateria.setText(materia.getCodMateria() + " - " + materia.getNombreMateria());
             }else if(detalleReserva.getIdEventoEspecial() != 0){
                 eventoEspecial.consultar(this, String.valueOf(detalleReserva.getIdEventoEspecial()));

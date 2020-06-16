@@ -54,7 +54,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
     Ciclo cicloActual;
     List<Integer> listaIdsDetalles;
     Solicitud solicitud;
-    int idSolicitud = 0;
+    int idSolicitud = 0, idTipoLocal = 0;
     boolean revision;
     private int dia, mes, anio;
 
@@ -66,6 +66,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         if(getIntent().getExtras() != null){
             idSolicitud = getIntent().getIntExtra("idSolicitud", 0);
             revision = getIntent().getBooleanExtra("revision", false);
+            idTipoLocal = getIntent().getIntExtra("idTipoLocal", 0);
             solicitud = new Solicitud();
             solicitud.consultar(this, String.valueOf(idSolicitud));
         }
@@ -206,7 +207,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
 
         int local = getIdlocal();
         if(local == 0){
-            Toast.makeText(this, "No existe el local", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No existe el local o no pertenece a la categoría de tipo de local a reservar", Toast.LENGTH_SHORT).show();
             return;
         }
         if(local == -1)
@@ -265,7 +266,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         int idLocal = 0;
         if (edtLocal.getText().toString().trim().equals(""))
             return -1;
-        String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "'";
+        String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "' AND IDTIPOLOCAL =" + idTipoLocal;
         helper.abrir();
         Cursor c2 = helper.consultar(sqlLocal);
         Local local = new Local();

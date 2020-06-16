@@ -265,7 +265,7 @@ public class DetalleReserva extends TablaBD {
                 "and s.IDSOLICITUD = r.IDSOLICITUD\n" +
                 "and dr.IDHORA = h.IDHORA\n" +
                 "AND s.IDSOLICITUD = " + idSolicitud +"\n" +
-                "ORDER BY h.HORAINICIO;";
+                "ORDER BY h.HORAINICIO, dr.IDLOCAL;";
         cursor = helper.consultar(sql);
         if(cursor.moveToFirst()){
             do{

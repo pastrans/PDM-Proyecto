@@ -53,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:id="@+id/txtInicioFeriadoTit"
             android:layout_width="110dp"
             android:layout_height="match_parent"
             android:text="@string/txtFechaInicioFeriado"/>
@@ -65,6 +66,7 @@
 
     <!-- FechaFinFeriado -->
     <LinearLayout
+        android:id="@+id/layoutFechaFin"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView

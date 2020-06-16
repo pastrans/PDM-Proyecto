@@ -53,6 +53,10 @@
     <string name="btnConsultarGFeriado">Consultar</string>
     <string name="btnNuevoGFeriado">Nuevo</string>
     <string name="txtListaFeriado">Listado de feriados ingresados:</string>
+    <string name="txtReservasFeriado">Reservas:</string>
+    <string name="rbReservasBloqueadas">Bloqueadas</string>
+    <string name="rbReservasPermitidas">Permitidas</string>
+    <string name="cbFechaUnica">Feriado con fecha única</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>

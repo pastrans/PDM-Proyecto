@@ -1,43 +1,39 @@
 package com.example.grupo9pdm115.Activities.Feriado;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
-import com.example.grupo9pdm115.Adapters.CicloAdapter;
-import com.example.grupo9pdm115.BD.ControlBD;
-import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Spinners.CicloSpinnerAdapter;
+import com.example.grupo9pdm115.Spinners.CicloSpinnerHelper;
 
-//import java.text.ParseException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class NuevoFeriado extends AppCompatActivity implements View.OnClickListener {
     //Declarando
     EditText editNombreFeriado, editDescripcionFeriado, editInicioFeriado, editFinFeriado;
     Spinner spnCicloFeriado;
-    CicloSpinnerAdapter cicloSpinnerAdapter;
+    CheckBox cbFechaUnica;
+    RadioButton rbReservasBloqueadas, rbReservasPermitidas;
+    TextView txtFechaInicioFeriado;
+    LinearLayout layoutFinFeriado;
+    CicloSpinnerHelper cicloSpinnerHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +49,24 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_feriado);
+
+        // Inicializando views
         editNombreFeriado = (EditText) findViewById(R.id.editNombreFeriado);
         editDescripcionFeriado = (EditText) findViewById(R.id.editDescripcionFeriado);
         editInicioFeriado = (EditText) findViewById(R.id.editInicioFeriado);
         editFinFeriado = (EditText) findViewById(R.id.editFinFeriado);
+        cbFechaUnica = (CheckBox) findViewById(R.id.cbFechaUnica);
+        txtFechaInicioFeriado = (TextView) findViewById(R.id.txtFechaInicioFeriado);
+        layoutFinFeriado = (LinearLayout) findViewById(R.id.layoutFinFeriado);
         spnCicloFeriado = (Spinner) findViewById(R.id.spinnerCicloFeriadoNuevo);
+        rbReservasBloqueadas = (RadioButton) findViewById(R.id.rbReservasBloqueadas);
+        rbReservasPermitidas = (RadioButton) findViewById(R.id.rbReservasPermitidas);
 
-        // Llenar spiner ciclo feriado
-        cicloSpinnerAdapter = new CicloSpinnerAdapter(this);
-        spnCicloFeriado.setAdapter(cicloSpinnerAdapter.getAdapterCiclo(this));
+        // Llenar spinner ciclo feriado
+        cicloSpinnerHelper = new CicloSpinnerHelper(this);
+        spnCicloFeriado.setAdapter(cicloSpinnerHelper.getAdapterCiclo(this));
 
+        // Definiendo click listener
         editInicioFeriado.setOnClickListener(this);
         editFinFeriado.setOnClickListener(this);
     }
@@ -87,53 +91,46 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         datePickerDialog.show();
     }
 
-    //Metodo para insertar feriado
-    public void agregarFeriado(View v) throws ParseException {
-        //Obteniendo Valores
-
-        String nombreFeriado = editNombreFeriado.getText().toString();
-        String descripcionFeriado= editDescripcionFeriado.getText().toString();
-        String inicioFeriado = editInicioFeriado.getText().toString();
-        String finFeriado = editFinFeriado.getText().toString();
-        //Instanciando feriado para guardar
-        Feriado feriado = new Feriado();
-        Ciclo ciclo = new Ciclo();
-        feriado.setNombreFeriado(nombreFeriado);
-        feriado.setDescripcionFeriado(descripcionFeriado);
-        feriado.setFechaInicioFeriado(inicioFeriado);
-        feriado.setFechaFinFeriado(finFeriado);
-        feriado.setIdCiclo(ciclo.getIdCiclo());
-        feriado.setBloquearReservas(true);
-        validarfecha(feriado.getFechaInicioFeriado(),feriado.getFechaFinFeriado(), feriado);
-    }
-
-    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
-        String regInsertados;
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
-        if(feriado.getNombreFeriado().isEmpty())
-        {
-            regInsertados = "Nombre está vacio";
+    // Método para ocultar o mostrar el view de fecha fin según el checkbox
+    public void onCheckboxClicked(View v){
+        // Verificar si el checkbox fue seleccionado o no
+        if(((CheckBox) v).isChecked()) {
+            layoutFinFeriado.setVisibility(View.GONE);
+            editFinFeriado.setText("");
+            txtFechaInicioFeriado.setText("Fecha:");
         }
         else{
-            if(feriado.getDescripcionFeriado().isEmpty()){
-                regInsertados = "Descripción está vacio";
-            }
-            else{
-                Date d1 = sdformat.parse(fechai);
-                Date d2 = sdformat.parse(fechaf);
-                if (d1.compareTo(d2)==0){
-                    regInsertados = "Las fechas son iguales";
-                }else{
-                    if (d1.compareTo(d2) > 0){
-                        regInsertados = "Las fecha inicial es mayor que la fecha final";
-                    }
-                    else{
-                        regInsertados = feriado.guardar(this);
-                    }
-                }
-            }
+            layoutFinFeriado.setVisibility(View.VISIBLE);
+            txtFechaInicioFeriado.setText("Fecha de inicio:");
         }
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+    }
+
+    //Metodo para insertar feriado
+    public void agregarFeriado(View v) throws ParseException {
+        // Instanciando feriado para guardar
+        Feriado feriado = new Feriado();
+        feriado.setNombreFeriado(editNombreFeriado.getText().toString());
+        feriado.setDescripcionFeriado(editDescripcionFeriado.getText().toString());
+        feriado.setFechaInicioFeriadoFromLocal(editInicioFeriado.getText().toString());
+        feriado.setFechaFinFeriadoFromLocal(editFinFeriado.getText().toString());
+        feriado.setIdCiclo(cicloSpinnerHelper.getIdCiclo(spnCicloFeriado.getSelectedItemPosition()));
+        feriado.setBloquearReservas(rbReservasBloqueadas.isChecked());
+
+        // Validaciones lógicas
+        int caso = (cbFechaUnica.isChecked())? 1: 0; // 1 verificación con fecha única, 0 con inicio y fin
+        String mensaje = "";
+        switch (feriado.verificarCampos(this, caso)){
+            case 0:
+                mensaje = feriado.guardar(this); break;
+            case 1:
+                mensaje = "Todos los campos deben estar llenos."; break;
+            case 2:
+                mensaje = "Las fechas deben estar dentro del ciclo."; break;
+            case 3:
+                mensaje = "La fecha de fin debe ser posterior a la de inicio."; break;
+        }
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //Limpiar campos

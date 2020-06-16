@@ -18,7 +18,7 @@ public class Feriado extends TablaBD {
     private String fechaFinFeriado;
     private String nombreFeriado;
     private String descripcionFeriado;
-    private boolean bloquearReservas;
+    private boolean bloquearReservas; // true -> Reservas bloqueadas , false -> Reservas permitidas
 
     //Constructores
     public Feriado() {
@@ -76,7 +76,7 @@ public class Feriado extends TablaBD {
     public String getFechaFinFeriadoToLocal() {
         return FechasHelper.cambiarFormatoIsoALocal(fechaFinFeriado);
     }
-    public void setFechaFinFeriadoToLocal(String fechaFinFeriado) {
+    public void setFechaFinFeriadoFromLocal(String fechaFinFeriado) {
         this.fechaFinFeriado = FechasHelper.cambiarFormatoLocalAIso(fechaFinFeriado);
     }
 
@@ -168,7 +168,6 @@ public class Feriado extends TablaBD {
         feriado.setAttributesFromArray(arreglo);
         return feriado;
     }
-
     @Override
     public String guardar(Context context){
         String mensaje = "Registro insertado N° = ";
@@ -182,7 +181,7 @@ public class Feriado extends TablaBD {
         this.valoresCamposTabla.put("bloquearreservas", isBloquearReservas());
 
         helper.abrir();
-        control = helper.getDb().insert("feriados", null, valoresCamposTabla);
+        control = helper.getDb().insert(getNombreTabla(), null, valoresCamposTabla);
         helper.cerrar();
 
         if(control==-1 || control==0)
@@ -194,6 +193,56 @@ public class Feriado extends TablaBD {
         }
 
         return mensaje;
+    }
+
+    /* Método para validar los campos del feriado
+        Parámetros:
+        context -> el contexto de la aplicación
+        caso -> 1 si fecha única
+        caso -> 0 si varias fechas
+        Valores de retorno:
+        0 -> Los campos están correctamente agregados
+        1 -> Campos vacíos
+        2 -> Fechas no están dentro de la duración del ciclo
+        3 -> Fecha fin no es posterior a fecha inicio
+     */
+    public int verificarCampos(Context context, int caso){
+        Ciclo ciclo = new Ciclo();
+        ciclo.consultar(context, Integer.toString(getIdCiclo()));
+
+        // Fechas de inicio y fin
+        if(caso == 0){
+            // Campos vacíos
+            if(getNombreFeriado().equals("") || getDescripcionFeriado().equals("") || getFechaInicioFeriado().equals("")
+                    || getFechaFinFeriado().equals("") || getIdCiclo() < 0) {
+                return 1;
+            }
+            // Fechas durante ciclo
+            if(!FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaInicioFeriado())
+                    || !FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaFinFeriado())){
+                return 2;
+            }
+            // Fecha fin posterior a fecha inicio
+            if(!FechasHelper.fechaEsPosterior(getFechaInicioFeriado(), getFechaFinFeriado())){
+                return 3;
+            }
+        }
+
+        // Fecha única
+        if(caso == 1){
+            // Campos vacíos
+            if(getNombreFeriado().equals("") || getDescripcionFeriado().equals("") || getFechaInicioFeriado().equals("")
+                    || getIdCiclo() < 0) {
+                return 1;
+            }
+            // Fechas durante ciclo
+            if(!FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaInicioFeriado())){
+                return 2;
+            }
+        }
+
+        // No hay error
+        return 0;
     }
 }
 

@@ -4,4 +4,6 @@
         android:title="Asignar local"/>
     <item android:id="@+id/ctxAprobar"
         android:title="Aprobar"/>
+    <item android:id="@+id/ctxEliminarDetalle"
+        android:title="Eliminar detalle"/>
 </menu>

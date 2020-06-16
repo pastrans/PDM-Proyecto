@@ -336,6 +336,27 @@ public class DetalleReserva extends TablaBD {
                 else
                     result = false;
                 break;
+            case 2 :
+                sql = "SELECT COUNT(f.IDFERIADO) FROM FERIADO f \n" +
+                        "WHERE (('"+ detalle.getInicioPeriodoReserva() + "' BETWEEN f.FECHAINICIOFERIADO AND f.FECHAFINFERIADO)\n" +
+                        "OR '"+ detalle.getFinPeriodoReserva() +"' BETWEEN f.FECHAFINFERIADO AND f.FECHAFINFERIADO)\n" +
+                        "AND f.BLOQUEARRESERVAS = 1;";
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
+            case 3:
+                sql = "SELECT COUNT(IDDETALLERESERVA) FROM DETALLERESERVA WHERE IDGRUPO = " + detalle.getIdGrupo() + " AND IDDIA = " + detalle.getIdDia();
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
             default:
                 result = false;
                 break;

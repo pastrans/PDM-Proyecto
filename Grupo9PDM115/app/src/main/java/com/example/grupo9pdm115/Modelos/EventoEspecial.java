@@ -136,4 +136,30 @@ public class EventoEspecial extends TablaBD {
         return lastId;
     }
 
+    public boolean validar(Context context, int opcion, EventoEspecial eventoEspecial){
+        boolean result = false;
+        ControlBD helper = new ControlBD(context);
+        String sql = "";
+        Cursor resp;
+        helper.abrir();
+        switch (opcion){
+            case 2 :
+                sql = "SELECT COUNT(f.IDFERIADO) FROM FERIADO f \n" +
+                        "WHERE (('" + eventoEspecial.getFechaEvento() +"' BETWEEN f.FECHAINICIOFERIADO AND f.FECHAFINFERIADO)\n" +
+                        "OR '"+ eventoEspecial.getFechaEvento() + "' = f.FECHAINICIOFERIADO)\n" +
+                        "AND f.BLOQUEARRESERVAS = 1;";
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
+            default:
+                result = false;
+                break;
+        }
+        return result;
+    }
+
 }

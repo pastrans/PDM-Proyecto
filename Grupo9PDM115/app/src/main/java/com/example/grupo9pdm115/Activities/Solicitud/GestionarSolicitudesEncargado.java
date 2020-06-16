@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,14 +25,18 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class GestionarSolicitudesEncargado extends AppCompatActivity {
 
     ListView listaSolicitud;
     SolicitudAdapter solicitudAdapter;
-    Solicitud solicitud;
+    Solicitud solicitud, solicitudActualizarDialog;
+    private String nuevaFecha = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,23 +70,24 @@ public class GestionarSolicitudesEncargado extends AppCompatActivity {
         if(tipoLocal.size() > 0){
             MenuItem item = menu.findItem(R.id.ctxEnviarEncargado);
             item.setVisible(false);
-            /*MenuItem item2 = menu.findItem(R.id.ctxRevisar);
-            item2.setVisible(false);*/
+            MenuItem item2 = menu.findItem(R.id.ctxEliminar);
+            item2.setVisible(false);
         }
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
+        final Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
+        solicitudActualizarDialog = (solicitudAdapter.getItem(info.position));
         switch (item.getItemId()) {
             case R.id.ctxEliminar:
-                if (solicitudSeleccionada != null){
+                /*if (solicitudSeleccionada != null){
                     String regEliminados;
                     regEliminados = solicitudSeleccionada.eliminar(this);
                     Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
                     llenarListaSolicitudes();
-                }
+                }*/
                 return true;
             case R.id.ctxConsultar:
                 Intent consultarInte = new Intent(this, GestionarDetalleReserva.class);
@@ -104,6 +112,37 @@ public class GestionarSolicitudesEncargado extends AppCompatActivity {
                 Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
                 llenarListaSolicitudes();
                 //solicitudSeleccionada.setIdEncargado();
+                return true;
+            case R.id.ctxNuevoFinReserva:
+                AlertDialog.Builder msj2 = new AlertDialog.Builder(this);
+                msj2.setTitle("Asigne la nueva fecha de finalización: (yyyy-MM-dd)");
+                final EditText input = new EditText(this);
+                input.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+                msj2.setView(input);
+                msj2.setPositiveButton("Asignar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //try {
+                            //Date fecha = FechasHelper.stringToDate(input.getText().toString());
+                            //nuevaFecha = FechasHelper.dateToString(fecha);
+                            nuevaFecha = input.getText().toString();
+                            solicitudActualizarDialog.setNuevoFinPeriodo(nuevaFecha);
+                            String res = solicitudActualizarDialog.actualizar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                        /*} catch (ParseException e) {
+                            Toast.makeText(getApplicationContext(), "Error con la fecha", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }*/
+                    }
+                });
+                msj2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                msj2.show();
+
                 return true;
             default:
                 return super.onContextItemSelected(item);

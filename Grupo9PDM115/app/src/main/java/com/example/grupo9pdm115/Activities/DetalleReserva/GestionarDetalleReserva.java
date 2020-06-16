@@ -26,6 +26,7 @@ import com.example.grupo9pdm115.Modelos.DetalleReserva;
 import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Reserva;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
@@ -77,7 +78,7 @@ public class GestionarDetalleReserva extends AppCompatActivity {
         detalleReserva = new DetalleReserva();
         idsAgrupados = new ArrayList<>();
         posRemover = new ArrayList<>();
-        String res = "";
+        String res = "", horaFinal = "";
         int idEventoEspecialAnterior = 0, idLocalAnterior = 0, idDiaAnterior = 0;
         List detalles = detalleReserva.getDetalleReservaSolicitud(getApplication(), idSolicitud);
         totalDetalles = detalles.size();
@@ -85,26 +86,27 @@ public class GestionarDetalleReserva extends AppCompatActivity {
             DetalleReserva d = (DetalleReserva) detalles.get(i);
             if(idEventoEspecialAnterior == d.getIdEventoEspecial() && idLocalAnterior == d.getIdLocal() && idDiaAnterior == d.getIdDia() && d.getIdEventoEspecial() != 0){
                 idsAgrupados.add(d.getIdDetalleReserva());
+                Horario horafin = new Horario();
+                horafin.consultar(this, String.valueOf(d.getIdHora()));
+                horaFinal = horafin.getHoraFinal();
                 posRemover.add(i);
             }
             if(d.isAprobado())
                 if(totalAprobados == 0)
                     totalAprobados++;
-                else
-                    totalAprobadosAntes++;
+                /*else
+                    totalAprobadosAntes++;*/
             idEventoEspecialAnterior = d.getIdEventoEspecial();
             idLocalAnterior = d.getIdLocal();
             idDiaAnterior = d.getIdDia();
         }
         for (int j = 0; j < posRemover.size(); j++){
             int id = posRemover.get(j) - j;
-            //res += "IDS = " + String.valueOf(detalles.size());
             detalles.remove(id);
         }
-        detalleReservaAdapter = new DetalleReservaAdapter(this, detalles);
+        detalleReservaAdapter = new DetalleReservaAdapter(this, detalles, horaFinal);
         listaDetalleReserva.setAdapter(detalleReservaAdapter);
-        if(accion == 2)
-            registerForContextMenu(listaDetalleReserva);
+        registerForContextMenu(listaDetalleReserva);
     }
 
     @Override
@@ -117,9 +119,21 @@ public class GestionarDetalleReserva extends AppCompatActivity {
         Solicitud solicitud = new Solicitud();
         solicitud.consultar(this, String.valueOf(idSolicitud));
         List tipoLocal = tl.getAllFiltered(this, "idEncargado", solicitud.getIdEncargado());
-        if(tipoLocal.size() == 0){
+        if(tipoLocal.size() == 0 && accion == 2){
             MenuItem item = menu.findItem(R.id.ctxAprobar);
             item.setVisible(false);
+            MenuItem item2 = menu.findItem(R.id.cxtAsignarLocal);
+            item2.setVisible(false);
+        }
+        if(accion == 1){
+            MenuItem item = menu.findItem(R.id.ctxAprobar);
+            item.setVisible(false);
+            MenuItem item2 = menu.findItem(R.id.cxtAsignarLocal);
+            item2.setVisible(false);
+        }
+        if(!solicitud.getIdUsuario().equals(Sesion.getIdusuario(this))){
+            MenuItem item3 = menu.findItem(R.id.ctxEliminarDetalle);
+            item3.setVisible(false);
         }
         if (detalleReservaAdapter.getItem(info.position).isAprobado()){
             MenuItem item = menu.findItem(R.id.cxtAsignarLocal);
@@ -168,13 +182,26 @@ public class GestionarDetalleReserva extends AppCompatActivity {
                 if(!res.equals("")){
                     Toast.makeText(this, "Local asignado correctamente", Toast.LENGTH_SHORT).show();
                     totalAprobados++;
-                    total = totalAprobados + totalAprobadosAntes;
+                    //total = totalAprobados + totalAprobadosAntes;
                     guardar();
                     Toast.makeText(this, String.valueOf(totalAprobados) + " - " + String.valueOf(totalDetalles), Toast.LENGTH_SHORT).show();
                     llenarListaDetalleReserva();
                 }
                 else
                     Toast.makeText(this, "Error. Local ya ha sido asignado", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.ctxEliminarDetalle:
+                res = "";
+                detalleReservaSeleccionado.eliminar(this);
+                if(idsAgrupados.size() > 0){
+                    for(int i = 0; i < idsAgrupados.size(); i++){
+                        DetalleReserva dr = new DetalleReserva();
+                        dr.consultar(getApplication(), String.valueOf(idsAgrupados.get(i)));
+                        res = dr.eliminar(getApplication());
+                    }
+                }
+                Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+                llenarListaDetalleReserva();
                 return true;
             default:
                 return super.onContextItemSelected(item);

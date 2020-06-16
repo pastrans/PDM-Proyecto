@@ -25,8 +25,19 @@ import java.util.List;
 
 public class DetalleReservaAdapter extends ArrayAdapter<DetalleReserva> {
 
-    public DetalleReservaAdapter(Context context, List<DetalleReserva> objects){
+    private String horaFinal;
+
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
+    }
+
+    public DetalleReservaAdapter(Context context, List<DetalleReserva> objects, String horaFinal){
         super(context, 0, objects);
+        this.horaFinal = horaFinal;
     }
 
     @Override
@@ -78,8 +89,10 @@ public class DetalleReservaAdapter extends ArrayAdapter<DetalleReserva> {
         materia.consultar(getContext().getApplicationContext(), cicloMateria.getCodMateria());
 
         txtMateria.setText(materia.getCodMateria() + " " + materia.getNombreMateria());
-        txtDiaHora.setText(dia.getNombreDia() + " | " + horario.getHoraInicio() + " -" + horario.getHoraFinal());
-
+        if(this.horaFinal.equals(""))
+            txtDiaHora.setText(dia.getNombreDia() + " | " + horario.getHoraInicio() + " - " + horario.getHoraFinal());
+        else
+            txtDiaHora.setText(dia.getNombreDia() + " | " + horario.getHoraInicio() + " - " + horaFinal);
         if(detalleReserva.isEstadoReserva())
             txtEstado.setText("Activa");
         else

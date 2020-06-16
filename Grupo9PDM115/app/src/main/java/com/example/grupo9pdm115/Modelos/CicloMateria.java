@@ -115,8 +115,31 @@ public class CicloMateria extends TablaBD {
         return resultado;
     }
 
+
+
     @Override
     public String toString(){
         return getIdCicloMateria() + " " + getIdCiclo() + " " + getCodMateria() ;
+    }
+
+    public boolean consultar (Context context, String codMateria, int idCiclo){
+        boolean resultado = false;
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE "
+                + "codmateria = "+ "\"" +codMateria +"\"" + " AND  "+ "idciclo = " +idCiclo;
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+        if(cursor.moveToNext()){
+            for(int i = 0; i < getCamposTabla().length; i++){
+                valores[i] = cursor.getString(i);
+            }
+            this.setAttributesFromArray(valores);
+            resultado = true;
+        }
+        helper.cerrar();
+
+        return resultado;
     }
 }

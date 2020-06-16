@@ -48,7 +48,7 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
         posicionCiclo = this.idCiclo.getSelectedItemPosition();
 
 
-        if(editCodMateria != null){
+        if(!codMaateria.equals("")){
             if (posicionCiclo!= 0) {
 
                 if(validarCodMateria(codMaateria) ==1){

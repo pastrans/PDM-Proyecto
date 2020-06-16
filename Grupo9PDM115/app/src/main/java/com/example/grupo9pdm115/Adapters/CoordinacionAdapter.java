@@ -1,6 +1,7 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class CoordinacionAdapter  extends ArrayAdapter<Coordinacion> {
         cm.consultar(getContext(),Integer.toString(coordinacionActual.getIdCicloMateria()));
         codMateria.setText(cm.getCodMateria());
         // llenamos los campos de unidad
+        Log.i("CoordinacionAdapter", "El ID usaurio:  "+coordinacionActual.getIdUsuario() );
         usuario.consultar(getContext(),coordinacionActual.getIdUsuario());
         nombreUsuario.setText(usuario.getNombrePersonal());
 

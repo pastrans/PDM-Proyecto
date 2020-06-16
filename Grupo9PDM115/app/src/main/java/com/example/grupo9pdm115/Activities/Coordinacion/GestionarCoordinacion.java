@@ -52,7 +52,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
         coordinacion = new Coordinacion();
         List objetcts;
 
-        if (filtro.equals("") ) {
+        if (filtro.equals(null) ) {
             objetcts = coordinacion.getAll(this);
         } else {
             objetcts = coordinacion.getAllFiltered(this, "idusuario", filtro);
@@ -81,7 +81,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaCoordinacion(null);
+        llenarListaCoordinacion("");
     }
 
     // Para menú contextual
@@ -122,7 +122,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
                     String regEliminadas;
                     regEliminadas= coorActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaCoordinacion(null);
+                    llenarListaCoordinacion("");
                 }
                 return true;
             default:

@@ -26,7 +26,7 @@
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/txtUsuario" />
+        <TextView android:text="Código Usuario:" />
         <EditText
             android:id="@+id/editIdUsuario"
             android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
@@ -35,7 +35,7 @@
     </TableRow>
     <TableRow>
 
-        <TextView android:text="Códgio Materia" />
+        <TextView android:text="Códgio Materia:" />
         <EditText
             android:id="@+id/editCodMateria"
             android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"

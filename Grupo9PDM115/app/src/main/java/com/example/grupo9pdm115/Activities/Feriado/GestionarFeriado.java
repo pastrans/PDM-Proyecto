@@ -124,7 +124,7 @@ public class GestionarFeriado extends AppCompatActivity {
                     intent.putExtra("finferiado", feriadoActual.getFechaFinFeriadoToLocal());
                     intent.putExtra("nombreferiado", feriadoActual.getNombreFeriado());
                     intent.putExtra("descripcionferiado", feriadoActual.getDescripcionFeriado());
-                    intent.putExtra("bloquearreservas", Boolean.toString(feriadoActual.isBloquearReservas()));
+                    intent.putExtra("bloquearreservas", feriadoActual.isBloquearReservas());
                     startActivity(intent);
                 }
                 return true;

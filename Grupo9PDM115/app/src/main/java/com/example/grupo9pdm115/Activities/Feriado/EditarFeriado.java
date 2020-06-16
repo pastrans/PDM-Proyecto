@@ -3,141 +3,154 @@ package com.example.grupo9pdm115.Activities.Feriado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Feriado;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.Spinners.CicloSpinnerHelper;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class EditarFeriado extends AppCompatActivity implements View.OnClickListener {
     //Declarando
     EditText editNombreFeriado, editDescripcionFeriado, editInicioFeriado, editFinFeriado;
-    Button btnInicioFeriado, btnFinFeriado;
+    Spinner spnCicloFeriado;
+    RadioButton rbReservasBloqueadas, rbReservasPermitidas;
+    TextView txtFechaInicioFeriado;
+    LinearLayout layoutFinFeriado;
+    CicloSpinnerHelper cicloSpinnerHelper;
 
     Feriado feriado;
-    private int diaif, mesif, anoif, diaff, mesff, anoff;
+    int control;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "EFI"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_feriado);
 
-        feriado = new Feriado();
-        editNombreFeriado = (EditText) findViewById(R.id.editNombre);
-        editDescripcionFeriado = (EditText) findViewById(R.id.editDescripcion);
+        // Inicializando views
+        editNombreFeriado = (EditText) findViewById(R.id.editNombreFeriado);
+        editDescripcionFeriado = (EditText) findViewById(R.id.editDescripcionFeriado);
         editInicioFeriado = (EditText) findViewById(R.id.editInicioFeriado);
         editFinFeriado = (EditText) findViewById(R.id.editFinFeriado);
-        btnInicioFeriado = (Button) findViewById(R.id.btnInicioFeriado);
-        btnFinFeriado = (Button) findViewById(R.id.btnFinFeriado);
+        txtFechaInicioFeriado = (TextView) findViewById(R.id.txtFechaInicioFeriado);
+        layoutFinFeriado = (LinearLayout) findViewById(R.id.layoutFinFeriado);
+        spnCicloFeriado = (Spinner) findViewById(R.id.spinnerCicloFeriadoNuevo);
+        rbReservasBloqueadas = (RadioButton) findViewById(R.id.rbReservasBloqueadas);
+        rbReservasPermitidas = (RadioButton) findViewById(R.id.rbReservasPermitidas);
 
-        btnInicioFeriado.setOnClickListener(this);
-        btnFinFeriado.setOnClickListener(this);
+        feriado = new Feriado();
+        control = 0;
+
+        // Llenar spinner ciclo feriado
+        cicloSpinnerHelper = new CicloSpinnerHelper(this);
+        spnCicloFeriado.setAdapter(cicloSpinnerHelper.getAdapterCiclo(this));
+
+        // Definiendo click listener
+        editInicioFeriado.setOnClickListener(this);
+        editFinFeriado.setOnClickListener(this);
 
         //Verificando paso de datos por intent
         if(getIntent().getExtras() !=null){
             feriado.setIdFeriado(getIntent().getIntExtra("idferiado", 0));
-            feriado.setIdCiclo(getIntent().getIntExtra("idciclo", 0));
+            // Modificar selección del spinner según id del ciclo
+            spnCicloFeriado.setSelection(cicloSpinnerHelper.getActualPositionInSpinner(this,
+                    getIntent().getIntExtra("idciclo", 0)));
             editInicioFeriado.setText(getIntent().getStringExtra("inicioferiado"));
+            // Si fin feriado está vacío es fecha única
             editFinFeriado.setText(getIntent().getStringExtra("finferiado"));
+            if(editFinFeriado.getText().toString().equals("")){
+                layoutFinFeriado.setVisibility(View.GONE);
+                txtFechaInicioFeriado.setText("Fecha:");
+                control = 1;
+            }
             editNombreFeriado.setText(getIntent().getStringExtra("nombreferiado"));
             editDescripcionFeriado.setText(getIntent().getStringExtra("descripcionferiado"));
+            // Modificar radio buttons según bloquearreservas
             feriado.setBloquearReservas(getIntent().getBooleanExtra("bloquearreservas",false));
+            if(!feriado.isBloquearReservas()){
+                rbReservasPermitidas.setChecked(true);
+            }
         }
     }
+
     //Metodo para actualizar feriado
-    public void btnEditarEFeriado(View v) throws ParseException {
-        String regInsertados;
-        String nombreFeriado = editNombreFeriado.getText().toString();
-        feriado.setNombreFeriado(nombreFeriado);
+    public void actualizarFeriado(View v) throws ParseException {
+        // Instanciando feriado para actualizar
+        feriado.setNombreFeriado(editNombreFeriado.getText().toString());
+        feriado.setDescripcionFeriado(editDescripcionFeriado.getText().toString());
+        feriado.setFechaInicioFeriadoFromLocal(editInicioFeriado.getText().toString());
+        feriado.setFechaFinFeriadoFromLocal(editFinFeriado.getText().toString());
+        feriado.setIdCiclo(cicloSpinnerHelper.getIdCiclo(spnCicloFeriado.getSelectedItemPosition()));
+        feriado.setBloquearReservas(rbReservasBloqueadas.isChecked());
 
-        String descripcionFeriado = editDescripcionFeriado.getText().toString();
-        feriado.setDescripcionFeriado(descripcionFeriado);
-
-        String inicioFeriado = editInicioFeriado.getText().toString();
-        feriado.setFechaInicioFeriado(inicioFeriado);
-
-        String finFeriado = editFinFeriado.getText().toString();
-        feriado.setFechaFinFeriado(finFeriado);
-        validarfecha(feriado.getFechaInicioFeriado(), feriado.getFechaFinFeriado(),feriado);
-
-    }
-    public void validarfecha(String fechai, String fechaf, Feriado feriado) throws ParseException {
-        String regInsertados;
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd");
-        if(feriado.getNombreFeriado().isEmpty())
-        {
-            regInsertados = "Nombre está vacio";
+        // Validaciones lógicas
+        String mensaje = "";
+        switch (feriado.verificarCampos(this, control)){
+            case 0:
+                mensaje = feriado.actualizar(this); break;
+            case 1:
+                mensaje = "Todos los campos deben estar llenos."; break;
+            case 2:
+                mensaje = "Las fechas deben estar dentro del ciclo."; break;
+            case 3:
+                mensaje = "La fecha de fin debe ser posterior a la de inicio."; break;
         }
-        else{
-            if(feriado.getDescripcionFeriado().isEmpty()){
-                regInsertados = "Descripción está vacio";
-            }
-            else{
-                Date d1 = sdformat.parse(fechai);
-                Date d2 = sdformat.parse(fechaf);
-                if (d1.compareTo(d2)==0){
-                    regInsertados = "Las fechas son iguales";
-                }else{
-                    if (d1.compareTo(d2) > 0){
-                        regInsertados = "Las fecha inicial es mayor que la fecha final";
-                    }
-                    else{
-                        regInsertados = feriado.actualizar(this);
-                    }
-                }
-            }
-        }
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-    }
-    //Metodo para fechas
-    @Override
-    public void onClick(View v) {
-        if (v == btnInicioFeriado) {
-            final Calendar c = Calendar.getInstance();
-            diaif = c.get(Calendar.DAY_OF_MONTH);
-            mesif = c.get(Calendar.MONTH);
-            anoif = c.get(Calendar.YEAR);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    editInicioFeriado.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                }
-            }, anoif, mesif, diaif);
-            datePickerDialog.show();
-        }
-        if (v == btnFinFeriado) {
-            final Calendar c = Calendar.getInstance();
-            diaff = c.get(Calendar.DAY_OF_MONTH);
-            mesff = c.get(Calendar.MONTH);
-            anoff = c.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth2) {
-                    editFinFeriado.setText( year+ "/" + (monthOfYear + 1) + "/" + dayOfMonth2);
-                }
-            }, anoff, mesff, diaff);
-            datePickerDialog.show();
-        }
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //Limpiar campos
-    public void btnLimpiarTextoEFeriado(View v) {
+    public void limpiarTexto(View v) {
         editNombreFeriado.setText("");
         editDescripcionFeriado.setText("");
         editInicioFeriado.setText("");
         editFinFeriado.setText("");
+        spnCicloFeriado.setSelection(0);
+    }
+
+    // Método para fechas
+    @Override
+    public void onClick(View v) {
+        final EditText ed = (EditText) v;
+        final Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int anio = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                ed.setText(String.format("%02d/%02d/%d", dayOfMonth, monthOfYear + 1, year));
+            }
+        }, anio, mes, dia);
+
+        datePickerDialog.show();
     }
 
 }

@@ -22,7 +22,6 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinnerHelper;
 
-import java.text.ParseException;
 import java.util.Calendar;
 
 public class NuevoFeriado extends AppCompatActivity implements View.OnClickListener {
@@ -71,42 +70,8 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         editFinFeriado.setOnClickListener(this);
     }
 
-    // Método para fechas
-    @Override
-    public void onClick(View v) {
-        final EditText ed = (EditText) v;
-        final Calendar c = Calendar.getInstance();
-        int dia = c.get(Calendar.DAY_OF_MONTH);
-        int mes = c.get(Calendar.MONTH);
-        int anio = c.get(Calendar.YEAR);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @SuppressLint("DefaultLocale")
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                ed.setText(String.format("%02d/%02d/%d", dayOfMonth, monthOfYear + 1, year));
-            }
-        }, anio, mes, dia);
-
-        datePickerDialog.show();
-    }
-
-    // Método para ocultar o mostrar el view de fecha fin según el checkbox
-    public void onCheckboxClicked(View v){
-        // Verificar si el checkbox fue seleccionado o no
-        if(((CheckBox) v).isChecked()) {
-            layoutFinFeriado.setVisibility(View.GONE);
-            editFinFeriado.setText("");
-            txtFechaInicioFeriado.setText("Fecha:");
-        }
-        else{
-            layoutFinFeriado.setVisibility(View.VISIBLE);
-            txtFechaInicioFeriado.setText("Fecha de inicio:");
-        }
-    }
-
     //Metodo para insertar feriado
-    public void agregarFeriado(View v) throws ParseException {
+    public void agregarFeriado(View v) {
         // Instanciando feriado para guardar
         Feriado feriado = new Feriado();
         feriado.setNombreFeriado(editNombreFeriado.getText().toString());
@@ -140,5 +105,39 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         editInicioFeriado.setText("");
         editFinFeriado.setText("");
         spnCicloFeriado.setSelection(0);
+    }
+
+    // Método para ocultar o mostrar el view de fecha fin según el checkbox
+    public void onCheckboxClicked(View v){
+        // Verificar si el checkbox fue seleccionado o no
+        if(((CheckBox) v).isChecked()) {
+            layoutFinFeriado.setVisibility(View.GONE);
+            editFinFeriado.setText("");
+            txtFechaInicioFeriado.setText("Fecha:");
+        }
+        else{
+            layoutFinFeriado.setVisibility(View.VISIBLE);
+            txtFechaInicioFeriado.setText("Fecha de inicio:");
+        }
+    }
+
+    // Método para fechas
+    @Override
+    public void onClick(View v) {
+        final EditText ed = (EditText) v;
+        final Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int anio = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                ed.setText(String.format("%02d/%02d/%d", dayOfMonth, monthOfYear + 1, year));
+            }
+        }, anio, mes, dia);
+
+        datePickerDialog.show();
     }
 }

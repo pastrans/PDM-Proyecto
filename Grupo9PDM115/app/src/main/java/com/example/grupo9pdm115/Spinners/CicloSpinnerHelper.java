@@ -39,6 +39,19 @@ public class CicloSpinnerHelper {
         return listaCiclos.get(posicion - 1).getIdCiclo();
     }
 
+    public int getActualPositionInSpinner(Context context, int idCiclo){
+        int posicionReal = 0;
+        Ciclo cicloABuscar = new Ciclo();
+        cicloABuscar.consultar(context, Integer.toString(idCiclo));
+
+        for(int i = 0; i < listaCiclos.size() || posicionReal == 0; i++){
+            if(listaCiclos.get(i).getIdCiclo() == cicloABuscar.getIdCiclo()){
+                posicionReal = i + 1;
+            }
+        }
+        return posicionReal;
+    }
+
     public Ciclo getCiclo(int posicion){
         // Si está seleccionado la opción por defecto "Seleccione un ciclo" cuyo índice es 0 se
         // devolverá null
@@ -47,4 +60,6 @@ public class CicloSpinnerHelper {
         // Si está bien retornar el ciclo
         return listaCiclos.get(posicion - 1);
     }
+
+
 }

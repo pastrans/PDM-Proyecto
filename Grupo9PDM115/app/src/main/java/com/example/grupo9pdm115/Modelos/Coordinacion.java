@@ -13,12 +13,16 @@ public class Coordinacion  extends TablaBD {
     private ContentValues valores = new ContentValues();
 
 
-
     // Atributos
     private int idCoodinacion;
     private int idCicloMateria;
     private String idUsuario;
     private String tipoCoordinacion;
+    public Coordinacion() {
+        setNombreTabla("coordinacion");
+        setNombreLlavePrimaria("idcoordinacion");
+        setCamposTabla(new String[]{"idcoordinacion","idusuario", "idciclomateria","tipocoordinacion" });
+    }
 
     @Override
     public String getNombreTabla() {
@@ -103,7 +107,7 @@ public class Coordinacion  extends TablaBD {
         String mensaje = "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
-        this.valoresCamposTabla.put("idcoordinacion", getIdCoodinacion());
+        //this.valoresCamposTabla.put("idcoordinacion", getIdCoodinacion());
         this.valoresCamposTabla.put("idusuario", getIdUsuario());
         this.valoresCamposTabla.put("idciclomateria", getIdCicloMateria());
         this.valoresCamposTabla.put("tipocoordinacion", getTipoCoordinacion());

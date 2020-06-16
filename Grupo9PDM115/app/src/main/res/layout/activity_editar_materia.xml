@@ -1,85 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".Activities.Materia.NuevoMateria">
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar Materia"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editar Materia"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"  />
 
-        <TextView android:text="Código: " />
-        <EditText
-            android:id="@+id/editcodmateria"
-            android:digits="QWERTYUIOPASDFGHJKLÑZXCV BNMqwertyuiopasdfghjklñzxcvbnm1234567890"
-            android:inputType="text"
-            android:maxLength="6" />
-    </TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Código: " />
 
-        <TextView android:text="Nombre: " />
-        <EditText
-            android:id="@+id/nombreMat"
-            android:inputType="text"
-            android:digits="QWERTYUIOPASDFGHJKLÑZ XCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
-            android:maxLength="25" />
-    </TableRow>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editcodmateria"
+                    android:digits="QWERTYUIOPASDFGHJKLÑZXCV BNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+                    android:inputType="text"
+                    android:maxLength="30" />
+            </LinearLayout>
 
-    <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <TextView android:text="Unidad:" />
-        <Spinner
-            android:id="@+id/spnidUnidad"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Nombre: " />
 
-    </TableRow>
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.30"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/nombreMat"
+                    android:digits="QWERTYUIOPASDFGHJKLÑZ XCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
+                    android:inputType="text"
+                    android:maxLength="30" />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/masivaRadioButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Masiva" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <RadioButton
-            android:id="@+id/masivaRadioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No masiva" />
-    </RadioGroup>
-    <TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Unidad:" />
 
-        <Button
-            android:onClick="actualizarMateria"
-            android:text="Actualizar"
-            tools:ignore="OnClick" />
+                <Spinner
+                    android:id="@+id/spnidUnidad"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.30"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
 
-        <Button
-            android:onClick="btnLimpiarNMateria"
-            android:text="@string/btnLimpiarNMateria"
-            tools:ignore="OnClick" />
-    </TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <Button
-        android:onClick="btnRegresarNMateria"
-        android:text="@string/btnRegresarNMateria"
-        tools:ignore="OnClick" />
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <RadioButton
+                        android:id="@+id/masivaRadioButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Masiva" />
 
-</TableLayout>
+                    <RadioButton
+                        android:id="@+id/masivaRadioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No masiva" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnLimpiarNMateria"
+                    android:text="@string/btnLimpiarNMateria"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="actualizarMateria"
+                    android:text="Actualizar"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -71,7 +71,11 @@ public class NuevoEventoEspecial extends AppCompatActivity implements View.OnCli
             eventoEspecial.setIdCicloMateria(cicloMateriaSpinnerAdapter.getIdCicloMateria(posMateria));
         else
             eventoEspecial.setIdCicloMateria(0);
-        Toast.makeText(this, String.valueOf(eventoEspecial.getIdCicloMateria()), Toast.LENGTH_SHORT).show();
+        if (!eventoEspecial.validar(this, 2, eventoEspecial)){
+            Toast.makeText(this, "La fecha de reserva se encuentra en un feriado con reservas bloqueadas", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //Toast.makeText(this, String.valueOf(eventoEspecial.getIdCicloMateria()), Toast.LENGTH_SHORT).show();
         String res = eventoEspecial.guardar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, NuevoDetalleReservaEspecial.class);

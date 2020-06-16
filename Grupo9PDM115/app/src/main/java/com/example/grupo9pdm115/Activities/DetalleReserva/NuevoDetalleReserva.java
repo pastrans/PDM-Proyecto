@@ -223,6 +223,21 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         String res = "";
 
         detalleReserva.setIdHora(horarioSpinnerAdapter.getIdHorario(posHora));
+        boolean seguir = false;
+        if(!chkPeriodoReserva.isChecked())
+            seguir = detalleReserva.validar(this, 2, detalleReserva);
+        if(!seguir && !chkPeriodoReserva.isChecked()){
+            Toast.makeText(this, "La fecha de reserva se encuentra en un feriado con reservas bloqueadas", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //int resp = detalleReserva.validarInt(this, 3, detalleReserva);
+        if(!detalleReserva.validar(this, 3, detalleReserva)){
+            Toast.makeText(this, "Ya existe un registro para ese grupo y día", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, String.valueOf(resp), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         res = detalleReserva.guardar(getApplicationContext());
 
         //listaIdsDetalles.add(detalleReserva.getLast(this));

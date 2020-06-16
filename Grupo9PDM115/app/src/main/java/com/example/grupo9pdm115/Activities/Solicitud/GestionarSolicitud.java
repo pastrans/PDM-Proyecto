@@ -1,15 +1,20 @@
 package com.example.grupo9pdm115.Activities.Solicitud;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +32,7 @@ public class GestionarSolicitud extends AppCompatActivity {
     ListView listaSolicitud;
     SolicitudAdapter solicitudAdapter;
     Solicitud solicitud;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +69,18 @@ public class GestionarSolicitud extends AppCompatActivity {
             MenuItem item = menu.findItem(R.id.ctxRevisar);
             item.setVisible(false);
         }
+        if(!solicitud.getIdUsuario().equals(Sesion.getIdusuario(this))){
+            MenuItem item = menu.findItem(R.id.ctxEliminar);
+            item.setVisible(false);
+        }
+        MenuItem item3 = menu.findItem(R.id.ctxNuevoFinReserva);
+        item3.setVisible(false);
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
+        final Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
         switch (item.getItemId()) {
             case R.id.ctxConsultar:
                 Intent consultarInte = new Intent(this, GestionarDetalleReserva.class);
@@ -80,10 +92,26 @@ public class GestionarSolicitud extends AppCompatActivity {
                 return true;
             case R.id.ctxEliminar:
                 if (solicitudSeleccionada != null){
-                    String regEliminados;
-                    regEliminados = solicitudSeleccionada.eliminar(this);
-                    Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
-                    llenarListaSolicitudes();
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            switch (which){
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    String regEliminados;
+                                    regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
+                                    Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
+                                    llenarListaSolicitudes();
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    Toast.makeText(getApplicationContext(), "NEGATIVO", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }
+                    };
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("¿Seguro de eliminar la solicitud?").setPositiveButton("Sí", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
                 }
                 return true;
             case R.id.ctxRevisar:

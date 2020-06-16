@@ -16,7 +16,6 @@
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Consultar y nuevo -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,24 +23,24 @@
         android:layoutDirection="rtl"
         android:paddingBottom="5dp">
         <Button
-            android:id="@+id/btnAgregarFeriado"
+            android:id="@+id/btnNuevoFeriado"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="agregarFeriado"
+            android:onClick="btnNuevoFeriado"
             android:drawableStart="@drawable/ic_boton_agregar"
             android:drawableLeft="@drawable/ic_boton_agregar"/>
         <Button
-            android:id="@+id/btnBuscarFeriado"
+            android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarFeriado"
+            android:onClick="buscarCiclo"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText
-            android:id="@+id/editNombreFeriado"
+            android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/txtNombreFeriadoHint"
+            android:hint="Nombre del feriado"
             android:inputType="text"/>
     </LinearLayout>
 

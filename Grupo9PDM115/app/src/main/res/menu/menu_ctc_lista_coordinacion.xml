@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ctxActualizarCoordinacion"
+        android:title="@string/ctxListaCiclosActualizar"/>
+    <item android:id="@+id/ctxEliminarCoordinacion"
+        android:title="@string/ctxListaCiclosEliminar"/>
+</menu>

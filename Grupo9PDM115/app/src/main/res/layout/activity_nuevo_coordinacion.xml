@@ -12,32 +12,35 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titNuevoCoordinador"
+        android:text="Nueva coordinación"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
     <TableRow>
 
         <TextView android:text="@string/txtTipoCoordinacion" />
-        <EditText
-            android:id="@+id/editTipoCoordinacion"
-            android:inputType="text"
-            android:maxLength="25" />
+
+        <Spinner
+            android:id="@+id/SpinnerTipoCoordinacion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
     <TableRow>
 
         <TextView android:text="@string/txtUsuario" />
-        <Spinner
-            android:id="@+id/UsuarioSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editIdUsuario"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="5" />
     </TableRow>
     <TableRow>
 
-        <TextView android:text="@string/txtCMateria" />
-        <Spinner
-            android:id="@+id/CMateriaSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <TextView android:text="Códgio Materia" />
+        <EditText
+            android:id="@+id/editCodMateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="6" />
     </TableRow>
     <TableRow>
 

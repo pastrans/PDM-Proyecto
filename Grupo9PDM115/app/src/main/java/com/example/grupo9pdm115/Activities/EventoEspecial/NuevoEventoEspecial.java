@@ -71,8 +71,9 @@ public class NuevoEventoEspecial extends AppCompatActivity implements View.OnCli
             eventoEspecial.setIdCicloMateria(cicloMateriaSpinnerAdapter.getIdCicloMateria(posMateria));
         else
             eventoEspecial.setIdCicloMateria(0);
+        Toast.makeText(this, String.valueOf(eventoEspecial.getIdCicloMateria()), Toast.LENGTH_SHORT).show();
         String res = eventoEspecial.guardar(this);
-        //Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, NuevoDetalleReservaEspecial.class);
         intent.putExtra("idEventoEspecial", eventoEspecial.getLast(this));
         intent.putExtra("idSolicitud", idSolicitud);

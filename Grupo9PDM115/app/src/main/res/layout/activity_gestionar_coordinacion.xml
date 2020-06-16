@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    tools:context=".Activities.Coordinacion.GestionarCoordinacion">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titGestionarCoordinador"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-
-    <TableRow>
-
-        <TextView android:text="@string/txtTipoCoordinacion" />
-        <EditText
-            android:id="@+id/editTipoCoordinacion"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
-
-    <Button
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnNuevoGCoordinador"
-        tools:ignore="OnClick"
-        android:text="@string/btnNuevoGCoordinador" />
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnNuevoGCoordinador"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="btnNuevoCoodinacion"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCoordinador"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <EditText
+            android:id="@+id/editNombreCoordinador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del coordinador"
+            android:inputType="text"/>
+    </LinearLayout>
+    <TextView
+        android:text="Listado de registros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingBottom="5dp"/>
 
-
-    <Button
-        android:onClick="btnEditarGCoordinador"
-        android:text="@string/btnEditarGCoordinador"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnEliminarGCoordinador"
-        android:text="@string/btnEliminarGCoordinador"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnRegresarGCoordinador"
-        android:text="@string/btnRegresarGCoordinador"
-        tools:ignore="OnClick" />
-
-</TableLayout>
+    <ListView
+        android:id="@+id/listacoordinacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+</LinearLayout>

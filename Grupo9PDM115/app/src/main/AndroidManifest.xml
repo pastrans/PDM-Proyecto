@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Activities.DetalleReserva.NuevoDetalleReservaEspecial"/>
+        <activity android:name=".Activities.Solicitud.GestionarSolicitudesEncargado"/>
+        <activity android:name=".Activities.DetalleReserva.AsignarLocalDetalleReserva" />
         <activity android:name=".Activities.Solicitud.EditarSolicitud" />
         <activity android:name=".Activities.Solicitud.NuevoSolicitud" />
         <activity android:name=".Activities.Solicitud.GestionarSolicitud" />

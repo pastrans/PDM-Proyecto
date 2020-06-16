@@ -14,15 +14,15 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Activities.DetalleReserva.GestionarDetalleReserva;
-import com.example.grupo9pdm115.Activities.Usuario.EditarUsuario;
 import com.example.grupo9pdm115.Adapters.SolicitudAdapter;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
+import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarSolicitud extends AppCompatActivity {
+public class GestionarSolicitudesEncargado extends AppCompatActivity {
 
     ListView listaSolicitud;
     SolicitudAdapter solicitudAdapter;
@@ -31,7 +31,7 @@ public class GestionarSolicitud extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gestionar_solicitud);
+        setContentView(R.layout.activity_gestionar_solicitudes_encargado);
         listaSolicitud = (ListView) findViewById(R.id.listaSolicitud);
         llenarListaSolicitudes();
         registerForContextMenu(listaSolicitud);
@@ -41,7 +41,7 @@ public class GestionarSolicitud extends AppCompatActivity {
         solicitud = new Solicitud();
         //LLENAR DATOS DE EJEMPLO
         //usuario.insertUnidad(this);
-        List objects = solicitud.getAllFiltered(this, "idUsuario", Sesion.getIdusuario(this));
+        List objects = solicitud.getAllFiltered(this, "idEncargado", Sesion.getIdusuario(this));
         solicitudAdapter = new SolicitudAdapter(this, objects);
         listaSolicitud.setAdapter(solicitudAdapter);
     }
@@ -54,8 +54,10 @@ public class GestionarSolicitud extends AppCompatActivity {
         menu.setHeaderTitle(nombreCompleto);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_ctx_lista_solicitud, menu);
+        TipoLocal tl = new TipoLocal();
         Solicitud solicitud = (solicitudAdapter.getItem(info.position));
-        if(solicitud.getIdUsuario().equals(Sesion.getIdusuario(getApplicationContext()))){
+        List tipoLocal = tl.getAllFiltered(this, "idEncargado", solicitud.getIdEncargado());
+        if(tipoLocal.size() > 0){
             MenuItem item = menu.findItem(R.id.ctxEnviarEncargado);
             item.setVisible(false);
         }
@@ -66,20 +68,6 @@ public class GestionarSolicitud extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(info.position));
         switch (item.getItemId()) {
-            /*case R.id.ctxEditar:
-                Intent inte = new Intent(this, EditarSolicitud.class);
-                inte.putExtra("idUsuario", solicitudSeleccionada.getIdUsuario());
-                inte.putExtra("idEncargado", solicitudSeleccionada.getIdEncargado());
-                inte.putExtra("asunto", solicitudSeleccionada.getAsuntoSolicitud());
-                inte.putExtra("comentario", solicitudSeleccionada.getComentario());
-                inte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
-                inte.putExtra("fechaRealizada", solicitudSeleccionada.getFechaRealizada());
-                inte.putExtra("fechaRespuesta", solicitudSeleccionada.getFechaRespuesta());
-                inte.putExtra("nuevoFinPeriodo", solicitudSeleccionada.getNuevoFinPeriodo());
-                inte.putExtra("estadoSolicitud", String.valueOf(solicitudSeleccionada.isEstadoSolicitud()));
-                inte.putExtra("aprobadoTotal", String.valueOf(solicitudSeleccionada.isAprobadoTotal()));
-                startActivity(inte);
-                return true;*/
             case R.id.ctxEliminar:
                 if (solicitudSeleccionada != null){
                     String regEliminados;
@@ -88,6 +76,9 @@ public class GestionarSolicitud extends AppCompatActivity {
                     llenarListaSolicitudes();
                 }
                 return true;
+            case R.id.ctxConsultar:
+                Toast.makeText(this, "Consultar", Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.ctxRevisar:
                 Intent revisarInte = new Intent(this, GestionarDetalleReserva.class);
                 revisarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
@@ -95,15 +86,12 @@ public class GestionarSolicitud extends AppCompatActivity {
                 revisarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
                 startActivity(revisarInte);
                 return true;
+            case R.id.ctxEnviarEncargado:
+                //solicitudSeleccionada.setIdEncargado();
             default:
                 return super.onContextItemSelected(item);
         }
 
-    }
-
-    public void btnNuevoGSolicitud(View v){
-        Intent inte = new Intent(this, NuevoSolicitud.class);
-        startActivity(inte);
     }
 
     @Override

@@ -1,64 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:paddingTop="30dip"
-android:stretchColumns="1"
-tools:context=".Activities.Grupo.GestionarGrupo">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".Activities.Grupo.GestionarGrupo">
 
 <TextView
     android:text="@string/titGestionarGrupo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:textSize="30sp"
     android:paddingBottom="5dp"/>
 
-<TableRow>
-    <TextView
-        android:text="@string/txtMateria"/>
-
-    <EditText
-        android:id="@+id/editMateria"
-        android:inputType="text"
-        android:maxLength="30"/>
-</TableRow>
-
-<TableRow>
-    <TextView
-        android:text="@string/txtNumero"/>
-
-    <EditText
-        android:id="@+id/editNumero"
-        android:inputType="number"
-        android:maxLength="30"/>
-</TableRow>
-
-<TableRow>
-    <TextView
-        android:text="@string/txtTipoDeGrupo"/>
-
-    <Spinner
-        android:id="@+id/spinTipoGrupo" />
-</TableRow>
-
-<TableRow>
-    <TextView
-        android:text="@string/txtCicloGrupo"/>
-    <Spinner
-        android:id="@+id/spinCiclo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-</TableRow>
-
-    <Button
-        android:onClick="btnConsultarGGrupo"
-        android:text="@string/btnConsultarGGrupo"
-        tools:ignore="OnClick" />
-
-    <Button
-        android:onClick="btnNuevoGrupo"
-        android:text="@string/btnNuevoGGrupo"
-        tools:ignore="OnClick" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:paddingBottom="5dp">
+        <Button
+            android:id="@+id/btnNuevoGrupo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="btnNuevoGrupo"
+            android:drawableStart="@drawable/ic_boton_agregar"
+            android:drawableLeft="@drawable/ic_boton_agregar"/>
+        <Button
+            android:id="@+id/btnBuscarCiclo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:onClick="buscarCiclo"
+            android:drawableStart="@drawable/ic_boton_buscar"
+            android:drawableLeft="@drawable/ic_boton_buscar"
+            tools:ignore="OnClick" />
+        <EditText
+            android:id="@+id/editNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nombre del grupo"
+            android:inputType="text"/>
+    </LinearLayout>
 
     <ListView
         android:paddingTop="15dp"
@@ -70,4 +54,4 @@ tools:context=".Activities.Grupo.GestionarGrupo">
         />
 
 
-</TableLayout>
+</LinearLayout>

@@ -28,7 +28,7 @@
 
                 <!-- Icono control usuario -->
                 <LinearLayout
-                    android:id="@+id/layoutUsuario"
+                    android:id="@+id/layoutControlUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:orientation="horizontal"
@@ -80,23 +80,29 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"/>
                         <TextView
+                            android:id="@+id/txtUsuario"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="@string/txtGestionarUsuario"
                             android:gravity="center_vertical"
-                            android:layout_marginStart="54dp"
                             android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
                             android:background="?android:attr/selectableItemBackground"/>
                         <TextView
+                            android:id="@+id/txtRol"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="@string/txtGestionarRol"
                             android:gravity="center_vertical"
-                            android:layout_marginStart="54dp"
                             android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
@@ -107,91 +113,271 @@
 
             </LinearLayout>
 
-
+            <!-- Control académico -->
             <LinearLayout
-                android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Icono control académico -->
+                <LinearLayout
+                    android:id="@+id/layoutControlAcademico"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0.5"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_control_academico"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:text="@string/txtControlAcademico"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <!-- Opciones control académico -->
+                <LinearLayout
+                    android:id="@+id/layoutOpcionesControlAcademico"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="0.70"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="@string/txtNombreFeriado" />
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1.3"
-                    android:imeOptions="actionNext"
-                    android:paddingLeft="10dp"
-                    android:singleLine="true"
-                    android:id="@+id/editNombreFeriado"
-                    android:inputType="text"
-                    android:maxLength="30"/>
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"/>
 
-            <!-- Control de usuarios -->
-            <LinearLayout
-                android:id="@+id/layoutControlAcademico"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_control_academico"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        android:divider="?android:listDivider"
+                        android:dividerPadding="32dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                        <TextView
+                            android:id="@+id/txtCiclo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarCiclo"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"/>
+                        <TextView
+                            android:id="@+id/txtFeriado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarFeriado"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
+                        <TextView
+                            android:id="@+id/txtUnidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarUnidad"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
+                        <TextView
+                            android:id="@+id/txtMateria"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarMateria"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
+                        <TextView
+                            android:id="@+id/txtCicloMateria"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarCicloMateria"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"/>
+                        <TextView
+                            android:id="@+id/txtCoordinacion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarCoordinacion"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
+                        <TextView
+                            android:id="@+id/txtGrupo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarGrupo"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
+                        <TextView
+                            android:id="@+id/txtTipoGrupo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarTipoGrupo"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"
-                    android:text="@string/txtControlAcademico"
-                    android:gravity="center_vertical"
-                    android:textSize="20sp"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Control de locales -->
             <LinearLayout
-                android:id="@+id/layoutControlLocales"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_control_locales"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"
-                    android:text="@string/txtControlLocales"
-                    android:gravity="center_vertical"
-                    android:textSize="20sp"/>
+                <!-- Icono control locales -->
+                <LinearLayout
+                    android:id="@+id/layoutControlLocales"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0.5"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_control_locales"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:text="@string/txtControlLocales"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <!-- Opciones control local -->
+                <LinearLayout
+                    android:id="@+id/layoutOpcionesControlLocales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        android:divider="?android:listDivider"
+                        android:dividerPadding="32dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                        <TextView
+                            android:id="@+id/txtLocal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="@string/txtGestionarLocal"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"/>
+                        <TextView
+                            android:id="@+id/txtTipoLocal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txtGestionarTipoLocal"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- Reservas -->

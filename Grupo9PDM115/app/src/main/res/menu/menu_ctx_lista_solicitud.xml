@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ctxConsultar"
+        android:title="Consultar"/>
+    <item android:id="@+id/ctxRevisar"
+        android:title="Revisar"/>
+    <item android:id="@+id/ctxEliminar"
+        android:title="@string/ctxListaTGEliminar"/>
+    <item android:id="@+id/ctxEnviarEncargado"
+        android:title="Enviar a encargado"/>
+    <item android:id="@+id/ctxNuevoFinReserva"
+        android:title="Reasignar fin de reserva"/>
+</menu>

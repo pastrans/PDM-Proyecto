@@ -7,7 +7,7 @@
 
     <!-- Título -->
     <TextView
-        android:text="Gestionar Materia"
+        android:text="@string/titGestionarMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -26,14 +26,14 @@
             android:drawableStart="@drawable/ic_boton_agregar"
             android:drawableLeft="@drawable/ic_boton_agregar"/>
         <Button
-            android:id="@+id/btnBuscarCiclo"
+            android:id="@+id/btnBuscarMateria"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarCiclo"
+            android:onClick="buscarMateria"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText
-            android:id="@+id/editNombreCiclo"
+            android:id="@+id/editNombreMateria"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Nombre de la materia"
@@ -41,7 +41,7 @@
     </LinearLayout>
     <!-- Lista días -->
     <TextView
-        android:text="Listado de materias ingresadas"
+        android:text="@string/txtListaMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -52,4 +52,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null" />
+
 </LinearLayout>

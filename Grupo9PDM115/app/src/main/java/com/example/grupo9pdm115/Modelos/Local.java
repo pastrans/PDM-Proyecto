@@ -2,9 +2,14 @@ package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SearchRecentSuggestionsProvider;
+import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Local extends TablaBD {
 
@@ -106,6 +111,34 @@ public class Local extends TablaBD {
         }
 
         return mensaje;
+    }
+
+    public List<Local> getLocalesDisponibles(String fecha, int idHora, int idDia, Context context){
+        List<Local> listaLocalesDisponibles = new ArrayList<Local>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+        helper.abrir();
+        String sql = "SELECT l.IDLOCAL, l.NOMBRELOCAL, l.IDTIPOLOCAL, l.CAPACIDAD FROM LOCAL l\n" +
+                "WHERE l.IDLOCAL NOT IN (\n" +
+                "SELECT de.IDLOCAL FROM DETALLERESERVA de\n" +
+                "WHERE de.IDDIA = " + idDia +"\n" +
+                "AND de.IDHORA = "+ idHora +"\n" +
+                "AND (de.INICIOPERIODORESERVA = '" + fecha + "' OR '" + fecha + "' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
+                "AND ESTADORESERVA = 1 AND APROBADO = 1);";
+        Cursor cursor = helper.consultar(sql);
+        if(cursor.moveToFirst()){
+            do{
+                Local localDis = new Local();
+                //valores[i] = cursor.getString(i);
+                localDis.setIdlocal(cursor.getInt(0));
+                localDis.setNombreLocal(cursor.getString(1));
+                localDis.setIdtipolocal(cursor.getInt(2));
+                localDis.setCapacidad(cursor.getInt(3));
+                listaLocalesDisponibles.add(localDis);
+            }while (cursor.moveToNext());
+        }
+        helper.cerrar();
+        return listaLocalesDisponibles;
     }
 
     /*public ContentValues getValores(){

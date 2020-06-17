@@ -5,10 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.R;
+
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class FeriadoAdapter  extends ArrayAdapter<Feriado> {
@@ -28,21 +33,37 @@ public class FeriadoAdapter  extends ArrayAdapter<Feriado> {
                     false);
         }
 
-        // Referencias UI - list_item_ciclo -
-        TextView nombreFeriado = (TextView) convertView.findViewById(R.id.txtNombreFeriado);
-        TextView descripcion = (TextView) convertView.findViewById(R.id.txtDescripcion);
-        TextView inicio = (TextView) convertView.findViewById(R.id.txtInicioFeriado);
-        TextView fin = (TextView) convertView.findViewById(R.id.txtFinFeriado);
+        // Referencias UI
+        TextView txtNombreFeriado = (TextView) convertView.findViewById(R.id.txtNombreFeriado);
+        TextView txtDescripcionFeriado = (TextView) convertView.findViewById(R.id.txtDescripcionFeriado);
+        TextView txtNombreCiclo = (TextView) convertView.findViewById(R.id.txtNombreCiclo);
+        TextView txtInicioFeriado = (TextView) convertView.findViewById(R.id.txtInicioFeriado);
+        TextView txtFinFeriado = (TextView) convertView.findViewById(R.id.txtFinFeriado);
+        TextView txtBloquearReservas = (TextView) convertView.findViewById(R.id.txtBloquearReservas);
 
+        LinearLayout layoutFechaFin = (LinearLayout) convertView.findViewById(R.id.layoutFechaFin);
+        TextView txtInicioFeriadoTit = (TextView) convertView.findViewById(R.id.txtInicioFeriadoTit);
 
         // Feriado actual
         Feriado feriado = getItem(position);
+        // Ciclo relacionado
+        Ciclo ciclo = new Ciclo();
+        ciclo.consultar(getContext().getApplicationContext(), String.valueOf(feriado.getIdCiclo()));
 
         // Setup view
-        nombreFeriado.setText(feriado.getNombreFeriado());
-        inicio.setText(feriado.getFechaInicioFeriado());
-        fin.setText(feriado.getFechaFinFeriado());
-        descripcion.setText(feriado.getDescripcionFeriado());
+        txtNombreFeriado.setText(feriado.getNombreFeriado());
+        txtDescripcionFeriado.setText(feriado.getDescripcionFeriado());
+        txtNombreCiclo.setText(ciclo.getNombreCiclo());
+        txtInicioFeriado.setText(feriado.getFechaInicioFeriadoToLocal());
+        // Verificar fecha fin nula (si es nula es feriado de fecha única)
+        if(feriado.getFechaFinFeriadoToLocal().equals("")){
+            layoutFechaFin.setVisibility(View.GONE);
+            txtInicioFeriadoTit.setText("Fecha:");
+        }
+        else{
+            txtFinFeriado.setText(feriado.getFechaFinFeriadoToLocal());
+        }
+        txtBloquearReservas.setText(feriado.getBloquearReservasToText());
 
         return convertView;
     }

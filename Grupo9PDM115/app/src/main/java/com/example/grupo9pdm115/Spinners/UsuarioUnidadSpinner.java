@@ -33,7 +33,7 @@ public class UsuarioUnidadSpinner {
     }
 
     public ArrayAdapter getAdapterUnidad(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoUnidad);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoUnidad);
         return adapter;
     }
 

@@ -1,62 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Grupo.EditarGrupo">
 
-    <TextView
-        android:text="@string/titEditarGrupo"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtNuevoNumero"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titEditarGrupo"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"/>
 
-        <EditText
-            android:id="@+id/editNumero"
-            android:inputType="number"
-            android:maxLength="30"/>
-    </TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtMateria"/>
-        <Spinner
-            android:id="@+id/spinMateriaEdit"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtNuevoNumero"/>
 
-    </TableRow>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editNumero"
+                    android:inputType="number"
+                    android:maxLength="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtMateria"/>
+                <Spinner
+                    android:id="@+id/spinMateriaEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.30"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtNuevoTipoGrupo"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtNuevoTipoGrupo"/>
 
-        <Spinner
-            android:id="@+id/spinTipoGrupoEdit" />
-    </TableRow>
+                <Spinner
+                    android:id="@+id/spinTipoGrupoEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.30"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
 
-    <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <Button
-            android:onClick="btnEditarEGrupo"
-            android:text="@string/btnEditarEGrupo" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnLimpiarEGrupo"
+                    android:text="@string/btnLimpiarEGrupo"
+                    tools:ignore="OnClick" />
 
-        <Button
-            android:onClick="btnLimpiarEGrupo"
-            android:text="@string/btnLimpiarEGrupo"
-            tools:ignore="OnClick" />
-    </TableRow>
-
-
-    <Button
-        android:onClick="btnRegresarEGrupo"
-        android:text="@string/btnRegresarEGrupo"
-        tools:ignore="OnClick" />
-
-</TableLayout>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnEditarEGrupo"
+                    android:text="@string/btnEditarEGrupo" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

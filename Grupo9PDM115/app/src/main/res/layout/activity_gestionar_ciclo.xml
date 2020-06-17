@@ -13,7 +13,7 @@
         android:textSize="30sp"
         android:paddingBottom="5dp"/>
 
-    <!-- Lista días -->
+    <!-- Consultar y nuevo -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +38,11 @@
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre del ciclo"
+            android:hint="@string/txtNombreCicloHint"
             android:inputType="text"/>
     </LinearLayout>
+
+    <!-- Lista días -->
     <TextView
         android:text="@string/txtListaCiclo"
         android:layout_width="match_parent"
@@ -51,5 +53,7 @@
         android:id="@+id/listaCiclos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@null" />
+        android:divider="#E5E5E5"
+        android:dividerHeight="2dp"/>
+
 </LinearLayout>

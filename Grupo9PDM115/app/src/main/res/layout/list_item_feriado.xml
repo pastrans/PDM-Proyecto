@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,41 +10,89 @@
     android:paddingRight= "16dp"
     android:paddingTop="8dp">
 
+    <!-- NombreFeriado -->
     <TextView
         android:id="@+id/txtNombreFeriado"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Nombre"
-        android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Semana del Estudiante" />
-
-    <TextView
-        android:id="@+id/txtDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtNombreFeriado"
-        android:layout_alignLeft="@id/txtNombreFeriado"
-        android:text="Descripcion"
         tools:text="Semana del estudiante" />
 
-    <TextView
-        android:id="@+id/txtInicioFeriado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtDescripcion"
-        android:layout_alignLeft="@id/txtNombreFeriado"
-        android:text="Inicio Feriado"
-        tools:text="01/07/2020" />
+    <!-- Descripcion -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtDescripcionFeriado"/>
+        <TextView
+            android:id="@+id/txtDescripcionFeriado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="Semana para celebrar y realizar eventos para estudiantes."/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtFinFeriado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtInicioFeriado"
-        android:layout_alignLeft="@id/txtNombreFeriado"
-        android:text="Fin Feriado"
-        tools:text="01/14/2020"/>
+    <!-- NombreCiclo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtNombreCiclo"/>
+        <TextView
+            android:id="@+id/txtNombreCiclo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="CICLO I - 2020"/>
+    </LinearLayout>
 
+    <!-- FechaInicioFeriado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txtInicioFeriadoTit"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtFechaInicioFeriado"/>
+        <TextView
+            android:id="@+id/txtInicioFeriado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="26/05/2020"/>
+    </LinearLayout>
 
-</RelativeLayout>
+    <!-- FechaFinFeriado -->
+    <LinearLayout
+        android:id="@+id/layoutFechaFin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtFechaFinFeriado"/>
+        <TextView
+            android:id="@+id/txtFinFeriado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="30/05/2020"/>
+    </LinearLayout>
+
+    <!-- EstadoReservas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtEstadoReservas"/>
+        <TextView
+            android:id="@+id/txtBloquearReservas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="Bloqueadas"/>
+    </LinearLayout>
+
+</LinearLayout>

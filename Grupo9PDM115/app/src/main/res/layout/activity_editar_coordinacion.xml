@@ -18,26 +18,29 @@
     <TableRow>
 
         <TextView android:text="@string/txtTipoCoordinacion" />
-        <EditText
-            android:id="@+id/editTipoCoordinacion"
-            android:inputType="text"
-            android:maxLength="25" />
+
+        <Spinner
+            android:id="@+id/SpinnerTipoCoordinacion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
     <TableRow>
 
         <TextView android:text="@string/txtUsuario" />
-        <Spinner
-            android:id="@+id/UsuarioSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editIdUsuario"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="5" />
     </TableRow>
     <TableRow>
 
         <TextView android:text="@string/txtCMateria" />
-        <Spinner
-            android:id="@+id/CMateriaSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editCodMateria"
+            android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
+            android:inputType="text"
+            android:maxLength="6" />
     </TableRow>
     <TableRow>
 
@@ -51,10 +54,5 @@
             android:text="@string/btnLimpiarECoordinador"
             tools:ignore="OnClick" />
     </TableRow>
-    <Button
-        android:onClick="btnRegresareCoordinador"
-        android:text="@string/btnRegresarECoordinador"
-        tools:ignore="OnClick" />
-
 
 </TableLayout>

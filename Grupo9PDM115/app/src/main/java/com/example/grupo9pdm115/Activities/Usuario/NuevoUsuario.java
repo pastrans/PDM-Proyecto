@@ -49,9 +49,9 @@ public class NuevoUsuario extends AppCompatActivity {
         spinnerUsuarioUnidadAdapter = new UsuarioUnidadSpinner(helper);
         spinnerRolAdapter = new RolSpinner(helper);
         helper.cerrar();
-        spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()));
-        spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(getApplicationContext()));
-        spinnerUsuarioUnidadAdapter.getAdapterUnidad(getApplicationContext()).notifyDataSetChanged();
+        spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(this));
+        spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(this));
+        spinnerUsuarioUnidadAdapter.getAdapterUnidad(this);
         spinnerUnidad.setSelection(1);
     }
 

@@ -32,7 +32,7 @@ public class RolSpinner {
     }
 
     public ArrayAdapter getAdapterRol(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoRol);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoRol);
         return adapter;
     }
 

@@ -25,6 +25,7 @@ import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Reserva;
+import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.DiaSpinner;
 import com.example.grupo9pdm115.Spinners.EventoEspecialSpinner;
@@ -52,8 +53,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
     TipoGrupoSpinner tipoGrupoSpinnerAdapter;
     Ciclo cicloActual;
     List<Integer> listaIdsDetalles;
-    int idSolicitud = 0;
-
+    Solicitud solicitud;
+    int idSolicitud = 0, idTipoLocal = 0;
+    boolean revision;
     private int dia, mes, anio;
 
     @Override
@@ -63,6 +65,10 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
 
         if(getIntent().getExtras() != null){
             idSolicitud = getIntent().getIntExtra("idSolicitud", 0);
+            revision = getIntent().getBooleanExtra("revision", false);
+            idTipoLocal = getIntent().getIntExtra("idTipoLocal", 0);
+            solicitud = new Solicitud();
+            solicitud.consultar(this, String.valueOf(idSolicitud));
         }
 
         helper = new ControlBD(this);
@@ -89,9 +95,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         helper.cerrar();
 
 
-        spinnerDia.setAdapter(diaSpinnerAdapter.getAdapterDia(getApplication()));
-        spinnerHora.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
-        spinnerTipoGrupo.setAdapter(tipoGrupoSpinnerAdapter.getAdapterTipoGrupo(getApplication()));
+        spinnerDia.setAdapter(diaSpinnerAdapter.getAdapterDia(this));
+        spinnerHora.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
+        spinnerTipoGrupo.setAdapter(tipoGrupoSpinnerAdapter.getAdapterTipoGrupo(this));
 
 
         edtFechaInicio.setOnClickListener(this);
@@ -200,13 +206,15 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         }
 
         int local = getIdlocal();
-        if(local != 0)
-            detalleReserva.setIdLocal(local);
-        else{
-            Toast.makeText(this, "No existe el local", Toast.LENGTH_SHORT).show();
+        if(local == 0){
+            Toast.makeText(this, "No existe el local o no pertenece a la categoría de tipo de local a reservar", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        if(local == -1)
+            detalleReserva.setIdLocal(0);
+        else
+            detalleReserva.setIdLocal(local);
+        //detalleReserva.setIdLocal(0);
         detalleReserva.setIdEventoEspecial(0);
         detalleReserva.setIdDia(diaSpinnerAdapter.getIdDia(posDia));
         detalleReserva.setCupo(Integer.valueOf(edtCupo.getText().toString()));
@@ -215,6 +223,21 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         String res = "";
 
         detalleReserva.setIdHora(horarioSpinnerAdapter.getIdHorario(posHora));
+        boolean seguir = false;
+        if(!chkPeriodoReserva.isChecked())
+            seguir = detalleReserva.validar(this, 2, detalleReserva);
+        if(!seguir && !chkPeriodoReserva.isChecked()){
+            Toast.makeText(this, "La fecha de reserva se encuentra en un feriado con reservas bloqueadas", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //int resp = detalleReserva.validarInt(this, 3, detalleReserva);
+        if(!detalleReserva.validar(this, 3, detalleReserva)){
+            Toast.makeText(this, "Ya existe un registro para ese grupo y día", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, String.valueOf(resp), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         res = detalleReserva.guardar(getApplicationContext());
 
         //listaIdsDetalles.add(detalleReserva.getLast(this));
@@ -256,7 +279,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
 
     public int getIdlocal(){
         int idLocal = 0;
-        String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "'";
+        if (edtLocal.getText().toString().trim().equals(""))
+            return -1;
+        String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "' AND IDTIPOLOCAL =" + idTipoLocal;
         helper.abrir();
         Cursor c2 = helper.consultar(sqlLocal);
         Local local = new Local();

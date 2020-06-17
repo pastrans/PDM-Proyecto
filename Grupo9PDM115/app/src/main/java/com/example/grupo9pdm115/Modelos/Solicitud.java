@@ -273,4 +273,24 @@ public class Solicitud extends TablaBD {
         return lastId;
     }
 
+    public String getEnargadoLocal(Context context){
+        String encargado = "";
+        ControlBD helper = new ControlBD(context);
+        Cursor cursor;
+        String sql = "select tl.IDENCARGADO from TIPOLOCAL tl, LOCAL l, RESERVA r, DETALLERESERVA dr, SOLICITUD s\n" +
+                "WHERE tl.IDTIPOLOCAL = l.IDTIPOLOCAL\n" +
+                "AND l.IDLOCAL = dr.IDLOCAL\n" +
+                "AND dr.IDDETALLERESERVA = r.IDDETALLERESERVA\n" +
+                "AND r.IDSOLICITUD = s.IDSOLICITUD\n" +
+                "AND s.IDSOLICITUD = " + this.getIdSolicitud() +"\n" +
+                "LIMIT 1;";
+        helper.abrir();
+        cursor = helper.consultar(sql);
+        while (cursor.moveToNext()){
+            encargado = cursor.getString(0);
+        }
+        helper.cerrar();
+        return encargado;
+    }
+
 }

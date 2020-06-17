@@ -67,18 +67,18 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         edtCupo = (EditText) findViewById(R.id.editCupoDetalleRENuevo);
         edtFechaReserva = (EditText) findViewById(R.id.editFechaDetalleRENuevo);
         edtFechaReserva.setEnabled(false);
-        spinnerEventoEspecial = (Spinner) findViewById(R.id.spinnerEventoDetalleRENuevo);
+        //spinnerEventoEspecial = (Spinner) findViewById(R.id.spinnerEventoDetalleRENuevo);
         spinnerHoraFinal = (Spinner) findViewById(R.id.spinnerHoraFinDetalleRENuevo);
         spinnerHoraInicial = (Spinner) findViewById(R.id.spinnerHoraInicioDetalleRENuevo);
 
         helper.abrir();
         horarioSpinnerAdapter = new HorarioSpinner(helper);
-        eventoEspecialSpinnerAdapter = new EventoEspecialSpinner(helper);
+        //eventoEspecialSpinnerAdapter = new EventoEspecialSpinner(helper);
         helper.cerrar();
 
-        spinnerEventoEspecial.setAdapter(eventoEspecialSpinnerAdapter.getAdapterEventoEspecial(getApplication()));
-        spinnerHoraInicial.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
-        spinnerHoraFinal.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
+        //spinnerEventoEspecial.setAdapter(eventoEspecialSpinnerAdapter.getAdapterEventoEspecial(getApplication()));
+        spinnerHoraInicial.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
+        spinnerHoraFinal.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
 
         edtFechaReserva.setOnClickListener(this);
         edtFechaReserva.setText(FechasHelper.cambiarFormatoIsoALocal(fechaReserva));
@@ -90,7 +90,7 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         int posHoraInicial, posHoraFinal, posEventoEspecial, cantidadHorasExtra = 0;
         List<Integer> ids = new ArrayList<Integer>();
 
-        posEventoEspecial = spinnerEventoEspecial.getSelectedItemPosition();
+        //posEventoEspecial = spinnerEventoEspecial.getSelectedItemPosition();
         posHoraFinal = spinnerHoraFinal.getSelectedItemPosition();
         posHoraInicial = spinnerHoraInicial.getSelectedItemPosition();
 
@@ -105,12 +105,14 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         }
 
         int local = getIdlocal();
-        if(local != 0)
-            detalleReserva.setIdLocal(local);
-        else{
+        if(local == 0){
             Toast.makeText(this, "No existe el local", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(local == -1)
+            detalleReserva.setIdLocal(0);
+        else
+            detalleReserva.setIdLocal(local);
 
         if(posHoraFinal != 0 && posHoraInicial != 0){
             Horario horaInicio = horarioSpinnerAdapter.getHorario(posHoraInicial);
@@ -173,6 +175,8 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
 
     public int getIdlocal(){
         int idLocal = 0;
+        if (edtLocal.getText().toString().trim().equals(""))
+            return -1;
         String sqlLocal = "SELECT * FROM LOCAL WHERE NOMBRELOCAL = '" + edtLocal.getText().toString().trim() + "'";
         helper.abrir();
         Cursor c2 = helper.consultar(sqlLocal);

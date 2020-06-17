@@ -1,6 +1,5 @@
 package com.example.grupo9pdm115.Activities.Feriado;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,13 +7,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.FeriadoAdapter;
 import com.example.grupo9pdm115.Modelos.Feriado;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
@@ -22,27 +24,47 @@ import java.util.List;
 public class GestionarFeriado extends AppCompatActivity {
     //Declarando atributos para el manejo del listview
     ListView listaFeriados;
+    EditText editNombreFeriado;
     FeriadoAdapter listaFeriadosAdapter;
     Feriado feriado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CFE"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_feriado);
+        editNombreFeriado = (EditText) findViewById(R.id.editNombreFeriado);
 
         //Iniciar elementos para llenar lista
         listaFeriados = (ListView) findViewById(R.id.listaFeriados);
 
         //Llamar método para llenar lista
-        llenarListaFeriado();
+        llenarListaFeriado(null);
 
         //Asociamos el menú contextual al listview
         registerForContextMenu(listaFeriados);
     }
-    //Metodo parra llenar lista de ciclos
-    public void llenarListaFeriado(){
+
+    //Metodo parra llenar lista de feriado
+    public void llenarListaFeriado(String filtro){
         feriado = new Feriado();
-        List objetcts = feriado.getAll(this);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = feriado.getAll(this);
+        }
+        else{
+            objetcts = feriado.getAllFiltered(this,"nombreferiado", filtro);
+        }
 
         //Inicializar el adaptador con la información a mostrar
         listaFeriadosAdapter = new FeriadoAdapter(this, objetcts);
@@ -50,17 +72,25 @@ public class GestionarFeriado extends AppCompatActivity {
         // Relacionando la lista con el adaptador y llenándola
         listaFeriados.setAdapter(listaFeriadosAdapter);
     }
+
     //Metodo para agregar Feriado
-    public void btnNuevoFeriado(View v){
+    public void agregarFeriado(View v){
         Intent inte = new Intent(this, NuevoFeriado.class);
         startActivity(inte);
     }
+
+    // Método para buscar feriado filtrado
+    public void buscarFeriado(View v){
+        llenarListaFeriado(editNombreFeriado.getText().toString());
+    }
+
     // Para que actualice la lista cuando se regrese a la ventana
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaFeriado();
+        llenarListaFeriado(null);
     }
+
     // Para menú contextual
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
@@ -77,7 +107,6 @@ public class GestionarFeriado extends AppCompatActivity {
         inflater.inflate(R.menu.menu_ctx_lista_feriado, menu);
     }
 
-
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         // Obtener la posición del elemento
@@ -90,8 +119,8 @@ public class GestionarFeriado extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), EditarFeriado.class);
                     intent.putExtra("idferiado", feriadoActual.getIdFeriado());
                     intent.putExtra("idciclo", feriadoActual.getIdCiclo());
-                    intent.putExtra("inicioferiado", feriadoActual.getFechaInicioFeriado());
-                    intent.putExtra("finferiado", feriadoActual.getFechaFinFeriado());
+                    intent.putExtra("inicioferiado", feriadoActual.getFechaInicioFeriadoToLocal());
+                    intent.putExtra("finferiado", feriadoActual.getFechaFinFeriadoToLocal());
                     intent.putExtra("nombreferiado", feriadoActual.getNombreFeriado());
                     intent.putExtra("descripcionferiado", feriadoActual.getDescripcionFeriado());
                     intent.putExtra("bloquearreservas", feriadoActual.isBloquearReservas());
@@ -103,7 +132,7 @@ public class GestionarFeriado extends AppCompatActivity {
                     String regEliminadas;
                     regEliminadas= feriadoActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaFeriado();
+                    llenarListaFeriado(null);
                 }
                 return true;
             default:

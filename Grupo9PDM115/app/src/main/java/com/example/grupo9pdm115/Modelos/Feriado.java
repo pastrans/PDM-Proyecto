@@ -1,37 +1,31 @@
 package com.example.grupo9pdm115.Modelos;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 public class Feriado extends TablaBD {
-    // Atributos para BD
-    private final String nombreTabla = "feriados";
-    private ContentValues valores = new ContentValues();
+    // Constantes
+    private final String BLOQUEADAS = "Bloqueadas";
+    private final String PERMITIDAS = "Permitidas";
 
+    // Atributos
     private int idFeriado;
     private int idCiclo;
     private String fechaInicioFeriado;
     private String fechaFinFeriado;
     private String nombreFeriado;
     private String descripcionFeriado;
-    private boolean bloquearReservas;
-
-    private ControlBD helper;
+    private boolean bloquearReservas; // true -> Reservas bloqueadas , false -> Reservas permitidas
 
     //Constructores
     public Feriado() {
-        setNombreTabla("feriados");
+        setNombreTabla("feriado");
         setNombreLlavePrimaria("idferiado");
         setCamposTabla(new String[]{"idferiado", "idCiclo", "fechainicioferiado", "fechafinferiado", "nombreferiado", "descripcionferiado","bloquearreservas"});
     }
-
     public Feriado(int idFeriado, int idCiclo,String fechaInicioFeriado, String fechaFinFeriado, String nombreFeriado, String descripcionFeriado, boolean bloquearReservas) {
         this.idFeriado= idFeriado;
         this.idCiclo = idCiclo;
@@ -41,6 +35,7 @@ public class Feriado extends TablaBD {
         this.descripcionFeriado = descripcionFeriado;
         this.bloquearReservas = bloquearReservas;
     }
+
     //idFeriado
     public int getIdFeriado() {
         return idFeriado;
@@ -48,6 +43,7 @@ public class Feriado extends TablaBD {
     public void setIdFeriado(int idFeriado) {
         this.idFeriado = idFeriado;
     }
+
     //idCiclo
     public int getIdCiclo() {
         return idCiclo;
@@ -55,6 +51,7 @@ public class Feriado extends TablaBD {
     public void setIdCiclo(int idCiclo) {
         this.idCiclo = idCiclo;
     }
+
     //fechaInicioFeriado
     public String getFechaInicioFeriado() {
         return fechaInicioFeriado;
@@ -62,6 +59,13 @@ public class Feriado extends TablaBD {
     public void setFechaInicioFeriado(String fechaInicioFeriado) {
         this.fechaInicioFeriado = fechaInicioFeriado;
     }
+    public String getFechaInicioFeriadoToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(fechaInicioFeriado);
+    }
+    public void setFechaInicioFeriadoFromLocal(String fechaInicioFeriado) {
+        this.fechaInicioFeriado = FechasHelper.cambiarFormatoLocalAIso(fechaInicioFeriado);
+    }
+
     //fechaFinFeriado
     public String getFechaFinFeriado() {
         return fechaFinFeriado;
@@ -69,6 +73,13 @@ public class Feriado extends TablaBD {
     public void setFechaFinFeriado(String fechaFinFeriado) {
         this.fechaFinFeriado = fechaFinFeriado;
     }
+    public String getFechaFinFeriadoToLocal() {
+        return FechasHelper.cambiarFormatoIsoALocal(fechaFinFeriado);
+    }
+    public void setFechaFinFeriadoFromLocal(String fechaFinFeriado) {
+        this.fechaFinFeriado = FechasHelper.cambiarFormatoLocalAIso(fechaFinFeriado);
+    }
+
     //nombreFeriado
     public String getNombreFeriado() {
         return nombreFeriado;
@@ -82,10 +93,48 @@ public class Feriado extends TablaBD {
     }
     public void setDescripcionFeriado(String descripcionFeriado) { this.descripcionFeriado = descripcionFeriado;
     }
+
     //bloquearReservas
     public boolean isBloquearReservas() { return bloquearReservas; }
+    //
+    public String getBloquearReservasToText(){
+        if(isBloquearReservas())
+            return BLOQUEADAS;
+        else
+            return PERMITIDAS;
+    }
     public void setBloquearReservas(boolean bloquearReservas) { this.bloquearReservas = bloquearReservas; }
+    /* Para ingresar el valor cuando se lee de la base de datos donde puede tener el valor
+        "1" (true) y "0" (false) */
+    public void setBloquearReservas(String bloquearReservas) {
+        boolean estado = false;
+        if(bloquearReservas.equals("1"))
+            estado = true;
+        else{
+            if(bloquearReservas.equals("0"))
+                estado = false;
+            else{
+                estado = Boolean.parseBoolean(bloquearReservas);
+            }
+        }
+        this.bloquearReservas = estado;
+    }
+    /* Para ingresar el valor cuando se lee desde la aplicación, donde solo puede tener el valor de
+       "Bloqueadas" (true) y "Permitidas" (false) */
+    public boolean setBloquearReservasFromText(String bloquearReservas){
+        boolean estado = false;
 
+        if(bloquearReservas.equals(BLOQUEADAS)){
+            this.bloquearReservas = true;
+            estado = true;
+        }
+        else if(bloquearReservas.equals(PERMITIDAS)){
+                this.bloquearReservas = false;
+                estado = true;
+        }
+
+        return estado;
+    }
 
     @Override
     public String getValorLlavePrimaria(){
@@ -111,7 +160,7 @@ public class Feriado extends TablaBD {
         setFechaFinFeriado(arreglo[3]);
         setNombreFeriado(arreglo[4]);
         setDescripcionFeriado(arreglo[5]);
-        setBloquearReservas(Boolean.parseBoolean(arreglo[6]));
+        setBloquearReservas(arreglo[6]);
     }
     @Override
     public Feriado getInstanceOfModel(String[] arreglo) {
@@ -119,63 +168,6 @@ public class Feriado extends TablaBD {
         feriado.setAttributesFromArray(arreglo);
         return feriado;
     }
-
-    // Métodos para BD
-    public String getNombreTabla() { return nombreTabla; }
-
-    public ContentValues getValores(){
-        // Agregando los valores de los atributos al content value
-        valores.put("idCiclo", getIdCiclo());
-        valores.put("fechaInicioFeriado", getFechaInicioFeriado());
-        valores.put("fechaFinFeriado", getFechaFinFeriado());
-        valores.put("nombreFeriado", getNombreFeriado());
-        valores.put("descripcionFeriado", getDescripcionFeriado());
-        valores.put("bloquearReservas", isBloquearReservas());
-
-        return valores;
-    }
-
-
-    public List<Ciclo> getCiclos(Context context){
-        helper = new ControlBD(context);
-        List<Ciclo> listaCiclo = new ArrayList<Ciclo>();
-        //insertarCiclo(context);
-        helper.abrir();
-        Cursor cursor = helper.getDb().rawQuery("SELECT idCiclo, nombreCiclo FROM ciclo", null);
-        if (cursor.moveToFirst()){
-            do {
-                Ciclo ciclo = new Ciclo();
-                ciclo.setIdCiclo(cursor.getInt(0));
-                ciclo.setNombreCiclo(cursor.getString(1));
-                listaCiclo.add(ciclo);
-            }while (cursor.moveToNext());
-        }
-        helper.cerrar();
-        return listaCiclo;
-    }
-
-    public void insertarCiclo(Context context){
-        helper = new ControlBD(context);
-        ContentValues ciclo1 = new ContentValues();
-        ciclo1.put("nombreCiclo", "I-2020");
-        ciclo1.put("inicioPeriodoClase","2020/02/20");
-        ciclo1.put("finPeriodoClase","2020/06/15");
-        ciclo1.put("inicio","2020/01/17");
-        ciclo1.put("fin","2020/07/31");
-        ciclo1.put("estadoCiclo",true);
-        ContentValues ciclo2 = new ContentValues();
-        ciclo2.put("nombreCiclo", "II-2020");
-        ciclo2.put("inicioPeriodoClase","2020/08/08");
-        ciclo2.put("finPeriodoClase","2020/12/15");
-        ciclo2.put("inicio","2020/08/01");
-        ciclo2.put("fin","2021/01/15");
-        ciclo2.put("estadoCiclo",false);
-        helper.abrir();
-        helper.getDb().insert("ciclo", null, ciclo1);
-        helper.getDb().insert("ciclo", null, ciclo2);
-        helper.cerrar();
-    }
-
     @Override
     public String guardar(Context context){
         String mensaje = "Registro insertado N° = ";
@@ -189,7 +181,7 @@ public class Feriado extends TablaBD {
         this.valoresCamposTabla.put("bloquearreservas", isBloquearReservas());
 
         helper.abrir();
-        control = helper.getDb().insert("feriados", null, valoresCamposTabla);
+        control = helper.getDb().insert(getNombreTabla(), null, valoresCamposTabla);
         helper.cerrar();
 
         if(control==-1 || control==0)
@@ -203,5 +195,54 @@ public class Feriado extends TablaBD {
         return mensaje;
     }
 
+    /* Método para validar los campos del feriado
+        Parámetros:
+        context -> el contexto de la aplicación
+        caso -> 1 si fecha única
+        caso -> 0 si varias fechas
+        Valores de retorno:
+        0 -> Los campos están correctamente agregados
+        1 -> Campos vacíos
+        2 -> Fechas no están dentro de la duración del ciclo
+        3 -> Fecha fin no es posterior a fecha inicio
+     */
+    public int verificarCampos(Context context, int caso){
+        Ciclo ciclo = new Ciclo();
+        ciclo.consultar(context, Integer.toString(getIdCiclo()));
+
+        // Fechas de inicio y fin
+        if(caso == 0){
+            // Campos vacíos
+            if(getNombreFeriado().equals("") || getDescripcionFeriado().equals("") || getFechaInicioFeriado().equals("")
+                    || getFechaFinFeriado().equals("") || getIdCiclo() < 0) {
+                return 1;
+            }
+            // Fechas durante ciclo
+            if(!FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaInicioFeriado())
+                    || !FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaFinFeriado())){
+                return 2;
+            }
+            // Fecha fin posterior a fecha inicio
+            if(!FechasHelper.fechaEsPosterior(getFechaInicioFeriado(), getFechaFinFeriado())){
+                return 3;
+            }
+        }
+
+        // Fecha única
+        if(caso == 1){
+            // Campos vacíos
+            if(getNombreFeriado().equals("") || getDescripcionFeriado().equals("") || getFechaInicioFeriado().equals("")
+                    || getIdCiclo() < 0) {
+                return 1;
+            }
+            // Fechas durante ciclo
+            if(!FechasHelper.fechaEstaEnmedio(ciclo.getInicio(), ciclo.getFin(), getFechaInicioFeriado())){
+                return 2;
+            }
+        }
+
+        // No hay error
+        return 0;
+    }
 }
 

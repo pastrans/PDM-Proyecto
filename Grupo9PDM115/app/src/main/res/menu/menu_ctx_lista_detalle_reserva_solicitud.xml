@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/cxtAsignarLocal"
+        android:title="Asignar local"/>
+    <item android:id="@+id/ctxAprobar"
+        android:title="Aprobar"/>
+    <item android:id="@+id/ctxEliminarDetalle"
+        android:title="Eliminar detalle"/>
+</menu>

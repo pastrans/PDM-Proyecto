@@ -32,8 +32,8 @@ public class EditarGrupo extends AppCompatActivity {
         helper.abrir();
         control= new NuevoGrupoSpinners(helper);
         helper.cerrar();
-        spinnerTipoGrupo.setAdapter(control.getAdapterTipoGrupo(getApplicationContext()));
-        spinnerCicloMateria.setAdapter(control.getAdapterMateria(getApplicationContext()));
+        spinnerTipoGrupo.setAdapter(control.getAdapterTipoGrupo(this));
+        spinnerCicloMateria.setAdapter(control.getAdapterMateria(this));
         editNumero = (TextView) findViewById(R.id.editNumero);
         int numeroGrupo = 0, idTipoGrupo = 0, idCicloMateria = 0;
         grupo = new Grupo();
@@ -77,10 +77,6 @@ public class EditarGrupo extends AppCompatActivity {
         editNumero.setText("");
         spinnerTipoGrupo.setSelection(0);
         spinnerCicloMateria.setSelection(0);
-    }
-
-    public void btnRegresarEGrupo(View v){
-        finish();
     }
 
     public String verificarDatos(Grupo g){

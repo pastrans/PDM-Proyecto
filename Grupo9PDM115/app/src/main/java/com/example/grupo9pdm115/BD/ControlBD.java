@@ -55,6 +55,12 @@ public class ControlBD {
                     for (String instruccion : instrucciones) {
                         db.execSQL(instruccion);
                     }
+                    db.execSQL("DROP TRIGGER IF EXISTS delete_cascade_solicitud;");
+                    db.execSQL("CREATE TRIGGER delete_cascade_solicitud AFTER DELETE ON [SOLICITUD] BEGIN DELETE FROM RESERVA WHERE IDSOLICITUD = OLD.IDSOLICITUD; END");
+                    db.execSQL("DROP TRIGGER IF EXISTS delete_cascade_reserva;");
+                    db.execSQL("CREATE TRIGGER delete_cascade_reserva AFTER DELETE ON [RESERVA] BEGIN DELETE FROM DETALLERESERVA WHERE IDDETALLERESERVA = OLD.IDDETALLERESERVA; END");
+                    db.execSQL("DROP TRIGGER IF EXISTS update_fechafinreserva;");
+                    db.execSQL("CREATE TRIGGER update_fechafinreserva AFTER UPDATE ON [SOLICITUD] WHEN NEW.NUEVOFINPERIODO IS NOT NULL BEGIN UPDATE DETALLERESERVA SET FINPERIODORESERVA = NEW.NUEVOFINPERIODO WHERE IDDETALLERESERVA IN (SELECT IDDETALLERESERVA FROM RESERVA WHERE IDSOLICITUD = NEW.IDSOLICITUD); END");
                     db.setTransactionSuccessful();
                 } finally {
                     db.endTransaction();

@@ -1,6 +1,5 @@
 package com.example.grupo9pdm115.Activities.Materia;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +25,7 @@ public class GestionarMateria extends AppCompatActivity {
     ListView listaMaterias;
     MateriaAdapter listaMateriasAdapter;
     Materia materia;
+    EditText editnombreMateria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +34,24 @@ public class GestionarMateria extends AppCompatActivity {
 
         //Inicializar elementos para llenar lista
         listaMaterias = (ListView) findViewById(R.id.listaMaterias);
-
+        editnombreMateria = (EditText) findViewById(R.id.editNombreMateria);
         //Llamar método para llenar lista
-        llenarListaMateria();
+        llenarListaMateria(null);
 
         //Asociamos el menú contextual al listview
         registerForContextMenu(listaMaterias);
     }
 
     //Metodo parra llenar lista de materias
-    public void llenarListaMateria(){
+    public void llenarListaMateria(String filtro){
         materia = new Materia();
-        List objetcts = materia.getAll(this);
+        List objetcts;
+
+        if (filtro == null) {
+            objetcts = materia.getAll(this);
+        } else {
+            objetcts = materia.getAllFiltered(this, "codmateria", filtro);
+        }
 
         //Inicializar el adaptador con la información a mostrar
         listaMateriasAdapter = new MateriaAdapter(this, objetcts);
@@ -63,7 +70,7 @@ public class GestionarMateria extends AppCompatActivity {
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaMateria();
+        llenarListaMateria(null);
     }
 
     // Para menú contextual
@@ -80,6 +87,26 @@ public class GestionarMateria extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         // Modificable
         inflater.inflate(R.menu.menu_ctx_lista_materia, menu);
+    }
+
+    public void buscarMateria(View v) {
+        llenarListaCicloMateria(editnombreMateria.getText().toString());
+    }
+    public void llenarListaCicloMateria(String filtro) {
+        materia = new Materia();
+        List objetcts;
+
+        if (filtro == null) {
+            objetcts = materia.getAll(this);
+        } else {
+            objetcts = materia.getAllFiltered(this, "nombremat", filtro);
+        }
+
+        //Inicializar el adaptador con la información a mostrar
+        listaMateriasAdapter = new MateriaAdapter(this, objetcts);
+
+        // Relacionando la lista con el adaptador y llenándola
+        listaMaterias.setAdapter(listaMateriasAdapter);
     }
 
     @Override
@@ -105,7 +132,7 @@ public class GestionarMateria extends AppCompatActivity {
                     String regEliminadas;
                     regEliminadas= materiaActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaMateria();
+                    llenarListaMateria(null);
                 }
                 return true;
             default:

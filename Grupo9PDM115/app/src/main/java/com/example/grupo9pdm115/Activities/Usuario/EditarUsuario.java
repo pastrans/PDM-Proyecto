@@ -42,8 +42,8 @@ public class EditarUsuario extends AppCompatActivity {
         usuarioUnidadSpinnerAdapter = new UsuarioUnidadSpinner(helper);
         rolSpinnerAdapter = new RolSpinner(helper);
         helper.cerrar();
-        spinnerEditarUnidadUsuario.setAdapter(usuarioUnidadSpinnerAdapter.getAdapterUnidad(getApplicationContext()));
-        spinnerEditarRolUsuario.setAdapter(rolSpinnerAdapter.getAdapterRol(getApplicationContext()));
+        spinnerEditarUnidadUsuario.setAdapter(usuarioUnidadSpinnerAdapter.getAdapterUnidad(this));
+        spinnerEditarRolUsuario.setAdapter(rolSpinnerAdapter.getAdapterRol(this));
 
         if (getIntent().getExtras() != null){
             editNombreUsuario.setText(getIntent().getStringExtra("nombreUsuario"));

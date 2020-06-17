@@ -7,6 +7,9 @@ import android.database.Cursor;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetalleReserva extends TablaBD {
 
     private int idDetalleReserva;
@@ -63,6 +66,8 @@ public class DetalleReserva extends TablaBD {
 
     @Override
     public void setAttributesFromArray(String[] arreglo) {
+        String idEventoEspecial = arreglo[4];
+        String idGrupo = arreglo[5];
         setIdDetalleReserva(Integer.valueOf(arreglo[0]));
         setIdDia(Integer.valueOf(arreglo[1]));
         setIdHora(Integer.valueOf(arreglo[2]));
@@ -207,10 +212,14 @@ public class DetalleReserva extends TablaBD {
         this.valoresCamposTabla.put("idDia", getIdDia());
         this.valoresCamposTabla.put("idHora", getIdHora());
         this.valoresCamposTabla.put("idLocal", getIdLocal());
-        if(getIdEventoEspecial() != 0)
+        if(getIdEventoEspecial() != 0){
             this.valoresCamposTabla.put("idEventoEspecial", getIdEventoEspecial());
-        if (getIdGrupo() != 0)
+            this.valoresCamposTabla.put("idGrupo", 0);
+        }
+        if (getIdGrupo() != 0){
             this.valoresCamposTabla.put("idGrupo", getIdGrupo());
+            this.valoresCamposTabla.put("idEventoEspecial", 0);
+        }
         this.valoresCamposTabla.put("estadoReserva", isEstadoReserva());
         this.valoresCamposTabla.put("aprobado", isAprobado());
         this.valoresCamposTabla.put("cupo", getCupo());
@@ -242,6 +251,117 @@ public class DetalleReserva extends TablaBD {
         }
         helper.cerrar();
         return lastId;
+    }
+
+    public List<DetalleReserva> getDetalleReservaSolicitud(Context context, int idSolicitud){
+        ControlBD helper = new ControlBD(context);
+        List<DetalleReserva> detalleReservas = new ArrayList<DetalleReserva>();
+        helper.abrir();
+        Cursor cursor;
+        String[] valores = new String[getCamposTabla().length];
+        String sql = "select dr.IDDETALLERESERVA, dr.IDDIA, dr.IDHORA, dr.IDLOCAL, dr.IDEVENTOESPECIAL, dr.IDGRUPO, dr.ESTADORESERVA, dr.APROBADO, dr.CUPO, dr.INICIOPERIODORESERVA, dr.FINPERIODORESERVA \n" +
+                "from DETALLERESERVA dr, RESERVA r, SOLICITUD s, HORARIO h\n" +
+                "where dr.IDDETALLERESERVA = r.IDDETALLERESERVA\n" +
+                "and s.IDSOLICITUD = r.IDSOLICITUD\n" +
+                "and dr.IDHORA = h.IDHORA\n" +
+                "AND s.IDSOLICITUD = " + idSolicitud +"\n" +
+                "ORDER BY h.HORAINICIO, dr.IDLOCAL;";
+        cursor = helper.consultar(sql);
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                detalleReservas.add(this.getInstanceOfModel(valores));
+            }while (cursor.moveToNext());
+        }
+        return detalleReservas;
+    }
+
+    public String aprobar(Context context, List detalles){
+        boolean seguir = true;
+        String resultado = "";
+        ControlBD helper = new ControlBD(context);
+        //int control;
+        helper.abrir();
+        for(int i = 0; i < detalles.size(); i++){
+            DetalleReserva detalle = (DetalleReserva) detalles.get(i);
+            if(!validar(context, 1, detalle)){
+                seguir = false;
+                resultado = "";
+            }
+        }
+
+        if(!seguir)
+            return "";
+
+        for(int i = 0; i< detalles.size(); i++){
+            DetalleReserva detalle = (DetalleReserva) detalles.get(i);
+            detalle.setAprobado(true);
+            detalle.setEstadoReserva(true);
+            detalle.valoresCamposTabla.put("aprobado", true);
+            detalle.valoresCamposTabla.put("estadoReserva", true);
+            String res = detalle.actualizar(context);
+            //String res = "Registro no existente";
+            //control = helper.actualizar(detalle.getNombreTabla(), detalle.getValoresCamposTabla(), detalle.getNombreLlavePrimaria(), detalle.getValorLlavePrimaria());
+            if(res.equals("Registro no existente."))
+                resultado = "";
+            else
+                resultado = String.valueOf(detalle.isAprobado());
+        }
+        helper.cerrar();
+        return resultado;
+    }
+
+
+    public boolean validar(Context context, int opcion, DetalleReserva detalle){
+        boolean result = false;
+        ControlBD helper = new ControlBD(context);
+        String sql = "";
+        Cursor resp;
+        helper.abrir();
+        switch (opcion){
+            case 1 :
+                int count = 0;
+                sql = "SELECT COUNT(de.IDLOCAL) FROM DETALLERESERVA de\n" +
+                        "WHERE de.IDDIA = " + detalle.getIdDia() +"\n" +
+                        "AND de.IDLOCAL = " + detalle.getIdLocal() + "\n" +
+                        "AND de.IDHORA = " + detalle.getIdHora() + "\n" +
+                        "AND (de.INICIOPERIODORESERVA = '" + detalle.getInicioPeriodoReserva() + "' OR '"+ detalle.getInicioPeriodoReserva() +"' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
+                        "AND APROBADO = 1 AND ESTADORESERVA = 1";
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
+            case 2 :
+                sql = "SELECT COUNT(f.IDFERIADO) FROM FERIADO f \n" +
+                        "WHERE (('"+ detalle.getInicioPeriodoReserva() + "' BETWEEN f.FECHAINICIOFERIADO AND f.FECHAFINFERIADO)\n" +
+                        "OR '"+ detalle.getFinPeriodoReserva() +"' BETWEEN f.FECHAFINFERIADO AND f.FECHAFINFERIADO)\n" +
+                        "AND f.BLOQUEARRESERVAS = 1;";
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
+            case 3:
+                sql = "SELECT COUNT(IDDETALLERESERVA) FROM DETALLERESERVA WHERE IDGRUPO = " + detalle.getIdGrupo() + " AND IDDIA = " + detalle.getIdDia();
+                resp = helper.consultar(sql);
+                resp.moveToFirst();
+                if(resp.getInt(0) == 0)
+                    result = true;
+                else
+                    result = false;
+                break;
+            default:
+                result = false;
+                break;
+        }
+        return result;
     }
 
 }

@@ -19,11 +19,18 @@ public class MainActivity extends ListActivity  {
     ControlBD BDhelper;
 
 
-    String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo","Coordinación", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Detalle Reserva"};
+
+    String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo", "Coordinación","Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Solicitudes recibidas"};
     String[] activities = {"Cerrar Sesión", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
             "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
             "TipoGrupo.GestionarTipoGrupo","Coordinacion.GestionarCoordinacion","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
-            "Usuario.GestionarUsuario","Horario.GestionarHorario","Rol.GestionarRol","Solicitud.GestionarSolicitud","DetalleReserva.GestionarDetalleReserva"};
+            "Usuario.GestionarUsuario","Horario.GestionarHorario","Rol.GestionarRol","Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado"};
+
+    /*String[] menu = {"Cerrar sesión", "Ciclo", "Feriado", "Local", "Tipos de local", "Materia", "Unidad", "Grupo", "Tipos de grupo","Coordinación", "Materias del ciclo", "Dias", "Usuario","Horario", "Rol","Solicitud","Detalle Reserva"};
+    String[] activities = {"Cerrar Sesión", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado", "Local.GestionarLocal",
+            "TipoLocal.GestionarTipoLocal", "Materia.GestionarMateria", "Unidad.GestionarUnidad", "Grupo.GestionarGrupo",
+            "TipoGrupo.GestionarTipoGrupo","Coordinacion.GestionarCoordinacion","CicloMateria.GestionarCicloMateria", "Dia.GestionarDia",
+            "Usuario.GestionarUsuario","Horario.GestionarHorario","Rol.GestionarRol","Solicitud.GestionarSolicitud","DetalleReserva.GestionarDetalleReserva"};*/
 
 
     @Override
@@ -87,9 +94,10 @@ public class MainActivity extends ListActivity  {
             BDhelper.cerrar();*/
 
             // Código para cerrar sesión
-            Sesion.setLooggedIn(getApplicationContext(), false);
-            Sesion.setNombreUsuario(getApplicationContext(), "");
-            Sesion.setAccesoUsuario(getApplicationContext(), null);
+            Sesion.setLooggedIn(this, false);
+            Sesion.setNombreUsuario(this, "");
+            Sesion.setAccesoUsuario(this, null);
+            Sesion.setIdUsuario(this, null);
             Intent intent = new Intent(this, IniciarSesion.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);

@@ -31,8 +31,8 @@ public class NuevoGrupo extends AppCompatActivity {
         helper.abrir();
         control= new NuevoGrupoSpinners(helper);
         helper.cerrar();
-        idTipoGrupo.setAdapter(control.getAdapterTipoGrupo(getApplicationContext()));
-        idCicloMateria.setAdapter(control.getAdapterMateria(getApplicationContext()));
+        idTipoGrupo.setAdapter(control.getAdapterTipoGrupo(this));
+        idCicloMateria.setAdapter(control.getAdapterMateria(this));
 
     }
     public void btnNuevoNGrupo(View v){
@@ -81,9 +81,6 @@ public class NuevoGrupo extends AppCompatActivity {
         idCicloMateria.setSelection(0);
     }
 
-    public void btnRegresarNGrupo(View v){
-        finish();
-    }
 
     public String verificarDatos(Grupo g){
         if(g.getNumero() < 1)

@@ -41,7 +41,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
         helper.abrir();
         usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
-        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(getApplicationContext()));
+        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
 
     }
 

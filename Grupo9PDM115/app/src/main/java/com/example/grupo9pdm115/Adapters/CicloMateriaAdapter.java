@@ -50,7 +50,7 @@ public class CicloMateriaAdapter  extends ArrayAdapter<CicloMateria> {
         unidad = new Unidad();
         // Setup view
         // llenamos los campos de materia
-        //Log.i("CicloMateriaAdapter", "codigo materia: "+cmActual.getCodMateria());
+        Log.i("CicloMateriaAdapter", "ID Ciclo Materia:  " +cmActual.getIdCicloMateria());
         materia.consultar(getContext(),cmActual.getCodMateria());
         codMateria.setText(materia.getCodMateria());
         // llenamos los campos de unidad

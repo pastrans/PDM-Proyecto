@@ -29,7 +29,8 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:id="@+id/layoutEventoEspecialDetalleREN">
+                android:id="@+id/layoutEventoEspecialDetalleREN"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="50dp"

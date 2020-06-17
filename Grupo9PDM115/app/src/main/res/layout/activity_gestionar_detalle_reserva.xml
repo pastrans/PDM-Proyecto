@@ -5,18 +5,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-    <!-- Título -->
-    <TextView
-        android:text="@string/titGestionarDetalleReserva"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
+            <!-- Título -->
+            <TextView
+                android:id="@+id/txtTituloGestionarDetalle"
+                android:text="@string/titGestionarDetalleReserva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"/>
             <LinearLayout
+                android:id="@+id/layoutBusquedaDR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -44,33 +50,71 @@
                     android:inputType="text"/>
             </LinearLayout>
 
-    <!-- Botón nuevo -->
-    <Button
-        android:id="@+id/btnNuevoDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnNuevoGDetalleReserva"
-        android:text="@string/btnNuevoGDetalleReserva" />
+            <!-- Botón nuevo -->
+            <Button
+                android:id="@+id/btnNuevoDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btnNuevoGDetalleReserva"
+                android:text="@string/btnNuevoGDetalleReserva" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnNuevoGDetalleReservaE"
-        android:text="ESPECIAL"
-        />
-    <!-- Lista días -->
-    <TextView
-        android:text="@string/txtListaDetalleReserva"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingBottom="5dp"/>
+            <Button
+                android:id="@+id/btnNuevoDetalleEspecial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btnNuevoGDetalleReservaE"
+                android:text="ESPECIAL"
+                />
 
-    <ListView
-        android:id="@+id/listaDetalleReserva"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null" />
+            <LinearLayout
+                android:id="@+id/layoutComentarioSolicitud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Comentario de la solicitud:"
+                    />
+                <EditText
+                    android:id="@+id/edtComentarioSolicitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="guardarSolicitudRevisar"
+                    android:text="Guardar"
+                    />
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/txtListaDetalleReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingBottom="5dp"/>
+
+        <ListView
+            android:id="@+id/listaDetalleReserva"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#E5E5E5"
+            android:dividerHeight="2dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

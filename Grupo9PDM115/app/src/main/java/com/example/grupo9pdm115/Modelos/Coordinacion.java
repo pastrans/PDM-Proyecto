@@ -2,6 +2,8 @@ package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -13,12 +15,16 @@ public class Coordinacion  extends TablaBD {
     private ContentValues valores = new ContentValues();
 
 
-
     // Atributos
     private int idCoodinacion;
     private int idCicloMateria;
     private String idUsuario;
     private String tipoCoordinacion;
+    public Coordinacion() {
+        setNombreTabla("coordinacion");
+        setNombreLlavePrimaria("idcoordinacion");
+        setCamposTabla(new String[]{"idcoordinacion","idusuario", "idciclomateria","tipocoordinacion" });
+    }
 
     @Override
     public String getNombreTabla() {
@@ -96,14 +102,31 @@ public class Coordinacion  extends TablaBD {
         coordinacion.setAttributesFromArray(arreglo);
         return coordinacion;
     }
+    public boolean verificarRegistro (Context context, int idCiclomateria, String tipo){
+        boolean resultado = false;
+        ControlBD helper = new ControlBD(context);
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE "
+                + " idciclomateria  = "+idCiclomateria +  " and tipocoordinacion = "+"\"" +tipo +"\"" ;
 
+        Log.i("Coordinacion", "se hizo la consulta");
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+        if(cursor.moveToNext()){
+            Log.i("Coordinacion", "Se encontro registo: ");
+            resultado = true;
+        }
+        Log.i("Coordinacion", "me retorna: " + resultado);
+        helper.cerrar();
+
+        return resultado;
+    }
 
     @Override
     public String guardar(Context context){
         String mensaje = "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
-        this.valoresCamposTabla.put("idcoordinacion", getIdCoodinacion());
+        //this.valoresCamposTabla.put("idcoordinacion", getIdCoodinacion());
         this.valoresCamposTabla.put("idusuario", getIdUsuario());
         this.valoresCamposTabla.put("idciclomateria", getIdCicloMateria());
         this.valoresCamposTabla.put("tipocoordinacion", getTipoCoordinacion());

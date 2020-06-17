@@ -94,9 +94,6 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
 
 
     }
-    public void btnRegresar(View v){
-        super.onBackPressed();
-    }
     int validarCodMateria(String codigo){
         int num = 0;
         Materia mat = new Materia();
@@ -110,7 +107,7 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
 
     }
     //Limpiar campos
-    public void btnLimpiarNCicloMateria(View v) {
+    public void btnLimpiarECicloMateria(View v) {
         editCodMateria.setText("");
         idCiclo.setSelection(0);
     }

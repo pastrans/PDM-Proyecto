@@ -109,7 +109,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.ctxActualizarCoordinacion:
                 if(coorActual != null){
-                    Intent intent = new Intent(getApplicationContext(), EditarMateria.class);
+                    Intent intent = new Intent(getApplicationContext(), EditarCoordinacion.class);
                     intent.putExtra("idcoordinacion", coorActual.getIdCoodinacion());
                     intent.putExtra("idusuario", coorActual.getIdUsuario());
                     intent.putExtra("idciclomateria", coorActual.getIdCicloMateria());

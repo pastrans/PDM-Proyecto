@@ -51,11 +51,10 @@ public class CoordinacionAdapter  extends ArrayAdapter<Coordinacion> {
         // llenamos los campos
 
         cm.consultar(getContext(),Integer.toString(coordinacionActual.getIdCicloMateria()));
-        codMateria.setText(cm.getCodMateria());
+        codMateria.setText( cm.getCodMateria()+ " " + coordinacionActual.getTipoCoordinacion());
         // llenamos los campos de unidad
-        Log.i("CoordinacionAdapter", "El ID usaurio:  "+coordinacionActual.getIdUsuario() );
         usuario.consultar(getContext(),coordinacionActual.getIdUsuario());
-        nombreUsuario.setText(usuario.getNombrePersonal());
+        nombreUsuario.setText("Coordinador: " + usuario.getNombrePersonal());
 
 
         return convertView;

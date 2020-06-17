@@ -79,10 +79,6 @@ public class EditarGrupo extends AppCompatActivity {
         spinnerCicloMateria.setSelection(0);
     }
 
-    public void btnRegresarEGrupo(View v){
-        finish();
-    }
-
     public String verificarDatos(Grupo g){
         if(g.getNumero() < 1)
             return "Ingrese un número de grupo válido";

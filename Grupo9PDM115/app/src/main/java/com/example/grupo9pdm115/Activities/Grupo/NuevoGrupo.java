@@ -81,9 +81,6 @@ public class NuevoGrupo extends AppCompatActivity {
         idCicloMateria.setSelection(0);
     }
 
-    public void btnRegresarNGrupo(View v){
-        finish();
-    }
 
     public String verificarDatos(Grupo g){
         if(g.getNumero() < 1)

@@ -411,4 +411,12 @@
     <string name="titEditarDetalleReserva">Editar Detalle Reserva</string>
     <string name="btnLimpiarTextoEDetalleReserva">Limpiar</string>
     <string name="btnEditarEDetalleReserva">Editar</string>
+
+    // Menú principal
+    <string name="txtControlUsuario">Control de usuarios</string>
+    <string name="txtGestionarUsuario">> Gestionar usuarios</string>
+    <string name="txtGestionarRol">> Gestionar roles</string>
+    <string name="txtControlAcademico">Control académico</string>
+    <string name="txtControlLocales">Control de locales</string>
+    <string name="txtReservas">Reservas</string>
 </resources>

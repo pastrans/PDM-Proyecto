@@ -35,7 +35,7 @@ public class EditarTipoLocal extends AppCompatActivity {
         helper.abrir();
         usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
-        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(getApplicationContext()));
+        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
         if (getIntent().getExtras() != null){
             tipoLocalClass.setIdTipoLocal(getIntent().getIntExtra("idTipoLocal", 0));
             edtNombreTipo.setText(getIntent().getStringExtra("nombreTipo"));

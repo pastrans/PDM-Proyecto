@@ -41,7 +41,7 @@ public class NuevoLocal extends AppCompatActivity {
         helper.abrir();
         tipoLocalAdapter = new TipoLocalSpinner(helper);
         helper.cerrar();
-        tipoLocalSpinner.setAdapter(tipoLocalAdapter.getAdapterTipoLocal(getApplicationContext()));
+        tipoLocalSpinner.setAdapter(tipoLocalAdapter.getAdapterTipoLocal(this));
     }
 
     public void btnAgregarNLocal(View v){

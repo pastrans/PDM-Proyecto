@@ -32,7 +32,7 @@ public class UsuarioSpinner {
         }
     }
     public ArrayAdapter getAdapterUsuario(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoUsuario);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoUsuario);
         return adapter;
     }
     public String getIdUsuario(int posicion){

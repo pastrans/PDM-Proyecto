@@ -95,9 +95,9 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         helper.cerrar();
 
 
-        spinnerDia.setAdapter(diaSpinnerAdapter.getAdapterDia(getApplication()));
-        spinnerHora.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
-        spinnerTipoGrupo.setAdapter(tipoGrupoSpinnerAdapter.getAdapterTipoGrupo(getApplication()));
+        spinnerDia.setAdapter(diaSpinnerAdapter.getAdapterDia(this));
+        spinnerHora.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
+        spinnerTipoGrupo.setAdapter(tipoGrupoSpinnerAdapter.getAdapterTipoGrupo(this));
 
 
         edtFechaInicio.setOnClickListener(this);

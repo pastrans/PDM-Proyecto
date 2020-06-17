@@ -1,96 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1"
-    android:padding="15dp">
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <TextView
-        android:text="@string/titEditarCiclo"
-        android:textSize="30sp"
-        android:paddingBottom="5dp"/>
-
-    <TableRow>
-        <TextView
-            android:text="@string/txtNombreCiclo"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"/>
-        <EditText
-            android:id="@+id/editNombreCiclo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="20"/>
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="@string/txtInicioCiclo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"            />
-        <EditText
-            android:id="@+id/editInicioCiclo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="10"
-            android:focusable="false"
-            android:clickable="true"/>
-    </TableRow>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtFinCiclo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp" />
-        <EditText
-            android:id="@+id/editFinCiclo"
-            android:inputType="date"
-            android:maxLength="10"
-            android:focusable="false"
-            android:clickable="true"/>
-    </TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titEditarCiclo"
+                android:textSize="30sp"
+                android:paddingBottom="5dp"/>
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtInicioPeriodoClase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp" />
-        <EditText
-            android:id="@+id/editInicioClases"
-            android:inputType="date"
-            android:maxLength="10"
-            android:focusable="false"
-            android:clickable="true"/>
-    </TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    <TableRow>
-        <TextView
-            android:text="@string/txtFinPeriodoClase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp" />
-        <EditText
-            android:id="@+id/editFinClases"
-            android:inputType="date"
-            android:maxLength="10"
-            android:focusable="false"
-            android:clickable="true"/>
-    </TableRow>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtNombreCiclo" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editNombreCiclo"
+                    android:inputType="text"
+                    android:maxLength="30"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:text="@string/txtInicioCiclo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"      />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editInicioCiclo"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
 
-    <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtFinCiclo"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editFinCiclo"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtInicioPeriodoClase" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editInicioClases"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <Button
-            android:onClick="actualizarCiclo"
-            android:text="@string/btnActualizarCiclo" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="0.70"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/txtFinPeriodoClase" />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1.3"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:id="@+id/editFinClases"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/btnLimpiarTextoNCiclo" />
-    </TableRow>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="limpiarTexto"
+                    android:text="@string/btnLimpiarTextoNCiclo" />
 
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:onClick="actualizarCiclo"
+                    android:text="@string/btnActualizarCiclo" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
-</TableLayout>
+</LinearLayout>

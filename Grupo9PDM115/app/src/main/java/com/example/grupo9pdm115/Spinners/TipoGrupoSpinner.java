@@ -33,7 +33,7 @@ public class TipoGrupoSpinner {
     }
 
     public ArrayAdapter getAdapterTipoGrupo (Context ctx){
-        ArrayAdapter adapter = new ArrayAdapter<String>( ctx.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,contenidoTipoGrupo);
+        ArrayAdapter adapter = new ArrayAdapter<String>( ctx, android.R.layout.simple_spinner_dropdown_item,contenidoTipoGrupo);
         // aquí cargamos lo que queremos mostrar en nuestro caso es la lista de contenido
         return adapter ;
     }

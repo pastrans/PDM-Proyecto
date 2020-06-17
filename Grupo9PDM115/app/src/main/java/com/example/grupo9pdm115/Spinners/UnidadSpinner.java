@@ -42,7 +42,7 @@ public class UnidadSpinner {
     }
     //Inicio de métodos
     public ArrayAdapter getAdapterUnidad (Context ctx){
-        ArrayAdapter adapter = new ArrayAdapter<String>( ctx.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, contenidoUnidad);
+        ArrayAdapter adapter = new ArrayAdapter<String>( ctx, android.R.layout.simple_spinner_dropdown_item, contenidoUnidad);
         // aquí cargamos lo que queremos mostrar en nuestro caso es la lista de contenido
         return adapter ;
     }

@@ -29,6 +29,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
         layoutControlUsuario.setOnClickListener(this);
         layoutControlAcademico.setOnClickListener(this);
+        layoutControlLocales.setOnClickListener(this);
     }
 
     @Override

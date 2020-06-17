@@ -59,15 +59,29 @@ public class EditarLocal extends AppCompatActivity {
         String res = "";
         posTipoLocal = tipoLocalSpinner.getSelectedItemPosition();
         local.setNombreLocal(nombreLocal.getText().toString());
-        local.setCapacidad(Integer.valueOf(capcidad.getText().toString()));
+        local.setCapacidad(Integer.parseInt(capcidad.getText().toString()));
         local.setIdtipolocal(tipoLocalAdapter.getIdTipoLocal(posTipoLocal));
-        res = local.actualizar(this);
+        if(local.getNombreLocal().isEmpty()){
+            res="EL nombre está vacio";
+        }
+        else{
+            if(local.getCapacidad() <= 0){
+                res = "La capacidad debe ser mayor a cero";
+            }else {
+                if (local.getIdtipolocal() == 0) {
+                    res = "Escoga un tipo de local";
+                } else {
+                    res = local.actualizar(this);
+                }
+            }
+        }
+        //res = local.actualizar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
     }
 
     public void btnLimpiarELocal(View v){
         nombreLocal.setText("");
-        capcidad.setText("0");
+        capcidad.setText("");
         tipoLocalSpinner.setSelection(0);
     }
 

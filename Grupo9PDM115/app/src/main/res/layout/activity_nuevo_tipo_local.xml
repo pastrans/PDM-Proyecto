@@ -45,8 +45,4 @@
             tools:ignore="OnClick" />
     </TableRow>
 
-    <Button
-        android:onClick="btnRegresarNTipoLocal"
-        android:text="@string/btnRegresarNTipoLocal"
-        tools:ignore="OnClick" />
 </TableLayout>

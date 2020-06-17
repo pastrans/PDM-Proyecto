@@ -132,25 +132,22 @@
 
     //Variables Tipo Local
     //Etiquetas
-    <string name="txtNombreTipoLocal">Nombre </string>
+    <string name="txtNombreTipoLocal">Nombre: </string>
     <string name="txtEncargado">Encargado</string>
     //Gestionar Tipo Local
     <string name="titGestionarTipoLocal">Gestionar Tipo Local</string>
     <string name="idListadoTiposLocales">Listado de tipos de local:</string>
     <string name="btnNuevoGTipoLocal">Nuevo</string>
     <string name="btnEditarGTipoLocal">Editar</string>
-    <string name="btnEliminarGTipoLocal">Eliminar</string>
-    <string name="btnRegresarGTipoLocal">Regresar</string>
+
     //Nuevo Tipo Local
     <string name="titNuevoTipoLocal">Nuevo Tipo Local</string>
     <string name="btnAgregarNTipoLocal">Agregar</string>
     <string name="btnLimpiarNTipoLocal">Limpiar</string>
-    <string name="btnRegresarNTipoLocal">Regresar</string>
     //Editar Tipo Local
     <string name="titEditarTipoLocal">Editar Tipo Local</string>
     <string name="btnEditarETipoLocal">Agregar</string>
     <string name="btnLimpiarETipoLocal">Limpiar</string>
-    <string name="btnRegresarETipoLocal">Regresar</string>
     // Lista tipo local
     <string name="txtNombreEncargado">Encargado:</string>
     <string name="txtCodEncargado">Código:</string>
@@ -158,26 +155,22 @@
 
     //Variables Local
     //Etiquetas
-    <string name="txtNombreLocal">Nombre </string>
-    <string name="txtCapacidad">Capacidad</string>
-    <string name="txtTipoLocal">Tipo local</string>
+    <string name="txtNombreLocal">Nombre: </string>
+    <string name="txtCapacidad">Capacidad:</string>
+    <string name="txtTipoLocal">Tipo local:</string>
     //Gestionar Local
     <string name="titGestionarLocal">Gestionar Local</string>
     <string name="idListadoLocales">Listado de locales</string>
     <string name="btnNuevoGLocal">Nuevo</string>
     <string name="btnEditarGLocal">Editar</string>
-    <string name="btnEliminarGLocal">Eliminar</string>
-    <string name="btnRegresarGLocal">Regresar</string>
     //Nuevo Local
     <string name="titNuevoLocal">Nuevo Local</string>
     <string name="btnAgregarNLocal">Agregar</string>
     <string name="btnLimpiarNLocal">Limpiar</string>
-    <string name="btnRegresarNLocal">Regresar</string>
     //Editar Local
     <string name="titEditarLocal">Editar Local</string>
     <string name="btnEditarELocal">Editar</string>
     <string name="btnLimpiarELocal">Limpiar</string>
-    <string name="btnRegresarELocal">Regresar</string>
 
     //Variables Tipo Grupo
     //Etiquetas

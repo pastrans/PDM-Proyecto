@@ -5,54 +5,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Local.NuevoLocal">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titEditarLocal"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-    <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <TextView android:text="@string/txtNombreLocal" />
+        <TextView
+            android:text="@string/txtNombreLocal"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editNombreLocal"
             android:inputType="text"
             android:maxLength="25" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/txtCapacidad" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+        <TextView
+            android:text="@string/txtCapacidad"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editCapacidad"
             android:inputType="numberDecimal"
             android:maxLength="30"
             />
-    </TableRow>
-    <TableRow>
+            </LinearLayout>
 
-        <TextView android:text="@string/txtTipoLocal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+        <TextView
+            android:text="@string/txtTipoLocal"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"/>
         <Spinner
             android:id="@+id/spinnerTipoLocal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </TableRow>
-    <TableRow>
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
         <Button
-            android:onClick="btnEditarELocal"
-            android:text="@string/btnEditarELocal"
-            tools:ignore="OnClick" />
-
-        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:onClick="btnLimpiarELocal"
             android:text="@string/btnLimpiarELocal"
             tools:ignore="OnClick" />
-    </TableRow>
-    <Button
-        android:onClick="btnRegresarELocal"
-        android:text="@string/btnRegresarELocal"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:onClick="btnEditarELocal"
+            android:text="@string/btnEditarELocal"
+            tools:ignore="OnClick" />
+        </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </TableLayout>

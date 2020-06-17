@@ -51,20 +51,28 @@ public class NuevoLocal extends AppCompatActivity {
         local.setNombreLocal(nombreLocal.getText().toString());
         local.setCapacidad(Integer.parseInt(capcidad.getText().toString()));
         local.setIdtipolocal(tipoLocalAdapter.getIdTipoLocal(posTipoLocal));
-        helper.abrir();
-        regInsertados = local.guardar(this);
-        helper.cerrar();
+        if(local.getNombreLocal().isEmpty()){
+            regInsertados="EL nombre está vacio";
+        }
+        else{
+            if(local.getCapacidad() <= 0){
+                regInsertados = "La capacidad debe ser mayor a cero";
+            }else {
+                if (local.getIdtipolocal() == 0) {
+                    regInsertados = "Escoga un tipo de local";
+                } else {
+                    regInsertados = local.guardar(this);
+                }
+            }
+        }
+        //regInsertados = local.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
     public void btnLimpiarNLocal(View v){
         nombreLocal.setText("");
-        capcidad.setText("0");
+        capcidad.setText("");
         tipoLocalSpinner.setSelection(0);
-    }
-
-    public void btnRegresarNLocal(View v){
-        finish();
     }
 
 }

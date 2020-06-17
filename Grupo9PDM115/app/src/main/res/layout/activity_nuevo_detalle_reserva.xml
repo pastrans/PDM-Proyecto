@@ -297,17 +297,7 @@
                     android:onClick="btnAgregarNDetalleReserva"
                     android:text="@string/btnAgregarNDetalleReserva" />"
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btnRegresarEUsuario"
-                    android:onClick="btnBackSolicitud"
-                    />
-            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

@@ -31,7 +31,7 @@ public class DiaSpinner {
     }
 
     public ArrayAdapter getAdapterDia(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoDia);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoDia);
         return adapter;
     }
 

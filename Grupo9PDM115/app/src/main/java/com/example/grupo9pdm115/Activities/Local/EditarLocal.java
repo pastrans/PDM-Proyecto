@@ -37,7 +37,7 @@ public class EditarLocal extends AppCompatActivity {
         helper.abrir();
         tipoLocalAdapter = new TipoLocalSpinner(helper);
         helper.cerrar();
-        tipoLocalSpinner.setAdapter(tipoLocalAdapter.getAdapterTipoLocal(getApplicationContext()));
+        tipoLocalSpinner.setAdapter(tipoLocalAdapter.getAdapterTipoLocal(this));
         int idTipoLocal = 0;
         if (getIntent().getExtras() != null){
             int capacidad = 0;

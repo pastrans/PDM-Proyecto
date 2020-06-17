@@ -30,7 +30,7 @@ public class TipoLocalSpinner {
     }
 
     public ArrayAdapter getAdapterTipoLocal(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoTipoLocal);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoTipoLocal);
         return adapter;
     }
 

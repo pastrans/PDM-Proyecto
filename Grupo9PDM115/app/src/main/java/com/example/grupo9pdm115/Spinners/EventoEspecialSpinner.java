@@ -34,7 +34,7 @@ public class EventoEspecialSpinner {
     }
 
     public ArrayAdapter getAdapterEventoEspecial(Context context){
-        ArrayAdapter adapter = new ArrayAdapter<String>(context.getApplicationContext(), android.R.layout.simple_spinner_item, contenidoEventoEspecial);
+        ArrayAdapter adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, contenidoEventoEspecial);
         return adapter;
     }
 

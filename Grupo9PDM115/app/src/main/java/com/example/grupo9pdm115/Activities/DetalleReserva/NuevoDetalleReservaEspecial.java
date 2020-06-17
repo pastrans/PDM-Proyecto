@@ -77,8 +77,8 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         helper.cerrar();
 
         //spinnerEventoEspecial.setAdapter(eventoEspecialSpinnerAdapter.getAdapterEventoEspecial(getApplication()));
-        spinnerHoraInicial.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
-        spinnerHoraFinal.setAdapter(horarioSpinnerAdapter.getAdapterHorario(getApplication()));
+        spinnerHoraInicial.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
+        spinnerHoraFinal.setAdapter(horarioSpinnerAdapter.getAdapterHorario(this));
 
         edtFechaReserva.setOnClickListener(this);
         edtFechaReserva.setText(FechasHelper.cambiarFormatoIsoALocal(fechaReserva));

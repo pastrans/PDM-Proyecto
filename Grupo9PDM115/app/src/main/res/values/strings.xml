@@ -417,20 +417,29 @@
     <string name="txtControlUsuario">Control de usuarios</string>
     <string name="txtGestionarUsuario">Gestionar usuarios</string>
     <string name="txtGestionarRol">Gestionar roles</string>
-    // Control académico
-    <string name="txtControlAcademico">Control académico</string>
+    // Administración académica
+    <string name="txtAdminAcademica">Administración académica</string>
     <string name="txtGestionarCiclo">Gestionar ciclos</string>
     <string name="txtGestionarFeriado">Gestionar feriados</string>
     <string name="txtGestionarUnidad">Gestionar unidades</string>
     <string name="txtGestionarMateria">Gestionar materias</string>
+    <string name="txtGestionarTipoGrupo">Gestionar tipos de grupo</string>
+    // Carga académica
+    <string name="txtCargaAcademica">Carga académica</string>
     <string name="txtGestionarCicloMateria">Gestionar materias del ciclo</string>
     <string name="txtGestionarCoordinacion">Gestionar coordinación</string>
     <string name="txtGestionarGrupo">Gestionar grupos</string>
-    <string name="txtGestionarTipoGrupo">Gestionar tipos de grupo</string>
     // Control de locales
     <string name="txtControlLocales">Control de locales</string>
     <string name="txtGestionarLocal">Gestionar locales</string>
     <string name="txtGestionarTipoLocal">Gestionar tipos de local</string>
     // Reservas
     <string name="txtReservas">Reservas</string>
+    <string name="txtGestionarSolicitud">Gestionar solicitudes</string>
+    <string name="txtSolicitudesRecibidas">Solicitudes recibidas</string>
+    // Otros
+    <string name="txtDiaMenu">Dia</string>
+    <string name="txtHorarioMenu">Horario</string>
+    <string name="txtCerrarSesion">Cerrar sesión</string>
+
 </resources>

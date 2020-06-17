@@ -26,7 +26,7 @@ public class IniciarSesion extends AppCompatActivity {
         nombreUsuario = (EditText) findViewById(R.id.txtNombreUsuario);
         claveUsuario = (EditText) findViewById(R.id.txtClaveUsuario);
         if (Sesion.getLoggedIn(getApplicationContext())){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
             finish();
@@ -42,7 +42,7 @@ public class IniciarSesion extends AppCompatActivity {
             Sesion.setLooggedIn(this, true);
             Sesion.setNombreUsuario(this, usuario.getNombreUsuario());
             Sesion.setIdUsuario(this, usuario.getIdUsuario());
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MenuPrincipal.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
             finish();

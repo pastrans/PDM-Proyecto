@@ -30,7 +30,7 @@
     <string name="btnLimpiarTextoNCiclo">Limpiar</string>
     //Editar Ciclo
     <string name="titEditarCiclo">Editar Ciclo</string>
-    <string name="btnActualizarCiclo">Guardar</string>
+    <string name="btnActualizarCiclo">Editar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
     // Menú contextual lista ciclos
     <string name="ctxListaCiclosActualizar">Actualizar</string>

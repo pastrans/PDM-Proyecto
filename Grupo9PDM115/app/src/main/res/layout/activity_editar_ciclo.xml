@@ -175,7 +175,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:onClick="limpiarTexto"
-                    android:text="@string/btnLimpiarTextoNCiclo" />
+                    android:text="@string/btnLimpiarTextoECiclo" />
 
                 <Button
                     android:layout_width="0dp"

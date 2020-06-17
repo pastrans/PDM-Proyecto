@@ -46,11 +46,10 @@
     </LinearLayout>
     <TextView
         android:paddingTop="5dp"
-        android:text="Usuarios ingresados"
+        android:text="@string/txtListaUsuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <ListView
         android:paddingTop="15dp"

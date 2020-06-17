@@ -54,10 +54,5 @@
             android:text="@string/btnLimpiarECoordinador"
             tools:ignore="OnClick" />
     </TableRow>
-    <Button
-        android:onClick="btnRegresareCoordinador"
-        android:text="@string/btnRegresarECoordinador"
-        tools:ignore="OnClick" />
-
 
 </TableLayout>

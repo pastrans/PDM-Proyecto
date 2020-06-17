@@ -7,7 +7,7 @@
 
     <!-- Título -->
     <TextView
-        android:text="Gestionar Materia"
+        android:text="@string/titGestionarMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -41,7 +41,7 @@
     </LinearLayout>
     <!-- Lista días -->
     <TextView
-        android:text="Listado de materias ingresadas"
+        android:text="@string/txtListaMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"

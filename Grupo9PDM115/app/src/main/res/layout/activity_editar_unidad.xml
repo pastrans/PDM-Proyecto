@@ -15,11 +15,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titEditarUnidad"
-        android:textSize="30sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titEditarUnidad"
+                android:textSize="30sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -104,29 +104,29 @@
                     />
             </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:onClick="btnLimpiarTextoNUnidad"
-            android:text="@string/btnLimpiarEUnidad" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnEditarEUnidad"
-            android:onClick="actualizarU"
-            tools:ignore="OnClick" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="btnLimpiarTextoNUnidad"
+                    android:text="@string/btnLimpiarEUnidad" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/btnEditarEUnidad"
+                    android:onClick="actualizarU"
+                    tools:ignore="OnClick" />
 
-    </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -39,7 +39,7 @@
             android:inputType="text"/>
     </LinearLayout>
     <TextView
-        android:text="Listado de registros"
+        android:text="@string/txtListadoCoordinadores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"

@@ -38,7 +38,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Código: " />
+                    android:text="@string/txtCodigoMateria" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -68,7 +68,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Nombre: " />
+                    android:text="@string/txtNombreMateria" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -97,7 +97,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Unidad:" />
+                    android:text="@string/txtUnidad" />
 
                 <Spinner
                     android:id="@+id/spnidUnidad"
@@ -126,13 +126,13 @@
                         android:id="@+id/masivaRadioButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Masiva" />
+                        android:text="@string/txtMasiva" />
 
                     <RadioButton
                         android:id="@+id/masivaRadioButton2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No masiva" />
+                        android:text="@string/txtNoMasiva" />
                 </RadioGroup>
             </LinearLayout>
             <LinearLayout

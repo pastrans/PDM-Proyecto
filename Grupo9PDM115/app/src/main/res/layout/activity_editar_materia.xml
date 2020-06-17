@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Editar Materia"
+                android:text="@string/titEditarCicloMateria"
                 android:textSize="30sp"
                 android:paddingBottom="5dp"  />
 
@@ -37,7 +36,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Código: " />
+                    android:text="@string/txtCodigoMateria" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -67,7 +66,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Nombre: " />
+                    android:text="@string/txtNombreMateria" />
 
                 <EditText
                     android:layout_width="0dp"
@@ -97,7 +96,7 @@
                     android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Unidad:" />
+                    android:text="@string/txtUnidad" />
 
                 <Spinner
                     android:id="@+id/spnidUnidad"
@@ -127,13 +126,13 @@
                         android:id="@+id/masivaRadioButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Masiva" />
+                        android:text="@string/txtMasiva" />
 
                     <RadioButton
                         android:id="@+id/masivaRadioButton2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No masiva" />
+                        android:text="@string/txtNoMasiva" />
                 </RadioGroup>
             </LinearLayout>
             <LinearLayout
@@ -149,7 +148,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:onClick="btnLimpiarNMateria"
-                    android:text="@string/btnLimpiarNMateria"/>
+                    android:text="@string/btnLimpiarEMateria"/>
 
                 <Button
                     android:layout_width="0dp"
@@ -157,7 +156,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:onClick="actualizarMateria"
-                    android:text="Actualizar"/>
+                    android:text="@string/btnEditarEMateria"/>
             </LinearLayout>
 
         </LinearLayout>

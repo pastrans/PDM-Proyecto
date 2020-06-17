@@ -128,12 +128,6 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
-
-    // Método para regresar al activity anterior
-    public void regresar(View v) {
-        super.onBackPressed();
-    }
-
     //Limpiar campos
     public void limpiarTexto(View v) {
         editNombreCiclo.setText("");

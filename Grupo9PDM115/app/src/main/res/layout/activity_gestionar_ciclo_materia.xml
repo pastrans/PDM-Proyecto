@@ -10,7 +10,7 @@
     tools:context=".Activities.CicloMateria.GestionarCicloMateria">
 
     <TextView
-        android:text="Gestionar Materias del ciclo"
+        android:text="@string/titGestionarCicloMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp" />
@@ -43,7 +43,7 @@
             android:inputType="text"/>
     </LinearLayout>
     <TextView
-        android:text="Registros ingresados: "
+        android:text="@string/txtListaCicloMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"

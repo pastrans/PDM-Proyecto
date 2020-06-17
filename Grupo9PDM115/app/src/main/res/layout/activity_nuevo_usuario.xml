@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -68,7 +67,7 @@
 
     <TableRow>
 
-        <TextView android:text="Rol" />
+        <TextView android:text="txtRol" />
         <Spinner
             android:id="@+id/spinnerRolNuevoUsuario"
             android:layout_width="fill_parent"
@@ -88,8 +87,4 @@
             android:text="@string/btnLimpiarNUsuario" />
     </TableRow>
 
-    <Button
-        android:onClick="btnRegresarNUsuario"
-        android:text="@string/btnRegresarNUsuario"
-        tools:ignore="OnClick" />
 </TableLayout>

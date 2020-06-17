@@ -50,7 +50,7 @@
                     android:id="@+id/editMateria"
                     android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
                     android:inputType="text"
-                    android:maxLength="30"/>
+                    android:maxLength="6"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:onClick="btnactualizarCicloMateria"
-                    android:text="btnEditarECicloMateria"
+                    android:text="Editar"
                     tools:ignore="OnClick" />
             </LinearLayout>
         </LinearLayout>

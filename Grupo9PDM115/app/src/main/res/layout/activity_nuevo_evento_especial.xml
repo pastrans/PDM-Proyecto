@@ -47,7 +47,7 @@
                     android:singleLine="true"
                     android:id="@+id/editNombreEventoEspecial"
                     android:inputType="text"
-                    android:maxLength="30"  />
+                    android:maxLength="100"  />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,16 +66,14 @@
 
                 <EditText
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="0dp"
                     android:layout_weight="1.15"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
-                    android:inputType="textMultiLine"
-                    android:lines="3"
-                    android:scrollbars="vertical"
+                    android:singleLine="true"
                     android:id="@+id/editDescripcionEventoEspecial"
-                    android:maxLength="30"  />
+                    android:maxLength="300"  />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

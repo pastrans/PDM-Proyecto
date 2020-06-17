@@ -29,7 +29,7 @@
         <EditText
             android:id="@+id/editClaveUsuario"
             android:inputType="textPassword"
-            android:maxLength="30" />
+            android:maxLength="5" />
     </TableRow>
     <TableRow>
 
@@ -53,7 +53,7 @@
         <EditText
             android:id="@+id/editCorreoPersona"
             android:inputType="textEmailAddress"
-            android:maxLength="30" />
+            android:maxLength="50" />
     </TableRow>
     <TableRow>
 

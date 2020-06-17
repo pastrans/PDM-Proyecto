@@ -79,7 +79,7 @@
                     android:id="@+id/nombreMat"
                     android:digits="QWERTYUIOPASDFGHJKLÑZ XCVBNMqwertyuiopasdfghjklñzxcvbnmáéíóúÁÉÍÓÚ"
                     android:inputType="text"
-                    android:maxLength="30" />
+                    android:maxLength="25" />
             </LinearLayout>
 
             <LinearLayout

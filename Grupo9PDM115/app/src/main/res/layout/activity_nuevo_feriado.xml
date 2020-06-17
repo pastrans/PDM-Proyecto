@@ -49,7 +49,7 @@
                     android:singleLine="true"
                     android:id="@+id/editNombreFeriado"
                     android:inputType="text"
-                    android:maxLength="30"/>
+                    android:maxLength="50"/>
             </LinearLayout>
 
             <LinearLayout

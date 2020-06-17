@@ -50,7 +50,7 @@
                     android:id="@+id/editMateria"
                     android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
                     android:inputType="text"
-                    android:maxLength="30" />
+                    android:maxLength="6" />
             </LinearLayout>
 
             <LinearLayout

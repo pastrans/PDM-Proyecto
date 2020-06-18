@@ -71,7 +71,7 @@
             android:singleLine="true"
             android:id="@+id/editCapacidad"
             android:inputType="numberDecimal"
-            android:maxLength="30"
+            android:maxLength="4"
             />
             </LinearLayout>
 

@@ -44,6 +44,7 @@
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:maxLength="5"
                     android:id="@+id/editHoraInicio"
                     android:inputType="date"
                     android:focusable="false"
@@ -74,7 +75,7 @@
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:id="@+id/editHoraFinal"
-                    android:maxLength="30"
+                    android:maxLength="5"
                     android:focusable="false"
                     android:clickable="true"/>
             </LinearLayout>

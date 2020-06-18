@@ -50,6 +50,7 @@
     <string name="titGestionarFeriado">Gestionar Feriado</string>
     <string name="editNombre">Nombre</string>
     <string name="txtListaFeriado">Listado de feriados ingresados:</string>
+    <string name="txtbNombreFeriado">Nombre del feriado</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>
@@ -71,6 +72,7 @@
     //Gestionar Unidad
     <string name="titGestionarUnidad">Gestionar Unidad</string>
     <string name="txtListaUnidad">Listado de unidades ingresadas:</string>
+    <string name="txtbNombreUnidad">Nombre de la unidad</string>
     //Nuevo Unidad
     <string name="titNuevoUnidad">Nueva Unidad</string>
     <string name="btnAgregarNUnidad">Agregar</string>
@@ -90,6 +92,7 @@
     //Gestionar Materia
     <string name="titGestionarMateria">Gestionar Materia</string>
     <string name="txtListaMateria">Listado de materias ingresadas</string>
+    <string name="txtbNombreMateria">Nombre de la materia</string>
     //Nuevo Materia
     <string name="titNuevoMateria">Nueva Materia</string>
     <string name="btnAgregarNMateria">Agregar</string>
@@ -106,6 +109,7 @@
     //Gestionar CicloMateria
     <string name="titGestionarCicloMateria">Gestionar Materias del ciclo</string>
     <string name="txtListaCicloMateria">Registros ingresados:</string>
+    <string name="txtbNombreCiclo">Nombre del ciclo</string>
     //Nuevo CicloMateria
     <string name="titNuevoCicloMateria">Agregar materia al ciclo</string>
     <string name="btnAgregarNCicloMateria">Agregar</string>
@@ -167,6 +171,7 @@
     //Gestionar Tipo Grupo
     <string name="titGestionarTipoGrupo">Gestionar tipo de grupo</string>
     <string name="txtListaTG">Listado de tipo de grupos ingresados:</string>
+    <string name="txtbNombreTipoGrupo">Nombre del tipo de grupo</string>
     //Nuevo Tipo Grupo
     <string name="titNuevoTipoGrupo">Nuevo Tipo Grupo</string>
     <string name="btnLimpiarNTipoGrupo">Limpiar</string>
@@ -284,7 +289,7 @@
     //Gestionar Horario
     <string name="txtListaHorario">Listado de horarios ingresados:</string>
     <string name="titGestionarHorario">Gestionar Horario</string>
-    <string name="btnNuevoGHorario">Nuevo</string>
+    <string name="txtbIdHorario">Id del horario</string>
     //Nuevo Horario
     <string name="titNuevoHorario">Nuevo Horario</string>
     <string name="btnAgregarNHorario">Agregar</string>

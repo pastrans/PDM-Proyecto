@@ -35,7 +35,7 @@
             android:id="@+id/editNombreCoordinador"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/txtbNombreCoordinador"
+            android:hint="@string/txtbCarnet"
             android:inputType="text"/>
     </LinearLayout>
     <TextView

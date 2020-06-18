@@ -240,7 +240,7 @@
     //Gestionar Coordinación
     <string name="titGestionarCoordinador">Gestionar coordinador</string>
     <string name="txtListadoCoordinadores">Listado de registros:</string>
-    <string name="txtbNombreCoordinador">Nombre del coordinador</string>
+    <string name="txtbCarnet">Carnet</string>
     //Nuevo Coordinación
     <string name="titNuevoCoordinador">Nueva coordinación</string>
     <string name="btnAgregarNCoordinador">Agregar</string>

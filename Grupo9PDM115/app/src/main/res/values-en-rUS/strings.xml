@@ -156,7 +156,7 @@
     <string name="txtCódigoMateria">Subject code:</string>
     <string name="txtUsuario">User:</string>
     <string name="txtCMateria">Subject cycle:</string>
-    <string name="titGestionarCoordinador">Manage coordinator</string>
+    <string name="titGestionarCoordinador">Manage coordination</string>
     <string name="txtListadoCoordinadores">List of register:</string>
     <string name="titNuevoCoordinador">"New coordination:   "</string>
     <string name="btnAgregarNCoordinador">Add</string>
@@ -278,7 +278,7 @@
     <string name="txtbNombreTipoGrupo">"Name of the type of group "</string>
     <string name="txtbIdHorario">"Hour "</string>
     <string name="txtbNombreCiclo">"Subject code "</string>
-    <string name="txtbCarnet">"Card"</string>
+    <string name="txtbCodigoMateria">"Subject code"</string>
     <string name="txtbNombreGrupo">Group name</string>
     <string name="txtbNombreLocal">"Local name "</string>
     <string name="txtbNombreTipoLocal">"Local type name "</string>

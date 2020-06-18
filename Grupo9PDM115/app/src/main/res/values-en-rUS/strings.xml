@@ -278,5 +278,10 @@
     <string name="txtbNombreMateria">"Name of subject "</string>
     <string name="txtbNombreTipoGrupo">"Name of the type of group "</string>
     <string name="txtbIdHorario">"Schedule id "</string>
-    <string name="txtbNombreCiclo">Cycle name</string>
+    <string name="txtbNombreCiclo">"Subject code "</string>
+    <string name="txtbNombreCoordinador">"Coordinator name "</string>
+    <string name="txtbNombreGrupo">Group name</string>
+    <string name="txtbNombreLocal">"Local name "</string>
+    <string name="txtbNombreTipoLocal">"Local type name "</string>
+    <string name="txtbNombreSolicitud">"Name of the request "</string>
 </resources>

@@ -109,7 +109,7 @@
     //Gestionar CicloMateria
     <string name="titGestionarCicloMateria">Gestionar Materias del ciclo</string>
     <string name="txtListaCicloMateria">Registros ingresados:</string>
-    <string name="txtbNombreCiclo">Nombre del ciclo</string>
+    <string name="txtbNombreCiclo">Código de materia</string>
     //Nuevo CicloMateria
     <string name="titNuevoCicloMateria">Agregar materia al ciclo</string>
     <string name="btnAgregarNCicloMateria">Agregar</string>
@@ -127,8 +127,7 @@
     //Gestionar Tipo Local
     <string name="titGestionarTipoLocal">Gestionar Tipo Local</string>
     <string name="idListadoTiposLocales">Listado de tipos de local:</string>
-    <string name="btnNuevoGTipoLocal">Nuevo</string>
-    <string name="btnEditarGTipoLocal">Editar</string>
+    <string name="txtbNombreTipoLocal">Nombre del tipo local</string>
     //Nuevo Tipo Local
     <string name="titNuevoTipoLocal">Nuevo Tipo Local</string>
     <string name="btnAgregarNTipoLocal">Agregar</string>
@@ -152,6 +151,7 @@
     <string name="idListadoLocales">Listado de locales</string>
     <string name="btnNuevoGLocal">Nuevo</string>
     <string name="btnEditarGLocal">Editar</string>
+    <string name="txtbNombreLocal">Nombre del local</string>
     //Nuevo Local
     <string name="titNuevoLocal">Nuevo Local</string>
     <string name="btnAgregarNLocal">Agregar</string>
@@ -191,6 +191,7 @@
     <string name="txtNuevoTipoGrupo">Nuevo tipo grupo:</string>
     //Gestionar Grupo
     <string name="titGestionarGrupo">Gestionar grupo</string>
+    <string name="txtbNombreGrupo">Nombre del grupo</string>
     <string-array name="contenidoTipoGrupo">// los items en el spinner
         <item id="1">Teórico</item>
         // agregue el atributo el id
@@ -239,6 +240,7 @@
     //Gestionar Coordinación
     <string name="titGestionarCoordinador">Gestionar coordinador</string>
     <string name="txtListadoCoordinadores">Listado de registros:</string>
+    <string name="txtbNombreCoordinador">Nombre del coordinador</string>
     //Nuevo Coordinación
     <string name="titNuevoCoordinador">Nueva coordinación</string>
     <string name="btnAgregarNCoordinador">Agregar</string>
@@ -319,6 +321,7 @@
     <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
     <string name="titGestionarSolicitud">Gestionar Solicitud</string>
     <string name="btnNuevoGSolicitud">Nuevo</string>
+    <string name="txtbNombreSolicitud">Nombre de la solicitud</string>
     //Nuevo Solicitud
     <string name="titNuevaSolicitud">Nueva Solicitud</string>
     <string name="btnAgregarNSolicitud">Agregar</string>
@@ -410,5 +413,6 @@
     <string name="txtAccesosRol">Accesos:</string>
     //Editar Rol
     <string name="btnEditarERol">Editar</string>
+    <string name="btnNuevoGHorario">Nuevo</string>
 
 </resources>

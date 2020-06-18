@@ -61,7 +61,7 @@ public class NuevoSolicitud extends AppCompatActivity {
         radioEspecial = (RadioButton) findViewById(R.id.radioEspecialNuevo);
 
         helper.abrir();
-        tipoLocalAdapter = new TipoLocalSpinner(helper);
+        tipoLocalAdapter = new TipoLocalSpinner(this);
         helper.cerrar();
 
         idsDetalleReserva = new ArrayList<Integer>();

@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.RolSpinner;
@@ -18,7 +16,6 @@ import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
 public class EditarUsuario extends AppCompatActivity {
 
-    ControlBD helper;
     Usuario usuario;
     UsuarioUnidadSpinner usuarioUnidadSpinnerAdapter;
     RolSpinner rolSpinnerAdapter;
@@ -35,13 +32,14 @@ public class EditarUsuario extends AppCompatActivity {
         editApellidoPersona = (EditText) findViewById(R.id.editApellidoPersona);
         editCorreoPersona = (EditText) findViewById(R.id.editCorreoPersona);
         editClaveUsuario = (EditText) findViewById(R.id.editClaveUsuario);
+
+        // Spinners
         spinnerEditarUnidadUsuario = (Spinner) findViewById(R.id.spinnerEditarUnidadUsuario);
         spinnerEditarRolUsuario = (Spinner) findViewById(R.id.spinnerEditarRolUsuario);
-        helper = new ControlBD(this);
-        helper.abrir();
-        usuarioUnidadSpinnerAdapter = new UsuarioUnidadSpinner(helper);
-        rolSpinnerAdapter = new RolSpinner(helper);
-        helper.cerrar();
+        // Instanciando adapters
+        usuarioUnidadSpinnerAdapter = new UsuarioUnidadSpinner(this);
+        rolSpinnerAdapter = new RolSpinner(this);
+        // Seteando adapters
         spinnerEditarUnidadUsuario.setAdapter(usuarioUnidadSpinnerAdapter.getAdapterUnidad(this));
         spinnerEditarRolUsuario.setAdapter(rolSpinnerAdapter.getAdapterRol(this));
 

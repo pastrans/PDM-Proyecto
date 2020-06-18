@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
@@ -19,7 +18,6 @@ import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
 public class NuevoUsuario extends AppCompatActivity {
 
-    ControlBD helper;
     EditText nombreUsuario, claveUsuario, nombrePersonal, apellidoPersonal, correoPersonal;
     Spinner spinnerUnidad, spinnerRol;
     UsuarioUnidadSpinner spinnerUsuarioUnidadAdapter;
@@ -37,22 +35,23 @@ public class NuevoUsuario extends AppCompatActivity {
             finish();
         }
 
-        helper = new ControlBD(this);
         nombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
         claveUsuario = (EditText) findViewById(R.id.editClaveUsuario);
         nombrePersonal = (EditText) findViewById(R.id.editNombrePersona);
         apellidoPersonal = (EditText) findViewById(R.id.editApellidoPersona);
         correoPersonal = (EditText) findViewById(R.id.editCorreoPersona);
+
+        // Spinners
         spinnerUnidad = (Spinner) findViewById(R.id.spinnerUnidadNuevoUsuario);
         spinnerRol = (Spinner) findViewById(R.id.spinnerRolNuevoUsuario);
-        helper.abrir();
-        spinnerUsuarioUnidadAdapter = new UsuarioUnidadSpinner(helper);
-        spinnerRolAdapter = new RolSpinner(helper);
-        helper.cerrar();
+        // Instanciar adapters
+        spinnerUsuarioUnidadAdapter = new UsuarioUnidadSpinner(this);
+        spinnerRolAdapter = new RolSpinner(this);
+        // Setear adapters
         spinnerUnidad.setAdapter(spinnerUsuarioUnidadAdapter.getAdapterUnidad(this));
         spinnerRol.setAdapter(spinnerRolAdapter.getAdapterRol(this));
-        spinnerUsuarioUnidadAdapter.getAdapterUnidad(this);
-        spinnerUnidad.setSelection(1);
+        //spinnerUsuarioUnidadAdapter.getAdapterUnidad(this);
+        //spinnerUnidad.setSelection(1);
     }
 
     public void btnAgregarNUsuario(View v){

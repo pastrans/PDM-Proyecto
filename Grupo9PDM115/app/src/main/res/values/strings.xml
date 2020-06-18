@@ -418,4 +418,8 @@
     <string name="btnEditarERol">Editar</string>
     <string name="btnNuevoGHorario">Nuevo</string>
 
+    // Spinners
+    <string name="txtSelecUnidad">Seleccione una unidad</string>
+    <string name="txtSelecRol">Seleccione un rol</string>
+
 </resources>

@@ -2,7 +2,6 @@ package com.example.grupo9pdm115.Activities.TipoGrupo;
 
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -10,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +24,7 @@ import java.util.List;
 public class GestionarTipoGrupo extends AppCompatActivity {
     // Declarando atributos para manejo del ListView
     ListView listaTipoGrupo;
+    EditText editNombreTP;
     TipoGrupoAdapter listaTipoGrupoAdapter;
     TipoGrupo tipoGrupo;
     @Override
@@ -32,21 +33,30 @@ public class GestionarTipoGrupo extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_tipo_grupo);
         // Inicializar elementos a manejar
         listaTipoGrupo = (ListView) findViewById(R.id.listTG);
+        editNombreTP = (EditText) findViewById(R.id.editNombreTipoGrupo);
 
         // Llamar método para llenar lista
-        llenarListaTipoGrupo();
+        llenarListaTipoGrupo(null);
 
         // Asociamos el menú contextual al listview
         registerForContextMenu(listaTipoGrupo);
     }
 
     // Método para llenar lista de días
-    public void llenarListaTipoGrupo(){
+    public void llenarListaTipoGrupo(String filtro){
         tipoGrupo = new TipoGrupo();
-        List objects = tipoGrupo.getAll(this);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = tipoGrupo.getAll(this);
+        }
+        else{
+            objetcts = tipoGrupo.getAllFiltered(this,"nombretipogrupo", filtro);
+        }
+
 
         // Inicializar el adaptador con la información a mostrar
-        listaTipoGrupoAdapter = new TipoGrupoAdapter(this, objects);
+        listaTipoGrupoAdapter = new TipoGrupoAdapter(this, objetcts);
 
         // Relacionando la lista con el adaptador y llenándola
         listaTipoGrupo.setAdapter(listaTipoGrupoAdapter);
@@ -56,12 +66,15 @@ public class GestionarTipoGrupo extends AppCompatActivity {
         Intent intent = new Intent(this, NuevoTipoGrupo.class);
         startActivity(intent);
     }
+    public void buscarTipoGrupo(View v){
+        llenarListaTipoGrupo(editNombreTP.getText().toString());
+    }
 
     // Para que actualice la lista cuando se regrese a la ventana
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaTipoGrupo();
+        llenarListaTipoGrupo(null);
     }
 
     // Para menú contextual
@@ -104,7 +117,7 @@ public class GestionarTipoGrupo extends AppCompatActivity {
                     String regEliminadas;
                     regEliminadas= TGActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaTipoGrupo();
+                    llenarListaTipoGrupo(null);
                 }
                 return true;
             default:

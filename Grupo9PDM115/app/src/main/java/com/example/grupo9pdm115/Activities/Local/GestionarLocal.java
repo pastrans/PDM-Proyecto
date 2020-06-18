@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import java.util.List;
 public class GestionarLocal extends AppCompatActivity {
 
     Local local;
+    EditText editNombreCiclo;
     ListView listaLocal;
     LocalAdapter listaLocalAdapter;
 
@@ -31,6 +33,7 @@ public class GestionarLocal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_local);
         listaLocal = (ListView) findViewById(R.id.idListadoLocales);
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
         llenarListaLocales();
     }
 

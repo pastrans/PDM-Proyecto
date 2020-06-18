@@ -79,11 +79,11 @@ public class NuevoUsuario extends AppCompatActivity {
         int numUsuario = 0;
         numUsuario = usuario.countUsuario(this, usuario);
         if(numUsuario < 10)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%03d", numUsuario);
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%03d", numUsuario + 1);
         else if(numUsuario > 10 && numUsuario < 100)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%02d", numUsuario);
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%02d", numUsuario + 1);
         else if (numUsuario > 100)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.valueOf(numUsuario);
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.valueOf(numUsuario + 1);
         usuario.setIdUsuario(idUsuario);
         //Toast.makeText(this, String.valueOf(usuario.countUsuario(this, usuario)), Toast.LENGTH_SHORT).show();
         regInsertados = usuario.guardar(this);

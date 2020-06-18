@@ -82,7 +82,7 @@
                     android:id="@+id/chkIntermediarioNuevo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enviar a intermediario"
+                    android:text="@string/txtEnviar"
                     />
             </LinearLayout>
             <LinearLayout
@@ -136,14 +136,14 @@
                         android:id="@+id/radioNormalNuevo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reserva normal"
+                        android:text="@string/txtReservaN"
                         android:checked="true"
                         />
                     <RadioButton
                         android:id="@+id/radioEspecialNuevo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reserva especial"
+                        android:text="@string/txtReservaE"
                         />
                 </RadioGroup>
             </LinearLayout>

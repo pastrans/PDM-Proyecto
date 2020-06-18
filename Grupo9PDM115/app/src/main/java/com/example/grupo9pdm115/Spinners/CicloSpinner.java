@@ -38,7 +38,7 @@ public class CicloSpinner {
 
     //Inicio de métodos
     public ArrayAdapter getAdapterCiclo (Context ctx){
-        ArrayAdapter adapter = new ArrayAdapter<String>( ctx.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, contenidoCiclo);
+        ArrayAdapter adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_spinner_dropdown_item, contenidoCiclo);
         // aquí cargamos lo que queremos mostrar en nuestro caso es la lista de contenido
         return adapter ;
     }

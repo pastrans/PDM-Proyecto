@@ -32,7 +32,7 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
         helper.abrir();
         control= new CicloSpinner(helper);
         helper.cerrar();
-        idCiclo.setAdapter(control.getAdapterCiclo(getApplicationContext()));
+        idCiclo.setAdapter(control.getAdapterCiclo(this));
 
     }
 

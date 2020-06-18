@@ -291,7 +291,7 @@
     //Gestionar Horario
     <string name="txtListaHorario">Listado de horarios ingresados:</string>
     <string name="titGestionarHorario">Gestionar Horario</string>
-    <string name="txtbIdHorario">Id del horario</string>
+    <string name="txtbIdHorario">Hora</string>
     //Nuevo Horario
     <string name="titNuevoHorario">Nuevo Horario</string>
     <string name="btnAgregarNHorario">Agregar</string>
@@ -408,7 +408,7 @@
     //Rol
     //Gestionar Rol
     <string name="titGestionarRol">Gestionar rol</string>
-    <string name="bNombreCiclo">Nombre del ciclo</string>
+    <string name="bNombreRol">Nombre del rol</string>
     <string name="txtListaRol">Listado de roles:</string>
     //Nuevo Rol
     <string name="txtNombreRol">Nombre del rol:</string>
@@ -417,5 +417,7 @@
     //Editar Rol
     <string name="btnEditarERol">Editar</string>
     <string name="btnNuevoGHorario">Nuevo</string>
+    <string name="btnNuevoGTipoLocal">Nuevo</string>
+    <string name="btnEditarGTipoLocal">Editar</string>
 
 </resources>

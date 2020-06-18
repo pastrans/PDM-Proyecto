@@ -38,7 +38,7 @@
             android:id="@+id/editNombreRol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/bNombreCiclo"
+            android:hint="@string/bNombreRol"
             android:inputType="text"/>
     </LinearLayout>
 

@@ -22,7 +22,7 @@
     <string name="titEditarCiclo">Edit cycle</string>
     <string name="btnActualizarCiclo">Edit</string>
     <string name="btnLimpiarTextoECiclo">Clean</string>
-    <string name="ctxListaCiclosActualizar">Update</string>
+    <string name="ctxListaCiclosActualizar">Add subjectttxt to the cycle</string>
     <string name="ctxListaCiclosEliminar">Delete</string>
     <string name="ctxListaCiclosActivarr">"Set as active cycle   "</string>
     <string name="txtNombreFeriado">Name:</string>
@@ -268,7 +268,6 @@
     <string name="txtCerrarSesion">Log out</string>
     <string name="NombreUsuario">User name</string>
     <string name="titGestionarRol">Manage role</string>
-    <string name="bNombreCiclo">Cycle name</string>
     <string name="txtNombreRol">Role name:</string>
     <string name="btnAgregarNRol">Add</string>
     <string name="txtAccesosRol">Access</string>
@@ -277,7 +276,7 @@
     <string name="txtbNombreUnidad">Name of the unit</string>
     <string name="txtbNombreMateria">"Name of subject "</string>
     <string name="txtbNombreTipoGrupo">"Name of the type of group "</string>
-    <string name="txtbIdHorario">"Schedule id "</string>
+    <string name="txtbIdHorario">"Hour "</string>
     <string name="txtbNombreCiclo">"Subject code "</string>
     <string name="txtbNombreCoordinador">"Coordinator name "</string>
     <string name="txtbNombreGrupo">Group name</string>
@@ -287,4 +286,5 @@
     <string name="txtEnviar">Send to intermediary</string>
     <string name="txtReservaN">"Normal reserve "</string>
     <string name="txtReservaE">Special reserve</string>
+    <string name="bNombreRol">"Role name "</string>
 </resources>

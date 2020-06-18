@@ -40,17 +40,17 @@
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre del grupo"
+            android:hint="@string/txtbNombreGrupo"
             android:inputType="text"/>
     </LinearLayout>
 
     <ListView
-        android:paddingTop="15dp"
         android:id="@+id/listViewGrupos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="#E5E5E5"
-        android:dividerHeight="2dp"
+        android:layout_height="match_parent"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp"
         />
 
 

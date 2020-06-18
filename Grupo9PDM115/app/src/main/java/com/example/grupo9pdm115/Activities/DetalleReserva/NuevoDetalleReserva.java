@@ -195,12 +195,12 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
             detalleReserva.setFinPeriodoReserva(fechaFin);
         }
 
-        if(edtLocal.equals("")){
+        if(edtLocal.getText().toString().equals("")){
             Toast.makeText(this, "Por favor ingrese un local", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(edtCupo.equals("")){
+        if(edtCupo.getText().toString().equals("")){
             Toast.makeText(this, "Ingrese el cupo de estudiantes", Toast.LENGTH_SHORT).show();
             return;
         }

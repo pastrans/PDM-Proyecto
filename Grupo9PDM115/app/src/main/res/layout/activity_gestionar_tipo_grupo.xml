@@ -37,7 +37,7 @@
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre del tipo de grupo"
+            android:hint="@string/txtbNombreTipoGrupo"
             android:inputType="text"/>
     </LinearLayout>
     <!-- Lista días -->
@@ -51,6 +51,8 @@
         android:id="@+id/listTG"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@null" />
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp"/>
 
 </LinearLayout>

@@ -43,7 +43,7 @@
                 android:id="@+id/editNombreCiclo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Nombre de la solicitud"
+                android:hint="@string/txtbNombreSolicitud"
                 android:inputType="text"/>
         </LinearLayout>
         <TextView
@@ -57,6 +57,8 @@
             android:id="@+id/listaSolicitud"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null" />
+            android:showDividers="middle"
+            android:divider="?android:listDivider"
+            android:dividerPadding="16dp"/>
     </LinearLayout>
 </LinearLayout>

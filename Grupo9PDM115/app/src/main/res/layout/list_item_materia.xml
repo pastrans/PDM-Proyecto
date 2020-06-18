@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:text="PDM"
+        android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="PDM" />
 

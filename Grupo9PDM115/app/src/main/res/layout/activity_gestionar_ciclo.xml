@@ -55,6 +55,6 @@
         android:layout_height="match_parent"
         android:showDividers="middle"
         android:divider="?android:listDivider"
-        android:dividerPadding="32dp"/>
+        android:dividerPadding="16dp"/>
 
 </LinearLayout>

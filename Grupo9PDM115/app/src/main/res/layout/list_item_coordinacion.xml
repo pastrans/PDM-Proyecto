@@ -18,7 +18,13 @@
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="PDM" />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtUnidad"/>
     <TextView
         android:id="@+id/txtnombreUsuario"
         android:layout_width="wrap_content"
@@ -27,6 +33,7 @@
         android:layout_below="@id/txtCodMateria"
         android:text="Inicio"
         tools:text="Unidad"/>
+    </LinearLayout>
 
 
 

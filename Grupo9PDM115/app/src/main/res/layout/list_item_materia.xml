@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,38 +15,53 @@
         android:id="@+id/txtCodMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="PDM"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="PDM" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtNombreMateria"/>
     <TextView
         android:id="@+id/txtnombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtCodMateria"
-        android:layout_below="@id/txtCodMateria"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="Inicio"
         tools:text="Programación para dispositivos móviles"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtUnidad"/>
     <TextView
         android:id="@+id/txtIdUnidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtnombre"
-        android:layout_alignLeft="@id/txtnombre"
-        android:text="Fin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="ciencias básicas" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtMasiva"/>
     <TextView
         android:id="@+id/txtMasividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtIdUnidad"
-        android:layout_below="@id/txtIdUnidad"
-        android:text="No masiva"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="No masiva"/>
+    </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -19,23 +19,33 @@
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="PDM" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtUnidad"/>
     <TextView
         android:id="@+id/txtUnidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtCodMateria"
-        android:layout_below="@id/txtCodMateria"
-        android:text="Inicio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Unidad"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtCicloMateria"/>
     <TextView
         android:id="@+id/txtnombreCiclo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtUnidad"
-        android:layout_alignLeft="@id/txtUnidad"
-        android:text="Fin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Ciclo I" />
+    </LinearLayout>
 
 
 </LinearLayout>

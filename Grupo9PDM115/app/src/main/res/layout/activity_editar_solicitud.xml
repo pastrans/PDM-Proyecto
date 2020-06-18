@@ -101,6 +101,7 @@
                     android:singleLine="true"
                     android:id="@+id/editTipoSolicitud"
                     android:inputType="numberDecimal"
+                    android:maxLength="3"
                     />
             </LinearLayout>
             <LinearLayout
@@ -130,7 +131,7 @@
                     android:singleLine="true"
                     android:id="@+id/editFechaRealizada"
                     android:inputType="date"
-                    android:maxLength="30"
+                    android:maxLength="10"
                     android:focusable="false"
                     android:clickable="true"/>
             </LinearLayout>
@@ -160,6 +161,7 @@
                     android:singleLine="true"
                     android:id="@+id/editEstadoSolicitud"
                     android:inputType="numberDecimal"
+                    android:maxLength="1"
                     />
             </LinearLayout>
             <LinearLayout
@@ -189,7 +191,7 @@
                     android:singleLine="true"
                     android:id="@+id/editFechaRespuesta"
                     android:inputType="date"
-                    android:maxLength="30"
+                    android:maxLength="10"
                     android:focusable="false"
                     android:clickable="true"/>
             </LinearLayout>
@@ -248,7 +250,7 @@
                     android:singleLine="true"
                     android:id="@+id/editNuevoFinPeriodo"
                     android:inputType="date"
-                    android:maxLength="30"
+                    android:maxLength="10"
                     android:focusable="false"
                     android:clickable="true"/>
             </LinearLayout>

@@ -71,6 +71,7 @@
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:id="@+id/edtEncargadoSolicitudNuevo"
+                    android:maxLength="30"
                     />
             </LinearLayout>
             <LinearLayout
@@ -259,7 +260,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:onClick="btnLimpiarTextoNSolicitud"
-                    android:text="@string/btnLimpiarTextoNSolicitud" />
+                    android:text="@string/btnLimpiarTextoNSolicitud"
+                    tools:ignore="OnClick" />
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

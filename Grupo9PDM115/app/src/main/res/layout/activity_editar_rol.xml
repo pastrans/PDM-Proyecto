@@ -9,15 +9,16 @@
     android:padding="15dp"
     >
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtNombreRol"/>
+        android:text="@string/txtNombreRol"
+        android:textSize="20sp"/>
     <TextView
         android:id="@+id/txtNombreRolEditar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Rol 1"
         android:textStyle="bold"
         />

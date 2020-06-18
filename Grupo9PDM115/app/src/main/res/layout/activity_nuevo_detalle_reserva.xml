@@ -122,6 +122,7 @@
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:id="@+id/editNumeroGrupoDetalleRNuevo"
+                    android:maxLength="6"
                     />
             </LinearLayout>
 
@@ -203,7 +204,7 @@
                     android:singleLine="true"
                     android:id="@+id/editCupo"
                     android:inputType="numberDecimal"
-                    android:maxLength="30"/>
+                    android:maxLength="4"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -245,7 +246,8 @@
                     android:id="@+id/editInicioReserva"
                     android:inputType="date"
                     android:focusable="false"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    android:maxLength="10"/>
 
             </LinearLayout>
 
@@ -277,7 +279,8 @@
                     android:id="@+id/editFinReserva"
                     android:inputType="date"
                     android:focusable="false"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    android:maxLength="10"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

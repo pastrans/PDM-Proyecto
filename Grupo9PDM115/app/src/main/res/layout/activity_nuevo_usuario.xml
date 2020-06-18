@@ -1,90 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
-    android:padding="15dp"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Usuario.NuevoUsuario">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titNuevoUsuario"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-    <TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView android:text="@string/txtNombreUsuario" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtNombreUsuario" />
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editNombreUsuario"
             android:inputType="text"
             android:maxLength="30" />
-    </TableRow>
-    <TableRow>
-
-        <TextView android:text="@string/txtClaveUsuario" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtClaveUsuario" />
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editClaveUsuario"
             android:inputType="textPassword"
             android:maxLength="5" />
-    </TableRow>
-    <TableRow>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView android:text="@string/txtNombrePersona" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtNombrePersona" />
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editNombrePersona"
             android:inputType="text"
             android:maxLength="30" />
-    </TableRow>
-    <TableRow>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView android:text="@string/txtApellidoPersona" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtApellidoPersona" />
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editApellidoPersona"
             android:inputType="text"
             android:maxLength="30" />
-    </TableRow>
-    <TableRow>
+        </LinearLayout>
 
-        <TextView android:text="@string/txtCorreoPersona" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtCorreoPersona" />
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/editCorreoPersona"
             android:inputType="textEmailAddress"
             android:maxLength="50" />
-    </TableRow>
-    <TableRow>
+            </LinearLayout>
 
-        <TextView android:text="@string/txtUnidadU" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtUnidadU" />
         <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
             android:id="@+id/spinnerUnidadNuevoUsuario"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" />
+           />
+        </LinearLayout>
 
-    </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-    <TableRow>
-
-        <TextView android:text="txtRol" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtRol" />
         <Spinner
             android:id="@+id/spinnerRolNuevoUsuario"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp" />
-
-    </TableRow>
-
-    <TableRow>
-
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.15"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
         <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="btnLimpiarNUsuario"
+            android:text="@string/btnLimpiarNUsuario" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:onClick="btnAgregarNUsuario"
             android:text="@string/btnAgregarNUsuario"
             />
-
-        <Button
-            android:onClick="btnLimpiarNUsuario"
-            android:text="@string/btnLimpiarNUsuario" />
-    </TableRow>
-
-</TableLayout>
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

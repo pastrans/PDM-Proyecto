@@ -13,7 +13,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtNombreRol"/>
+        android:text="@string/txtNombreRol"
+        android:textSize="20sp"/>
     <EditText
         android:id="@+id/edtNombreRol"
         android:layout_width="match_parent"

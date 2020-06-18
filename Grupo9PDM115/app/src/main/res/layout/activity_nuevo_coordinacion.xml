@@ -1,58 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dip"
-    android:stretchColumns="1"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Activities.Coordinacion.NuevoCoordinacion">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titNuevoCoordinador"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-    <TableRow>
 
-        <TextView android:text="@string/txtTipoCoordinacion" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtTipoCoordinacion" />
 
         <Spinner
             android:id="@+id/SpinnerTipoCoordinacion"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </TableRow>
-    <TableRow>
-
-        <TextView android:text="@string/txtCódigoUsuario" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.3"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtCódigoUsuario" />
         <EditText
             android:id="@+id/editIdUsuario"
             android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
             android:inputType="text"
-            android:maxLength="5" />
-    </TableRow>
-    <TableRow>
+            android:maxLength="5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.3"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView android:text="@string/txtCódigoMateria" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/txtCódigoMateria" />
         <EditText
             android:id="@+id/editCodMateria"
             android:digits="QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890"
             android:inputType="text"
-            android:maxLength="6" />
-    </TableRow>
-    <TableRow>
+            android:maxLength="6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1.3"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:singleLine="true"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
         <Button
-            android:onClick="btnAgregarNCoordinador"
-            android:text="@string/btnAgregarNCoordinador"
-            tools:ignore="OnClick" />
-
-        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:onClick="btnLimpiarNCoordinador"
             android:text="@string/btnLimpiarNCoordinador"
             tools:ignore="OnClick" />
-    </TableRow>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="btnAgregarNCoordinador"
+            android:text="@string/btnAgregarNCoordinador"
+            tools:ignore="OnClick" />
+        </LinearLayout>
 
-</TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

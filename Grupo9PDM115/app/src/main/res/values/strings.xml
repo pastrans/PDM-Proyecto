@@ -238,9 +238,9 @@
     <string name="txtUsuario">Usuario:</string>
     <string name="txtCMateria">Ciclo Materia:</string>
     //Gestionar Coordinación
-    <string name="titGestionarCoordinador">Gestionar coordinador</string>
+    <string name="titGestionarCoordinador">Gestionar coordinación</string>
     <string name="txtListadoCoordinadores">Listado de registros:</string>
-    <string name="txtbCarnet">Carnet</string>
+    <string name="txtbCodigoMateria">Código de materia</string>
     //Nuevo Coordinación
     <string name="titNuevoCoordinador">Nueva coordinación</string>
     <string name="btnAgregarNCoordinador">Agregar</string>

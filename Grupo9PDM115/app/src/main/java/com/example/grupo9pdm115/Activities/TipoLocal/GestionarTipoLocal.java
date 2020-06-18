@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import java.util.List;
 public class GestionarTipoLocal extends AppCompatActivity {
 
     TipoLocal tipoLocal;
+    EditText editNombreCiclo;
     ListView listaTipos;
     TipoLocalAdapter listaTipoLocalAdapter;
 
@@ -30,21 +32,33 @@ public class GestionarTipoLocal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_tipo_local);
         listaTipos = (ListView) findViewById(R.id.idListadoTiposLocales);
-        llenarListaTipoLocal();
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreTipoLocal);
+        llenarListaTipoLocal(null);
     }
 
-    public void llenarListaTipoLocal(){
+    public void llenarListaTipoLocal(String filtro){
         tipoLocal = new TipoLocal();
-        List objects = tipoLocal.getAll(this);
-        listaTipoLocalAdapter = new TipoLocalAdapter(this, objects);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = tipoLocal.getAll(this);
+        }
+        else{
+            objetcts = tipoLocal.getAllFiltered(this,"nombretipo", filtro);
+        }
+
+        listaTipoLocalAdapter = new TipoLocalAdapter(this, objetcts);
         listaTipos.setAdapter(listaTipoLocalAdapter);
         registerForContextMenu(listaTipos);
+    }
+    public void buscarTipoLocal(View v){
+        llenarListaTipoLocal(editNombreCiclo.getText().toString());
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        llenarListaTipoLocal();
+        llenarListaTipoLocal(null);
     }
 
     public void agregarTipoLocal (View v){
@@ -79,7 +93,7 @@ public class GestionarTipoLocal extends AppCompatActivity {
                     String resEliminados = "";
                     resEliminados = tipoLocalSeleccionado.eliminar(this);
                     Toast.makeText(this, resEliminados, Toast.LENGTH_SHORT).show();
-                    llenarListaTipoLocal();
+                    llenarListaTipoLocal(null);
                 }
                 return true;
         }

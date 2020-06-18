@@ -91,22 +91,6 @@ public class TipoLocal extends TablaBD {
         return valores;
     }*/
 
-    public List<TipoLocal> getTiposLocales(Context context){
-        List<TipoLocal> listaTipoLocal = new ArrayList<TipoLocal>();
-        helper = new ControlBD(context);
-        helper.abrir();
-        Cursor cursor = helper.getDb().rawQuery("SELECT idTipoLocal, nombreTipo FROM tipolocal", null);
-        if(cursor.moveToFirst()){
-            do{
-                TipoLocal tipoLocal = new TipoLocal();
-                tipoLocal.setIdTipoLocal(cursor.getInt(0));
-                tipoLocal.setNombreTipo(cursor.getString(1));
-                listaTipoLocal.add(tipoLocal);
-            }while (cursor.moveToNext());
-        }
-        helper.cerrar();
-        return listaTipoLocal;
-    }
 
     @Override
     public String guardar(Context context) {

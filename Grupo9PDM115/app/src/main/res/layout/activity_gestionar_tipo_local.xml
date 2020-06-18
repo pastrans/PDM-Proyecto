@@ -29,11 +29,11 @@
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarCiclo"
+            android:onClick="buscarTipoLocal"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText
-            android:id="@+id/editNombreCiclo"
+            android:id="@+id/editNombreTipoLocal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/txtbNombreTipoLocal"

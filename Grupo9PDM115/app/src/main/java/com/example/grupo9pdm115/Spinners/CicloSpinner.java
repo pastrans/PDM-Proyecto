@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Ciclo;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 
@@ -15,17 +16,21 @@ public class CicloSpinner {
     private ArrayList<Ciclo> listCiclo;
     private  ArrayList<String> contenidoCiclo; //para tipo de grupo
     private Cursor cursor ;
+    private ControlBD helper;
     //Fin Atributos
 
     // Inicio de los constructores
-    public CicloSpinner(ControlBD helpercontexto) {
-        //Código para mostar las listas de String
+    public CicloSpinner(Context context) {
+        // Ejecutar consulta
+        helper = new ControlBD(context);
+        helper.abrir();
         String Consulta = "select  idciclo, nombreciclo from ciclo";
-        cursor = helpercontexto.consultar(Consulta);
+        cursor = helper.consultar(Consulta);
+
         Ciclo ciclo;
         listCiclo = new ArrayList<Ciclo>();
         contenidoCiclo = new ArrayList<String>();
-        contenidoCiclo.add("Seleccione"); // genera un desfase con respecto a la lista de objetos
+        contenidoCiclo.add(context.getString(R.string.txtSelecCiclo)); //contenidoCiclo.add("Seleccione");
         while (cursor.moveToNext()) {
             ciclo = new Ciclo();
             ciclo.setIdCiclo(cursor.getInt(0));
@@ -34,6 +39,8 @@ public class CicloSpinner {
             listCiclo.add(ciclo);
 
         }
+
+        helper.cerrar();
     }
 
     //Inicio de métodos

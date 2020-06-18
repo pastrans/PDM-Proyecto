@@ -3,13 +3,11 @@ package com.example.grupo9pdm115.Activities.CicloMateria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.R;
@@ -17,7 +15,6 @@ import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
 public class EditarCicloMateria extends AppCompatActivity implements View.OnClickListener {
     //Declarando
-    ControlBD helper;
     EditText editCodMateria;
     Spinner idCiclo;
     CicloSpinner control;
@@ -28,13 +25,12 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ciclo_materia);
 
-        helper = new ControlBD(this);
         editCodMateria = (EditText) findViewById(R.id.editMateria);
+
+        // Spinner
         idCiclo = (Spinner)  findViewById(R.id.spinnerCiclo);
-        helper.abrir();
-        control= new CicloSpinner(helper);
-        helper.cerrar();
-        idCiclo.setAdapter(control.getAdapterCiclo(getApplicationContext()));
+        control= new CicloSpinner(this);
+        idCiclo.setAdapter(control.getAdapterCiclo(this));
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){

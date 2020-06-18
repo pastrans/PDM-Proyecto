@@ -2,7 +2,7 @@ package com.example.grupo9pdm115.Activities.Materia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -12,17 +12,17 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Materia;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
 import com.example.grupo9pdm115.WebService.ControlServicio;
 
-public class EditarMateria extends AppCompatActivity implements View.OnClickListener  {
+public class EditarMateria extends AppCompatActivity {
     //Declarando
-    ControlBD helper;
     EditText editCodMateria, editNombre;
     RadioButton masivaRadioButton1, masivaRadioButton2;
     Spinner idUnidad;
@@ -34,26 +34,37 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "EMA"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_materia);
         unidad= new Unidad();
-        helper = new ControlBD(this);
         editCodMateria = (EditText) findViewById(R.id.editcodmateria);
         editCodMateria.setEnabled(false);
         editNombre = (EditText) findViewById(R.id.nombreMat);
-        idUnidad = (Spinner)  findViewById(R.id.spnidUnidad);
         masivaRadioButton1 = (RadioButton) findViewById(R.id.masivaRadioButton1);
         masivaRadioButton2 = (RadioButton) findViewById(R.id.masivaRadioButton2);
-        helper.abrir();
-        control= new UnidadSpinner(helper);
-        helper.cerrar();
 
+        // Spinner
+        idUnidad = (Spinner) findViewById(R.id.spnidUnidad);
+        control= new UnidadSpinner(this);
+        idUnidad.setAdapter(control.getAdapterUnidad(this));
+
+        // Políticas de comunicación de los servicios
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
-        idUnidad.setAdapter(control.getAdapterUnidad(this));
+
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
             editCodMateria.setText(getIntent().getStringExtra("codMateria"));
@@ -164,12 +175,6 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
         masivaRadioButton1.setChecked(false);
         masivaRadioButton2.setChecked(false);
         idUnidad.setSelection(0);
-
-    }
-
-
-    @Override
-    public void onClick(View v) {
 
     }
 }

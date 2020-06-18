@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import com.example.grupo9pdm115.Modelos.Ciclo;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class CicloSpinnerHelper {
         listaCiclos = ciclo.getAll(context);
 
         contenidoSpinner = new ArrayList<String>();
-        contenidoSpinner.add("Seleccione un ciclo");
+        contenidoSpinner.add(context.getString(R.string.txtSelecCiclo)); // contenidoSpinner.add("Seleccione un ciclo");
         for(Ciclo cicloLista : listaCiclos){
             contenidoSpinner.add(cicloLista.getNombreCiclo());
         }

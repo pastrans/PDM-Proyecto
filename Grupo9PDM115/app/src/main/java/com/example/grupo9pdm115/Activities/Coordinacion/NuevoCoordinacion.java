@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Activities.Coordinacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,17 +12,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Coordinacion;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
 import java.util.Calendar;
 
-public class NuevoCoordinacion extends AppCompatActivity implements View.OnClickListener {
+public class NuevoCoordinacion extends AppCompatActivity {
     ControlBD helper;
     EditText editCodMateria;
     EditText editIdUsuario;
@@ -31,6 +34,16 @@ public class NuevoCoordinacion extends AppCompatActivity implements View.OnClick
     private CicloMateria cm = new CicloMateria();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ICO"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_coordinacion);
 
@@ -38,7 +51,7 @@ public class NuevoCoordinacion extends AppCompatActivity implements View.OnClick
         editCodMateria = (EditText) findViewById(R.id.editCodMateria);
         editIdUsuario = (EditText) findViewById(R.id.editIdUsuario);
         TipoCoordinacion = (Spinner)  findViewById(R.id.SpinnerTipoCoordinacion);
-        contenidoTipoCoor = new String[]{"Seleccione","Laboratorio", "Discusión","Teórico"};
+        contenidoTipoCoor = new String[]{this.getString(R.string.txtSelecTipo),"Laboratorio", "Discusión","Teórico"};
         TipoCoordinacion.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,contenidoTipoCoor));
     }
     public void btnAgregarNCoordinador(View v){
@@ -161,8 +174,4 @@ public class NuevoCoordinacion extends AppCompatActivity implements View.OnClick
         TipoCoordinacion.setSelection(0);
     }
 
-@Override
-public void onClick(View v) {
-
-        }
 }

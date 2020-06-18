@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 
@@ -14,15 +15,19 @@ public class TipoGrupoSpinner {
     private ArrayList<TipoGrupo> lisTipoGrupo;
     private  ArrayList<String> contenidoTipoGrupo; //para tipo de grupo
     private Cursor cursor ;
+    private ControlBD helper;
 
-    public TipoGrupoSpinner(ControlBD helper){
-        //Código para mostar las listas de String
+    public TipoGrupoSpinner(Context context){
+        /// Ejecutar consulta
+        helper = new ControlBD(context);
+        helper.abrir();
         String Consulta = "SELECT * FROM TIPOGRUPO";
         cursor = helper.consultar(Consulta);
+
         TipoGrupo tipoGrupo;
         lisTipoGrupo = new ArrayList<TipoGrupo>();
         contenidoTipoGrupo = new ArrayList<String>();
-        contenidoTipoGrupo.add("Seleccione"); // genera un desfase con respecto a la lista de objetos de TipoGrupo
+        contenidoTipoGrupo.add(context.getString(R.string.txtSelecTipo)); // contenidoTipoGrupo.add("Seleccione");
         while (cursor.moveToNext()) {
             tipoGrupo = new TipoGrupo();
             tipoGrupo.setIdTipoGrupo(cursor.getInt(0));
@@ -30,6 +35,8 @@ public class TipoGrupoSpinner {
             contenidoTipoGrupo.add(cursor.getString(1)); // llenamos la lista
             lisTipoGrupo.add(tipoGrupo);
         }
+
+        helper.cerrar();
     }
 
     public ArrayAdapter getAdapterTipoGrupo (Context ctx){

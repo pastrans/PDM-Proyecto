@@ -2,33 +2,44 @@ package com.example.grupo9pdm115.Activities.Coordinacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Coordinacion;
-import com.example.grupo9pdm115.Modelos.Materia;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 
-public class EditarCoordinacion extends AppCompatActivity implements View.OnClickListener {
+public class EditarCoordinacion extends AppCompatActivity {
     ControlBD helper;
     EditText editCodMateria;
     EditText editIdUsuario;
     Spinner TipoCoordinacion;
     String[] contenidoTipoCoor;
-    private int dia, mes, anio;
+
     private CicloMateria cm = new CicloMateria();
     private Integer idCiclomateria, idCiclo,idCoordinacion ;
     private String tipo, idUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ECO"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_coordinacion);
         helper = new ControlBD(this);
@@ -36,7 +47,7 @@ public class EditarCoordinacion extends AppCompatActivity implements View.OnClic
         editCodMateria.setEnabled(false);
         editIdUsuario = (EditText) findViewById(R.id.editIdUsuario);
         TipoCoordinacion = (Spinner)  findViewById(R.id.SpinnerTipoCoordinacion);
-        contenidoTipoCoor = new String[]{"Seleccione","Laboratorio", "Discusión","Teórico"};
+        contenidoTipoCoor = new String[]{this.getString(R.string.txtSelecTipo),"Laboratorio", "Discusión","Teórico"};
         TipoCoordinacion.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,contenidoTipoCoor));
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
@@ -74,10 +85,7 @@ public class EditarCoordinacion extends AppCompatActivity implements View.OnClic
         editIdUsuario.setText("");
         TipoCoordinacion.setSelection(0);
     }
-    @Override
-    public void onClick(View v) {
 
-    }
     public void btnEditarECoordinador(View v) {
         String codMaateria = editCodMateria.getText().toString();
         String IdUsuario = editIdUsuario.getText().toString();

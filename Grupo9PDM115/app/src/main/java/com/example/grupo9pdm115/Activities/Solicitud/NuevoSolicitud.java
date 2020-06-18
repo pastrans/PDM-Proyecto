@@ -75,7 +75,7 @@ public class NuevoSolicitud extends AppCompatActivity {
                     TipoLocal tipoLocal = new TipoLocal();
                     List<TipoLocal> tipo = tipoLocal.getAllFiltered(getApplicationContext(), "nombretipo", items);
                     TipoLocal t = (TipoLocal) tipo.get(0);
-                    edtEncargado.setText(t.getNombreTipo());
+                    edtEncargado.setText(t.getIdEncargado());
                 }
             }
 

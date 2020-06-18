@@ -282,7 +282,7 @@
     <string name="txtbNombreGrupo">Group name</string>
     <string name="txtbNombreLocal">"Local name "</string>
     <string name="txtbNombreTipoLocal">"Local type name "</string>
-    <string name="txtbNombreSolicitud">"Name of the request "</string>
+    <string name="txtbNombreSolicitud">"Request matter"</string>
     <string name="txtEnviar">Send to intermediary</string>
     <string name="txtReservaN">"Normal reserve "</string>
     <string name="txtReservaE">Special reserve</string>

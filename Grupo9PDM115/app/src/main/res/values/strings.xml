@@ -321,7 +321,7 @@
     <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
     <string name="titGestionarSolicitud">Gestionar Solicitud</string>
     <string name="btnNuevoGSolicitud">Nuevo</string>
-    <string name="txtbNombreSolicitud">Nombre de la solicitud</string>
+    <string name="txtbNombreSolicitud">Asunto de solicitud</string>
     //Nuevo Solicitud
     <string name="titNuevaSolicitud">Nueva Solicitud</string>
     <string name="btnAgregarNSolicitud">Agregar</string>

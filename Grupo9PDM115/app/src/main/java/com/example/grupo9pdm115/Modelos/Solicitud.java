@@ -293,4 +293,8 @@ public class Solicitud extends TablaBD {
         return encargado;
     }
 
+    //método para la busqueda sobre escritura
+
+
+
 }

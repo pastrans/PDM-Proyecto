@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +17,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Activities.DetalleReserva.GestionarDetalleReserva;
-import com.example.grupo9pdm115.Activities.Usuario.EditarUsuario;
 import com.example.grupo9pdm115.Adapters.SolicitudAdapter;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
@@ -30,6 +27,7 @@ import java.util.List;
 public class GestionarSolicitud extends AppCompatActivity {
 
     ListView listaSolicitud;
+    EditText editAsunto;
     SolicitudAdapter solicitudAdapter;
     Solicitud solicitud;
 
@@ -39,17 +37,29 @@ public class GestionarSolicitud extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_solicitud);
         listaSolicitud = (ListView) findViewById(R.id.listaSolicitud);
-        llenarListaSolicitudes();
+        editAsunto = (EditText) findViewById(R.id.editAsunto);
+        llenarListaSolicitudes(null);
         registerForContextMenu(listaSolicitud);
     }
 
-    public void llenarListaSolicitudes(){
+    public void llenarListaSolicitudes(String filtro){
         solicitud = new Solicitud();
         //LLENAR DATOS DE EJEMPLO
         //usuario.insertUnidad(this);
-        List objects = solicitud.getAllFiltered(this, "idUsuario", Sesion.getIdusuario(this));
-        solicitudAdapter = new SolicitudAdapter(this, objects);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = solicitud.getAll(this);
+        }
+        else{
+            objetcts = solicitud.getAllFiltered(this,"nombreciclo", filtro);
+        }
+        //List objects = solicitud.getAllFiltered(this, "idUsuario", Sesion.getIdusuario(this));
+        solicitudAdapter = new SolicitudAdapter(this, objetcts);
         listaSolicitud.setAdapter(solicitudAdapter);
+    }
+    public void buscarSolicitud(View v){
+        llenarListaSolicitudes(editAsunto.getText().toString());
     }
 
     @Override
@@ -101,7 +111,7 @@ public class GestionarSolicitud extends AppCompatActivity {
                                     String regEliminados;
                                     regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
                                     Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
-                                    llenarListaSolicitudes();
+                                    llenarListaSolicitudes(null);
                                     break;
                                 case DialogInterface.BUTTON_NEGATIVE:
                                     Toast.makeText(getApplicationContext(), "NEGATIVO", Toast.LENGTH_SHORT).show();
@@ -136,6 +146,6 @@ public class GestionarSolicitud extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        llenarListaSolicitudes();
+        llenarListaSolicitudes(null);
     }
 }

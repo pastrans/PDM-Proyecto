@@ -8,6 +8,9 @@ import android.util.Log;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Coordinacion  extends TablaBD {
 
     // Atributos para BD
@@ -119,6 +122,32 @@ public class Coordinacion  extends TablaBD {
         helper.cerrar();
 
         return resultado;
+    }
+
+    // Obtener todos los registros de la tabla
+    public List<Coordinacion> getAllFiltered(Context context, String filtro){
+        List<Coordinacion> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+
+        String consulta = "select c.idcoordinacion, c.idusuario, c.idciclomateria,  c.tipocoordinacion from coordinacion c, ciclomateria cm" +
+                " where cm.idciclomateria = c.idciclomateria and cm.codmateria like '%" + filtro+ "%'";
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add((Coordinacion) getInstanceOfModel(valores) );
+            }while (cursor.moveToNext());
+        }
+
+        helper.cerrar();
+
+        return listaTablaBD;
     }
 
     @Override

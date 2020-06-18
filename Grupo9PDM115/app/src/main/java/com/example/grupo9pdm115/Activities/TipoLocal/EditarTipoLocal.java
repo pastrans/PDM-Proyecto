@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Encargado;
@@ -18,7 +16,7 @@ public class EditarTipoLocal extends AppCompatActivity {
 
     ControlBD helper;
     EditText edtNombreTipo;
-    Spinner encargadoSpinner;
+    EditText editEncargado;
     TipoLocal tipoLocalClass;
     Encargado encargadoClass;
     UsuarioSpinner usuarioSpinnerAdapter;
@@ -29,13 +27,13 @@ public class EditarTipoLocal extends AppCompatActivity {
         setContentView(R.layout.activity_editar_tipo_local);
         helper = new ControlBD(this);
         edtNombreTipo = (EditText) findViewById(R.id.editNombreTipoLocal);
-        encargadoSpinner = (Spinner) findViewById(R.id.spinnerEncargado);
+        editEncargado = (EditText) findViewById(R.id.editEncargadoTipoLocal);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
         helper.abrir();
         usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
-        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
+        /*encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
         if (getIntent().getExtras() != null){
             tipoLocalClass.setIdTipoLocal(getIntent().getIntExtra("idTipoLocal", 0));
             edtNombreTipo.setText(getIntent().getStringExtra("nombreTipo"));
@@ -45,21 +43,21 @@ public class EditarTipoLocal extends AppCompatActivity {
                 if (idEncargadoItem.equals(idEncargado))
                     encargadoSpinner.setSelection(i);
             }
-        }
+        }*/
     }
 
     public void btnEditarETipoLocal(View v){
-        String regInsertados;
+        /*String regInsertados;
         int posUsuario = encargadoSpinner.getSelectedItemPosition();
         tipoLocalClass.setNombreTipo(edtNombreTipo.getText().toString());
         tipoLocalClass.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
         regInsertados = tipoLocalClass.actualizar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
     }
 
     public void btnLimpiarETipoLocal(View v){
         edtNombreTipo.setText("");
-        encargadoSpinner.setSelection(0);
+        editEncargado.setText("");
     }
 
     public void btnRegresarETipoLocal(View v){

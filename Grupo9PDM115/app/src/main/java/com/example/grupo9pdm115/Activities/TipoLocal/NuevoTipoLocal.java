@@ -23,7 +23,7 @@ public class NuevoTipoLocal extends AppCompatActivity {
 
     ControlBD helper;
     EditText edtNombreTipo;
-    Spinner encargadoSpinner;
+    EditText editEncargado;
     TipoLocal tipoLocalClass;
     Encargado encargadoClass;
     UsuarioSpinner usuarioSpinnerAdapter;
@@ -35,29 +35,29 @@ public class NuevoTipoLocal extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_tipo_local);
         helper = new ControlBD(this);
         edtNombreTipo = (EditText) findViewById(R.id.editNombre);
-        encargadoSpinner = (Spinner) findViewById(R.id.encargadoSpinner);
+        editEncargado = (EditText) findViewById(R.id.editEncargado);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
         helper.abrir();
         usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
-        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
+        //encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
 
     }
 
     public void btnAgregarNTipoLocal(View v){
-        String regInsertados;
+        /*String regInsertados;
         TipoLocal tipoLocal = new TipoLocal();
         int posUsuario = encargadoSpinner.getSelectedItemPosition();
         tipoLocal.setNombreTipo(edtNombreTipo.getText().toString());
         tipoLocal.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
         regInsertados = tipoLocal.guardar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
     }
 
     public void btnLimpiarNTipoLocal(View v){
         edtNombreTipo.setText("");
-        encargadoSpinner.setSelection(0);
+        editEncargado.setText("");
     }
 
     public void btnRegresarNTipoLocal(View v){

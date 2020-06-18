@@ -22,7 +22,7 @@ public class Usuario extends TablaBD {
     public Usuario() {
         setNombreTabla("usuario");
         setNombreLlavePrimaria("idUsuario");
-        setCamposTabla(new String[]{"idUsuario", "claveUsuario", "nombreUsuario", "nombrePersonal", "apellidoPersonal", "correoPersonal", "idUnidad", "idRol"});
+        setCamposTabla(new String[]{"idUsuario", "idUnidad", "idRol", "nombreUsuario", "claveUsuario", "nombrePersonal", "apellidoPersonal", "correoPersonal"});
     }
 
     public Usuario(String nombreUsuario, String claveUsuario, String nombrePersonal, String apellidoPersonal, String correoPersonal) {
@@ -118,13 +118,13 @@ public class Usuario extends TablaBD {
     @Override
     public void setAttributesFromArray(String[] arreglo) {
         setIdUsuario(arreglo[0]);
-        setClaveUsuario(arreglo[1]);
-        setNombreUsuario(arreglo[2]);
-        setNombrePersonal(arreglo[3]);
-        setApellidoPersonal(arreglo[4]);
-        setCorreoPersonal(arreglo[5]);
-        setIdUnidad(Integer.parseInt(arreglo[6]));
-        setIdRol(Integer.parseInt(arreglo[7]));
+        setIdUnidad(Integer.parseInt(arreglo[1]));
+        setIdRol(Integer.parseInt(arreglo[2]));
+        setClaveUsuario(arreglo[4]);
+        setNombreUsuario(arreglo[3]);
+        setNombrePersonal(arreglo[5]);
+        setApellidoPersonal(arreglo[6]);
+        setCorreoPersonal(arreglo[7]);
     }
 
     @Override

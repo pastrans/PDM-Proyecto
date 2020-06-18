@@ -267,4 +267,10 @@
     <string name="txtHorarioMenu">Schedule</string>
     <string name="txtCerrarSesion">Log out</string>
     <string name="NombreUsuario">User name</string>
+    <string name="titGestionarRol">Manage role</string>
+    <string name="bNombreCiclo">Cycle name</string>
+    <string name="txtNombreRol">Role name:</string>
+    <string name="btnAgregarNRol">Add</string>
+    <string name="txtAccesosRol">Access</string>
+    <string name="btnEditarERol">Edit</string>
 </resources>

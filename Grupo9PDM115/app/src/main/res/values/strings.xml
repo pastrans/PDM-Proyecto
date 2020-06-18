@@ -4,7 +4,7 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in_short">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
-    <string name="txtListaRol">Listado de roles:</string>
+
 
     //Variables para Ciclo
     //Etiquetas
@@ -394,5 +394,16 @@
     <string name="txtDiaMenu">Dia</string>
     <string name="txtHorarioMenu">Horario</string>
     <string name="txtCerrarSesion">Cerrar sesión</string>
+    //Rol
+    //Gestionar Rol
+    <string name="titGestionarRol">Gestionar rol</string>
+    <string name="bNombreCiclo">Nombre del ciclo</string>
+    <string name="txtListaRol">Listado de roles:</string>
+    //Nuevo Rol
+    <string name="txtNombreRol">Nombre del rol:</string>
+    <string name="btnAgregarNRol">Agregar</string>
+    <string name="txtAccesosRol">Accesos:</string>
+    //Editar Rol
+    <string name="btnEditarERol">Editar</string>
 
 </resources>

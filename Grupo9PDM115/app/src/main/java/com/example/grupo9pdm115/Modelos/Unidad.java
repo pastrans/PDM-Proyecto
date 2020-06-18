@@ -17,20 +17,18 @@ public class Unidad extends TablaBD {
     private int idUnidad;
     private String   nombreent;
     private String  descripcionent;
-    private int  prioridad;
 
     public Unidad(){
         setNombreTabla("unidad");
         setNombreLlavePrimaria("idunidad");
-        setCamposTabla(new String[]{"idunidad", "nombreent","descripcionent","prioridad"});
+        setCamposTabla(new String[]{"idunidad", "nombreent","descripcionent"});
     }
 
     // -------------Constructor---------------
-    public Unidad(int idUnidad, String nombreent, String descripcionent, int prioridad) {
+    public Unidad(int idUnidad, String nombreent, String descripcionent) {
         this.idUnidad = idUnidad;
         this.nombreent = nombreent;
         this.descripcionent = descripcionent;
-        this.prioridad = prioridad;
     }
     // -------------Fin del Constructor---------------
 
@@ -59,13 +57,7 @@ public class Unidad extends TablaBD {
         this.descripcionent = descripcionent;
     }
 
-    public int getPrioridad() {
-        return prioridad;
-    }
 
-    public void setPrioridad(int prioridad) {
-        this.prioridad = prioridad;
-    }
     //public String getNombreTabla() {
         //return nombreTabla;
     //}
@@ -81,14 +73,12 @@ public class Unidad extends TablaBD {
         this.valoresCamposTabla.put("idunidad", getIdUnidad());
         this.valoresCamposTabla.put("nombreent", getNombreent());
         this.valoresCamposTabla.put("descripcionent", getDescripcionent());
-        this.valoresCamposTabla.put("prioridad", getPrioridad());
     }
     @Override
     public void setAttributesFromArray(String[] arreglo) {
         setIdUnidad(Integer.parseInt(arreglo[0]));
         setNombreent(arreglo[1]);
         setDescripcionent(arreglo[2]);
-        setPrioridad(Integer.parseInt(arreglo[3]));
     }
     @Override
     public Unidad getInstanceOfModel(String[] arreglo) {
@@ -103,7 +93,6 @@ public class Unidad extends TablaBD {
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("nombreent", getNombreent());
         this.valoresCamposTabla.put("descripcionent", getDescripcionent());
-        this.valoresCamposTabla.put("prioridad", getPrioridad());
 
         helper.abrir();
         control = helper.getDb().insert("unidad", null, valoresCamposTabla);

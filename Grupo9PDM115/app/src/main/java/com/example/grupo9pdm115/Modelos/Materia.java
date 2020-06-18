@@ -2,10 +2,17 @@ package com.example.grupo9pdm115.Modelos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.widget.Toast;
 
 // Importación de ControlBD
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Materia  extends TablaBD {
     // Atributos para BD
@@ -123,6 +130,28 @@ public class Materia  extends TablaBD {
         }
 
         return mensaje;
+    }
+
+    public static List<Materia> getAllFromJSON(String json, Context ctx) {
+
+        List<Materia> listaMaterias = new ArrayList<Materia>();
+
+        try {
+            JSONArray materiasJSON = new JSONArray(json);
+            for (int i = 0; i < materiasJSON.length(); i++) {
+                JSONObject obj = materiasJSON.getJSONObject(i);
+                Materia materia = new Materia();
+                materia.setCodMateria(obj.getString("CODMATERIA"));
+                materia.setIdUnidad(Integer.valueOf(obj.getString("IDUNIDAD")));
+                materia.setNombreMateria(obj.getString("NOMBREMAT"));
+                materia.setMasiva(obj.getString("MASIVA"));
+                listaMaterias.add(materia);
+            }
+            return listaMaterias;
+        } catch (Exception e) {
+            Toast.makeText(ctx, "Error en parseOO de JSON", Toast.LENGTH_LONG).show();
+            return null;
+        }
     }
 
 }

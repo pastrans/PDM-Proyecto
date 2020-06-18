@@ -41,9 +41,11 @@ public class UnidadAdapter extends ArrayAdapter<Unidad> {
         Unidad unidad = getItem(position);
 
         // Setup view
-        nombreUnidad.setText(unidad.getNombreent());
-        descripcion.setText(unidad.getDescripcionent());
-        prioridad.setText(Integer.toString(unidad.getPrioridad()));
+        if(!unidad.getNombreent().equals("Ninguna")){
+            nombreUnidad.setText(unidad.getNombreent());
+            descripcion.setText(unidad.getDescripcionent());
+            prioridad.setText("");
+        }
 
 
         return convertView;

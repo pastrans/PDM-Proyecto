@@ -10,10 +10,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Sesion;
-import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.TipoLocalSpinner;
 
@@ -22,8 +20,6 @@ public class EditarLocal extends AppCompatActivity {
     EditText nombreLocal;
     EditText capcidad;
     Spinner tipoLocalSpinner;
-    ControlBD helper;
-    TipoLocal tipoLocalClass;
     TipoLocalSpinner tipoLocalAdapter;
     Local local;
 
@@ -41,16 +37,15 @@ public class EditarLocal extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_local);
-        helper = new ControlBD(this);
-        tipoLocalClass = new TipoLocal();
         local = new Local();
-        tipoLocalSpinner = (Spinner) findViewById(R.id.spinnerTipoLocal);
         nombreLocal = (EditText) findViewById(R.id.editNombreLocal);
         capcidad = (EditText) findViewById(R.id.editCapacidad);
-        helper.abrir();
-        tipoLocalAdapter = new TipoLocalSpinner(helper);
-        helper.cerrar();
+
+        // Spinner
+        tipoLocalSpinner = (Spinner) findViewById(R.id.spinnerTipoLocal);
+        tipoLocalAdapter = new TipoLocalSpinner(this);
         tipoLocalSpinner.setAdapter(tipoLocalAdapter.getAdapterTipoLocal(this));
+
         int idTipoLocal = 0;
         if (getIntent().getExtras() != null){
             int capacidad = 0;

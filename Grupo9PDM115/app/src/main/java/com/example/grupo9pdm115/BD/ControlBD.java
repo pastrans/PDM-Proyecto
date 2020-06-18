@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.grupo9pdm115.Utilidades.FileHelper;
 
@@ -83,13 +84,24 @@ public class ControlBD {
         public void llenarBD(SQLiteDatabase db){
             try{
                 InputStream is = contextDBH.getResources().getAssets().open("llenar_bd.sql");
+                InputStream triggerSQL = contextDBH.getResources().getAssets().open("triggers.sql");
 
                 String[] instrucciones = FileHelper.parseSqlFile(is);
 
+                int size = triggerSQL.available();
+                byte[] buffer = new byte[size];
+                triggerSQL.read(buffer);
+                String file = new String(buffer);
+                String[] triggersInstrucciones = file.split("--FIN--");
+                /*Log.v("Trigger: " , triggersInstrucciones[0]);
+                Log.v("Trigger: " , triggersInstrucciones[1]);*/
                 db.beginTransaction();
                 try {
                     for (String instruccion : instrucciones) {
                         db.execSQL(instruccion);
+                    }
+                    for (int i = 0; i < triggersInstrucciones.length; i++){
+                        db.execSQL(triggersInstrucciones[i]);
                     }
                     db.setTransactionSuccessful();
                 } finally {

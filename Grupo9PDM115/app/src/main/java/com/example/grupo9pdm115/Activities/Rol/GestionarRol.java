@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class GestionarRol extends AppCompatActivity {
 
 
     Rol rol;
+    EditText editNombreCiclo;
     ListView listaRoles;
     RolAdapter listaRolAdapter;
 
@@ -30,8 +32,9 @@ public class GestionarRol extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_rol);
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreRol);
         listaRoles = (ListView) findViewById(R.id.listViewRoles);
-        llenarListaRoles();
+        llenarListaRoles(null);
     }
 
     public void nuevoRol(View v){
@@ -39,10 +42,22 @@ public class GestionarRol extends AppCompatActivity {
         startActivity(inte);
     }
 
-    public void llenarListaRoles(){
+    public void buscarRol(View v){
+        llenarListaRoles(editNombreCiclo.getText().toString());
+    }
+
+    public void llenarListaRoles(String filtro){
         rol = new Rol();
-        List objects = rol.getAll(this);
-        listaRolAdapter = new RolAdapter(this, objects);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = rol.getAll(this);
+        }
+        else{
+            objetcts = rol.getAllFiltered(this,"nombrerol", filtro);
+        }
+
+        listaRolAdapter = new RolAdapter(this, objetcts);
         listaRoles.setAdapter(listaRolAdapter);
         registerForContextMenu(listaRoles);
     }
@@ -50,7 +65,7 @@ public class GestionarRol extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        llenarListaRoles();
+        llenarListaRoles(null);
     }
 
     @Override
@@ -79,7 +94,7 @@ public class GestionarRol extends AppCompatActivity {
                     String resEliminados = "";
                     resEliminados = rolSeleccionado.eliminar(this);
                     Toast.makeText(this, resEliminados, Toast.LENGTH_SHORT).show();
-                    llenarListaRoles();
+                    llenarListaRoles(null);
                 }
                 return true;
         }

@@ -10,12 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.LocalAdapter;
 import com.example.grupo9pdm115.Modelos.Local;
-import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
@@ -23,6 +23,7 @@ import java.util.List;
 public class GestionarLocal extends AppCompatActivity {
 
     Local local;
+    EditText editNombrelocal;
     ListView listaLocal;
     LocalAdapter listaLocalAdapter;
 
@@ -31,13 +32,23 @@ public class GestionarLocal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_local);
         listaLocal = (ListView) findViewById(R.id.idListadoLocales);
-        llenarListaLocales();
+        editNombrelocal = (EditText) findViewById(R.id.editNombreLocal);
+        llenarListaLocales(null);
     }
-
-    public void llenarListaLocales(){
+    public void buscarLocal(View v){
+        llenarListaLocales(editNombrelocal.getText().toString());
+    }
+    public void llenarListaLocales(String filtro){
         local = new Local();
-        List objects = local.getAll(this);
-        listaLocalAdapter = new LocalAdapter(this, objects);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = local.getAll(this);
+        }
+        else{
+            objetcts = local.getAllFiltered(this,"nombrelocal", filtro);
+        }
+        listaLocalAdapter = new LocalAdapter(this, objetcts);
         listaLocal.setAdapter(listaLocalAdapter);
         registerForContextMenu(listaLocal);
     }
@@ -45,7 +56,7 @@ public class GestionarLocal extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        llenarListaLocales();
+        llenarListaLocales(null);
     }
 
     @Override
@@ -76,7 +87,7 @@ public class GestionarLocal extends AppCompatActivity {
                     String resEliminados = "";
                     resEliminados = localSeleccionado.eliminar(this);
                     Toast.makeText(this, resEliminados, Toast.LENGTH_SHORT).show();
-                    llenarListaLocales();
+                    llenarListaLocales(null);
                 }
                 return true;
         }

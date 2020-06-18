@@ -5,9 +5,9 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.example.grupo9pdm115.Adapters.UnidadAdapter;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Unidad;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 
@@ -17,18 +17,22 @@ public class UnidadSpinner {
     private ArrayList<Unidad> listUnidad;
     private  ArrayList<String> contenidoUnidad; //para tipo de grupo
     private Cursor cursor ;
+    private ControlBD helper;
     //Fin Atributos
 
 
     // Inicio de los constructores
-    public UnidadSpinner(ControlBD helpercontexto) {
-        //Código para mostar las listas de String
+    public UnidadSpinner(Context context) {
+        /// Ejecutar consulta
+        helper = new ControlBD(context);
+        helper.abrir();
         String Consulta = "SELECT * FROM UNIDAD";
-        cursor = helpercontexto.consultar(Consulta);
+        cursor = helper.consultar(Consulta);
+
         Unidad unidad;
         listUnidad = new ArrayList<Unidad>();
         contenidoUnidad = new ArrayList<String>();
-        contenidoUnidad.add("Seleccione"); // genera un desfase con respecto a la lista de objetos de TipoGrupo
+        contenidoUnidad.add(context.getString(R.string.txtSelecUnidad)); // contenidoUnidad.add("Seleccione");
         while (cursor.moveToNext()) {
             unidad = new Unidad();
             unidad.setIdUnidad(cursor.getInt(0));
@@ -38,7 +42,7 @@ public class UnidadSpinner {
 
         }
 
-
+        helper.cerrar();
     }
     //Inicio de métodos
     public ArrayAdapter getAdapterUnidad (Context ctx){

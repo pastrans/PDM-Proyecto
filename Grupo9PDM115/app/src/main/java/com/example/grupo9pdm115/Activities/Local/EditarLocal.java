@@ -2,14 +2,17 @@ package com.example.grupo9pdm115.Activities.Local;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Local;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.TipoLocalSpinner;
@@ -26,6 +29,16 @@ public class EditarLocal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ELO"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_local);
         helper = new ControlBD(this);

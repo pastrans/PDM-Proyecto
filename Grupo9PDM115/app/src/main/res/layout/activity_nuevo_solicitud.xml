@@ -71,7 +71,7 @@
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:id="@+id/edtEncargadoSolicitudNuevo"
-                    android:maxLength="30"
+                    android:maxLength="5"
                     />
             </LinearLayout>
             <LinearLayout

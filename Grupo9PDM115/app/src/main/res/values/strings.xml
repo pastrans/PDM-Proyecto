@@ -214,6 +214,7 @@
     //Gestionar Usuario
     <string name="titGestionarUsuario">Gestionar Usuario</string>
     <string name="txtListaUsuarios">Usuarios ingresados:</string>
+    <string name="NombreUsuario">Nombre del usuario</string>
     //Nuevo Usuario
     <string name="titNuevoUsuario">Nuevo Usuario</string>
     <string name="btnAgregarNUsuario">Agregar</string>

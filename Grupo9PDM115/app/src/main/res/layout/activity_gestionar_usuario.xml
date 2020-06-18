@@ -41,7 +41,7 @@
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre del usuario"
+            android:hint="@string/NombreUsuario"
             android:inputType="text"/>
     </LinearLayout>
     <TextView

@@ -3,6 +3,7 @@ package com.example.grupo9pdm115.Activities.Unidad;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.grupo9pdm115.Adapters.UnidadAdapter;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.WebService.ControlServicio;
 
 import java.util.List;
 
@@ -23,11 +25,18 @@ public class GestionarUnidad extends AppCompatActivity {
     ListView listUnidad;
     UnidadAdapter listaUnidadAdapter;
     Unidad unidad;
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Unidad/ws_unidad_list.php";
+    private String urlPublicoUESEliminar = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Unidad/ws_unidad_eliminar.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_unidad);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         // Inicializar elementos a manejar
         listUnidad = (ListView) findViewById(R.id.listUnidad);
@@ -41,7 +50,15 @@ public class GestionarUnidad extends AppCompatActivity {
     // Método para llenar lista de unidad
     public void llenarListaUnidad(){
         unidad = new Unidad();
-        List objects = unidad.getAll(this);
+        String unidadesExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUES, this);
+        List objects = ControlServicio.obtenerUnidades(unidadesExternas, this);
+        //List objects = unidad.getAll(this);
+
+        for(int i = 0; i < objects.size(); i++){
+            Unidad u = (Unidad) objects.get(i);
+            if(u.getNombreent().equals("Ninguna"))
+                objects.remove(i);
+        }
 
         // Inicializar el adaptador con la información a mostrar
         listaUnidadAdapter = new UnidadAdapter(this, objects);
@@ -89,13 +106,14 @@ public class GestionarUnidad extends AppCompatActivity {
                     intent.putExtra("idunidad", unidadActual.getIdUnidad());
                     intent.putExtra("nombreent", unidadActual.getNombreent());
                     intent.putExtra("descripcionent", unidadActual.getDescripcionent());
-                    intent.putExtra("prioridad", unidadActual.getPrioridad());
+                    //intent.putExtra("prioridad", unidadActual.getPrioridad());
                     startActivity(intent);
                 }
                 return true;
             case R.id.ctxEliminar:
                 if(unidadActual != null){
                     String regEliminadas;
+                    eliminarWeb(unidadActual.getIdUnidad());;
                     regEliminadas= unidadActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
                     llenarListaUnidad();
@@ -104,6 +122,12 @@ public class GestionarUnidad extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    public void eliminarWeb(int idUnidad){
+        String url = null;
+        url = urlPublicoUESEliminar + "?idUnidad=" + idUnidad;
+        ControlServicio.sendRequest(url, this);
     }
 
 }

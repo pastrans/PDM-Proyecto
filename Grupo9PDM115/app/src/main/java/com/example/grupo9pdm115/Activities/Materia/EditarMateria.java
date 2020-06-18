@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.WebService.ControlServicio;
 
 public class EditarMateria extends AppCompatActivity implements View.OnClickListener  {
     //Declarando
@@ -27,6 +29,8 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
     UnidadSpinner control;
     Unidad unidad;
     int posicion;
+
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_update.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,11 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
         helper.abrir();
         control= new UnidadSpinner(helper);
         helper.cerrar();
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         idUnidad.setAdapter(control.getAdapterUnidad(this));
         // Verificando paso de datos por intent
@@ -105,9 +114,9 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
                         materia.setCodMateria(codMaateria);
                         materia.setNombreMateria(nombreMateria);
                         materia.setMasiva(masividad);
-
-                        String regInsertados = materia.actualizar(this);
-                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                        actualizarWeb(materia);
+                        /*String regInsertados = materia.actualizar(this);
+                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
                         super.onBackPressed();
 
 
@@ -128,6 +137,23 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
 
 
     }
+
+    public void actualizarWeb(Materia m){
+        String[] nomMatArray = m.getNombreMateria().split("\\s+");
+        String nombreUrl = m.getNombreMateria();
+        /*for(int i = 0; i < nomMatArray.length; i++){
+            if ((i+1) == nomMatArray.length)
+                nombreUrl += nomMatArray[i];
+            else
+                nombreUrl += nomMatArray[i] + "+";
+        }*/
+        String url = null;
+        url = urlPublicoUES + "?codmateria=" + m.getCodMateria() + "&nombremat="+ nombreUrl + "&idUnidad="+ m.getIdUnidad() + "&masiva=" + m.isMasiva();
+        String urlNueva = url.replaceAll(" ", "+");
+        //Toast.makeText(this, urlNueva, Toast.LENGTH_LONG).show();
+        ControlServicio.sendRequest(urlNueva, this);
+    }
+
     public void btnRegresarNMateria(View v){
         super.onBackPressed();
     }

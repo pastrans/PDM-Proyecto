@@ -422,5 +422,6 @@
     <string name="txtSelecUnidad">Seleccione una unidad</string>
     <string name="txtSelecRol">Seleccione un rol</string>
     <string name="txtSelecCiclo">Seleccione un ciclo</string>
+    <string name="txtSelecTipo">Seleccione un tipo</string>
 
 </resources>

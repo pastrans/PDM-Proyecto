@@ -23,7 +23,7 @@ public class TipoLocal extends TablaBD {
 
     public TipoLocal() {
         setNombreLlavePrimaria("idTipoLocal");
-        setCamposTabla(new String[]{"idTipoLocal", "nombreTipo", "idEncargado"});
+        setCamposTabla(new String[]{"idTipoLocal", "idEncargado", "nombreTipo"});
         setNombreTabla("TipoLocal");
     }
 
@@ -73,8 +73,8 @@ public class TipoLocal extends TablaBD {
     @Override
     public void setAttributesFromArray(String[] arreglo) {
         setIdTipoLocal(Integer.valueOf(arreglo[0]));
-        setNombreTipo(arreglo[1]);
-        setIdEncargado(arreglo[2]);
+        setIdEncargado(arreglo[1]);
+        setNombreTipo(arreglo[2]);
     }
 
     @Override
@@ -129,6 +129,23 @@ public class TipoLocal extends TablaBD {
         helper.getDb().insert("encargado", null, valuesEncargado);
         helper.cerrar();
     }*/
+
+    public List<TipoLocal> getTiposLocales(Context context){
+        List<TipoLocal> listaTipoLocal = new ArrayList<TipoLocal>();
+        helper = new ControlBD(context);
+        helper.abrir();
+        Cursor cursor = helper.getDb().rawQuery("SELECT idTipoLocal, nombreTipo FROM tipolocal", null);
+        if(cursor.moveToFirst()){
+            do{
+                TipoLocal tipoLocal = new TipoLocal();
+                tipoLocal.setIdTipoLocal(cursor.getInt(0));
+                tipoLocal.setNombreTipo(cursor.getString(1));
+                listaTipoLocal.add(tipoLocal);
+            }while (cursor.moveToNext());
+        }
+        helper.cerrar();
+        return listaTipoLocal;
+    }
 
     @Override
     public String toString(){

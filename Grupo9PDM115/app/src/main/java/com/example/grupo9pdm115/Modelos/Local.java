@@ -25,7 +25,7 @@ public class Local extends TablaBD {
     public Local(){
         setNombreLlavePrimaria("idLocal");
         setNombreTabla("local");
-        setCamposTabla(new String[]{"idLocal", "nombreLocal", "idTipoLocal", "capacidad"});
+        setCamposTabla(new String[]{"idLocal", "idTipoLocal", "nombreLocal", "capacidad"});
     }
 
     public Local(int idTipoLocal, String nombreLocal, int capacidad) {
@@ -82,8 +82,8 @@ public class Local extends TablaBD {
     @Override
     public void setAttributesFromArray(String[] arreglo) {
         setIdlocal(Integer.valueOf(arreglo[0]));
-        setNombreLocal(arreglo[1]);
-        setIdtipolocal(Integer.valueOf(arreglo[2]));
+        setIdtipolocal(Integer.valueOf(arreglo[1]));
+        setNombreLocal(arreglo[2]);
         setCapacidad(Integer.valueOf(arreglo[3]));
     }
 

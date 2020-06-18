@@ -73,7 +73,7 @@
            android:singleLine="true"
            android:id="@+id/editEncargado"
            android:inputType="text"
-           android:maxLength="30" />
+           android:maxLength="5" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

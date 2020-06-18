@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context=".Activities.Solicitud.GestionarSolicitudesEncargado"
-    android:padding="10dp">
+    android:paddingBottom="8dp"
+    android:paddingLeft= "16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="8dp">
 
 
     <LinearLayout
@@ -23,9 +26,10 @@
         <ListView
             android:id="@+id/listaSolicitud"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="#E5E5E5"
-            android:dividerHeight="2dp" />
+            android:layout_height="match_parent"
+            android:showDividers="middle"
+            android:divider="?android:listDivider"
+            android:dividerPadding="16dp" />
     </LinearLayout>
 
 </LinearLayout>

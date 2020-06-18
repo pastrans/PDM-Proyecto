@@ -58,6 +58,8 @@
         android:id="@+id/listaEventoEspecial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@null" />
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp" />
         </LinearLayout>
 </LinearLayout>

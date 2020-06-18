@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:text="Nombre"
+        android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Nombre del usuario" />
     <TextView

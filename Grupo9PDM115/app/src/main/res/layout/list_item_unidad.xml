@@ -14,8 +14,9 @@
         android:id="@+id/txtNombreUnidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="32sp"
         android:text="Nombre"
+        android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Unidad" />
     <TextView

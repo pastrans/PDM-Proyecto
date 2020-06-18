@@ -20,18 +20,33 @@
         android:textSize="17sp"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtMateria"/>
     <TextView
         android:id="@+id/txtNombreMateriaGrupoLV"
+        tools:text="Materia "
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Materia: "
-        android:textStyle="bold"
-        />
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtTipoDeGrupo"/>
     <TextView
         android:id="@+id/txtTipoGrupoLV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:text="Laboratorio"
         />
+    </LinearLayout>
 
 </LinearLayout>

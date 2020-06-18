@@ -123,7 +123,7 @@
     //Etiquetas
 
     <string name="txtNombreTipoLocal">Nombre: </string>
-    <string name="txtEncargado">Encargado</string>
+    <string name="txtEncargado">Encargado:</string>
     //Gestionar Tipo Local
     <string name="titGestionarTipoLocal">Gestionar Tipo Local</string>
     <string name="idListadoTiposLocales">Listado de tipos de local:</string>

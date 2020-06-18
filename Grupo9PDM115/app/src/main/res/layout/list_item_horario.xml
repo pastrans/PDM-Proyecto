@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,25 +15,33 @@
         android:id="@+id/txtIdHorario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Nombre"
-        android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
+        android:textStyle="bold"
         tools:text="Id Horario" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtHoraInicial"/>
     <TextView
         android:id="@+id/txtHoraInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtIdHorario"
-        android:layout_below="@id/txtIdHorario"
-        android:text="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Hora inicio" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtHoraFin"/>
     <TextView
         android:id="@+id/txtHoraFin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtIdHorario"
-        android:layout_below="@id/txtHoraInicio"
-        android:text="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Hora final" />
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

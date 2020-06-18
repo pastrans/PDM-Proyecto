@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,25 +15,20 @@
         android:id="@+id/txtNombreUnidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32sp"
-        android:text="Nombre"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Unidad" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/editDescripcion"/>
     <TextView
         android:id="@+id/txtDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtNombreUnidad"
-        android:layout_below="@id/txtNombreUnidad"
-        android:text="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Descripción" />
-    <TextView
-        android:id="@+id/txtPrioridad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtNombreUnidad"
-        android:layout_below="@id/txtDescripcion"
-        android:text="Nombre"
-        tools:text="Prioridad" />
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

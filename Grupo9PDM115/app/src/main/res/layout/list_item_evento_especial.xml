@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,28 +15,36 @@
         android:id="@+id/txtNombreEventoEspecial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Nombre"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Nombre Evento Especial" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:text="@string/txtDescripcionEventoEspecial"/>
     <TextView
         android:id="@+id/txtDescripcionEventoEspecial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtNombreEventoEspecial"
-        android:layout_alignLeft="@id/txtNombreEventoEspecial"
-        android:text="Descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="Descripcion Evento" />
+    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:text="@string/txtFechaRealizada"/>
     <TextView
         android:id="@+id/txtFechaEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDescripcionEventoEspecial"
-        android:layout_alignLeft="@+id/txtNombreEventoEspecial"
-        android:text="Fecha Evento"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:text="2020/07/01"/>
+        </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

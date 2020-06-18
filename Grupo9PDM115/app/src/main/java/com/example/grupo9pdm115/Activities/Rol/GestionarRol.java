@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class GestionarRol extends AppCompatActivity {
 
 
     Rol rol;
+    EditText editNombreCiclo;
     ListView listaRoles;
     RolAdapter listaRolAdapter;
 
@@ -30,6 +32,7 @@ public class GestionarRol extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_rol);
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
         listaRoles = (ListView) findViewById(R.id.listViewRoles);
         llenarListaRoles();
     }

@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.Activities.AccesoUsuario.NuevoAccesoUsuario;
 import com.example.grupo9pdm115.Adapters.UsuarioAdapter;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
@@ -23,6 +24,7 @@ import java.util.List;
 public class GestionarUsuario extends AppCompatActivity {
 
     ListView listaUsuarios;
+    EditText editNombreUsuario;
     UsuarioAdapter listaUsuariosAdapter;
     Usuario usuario;
 
@@ -31,23 +33,35 @@ public class GestionarUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_usuario);
         listaUsuarios = (ListView) findViewById(R.id.idListadoUsuarios);
-        llenarListaUsuarios();
+        llenarListaUsuarios(null);
+        editNombreUsuario = (EditText) findViewById(R.id.editNombreUsuario);
         registerForContextMenu(listaUsuarios);
     }
 
-    public void llenarListaUsuarios(){
+    public void llenarListaUsuarios(String filtro){
         usuario = new Usuario();
-        //LLENAR DATOS DE EJEMPLO
-        //usuario.insertUnidad(this);
-        List objects = usuario.getAll(this);
-        listaUsuariosAdapter = new UsuarioAdapter(this, objects);
+        List objetcts;
+
+        if(filtro == null){
+            objetcts = usuario.getAll(this);
+        }
+        else{
+
+            objetcts = usuario.getAllFiltered(this,"nombreusuario", filtro);
+        }
+
+        listaUsuariosAdapter = new UsuarioAdapter(this, objetcts);
         listaUsuarios.setAdapter(listaUsuariosAdapter);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        llenarListaUsuarios();
+        llenarListaUsuarios(null);
+    }
+    // Método para buscar usuario filtrado
+    public void buscarUsuario(View v){
+        llenarListaUsuarios(editNombreUsuario.getText().toString());
     }
 
     public void btnNuevoGUsuario(View v){
@@ -69,6 +83,7 @@ public class GestionarUsuario extends AppCompatActivity {
             Toast.makeText(this, "No se ha iniciado sesión", Toast.LENGTH_SHORT).show();
         }
     }*/
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -102,7 +117,7 @@ public class GestionarUsuario extends AppCompatActivity {
                    String regEliminados;
                    regEliminados = usuarioSeleccionado.eliminar(this);
                    Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
-                   llenarListaUsuarios();
+                   llenarListaUsuarios(null);
                 }
                 //Toast.makeText(this, "Eliminar User", Toast.LENGTH_LONG).show();
                 return true;

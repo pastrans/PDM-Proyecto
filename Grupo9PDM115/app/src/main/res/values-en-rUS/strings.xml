@@ -287,4 +287,8 @@
     <string name="txtReservaN">"Normal reserve "</string>
     <string name="txtReservaE">Special reserve</string>
     <string name="bNombreRol">"Role name "</string>
+    <string name="txtSelecUnidad">"Select a unit "</string>
+    <string name="txtSelecRol">"Select a role "</string>
+    <string name="txtSelecCiclo">"Select a cycle "</string>
+    <string name="txtSelecTipo">"Select a type "</string>
 </resources>

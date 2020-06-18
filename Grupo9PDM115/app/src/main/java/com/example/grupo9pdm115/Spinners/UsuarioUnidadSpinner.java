@@ -1,13 +1,12 @@
 package com.example.grupo9pdm115.Spinners;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.widget.ArrayAdapter;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Unidad;
-import com.example.grupo9pdm115.Modelos.Usuario;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 
@@ -15,14 +14,19 @@ public class UsuarioUnidadSpinner {
     private ArrayList<Unidad> listaUnidad;
     private ArrayList<String> contenidoUnidad;
     private Cursor cursor;
+    private ControlBD helper;
 
-    public UsuarioUnidadSpinner(ControlBD helper){
+    public UsuarioUnidadSpinner(Context context){
+        // Ejecutar consulta
+        helper = new ControlBD(context);
+        helper.abrir();
         String sql = "SELECT * FROM UNIDAD";
         cursor = helper.consultar(sql);
+
         Unidad unidad;
         listaUnidad = new ArrayList<Unidad>();
         contenidoUnidad = new ArrayList<String>();
-        contenidoUnidad.add("Seleccione una unidad");
+        contenidoUnidad.add(context.getString(R.string.txtSelecUnidad)); //contenidoUnidad.add("Seleccione una unidad");
         while (cursor.moveToNext()){
             unidad = new Unidad();
             unidad.setIdUnidad(cursor.getInt(0));
@@ -30,6 +34,8 @@ public class UsuarioUnidadSpinner {
             contenidoUnidad.add(cursor.getString(1));
             listaUnidad.add(unidad);
         }
+
+        helper.cerrar();
     }
 
     public ArrayAdapter getAdapterUnidad(Context context){

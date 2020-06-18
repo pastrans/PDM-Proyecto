@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Activities.Coordinacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -19,6 +20,7 @@ import com.example.grupo9pdm115.Adapters.CoordinacionAdapter;
 import com.example.grupo9pdm115.Adapters.MateriaAdapter;
 import com.example.grupo9pdm115.Modelos.Coordinacion;
 import com.example.grupo9pdm115.Modelos.Materia;
+import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
@@ -55,7 +57,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
         if (filtro.equals(null) ) {
             objetcts = coordinacion.getAll(this);
         } else {
-            objetcts = coordinacion.getAllFiltered(this, "idusuario", filtro);
+            objetcts = coordinacion.getAllFiltered(this, filtro);
         }
 
         //Inicializar el adaptador con la información a mostrar
@@ -93,7 +95,9 @@ public class GestionarCoordinacion extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
 
         // Modificable
-        menu.setHeaderTitle(listaCoordinacionAdapter.getItem(info.position).getIdUsuario());
+        Usuario usu = new Usuario();
+        usu.consultar(this, listaCoordinacionAdapter.getItem(info.position).getIdUsuario());
+        menu.setHeaderTitle(usu.getNombrePersonal());
 
         MenuInflater inflater = getMenuInflater();
         // Modificable

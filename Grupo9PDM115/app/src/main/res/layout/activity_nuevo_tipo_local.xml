@@ -63,15 +63,17 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="@string/txtEncargado" />
-        <Spinner
-            android:id="@+id/encargadoSpinner"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="0dp"
-            android:layout_weight="1.15"
-            android:imeOptions="actionNext"
-            android:paddingLeft="10dp"
-            android:singleLine="true" />
+       <EditText
+           android:layout_width="0dp"
+           android:layout_height="50dp"
+           android:layout_marginLeft="0dp"
+           android:layout_weight="1.15"
+           android:imeOptions="actionNext"
+           android:paddingLeft="10dp"
+           android:singleLine="true"
+           android:id="@+id/editEncargado"
+           android:inputType="text"
+           android:maxLength="5" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

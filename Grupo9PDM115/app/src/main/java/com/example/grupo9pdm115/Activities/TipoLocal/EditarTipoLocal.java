@@ -2,14 +2,15 @@ package com.example.grupo9pdm115.Activities.TipoLocal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Encargado;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UsuarioSpinner;
@@ -18,24 +19,34 @@ public class EditarTipoLocal extends AppCompatActivity {
 
     ControlBD helper;
     EditText edtNombreTipo;
-    Spinner encargadoSpinner;
+    EditText editEncargado;
     TipoLocal tipoLocalClass;
     Encargado encargadoClass;
     UsuarioSpinner usuarioSpinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ETL"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_tipo_local);
         helper = new ControlBD(this);
         edtNombreTipo = (EditText) findViewById(R.id.editNombreTipoLocal);
-        encargadoSpinner = (Spinner) findViewById(R.id.spinnerEncargado);
+        editEncargado = (EditText) findViewById(R.id.editEncargadoTipoLocal);
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
         helper.abrir();
         usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
-        encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
+        /*encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
         if (getIntent().getExtras() != null){
             tipoLocalClass.setIdTipoLocal(getIntent().getIntExtra("idTipoLocal", 0));
             edtNombreTipo.setText(getIntent().getStringExtra("nombreTipo"));
@@ -45,21 +56,21 @@ public class EditarTipoLocal extends AppCompatActivity {
                 if (idEncargadoItem.equals(idEncargado))
                     encargadoSpinner.setSelection(i);
             }
-        }
+        }*/
     }
 
     public void btnEditarETipoLocal(View v){
-        String regInsertados;
+        /*String regInsertados;
         int posUsuario = encargadoSpinner.getSelectedItemPosition();
         tipoLocalClass.setNombreTipo(edtNombreTipo.getText().toString());
         tipoLocalClass.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
         regInsertados = tipoLocalClass.actualizar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
     }
 
     public void btnLimpiarETipoLocal(View v){
         edtNombreTipo.setText("");
-        encargadoSpinner.setSelection(0);
+        editEncargado.setText("");
     }
 
     public void btnRegresarETipoLocal(View v){

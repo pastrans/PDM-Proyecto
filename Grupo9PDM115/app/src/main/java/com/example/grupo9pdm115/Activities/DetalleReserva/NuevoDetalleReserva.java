@@ -91,7 +91,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         helper.abrir();
         diaSpinnerAdapter = new DiaSpinner(helper);
         horarioSpinnerAdapter = new HorarioSpinner(helper);
-        tipoGrupoSpinnerAdapter = new TipoGrupoSpinner(helper);
+        tipoGrupoSpinnerAdapter = new TipoGrupoSpinner(this);
         helper.cerrar();
 
 

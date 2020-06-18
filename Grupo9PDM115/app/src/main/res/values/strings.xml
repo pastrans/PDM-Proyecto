@@ -238,9 +238,9 @@
     <string name="txtUsuario">Usuario:</string>
     <string name="txtCMateria">Ciclo Materia:</string>
     //Gestionar Coordinación
-    <string name="titGestionarCoordinador">Gestionar coordinador</string>
+    <string name="titGestionarCoordinador">Gestionar coordinación</string>
     <string name="txtListadoCoordinadores">Listado de registros:</string>
-    <string name="txtbNombreCoordinador">Nombre del coordinador</string>
+    <string name="txtbCodigoMateria">Código de materia</string>
     //Nuevo Coordinación
     <string name="titNuevoCoordinador">Nueva coordinación</string>
     <string name="btnAgregarNCoordinador">Agregar</string>
@@ -321,7 +321,7 @@
     <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
     <string name="titGestionarSolicitud">Gestionar Solicitud</string>
     <string name="btnNuevoGSolicitud">Nuevo</string>
-    <string name="txtbNombreSolicitud">Nombre de la solicitud</string>
+    <string name="txtbNombreSolicitud">Asunto de solicitud</string>
     //Nuevo Solicitud
     <string name="titNuevaSolicitud">Nueva Solicitud</string>
     <string name="btnAgregarNSolicitud">Agregar</string>
@@ -419,5 +419,12 @@
     <string name="btnNuevoGHorario">Nuevo</string>
     <string name="btnNuevoGTipoLocal">Nuevo</string>
     <string name="btnEditarGTipoLocal">Editar</string>
+
+    // Spinners
+    <string name="txtSelecUnidad">Seleccione una unidad</string>
+    <string name="txtSelecRol">Seleccione un rol</string>
+    <string name="txtSelecCiclo">Seleccione un ciclo</string>
+    <string name="txtSelecTipo">Seleccione un tipo</string>
+    <string name="txtSelecTipoLocal">Seleccione un string de local</string>
 
 </resources>

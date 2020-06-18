@@ -267,4 +267,16 @@
     <string name="txtHorarioMenu">Schedule</string>
     <string name="txtCerrarSesion">Log out</string>
     <string name="NombreUsuario">User name</string>
+    <string name="titGestionarRol">Manage role</string>
+    <string name="bNombreCiclo">Cycle name</string>
+    <string name="txtNombreRol">Role name:</string>
+    <string name="btnAgregarNRol">Add</string>
+    <string name="txtAccesosRol">Access</string>
+    <string name="btnEditarERol">Edit</string>
+    <string name="txtbNombreFeriado">"Name of the holiday "</string>
+    <string name="txtbNombreUnidad">Name of the unit</string>
+    <string name="txtbNombreMateria">"Name of subject "</string>
+    <string name="txtbNombreTipoGrupo">"Name of the type of group "</string>
+    <string name="txtbIdHorario">"Schedule id "</string>
+    <string name="txtbNombreCiclo">Cycle name</string>
 </resources>

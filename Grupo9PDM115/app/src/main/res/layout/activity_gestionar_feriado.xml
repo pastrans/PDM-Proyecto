@@ -40,7 +40,7 @@
             android:id="@+id/editNombreFeriado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre del feriado"
+            android:hint="@string/txtbNombreFeriado"
             android:inputType="text"/>
     </LinearLayout>
 

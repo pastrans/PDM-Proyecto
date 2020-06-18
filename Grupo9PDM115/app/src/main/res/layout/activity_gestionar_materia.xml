@@ -36,7 +36,7 @@
             android:id="@+id/editNombreMateria"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Nombre de la materia"
+            android:hint="@string/txtbNombreMateria"
             android:inputType="text"/>
     </LinearLayout>
     <!-- Lista días -->

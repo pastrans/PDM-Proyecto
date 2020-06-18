@@ -31,7 +31,7 @@
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarCiclo"
+            android:onClick="buscarhorario"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText

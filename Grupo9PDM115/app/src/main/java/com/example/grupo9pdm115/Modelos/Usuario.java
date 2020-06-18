@@ -8,6 +8,9 @@ import android.database.Cursor;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario extends TablaBD {
 
     private String idUsuario;
@@ -187,6 +190,31 @@ public class Usuario extends TablaBD {
         }
         helper.cerrar();
         return false;
+    }
+
+    public List<Usuario> getAllFiltered(Context context, String filtro){
+        List<Usuario> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+
+        String consulta = "select idusuario, idunidad, idrol, nombreusuario, claveusuario, nombrepersonal, apellidopersonal, correopersonal ,nombrepersonal || ' ' || apellidopersonal as   \n" +
+                "FullName from usuario  where   FullName like '%" + filtro +"%' ";
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add((Usuario) getInstanceOfModel(valores) );
+            }while (cursor.moveToNext());
+        }
+
+        helper.cerrar();
+
+        return listaTablaBD;
     }
 
 }

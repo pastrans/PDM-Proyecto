@@ -47,7 +47,7 @@ public class GestionarUsuario extends AppCompatActivity {
         }
         else{
 
-            objetcts = usuario.getAllFiltered(this,"nombreusuario", filtro);
+            objetcts = usuario.getAllFiltered(this, filtro);
         }
 
         listaUsuariosAdapter = new UsuarioAdapter(this, objetcts);
@@ -132,4 +132,5 @@ public class GestionarUsuario extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
 }

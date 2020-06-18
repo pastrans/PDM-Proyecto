@@ -53,7 +53,8 @@
         android:id="@+id/listaCiclos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#E5E5E5"
-        android:dividerHeight="2dp"/>
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="32dp"/>
 
 </LinearLayout>

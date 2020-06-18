@@ -44,7 +44,7 @@ public class EditarMateria extends AppCompatActivity implements View.OnClickList
         control= new UnidadSpinner(helper);
         helper.cerrar();
 
-        idUnidad.setAdapter(control.getAdapterUnidad(getApplicationContext()));
+        idUnidad.setAdapter(control.getAdapterUnidad(this));
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
             editCodMateria.setText(getIntent().getStringExtra("codMateria"));

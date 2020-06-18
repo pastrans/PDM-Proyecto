@@ -71,7 +71,7 @@ public class NuevoSolicitud extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String items = spinnerLocaSolicitud.getSelectedItem().toString();
-                if(!items.equals("Seleccione un tipo de local")){
+                if(spinnerLocaSolicitud.getSelectedItemId() > 0){
                     TipoLocal tipoLocal = new TipoLocal();
                     List<TipoLocal> tipo = tipoLocal.getAllFiltered(getApplicationContext(), "nombretipo", items);
                     TipoLocal t = (TipoLocal) tipo.get(0);

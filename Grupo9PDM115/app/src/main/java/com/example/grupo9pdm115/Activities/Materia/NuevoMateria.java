@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Activities.Materia;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,6 +16,7 @@ import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
+import com.example.grupo9pdm115.WebService.ControlServicio;
 
 public class NuevoMateria  extends AppCompatActivity implements View.OnClickListener{
     //Declarando
@@ -23,6 +25,8 @@ public class NuevoMateria  extends AppCompatActivity implements View.OnClickList
     RadioButton masivaRadioButton1, masivaRadioButton2;
     Spinner idUnidad;
     UnidadSpinner control;
+
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_insert.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,10 @@ public class NuevoMateria  extends AppCompatActivity implements View.OnClickList
         control= new UnidadSpinner(helper);
         helper.cerrar();
         idUnidad.setAdapter(control.getAdapterUnidad(getApplicationContext()));
-
-
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
     }
     @Override
     public void onClick(View v) {
@@ -93,7 +98,7 @@ public class NuevoMateria  extends AppCompatActivity implements View.OnClickList
                             materia.setCodMateria(codMaateria);
                             materia.setNombreMateria(nombreMateria);
                             materia.setMasiva(masividad);
-
+                            guardarWeb(materia);
                             String regInsertados = materia.guardar(this);
                             Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
 
@@ -118,6 +123,21 @@ public class NuevoMateria  extends AppCompatActivity implements View.OnClickList
     // Método para regresar al activity anterior
     public void btnRegresarNMateria(View v){
         super.onBackPressed();
+    }
+
+    public void guardarWeb(Materia m){
+        String[] nomMatArray = m.getNombreMateria().split("\\s+");
+        String nombreUrl = "";
+        /*for(int i = 0; i < nomMatArray.length; i++){
+            if ((i+1) == nomMatArray.length)
+                nombreUrl += nomMatArray[i];
+            else
+                nombreUrl += nomMatArray[i] + "+";
+        }*/
+        String url = null;
+        url = urlPublicoUES + "?codmateria=" + m.getCodMateria() + "&nombremat="+ m.getNombreMateria() + "&idUnidad="+ m.getIdUnidad() + "&masiva=" + m.isMasiva();
+        String urlNueva = url.replaceAll(" ", "+");
+        ControlServicio.sendRequest(urlNueva, this);
     }
 
     //Limpiar campos

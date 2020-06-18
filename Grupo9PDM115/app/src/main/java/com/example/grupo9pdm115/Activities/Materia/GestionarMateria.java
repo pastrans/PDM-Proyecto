@@ -2,6 +2,7 @@ package com.example.grupo9pdm115.Activities.Materia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.grupo9pdm115.Adapters.MateriaAdapter;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.WebService.ControlServicio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestionarMateria extends AppCompatActivity {
@@ -27,10 +30,19 @@ public class GestionarMateria extends AppCompatActivity {
     Materia materia;
     EditText editnombreMateria;
 
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list.php";
+    private String urlPublicoUESFiltro = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list_filter.php";
+    private String urlPublicoUESEliminar = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_eliminar.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_materia);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         //Inicializar elementos para llenar lista
         listaMaterias = (ListView) findViewById(R.id.listaMaterias);
@@ -45,17 +57,22 @@ public class GestionarMateria extends AppCompatActivity {
     //Metodo parra llenar lista de materias
     public void llenarListaMateria(String filtro){
         materia = new Materia();
-        List objetcts;
+        List objetcts = null;
 
         if (filtro == null) {
-            objetcts = materia.getAll(this);
+            String materiasExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUES, this);
+            objetcts = Materia.getAllFromJSON(materiasExternas, this);
+            //objetcts = materia.getAll(this);
+            //Inicializar el adaptador con la información a mostrar
         } else {
-            objetcts = materia.getAllFiltered(this, "codmateria", filtro);
+            String nuevo = urlPublicoUESFiltro + "?codmateria=" + filtro.trim();
+            String materiasExternas = ControlServicio.obtenerRespuestaPeticion(nuevo, this);
+            //Toast.makeText(this, urlPublicoUES, Toast.LENGTH_LONG).show();
+            objetcts = Materia.getAllFromJSON(materiasExternas, this);
+            //objetcts = materia.getAllFiltered(this, "codmateria", filtro);
         }
 
-        //Inicializar el adaptador con la información a mostrar
         listaMateriasAdapter = new MateriaAdapter(this, objetcts);
-
         // Relacionando la lista con el adaptador y llenándola
         listaMaterias.setAdapter(listaMateriasAdapter);
     }
@@ -90,20 +107,20 @@ public class GestionarMateria extends AppCompatActivity {
     }
 
     public void buscarMateria(View v) {
-        llenarListaCicloMateria(editnombreMateria.getText().toString());
+        llenarListaMateria(editnombreMateria.getText().toString());
     }
     public void llenarListaCicloMateria(String filtro) {
         materia = new Materia();
-        List objetcts;
+        List objects;
 
         if (filtro == null) {
-            objetcts = materia.getAll(this);
+            objects = materia.getAll(this);
         } else {
-            objetcts = materia.getAllFiltered(this, "nombremat", filtro);
+            objects = materia.getAllFiltered(this, "nombremat", filtro);
         }
 
         //Inicializar el adaptador con la información a mostrar
-        listaMateriasAdapter = new MateriaAdapter(this, objetcts);
+        listaMateriasAdapter = new MateriaAdapter(this, objects);
 
         // Relacionando la lista con el adaptador y llenándola
         listaMaterias.setAdapter(listaMateriasAdapter);
@@ -130,6 +147,7 @@ public class GestionarMateria extends AppCompatActivity {
             case R.id.ctxEliminarMateria:
                 if(materiaActual != null){
                     String regEliminadas;
+                    eliminarWeb(materiaActual.getCodMateria());
                     regEliminadas= materiaActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
                     llenarListaMateria(null);
@@ -138,6 +156,12 @@ public class GestionarMateria extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    public void eliminarWeb(String codMateria){
+        String url = null;
+        url = urlPublicoUESEliminar + "?codmateria=" + codMateria;
+        ControlServicio.sendRequest(url, this);
     }
 
 }

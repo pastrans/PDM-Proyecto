@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.grupo9pdm115">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="false"
         android:fullBackupOnly="false"
@@ -9,7 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".Activities.MenuPrincipal"></activity>
         <activity android:name=".Activities.DetalleReserva.NuevoDetalleReservaEspecial" />
         <activity android:name=".Activities.Solicitud.GestionarSolicitudesEncargado" />

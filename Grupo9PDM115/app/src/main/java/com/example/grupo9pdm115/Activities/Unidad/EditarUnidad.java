@@ -4,18 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.WebService.ControlServicio;
 
 public class EditarUnidad extends AppCompatActivity {
     EditText nombreent;
     EditText descripcion;
-    EditText prioridad;
     Unidad unidad;
+
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Unidad/ws_unidad_editar.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +27,18 @@ public class EditarUnidad extends AppCompatActivity {
         unidad = new Unidad();
         nombreent = (EditText) findViewById(R.id.editNombreUnidad);
         descripcion = (EditText) findViewById(R.id.editDescripcion);
-        prioridad = (EditText) findViewById(R.id.editPrioridad);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
             unidad.setIdUnidad(getIntent().getIntExtra("idunidad", 0));
             nombreent.setText(getIntent().getStringExtra("nombreent"));
             descripcion.setText(getIntent().getStringExtra("descripcionent"));
-            prioridad.setText(Integer.toString(getIntent().getIntExtra("prioridad",0)));
+            //prioridad.setText(Integer.toString(getIntent().getIntExtra("prioridad",0)));
         }
     }
     // Método para actualizar
@@ -41,27 +48,48 @@ public class EditarUnidad extends AppCompatActivity {
         unidad.setNombreent(nombreuni);
         String desc  = descripcion.getText().toString();
         unidad.setDescripcionent(desc);
-        int prio = Integer.parseInt(prioridad.getText().toString().trim());
-        unidad.setPrioridad(prio);
+        //unidad.setPrioridad(prio);
         if(unidad.getNombreent().isEmpty()){
             estado= "El nombre esta vacio";
         }else{
             if(unidad.getDescripcionent().isEmpty()){
                 estado = "La descripción esta vacia";
             }else{
-                if(unidad.getPrioridad() == 0 ){
-                    estado= "Ingrese prioridad mayor a cero";
-                }else{
-                    estado = unidad.actualizar(this);
-                }
+                actualizarWeb(unidad);
+                estado = unidad.actualizar(this);
             }
         }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
+
+    public void actualizarWeb(Unidad u){
+        String nombreU = u.getNombreent();
+        String descripcion = u.getDescripcionent();
+        String url = null;
+        String[] descripcionArray = descripcion.split("\\s+");
+        String[] nombreArray = nombreU.split("\\s+");
+        String descripcionUrl = "";
+        String nombreUrl = "";
+        /*for (int i = 0; i < descripcionArray.length; i++){
+            if ((i+1) == descripcionArray.length)
+                descripcionUrl += descripcionArray[i];
+            else
+                descripcionUrl += descripcionArray[i] + "+";
+        }
+        for(int i = 0; i < nombreArray.length; i++){
+            if ((i+1) == nombreArray.length)
+                nombreUrl += nombreArray[i];
+            else
+                nombreUrl += nombreArray[i] + "+";
+        }*/
+        url = urlPublicoUES + "?nombreent=" + u.getNombreent() + "&descripcionent=" + u.getDescripcionent() + "&idUnidad=" + u.getIdUnidad();
+        String urlNueva = url.replaceAll(" ", "+");
+        ControlServicio.sendRequest(urlNueva, this);
+    }
+
     public void btnLimpiarTextoNUnidad(View c){
         nombreent.setText("");
         descripcion.setText("");
-        prioridad.setText("");
     }
 
 }

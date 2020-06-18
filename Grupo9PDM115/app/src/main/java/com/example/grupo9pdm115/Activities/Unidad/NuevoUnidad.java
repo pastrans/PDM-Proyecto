@@ -1,8 +1,13 @@
 package com.example.grupo9pdm115.Activities.Unidad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +16,16 @@ import android.widget.Toast;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
+import com.example.grupo9pdm115.WebService.ControlServicio;
+
+import org.json.JSONObject;
 
 public class NuevoUnidad extends AppCompatActivity {
     EditText nombreUnidad;
     EditText descripcionUnidad;
-    EditText prioridad;
+    int PERMISO_INTERNET;
+
+    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Unidad/ws_unidad_insert.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,29 +33,30 @@ public class NuevoUnidad extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_unidad);
         nombreUnidad = (EditText) findViewById(R.id.editNombreUnidad);
         descripcionUnidad = (EditText) findViewById(R.id.editDescripcion);
-        prioridad = (EditText) findViewById(R.id.editPrioridad);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, PERMISO_INTERNET);
     }
 
     public void agregarUnidad(View v){
         String regInsertados;
         String nombreU = nombreUnidad.getText().toString();
         String descripcion = descripcionUnidad.getText().toString();
-        int priori = Integer.parseInt(prioridad.getText().toString());
+
         Unidad unidad = new Unidad();
         unidad.setNombreent(nombreU);
         unidad.setDescripcionent(descripcion);
-        unidad.setPrioridad(priori);
         if(unidad.getNombreent().isEmpty()){
             regInsertados= "El nombre esta vacio";
         }else{
             if(unidad.getDescripcionent().isEmpty()){
                 regInsertados= "La descripción esta vacia";
             }else{
-                if(unidad.getPrioridad() == 0 ){
-                    regInsertados= "Ingrese prioridad mayor a cero";
-                }else{
-                    regInsertados = unidad.guardar(this);
-                }
+                guardar(unidad);
+                regInsertados = unidad.guardar(this);
             }
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
@@ -53,9 +64,30 @@ public class NuevoUnidad extends AppCompatActivity {
     public void btnLimpiarTextoNUnidad(View v){
         nombreUnidad.setText("");
         descripcionUnidad.setText("");
-        prioridad.setText("");
-
     }
 
-
+    public void guardar(Unidad u){
+        String nombreU = u.getNombreent();
+        String descripcion = u.getDescripcionent();
+        String url = null;
+        String[] descripcionArray = descripcion.split("\\s+");
+        String[] nombreArray = nombreU.split("\\s+");
+        String descripcionUrl = "";
+        String nombreUrl = "";
+        /*for (int i = 0; i < descripcionArray.length; i++){
+            if ((i+1) == descripcionArray.length)
+                descripcionUrl += descripcionArray[i];
+            else
+                descripcionUrl += descripcionArray[i] + "+";
+        }
+        for(int i = 0; i < nombreArray.length; i++){
+            if ((i+1) == nombreArray.length)
+                nombreUrl += nombreArray[i];
+            else
+                nombreUrl += nombreArray[i] + "+";
+        }*/
+        url = urlPublicoUES + "?nombreent=" + u.getNombreent() + "&descripcionent=" + u.getDescripcionent();
+        String urlNueva = url.replaceAll(" ", "+");
+        ControlServicio.sendRequest(urlNueva, this);
+    }
 }

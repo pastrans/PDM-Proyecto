@@ -11,37 +11,38 @@
     android:paddingRight= "16dp"
     android:paddingTop="8dp">
 
-    <TextView
-        android:id="@+id/txtIdHorario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textStyle="bold"
-        tools:text="Id Horario" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="2">
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.7"
             android:text="@string/txtHoraInicial"/>
-    <TextView
-        android:id="@+id/txtHoraInicio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="Hora inicio" />
+        <TextView
+            android:id="@+id/txtHoraInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            tools:text="Hora inicio" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="110dp"
-            android:layout_height="match_parent"
-            android:text="@string/txtHoraFin"/>
-    <TextView
-        android:id="@+id/txtHoraFin"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:text="Hora final" />
+        android:weightSum="2">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:text="@string/txtHoraFin"/>
+        <TextView
+            android:id="@+id/txtHoraFin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            tools:text="Hora final" />
     </LinearLayout>
+
 </LinearLayout>

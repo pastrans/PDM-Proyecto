@@ -2,7 +2,6 @@ package com.example.grupo9pdm115.Activities.Horario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class EditarHorario extends AppCompatActivity implements View.OnClickListener{
-    Button btnHoraInicio,btnHoraFinal;
     EditText editHInicio,editHFinal;
     int Hinicio, Hfinal,Minicio, Mfinal;
     Horario horario;
@@ -33,10 +31,8 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
         horario = new Horario();
         editHInicio = (EditText) findViewById(R.id.editHoraInicio);
         editHFinal = (EditText) findViewById(R.id.editHoraFinal);
-        btnHoraInicio = (Button) findViewById(R.id.btnHInicio);
-        btnHoraFinal = (Button) findViewById(R.id.btnHFinal);
-        btnHoraInicio.setOnClickListener(this);
-        btnHoraFinal.setOnClickListener(this);
+        //btnHoraInicio.setOnClickListener(this);
+        //btnHoraFinal.setOnClickListener(this);
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
@@ -86,6 +82,7 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        /*
         if (v==btnHoraInicio){
             final Calendar c = Calendar.getInstance();
             Hinicio=c.get(Calendar.HOUR_OF_DAY);
@@ -112,6 +109,8 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
             },Hfinal,Mfinal,false);
             timePickerDialog.show();
         }
+
+         */
     }
     //Limpiar campos
     public void btnLimpiarTextoEHorario(View v) {

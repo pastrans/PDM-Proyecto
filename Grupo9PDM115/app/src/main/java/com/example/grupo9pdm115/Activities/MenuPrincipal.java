@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,19 +22,46 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
     // Views que son opciones de menú que envían a otras activities
     public final int[] idOpcionesDeMenu = {R.id.txtUsuario, R.id.txtRol, R.id.txtCiclo, R.id.txtFeriado,
-            R.id.txtUnidad, R.id.txtMateria, R.id.txtCicloMateria, R.id.txtCoordinacion, R.id.txtGrupo,
-            R.id.txtTipoGrupo,  R.id.txtHorario, R.id.txtLocal, R.id.txtTipoLocal, R.id.txtSolicitud,
+            R.id.txtUnidad, R.id.txtMateria, R.id.txtTipoGrupo, R.id.txtHorario, R.id.txtCicloMateria,
+            R.id.txtCoordinacion, R.id.txtGrupo, R.id.txtLocal, R.id.txtTipoLocal, R.id.txtSolicitud,
             R.id.txtSolicitudesRecibidas};
 
     // Activities
     String[] activities = {"Usuario.GestionarUsuario", "Rol.GestionarRol", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado",
-            "Unidad.GestionarUnidad", "Materia.GestionarMateria", "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion",
-            "Grupo.GestionarGrupo", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario", "Local.GestionarLocal",
-            "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado"};
+            "Unidad.GestionarUnidad", "Materia.GestionarMateria", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario",
+            "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion", "Grupo.GestionarGrupo",
+            "Local.GestionarLocal", "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud",
+            "Solicitud.GestionarSolicitudesEncargado"};
+
+    // Posiciones de inicio y fin en los arreglos activities y idOpcionesMenu que corresponden a cada
+    // opción principal
+    public final int[] opcionesUsuario = {0, 1};
+    public final int[] opcionesAdminAcademica = {2, 7};
+    public final int[] opcionesCargaAcademica = {8, 10};
+    public final int[] opcionesControlLocales = {11, 12};
+    public final int[] opcionesReservas = {13, 14};
+    public final int[][] opcionesPrincipalesIndices = {opcionesUsuario, opcionesAdminAcademica, opcionesCargaAcademica,
+            opcionesControlLocales, opcionesReservas};
 
     // Opciones crud
-    String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CCM", "CCO", "CGR", "CTG", "CHO", "CLO",
-            "CTL", "CSO", "GSO"};
+    String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CTG", "CHO", "CCM", "CCO", "CGR",
+             "CLO", "CTL", "CSO", "GSO"};
+
+    // Método que verifica si una opción principal (las que tienen incono) tiene al menos una opción menú (las que
+    // envían a otros activities) disponible, si es así muestra la opción principal, si no, la oculta
+    public void verificarOpcionesPrincipales(){
+        boolean tieneVisibles;
+
+        for(int i = 0; i < idOpcionesPrincipales.length; i++){
+            tieneVisibles = false;
+            for(int j = opcionesPrincipalesIndices[i][0]; j <= opcionesPrincipalesIndices[i][1] && !tieneVisibles; j++){
+                tieneVisibles = findViewById(idOpcionesDeMenu[j]).getVisibility() == View.VISIBLE;
+                Log.i("MIRAME", "Pues si entro al for prro " + j + " - " + tieneVisibles);
+            }
+            // Si tiene opciones menú visibles se muestra, si no, se oculta
+            findViewById(idOpcionesPrincipales[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
+        }
+    }
 
     // Método que verifica que el usuario tenga acceso a las opciones respectivas del menú y las muestra de
     // ser así, o las oculta de no serlo
@@ -50,8 +78,11 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        // Verificando opciones de crud
+        // Muestra las opciones que el usuario tiene permitido acceder
         verificarOpcionesCrud();
+
+        // Muestra las opciones principales si tiene alguna opción de menú visible
+        verificarOpcionesPrincipales();
 
         // Asignando OnClickListener a los views
         asignarOnClickListener(idOpcionesPrincipales);
@@ -63,6 +94,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v){
+        // Para desplegar submenú de opciones de cada opción principal
         switch(v.getId()) {
             // Views que despliegan grupos de opciones
             case R.id.layoutControlUsuario:
@@ -82,6 +114,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
                 break;
         }
 
+        // Al hacer click en una opción para dirigir al layout correspondiente
         int posicion = obtenerPosicionEnArreglo(v, idOpcionesDeMenu);
         if(posicion != -1){
             String nombreValue = activities[posicion];
@@ -104,11 +137,13 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, IniciarSesion.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
-            String tost = "No hago nada lol";
-            Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
+            //String tost = "No hago nada lol";
+            //Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
             finish();
         }
     }
+
+
 
     // Método para asignar OnClickListener a un grupo de views
     public void asignarOnClickListener(int[] idViews){
@@ -168,7 +203,4 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
         return posicion;
     }
-
-
-
 }

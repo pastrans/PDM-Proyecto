@@ -70,7 +70,7 @@
             android:singleLine="true"
             android:id="@+id/editClaveUsuario"
             android:inputType="textPassword"
-            android:maxLength="5" />
+            android:maxLength="20" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

@@ -50,31 +50,6 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
     String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CTG", "CHO", "CCM", "CCO", "CGR",
              "CLO", "CTL", "CSO", "GSO"};
 
-    // Método que verifica si una opción principal (las que tienen incono) tiene al menos una opción menú (las que
-    // envían a otros activities) disponible, si es así muestra el contenedor completo, si no, lo oculta
-    public void verificarContenedores(){
-        boolean tieneVisibles;
-
-        for(int i = 0; i < idOpcionesPrincipales.length; i++){
-            tieneVisibles = false;
-            for(int j = opcionesPrincipalesIndices[i][0]; j <= opcionesPrincipalesIndices[i][1] && !tieneVisibles; j++){
-                tieneVisibles = findViewById(idOpcionesDeMenu[j]).getVisibility() == View.VISIBLE;
-            }
-            // Si tiene opciones menú visibles se muestra, si no, se oculta
-            findViewById(idContenedores[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
-        }
-    }
-
-    // Método que verifica que el usuario tenga acceso a las opciones respectivas del menú y las muestra de
-    // ser así, o las oculta de no serlo
-    public void verificarOpcionesCrud(){
-        for(int i = 0; i < idOpcionesDeMenu.length; i++){
-            if(Sesion.getAccesoUsuario(getApplicationContext(), idOpcionCrud[i])){
-                findViewById(idOpcionesDeMenu[i]).setVisibility(View.VISIBLE);
-            }
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,9 +114,32 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, IniciarSesion.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
             startActivity(intent);
-            //String tost = "No hago nada lol";
-            //Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
             finish();
+        }
+    }
+
+    // Método que verifica si una opción principal (las que tienen incono) tiene al menos una opción menú (las que
+    // envían a otros activities) disponible, si es así muestra el contenedor completo, si no, lo oculta
+    public void verificarContenedores(){
+        boolean tieneVisibles;
+
+        for(int i = 0; i < idOpcionesPrincipales.length; i++){
+            tieneVisibles = false;
+            for(int j = opcionesPrincipalesIndices[i][0]; j <= opcionesPrincipalesIndices[i][1] && !tieneVisibles; j++){
+                tieneVisibles = findViewById(idOpcionesDeMenu[j]).getVisibility() == View.VISIBLE;
+            }
+            // Si tiene opciones menú visibles se muestra, si no, se oculta
+            findViewById(idContenedores[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
+        }
+    }
+
+    // Método que verifica que el usuario tenga acceso a las opciones respectivas del menú y las muestra de
+    // ser así, o las oculta de no serlo
+    public void verificarOpcionesCrud(){
+        for(int i = 0; i < idOpcionesDeMenu.length; i++){
+            if(Sesion.getAccesoUsuario(getApplicationContext(), idOpcionCrud[i])){
+                findViewById(idOpcionesDeMenu[i]).setVisibility(View.VISIBLE);
+            }
         }
     }
 

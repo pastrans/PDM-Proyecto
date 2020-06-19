@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
 public class MenuPrincipal extends AppCompatActivity implements View.OnClickListener {
+    // Views que contienen todas las opciones de cada grupo, tanto las opciones principales como los
+    // submenú de cada uno que contienen opciones de menú
+    public final int[] idContenedores = {R.id.layoutContenedorUsuario, R.id.layoutContenedorAdminAcademica,
+            R.id.layoutContenedorCargaAcademina, R.id.layoutContenedorLocales, R.id.layoutContenedorReservas};
+
     // Views principales que solo desplegan sub menús
     public final int[] idOpcionesPrincipales = {R.id.layoutControlUsuario, R.id.layoutAdminAcademica,
             R.id.layoutCargaAcademica, R.id.layoutControlLocales, R.id.layoutReservas};
@@ -48,8 +52,8 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
              "CLO", "CTL", "CSO", "GSO"};
 
     // Método que verifica si una opción principal (las que tienen incono) tiene al menos una opción menú (las que
-    // envían a otros activities) disponible, si es así muestra la opción principal, si no, la oculta
-    public void verificarOpcionesPrincipales(){
+    // envían a otros activities) disponible, si es así muestra el contenedor completo, si no, lo oculta
+    public void verificarContenedores(){
         boolean tieneVisibles;
 
         for(int i = 0; i < idOpcionesPrincipales.length; i++){
@@ -59,7 +63,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
                 Log.i("MIRAME", "Pues si entro al for prro " + j + " - " + tieneVisibles);
             }
             // Si tiene opciones menú visibles se muestra, si no, se oculta
-            findViewById(idOpcionesPrincipales[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
+            findViewById(idContenedores[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
         }
     }
 
@@ -82,7 +86,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
         verificarOpcionesCrud();
 
         // Muestra las opciones principales si tiene alguna opción de menú visible
-        verificarOpcionesPrincipales();
+        verificarContenedores();
 
         // Asignando OnClickListener a los views
         asignarOnClickListener(idOpcionesPrincipales);

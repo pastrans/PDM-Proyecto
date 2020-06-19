@@ -22,6 +22,7 @@
 
             <!-- Control de usuarios -->
             <LinearLayout
+                android:id="@+id/layoutContenedorUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -116,6 +117,7 @@
 
             <!-- Administración académica -->
             <LinearLayout
+                android:id="@+id/layoutContenedorAdminAcademica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -270,6 +272,7 @@
 
             <!-- Carga académica -->
             <LinearLayout
+                android:id="@+id/layoutContenedorCargaAcademina"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -378,6 +381,7 @@
 
             <!-- Control de locales -->
             <LinearLayout
+                android:id="@+id/layoutContenedorLocales"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -474,6 +478,7 @@
 
             <!-- Reservas -->
             <LinearLayout
+                android:id="@+id/layoutContenedorReservas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

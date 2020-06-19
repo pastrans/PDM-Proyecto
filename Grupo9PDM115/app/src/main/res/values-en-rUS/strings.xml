@@ -292,4 +292,6 @@
     <string name="txtSelecCiclo">"Select a cycle "</string>
     <string name="txtSelecTipo">"Select a type "</string>
     <string name="txtSelecTipoLocal">"Select a local type"</string>
+    <string name="txtSelecMateria">"Select a subject "</string>
+    <string name="txtSelecTipoGrupo">"Select a group type "</string>
 </resources>

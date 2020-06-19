@@ -52,20 +52,29 @@ public class NuevoTipoLocal extends AppCompatActivity {
         tipoLocalClass = new TipoLocal();
         encargadoClass = new Encargado();
         helper.abrir();
-        usuarioSpinnerAdapter = new UsuarioSpinner(helper);
+        //usuarioSpinnerAdapter = new UsuarioSpinner(helper);
         helper.cerrar();
         //encargadoSpinner.setAdapter(usuarioSpinnerAdapter.getAdapterUsuario(this));
 
     }
 
     public void btnAgregarNTipoLocal(View v){
-        /*String regInsertados;
+        String regInsertados;
         TipoLocal tipoLocal = new TipoLocal();
-        int posUsuario = encargadoSpinner.getSelectedItemPosition();
+        if(edtNombreTipo.getText().toString().equals("")){
+            Toast.makeText(this, "Ingrese un nombre al tipo de local", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(editEncargado.getText().toString().equals("")){
+            Toast.makeText(this, "Ingrese un encargado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //int posUsuario = encargadoSpinner.getSelectedItemPosition();
         tipoLocal.setNombreTipo(edtNombreTipo.getText().toString());
-        tipoLocal.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
+        tipoLocal.setIdEncargado(editEncargado.getText().toString());
+        //tipoLocal.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
         regInsertados = tipoLocal.guardar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
     public void btnLimpiarNTipoLocal(View v){

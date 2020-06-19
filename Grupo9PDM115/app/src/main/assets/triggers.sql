@@ -12,6 +12,19 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL LOCAL-TIPOLOCAL
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal_update
+BEFORE UPDATE ON local
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL RESERVA-SOLICITUD
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_reserva_solicitud
@@ -38,10 +51,36 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-USUARIO UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_coordinacion_usuario_update
+BEFORE UPDATE ON coordinacion
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idusuario FROM usuario WHERE idusuario = NEW.idusuario) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-CICLOMATERIA
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_coordinacion_ciclomateria
 BEFORE INSERT ON coordinacion
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-CICLOMATERIA UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_coordinacion_ciclomateria_update
+BEFORE UPDATE ON coordinacion
 FOR EACH ROW
 BEGIN
       SELECT CASE
@@ -64,10 +103,36 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL CICLOMATERIA-MATERIA UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_materia_update
+BEFORE UPDATE ON ciclomateria
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT codmateria FROM materia WHERE codmateria = NEW.codmateria) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL CICLOMATERIA-CICLO
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_ciclo
 BEFORE INSERT ON ciclomateria
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL CICLOMATERIA-CICLO UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_ciclomateria_ciclo_update
+BEFORE UPDATE ON ciclomateria
 FOR EACH ROW
 BEGIN
       SELECT CASE
@@ -90,6 +155,19 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL FERIADO-CICLO UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_feriado_ciclo_update
+BEFORE UPDATE ON feriado
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idciclo FROM ciclo WHERE idciclo = NEW.idciclo) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-TIPOGRUPO
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_grupo_tipogrupo
@@ -103,10 +181,36 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-TIPOGRUPO UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_grupo_tipogrupo_update
+BEFORE UPDATE ON grupo
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idTipoGrupo FROM tipogrupo WHERE idTipoGrupo = NEW.idTipoGrupo) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-CICLOMATERIA
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_grupo_ciclomateria
 BEFORE INSERT ON grupo
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idciclomateria FROM ciclomateria WHERE idciclomateria = NEW.idciclomateria) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL GRUPO-CICLOMATERIA UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_grupo_ciclomateria_update
+BEFORE UPDATE ON grupo
 FOR EACH ROW
 BEGIN
       SELECT CASE
@@ -220,6 +324,19 @@ END;
 END;
 --FIN--
 --==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL LOCAL-TIPOLOCAL UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_local_tipolocal_update
+BEFORE UPDATE ON local
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT IDTIPOLOCAL FROM tipolocal WHERE IDTIPOLOCAL = NEW.IDTIPOLOCAL) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL detalleReserva-Dia
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_detallereserva_dia
@@ -266,7 +383,20 @@ BEFORE INSERT ON TipoLocal
 FOR EACH ROW
 BEGIN
       SELECT CASE
-      WHEN ((SELECT idUsuario FROM Usuario WHERE idUsuario = NEW.idUsuario) IS NULL)
+      WHEN ((SELECT idUsuario FROM Usuario WHERE idUsuario = NEW.idEncargado) IS NULL)
+      THEN RAISE(IGNORE)
+END;
+END;
+--FIN--
+--==============================================================
+-- TRIGGER INTEGRIDAD REFERENCIAL TipoLocal-Usuario UPDATE
+--==============================================================
+CREATE TRIGGER IF NOT EXISTS fk_tipoLocal_usuario_update
+BEFORE UPDATE ON TipoLocal
+FOR EACH ROW
+BEGIN
+      SELECT CASE
+      WHEN ((SELECT idUsuario FROM Usuario WHERE idUsuario = NEW.idEncargado) IS NULL)
       THEN RAISE(IGNORE)
 END;
 END;

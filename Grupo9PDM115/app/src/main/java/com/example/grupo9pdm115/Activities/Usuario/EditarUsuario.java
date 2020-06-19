@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -64,6 +65,7 @@ public class EditarUsuario extends AppCompatActivity {
             editNombrePersona.setText(getIntent().getStringExtra("nombrePersona"));
             editApellidoPersona.setText(getIntent().getStringExtra("apellidoPersona"));
             editCorreoPersona.setText(getIntent().getStringExtra("correoPersona"));
+            editClaveUsuario.setText(getIntent().getStringExtra("claveUsuario"));
             usuario.setIdUsuario(getIntent().getStringExtra("idUsuario"));
             usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
             int idUnidad = getIntent().getIntExtra("unidad", 0);
@@ -105,6 +107,7 @@ public class EditarUsuario extends AppCompatActivity {
         usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
         usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
         usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
+        usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
         String resultado;
         int posicionUnidad = 0, idUnidad = 0, posicionRol =0;
         if(!ValidarCorreo(editCorreoPersona.getText().toString())){
@@ -123,19 +126,21 @@ public class EditarUsuario extends AppCompatActivity {
             Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
             return;
         }
-        String idUsuario = "";
-        int numUsuario = 0;
-        numUsuario = usuario.countUsuario(this, usuario);
-        if(numUsuario < 10)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%03d", numUsuario + 1);
-        else if(numUsuario > 10 && numUsuario < 100)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%02d", numUsuario + 1);
-        else if (numUsuario > 100)
-            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.valueOf(numUsuario + 1);
-        usuario.setIdUsuario(idUsuario);
-        resultado = usuario.actualizar(this);
-        Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
-        finish();
+        if (editClaveUsuario.getText().equals("")) {
+            Log.i("EditarUsuario", "btnEditarEUsuario: " + editClaveUsuario.getText().length());
+            usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
+            if (!(usuario.getClaveUsuario().length() < 4)) {
+                usuario.setClaveUsuario(editClaveUsuario.getText().toString());
+                usuario.setIdUsuario(getIntent().getStringExtra("idUsuario"));
+                resultado = usuario.actualizar(this);
+                Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            {
+                Toast.makeText(this, " La contraseña debe tener mínimo 5 caractéres", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     public void btnRegresarEUsuario(View v){
@@ -193,5 +198,30 @@ public class EditarUsuario extends AppCompatActivity {
             return "Seleccione un rol al usuario";
         return "";
     }
+    public String verificarDatos1(Usuario usuario){
+        if (usuario.getNombreUsuario().equals(""))
+            return "Se requiere de un nombre de usuario";
+        if (usuario.verificar(1, getApplicationContext()))
+            return "Ya existe el nombre de usuario";
+        if (usuario.getClaveUsuario().equals(""))
+            return "Se requiere una clave para el usuario";
+        if(usuario.getClaveUsuario().length() < 4)
+            return "La contraseña debe tener mínimo 5 caractéres";
+        if(usuario.getNombrePersonal().equals(""))
+            return "Se requiere del nombre de la persona";
+        if(usuario.getApellidoPersonal().equals(""))
+            return "Se requiere del apellido de la persona";
+        if(usuario.getCorreoPersonal().equals(""))
+            return "Se requiere de un correo para el usuario";
+        if(usuario.verificar(2, getApplicationContext()))
+            return "El correo ya está registrado";
+        if(usuario.getIdUnidad() == 0)
+            return "Seleccione una unidad al usuario";
+        if(usuario.getIdRol() == 0)
+            return "Seleccione un rol al usuario";
+        return "";
+    }
+
+
 
 }

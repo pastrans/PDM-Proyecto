@@ -97,9 +97,10 @@ public class NuevoUsuario extends AppCompatActivity {
         //Toast.makeText(this, String.valueOf(usuario.countUsuario(this, usuario)), Toast.LENGTH_SHORT).show();
         regInsertados = usuario.guardar(this);
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        limpiar();
     }
 
-    public void btnLimpiarNUsuario(View v){
+    private void limpiar() {
         nombreUsuario.setText("");
         nombrePersonal.setText("");
         apellidoPersonal.setText("");
@@ -107,6 +108,10 @@ public class NuevoUsuario extends AppCompatActivity {
         spinnerUnidad.setSelection(0);
         spinnerRol.setSelection(0);
         claveUsuario.setText("");
+    }
+
+    public void btnLimpiarNUsuario(View v){
+        limpiar();
     }
 
     public void btnRegresarNUsuario(View v){

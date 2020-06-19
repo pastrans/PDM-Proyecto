@@ -164,8 +164,7 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];
 
-        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE "
-                + columna + " LIKE '%"+filtro+"%'";
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE " + columna + " LIKE '%"+filtro+"%'";
 
         helper.abrir();
         Cursor cursor = helper.consultar(consulta);

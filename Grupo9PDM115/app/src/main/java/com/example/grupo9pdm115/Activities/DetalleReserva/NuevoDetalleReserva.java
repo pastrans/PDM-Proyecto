@@ -25,6 +25,7 @@ import com.example.grupo9pdm115.Modelos.DetalleReserva;
 import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
+import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Reserva;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
@@ -226,6 +227,14 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
             detalleReserva.setIdLocal(0);
         else
             detalleReserva.setIdLocal(local);
+        Solicitud solicitud = new Solicitud();
+        solicitud.consultar(this, String.valueOf(idSolicitud));
+        Materia materia = new Materia();
+        materia.consultar(this, edtCodMateria.getText().toString());
+        if (materia.isMasiva() && !solicitud.isMostrarBoton()){
+            solicitud.setMostrarBoton(materia.isMasiva());
+            solicitud.actualizar(this);
+        }
         //detalleReserva.setIdLocal(0);
         detalleReserva.setIdEventoEspecial(0);
         detalleReserva.setIdDia(diaSpinnerAdapter.getIdDia(posDia));
@@ -272,6 +281,7 @@ public class NuevoDetalleReserva extends AppCompatActivity implements View.OnCli
         helper.cerrar();
         return ciclo;
     }
+
 
     public int getIdGrupoDetalle(int idTipoGrupo){
         int grupo = 0;

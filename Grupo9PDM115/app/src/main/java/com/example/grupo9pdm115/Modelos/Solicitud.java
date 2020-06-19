@@ -296,13 +296,37 @@ public class Solicitud extends TablaBD {
         return encargado;
     }
 
-    public List<Solicitud> getAllFiltered1(Context context, String filtro, String Usuario){
+
+    // Obtener todos los registros de la tabla
+    public List<Solicitud> getAllFiltered(Context context, String columna, String filtro){
         List<Solicitud> listaTablaBD = new ArrayList<>();
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];
 
-        String consulta = "select * from solicitud where IDUSUARIO = \""+Usuario+ "\" and ASUNTOSOLICITUD  like '%"+filtro+"%'";
+        String consulta = "SELECT * FROM " + this.getNombreTabla() + " WHERE " + columna + " LIKE '%"+filtro+"%' ORDER BY MOSTRARBOTON DESC";
 
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add(this.getInstanceOfModel(valores));
+            }while (cursor.moveToNext());
+        }
+
+        helper.cerrar();
+
+        return listaTablaBD;
+    }
+
+    public List<Solicitud> getAllFiltered1(Context context, String filtro, String Usuario){
+        List<Solicitud> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+        String consulta = "select * from solicitud where IDUSUARIO = \""+Usuario+ "\" and ASUNTOSOLICITUD  like '%"+filtro+"%' ORDER BY MOSTRARBOTON DESC";
         helper.abrir();
         Cursor cursor = helper.consultar(consulta);
 

@@ -49,10 +49,10 @@ public class GestionarSolicitud extends AppCompatActivity {
         List objetcts;
 
         if(filtro == null){
-            objetcts = solicitud.getAll(this);
+            objetcts = solicitud.getAllFiltered(this, "idUsuario", Sesion.getIdusuario(this));
         }
         else{
-            objetcts = solicitud.getAllFiltered(this,"nombreciclo", filtro);
+            objetcts = solicitud.getAllFiltered(this,filtro, Sesion.getIdusuario(this) );
         }
         //List objects = solicitud.getAllFiltered(this, "idUsuario", Sesion.getIdusuario(this));
         solicitudAdapter = new SolicitudAdapter(this, objetcts);

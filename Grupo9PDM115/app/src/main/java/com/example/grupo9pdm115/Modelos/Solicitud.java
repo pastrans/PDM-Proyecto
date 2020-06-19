@@ -7,6 +7,9 @@ import android.database.Cursor;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solicitud extends TablaBD {
 
     private int idSolicitud;
@@ -293,6 +296,29 @@ public class Solicitud extends TablaBD {
         return encargado;
     }
 
+    public List<Solicitud> getAllFiltered(Context context, String filtro, String Usuario){
+        List<Solicitud> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+
+        String consulta = "select * from solicitud where IDUSUARIO = \""+Usuario+ "\" and ASUNTOSOLICITUD  like '%"+filtro+"%'";
+
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add((Solicitud) getInstanceOfModel(valores) );
+            }while (cursor.moveToNext());
+        }
+
+        helper.cerrar();
+
+        return listaTablaBD;
+    }
     //método para la busqueda sobre escritura
 
 

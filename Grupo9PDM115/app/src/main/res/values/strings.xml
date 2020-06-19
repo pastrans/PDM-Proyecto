@@ -8,7 +8,6 @@
 
     //Variables para Ciclo
     //Etiquetas
-    <string name="txtIdCiclo">Id Ciclo:</string>
     <string name="txtNombreCiclo">Nombre ciclo:</string>
     <string name="txtNombreCicloHint">Nombre del ciclo</string>
     <string name="txtInicioCiclo">Inicio del ciclo:</string>
@@ -35,7 +34,6 @@
     //Variables para Feriado
     //Etiquetas
     <string name="txtNombreFeriado">Nombre:</string>
-    <string name="txtNombreFeriadoHint">Nombre de feriado</string>
     <string name="txtDescripcionFeriado">Descripción:</string>
     <string name="txtFechaInicioFeriado">Fecha de inicio:</string>
     <string name="txtFechaFinFeriado">Fecha de fin:</string>
@@ -48,18 +46,15 @@
     <string name="cbFechaUnica">Feriado con fecha única</string>
     //Gestionar Feriado
     <string name="titGestionarFeriado">Gestionar Feriado</string>
-    <string name="editNombre">Nombre</string>
     <string name="txtListaFeriado">Listado de feriados ingresados:</string>
     <string name="txtbNombreFeriado">Nombre del feriado</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>
-    <string name="btnRegresarNFeriado">Regresar</string>
     <string name="btnLimpiarTextoNFeriado">Limpiar</string>
     //Editar Feriado
     <string name="titEditarFeriado">Editar Feriado</string>
     <string name="btnEditarEFeriado">Editar</string>
-    <string name="btnLimpiarTextoEFeriado">Limpiar</string>
     // Menú contextual lista feriados
     <string name="ctxListaFeriadosActualizar">Actualizar</string>
     <string name="ctxListaFeriadosEliminar">Eliminar</string>
@@ -68,7 +63,6 @@
     //Etiquetas
     <string name="txtNombreUnidad">Nombre unidad:</string>
     <string name="editDescripcion">Descripción:</string>
-    <string name="txtPrioridad">Prioridad:</string>
     //Gestionar Unidad
     <string name="titGestionarUnidad">Gestionar Unidad</string>
     <string name="txtListaUnidad">Listado de unidades ingresadas:</string>
@@ -116,7 +110,6 @@
     <string name="btnLimpiarNCicloMateria">Limpiar</string>
     //Editar CicloMateria
     <string name="titEditarMateria">Editar materia del ciclo</string>
-    <string name="btnEditarECicloMateria">Editar</string>
     <string name="btnLimpiarECicloMateria">Limpiar</string>
 
     //Variables Tipo Local
@@ -137,8 +130,6 @@
     <string name="btnEditarETipoLocal">Agregar</string>
     <string name="btnLimpiarETipoLocal">Limpiar</string>
     // Lista tipo local
-    <string name="txtNombreEncargado">Encargado:</string>
-    <string name="txtCodEncargado">Código:</string>
 
     //Variables Local
     //Etiquetas
@@ -149,8 +140,6 @@
     //Gestionar Local
     <string name="titGestionarLocal">Gestionar Local</string>
     <string name="idListadoLocales">Listado de locales</string>
-    <string name="btnNuevoGLocal">Nuevo</string>
-    <string name="btnEditarGLocal">Editar</string>
     <string name="txtbNombreLocal">Nombre del local</string>
     //Nuevo Local
     <string name="titNuevoLocal">Nuevo Local</string>
@@ -163,7 +152,6 @@
 
     //Variables Tipo Grupo
     //Etiquetas
-    <string name="txtTipoGrupo">Grupo</string>
     <string name="txtNombreTipoGrupo">Nombre:</string>
     // Menú contextual listas de Tipos de grupo
     <string name="ctxListaTGActualizar">Actualizar</string>
@@ -183,7 +171,6 @@
 
     //Variables Grupo
     //Etiquetas
-    <string name="txtCicloGrupo">Ciclo</string>
     <string name="txtNumero">Número:</string>
     <string name="txtMateria">Nombre materia:</string>
     <string name="txtNuevoNumero">Nuevo numero:</string>
@@ -192,12 +179,6 @@
     //Gestionar Grupo
     <string name="titGestionarGrupo">Gestionar grupo</string>
     <string name="txtbNombreGrupo">Nombre del grupo</string>
-    <string-array name="contenidoTipoGrupo">// los items en el spinner
-        <item id="1">Teórico</item>
-        // agregue el atributo el id
-        <item id="2">Laboratorio</item>
-        <item id="3">Discusión</item>
-    </string-array>
     //Nuevo Grupo
     <string name="titNuevoGrupo">Nuevo grupo</string>
     <string name="btnNuevoNGrupo">Nuevo</string>
@@ -206,7 +187,6 @@
     <string name="titEditarGrupo">Editar Grupo</string>
     <string name="btnEditarEGrupo">Editar</string>
     <string name="btnLimpiarEGrupo">Limpiar</string>
-    <string name="btnRegresarEGrupo">Regresar</string>
 
     //Variables Usuario
     //Etiquetas
@@ -255,17 +235,8 @@
     <string name="txtEncargadoE">Encargado:</string>
     <string name="txtIdUsuarioE">Id Usuario:</string>
     //Gestionar Encargado
-    <string name="titGestionarEncargado">Gestionar encargado</string>
-    <string name="txtListaEncargados">Listado de encargados:</string>
     //Nuevo Encargado
-    <string name="titNuevoEncargado">Nuevo encargado</string>
-    <string name="txtIdUsuariooE">Id Usuario:</string>
-    <string name="btnAgregarNEncargado">Agregar</string>
-    <string name="btnLimpiarNEncargado">Limpiar</string>
     //Editar Encargado
-    <string name="titEditarEncargado">Editar encargado</string>
-    <string name="btnEditarEEncargado">Editar</string>
-    <string name="btnLimpiarEEncargado">Limpiar</string>
 
     // Variables para Dia
     // Gestionar Dia
@@ -311,16 +282,13 @@
     <string name="txtidUsuario">Id usuario:</string>
     <string name="txtasunto">Asunto:</string>
     <string name="txtTipoSolicitud">Tipo de solicitud:</string>
-    <string name="txtFechaRealizada">Fecha realizada:</string>
     <string name="txtEstadoSolicitud">Estado solicitud:</string>
     <string name="txtFechaRespuesta">Fecha de respuesta:</string>
     <string name="txtcomentario">Comentario: </string>
-    <string name="txtNuevoFinPeriodo">Nuevo fin de periodo:</string>
 
     //Gestionar Solicitud
     <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
     <string name="titGestionarSolicitud">Gestionar Solicitud</string>
-    <string name="btnNuevoGSolicitud">Nuevo</string>
     <string name="txtbNombreSolicitud">Asunto de solicitud</string>
     //Nuevo Solicitud
     <string name="titNuevaSolicitud">Nueva Solicitud</string>
@@ -330,9 +298,6 @@
     <string name="txtReservaN">Reserva normal</string>
     <string name="txtReservaE">Reserva especial</string>
     //Editar Solicitud
-    <string name="titEditarESolicitud">Editar Solicitud</string>
-    <string name="btnEditarESolicitud">Editar</string>
-    <string name="btnLimpiarESolicitud">Limpiar</string>
 
     //Variables para Evento Especial
     //Etiquetas
@@ -340,9 +305,6 @@
     <string name="txtDescripcionEventoEspecial">Descripción:</string>
     <string name="txtCicloE">Ciclo/Materia</string>
     //Gestionar Evento Especial
-    <string name="titGestionarEventoEspecial">Gestionar Evento Especial</string>
-    <string name="btnNuevoGEventoEspecial">Nuevo</string>
-    <string name="txtListaEventoEspecial">Listado de eventos especiales</string>
 
     //Nuevo Evento Especial
     <string name="titNuevoEventoEspecial">Nuevo Evento Especial</string>
@@ -350,9 +312,6 @@
     <string name="btnAgregarNEventoEspecial">Agregar</string>
 
     //Editar Evento Especial
-    <string name="titEditarEventoEspecial">Editar Evento Especial</string>
-    <string name="btnLimpiarTextoEEventoEspecial">Limpiar</string>
-    <string name="btnEditarEEventoEspecial">Editar</string>
 
     //Variables para Detalle Reserva
     //Etiquetas
@@ -364,7 +323,6 @@
     <string name="txtDia">Día:</string>
     <string name="txtHora">Hora:</string>
     <string name="txtLocal">Local:</string>
-    <string name="txtGrupo">Grupo:</string>
     <string name="txtEventoEspecial">Evento especial:</string>
     //Nuevo Detalle Reserva
     <string name="titNuevoDetalleReserva">Nuevo Detalle Reserva</string>
@@ -372,9 +330,6 @@
     <string name="btnAgregarNDetalleReserva">Agregar</string>
 
     //Editar Detalle Reserva
-    <string name="titEditarDetalleReserva">Editar Detalle Reserva</string>
-    <string name="btnLimpiarTextoEDetalleReserva">Limpiar</string>
-    <string name="btnEditarEDetalleReserva">Editar</string>
 
     // Menú principal
     // Control de usuarios
@@ -416,9 +371,6 @@
     <string name="txtAccesosRol">Accesos:</string>
     //Editar Rol
     <string name="btnEditarERol">Editar</string>
-    <string name="btnNuevoGHorario">Nuevo</string>
-    <string name="btnNuevoGTipoLocal">Nuevo</string>
-    <string name="btnEditarGTipoLocal">Editar</string>
 
     // Spinners
     <string name="txtSelecUnidad">Seleccione una unidad</string>

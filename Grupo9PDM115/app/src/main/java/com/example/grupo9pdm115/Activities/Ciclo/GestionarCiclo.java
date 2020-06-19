@@ -146,7 +146,13 @@ public class GestionarCiclo extends AppCompatActivity {
             case R.id.ctxEliminarCiclo:
                 if(cicloActual != null){
                     String regEliminadas;
-                    regEliminadas= cicloActual.eliminar(getApplicationContext());
+                    // Si es ciclo activo no permitir eliminar
+                    if(cicloActual.isEstadoCiclo()){
+                        regEliminadas = "No es posible eliminar un ciclo activo.";
+                    }
+                    else{
+                        regEliminadas= cicloActual.eliminar(getApplicationContext());
+                    }
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
                     llenarListaCiclo(null);
                 }

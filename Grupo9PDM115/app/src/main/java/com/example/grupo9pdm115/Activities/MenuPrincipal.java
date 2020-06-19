@@ -2,11 +2,9 @@ package com.example.grupo9pdm115.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
@@ -33,10 +31,27 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             "Grupo.GestionarGrupo", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario", "Local.GestionarLocal",
             "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado"};
 
+    // Opciones crud
+    String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CCM", "CCO", "CGR", "CTG", "CHO", "CLO",
+            "CTL", "CSO", "GSO"};
+
+    // Método que verifica que el usuario tenga acceso a las opciones respectivas del menú y las muestra de
+    // ser así, o las oculta de no serlo
+    public void verificarOpcionesCrud(){
+        for(int i = 0; i < idOpcionesDeMenu.length; i++){
+            if(Sesion.getAccesoUsuario(getApplicationContext(), idOpcionCrud[i])){
+                findViewById(idOpcionesDeMenu[i]).setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        // Verificando opciones de crud
+        verificarOpcionesCrud();
 
         // Asignando OnClickListener a los views
         asignarOnClickListener(idOpcionesPrincipales);
@@ -153,5 +168,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
         return posicion;
     }
+
+
 
 }

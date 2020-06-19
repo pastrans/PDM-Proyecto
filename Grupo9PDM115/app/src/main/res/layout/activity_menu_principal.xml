@@ -91,7 +91,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtRol"
                             android:layout_width="match_parent"
@@ -105,7 +106,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -184,7 +186,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtFeriado"
                             android:layout_width="match_parent"
@@ -198,7 +201,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtUnidad"
                             android:layout_width="match_parent"
@@ -212,7 +216,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtMateria"
                             android:layout_width="match_parent"
@@ -226,7 +231,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtTipoGrupo"
                             android:layout_width="match_parent"
@@ -240,7 +246,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtHorario"
                             android:layout_width="match_parent"
@@ -254,7 +261,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -332,7 +340,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtCoordinacion"
                             android:layout_width="match_parent"
@@ -346,7 +355,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtGrupo"
                             android:layout_width="match_parent"
@@ -360,7 +370,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground" />
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -437,7 +448,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtTipoLocal"
                             android:layout_width="match_parent"
@@ -451,7 +463,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -531,7 +544,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/txtSolicitudesRecibidas"
                             android:layout_width="match_parent"
@@ -545,7 +559,8 @@
                             android:textSize="18sp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                 </LinearLayout>

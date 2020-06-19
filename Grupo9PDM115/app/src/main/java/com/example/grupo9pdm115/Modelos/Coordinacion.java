@@ -125,7 +125,7 @@ public class Coordinacion  extends TablaBD {
     }
 
     // Obtener todos los registros de la tabla
-    public List<Coordinacion> getAllFiltered(Context context, String filtro){
+    public List<Coordinacion> getAllFiltered1(Context context, String filtro){
         List<Coordinacion> listaTablaBD = new ArrayList<>();
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];

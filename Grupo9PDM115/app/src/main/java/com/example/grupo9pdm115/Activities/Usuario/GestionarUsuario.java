@@ -47,7 +47,7 @@ public class GestionarUsuario extends AppCompatActivity {
         }
         else{
 
-            objetcts = usuario.getAllFiltered(this, filtro);
+            objetcts = usuario.getAllFiltered1(this, filtro);
         }
 
         listaUsuariosAdapter = new UsuarioAdapter(this, objetcts);

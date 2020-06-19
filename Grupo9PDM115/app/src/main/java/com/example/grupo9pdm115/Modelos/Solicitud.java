@@ -296,7 +296,7 @@ public class Solicitud extends TablaBD {
         return encargado;
     }
 
-    public List<Solicitud> getAllFiltered(Context context, String filtro, String Usuario){
+    public List<Solicitud> getAllFiltered1(Context context, String filtro, String Usuario){
         List<Solicitud> listaTablaBD = new ArrayList<>();
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];

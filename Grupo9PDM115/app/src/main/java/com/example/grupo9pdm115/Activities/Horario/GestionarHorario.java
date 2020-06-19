@@ -53,7 +53,7 @@ public class GestionarHorario extends AppCompatActivity {
             objetcts = horario.getAll(this);
         }
         else{
-            objetcts = horario.getAllFiltered(this,filtro);
+            objetcts = horario.getAllFiltered1(this,filtro);
         }
 
         //Inicializar el adaptador con la información a mostrar

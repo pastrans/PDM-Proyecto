@@ -57,7 +57,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
         if (filtro.equals(null) ) {
             objetcts = coordinacion.getAll(this);
         } else {
-            objetcts = coordinacion.getAllFiltered(this, filtro);
+            objetcts = coordinacion.getAllFiltered1(this, filtro);
         }
 
         //Inicializar el adaptador con la información a mostrar

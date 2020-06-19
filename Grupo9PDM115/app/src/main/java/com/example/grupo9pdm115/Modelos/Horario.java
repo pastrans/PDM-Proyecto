@@ -127,7 +127,7 @@ public class Horario extends TablaBD {
         return mensaje;
     }
 
-    public List<Horario> getAllFiltered(Context context, String filtro){
+    public List<Horario> getAllFiltered1(Context context, String filtro){
         List<Horario> listaTablaBD = new ArrayList<>();
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];

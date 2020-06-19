@@ -192,7 +192,7 @@ public class Usuario extends TablaBD {
         return false;
     }
 
-    public List<Usuario> getAllFiltered(Context context, String filtro){
+    public List<Usuario> getAllFiltered1(Context context, String filtro){
         List<Usuario> listaTablaBD = new ArrayList<>();
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];

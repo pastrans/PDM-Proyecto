@@ -400,6 +400,6 @@
         \nEl periodo de clases debe estar dentro del tiempo de duración del ciclo
         \nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.</string>
 
-    <string name="mnjRegInsert"></string>
+    <string name="mnj"></string>
 
 </resources>

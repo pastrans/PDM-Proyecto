@@ -16,7 +16,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
-public class EditarCicloMateria extends AppCompatActivity implements View.OnClickListener {
+public class EditarCicloMateria extends AppCompatActivity {
     //Declarando
     EditText editCodMateria;
     Spinner idCiclo;
@@ -54,25 +54,20 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
 
     }
     public void btnactualizarCicloMateria(View v) {
-
         String codMaateria = editCodMateria.getText().toString();
         //limpiamos de espacios en blancos al principio y al final
-        codMaateria.trim();
+        codMaateria = codMaateria.trim();
         codMaateria = codMaateria.toUpperCase();
         int posicionCiclo = 0, idCiclo = 0;
         posicionCiclo = this.idCiclo.getSelectedItemPosition();
 
-
         if(editCodMateria != null){
             if (posicionCiclo!= 0) {
 
-                if(validarCodMateria(codMaateria) ==1){
-
-                    //Instanciando Materia para guardar
+                if(validarCodMateria(codMaateria) ==1){                    //Instanciando Materia para guardar
                     CicloMateria cicloMateria = new CicloMateria();
                     // Obtenemos la posición del spinner
                     idCiclo = control.getIdCiclo(posicionCiclo);
-
 
                     if(!cicloMateria.verificarRegistro(this,codMaateria, idCiclo)){
                         cicloMateria.setIdCicloMateria(idCicloMateria);
@@ -99,10 +94,8 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
             Toast.makeText(this, "Ingrese código de materia", Toast.LENGTH_SHORT).show();
 
         }
-
-
-
     }
+
     int validarCodMateria(String codigo){
         int num = 0;
         Materia mat = new Materia();
@@ -113,17 +106,11 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
 
         }
         return num;
-
     }
+
     //Limpiar campos
     public void btnLimpiarECicloMateria(View v) {
         editCodMateria.setText("");
         idCiclo.setSelection(0);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-
     }
 }

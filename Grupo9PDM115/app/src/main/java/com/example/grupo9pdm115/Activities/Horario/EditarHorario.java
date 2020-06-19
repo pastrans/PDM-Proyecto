@@ -73,6 +73,8 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
                     }
                     else{
                         regInsertados = horario.actualizar(this);
+                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
             }

@@ -65,12 +65,18 @@ public class NuevoHorario extends AppCompatActivity implements View.OnClickListe
                     }
                     else{
                         regInsertados = horario.guardar(this);
+                        limpiar();
                     }
                 }
             }
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void limpiar() {
+        editHInicio.setText("");
+        editHFinal.setText("");
     }
 
     @Override
@@ -104,8 +110,7 @@ public class NuevoHorario extends AppCompatActivity implements View.OnClickListe
     }
     //Limpiar campos
     public void btnLimpiarTextoNHorario(View v) {
-        editHInicio.setText("");
-        editHFinal.setText("");
+        limpiar();
     }
 
     /*Date t1 = sdformat.parse(horai);

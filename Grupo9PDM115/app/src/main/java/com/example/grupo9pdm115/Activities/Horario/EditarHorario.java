@@ -2,16 +2,18 @@ package com.example.grupo9pdm115.Activities.Horario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Horario;
-import com.example.grupo9pdm115.Modelos.Unidad;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
 import java.text.ParseException;
@@ -20,19 +22,29 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class EditarHorario extends AppCompatActivity implements View.OnClickListener{
+
     EditText editHInicio,editHFinal;
-    int Hinicio, Hfinal,Minicio, Mfinal;
     Horario horario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "EHO"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_horario);
         horario = new Horario();
         editHInicio = (EditText) findViewById(R.id.editHoraInicio);
         editHFinal = (EditText) findViewById(R.id.editHoraFinal);
-        //btnHoraInicio.setOnClickListener(this);
-        //btnHoraFinal.setOnClickListener(this);
+        editHInicio.setOnClickListener(this);
+        editHFinal.setOnClickListener(this);
 
         // Verificando paso de datos por intent
         if(getIntent().getExtras() != null){
@@ -41,6 +53,28 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
             horario.setIdHora(getIntent().getIntExtra("idhorario",0));
         }
     }
+
+    @Override
+    public void onClick(View v) {
+        final EditText editHora = (EditText) v;
+        String horaEnEditTextUnida = ((EditText) v).getText().toString();
+        String[] horaEnEditTextSeparada = horaEnEditTextUnida.split(":");
+        final Calendar c = Calendar.getInstance();
+
+        // Si el EditText tiene una hora colocar esa hora, de lo contrario, colocar la hora actual
+        int hora = horaEnEditTextUnida.equals("") ? c.get(Calendar.HOUR_OF_DAY) : Integer.parseInt(horaEnEditTextSeparada[0]);
+        int minuto = horaEnEditTextUnida.equals("") ? c.get(Calendar.MINUTE) : Integer.parseInt(horaEnEditTextSeparada[1]);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                editHora.setText(String.format("%02d:%02d", hourOfDay, minute));
+            }
+        }, hora, minuto,true);
+        timePickerDialog.show();
+    }
+
     // Método para actualizar Horario
     public void actualizarH(View v) throws ParseException {
         String horai = editHInicio.getText().toString();
@@ -79,39 +113,6 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        /*
-        if (v==btnHoraInicio){
-            final Calendar c = Calendar.getInstance();
-            Hinicio=c.get(Calendar.HOUR_OF_DAY);
-            Minicio=c.get(Calendar.MINUTE);
-
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    editHInicio.setText(hourOfDay+":"+minute);
-                }
-            },Hinicio,Minicio,false);
-            timePickerDialog.show();
-        }
-        if (v==btnHoraFinal){
-            final Calendar c = Calendar.getInstance();
-            Hfinal=c.get(Calendar.HOUR_OF_DAY);
-            Mfinal=c.get(Calendar.MINUTE);
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    editHFinal.setText(hourOfDay+":"+minute);
-
-                }
-            },Hfinal,Mfinal,false);
-            timePickerDialog.show();
-        }
-
-         */
-    }
     //Limpiar campos
     public void btnLimpiarTextoEHorario(View v) {
         editHInicio.setText("");

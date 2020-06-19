@@ -7,6 +7,7 @@ import android.widget.Toast;
 // Importación de ControlBD
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -108,7 +109,7 @@ public class Materia  extends TablaBD {
 
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje = context.getString(R.string.mnjRegInsert); // "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("codMateria", getCodMateria());
@@ -123,7 +124,7 @@ public class Materia  extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); //"Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
             mensaje = mensaje+control;
@@ -149,7 +150,7 @@ public class Materia  extends TablaBD {
             }
             return listaMaterias;
         } catch (Exception e) {
-            Toast.makeText(ctx, "Error en parseOO de JSON", Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx, ctx.getString(R.string.mnjErrorParseoJSON), Toast.LENGTH_LONG).show(); // "Error en parseOO de JSON"
             return null;
         }
     }

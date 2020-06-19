@@ -19,7 +19,7 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Asunto"
+            android:text="@string/txtasunto"
             />
         <TextView
             android:id="@+id/txtAsuntoGSolicitud"
@@ -38,7 +38,7 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Fecha realizada:"
+            android:text="@string/txtFechaRealizada"
             />
         <TextView
             android:id="@+id/txtFechaRealizadaGSolicitud"
@@ -57,7 +57,7 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Estado:"
+            android:text="@string/txtEstado"
             />
         <TextView
             android:id="@+id/txtEstadoSolicitudG"
@@ -76,7 +76,7 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Aprobado total:"
+            android:text="@string/txtAprobadoTotal"
             />
         <TextView
             android:id="@+id/txtAprobadoTotalSolicitudG"
@@ -95,7 +95,7 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Fecha de respuesta:"
+            android:text="@string/txtFechaRespuesta"
             />
         <TextView
             android:id="@+id/txtFechaRespuestaGSolicitud"

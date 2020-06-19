@@ -1,10 +1,10 @@
 package com.example.grupo9pdm115.Modelos;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 public class Reserva extends TablaBD {
 
@@ -70,7 +70,7 @@ public class Reserva extends TablaBD {
 
     @Override
     public String guardar(Context context) {
-        String mensaje = "Se ha insertado el registro con éxito. ";
+        String mensaje = context.getString(R.string.mnjRegInsertExit); //"Se ha insertado el registro con éxito. ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("idDetalleReserva", getIdDetalleResera());
@@ -80,7 +80,7 @@ public class Reserva extends TablaBD {
         helper.cerrar();
 
         if(control==-1 || control==0) {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); //"Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
 
         return mensaje;

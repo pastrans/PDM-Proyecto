@@ -1,21 +1,13 @@
 package com.example.grupo9pdm115.Modelos;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 public class Grupo extends TablaBD {
-
-
-    // Atributos para BD
-    /*private final String nombreTabla = "grupo";
-    private ContentValues valores = new ContentValues();*/
-
-
     // Atributos
     private int idGrupo;
     private int numero;
@@ -127,7 +119,7 @@ public class Grupo extends TablaBD {
 
     @Override
     public String guardar(Context context) {
-        String mensaje = "Se ha insertado el registro con éxito. ";
+        String mensaje =  context.getString(R.string.mnjRegInsertExit); // "Se ha insertado el registro con éxito. ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("numero", getNumero());
@@ -138,7 +130,7 @@ public class Grupo extends TablaBD {
         helper.cerrar();
 
         if(control==-1 || control==0) {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion);
         }
         return mensaje;
     }

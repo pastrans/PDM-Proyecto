@@ -1,7 +1,6 @@
 package com.example.grupo9pdm115.Modelos;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.example.grupo9pdm115.BD.TablaBD;
 

@@ -6,6 +6,7 @@ import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,7 @@ public class TipoLocal extends TablaBD {
 
     @Override
     public String guardar(Context context) {
-        String mensaje = "Se ha insertado el registro con éxito. ";
+        String mensaje = context.getString(R.string.mnjRegInsertExit); //"Se ha insertado el registro con éxito. ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("nombreTipo", getNombreTipo());
@@ -104,7 +105,7 @@ public class TipoLocal extends TablaBD {
         helper.cerrar();
 
         if(control==-1 || control==0) {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); //"Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
 
         return mensaje;

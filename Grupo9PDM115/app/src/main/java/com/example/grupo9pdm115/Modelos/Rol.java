@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 public class Rol extends TablaBD {
 
@@ -64,7 +65,7 @@ public class Rol extends TablaBD {
 
     @Override
     public String guardar(Context context) {
-        String mensaje = "Se ha insertado el registro con éxito. ";
+        String mensaje = context.getString(R.string.mnjRegInsertExit); //"Se ha insertado el registro con éxito. ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("nombreRol", getNombreRol());
@@ -73,7 +74,7 @@ public class Rol extends TablaBD {
         helper.cerrar();
 
         if(control==-1 || control==0) {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); //"Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
 
         return mensaje;
@@ -82,7 +83,7 @@ public class Rol extends TablaBD {
     @Override
     public String eliminar(Context context){
         if (getIdRol() == 1)
-            return "No se puede eliminar el rol del Administrador";
+            return context.getString(R.string.mnjRolNoElim); //"No se puede eliminar el rol del Administrador";
         String res = "";
         long control = 0;
         ControlBD helper = new ControlBD(context);
@@ -95,14 +96,14 @@ public class Rol extends TablaBD {
             control = helper.getDb().delete(this.getNombreTabla(), "idRol = " + getIdRol(), null);
             helper.cerrar();
             if(control == 0)
-                res = "Registro no existente.";
+                res = context.getString(R.string.mnjRegNoExiste); //"Registro no existente.";
             else
             if(control == 1)
-                res = "Registro eliminado correctamente.";
+                res = context.getString(R.string.mnjRegEliminado); // "Registro eliminado correctamente.";
             else
-                res = "Filas afectadas = " + control;
+                res = context.getString(R.string.mnjFilasAfectadas) + control; // "Filas afectadas = " + control;
         }else{
-            res = "No se puede eliminar debido a que se tiene un registro relacionado con un usuario";
+            res = context.getString(R.string.mnjRolNoElimIntegridad); // "No se puede eliminar debido a que se tiene un registro relacionado con un usuario";
         }
         return res;
     }

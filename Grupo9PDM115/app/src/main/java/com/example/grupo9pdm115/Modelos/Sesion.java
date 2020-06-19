@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.preference.PreferenceManager;
 
-import androidx.annotation.Nullable;
-
 import com.example.grupo9pdm115.BD.ControlBD;
 
 import java.util.HashSet;

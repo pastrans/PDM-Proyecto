@@ -1,11 +1,11 @@
 package com.example.grupo9pdm115.Modelos;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 public class TipoGrupo extends TablaBD {
 
@@ -69,7 +69,7 @@ public class TipoGrupo extends TablaBD {
 
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje =  context.getString(R.string.mnjRegInsert); //"Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("nombretipogrupo", getNombreTipoGrupo());
@@ -80,7 +80,7 @@ public class TipoGrupo extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); //"Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
             mensaje = mensaje+control;

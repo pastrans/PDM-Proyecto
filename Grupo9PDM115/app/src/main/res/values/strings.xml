@@ -285,7 +285,6 @@
     <string name="txtEstadoSolicitud">Estado solicitud:</string>
     <string name="txtFechaRespuesta">Fecha de respuesta:</string>
     <string name="txtcomentario">Comentario: </string>
-
     //Gestionar Solicitud
     <string name="txtListaSolicitud">Listado de solicitudes ingresadas:</string>
     <string name="titGestionarSolicitud">Gestionar Solicitud</string>
@@ -297,7 +296,10 @@
     <string name="txtEnviar">Enviar a intermediario</string>
     <string name="txtReservaN">Reserva normal</string>
     <string name="txtReservaE">Reserva especial</string>
-    //Editar Solicitud
+    // Lista Solicitudes
+    <string name="txtFechaRealizada">Fecha realizada:</string>
+    <string name="txtEstado">Estado:</string>
+    <string name="txtAprobadoTotal">Aprobado total:</string>
 
     //Variables para Evento Especial
     //Etiquetas
@@ -384,6 +386,7 @@
     // Mensajes de error
     // BD
     <string name="mnjRegInsert">Registro Insertado Nº= </string>
+    <string name="mnjRegInsertExit">Se ha insertado el registro con éxito.</string>
     <string name="mnjErrorInsercion">Error al insertar el registro, registro duplicado. Verificar inserción.</string>
     <string name="mnjRegNoExiste">Registro no existente.</string>
     <string name="mnjRegActualizado">Registro actualizado correctamente.</string>
@@ -400,12 +403,14 @@
         \nEl periodo de clases debe estar dentro del tiempo de duración del ciclo
         \nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.</string>
     // CICLOMATERIA
-    <string name="mnjCMYaExiste">Ya existe</string>
-    <string name="mnjCMCodNoRegis">Código no registrado</string>
-    <string name="mnjCMSelecCiclo">Selecicone el ciclo</string>
-    <string name="mnjCMIngCodMat">Ingrese código de materia</string>
-
-
-    <string name="mnj"></string>
+    <string name="mnjCMYaExiste">Ya existe.</string>
+    <string name="mnjCMCodNoRegis">Código no registrado.</string>
+    <string name="mnjCMSelecCiclo">Selecicone el ciclo.</string>
+    <string name="mnjCMIngCodMat">Ingrese código de materia.</string>
+    // MATERIA
+    <string name="mnjErrorParseoJSON">Error en parseOO de JSON.</string>
+    // ROL
+    <string name="mnjRolNoElimIntegridad">No se puede eliminar debido a que se tiene un registro relacionado con un usuario.</string>
+    <string name="mnjRolNoElim">No se puede eliminar el rol del Administrador.</string>
 
 </resources>

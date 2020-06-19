@@ -4,10 +4,9 @@ import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.lang.System;
 import java.util.List;
 
 public class Horario extends TablaBD {
@@ -75,7 +74,7 @@ public class Horario extends TablaBD {
     }
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado";
+        String mensaje = context.getString(R.string.mnjRegInsert);
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("horainicio", getHoraInicio());
@@ -87,10 +86,10 @@ public class Horario extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); // "Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
-            return mensaje;
+            mensaje = mensaje+control;
         }
 
         return mensaje;
@@ -118,9 +117,9 @@ public class Horario extends TablaBD {
                 helper.cerrar();
 
                 if(control == 0)
-                    mensaje = "Registro no existente.";
+                    mensaje = context.getString(R.string.mnjRegNoExiste); //"Registro no existente.";
                 else
-                    mensaje = "Registro actualizado correctamente.";
+                    mensaje = context.getString(R.string.mnjRegActualizado); //"Registro actualizado correctamente.";
             //}
 
         //}

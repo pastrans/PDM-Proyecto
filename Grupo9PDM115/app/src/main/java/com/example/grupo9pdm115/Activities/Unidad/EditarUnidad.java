@@ -57,6 +57,8 @@ public class EditarUnidad extends AppCompatActivity {
             }else{
                 actualizarWeb(unidad);
                 estado = unidad.actualizar(this);
+                Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();

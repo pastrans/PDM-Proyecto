@@ -57,13 +57,19 @@ public class NuevoUnidad extends AppCompatActivity {
             }else{
                 guardar(unidad);
                 regInsertados = unidad.guardar(this);
+                limpiar();
             }
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
-    public void btnLimpiarTextoNUnidad(View v){
+
+    private void limpiar() {
         nombreUnidad.setText("");
         descripcionUnidad.setText("");
+    }
+
+    public void btnLimpiarTextoNUnidad(View v){
+        limpiar();
     }
 
     public void guardar(Unidad u){

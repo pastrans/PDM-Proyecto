@@ -381,4 +381,15 @@
     <string name="txtSelecMateria">Seleccione una materia</string>
     <string name="txtSelecTipoGrupo">Seleccione un tipo de grupo</string>
 
+    // Mensajes de error
+    // BD
+    <string name="mnjRegInsert">Registro Insertado Nº= </string>
+    <string name="mnjErrorInsercion">Error al insertar el registro, registro duplicado. Verificar inserción.</string>
+    <string name="mnjRegNoExiste">Registro no existente.</string>
+    <string name="mnjRegActualizado">Registro actualizado correctamente.</string>
+    <string name="mnjRegEliminado">Registro eliminado correctamente.</string>
+    <string name="mnjFilasAfectadas">Filas afectadas = </string>
+
+    <string name="mnjRegInsert"></string>
+
 </resources>

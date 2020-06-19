@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
+import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Utilidades.FileHelper;
 
 import java.io.IOException;
@@ -56,12 +56,6 @@ public class ControlBD {
                     for (String instruccion : instrucciones) {
                         db.execSQL(instruccion);
                     }
-                    db.execSQL("DROP TRIGGER IF EXISTS delete_cascade_solicitud;");
-                    db.execSQL("CREATE TRIGGER delete_cascade_solicitud AFTER DELETE ON [SOLICITUD] BEGIN DELETE FROM RESERVA WHERE IDSOLICITUD = OLD.IDSOLICITUD; END");
-                    db.execSQL("DROP TRIGGER IF EXISTS delete_cascade_reserva;");
-                    db.execSQL("CREATE TRIGGER delete_cascade_reserva AFTER DELETE ON [RESERVA] BEGIN DELETE FROM DETALLERESERVA WHERE IDDETALLERESERVA = OLD.IDDETALLERESERVA; END");
-                    db.execSQL("DROP TRIGGER IF EXISTS update_fechafinreserva;");
-                    db.execSQL("CREATE TRIGGER update_fechafinreserva AFTER UPDATE ON [SOLICITUD] WHEN NEW.NUEVOFINPERIODO IS NOT NULL BEGIN UPDATE DETALLERESERVA SET FINPERIODORESERVA = NEW.NUEVOFINPERIODO WHERE IDDETALLERESERVA IN (SELECT IDDETALLERESERVA FROM RESERVA WHERE IDSOLICITUD = NEW.IDSOLICITUD); END");
                     db.setTransactionSuccessful();
                 } finally {
                     db.endTransaction();
@@ -126,14 +120,14 @@ public class ControlBD {
 
     // Insertar
     public String insertar(String nombreTabla, ContentValues valores){
-        String regInsertados = "Registro Insertado Nº= ";
+        String regInsertados = context.getString(R.string.mnjRegInsert);
         long contador = 0;
 
         contador=db.insert(nombreTabla, null, valores);
 
         if(contador==-1 || contador==0)
         {
-            regInsertados= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            regInsertados= context.getString(R.string.mnjErrorInsercion);
         }
         else {
             regInsertados = regInsertados+contador;
@@ -200,9 +194,4 @@ public class ControlBD {
         Cursor cursor = db.rawQuery(consulta, null );
         return cursor;
     }
-
-    /*
-    public String llenarBD(Context context){
-
-    }*/
 }

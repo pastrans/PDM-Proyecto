@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.grupo9pdm115.Modelos.Grupo;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
 
     // Inserción
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje = context.getString(R.string.mnjRegInsert);;
         long control = 0;
         ControlBD helper = new ControlBD(context);
 
@@ -61,7 +61,7 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion);
         }
         else {
             mensaje = mensaje+control;
@@ -82,9 +82,9 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
         helper.cerrar();
 
         if(control == 0)
-            mensaje = "Registro no existente.";
+            mensaje = context.getString(R.string.mnjRegNoExiste); // "Registro no existente.";
         else
-            mensaje = "Registro actualizado correctamente.";
+            mensaje = context.getString(R.string.mnjRegActualizado);  // "Registro actualizado correctamente.";
 
         return mensaje;
     }
@@ -101,12 +101,12 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
         helper.cerrar();
 
         if(control == 0)
-            mensaje = "Registro no existente.";
+            mensaje = context.getString(R.string.mnjRegNoExiste); // "Registro no existente.";
         else
         if(control == 1)
-            mensaje = "Registro eliminado correctamente.";
+            mensaje = context.getString(R.string.mnjRegEliminado); // "Registro eliminado correctamente.";
         else
-            mensaje = "Filas afectadas = " + control;
+            mensaje = context.getString(R.string.mnjFilasAfectadas) + control; // "Filas afectadas = " + control;
 
         return mensaje;
     }

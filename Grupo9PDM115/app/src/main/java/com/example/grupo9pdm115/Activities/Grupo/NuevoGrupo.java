@@ -6,14 +6,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.NuevoGrupoSpinners;
 
 
 public class NuevoGrupo extends AppCompatActivity {
-    ControlBD helper;
+
     EditText numero;
     Spinner idTipoGrupo;
     Spinner idCicloMateria;
@@ -24,17 +23,16 @@ public class NuevoGrupo extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_grupo);
-        helper = new ControlBD(this);
         numero = (EditText) findViewById(R.id.editNumero);
+
+        // Spinners
         idTipoGrupo = (Spinner)  findViewById(R.id.spinTipoGrupo);
         idCicloMateria = (Spinner) findViewById(R.id.spinMateria);
-        helper.abrir();
-        control= new NuevoGrupoSpinners(helper);
-        helper.cerrar();
+        control= new NuevoGrupoSpinners(this);
         idTipoGrupo.setAdapter(control.getAdapterTipoGrupo(this));
         idCicloMateria.setAdapter(control.getAdapterMateria(this));
-
     }
+
     public void btnNuevoNGrupo(View v){
         String reginsertados;
         Grupo grupo = new Grupo();
@@ -61,9 +59,7 @@ public class NuevoGrupo extends AppCompatActivity {
                     Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                helper.abrir();
                 reginsertados = grupo.guardar(this);
-                helper.cerrar();
                 Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
                 limpiar();
             }

@@ -426,5 +426,7 @@
     <string name="txtSelecCiclo">Seleccione un ciclo</string>
     <string name="txtSelecTipo">Seleccione un tipo</string>
     <string name="txtSelecTipoLocal">Seleccione un tipo de local</string>
+    <string name="txtSelecMateria">Seleccione una materia</string>
+    <string name="txtSelecTipoGrupo">Seleccione un tipo de grupo</string>
 
 </resources>

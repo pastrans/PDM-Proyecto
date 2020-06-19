@@ -8,7 +8,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.NuevoGrupoSpinners;
@@ -20,21 +19,20 @@ public class EditarGrupo extends AppCompatActivity {
     Spinner spinnerTipoGrupo;
     Spinner spinnerCicloMateria;
     NuevoGrupoSpinners control;
-    ControlBD helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_grupo);
-        helper = new ControlBD(this);
+        editNumero = (TextView) findViewById(R.id.editNumero);
+
+        // Spinners
         spinnerTipoGrupo = (Spinner)  findViewById(R.id.spinTipoGrupoEdit);
         spinnerCicloMateria = (Spinner) findViewById(R.id.spinMateriaEdit);
-        helper.abrir();
-        control= new NuevoGrupoSpinners(helper);
-        helper.cerrar();
+        control= new NuevoGrupoSpinners(this);
         spinnerTipoGrupo.setAdapter(control.getAdapterTipoGrupo(this));
         spinnerCicloMateria.setAdapter(control.getAdapterMateria(this));
-        editNumero = (TextView) findViewById(R.id.editNumero);
+
         int numeroGrupo = 0, idTipoGrupo = 0, idCicloMateria = 0;
         grupo = new Grupo();
         if (getIntent().getExtras() != null){
@@ -90,8 +88,6 @@ public class EditarGrupo extends AppCompatActivity {
             Toast.makeText(this, "Seleccione una materia", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
     public void btnLimpiarEGrupo(View v){
         editNumero.setText("");

@@ -94,12 +94,12 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         posHoraFinal = spinnerHoraFinal.getSelectedItemPosition();
         posHoraInicial = spinnerHoraInicial.getSelectedItemPosition();
 
-        if(edtLocal.equals("")){
+        if(edtLocal.getText().toString().equals("")){
             Toast.makeText(this, "Por favor ingrese un local", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(edtCupo.equals("")){
+        if(edtCupo.getText().toString().equals("")){
             Toast.makeText(this, "Ingrese el cupo de estudiantes", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -121,6 +121,7 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
             Cursor cursor;
             helper.abrir();
             cursor = helper.consultar(sql);
+            Log.v("SQL", sql);
             if (cursor.moveToFirst())
                 cantidadHorasExtra = cursor.getCount();
 
@@ -145,11 +146,12 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         try {
             int idDia = getIdDia(getNombreDia(FechasHelper.cambiarFormatoIsoALocal(fechaReserva)));
             detalleReserva.setIdDia(idDia);
+            /*Log.v("Dia string: ", getNombreDia(FechasHelper.cambiarFormatoIsoALocal(fechaReserva)));
+            Log.v("Dia: ", String.valueOf(idDia));*/
         }catch (ParseException e){
             Toast.makeText(this, "Error con la fecha", Toast.LENGTH_SHORT).show();
             return;
         }
-
         detalleReserva.setIdEventoEspecial(idEventoEspecial);
         detalleReserva.setIdGrupo(0);
         detalleReserva.setInicioPeriodoReserva(fechaReserva);
@@ -207,19 +209,36 @@ public class NuevoDetalleReservaEspecial extends AppCompatActivity implements Vi
         nomDia = dateFormat.format(date1);
         switch (nomDia){
             case "Monday":
-                return nomDia = "Lunes";
+            case "lunes":
+                nomDia = "Lunes";
+                break;
             case "Tuesday":
-                return nomDia = "Martes";
+            case "martes":
+                nomDia = "Martes";
+                break;
+            case "miércoles":
             case "Wednesday":
-                return nomDia = "Miércoles";
+                nomDia = "Miércoles";
+                break;
             case "Thursday":
-                return nomDia = "Jueves";
+            case "jueves":
+                nomDia = "Jueves";
+                break;
             case "Friday":
-                return nomDia = "Viernes";
+            case "viernes":
+                nomDia = "Viernes";
+                break;
             case "Saturday":
-                return nomDia = "Sábado";
+            case "sábado":
+                nomDia = "Sábado";
+                break;
             case "Sunday":
-                return nomDia = "Domingo";
+            case "domingo":
+                nomDia = "Domingo";
+                break;
+            default:
+                nomDia = "";
+                break;
         }
         return nomDia;
     }

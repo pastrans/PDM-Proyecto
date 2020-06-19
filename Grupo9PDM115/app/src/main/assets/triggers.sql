@@ -25,19 +25,6 @@ END;
 END;
 --FIN--
 --==============================================================
--- TRIGGER INTEGRIDAD REFERENCIAL RESERVA-SOLICITUD
---==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_reserva_solicitud
-BEFORE INSERT ON reserva
-FOR EACH ROW
-BEGIN
-      SELECT CASE
-      WHEN ((SELECT idsolicitud FROM solicitud WHERE idsolicitud = NEW.idsolicitud) IS NULL)
-      THEN RAISE(IGNORE)
-END;
-END;
---FIN--
---==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL COORDINACION-USUARIO
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_coordinacion_usuario
@@ -357,16 +344,16 @@ BEFORE INSERT ON DETALLERESERVA
 FOR EACH ROW
 BEGIN
       SELECT CASE
-      WHEN ((SELECT idhorario FROM HORARIO WHERE idhorario = NEW.idhorario) IS NULL)
+      WHEN ((SELECT idHora FROM HORARIO WHERE idHora = NEW.idHora) IS NULL)
       THEN RAISE(IGNORE)
 END;
 END;
 --FIN--
 --==============================================================
--- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Local
+-- TRIGGER INTEGRIDAD REFERENCIAL DetalleReserva-Local UPDATE
 --==============================================================
 CREATE TRIGGER IF NOT EXISTS fk_detallereserva_local
-BEFORE INSERT ON DETALLERESERVA
+BEFORE UPDATE ON DETALLERESERVA
 FOR EACH ROW
 BEGIN
       SELECT CASE
@@ -401,16 +388,9 @@ BEGIN
 END;
 END;
 --FIN--
---==============================================================
--- TRIGGER INTEGRIDAD REFERENCIAL Reserva-DetalleReserva
---==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_reserva_detalleReserva
-BEFORE INSERT ON DetalleReserva
-FOR EACH ROW
+CREATE TRIGGER IF NOT EXISTS delete_cascade_detallereserva_eventoespecial
+AFTER DELETE ON DETALLERESERVA
 BEGIN
-      SELECT CASE
-      WHEN ((SELECT idDetalleReserva FROM Reserva WHERE idDetalleReserva = NEW.idDetalleReserva) IS NULL)
-      THEN RAISE(IGNORE)
-END;
+	DELETE FROM EVENTOESPECIAL WHERE IDEVENTOESPECIAL = OLD.IDEVENTOESPECIAL;
 END;
 --FIN--

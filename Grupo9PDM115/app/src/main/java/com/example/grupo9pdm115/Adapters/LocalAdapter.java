@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
@@ -28,12 +29,13 @@ public class LocalAdapter extends ArrayAdapter<Local> {
         TextView txtNombreLocal = (TextView) convertView.findViewById(R.id.txtNombreLocalList);
         TextView txtCapacidad = (TextView) convertView.findViewById(R.id.txtCapacidadList);
         TextView txtTipoLocal = (TextView) convertView.findViewById(R.id.txtTipoLocalListLocal);
-        Local local = getItem(position);
+        Local local = (Local) getItem(position);
         TipoLocal tipoLocal = new TipoLocal();
         tipoLocal.consultar(getContext().getApplicationContext(), String.valueOf(local.getIdtipolocal()));
-        txtNombreLocal.setText("Nombre: " + local.getNombreLocal());
-        txtCapacidad.setText("Capacidad: " +String.valueOf(local.getCapacidad()));
-        txtTipoLocal.setText("Tipo de local: " +  tipoLocal.getNombreTipo());
+        txtNombreLocal.setText(local.getNombreLocal());
+        txtCapacidad.setText(String.valueOf(local.getCapacidad()));
+        txtTipoLocal.setText(tipoLocal.getNombreTipo());
+
         return  convertView;
     }
 }

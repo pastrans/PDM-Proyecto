@@ -78,11 +78,15 @@ public class NuevoEventoEspecial extends AppCompatActivity implements View.OnCli
         //Toast.makeText(this, String.valueOf(eventoEspecial.getIdCicloMateria()), Toast.LENGTH_SHORT).show();
         String res = eventoEspecial.guardar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, NuevoDetalleReservaEspecial.class);
-        intent.putExtra("idEventoEspecial", eventoEspecial.getLast(this));
-        intent.putExtra("idSolicitud", idSolicitud);
-        intent.putExtra("fechaReserva", eventoEspecial.getFechaEvento());
-        startActivity(intent);
+        if(!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")){
+            Intent intent = new Intent(this, NuevoDetalleReservaEspecial.class);
+            intent.putExtra("idEventoEspecial", eventoEspecial.getLast(this));
+            intent.putExtra("idSolicitud", idSolicitud);
+            intent.putExtra("fechaReserva", eventoEspecial.getFechaEvento());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            this.finish();
+        }
     }
 
 

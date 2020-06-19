@@ -161,12 +161,16 @@ public class NuevoSolicitud extends AppCompatActivity {
             intent = new Intent(this, NuevoDetalleReserva.class);
             intent.putExtra("idSolicitud", solicitud.getLast(getApplication()));
             intent.putExtra("idTipoLocal", idTipoLocal);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            this.finish();
         }else if(tipoSolicitud == 2){
             intent = new Intent(this, NuevoEventoEspecial.class);
             intent.putExtra("idSolicitud", solicitud.getLast(getApplication()));
             intent.putExtra("idTipoLocal", idTipoLocal);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            this.finish();
         }
     }
 

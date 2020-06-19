@@ -116,7 +116,7 @@ public class Local extends TablaBD {
     public List<Local> getLocalesDisponibles(String fecha, int idHora, int idDia, Context context){
         List<Local> listaLocalesDisponibles = new ArrayList<Local>();
         ControlBD helper = new ControlBD(context);
-        String[] valores = new String[getCamposTabla().length];
+        //String[] valores = new String[getCamposTabla().length];
         helper.abrir();
         String sql = "SELECT l.IDLOCAL, l.NOMBRELOCAL, l.IDTIPOLOCAL, l.CAPACIDAD FROM LOCAL l\n" +
                 "WHERE l.IDLOCAL NOT IN (\n" +

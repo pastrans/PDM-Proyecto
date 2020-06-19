@@ -112,7 +112,10 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
         String mensaje = "";
         switch (feriado.verificarCampos(this, control)){
             case 0:
-                mensaje = feriado.actualizar(this); break;
+                mensaje = feriado.actualizar(this);
+                Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+                finish();
+                break;
             case 1:
                 mensaje = "Todos los campos deben estar llenos."; break;
             case 2:

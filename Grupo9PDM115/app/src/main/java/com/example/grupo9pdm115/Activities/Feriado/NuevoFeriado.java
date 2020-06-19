@@ -87,7 +87,9 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         String mensaje = "";
         switch (feriado.verificarCampos(this, caso)){
             case 0:
-                mensaje = feriado.guardar(this); break;
+                mensaje = feriado.guardar(this);
+                limpiar();
+                break;
             case 1:
                 mensaje = "Todos los campos deben estar llenos."; break;
             case 2:
@@ -99,13 +101,17 @@ public class NuevoFeriado extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    //Limpiar campos
-    public void limpiarTexto(View v) {
+    private void limpiar() {
         editNombreFeriado.setText("");
         editDescripcionFeriado.setText("");
         editInicioFeriado.setText("");
         editFinFeriado.setText("");
         spnCicloFeriado.setSelection(0);
+    }
+
+    //Limpiar campos
+    public void limpiarTexto(View v) {
+        limpiar();
     }
 
     // Método para ocultar o mostrar el view de fecha fin según el checkbox

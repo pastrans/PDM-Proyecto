@@ -3,8 +3,10 @@ package com.example.grupo9pdm115.Activities.Rol;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -51,20 +53,42 @@ public class NuevoRol extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, opciones);
         listViewAccesoRol.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listViewAccesoRol.setAdapter(adapter);
-        /*listaAccesoUsuario = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdUsuario());
-        if(listaAccesoUsuario.size() > 0){
-            posiciones = new int[listaAccesoUsuario.size()];
-            for (int i = 0; i < listViewAccesoRol.getCount(); i++){
-                for (int j = 0; j < listaAccesoUsuario.size(); j++){
-                    if (listViewAccesoRol.getItemAtPosition(i).toString().equals(listaAccesoUsuario.get(j))){
-                        posiciones[j] = i;
+        listViewAccesoRol.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(listViewAccesoRol.getItemAtPosition(position).toString().substring(0, 1).equals("I")){
+                    if(listViewAccesoRol.isItemChecked(position))
+                        listViewAccesoRol.setItemChecked(position + 3, true);
+                    else{
+                        if(!listViewAccesoRol.isItemChecked(position + 2) && !listViewAccesoRol.isItemChecked(position + 1))
+                            listViewAccesoRol.setItemChecked(position + 3, false);
                     }
                 }
+                else if(listViewAccesoRol.getItemAtPosition(position).toString().substring(0, 1).equals("E")){
+                    if(listViewAccesoRol.isItemChecked(position))
+                        listViewAccesoRol.setItemChecked(position + 2, true);
+                    else{
+                        if(!listViewAccesoRol.isItemChecked(position - 1) && !listViewAccesoRol.isItemChecked(position + 1)){
+                            listViewAccesoRol.setItemChecked(position + 2, false);
+                        }
+                    }
+                }
+                else if(listViewAccesoRol.getItemAtPosition(position).toString().substring(0, 1).equals("D")){
+                    if(listViewAccesoRol.isItemChecked(position))
+                        listViewAccesoRol.setItemChecked(position + 1, true);
+                    else{
+                        if(!listViewAccesoRol.isItemChecked(position - 1) && !listViewAccesoRol.isItemChecked(position - 2))
+                            listViewAccesoRol.setItemChecked(position + 1, false);
+                    }
+                }
+                else if(listViewAccesoRol.getItemAtPosition(position).toString().substring(0, 1).equals("C")){
+                    for(int i = 1; i < 4; i++){
+                        listViewAccesoRol.setItemChecked(position - i, false);
+                    }
+                }
+                //Toast.makeText(getApplicationContext(), String.valueOf(listViewAccesoRol.getItemAtPosition(position)), Toast.LENGTH_SHORT).show();
             }
-            for (int i = 0; i < posiciones.length; i++){
-                listViewAccesoRol.setItemChecked(posiciones[i], true);
-            }
-        }*/
+        });
     }
 
     public void guardarRol(View v){
@@ -78,21 +102,26 @@ public class NuevoRol extends AppCompatActivity {
                 SparseBooleanArray sparseBooleanArray = listViewAccesoRol.getCheckedItemPositions();
                 String cantidad = "";
                 String res = "";
-                Toast.makeText(this, String.valueOf(listViewAccesoRol.getCheckedItemIds().length), Toast.LENGTH_SHORT).show();
-                res = rol.guardar(this);
-                if (!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")) {
-                    for (int i = 0; i < choice; i++) {
-                        if (sparseBooleanArray.get(i)) {
-                            accesoUsuario = new AccesoUsuario();
-                            accesoUsuario.setIdRol(rol.getLastRol(this).getIdRol());
-                            accesoUsuario.setIdOpcion(listViewAccesoRol.getItemAtPosition(i).toString().substring(0, 3));
-                            regInsertados = accesoUsuario.guardar(this);
+                if(sparseBooleanArray.size() > 0){
+                    res = rol.guardar(this);
+                    if (!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")) {
+                        for (int i = 0; i < choice; i++) {
+                            if (sparseBooleanArray.get(i)) {
+                                accesoUsuario = new AccesoUsuario();
+                                accesoUsuario.setIdRol(rol.getLastRol(this).getIdRol());
+                                accesoUsuario.setIdOpcion(listViewAccesoRol.getItemAtPosition(i).toString().substring(0, 3));
+                                regInsertados = accesoUsuario.guardar(this);
+                            }
                         }
+                    } else {
+                        res = "Hubo un error al procesar el rol";
                     }
-                } else {
-                    res = "Hubo un error al procesar el rol";
+                    Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+                    this.finish();
+                }else{
+                    Toast.makeText(this, "Seleccione al menos 1 permiso al rol", Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, String.valueOf(listViewAccesoRol.getCheckedItemIds().length), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Ya existe un registro con ese nombre", Toast.LENGTH_SHORT).show();
             }

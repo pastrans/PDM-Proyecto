@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -70,6 +71,42 @@ public class EditarRol extends AppCompatActivity {
                 listViewEditarRol.setItemChecked(posiciones[i], true);
             }
         }
+        listViewEditarRol.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(listViewEditarRol.getItemAtPosition(position).toString().substring(0, 1).equals("I")){
+                    if(listViewEditarRol.isItemChecked(position))
+                        listViewEditarRol.setItemChecked(position + 3, true);
+                    else{
+                        if(!listViewEditarRol.isItemChecked(position + 2) && !listViewEditarRol.isItemChecked(position + 1))
+                            listViewEditarRol.setItemChecked(position + 3, false);
+                    }
+                }
+                else if(listViewEditarRol.getItemAtPosition(position).toString().substring(0, 1).equals("E")){
+                    if(listViewEditarRol.isItemChecked(position))
+                        listViewEditarRol.setItemChecked(position + 2, true);
+                    else{
+                        if(!listViewEditarRol.isItemChecked(position - 1) && !listViewEditarRol.isItemChecked(position + 1)){
+                            listViewEditarRol.setItemChecked(position + 2, false);
+                        }
+                    }
+                }
+                else if(listViewEditarRol.getItemAtPosition(position).toString().substring(0, 1).equals("D")){
+                    if(listViewEditarRol.isItemChecked(position))
+                        listViewEditarRol.setItemChecked(position + 1, true);
+                    else{
+                        if(!listViewEditarRol.isItemChecked(position - 1) && !listViewEditarRol.isItemChecked(position - 2))
+                            listViewEditarRol.setItemChecked(position + 1, false);
+                    }
+                }
+                else if(listViewEditarRol.getItemAtPosition(position).toString().substring(0, 1).equals("C")){
+                    for(int i = 1; i < 4; i++){
+                        listViewEditarRol.setItemChecked(position - i, false);
+                    }
+                }
+                //Toast.makeText(getApplicationContext(), String.valueOf(listViewAccesoRol.getItemAtPosition(position)), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -85,23 +122,27 @@ public class EditarRol extends AppCompatActivity {
         SparseBooleanArray sparseBooleanArray = listViewEditarRol.getCheckedItemPositions();
         String cantidad = "";
         for (int i = 0; i < choice; i++){
-            if(sparseBooleanArray.get(i)){
-                if(listaAccesoUsuario.size() > 0){
-                    if(!listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
+            if(sparseBooleanArray.size() > 0){
+                if(sparseBooleanArray.get(i)){
+                    if(listaAccesoUsuario.size() > 0){
+                        if(!listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
+                            accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
+                            regInsertados = accesoUsuario.guardar(this);
+                        }
+                    }else{
                         accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
                         regInsertados = accesoUsuario.guardar(this);
                     }
                 }else{
-                    accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
-                    regInsertados = accesoUsuario.guardar(this);
-                }
-            }else{
-                if (listaAccesoUsuario.size() > 0){
-                    if(listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
-                        accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
-                        accesoUsuario.deleteAcceso(this, accesoUsuario);
+                    if (listaAccesoUsuario.size() > 0){
+                        if(listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
+                            accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
+                            accesoUsuario.deleteAcceso(this, accesoUsuario);
+                        }
                     }
                 }
+            }else{
+                Toast.makeText(this, "Seleccione al menos 1 permiso al rol", Toast.LENGTH_SHORT).show();
             }
         }
         Toast.makeText(this, "Accesos del rol actualizados con éxito", Toast.LENGTH_LONG).show();

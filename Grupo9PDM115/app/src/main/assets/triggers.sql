@@ -261,12 +261,12 @@ END;
 --==============================================================
 -- TRIGGER INTEGRIDAD REFERENCIAL ACCESOUSUARIO-OPERACIONCRUD
 --==============================================================
-CREATE TRIGGER IF NOT EXISTS fk_accesousuario_operacioncrud
+CREATE TRIGGER IF NOT EXISTS fk_accesousuario_opcioncrud
 BEFORE INSERT ON accesousuario
 FOR EACH ROW
 BEGIN
       SELECT CASE
-      WHEN ((SELECT IDOPCION FROM OPERACIONCRUD WHERE IDOPCION = NEW.IDOPCION) IS NULL)
+      WHEN ((SELECT IDOPCION FROM OPCIONCRUD WHERE IDOPCION = NEW.IDOPCION) IS NULL)
       THEN RAISE(IGNORE)
 END;
 END;

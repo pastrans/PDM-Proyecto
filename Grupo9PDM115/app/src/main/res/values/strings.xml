@@ -425,6 +425,6 @@
     <string name="txtSelecRol">Seleccione un rol</string>
     <string name="txtSelecCiclo">Seleccione un ciclo</string>
     <string name="txtSelecTipo">Seleccione un tipo</string>
-    <string name="txtSelecTipoLocal">Seleccione un string de local</string>
+    <string name="txtSelecTipoLocal">Seleccione un tipo de local</string>
 
 </resources>

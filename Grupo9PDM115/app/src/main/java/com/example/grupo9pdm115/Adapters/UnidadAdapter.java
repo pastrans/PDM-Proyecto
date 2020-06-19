@@ -35,7 +35,6 @@ public class UnidadAdapter extends ArrayAdapter<Unidad> {
         // Referencias UI - list_item_dia -
         TextView nombreUnidad = (TextView) convertView.findViewById(R.id.txtNombreUnidad);
         TextView descripcion = (TextView) convertView.findViewById(R.id.txtDescripcion);
-        TextView prioridad = (TextView) convertView.findViewById(R.id.txtPrioridad);
 
         // Unidad actual
         Unidad unidad = getItem(position);
@@ -44,7 +43,6 @@ public class UnidadAdapter extends ArrayAdapter<Unidad> {
         if(!unidad.getNombreent().equals("Ninguna")){
             nombreUnidad.setText(unidad.getNombreent());
             descripcion.setText(unidad.getDescripcionent());
-            prioridad.setText("");
         }
 
 

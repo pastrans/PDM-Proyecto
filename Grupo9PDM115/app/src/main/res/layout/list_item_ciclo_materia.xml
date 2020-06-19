@@ -14,9 +14,7 @@
         android:id="@+id/txtCodMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PDM"
         android:textStyle="bold"
-        android:textAppearance="?attr/textAppearanceListItem"
         tools:text="PDM" />
 
     <LinearLayout

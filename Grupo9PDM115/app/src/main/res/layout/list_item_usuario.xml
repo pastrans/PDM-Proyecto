@@ -11,25 +11,22 @@
 
     <TextView
         android:id="@+id/txtNombreCompletoPersonal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Oscar Omar Lizama Escobar"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingBottom="5dp" />
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:text="@string/txtIdUsuarioE"/>
     <TextView
         android:id="@+id/txtIdUsuarioList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         tools:text="OL001" />
     </LinearLayout>
 
@@ -37,14 +34,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:text="@string/txtNombreUsuario"/>
     <TextView
         android:id="@+id/txtNombreUsuarioList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         tools:text="oslizama"
         />
     </LinearLayout>
@@ -52,14 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:text="@string/txtCorreoPersona"/>
     <TextView
         android:id="@+id/txtCorreoPersonalList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         tools:text="oslizama@gmail.com"
         />
     </LinearLayout>

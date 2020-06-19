@@ -19,7 +19,6 @@
             android:layout_weight="0.55"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="17sp"
             android:text="Asunto"
             />
         <TextView
@@ -27,9 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="17sp"
-            tools:text="Prueba"
-            />
+            tools:text="Prueba"/>
     </LinearLayout>
 
     <LinearLayout

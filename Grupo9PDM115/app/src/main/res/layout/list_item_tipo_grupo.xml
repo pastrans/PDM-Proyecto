@@ -14,9 +14,6 @@
         android:id="@+id/txtNombreTipoGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:text="Nombre"
         android:textStyle="bold"
-        android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Laboratorio" />
 </RelativeLayout>

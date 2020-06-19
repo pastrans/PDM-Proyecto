@@ -138,9 +138,9 @@ public class GestionarUnidad extends AppCompatActivity {
         ControlServicio.sendRequest(url, this);
     }
 
-    public void buscarCiclo(View v){
-        EditText editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
-        llenarListaUnidad(editNombreCiclo.getText().toString());
+    public void buscarUnidad(View v){
+        EditText editNombreUnidad = (EditText) findViewById(R.id.editNombreUnidad);
+        llenarListaUnidad(editNombreUnidad.getText().toString());
     }
 
 }

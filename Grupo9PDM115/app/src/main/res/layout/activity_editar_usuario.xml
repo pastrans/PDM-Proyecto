@@ -19,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titEditarUsuario"
-        android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
 
         <LinearLayout
@@ -72,7 +71,7 @@
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:id="@+id/editClaveUsuario"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:maxLength="5" />
         </LinearLayout>
         <LinearLayout

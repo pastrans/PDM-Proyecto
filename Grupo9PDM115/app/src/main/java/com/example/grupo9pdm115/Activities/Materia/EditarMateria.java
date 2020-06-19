@@ -126,10 +126,9 @@ public class EditarMateria extends AppCompatActivity {
                         materia.setNombreMateria(nombreMateria);
                         materia.setMasiva(masividad);
                         actualizarWeb(materia);
-                        /*String regInsertados = materia.actualizar(this);
-                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();*/
+                        String regInsertados = materia.actualizar(this);
+                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
                         super.onBackPressed();
-
 
                     }
                     else {

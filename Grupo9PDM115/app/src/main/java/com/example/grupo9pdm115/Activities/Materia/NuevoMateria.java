@@ -108,6 +108,7 @@ public class NuevoMateria  extends AppCompatActivity {
                             guardarWeb(materia);
                             String regInsertados = materia.guardar(this);
                             Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                            limpiar();
 
 
                         }
@@ -124,9 +125,16 @@ public class NuevoMateria  extends AppCompatActivity {
 
         }
 
-
-
     }
+
+    private void limpiar() {
+        editCodMateria.setText("");
+        editNombre.setText("");
+        masivaRadioButton1.setChecked(false);
+        masivaRadioButton2.setChecked(false);
+        idUnidad.setSelection(0);
+    }
+
     // Método para regresar al activity anterior
     public void btnRegresarNMateria(View v){
         super.onBackPressed();
@@ -149,12 +157,7 @@ public class NuevoMateria  extends AppCompatActivity {
 
     //Limpiar campos
     public void btnLimpiarNMateria(View v) {
-        editCodMateria.setText("");
-        editNombre.setText("");
-        masivaRadioButton1.setChecked(false);
-        masivaRadioButton2.setChecked(false);
-        idUnidad.setSelection(0);
-
+        limpiar();
     }
 
 

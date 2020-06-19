@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,16 +43,23 @@ public class GestionarUnidad extends AppCompatActivity {
         listUnidad = (ListView) findViewById(R.id.listUnidad);
 
         // Llamar método para llenar lista
-        llenarListaUnidad();
+        llenarListaUnidad(null);
 
         // Asociamos el menú contextual al listview
         registerForContextMenu(listUnidad);
     }
     // Método para llenar lista de unidad
-    public void llenarListaUnidad(){
+    public void llenarListaUnidad(String filtro){
         unidad = new Unidad();
-        String unidadesExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUES, this);
-        List objects = ControlServicio.obtenerUnidades(unidadesExternas, this);
+        List objects;
+        if(filtro == null){
+            String unidadesExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUES, this);
+            objects = ControlServicio.obtenerUnidades(unidadesExternas, this);
+        }else{
+            String url = urlPublicoUES + "?unidad=" + filtro;
+            String unidadesExternas = ControlServicio.obtenerRespuestaPeticion(url, this);
+            objects = ControlServicio.obtenerUnidades(unidadesExternas, this);
+        }
         //List objects = unidad.getAll(this);
 
         for(int i = 0; i < objects.size(); i++){
@@ -76,7 +84,7 @@ public class GestionarUnidad extends AppCompatActivity {
     @Override
     public void onRestart() {
         super.onRestart();
-        llenarListaUnidad();
+        llenarListaUnidad(null);
     }
     // Para menú contextual
     @Override
@@ -116,7 +124,7 @@ public class GestionarUnidad extends AppCompatActivity {
                     eliminarWeb(unidadActual.getIdUnidad());;
                     regEliminadas= unidadActual.eliminar(getApplicationContext());
                     Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                    llenarListaUnidad();
+                    llenarListaUnidad(null);
                 }
                 return true;
             default:
@@ -128,6 +136,11 @@ public class GestionarUnidad extends AppCompatActivity {
         String url = null;
         url = urlPublicoUESEliminar + "?idUnidad=" + idUnidad;
         ControlServicio.sendRequest(url, this);
+    }
+
+    public void buscarCiclo(View v){
+        EditText editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
+        llenarListaUnidad(editNombreCiclo.getText().toString());
     }
 
 }

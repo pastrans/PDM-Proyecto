@@ -389,6 +389,16 @@
     <string name="mnjRegActualizado">Registro actualizado correctamente.</string>
     <string name="mnjRegEliminado">Registro eliminado correctamente.</string>
     <string name="mnjFilasAfectadas">Filas afectadas = </string>
+    // CICLO
+    <string name="mnjCicloYaActivo">El ciclo ya se encuentra activo.</string>
+    <string name="mnjCicloNoExiste">El ciclo no existe.</string>
+    <string name="mnjNuevoCicloActivo">Nuevo ciclo activo: </string>
+    <string name="mnjNoElimCicloActivo">No es posible eliminar un ciclo activo.</string>
+    <string name="mnjCamposVacios">Todos los campos deben estar llenos.</string>
+    <string name="mnjCicloValFechas">
+        El fin de ciclo debe ser posterior al inicio de ciclo.
+        \nEl periodo de clases debe estar dentro del tiempo de duración del ciclo
+        \nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.</string>
 
     <string name="mnjRegInsert"></string>
 

@@ -133,11 +133,11 @@ public class GestionarCiclo extends AppCompatActivity {
                     String mensaje = "";
                     int resultado = cicloActual.activarCiclo(getApplicationContext());
                     if(resultado == -1)
-                        mensaje = "El ciclo ya se encuentra activo.";
+                        mensaje =  this.getString(R.string.mnjCicloYaActivo); // "El ciclo ya se encuentra activo.";
                     else if(resultado == 0)
-                        mensaje = "El ciclo no existe.";
+                        mensaje = this.getString(R.string.mnjCicloNoExiste); // "El ciclo no existe.";
                     else
-                        mensaje = "Nuevo ciclo activo: " + cicloActual.getNombreCiclo();
+                        mensaje = this.getString(R.string.mnjNuevoCicloActivo) + cicloActual.getNombreCiclo();; // "Nuevo ciclo activo: " + cicloActual.getNombreCiclo();
 
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                     llenarListaCiclo(null);
@@ -148,7 +148,7 @@ public class GestionarCiclo extends AppCompatActivity {
                     String regEliminadas;
                     // Si es ciclo activo no permitir eliminar
                     if(cicloActual.isEstadoCiclo()){
-                        regEliminadas = "No es posible eliminar un ciclo activo.";
+                        regEliminadas = this.getString(R.string.mnjNoElimCicloActivo); // "No es posible eliminar un ciclo activo.";
                     }
                     else{
                         regEliminadas= cicloActual.eliminar(getApplicationContext());

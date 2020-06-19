@@ -102,15 +102,16 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
                 && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
                 && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
             error = true;
-            mensaje = "El fin de ciclo debe ser posterior al inicio de ciclo." +
-                    "\nEl periodo de clases debe estar dentro del tiempo de duración del ciclo." +
-                    "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
+            mensaje = this.getString(R.string.mnjCicloValFechas);
+            // "El fin de ciclo debe ser posterior al inicio de ciclo." +
+            //       "\nEl periodo de clases debe estar dentro del tiempo de duración del ciclo." +
+            //        "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
         }
         // Verificando campos vacíos
         if(nombreCiclo.equals("") || inicioCiclo.equals("") || finCiclo.equals("") || inicioClases.equals("")
                 || finClases.equals("")){
             error = true;
-            mensaje = "Ningun campo debe estar vacío.";
+            mensaje =  this.getString(R.string.mnjCamposVacios); // "Todos los campos deben estar llenos.";
         }
 
         // Operaciones si no hay errores

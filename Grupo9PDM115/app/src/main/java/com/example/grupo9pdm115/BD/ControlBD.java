@@ -141,7 +141,6 @@ public class ControlBD {
 
         return regInsertados;
 
-
     }
 
     // Métodos de inserción, actualización, eliminación y consulta

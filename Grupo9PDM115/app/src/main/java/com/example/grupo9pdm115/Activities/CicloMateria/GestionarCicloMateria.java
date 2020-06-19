@@ -31,7 +31,7 @@ public class GestionarCicloMateria  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Validando usuario y sesión
-        if ((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CCL"))
+        if ((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CCM"))
                 || !Sesion.getLoggedIn(getApplicationContext())) {
             Intent intent = new Intent(this, ErrorDeUsuario.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

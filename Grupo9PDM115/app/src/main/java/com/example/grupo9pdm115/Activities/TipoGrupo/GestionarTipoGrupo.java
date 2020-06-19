@@ -15,7 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.TipoGrupoAdapter;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
 
@@ -29,6 +31,16 @@ public class GestionarTipoGrupo extends AppCompatActivity {
     TipoGrupo tipoGrupo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CTG"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_tipo_grupo);
         // Inicializar elementos a manejar
@@ -102,7 +114,7 @@ public class GestionarTipoGrupo extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
                 if(TGActual != null){
-                    Intent intent = new Intent(getApplicationContext(), TipoGrupoActualizar.class);
+                    Intent intent = new Intent(getApplicationContext(), EditarTipoGrupo.class);
                     intent.putExtra("idtipogrupo", TGActual.getIdTipoGrupo());
                     intent.putExtra("nombretipogrupo", TGActual.getNombreTipoGrupo());
                     startActivity(intent);

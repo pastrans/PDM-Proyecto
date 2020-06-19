@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
@@ -60,7 +59,6 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             tieneVisibles = false;
             for(int j = opcionesPrincipalesIndices[i][0]; j <= opcionesPrincipalesIndices[i][1] && !tieneVisibles; j++){
                 tieneVisibles = findViewById(idOpcionesDeMenu[j]).getVisibility() == View.VISIBLE;
-                Log.i("MIRAME", "Pues si entro al for prro " + j + " - " + tieneVisibles);
             }
             // Si tiene opciones menú visibles se muestra, si no, se oculta
             findViewById(idContenedores[i]).setVisibility((tieneVisibles ? View.VISIBLE : View.GONE));
@@ -147,8 +145,6 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
-
     // Método para asignar OnClickListener a un grupo de views
     public void asignarOnClickListener(int[] idViews){
         for(int id : idViews){
@@ -173,27 +169,6 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
             else
                 findViewById(id).setVisibility(View.GONE);
         }
-    }
-
-    /*
-    public boolean viewEsGrupoOpciones(View v){
-        boolean estado = false;
-        for(int id : idGruposOpciones){
-            if(v.getId() == id){
-                estado = true;
-            }
-        }
-        return estado;
-    }
-     */
-    public boolean viewEsOpcionMenu(View v){
-        boolean estado = false;
-        for(int id : idOpcionesDeMenu){
-            if(v.getId() == id){
-                estado = true;
-            }
-        }
-        return estado;
     }
 
     public int obtenerPosicionEnArreglo(View v, int[] arregloEnteros){

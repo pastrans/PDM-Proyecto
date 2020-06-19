@@ -59,20 +59,39 @@ public class EditarGrupo extends AppCompatActivity {
 
     public void btnEditarEGrupo(View v){
         String resultado = "";
-        grupo.setNumero(Integer.valueOf(editNumero.getText().toString()));
+
         int posTipoGrupo = spinnerTipoGrupo.getSelectedItemPosition();
         int posCicloMateria = spinnerCicloMateria.getSelectedItemPosition();
-        grupo.setIdTipoGrupo(control.getIdTipoGrupo(posTipoGrupo));
-        grupo.setIdCicloMateria(control.getIdCicloMateria(posCicloMateria));
-        String verificar = verificarDatos(grupo);
-        if(!verificar.equals("")){
-            Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
-            return;
+        if (posCicloMateria!= 0 ) {
+            if (posTipoGrupo!= 0) {
+                int a;
+                try {
+                    a = Integer.parseInt(editNumero.getText().toString());
+                }catch (NumberFormatException e){
+                    Toast.makeText(this, "Número inválido", Toast.LENGTH_SHORT).show();
+                    return;
+
+                    }
+                    grupo.setNumero(Integer.valueOf(editNumero.getText().toString()));
+                    grupo.setIdTipoGrupo(control.getIdTipoGrupo(posTipoGrupo));
+                    grupo.setIdCicloMateria(control.getIdCicloMateria(posCicloMateria));
+                    String verificar = verificarDatos(grupo);
+                    if(!verificar.equals("")){
+                        Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    resultado = grupo.actualizar(this);
+                    Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    Toast.makeText(this, "Seleccione Tipo de grupo ", Toast.LENGTH_SHORT).show();
+                }
+        }else {
+            Toast.makeText(this, "Seleccione una materia", Toast.LENGTH_SHORT).show();
         }
-        resultado = grupo.actualizar(this);
-        Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
-        finish();
     }
+
+
 
     public void btnLimpiarEGrupo(View v){
         editNumero.setText("");

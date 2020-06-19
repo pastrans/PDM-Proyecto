@@ -80,6 +80,8 @@ public class EditarLocal extends AppCompatActivity {
                     res = "Escoga un tipo de local";
                 } else {
                     res = local.actualizar(this);
+                    Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         }

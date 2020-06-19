@@ -63,6 +63,7 @@ public class NuevoLocal extends AppCompatActivity {
                     regInsertados = "Escoga un tipo de local";
                 } else {
                     regInsertados = local.guardar(this);
+                    limpiar();
                 }
             }
         }
@@ -70,10 +71,14 @@ public class NuevoLocal extends AppCompatActivity {
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
-    public void btnLimpiarNLocal(View v){
+    private void limpiar() {
         nombreLocal.setText("");
         capcidad.setText("");
         tipoLocalSpinner.setSelection(0);
+    }
+
+    public void btnLimpiarNLocal(View v){
+    limpiar();
     }
 
 }

@@ -105,6 +105,14 @@ public class EditarUsuario extends AppCompatActivity {
         usuario.setNombrePersonal(editNombrePersona.getText().toString());
         usuario.setApellidoPersonal(editApellidoPersona.getText().toString());
         usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
+        if(pos == 0){
+            Toast.makeText(this, "Seleccione una unidad", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(posRol == 0){
+            Toast.makeText(this, "Seleccione un rol", Toast.LENGTH_SHORT).show();
+            return;
+        }
         usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
         usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
         usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
@@ -120,26 +128,28 @@ public class EditarUsuario extends AppCompatActivity {
             usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(posicionUnidad));
         if(posicionRol != 0)
             usuario.setIdRol(rolSpinnerAdapter.getIdRol(posicionRol));
+
+        if (!editClaveUsuario.getText().toString().equals("")) {
+            if (!(editClaveUsuario.getText().toString().length() < 4)) {
+                usuario.setClaveUsuario(editClaveUsuario.getText().toString());
+                Log.v("contra", usuario.getClaveUsuario());
+            }else {
+                Toast.makeText(this, " La contraseña debe tener mínimo 5 caractéres", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         String verifcar = verificarDatos(usuario);
 
         if (!verifcar.equals("")){
             Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, usuario.getClaveUsuario(), Toast.LENGTH_SHORT).show();
             return;
         }
-        if (editClaveUsuario.getText().equals("")) {
-            Log.i("EditarUsuario", "btnEditarEUsuario: " + editClaveUsuario.getText().length());
-            usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
-            if (!(usuario.getClaveUsuario().length() < 4)) {
-                usuario.setClaveUsuario(editClaveUsuario.getText().toString());
-                usuario.setIdUsuario(getIntent().getStringExtra("idUsuario"));
-                resultado = usuario.actualizar(this);
-                Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            {
-                Toast.makeText(this, " La contraseña debe tener mínimo 5 caractéres", Toast.LENGTH_SHORT).show();
-            }
-        }
+
+        resultado = usuario.actualizar(this);
+        Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+        finish();
 
     }
 
@@ -198,30 +208,5 @@ public class EditarUsuario extends AppCompatActivity {
             return "Seleccione un rol al usuario";
         return "";
     }
-    public String verificarDatos1(Usuario usuario){
-        if (usuario.getNombreUsuario().equals(""))
-            return "Se requiere de un nombre de usuario";
-        if (usuario.verificar(1, getApplicationContext()))
-            return "Ya existe el nombre de usuario";
-        if (usuario.getClaveUsuario().equals(""))
-            return "Se requiere una clave para el usuario";
-        if(usuario.getClaveUsuario().length() < 4)
-            return "La contraseña debe tener mínimo 5 caractéres";
-        if(usuario.getNombrePersonal().equals(""))
-            return "Se requiere del nombre de la persona";
-        if(usuario.getApellidoPersonal().equals(""))
-            return "Se requiere del apellido de la persona";
-        if(usuario.getCorreoPersonal().equals(""))
-            return "Se requiere de un correo para el usuario";
-        if(usuario.verificar(2, getApplicationContext()))
-            return "El correo ya está registrado";
-        if(usuario.getIdUnidad() == 0)
-            return "Seleccione una unidad al usuario";
-        if(usuario.getIdRol() == 0)
-            return "Seleccione un rol al usuario";
-        return "";
-    }
-
-
 
 }

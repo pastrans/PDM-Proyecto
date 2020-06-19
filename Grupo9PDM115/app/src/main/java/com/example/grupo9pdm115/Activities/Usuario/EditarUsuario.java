@@ -17,6 +17,9 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.RolSpinner;
 import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class EditarUsuario extends AppCompatActivity {
 
     Usuario usuario;
@@ -93,7 +96,7 @@ public class EditarUsuario extends AppCompatActivity {
     }
 
     public void btnEditarEUsuario(View v){
-        String resultado;
+
         int pos = spinnerEditarUnidadUsuario.getSelectedItemPosition();
         int posRol = spinnerEditarRolUsuario.getSelectedItemPosition();
         usuario.setNombreUsuario(editNombreUsuario.getText().toString());
@@ -102,11 +105,34 @@ public class EditarUsuario extends AppCompatActivity {
         usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
         usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
         usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
+        String resultado;
+        int posicionUnidad = 0, idUnidad = 0, posicionRol =0;
+        if(!ValidarCorreo(editCorreoPersona.getText().toString())){
+            Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        posicionUnidad = spinnerEditarUnidadUsuario.getSelectedItemPosition();
+        posicionRol = spinnerEditarRolUsuario.getSelectedItemPosition();
+        if (posicionUnidad != 0)
+            usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(posicionUnidad));
+        if(posicionRol != 0)
+            usuario.setIdRol(rolSpinnerAdapter.getIdRol(posicionRol));
         String verifcar = verificarDatos(usuario);
+
         if (!verifcar.equals("")){
             Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
             return;
         }
+        String idUsuario = "";
+        int numUsuario = 0;
+        numUsuario = usuario.countUsuario(this, usuario);
+        if(numUsuario < 10)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%03d", numUsuario + 1);
+        else if(numUsuario > 10 && numUsuario < 100)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.format("%02d", numUsuario + 1);
+        else if (numUsuario > 100)
+            idUsuario = usuario.getNombrePersonal().toUpperCase().substring(0, 1) + usuario.getApellidoPersonal().toUpperCase().substring(0, 1) + String.valueOf(numUsuario + 1);
+        usuario.setIdUsuario(idUsuario);
         resultado = usuario.actualizar(this);
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
         finish();
@@ -115,7 +141,25 @@ public class EditarUsuario extends AppCompatActivity {
     public void btnRegresarEUsuario(View v){
         finish();
     }
+    private boolean ValidarCorreo(String email){
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
+        // El email a validar
+
+        Matcher mather = pattern.matcher(email);
+
+        if (mather.find() == true) {
+            //System.out.println("El email ingresado es válido.");
+            return Boolean.TRUE;
+        } else {
+            // System.out.println("El email ingresado es inválido.");
+            return Boolean.FALSE;
+        }
+
+    }
     public void btnLimpiarEUsuario(View v){
         editNombreUsuario.setText("");
         editNombrePersona.setText("");

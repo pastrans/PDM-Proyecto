@@ -16,6 +16,9 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.RolSpinner;
 import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class NuevoUsuario extends AppCompatActivity {
 
     EditText nombreUsuario, claveUsuario, nombrePersonal, apellidoPersonal, correoPersonal;
@@ -75,6 +78,11 @@ public class NuevoUsuario extends AppCompatActivity {
         usuario.setClaveUsuario(claveUsuario.getText().toString());
         usuario.setApellidoPersonal(apellidoPersonal.getText().toString());
         usuario.setCorreoPersonal(correoPersonal.getText().toString());
+        if(!ValidarCorreo(correoPersonal.getText().toString())){
+            Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (posicionUnidad != 0)
             usuario.setIdUnidad(spinnerUsuarioUnidadAdapter.getIdUnidad(posicionUnidad));
         if(posicionRol != 0)
@@ -114,6 +122,25 @@ public class NuevoUsuario extends AppCompatActivity {
         limpiar();
     }
 
+    private boolean ValidarCorreo(String email){
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        // El email a validar
+
+        Matcher mather = pattern.matcher(email);
+
+        if (mather.find() == true) {
+            //System.out.println("El email ingresado es válido.");
+            return Boolean.TRUE;
+        } else {
+           // System.out.println("El email ingresado es inválido.");
+            return Boolean.FALSE;
+        }
+
+    }
     public void btnRegresarNUsuario(View v){
         finish();
     }

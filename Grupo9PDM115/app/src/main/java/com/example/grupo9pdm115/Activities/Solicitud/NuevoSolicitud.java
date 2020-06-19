@@ -156,6 +156,10 @@ public class NuevoSolicitud extends AppCompatActivity {
         solicitud.setNuevoFinPeriodo("");
         String res = solicitud.guardar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+        if(res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")){
+            Toast.makeText(this, "Error al ingresar la solicitud", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent;
         if (tipoSolicitud == 1){
             intent = new Intent(this, NuevoDetalleReserva.class);
@@ -235,6 +239,14 @@ public class NuevoSolicitud extends AppCompatActivity {
                 //Write your code if there's no result
             }
         }
+    }
+
+    public void btnLimpiarTextoNSolicitud(View v){
+        edtEncargado.setText("");
+        edtAsunto.setText("");
+        edtComentario.setText("");
+        chkIntermediario.setChecked(false);
+        spinnerLocaSolicitud.setSelection(0);
     }
 
 }

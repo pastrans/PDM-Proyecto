@@ -132,7 +132,7 @@ public class Horario extends TablaBD {
         ControlBD helper = new ControlBD(context);
         String[] valores = new String[getCamposTabla().length];
 
-        String consulta = "select idhora, horainicio, horafinal, horainicio || ' - ' || horafinal as cmp from horario where cmp like '%"+filtro+"%'";
+        String consulta ="select * from horario where horainicio like '%"+filtro+"%' or horafinal like '%"+filtro+"%'";
 
         helper.abrir();
         Cursor cursor = helper.consultar(consulta);

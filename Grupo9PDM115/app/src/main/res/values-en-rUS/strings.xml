@@ -263,8 +263,7 @@
     <string name="txtReservas">Reserves</string>
     <string name="txtGestionarSolicitud">"Manage requests "</string>
     <string name="txtSolicitudesRecibidas">"Requests received "</string>
-    <string name="txtDiaMenu">Day</string>
-    <string name="txtHorarioMenu">Schedule</string>
+    <string name="txtHorarioMenu">"Manage schedules "</string>
     <string name="txtCerrarSesion">Log out</string>
     <string name="NombreUsuario">User name</string>
     <string name="titGestionarRol">Manage role</string>

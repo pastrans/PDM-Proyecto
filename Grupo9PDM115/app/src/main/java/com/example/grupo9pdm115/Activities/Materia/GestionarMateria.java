@@ -30,7 +30,8 @@ public class GestionarMateria extends AppCompatActivity {
     Materia materia;
     EditText editnombreMateria;
 
-    private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list.php";
+    //private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list.php";
+    //private String urlPublicoUES = "http://192.168.0.17/LE17004/Proyecto/Materia/ws_materia_list.php";
     private String urlPublicoUESFiltro = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list_filter.php";
     private String urlPublicoUESEliminar = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_eliminar.php";
 
@@ -60,7 +61,7 @@ public class GestionarMateria extends AppCompatActivity {
         List objetcts = null;
 
         if (filtro == null) {
-            String materiasExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUES, this);
+            String materiasExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUESFiltro, this);
             objetcts = Materia.getAllFromJSON(materiasExternas, this);
             //objetcts = materia.getAll(this);
             //Inicializar el adaptador con la información a mostrar

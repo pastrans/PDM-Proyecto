@@ -160,7 +160,7 @@ public class NuevoSolicitud extends AppCompatActivity {
         solicitud.setTipoSolicitud(tipoSolicitud);
         solicitud.setComentario(comentario);
         solicitud.setEstadoSolicitud(false);
-        solicitud.setMostrarBoton(true);
+        solicitud.setMostrarBoton(false);
         solicitud.setAprobadoTotal(false);
         solicitud.setFechaRealizada(ahora());
         solicitud.setFechaRespuesta("");

@@ -14,8 +14,11 @@ import android.widget.Toast;
 import com.example.grupo9pdm115.Activities.DetalleReserva.NuevoDetalleReservaEspecial;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.EventoEspecial;
+import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Sesion;
+import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloMateriaSpinner;
 import com.example.grupo9pdm115.Utilidades.FechasHelper;
@@ -91,6 +94,16 @@ public class NuevoEventoEspecial extends AppCompatActivity implements View.OnCli
         String res = eventoEspecial.guardar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
         if(!res.equals("Error al insertar el registro, registro duplicado. Verificar inserción.")){
+            Solicitud solicitud = new Solicitud();
+            solicitud.consultar(this, String.valueOf(idSolicitud));
+            CicloMateria cicloMateria = new CicloMateria();
+            cicloMateria.consultar(this, String.valueOf(eventoEspecial.getIdCicloMateria()));
+            Materia materia = new Materia();
+            materia.consultar(this, cicloMateria.getCodMateria());
+            if (materia.isMasiva() && !solicitud.isMostrarBoton()){
+                solicitud.setMostrarBoton(materia.isMasiva());
+                solicitud.actualizar(this);
+            }
             Intent intent = new Intent(this, NuevoDetalleReservaEspecial.class);
             intent.putExtra("idEventoEspecial", eventoEspecial.getLast(this));
             intent.putExtra("idSolicitud", idSolicitud);

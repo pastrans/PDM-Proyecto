@@ -48,7 +48,7 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
 
     // Opciones crud
     String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CTG", "CHO", "CCM", "CCO", "CGR",
-             "CLO", "CTL", "CSO", "GSO"};
+             "CLO", "CTL", "RSO", "GSO"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

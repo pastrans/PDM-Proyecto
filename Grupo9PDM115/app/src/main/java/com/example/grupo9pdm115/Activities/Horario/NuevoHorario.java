@@ -23,7 +23,6 @@ import java.util.Date;
 
 public class NuevoHorario extends AppCompatActivity implements View.OnClickListener{
     ControlBD helper;
-    Button btnHoraInicio,btnHoraFinal;
     EditText editHInicio,editHFinal;
     private int Hinicio, Hfinal,Minicio, Mfinal;
 
@@ -32,12 +31,10 @@ public class NuevoHorario extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_horario);
         helper = new ControlBD(this);
-        btnHoraInicio = (Button) findViewById(R.id.btnHInicio);
-        btnHoraFinal = (Button) findViewById(R.id.btnHFinal);
         editHInicio = (EditText) findViewById(R.id.editHoraInicio);
         editHFinal = (EditText) findViewById(R.id.editHoraFinal);
-        btnHoraInicio.setOnClickListener(this);
-        btnHoraFinal.setOnClickListener(this);
+        //btnHoraInicio.setOnClickListener(this);
+        //btnHoraFinal.setOnClickListener(this);
 
     }
     public void agregarHorario(View v) throws ParseException {
@@ -81,6 +78,7 @@ public class NuevoHorario extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        /*
         if (v==btnHoraInicio){
             final Calendar c = Calendar.getInstance();
             Hinicio=c.get(Calendar.HOUR_OF_DAY);
@@ -107,6 +105,7 @@ public class NuevoHorario extends AppCompatActivity implements View.OnClickListe
             },Hfinal,Mfinal,false);
             timePickerDialog.show();
         }
+         */
     }
     //Limpiar campos
     public void btnLimpiarTextoNHorario(View v) {

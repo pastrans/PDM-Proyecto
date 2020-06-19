@@ -26,21 +26,20 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
-                <Button
-                    android:layout_width="10dp"
-                    android:layout_height="50dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="0dp"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:id="@+id/btnHInicio"
-                    android:text="@string/txtHoraInicial"/>
+                    android:text="@string/txtHoraInicial" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_weight="1.15"
+                    android:layout_weight="1.30"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -57,20 +56,19 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
-                <Button
-                    android:layout_width="10dp"
-                    android:layout_height="50dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="0dp"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.70"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:id="@+id/btnHFinal"
-                    android:text="@string/txtHoraFin"/>
+                    android:text="@string/txtHoraFin" />
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_weight="1.15"
+                    android:layout_weight="1.30"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"

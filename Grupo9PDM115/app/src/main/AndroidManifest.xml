@@ -70,21 +70,13 @@
         <activity android:name=".Activities.Unidad.EditarUnidad" />
         <activity android:name=".Activities.Unidad.NuevoUnidad" />
         <activity android:name=".Activities.Unidad.GestionarUnidad" />
-        <activity
-            android:name=".Activities.Feriado.NuevoFeriado"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Feriado.NuevoFeriado" />
         <activity
             android:name=".Activities.Feriado.GestionarFeriado"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".Activities.Feriado.EditarFeriado"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".Activities.Ciclo.EditarCiclo"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".Activities.Ciclo.NuevoCiclo"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Feriado.EditarFeriado" />
+        <activity android:name=".Activities.Ciclo.EditarCiclo" />
+        <activity android:name=".Activities.Ciclo.NuevoCiclo" />
         <activity
             android:name=".Activities.Ciclo.GestionarCiclo"
             android:windowSoftInputMode="stateAlwaysHidden" />

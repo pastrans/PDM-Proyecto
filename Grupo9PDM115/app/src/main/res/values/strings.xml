@@ -286,8 +286,8 @@
 
     //Variables Horario
     //Etiquetas
-    <string name="txtHoraInicial">Hora de inicio</string>
-    <string name="txtHoraFin">Hora de final</string>
+    <string name="txtHoraInicial">Hora de inicio:</string>
+    <string name="txtHoraFin">Hora de final:</string>
     //Gestionar Horario
     <string name="txtListaHorario">Listado de horarios ingresados:</string>
     <string name="titGestionarHorario">Gestionar Horario</string>
@@ -388,6 +388,7 @@
     <string name="txtGestionarUnidad">Gestionar unidades</string>
     <string name="txtGestionarMateria">Gestionar materias</string>
     <string name="txtGestionarTipoGrupo">Gestionar tipos de grupo</string>
+    <string name="txtHorarioMenu">Gestionar horarios</string>
     // Carga académica
     <string name="txtCargaAcademica">Carga académica</string>
     <string name="txtGestionarCicloMateria">Gestionar materias del ciclo</string>
@@ -402,7 +403,6 @@
     <string name="txtGestionarSolicitud">Gestionar solicitudes</string>
     <string name="txtSolicitudesRecibidas">Solicitudes recibidas</string>
     // Otros
-    <string name="txtHorarioMenu">Horario</string>
     <string name="txtCerrarSesion">Cerrar sesión</string>
 
     //Rol

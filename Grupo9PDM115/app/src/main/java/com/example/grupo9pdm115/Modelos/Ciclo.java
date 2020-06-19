@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 public class Ciclo extends TablaBD {
@@ -166,7 +167,7 @@ public class Ciclo extends TablaBD {
 
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje = context.getString(R.string.mnjRegInsert); // "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("inicio", getInicio());
@@ -182,7 +183,7 @@ public class Ciclo extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); // "Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
             mensaje = mensaje+control;

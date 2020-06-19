@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,7 +153,7 @@ public class Coordinacion  extends TablaBD {
 
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje = context.getString(R.string.mnjRegInsert); // "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         //this.valoresCamposTabla.put("idcoordinacion", getIdCoodinacion());
@@ -167,7 +168,7 @@ public class Coordinacion  extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); // "Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
             mensaje = mensaje+control;

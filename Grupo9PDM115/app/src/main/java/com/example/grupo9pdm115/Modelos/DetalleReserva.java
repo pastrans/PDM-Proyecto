@@ -6,6 +6,7 @@ import android.database.Cursor;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
+import com.example.grupo9pdm115.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -206,7 +207,7 @@ public class DetalleReserva extends TablaBD {
 
     @Override
     public String guardar(Context context){
-        String mensaje = "Registro insertado N° = ";
+        String mensaje = context.getString(R.string.mnjRegInsert); // "Registro insertado N° = ";
         long control = 0;
         ControlBD helper = new ControlBD(context);
         this.valoresCamposTabla.put("idDia", getIdDia());
@@ -231,7 +232,7 @@ public class DetalleReserva extends TablaBD {
 
         if(control==-1 || control==0)
         {
-            mensaje= "Error al insertar el registro, registro duplicado. Verificar inserción.";
+            mensaje= context.getString(R.string.mnjErrorInsercion); // "Error al insertar el registro, registro duplicado. Verificar inserción.";
         }
         else {
             mensaje = mensaje+control;
@@ -304,10 +305,10 @@ public class DetalleReserva extends TablaBD {
             String res = detalle.actualizar(context);
             //String res = "Registro no existente";
             //control = helper.actualizar(detalle.getNombreTabla(), detalle.getValoresCamposTabla(), detalle.getNombreLlavePrimaria(), detalle.getValorLlavePrimaria());
-            if(res.equals("Registro no existente."))
+            if(res.equals(context.getString(R.string.mnjRegNoExiste))) //  "Registro no existente."
                 resultado = "";
             else
-                resultado = String.valueOf(detalle.isAprobado());
+                resultado = String.valueOf(detalle.isAprobado()); // true o false
         }
         helper.cerrar();
         return resultado;

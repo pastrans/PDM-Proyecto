@@ -77,22 +77,18 @@ public class EditarCicloMateria extends AppCompatActivity {
                         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
                         finish();
                     }else {
-                        Toast.makeText(this, "Ya existe", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
                     }
-
-
                 }else {
-                    Toast.makeText(this, "Código no registrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, this.getString(R.string.mnjCMCodNoRegis), Toast.LENGTH_SHORT).show(); // "Código no registrado"
                 }
 
             }else{
-                Toast.makeText(this, "Selecicone el ciclo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getString(R.string.mnjCMSelecCiclo), Toast.LENGTH_SHORT).show(); // "Selecicone el ciclo"
             }
 
         }else{
-            Toast.makeText(this, "Ingrese código de materia", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, this.getString(R.string.mnjCMIngCodMat), Toast.LENGTH_SHORT).show(); // "Ingrese código de materia"
         }
     }
 

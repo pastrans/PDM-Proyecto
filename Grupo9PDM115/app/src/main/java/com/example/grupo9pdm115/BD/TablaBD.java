@@ -51,7 +51,7 @@ public abstract class TablaBD <ChildClass extends TablaBD> {
 
     // Inserción
     public String guardar(Context context){
-        String mensaje = context.getString(R.string.mnjRegInsert);;
+        String mensaje = context.getString(R.string.mnjRegInsert);
         long control = 0;
         ControlBD helper = new ControlBD(context);
 

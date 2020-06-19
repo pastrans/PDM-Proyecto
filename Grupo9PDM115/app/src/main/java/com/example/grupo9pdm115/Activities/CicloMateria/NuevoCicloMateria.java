@@ -17,7 +17,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
-public class NuevoCicloMateria extends AppCompatActivity implements View.OnClickListener {
+public class NuevoCicloMateria extends AppCompatActivity {
 
     EditText editCodMateria;
     Spinner idCiclo;
@@ -76,35 +76,24 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
                         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
                         limpiar();
                     }else {
-                        Toast.makeText(this, "Ya existe", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
                     }
-
-
                 }else {
-                    Toast.makeText(this, "Código no registrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, this.getString(R.string.mnjCMCodNoRegis), Toast.LENGTH_SHORT).show(); // "Código no registrado"
                 }
 
             }else{
-                Toast.makeText(this, "Selecicone el ciclo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getString(R.string.mnjCMSelecCiclo), Toast.LENGTH_SHORT).show(); // "Selecicone el ciclo"
             }
 
         }else{
-            Toast.makeText(this, "Ingrese código de materia", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, this.getString(R.string.mnjCMIngCodMat), Toast.LENGTH_SHORT).show(); // "Ingrese código de materia"
         }
-
-
     }
 
     private void limpiar() {
         editCodMateria.setText("");
         idCiclo.setSelection(0);
-    }
-
-    // Método para regresar al activity anterior
-    public void btnRegresarNCicloMateria(View v){
-        super.onBackPressed();
     }
 
     int validarCodMateria(String codigo){
@@ -123,11 +112,6 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
     //Limpiar campos
     public void btnLimpiarNCicloMateria(View v) {
         limpiar();
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
 }

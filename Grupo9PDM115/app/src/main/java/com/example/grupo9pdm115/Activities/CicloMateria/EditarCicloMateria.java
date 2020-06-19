@@ -80,6 +80,7 @@ public class EditarCicloMateria extends AppCompatActivity implements View.OnClic
                         cicloMateria.setIdCiclo(idCiclo);
                         String regInsertados = cicloMateria.actualizar(this);
                         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                        finish();
                     }else {
                         Toast.makeText(this, "Ya existe", Toast.LENGTH_SHORT).show();
 

@@ -74,6 +74,7 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
                         cicloMateria.setIdCiclo(idCiclo);
                         String regInsertados = cicloMateria.guardar(this);
                         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                        limpiar();
                     }else {
                         Toast.makeText(this, "Ya existe", Toast.LENGTH_SHORT).show();
 
@@ -95,6 +96,12 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
 
 
     }
+
+    private void limpiar() {
+        editCodMateria.setText("");
+        idCiclo.setSelection(0);
+    }
+
     // Método para regresar al activity anterior
     public void btnRegresarNCicloMateria(View v){
         super.onBackPressed();
@@ -115,8 +122,7 @@ public class NuevoCicloMateria extends AppCompatActivity implements View.OnClick
 
     //Limpiar campos
     public void btnLimpiarNCicloMateria(View v) {
-        editCodMateria.setText("");
-        idCiclo.setSelection(0);
+        limpiar();
     }
 
     @Override

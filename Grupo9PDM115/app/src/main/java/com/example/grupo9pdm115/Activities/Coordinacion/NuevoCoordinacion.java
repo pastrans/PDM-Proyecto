@@ -84,6 +84,7 @@ public class NuevoCoordinacion extends AppCompatActivity {
                                 coordinacion.setTipoCoordinacion(tipoCoordinacion);
                                 String regInsertados = coordinacion.guardar(this);
                                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                                limpiar();
                             }else {
                                 Toast.makeText(this, "Ya existe está coordinación", Toast.LENGTH_SHORT).show();
                             }
@@ -110,6 +111,17 @@ public class NuevoCoordinacion extends AppCompatActivity {
 
 
     }
+
+    private void limpiar() {
+        editCodMateria.setText("");
+        editIdUsuario.setText("");
+        TipoCoordinacion.setSelection(0);
+    }
+    //Limpiar campos
+    public void btnLimpiarNCoordinador(View v) {
+       limpiar();
+    }
+
 
     int validarCicloMateria(String codigo){
         int num = 0;
@@ -166,12 +178,6 @@ public class NuevoCoordinacion extends AppCompatActivity {
 
     public void btnRegresarNCoordinador(View v){
         super.onBackPressed();
-    }
-    //Limpiar campos
-    public void btnLimpiarNCoordinador(View v) {
-        editCodMateria.setText("");
-        editIdUsuario.setText("");
-        TipoCoordinacion.setSelection(0);
     }
 
 }

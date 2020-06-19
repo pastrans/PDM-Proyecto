@@ -65,6 +65,7 @@ public class NuevoGrupo extends AppCompatActivity {
                 reginsertados = grupo.guardar(this);
                 helper.cerrar();
                 Toast.makeText(this, reginsertados, Toast.LENGTH_SHORT).show();
+                limpiar();
             }
             else {
                 Toast.makeText(this, "Seleccione Tipo de grupo ", Toast.LENGTH_SHORT).show();
@@ -75,10 +76,14 @@ public class NuevoGrupo extends AppCompatActivity {
         }
     }
 
-    public void btnLimpiarNGrupo(View v){
+    private void limpiar() {
         numero.setText("");
         idTipoGrupo.setSelection(0);
         idCicloMateria.setSelection(0);
+    }
+
+    public void btnLimpiarNGrupo(View v){
+        limpiar();
     }
 
 

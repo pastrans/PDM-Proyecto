@@ -71,6 +71,7 @@ public class EditarGrupo extends AppCompatActivity {
         }
         resultado = grupo.actualizar(this);
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public void btnLimpiarEGrupo(View v){

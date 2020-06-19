@@ -551,20 +551,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <TextView
-                android:id="@+id/txtDia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/txtDiaMenu"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="54dp"
-                android:layout_marginRight="54dp"
-                android:textSize="18sp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?android:attr/selectableItemBackground"/>
 
             <TextView
                 android:id="@+id/txtCerrarSesion"
@@ -580,7 +566,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground"/>
-
 
         </LinearLayout>
     </ScrollView>

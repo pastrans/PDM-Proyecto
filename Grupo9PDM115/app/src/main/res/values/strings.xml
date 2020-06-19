@@ -402,9 +402,9 @@
     <string name="txtGestionarSolicitud">Gestionar solicitudes</string>
     <string name="txtSolicitudesRecibidas">Solicitudes recibidas</string>
     // Otros
-    <string name="txtDiaMenu">Dia</string>
     <string name="txtHorarioMenu">Horario</string>
     <string name="txtCerrarSesion">Cerrar sesión</string>
+
     //Rol
     //Gestionar Rol
     <string name="titGestionarRol">Gestionar rol</string>

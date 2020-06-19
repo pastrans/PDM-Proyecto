@@ -25,13 +25,13 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
     public final int[] idOpcionesDeMenu = {R.id.txtUsuario, R.id.txtRol, R.id.txtCiclo, R.id.txtFeriado,
             R.id.txtUnidad, R.id.txtMateria, R.id.txtCicloMateria, R.id.txtCoordinacion, R.id.txtGrupo,
             R.id.txtTipoGrupo,  R.id.txtHorario, R.id.txtLocal, R.id.txtTipoLocal, R.id.txtSolicitud,
-            R.id.txtSolicitudesRecibidas, R.id.txtDia};
+            R.id.txtSolicitudesRecibidas};
 
     // Activities
     String[] activities = {"Usuario.GestionarUsuario", "Rol.GestionarRol", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado",
             "Unidad.GestionarUnidad", "Materia.GestionarMateria", "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion",
             "Grupo.GestionarGrupo", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario", "Local.GestionarLocal",
-            "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado", "Dia.GestionarDia"};
+            "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud","Solicitud.GestionarSolicitudesEncargado"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

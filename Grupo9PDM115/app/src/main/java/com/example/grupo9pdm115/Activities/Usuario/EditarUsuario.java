@@ -109,6 +109,7 @@ public class EditarUsuario extends AppCompatActivity {
         }
         resultado = usuario.actualizar(this);
         Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public void btnRegresarEUsuario(View v){

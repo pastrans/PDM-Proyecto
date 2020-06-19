@@ -122,6 +122,8 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
             ciclo.setInicioPeriodoClase(inicioClases);
             ciclo.setFinPeriodoClase(finClases);
             mensaje = ciclo.actualizar(this);
+            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         // Mensaje de salida

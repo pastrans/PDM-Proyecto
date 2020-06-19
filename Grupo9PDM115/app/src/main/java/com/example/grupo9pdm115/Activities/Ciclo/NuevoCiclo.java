@@ -111,18 +111,24 @@ public class NuevoCiclo extends AppCompatActivity implements View.OnClickListene
             ciclo.setInicioPeriodoClase(inicioClases);
             ciclo.setFinPeriodoClase(finClases);
             mensaje = ciclo.guardar(this);
+            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+            limpiar();
         }
 
         // Mensaje de salida
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    //Limpiar campos
-    public void limpiarTexto(View v) {
+    private void limpiar() {
         editNombreCiclo.setText("");
         editInicioCiclo.setText("");
         editFinCiclo.setText("");
         editInicioClases.setText("");
         editFinClases.setText("");
+    }
+
+    //Limpiar campos
+    public void limpiarTexto(View v) {
+        limpiar();
     }
 }

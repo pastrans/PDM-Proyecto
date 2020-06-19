@@ -105,6 +105,7 @@ public class EditarRol extends AppCompatActivity {
             }
         }
         Toast.makeText(this, "Accesos del rol actualizados con éxito", Toast.LENGTH_LONG).show();
+        finish();
     }
 
 }

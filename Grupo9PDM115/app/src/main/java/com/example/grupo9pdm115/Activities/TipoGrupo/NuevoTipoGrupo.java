@@ -48,13 +48,18 @@ public class NuevoTipoGrupo extends AppCompatActivity {
         }
         else{
             regInsertados = tipoGrupo.guardar(this);
+            limpiar();
         }
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
+    private void limpiar() {
+        nombreTipoGrupo.setText("");
+    }
+
     //Limpiar campos
     public void btnLimpiarNTipoGrupo(View v) {
-        nombreTipoGrupo.setText("");
+        limpiar();
     }
 
     public String verificarDatos(TipoGrupo tg){

@@ -48,6 +48,8 @@ public class TipoGrupoActualizar extends AppCompatActivity {
         }
         else{
             estado = tipoGrupo.actualizar(this);
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+            finish();
         }
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }

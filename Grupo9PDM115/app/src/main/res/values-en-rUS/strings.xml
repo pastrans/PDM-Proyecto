@@ -6,31 +6,31 @@
     <string name="action_sign_in_short">Password</string>
     <string name="action_sign_in">Enter</string>
     <string name="txtListaRol">List of roles:</string>
-    <string name="txtNombreCiclo">Cycle name:</string>
-    <string name="txtNombreCicloHint">Cycle name:</string>
-    <string name="txtInicioCiclo">Cycle start:</string>
-    <string name="txtFinCiclo">End of cycle:</string>
+    <string name="txtNombreCiclo">Semester name:</string>
+    <string name="txtNombreCicloHint">Semester name:</string>
+    <string name="txtInicioCiclo">Semester\'s begin:</string>
+    <string name="txtFinCiclo">Semester\'s end:</string>
     <string name="txtEstadoCiclo">Status:</string>
     <string name="txtInicioPeriodoClase">Start of classes:</string>
     <string name="txtFinPeriodoClase">End of classes:</string>
-    <string name="titGestionarCiclo">Manage cycle  </string>
-    <string name="txtListaCiclo">List of entered cycles :</string>
-    <string name="titNuevoCiclo">New cycle</string>
+    <string name="titGestionarCiclo">Manage semester  </string>
+    <string name="txtListaCiclo">List of entered semesters :</string>
+    <string name="titNuevoCiclo">New semester</string>
     <string name="btnAgregarNCiclo">Add</string>
     <string name="btnLimpiarTextoNCiclo">Clean</string>
-    <string name="titEditarCiclo">Edit cycle</string>
+    <string name="titEditarCiclo">Edit semester</string>
     <string name="btnActualizarCiclo">Edit</string>
     <string name="btnLimpiarTextoECiclo">Clean</string>
-    <string name="ctxListaCiclosActualizar">Add subjectttxt to the cycle</string>
+    <string name="ctxListaCiclosActualizar">Add subject to the semester</string>
     <string name="ctxListaCiclosEliminar">Delete</string>
-    <string name="ctxListaCiclosActivarr">"Set as active cycle   "</string>
+    <string name="ctxListaCiclosActivarr">"Set as active semester   "</string>
     <string name="txtNombreFeriado">Name:</string>
     <string name="txtDescripcionFeriado">Description:</string>
     <string name="txtFechaInicioFeriado">Start date:</string>
     <string name="txtFechaFinFeriado">End date:</string>
-    <string name="txtCicloFeriado">Cycle:</string>
+    <string name="txtCicloFeriado">Semester:</string>
     <string name="txtEstadoReservas">Reserve:</string>
-    <string name="spnCicloPrompt">Select a cycle</string>
+    <string name="spnCicloPrompt">Select a semester</string>
     <string name="txtReservasFeriado">Reserve:</string>
     <string name="rbReservasBloqueadas">Blocked</string>
     <string name="rbReservasPermitidas">Allow</string>
@@ -42,7 +42,7 @@
     <string name="btnLimpiarTextoNFeriado">Clean</string>
     <string name="titEditarFeriado">"Edit holiday   "</string>
     <string name="btnEditarEFeriado">Edit</string>
-    <string name="ctxListaFeriadosActualizar">Update</string>
+    <string name="ctxListaFeriadosActualizar">Edit</string>
     <string name="ctxListaFeriadosEliminar">Delete</string>
     <string name="txtNombreUnidad">Unit name</string>
     <string name="editDescripcion">Description</string>
@@ -68,13 +68,13 @@
     <string name="btnEditarEMateria">Edit</string>
     <string name="btnLimpiarEMateria">Clean</string>
     <string name="txtCodigoCicloMateria">Subject code:</string>
-    <string name="txtCicloMateria">Cycle:</string>
-    <string name="titGestionarCicloMateria">"Manage subjects of the cycle   "</string>
+    <string name="txtCicloMateria">Semester:</string>
+    <string name="titGestionarCicloMateria">"Manage subjects of the semester   "</string>
     <string name="txtListaCicloMateria">Records entered:</string>
-    <string name="titNuevoCicloMateria">Add subject to the cycle</string>
+    <string name="titNuevoCicloMateria">Add subject to the semester</string>
     <string name="btnAgregarNCicloMateria">Add</string>
     <string name="btnLimpiarNCicloMateria">Clean</string>
-    <string name="titEditarMateria">Editt cycle subject</string>
+    <string name="titEditarMateria">Edit semester subject</string>
     <string name="btnLimpiarECicloMateria">Clean</string>
     <string name="txtNombreTipoLocal">Name:</string>
     <string name="txtEncargado">Manager</string>
@@ -98,7 +98,7 @@
     <string name="btnEditarELocal">Edit</string>
     <string name="btnLimpiarELocal">Clean</string>
     <string name="txtNombreTipoGrupo">Name:</string>
-    <string name="ctxListaTGActualizar">Update</string>
+    <string name="ctxListaTGActualizar">Edit</string>
     <string name="ctxListaTGEliminar">Delete</string>
     <string name="titGestionarTipoGrupo">"Manage group type   "</string>
     <string name="txtListaTG">"List of type of groups entered   "</string>
@@ -139,7 +139,7 @@
     <string name="txtCódigoUsuario">"User code:  "</string>
     <string name="txtCódigoMateria">Subject code:</string>
     <string name="txtUsuario">User:</string>
-    <string name="txtCMateria">Subject cycle:</string>
+    <string name="txtCMateria">Subject semester:</string>
     <string name="titGestionarCoordinador">Manage coordination</string>
     <string name="txtListadoCoordinadores">List of register:</string>
     <string name="titNuevoCoordinador">"New coordination:   "</string>
@@ -152,7 +152,7 @@
     <string name="txtIdUsuarioE">Id user:</string>
     <string name="titGestionarDia">Manage day</string>
     <string name="txtListaDias">"List of days entered:   "</string>
-    <string name="ctxListaDiasActualizar">Update</string>
+    <string name="ctxListaDiasActualizar">Edit</string>
     <string name="ctxListaDiasEliminar">Delete</string>
     <string name="titActualizarDia">Edit day</string>
     <string name="nombreDia">Name:</string>
@@ -187,7 +187,7 @@
     <string name="btnLimpiarTextoNSolicitud">Clean</string>
     <string name="txtNombreEventoEspecial">Name:</string>
     <string name="txtDescripcionEventoEspecial">Description:</string>
-    <string name="txtCicloE">Cycle/Subject</string>
+    <string name="txtCicloE">Semester/Subject</string>
     <string name="titNuevoEventoEspecial">"New special event   "</string>
     <string name="btnLimpiarTextoNEventoEspecial">Clean</string>
     <string name="btnAgregarNEventoEspecial">Add</string>
@@ -206,13 +206,13 @@
     <string name="txtGestionarUsuario">"Manage users   "</string>
     <string name="txtGestionarRol">"Manage roles   "</string>
     <string name="txtAdminAcademica">"Academic administration   "</string>
-    <string name="txtGestionarCiclo">"Manage cycles   "</string>
+    <string name="txtGestionarCiclo">"Manage semesters   "</string>
     <string name="txtGestionarFeriado">Manage holidays</string>
     <string name="txtGestionarUnidad">Manage units</string>
     <string name="txtGestionarMateria">Manage subjects</string>
     <string name="txtGestionarTipoGrupo">"Manage group types   "</string>
     <string name="txtCargaAcademica">Academic load</string>
-    <string name="txtGestionarCicloMateria">"Manage subjects of the cycle   "</string>
+    <string name="txtGestionarCicloMateria">"Manage subjects of the semester   "</string>
     <string name="txtGestionarCoordinacion">"Manage coordination   "</string>
     <string name="txtGestionarGrupo">"Manage groups   "</string>
     <string name="txtControlLocales">"Local control   "</string>
@@ -246,7 +246,7 @@
     <string name="bNombreRol">"Role name "</string>
     <string name="txtSelecUnidad">"Select a unit "</string>
     <string name="txtSelecRol">"Select a role "</string>
-    <string name="txtSelecCiclo">"Select a cycle "</string>
+    <string name="txtSelecCiclo">"Select a semester "</string>
     <string name="txtSelecTipo">"Select a type "</string>
     <string name="txtSelecTipoLocal">"Select a local type"</string>
     <string name="txtSelecMateria">"Select a subject "</string>
@@ -261,20 +261,21 @@
     <string name="mnjRegActualizado">Register updated correctly.</string>
     <string name="mnjRegEliminado">Register deleted correctly.</string>
     <string name="mnjFilasAfectadas">Rows affected=</string>
-    <string name="mnjCicloYaActivo">The cycle is already active.</string>
-    <string name="mnjCicloNoExiste">The cycle does not exist.</string>
-    <string name="mnjNuevoCicloActivo">New active cycle:</string>
-    <string name="mnjNoElimCicloActivo">"It is not possible to delete an active cycle. "</string>
+    <string name="mnjCicloYaActivo">The semester is already active.</string>
+    <string name="mnjCicloNoExiste">The semester does not exist.</string>
+    <string name="mnjNuevoCicloActivo">New active semester:</string>
+    <string name="mnjNoElimCicloActivo">"It is not possible to delete an active semester. "</string>
     <string name="mnjCamposVacios">"All fields must be full. "</string>
     <string name="mnjCicloValFechas">
-        The end of the cycle must be after the start of the cycle.
-        \nThe class period must be within the duration of the cycle.
+        The end of the semester must be after the beggining of the semester.
+        \nThe class period must be within the duration of the semester.
         \nThe class period end date must be after the class period start date.</string>
     <string name="mnjCMYaExiste">It already exists.</string>
     <string name="mnjCMCodNoRegis">"Unregistered code. "</string>
-    <string name="mnjCMSelecCiclo">"Select the cycle. "</string>
+    <string name="mnjCMSelecCiclo">"Select the semester. "</string>
     <string name="mnjCMIngCodMat">"Enter subject code. "</string>
     <string name="mnjErrorParseoJSON">JSON Parse error.</string>
     <string name="mnjRolNoElimIntegridad">It cannot be removed because you have a register related to a user.</string>
     <string name="mnjRolNoElim">"Cannot delete Administrator role. "</string>
+    <string name="mnjPermisoAccion">You don\'t have permission to do this operation.</string>
 </resources>

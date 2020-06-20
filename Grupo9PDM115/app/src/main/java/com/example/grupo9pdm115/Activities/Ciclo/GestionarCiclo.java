@@ -23,6 +23,11 @@ import java.util.List;
 
 
 public class GestionarCiclo extends AppCompatActivity {
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     //Declarando atributos para manejo del ListView
     ListView listaCiclos;
     EditText editNombreCiclo;
@@ -31,6 +36,11 @@ public class GestionarCiclo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ICL");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DCL");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ECL");
+
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CCL"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -76,6 +86,10 @@ public class GestionarCiclo extends AppCompatActivity {
 
     // Método para agregar ciclo
     public void agregarCiclo(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoCiclo.class);
         startActivity(intent);
     }
@@ -116,6 +130,10 @@ public class GestionarCiclo extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizarCiclo:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(cicloActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarCiclo.class);
                     intent.putExtra("idciclo", cicloActual.getIdCiclo());
@@ -129,6 +147,10 @@ public class GestionarCiclo extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxActivarCiclo:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(cicloActual != null){
                     String mensaje = "";
                     int resultado = cicloActual.activarCiclo(getApplicationContext());
@@ -144,6 +166,10 @@ public class GestionarCiclo extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminarCiclo:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(cicloActual != null){
                     String regEliminadas;
                     // Si es ciclo activo no permitir eliminar

@@ -5,7 +5,6 @@
     <string name="action_sign_in_short">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
 
-
     //Variables para Ciclo
     //Etiquetas
     <string name="txtNombreCiclo">Nombre ciclo:</string>
@@ -27,7 +26,7 @@
     <string name="btnActualizarCiclo">Editar</string>
     <string name="btnLimpiarTextoECiclo">Limpiar</string>
     // Menú contextual lista ciclos
-    <string name="ctxListaCiclosActualizar">Actualizar</string>
+    <string name="ctxListaCiclosActualizar">Editar</string>
     <string name="ctxListaCiclosEliminar">Eliminar</string>
     <string name="ctxListaCiclosActivarr">Establecer como ciclo activo</string>
 
@@ -56,7 +55,7 @@
     <string name="titEditarFeriado">Editar Feriado</string>
     <string name="btnEditarEFeriado">Editar</string>
     // Menú contextual lista feriados
-    <string name="ctxListaFeriadosActualizar">Actualizar</string>
+    <string name="ctxListaFeriadosActualizar">Editar</string>
     <string name="ctxListaFeriadosEliminar">Eliminar</string>
 
     //Variables Unidad
@@ -154,7 +153,7 @@
     //Etiquetas
     <string name="txtNombreTipoGrupo">Nombre:</string>
     // Menú contextual listas de Tipos de grupo
-    <string name="ctxListaTGActualizar">Actualizar</string>
+    <string name="ctxListaTGActualizar">Editar</string>
     <string name="ctxListaTGEliminar">Eliminar</string>
     //Gestionar Tipo Grupo
     <string name="titGestionarTipoGrupo">Gestionar tipo de grupo</string>
@@ -243,7 +242,7 @@
     <string name="titGestionarDia">Gestionar día</string>
     <string name="txtListaDias">Listado de días ingresados:</string>
     // Menú contextual lista días
-    <string name="ctxListaDiasActualizar">Actualizar</string>
+    <string name="ctxListaDiasActualizar">Editar</string>
     <string name="ctxListaDiasEliminar">Eliminar</string>
     // Editar Dia
     <string name="titActualizarDia">Editar día</string>
@@ -384,6 +383,8 @@
     <string name="txtSelecTipoGrupo">Seleccione un tipo de grupo</string>
 
     // Mensajes de error
+    // ACCIONES
+    <string name="mnjPermisoAccion">No tiene permiso para realizar esta operación.</string>
     // BD
     <string name="mnjRegInsert">Registro Insertado Nº= </string>
     <string name="mnjRegInsertExit">Se ha insertado el registro con éxito.</string>

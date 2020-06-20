@@ -408,7 +408,7 @@
     <string name="mnjCMSelecCiclo">Selecicone el ciclo.</string>
     <string name="mnjCMIngCodMat">Ingrese código de materia.</string>
     // MATERIA
-    <string name="mnjErrorParseoJSON">Error en parseOO de JSON.</string>
+    <string name="mnjErrorParseoJSON">Error en parseo de JSON.</string>
     // ROL
     <string name="mnjRolNoElimIntegridad">No se puede eliminar debido a que se tiene un registro relacionado con un usuario.</string>
     <string name="mnjRolNoElim">No se puede eliminar el rol del Administrador.</string>

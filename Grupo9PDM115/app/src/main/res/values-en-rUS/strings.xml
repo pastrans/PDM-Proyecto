@@ -251,4 +251,30 @@
     <string name="txtSelecTipoLocal">"Select a local type"</string>
     <string name="txtSelecMateria">"Select a subject "</string>
     <string name="txtSelecTipoGrupo">"Select a group type "</string>
+    <string name="txtFechaRealizada">Date performed:</string>
+    <string name="txtEstado">Status:</string>
+    <string name="txtAprobadoTotal">Total approved :</string>
+    <string name="mnjRegInsert">Inserted register N°=</string>
+    <string name="mnjRegInsertExit">"The register has been inserted successfully. "</string>
+    <string name="mnjErrorInsercion">Failed to insert register, duplicate register. Verify insertion.</string>
+    <string name="mnjRegNoExiste">Non-existent register.</string>
+    <string name="mnjRegActualizado">Register updated correctly.</string>
+    <string name="mnjRegEliminado">Register deleted correctly.</string>
+    <string name="mnjFilasAfectadas">Rows affected=</string>
+    <string name="mnjCicloYaActivo">The cycle is already active.</string>
+    <string name="mnjCicloNoExiste">The cycle does not exist.</string>
+    <string name="mnjNuevoCicloActivo">New active cycle:</string>
+    <string name="mnjNoElimCicloActivo">"It is not possible to delete an active cycle. "</string>
+    <string name="mnjCamposVacios">"All fields must be full. "</string>
+    <string name="mnjCicloValFechas">
+        The end of the cycle must be after the start of the cycle.
+        \nThe class period must be within the duration of the cycle.
+        \nThe class period end date must be after the class period start date.</string>
+    <string name="mnjCMYaExiste">It already exists.</string>
+    <string name="mnjCMCodNoRegis">"Unregistered code. "</string>
+    <string name="mnjCMSelecCiclo">"Select the cycle. "</string>
+    <string name="mnjCMIngCodMat">"Enter subject code. "</string>
+    <string name="mnjErrorParseoJSON">JSON Parse error.</string>
+    <string name="mnjRolNoElimIntegridad">It cannot be removed because you have a register related to a user.</string>
+    <string name="mnjRolNoElim">"Cannot delete Administrator role. "</string>
 </resources>

@@ -24,6 +24,12 @@ import com.example.grupo9pdm115.R;
 import java.util.List;
 
 public class GestionarHorario extends AppCompatActivity {
+
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     ListView listHorario;
     EditText editNombreCiclo;
     Horario horario;
@@ -32,6 +38,10 @@ public class GestionarHorario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IHO");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DHO");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EHO");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CHO"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -78,6 +88,10 @@ public class GestionarHorario extends AppCompatActivity {
     }
     // Método para agregar una unidad
     public void nuevoHorario (View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoHorario.class);
         startActivity(intent);
     }
@@ -111,6 +125,10 @@ public class GestionarHorario extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(horario != null){
                     Intent intent = new Intent(getApplicationContext(), EditarHorario.class);
                     intent.putExtra("idhorario", horario.getIdHora());
@@ -120,6 +138,10 @@ public class GestionarHorario extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminar:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(horario != null){
                     String regEliminadas;
                     regEliminadas= horario.eliminar(getApplicationContext());

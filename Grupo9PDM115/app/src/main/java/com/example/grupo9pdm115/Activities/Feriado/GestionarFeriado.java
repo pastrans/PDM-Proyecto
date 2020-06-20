@@ -22,6 +22,10 @@ import com.example.grupo9pdm115.R;
 import java.util.List;
 
 public class GestionarFeriado extends AppCompatActivity {
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
     //Declarando atributos para el manejo del listview
     ListView listaFeriados;
     EditText editNombreFeriado;
@@ -30,6 +34,10 @@ public class GestionarFeriado extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IFE");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DFE");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EFE");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CFE"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -75,6 +83,10 @@ public class GestionarFeriado extends AppCompatActivity {
 
     //Metodo para agregar Feriado
     public void agregarFeriado(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent inte = new Intent(this, NuevoFeriado.class);
         startActivity(inte);
     }
@@ -115,6 +127,10 @@ public class GestionarFeriado extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizarFeriado:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(feriadoActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarFeriado.class);
                     intent.putExtra("idferiado", feriadoActual.getIdFeriado());
@@ -128,6 +144,10 @@ public class GestionarFeriado extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminarFeriado:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(feriadoActual != null){
                     String regEliminadas;
                     regEliminadas= feriadoActual.eliminar(getApplicationContext());

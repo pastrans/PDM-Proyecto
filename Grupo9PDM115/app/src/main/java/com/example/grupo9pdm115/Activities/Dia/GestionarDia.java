@@ -23,6 +23,11 @@ import java.util.List;
 
 public class GestionarDia extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     // Declarando atributos para manejo del ListView
     ListView listaDias;
     DiaAdapter listaDiasAdapter;
@@ -30,6 +35,10 @@ public class GestionarDia extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IDI");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DDI");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EDI");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CDI"))
                 || !Sesion.getLoggedIn(getApplicationContext())){

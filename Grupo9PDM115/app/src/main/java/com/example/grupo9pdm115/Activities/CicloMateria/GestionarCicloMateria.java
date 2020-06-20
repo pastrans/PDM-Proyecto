@@ -22,14 +22,25 @@ import com.example.grupo9pdm115.R;
 import java.util.List;
 
 public class GestionarCicloMateria  extends AppCompatActivity {
+
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     //Declarando atributos para manejo del ListView
     ListView listaCicloMaterias;
     EditText editCodigoMateria;
     CicloMateriaAdapter listaMateriaAdapter;
     CicloMateria cicloMateria;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ICM");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DCM");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ECM");
         // Validando usuario y sesión
         if ((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CCM"))
                 || !Sesion.getLoggedIn(getApplicationContext())) {
@@ -75,6 +86,10 @@ public class GestionarCicloMateria  extends AppCompatActivity {
 
     //Metodo para agregar ciclo
     public void agregarCicloMateria(View v) {
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoCicloMateria.class);
         startActivity(intent);
     }
@@ -113,6 +128,10 @@ public class GestionarCicloMateria  extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizarCicloMateria:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (cmActual != null) {
                     Intent intent = new Intent(getApplicationContext(), EditarCicloMateria.class);
                     intent.putExtra("idciclomateria", cmActual.getIdCicloMateria());
@@ -123,6 +142,10 @@ public class GestionarCicloMateria  extends AppCompatActivity {
                 return true;
 
             case R.id.ctxEliminarCicloMateria:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (cmActual != null) {
                     String regEliminadas;
                     regEliminadas = cmActual.eliminar(getApplicationContext());

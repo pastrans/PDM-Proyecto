@@ -24,6 +24,10 @@ import com.example.grupo9pdm115.R;
 import java.util.List;
 
 public class GestionarTipoGrupo extends AppCompatActivity {
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
     // Declarando atributos para manejo del ListView
     ListView listaTipoGrupo;
     EditText editNombreTP;
@@ -31,6 +35,10 @@ public class GestionarTipoGrupo extends AppCompatActivity {
     TipoGrupo tipoGrupo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ITG");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DTG");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ETG");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CTG"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -75,6 +83,10 @@ public class GestionarTipoGrupo extends AppCompatActivity {
     }
     // Método para agregar un día
     public void agregarTipoGrupo(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoTipoGrupo.class);
         startActivity(intent);
     }
@@ -113,6 +125,10 @@ public class GestionarTipoGrupo extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(TGActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarTipoGrupo.class);
                     intent.putExtra("idtipogrupo", TGActual.getIdTipoGrupo());
@@ -121,6 +137,10 @@ public class GestionarTipoGrupo extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminar:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(TGActual != null){
                     if (TGActual.verificar(2, getApplicationContext())){
                         Toast.makeText(this, "No se puede eliminar debido a dependecias del registro", Toast.LENGTH_SHORT).show();

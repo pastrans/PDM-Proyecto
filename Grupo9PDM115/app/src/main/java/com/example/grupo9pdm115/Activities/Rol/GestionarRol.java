@@ -24,6 +24,10 @@ import java.util.List;
 
 public class GestionarRol extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
 
     Rol rol;
     EditText editNombreCiclo;
@@ -32,6 +36,10 @@ public class GestionarRol extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IRO");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DRO");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ERO");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CRO"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -50,6 +58,10 @@ public class GestionarRol extends AppCompatActivity {
     }
 
     public void nuevoRol(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent inte = new Intent(this, NuevoRol.class);
         startActivity(inte);
     }
@@ -96,12 +108,20 @@ public class GestionarRol extends AppCompatActivity {
         Rol rolSeleccionado = (listaRolAdapter.getItem(info.position));
         switch (item.getItemId()){
             case R.id.ctxActualizarRol:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 Intent inte = new Intent(this, EditarRol.class);
                 inte.putExtra("nombreRol", rolSeleccionado.getNombreRol());
                 inte.putExtra("idRol", rolSeleccionado.getIdRol());
                 startActivity(inte);
                 return true;
             case R.id.ctxEliminarRol:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (rolSeleccionado != null){
                     String resEliminados = "";
                     resEliminados = rolSeleccionado.eliminar(this);

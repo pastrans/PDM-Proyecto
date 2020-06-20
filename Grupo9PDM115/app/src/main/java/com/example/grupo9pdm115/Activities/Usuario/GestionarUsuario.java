@@ -24,6 +24,11 @@ import java.util.List;
 
 public class GestionarUsuario extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     ListView listaUsuarios;
     EditText editNombreUsuario;
     UsuarioAdapter listaUsuariosAdapter;
@@ -31,6 +36,10 @@ public class GestionarUsuario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IUS");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DUS");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EUS");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CUS"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -76,6 +85,10 @@ public class GestionarUsuario extends AppCompatActivity {
     }
 
     public void btnNuevoGUsuario(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent inte = new Intent(this, NuevoUsuario.class);
         startActivity(inte);
     }
@@ -112,6 +125,10 @@ public class GestionarUsuario extends AppCompatActivity {
         Usuario usuarioSeleccionado = (listaUsuariosAdapter.getItem(info.position));
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 Intent inte = new Intent(this, EditarUsuario.class);
                 inte.putExtra("idUsuario", usuarioSeleccionado.getIdUsuario());
                 inte.putExtra("nombreUsuario", usuarioSeleccionado.getNombreUsuario());
@@ -124,6 +141,10 @@ public class GestionarUsuario extends AppCompatActivity {
                 startActivity(inte);
                 return true;
             case R.id.ctxEliminar:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (usuarioSeleccionado != null){
                    String regEliminados;
                    regEliminados = usuarioSeleccionado.eliminar(this);

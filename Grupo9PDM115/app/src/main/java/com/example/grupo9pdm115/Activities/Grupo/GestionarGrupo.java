@@ -27,12 +27,21 @@ import java.util.List;
 
 public class GestionarGrupo extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     ListView listViewGrupos;
     GrupoAdapter grupoAdapter;
     Grupo grupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IGR");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DGR");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EGR");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CGR"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -50,6 +59,10 @@ public class GestionarGrupo extends AppCompatActivity {
     }
 
     public void btnNuevoGrupo(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent inte = new Intent(this, NuevoGrupo.class);
         startActivity(inte);
     }
@@ -86,6 +99,10 @@ public class GestionarGrupo extends AppCompatActivity {
         cicloMateria.consultar(this, String.valueOf(grupoSeleccionado.getIdCicloMateria()));
         switch (item.getItemId()){
             case R.id.ctxActualizarGrupo:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 Intent inte = new Intent(this, EditarGrupo.class);
                 inte.putExtra("idGrupo", grupoSeleccionado.getIdGrupo());
                 inte.putExtra("numeroGrupo", grupoSeleccionado.getNumero());
@@ -95,6 +112,10 @@ public class GestionarGrupo extends AppCompatActivity {
                 startActivity(inte);
                 return true;
             case R.id.ctxEliminarGrupo:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (grupoSeleccionado != null){
                     String resEliminados = "";
                     resEliminados = grupoSeleccionado.eliminar(this);

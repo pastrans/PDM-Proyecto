@@ -29,6 +29,11 @@ import java.util.List;
 
 public class GestionarCoordinacion extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     //Declarando atributos para manejo del ListView
     ListView listaCoordinacion;
     CoordinacionAdapter listaCoordinacionAdapter;
@@ -37,6 +42,10 @@ public class GestionarCoordinacion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ICO");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DCO");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ECO");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CCO"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -83,6 +92,10 @@ public class GestionarCoordinacion extends AppCompatActivity {
 
     //Metodo para agregar materia
     public void btnNuevoCoodinacion(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoCoordinacion.class);
         startActivity(intent);
     }
@@ -124,6 +137,10 @@ public class GestionarCoordinacion extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizarCoordinacion:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(coorActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarCoordinacion.class);
                     intent.putExtra("idcoordinacion", coorActual.getIdCoodinacion());
@@ -134,6 +151,10 @@ public class GestionarCoordinacion extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminarCoordinacion:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(coorActual != null){
                     String regEliminadas;
                     regEliminadas= coorActual.eliminar(getApplicationContext());

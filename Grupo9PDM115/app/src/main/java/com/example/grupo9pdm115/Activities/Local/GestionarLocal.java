@@ -14,13 +14,20 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.LocalAdapter;
 import com.example.grupo9pdm115.Modelos.Local;
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
 public class GestionarLocal extends AppCompatActivity {
+
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
 
     Local local;
     EditText editNombrelocal;
@@ -29,6 +36,19 @@ public class GestionarLocal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ILO");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DLO");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "ELO");
+        // Validando usuario y sesión
+        if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CLO"))
+                || !Sesion.getLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(this, ErrorDeUsuario.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            // Estas banderas borran la tarea actual y crean una nueva con la actividad iniciada
+            startActivity(intent);
+            finish();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_local);
         listaLocal = (ListView) findViewById(R.id.idListadoLocales);
@@ -75,6 +95,10 @@ public class GestionarLocal extends AppCompatActivity {
         Local localSeleccionado = (listaLocalAdapter.getItem(info.position));
         switch (item.getItemId()){
             case R.id.ctxActualizar:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 Intent inte = new Intent(this, EditarLocal.class);
                 inte.putExtra("nombreLocal", localSeleccionado.getNombreLocal());
                 inte.putExtra("capacidad", localSeleccionado.getCapacidad());
@@ -83,6 +107,10 @@ public class GestionarLocal extends AppCompatActivity {
                 startActivity(inte);
                 return true;
             case R.id.ctxEliminar:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if (localSeleccionado != null){
                     String resEliminados = "";
                     resEliminados = localSeleccionado.eliminar(this);
@@ -95,6 +123,10 @@ public class GestionarLocal extends AppCompatActivity {
     }
 
     public void btnNuevoGLocal(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent inte = new Intent(this, NuevoLocal.class);
         startActivity(inte);
     }

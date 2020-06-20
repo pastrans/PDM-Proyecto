@@ -26,6 +26,11 @@ import java.util.List;
 
 public class GestionarMateria extends AppCompatActivity {
 
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
+
     //Declarando atributos para manejo del ListView
     ListView listaMaterias;
     MateriaAdapter listaMateriasAdapter;
@@ -39,6 +44,10 @@ public class GestionarMateria extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IMA");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DMA");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EMA");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CMA"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -92,6 +101,10 @@ public class GestionarMateria extends AppCompatActivity {
 
     //Metodo para agregar materia
     public void btnNuevoMateria(View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoMateria.class);
         startActivity(intent);
     }
@@ -147,6 +160,10 @@ public class GestionarMateria extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizarMateria:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(materiaActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarMateria.class);
                     intent.putExtra("codMateria", materiaActual.getCodMateria());
@@ -158,6 +175,10 @@ public class GestionarMateria extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminarMateria:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(materiaActual != null){
                     String regEliminadas;
                     eliminarWeb(materiaActual.getCodMateria());

@@ -25,6 +25,10 @@ import com.example.grupo9pdm115.WebService.ControlServicio;
 import java.util.List;
 
 public class GestionarUnidad extends AppCompatActivity {
+    // Permisos acciones
+    private boolean permisoInsert = false;
+    private boolean permisoDelete = false;
+    private boolean permisoUpdate = false;
     ListView listUnidad;
     UnidadAdapter listaUnidadAdapter;
     Unidad unidad;
@@ -33,6 +37,10 @@ public class GestionarUnidad extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "IUN");
+        permisoDelete = Sesion.getAccesoUsuario(getApplicationContext(), "DUN");
+        permisoUpdate = Sesion.getAccesoUsuario(getApplicationContext(), "EUN");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "CUN"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -88,6 +96,10 @@ public class GestionarUnidad extends AppCompatActivity {
     }
     // Método para agregar una unidad
     public void agregarUnidad (View v){
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, NuevoUnidad.class);
         startActivity(intent);
     }
@@ -121,6 +133,10 @@ public class GestionarUnidad extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.ctxActualizar:
+                if(!permisoUpdate){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(unidadActual != null){
                     Intent intent = new Intent(getApplicationContext(), EditarUnidad.class);
                     intent.putExtra("idunidad", unidadActual.getIdUnidad());
@@ -131,6 +147,10 @@ public class GestionarUnidad extends AppCompatActivity {
                 }
                 return true;
             case R.id.ctxEliminar:
+                if(!permisoDelete){
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 if(unidadActual != null){
                     String regEliminadas;
                     eliminarWeb(unidadActual.getIdUnidad());;

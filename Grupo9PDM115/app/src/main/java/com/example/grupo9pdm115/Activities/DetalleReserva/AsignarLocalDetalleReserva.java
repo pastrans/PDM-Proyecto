@@ -83,7 +83,7 @@ public class AsignarLocalDetalleReserva extends AppCompatActivity {
 
     public void llenarListaLocales(){
         local = new Local();
-        List objects = local.getLocalesDisponibles(detalleReserva.getInicioPeriodoReserva(), detalleReserva.getIdHora(), detalleReserva.getIdDia(), this);
+        List objects = local.getLocalesDisponibles(Sesion.getIdusuario(this), detalleReserva.getInicioPeriodoReserva(), detalleReserva.getIdHora(), detalleReserva.getIdDia(), this);
         listaLocalAdapter = new LocalAdapter(this, objects);
         listaLocal.setAdapter(listaLocalAdapter);
     }

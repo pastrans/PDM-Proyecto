@@ -113,18 +113,20 @@ public class Local extends TablaBD {
         return mensaje;
     }
 
-    public List<Local> getLocalesDisponibles(String fecha, int idHora, int idDia, Context context){
+    public List<Local> getLocalesDisponibles(String encargado, String fecha, int idHora, int idDia, Context context){
         List<Local> listaLocalesDisponibles = new ArrayList<Local>();
         ControlBD helper = new ControlBD(context);
         //String[] valores = new String[getCamposTabla().length];
         helper.abrir();
-        String sql = "SELECT l.IDLOCAL, l.NOMBRELOCAL, l.IDTIPOLOCAL, l.CAPACIDAD FROM LOCAL l\n" +
+        String sql = "SELECT l.IDLOCAL, l.NOMBRELOCAL, l.IDTIPOLOCAL, l.CAPACIDAD FROM LOCAL l, TIPOLOCAL tl\n" +
                 "WHERE l.IDLOCAL NOT IN (\n" +
                 "SELECT de.IDLOCAL FROM DETALLERESERVA de\n" +
                 "WHERE de.IDDIA = " + idDia +"\n" +
                 "AND de.IDHORA = "+ idHora +"\n" +
                 "AND (de.INICIOPERIODORESERVA = '" + fecha + "' OR '" + fecha + "' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
-                "AND ESTADORESERVA = 1 AND APROBADO = 1);";
+                "AND ESTADORESERVA = 1 AND APROBADO = 1)\n" +
+                "AND l.IDTIPOLOCAL = tl.IDTIPOLOCAL\n" +
+                "AND tl.IDENCARGADO = '"+ encargado +"';";
         Cursor cursor = helper.consultar(sql);
         if(cursor.moveToFirst()){
             do{

@@ -1,13 +1,16 @@
 package com.example.grupo9pdm115.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
-public class ErrorDeUsuario extends Activity {
+public class ErrorDeUsuario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +19,14 @@ public class ErrorDeUsuario extends Activity {
     }
 
     public void irALogin(View v){
-        String mensaje = "Te la creiste we";
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+        // Código para cerrar sesión
+        Sesion.setLooggedIn(this, false);
+        Sesion.setNombreUsuario(this, "");
+        Sesion.setAccesoUsuario(this, null);
+        Sesion.setIdUsuario(this, null);
+        Intent intent = new Intent(this, IniciarSesion.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+        startActivity(intent);
+        finish();
     }
 }

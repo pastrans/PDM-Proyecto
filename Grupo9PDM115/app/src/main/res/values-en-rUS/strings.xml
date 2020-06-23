@@ -171,8 +171,7 @@
     <string name="titEditarEHorario">Edit schedule</string>
     <string name="btnEditarEHorario">Edit</string>
     <string name="btnLimpiarEHorario">Clean</string>
-    <string name="titErrorUsuario">Hey dog</string>
-    <string name="txtErrorUsuario">xD</string>
+    <string name="titErrorUsuario">Invalid session information</string>
     <string name="btnIrALogin">"Go to login   "</string>
     <string name="txtidUsuario">Id user:</string>
     <string name="txtasunto">Matter:</string>
@@ -278,4 +277,5 @@
     <string name="mnjRolNoElimIntegridad">It cannot be removed because you have a register related to a user.</string>
     <string name="mnjRolNoElim">"Cannot delete Administrator role. "</string>
     <string name="mnjPermisoAccion">You don\'t have permission to do this operation.</string>
+    <string name="txtErrorUsuario">An inconsistency has been detected in your user or session information, you have tried to perform operations that are not allowed according to your user level. Please try again with a valid username and password.</string>
 </resources>

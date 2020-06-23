@@ -272,8 +272,13 @@
     <string name="btnLimpiarEHorario">Limpiar</string>
 
     // Error de usuario
-    <string name="titErrorUsuario">Ajá prro</string>
-    <string name="txtErrorUsuario">Creiste que podrías con mi app pero no baby hacker, presiona el botón para tener otra oportunidad de ingresar... soy un dios misericordioso</string>
+    <string name="titErrorUsuario">Información de sesión inválida</string>
+    <string name="txtErrorUsuario">
+        \n\nSe ha detectado una incongruencia en su información de usuario o sesión, ha intentado realizar
+        operaciones no permitidas según su nivel de usuario.\n\nPor favor, vuelva a intentar ingresar
+        con un usuario y contraseña válidos.\n\n
+    </string>
+
     <string name="btnIrALogin">Ir a inicio de sesión</string>
 
     //Variables Solicitud

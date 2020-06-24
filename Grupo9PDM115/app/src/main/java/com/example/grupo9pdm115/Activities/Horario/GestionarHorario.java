@@ -2,6 +2,8 @@ package com.example.grupo9pdm115.Activities.Horario;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -14,6 +16,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.CicloAdapter;
 import com.example.grupo9pdm115.Adapters.HorarioAdapter;
@@ -30,7 +36,8 @@ public class GestionarHorario extends AppCompatActivity {
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
 
-    ListView listHorario;
+    SwipeMenuListView listHorario;
+    //ListView listHorario;
     EditText editNombreCiclo;
     Horario horario;
     HorarioAdapter listaHorarioAdapter;
@@ -56,7 +63,8 @@ public class GestionarHorario extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_horario);
         //Toast.makeText(getApplicationContext(), "mostrar", Toast.LENGTH_SHORT).show();
         // Inicializar elementos a manejar
-        listHorario = (ListView) findViewById(R.id.listHorario);
+        listHorario = (SwipeMenuListView) findViewById(R.id.listHorario);
+        //listHorario = (ListView) findViewById(R.id.listHorario);
         editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
 
         // Llamar método para llenar lista
@@ -117,8 +125,8 @@ public class GestionarHorario extends AppCompatActivity {
         // Modificable
         inflater.inflate(R.menu.menu_ctx_lista_dias, menu);//NO ES NECESARIO CREAR UNO NUEVO, POR QUE SE REPITE PARA TODOS (EL DISEÑO)
     }
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
+   // @Override
+    /*public boolean onContextItemSelected(MenuItem item) {
         // Obtener la posición del elemento
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Horario horario = (listaHorarioAdapter.getItem(info.position));
@@ -152,5 +160,42 @@ public class GestionarHorario extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
-    }
+    }*/
+
+            SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+        @Override
+        public void create(SwipeMenu menu) {
+            // create "open" item
+            SwipeMenuItem openItem = new SwipeMenuItem(
+                    getApplicationContext());
+            // set item background
+            openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+                    0xCE)));
+            // set item width
+            openItem.setWidth(170);
+            // set item title
+            openItem.setTitle("Open");
+            // set item title fontsize
+            openItem.setTitleSize(18);
+            // set item title font color
+            openItem.setTitleColor(Color.WHITE);
+            // add to menu
+            menu.addMenuItem(openItem);
+
+            // create "delete" item
+            SwipeMenuItem deleteItem = new SwipeMenuItem(
+                    getApplicationContext());
+            // set item background
+            deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                    0x3F, 0x25)));
+            // set item width
+            deleteItem.setWidth(170);
+            // set a icon
+            deleteItem.setIcon(R.drawable.ic_edit);
+            // add to menu
+            menu.addMenuItem(deleteItem);
+        }
+    };
+            //listHorario.setMenuCreator(creator);
 }

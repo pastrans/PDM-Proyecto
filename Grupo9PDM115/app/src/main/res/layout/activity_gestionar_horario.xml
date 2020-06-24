@@ -48,6 +48,16 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listHorario"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp">
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+    <!--
     <ListView
         android:id="@+id/listHorario"
         android:layout_width="match_parent"
@@ -55,5 +65,6 @@
         android:showDividers="middle"
         android:divider="?android:listDivider"
         android:dividerPadding="16dp"/>
+        -->
 
 </LinearLayout>

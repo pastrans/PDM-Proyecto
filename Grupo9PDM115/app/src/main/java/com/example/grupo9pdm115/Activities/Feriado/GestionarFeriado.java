@@ -18,6 +18,7 @@ import com.example.grupo9pdm115.Adapters.FeriadoAdapter;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class GestionarFeriado extends AppCompatActivity {
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
+
     //Declarando atributos para el manejo del listview
     ListView listaFeriados;
     EditText editNombreFeriado;
@@ -94,6 +96,12 @@ public class GestionarFeriado extends AppCompatActivity {
     // Método para buscar feriado filtrado
     public void buscarFeriado(View v){
         llenarListaFeriado(editNombreFeriado.getText().toString());
+    }
+
+    // Método para mostrar los feriados en calendario
+    public void consultarFeriadoEnCalendario(View v){
+        Intent inte = new Intent(this, ConsultarFeriadoEnCalendario.class);
+        startActivity(inte);
     }
 
     // Para que actualice la lista cuando se regrese a la ventana

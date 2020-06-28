@@ -47,6 +47,8 @@
     <string name="titGestionarFeriado">Gestionar Feriado</string>
     <string name="txtListaFeriado">Listado de feriados ingresados:</string>
     <string name="txtbNombreFeriado">Nombre del feriado</string>
+    <string name="btnConsultarFeriadoEnCalendario">Ver en calendario</string>
+    <string name="titFeriadosEnCalendario">Feriados</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>

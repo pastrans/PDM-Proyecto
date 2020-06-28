@@ -278,4 +278,6 @@
     <string name="mnjRolNoElim">"Cannot delete Administrator role. "</string>
     <string name="mnjPermisoAccion">You don\'t have permission to do this operation.</string>
     <string name="txtErrorUsuario">An inconsistency has been detected in your user or session information, you have tried to perform operations that are not allowed according to your user level. Please try again with a valid username and password.</string>
+    <string name="btnConsultarFeriadoEnCalendario">See in calendar</string>
+    <string name="titFeriadosEnCalendario">Holidays</string>
 </resources>

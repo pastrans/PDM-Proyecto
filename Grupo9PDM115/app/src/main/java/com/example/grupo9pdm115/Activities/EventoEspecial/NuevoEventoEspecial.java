@@ -21,7 +21,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloMateriaSpinner;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 
 import java.util.Calendar;
 

@@ -1,7 +1,6 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,7 @@ import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
-import java.security.Guard;
-import java.text.ParseException;
 import java.util.List;
 
 public class DetalleReservaAdapter extends ArrayAdapter<DetalleReserva> {

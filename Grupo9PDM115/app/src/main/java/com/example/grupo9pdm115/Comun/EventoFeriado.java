@@ -1,4 +1,4 @@
-package com.example.grupo9pdm115.Utilidades;
+package com.example.grupo9pdm115.Comun;
 
 import android.os.Parcel;
 import android.os.Parcelable;

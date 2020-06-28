@@ -3,7 +3,6 @@ package com.example.grupo9pdm115.Activities.Feriado;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.EventoFeriado;
+import com.example.grupo9pdm115.Comun.EventoFeriado;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 
 public class Ciclo extends TablaBD {
     // Atributos

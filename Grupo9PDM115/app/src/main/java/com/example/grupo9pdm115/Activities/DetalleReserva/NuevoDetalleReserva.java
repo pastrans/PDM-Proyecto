@@ -2,19 +2,16 @@ package com.example.grupo9pdm115.Activities.DetalleReserva;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,8 +19,6 @@ import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.DetalleReserva;
-import com.example.grupo9pdm115.Modelos.Grupo;
-import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Reserva;
@@ -31,17 +26,12 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.DiaSpinner;
-import com.example.grupo9pdm115.Spinners.EventoEspecialSpinner;
-import com.example.grupo9pdm115.Spinners.GrupoSpinner;
 import com.example.grupo9pdm115.Spinners.HorarioSpinner;
 import com.example.grupo9pdm115.Spinners.TipoGrupoSpinner;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class NuevoDetalleReserva extends AppCompatActivity implements View.OnClickListener{

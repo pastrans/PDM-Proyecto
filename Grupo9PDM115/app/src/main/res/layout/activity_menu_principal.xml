@@ -572,6 +572,180 @@
 
             </LinearLayout>
 
+            <!-- Utilidades -->
+            <LinearLayout
+                android:id="@+id/layoutContenedorUtilidades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Icono utilidades -->
+                <LinearLayout
+                    android:id="@+id/layoutUtilidades"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0.5"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_utilidades"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:text="@string/txtUtilidades"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <!-- Opciones utilidades -->
+                <LinearLayout
+                    android:id="@+id/layoutOpcionesUtilidades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        android:divider="?android:listDivider"
+                        android:dividerPadding="32dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+
+                        <!-- Modificar tema -->
+                        <TextView
+                            android:id="@+id/txtModificarTema"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtModificarTema"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                        <!-- Tutoriales -->
+                        <TextView
+                            android:id="@+id/txtTutoriales"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtTutoriales"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <!-- ExportarPDF -->
+                        <TextView
+                            android:id="@+id/txtExportarPDF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtExportarPDF"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <!-- ImportarExcel -->
+                        <TextView
+                            android:id="@+id/txtImportarExcel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtImportarExcel"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <!-- ConsultarQR -->
+                        <TextView
+                            android:id="@+id/txtConsultarQR"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtConsultarQR"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <!-- EnvioCorreos -->
+                        <TextView
+                            android:id="@+id/txtEnvioCorreos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/txtEnvioCorreos"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="54dp"
+                            android:layout_marginRight="54dp"
+                            android:textSize="18sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Cerrar sesión -->
             <TextView
                 android:id="@+id/txtCerrarSesion"
                 android:layout_width="match_parent"

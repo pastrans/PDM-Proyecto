@@ -1,4 +1,4 @@
-package com.example.grupo9pdm115.Utilidades;
+package com.example.grupo9pdm115.Comun;
 
 import java.text.DateFormat;
 import java.text.ParseException;

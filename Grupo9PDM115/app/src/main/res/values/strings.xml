@@ -365,6 +365,14 @@
     <string name="txtReservas">Reservas</string>
     <string name="txtGestionarSolicitud">Gestionar solicitudes</string>
     <string name="txtSolicitudesRecibidas">Solicitudes recibidas</string>
+    // Utilidades
+    <string name="txtUtilidades">Utilidades</string>
+    <string name="txtModificarTema">Modificar tema</string>
+    <string name="txtTutoriales">Tutoriales</string>
+    <string name="txtExportarPDF">Exportar PDF</string>
+    <string name="txtImportarExcel">Importar Excel</string>
+    <string name="txtConsultarQR">Consultar QR</string>
+    <string name="txtEnvioCorreos">Envío de correos</string>
     // Otros
     <string name="txtCerrarSesion">Cerrar sesión</string>
 

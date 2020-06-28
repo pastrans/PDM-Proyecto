@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.FileHelper;
+import com.example.grupo9pdm115.Comun.FileHelper;
 
 import java.io.IOException;
 import java.io.InputStream;

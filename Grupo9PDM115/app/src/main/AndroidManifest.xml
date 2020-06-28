@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario"></activity>
+        <activity android:name=".Activities.Utilidades.ModificarTema"></activity>
+        <activity android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario" />
 
         <uses-library
             android:name="org.apache.http.legacy"

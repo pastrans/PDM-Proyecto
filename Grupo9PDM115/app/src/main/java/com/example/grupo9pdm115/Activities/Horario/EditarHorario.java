@@ -118,4 +118,5 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
         editHInicio.setText("");
         editHFinal.setText("");
     }
+
 }

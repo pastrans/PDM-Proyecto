@@ -34,6 +34,12 @@
             android:onClick="buscarhorario"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <Button
+            android:id="@+id/bvoice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mic"
+            android:drawableLeft="@drawable/ic_mic" />
         <EditText
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"

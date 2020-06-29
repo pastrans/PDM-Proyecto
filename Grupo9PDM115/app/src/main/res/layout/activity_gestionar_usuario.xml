@@ -37,6 +37,12 @@
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"
             tools:ignore="OnClick" />
+        <Button
+            android:id="@+id/bvoice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mic"
+            android:drawableLeft="@drawable/ic_mic" />
         <EditText
             android:id="@+id/editNombreUsuario"
             android:layout_width="match_parent"
@@ -51,6 +57,15 @@
         android:layout_height="wrap_content"
         android:textSize="20sp" />
 
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/idListadoUsuarios"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp">
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+<!--
     <ListView
         android:paddingTop="15dp"
         android:id="@+id/idListadoUsuarios"
@@ -60,5 +75,6 @@
         android:divider="?android:listDivider"
         android:dividerPadding="16dp"
         />
+        -->
 
 </TableLayout>

@@ -32,10 +32,16 @@
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:onClick="buscarCiclo"
+            android:onClick="buscarGrupo"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"
             tools:ignore="OnClick" />
+        <Button
+            android:id="@+id/bvoice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mic"
+            android:drawableLeft="@drawable/ic_mic" />
         <EditText
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
@@ -43,7 +49,15 @@
             android:hint="@string/txtbNombreGrupo"
             android:inputType="text"/>
     </LinearLayout>
-
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewGrupos"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp">
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+<!--
     <ListView
         android:id="@+id/listViewGrupos"
         android:layout_width="match_parent"
@@ -52,6 +66,7 @@
         android:divider="?android:listDivider"
         android:dividerPadding="16dp"
         />
+        -->
 
 
 </LinearLayout>

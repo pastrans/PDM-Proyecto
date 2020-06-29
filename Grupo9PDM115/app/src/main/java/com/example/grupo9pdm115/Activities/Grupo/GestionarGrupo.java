@@ -5,14 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Activities.Rol.EditarRol;
 import com.example.grupo9pdm115.Adapters.GrupoAdapter;
@@ -23,6 +30,7 @@ import com.example.grupo9pdm115.Modelos.Rol;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestionarGrupo extends AppCompatActivity {
@@ -32,7 +40,11 @@ public class GestionarGrupo extends AppCompatActivity {
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
 
-    ListView listViewGrupos;
+    Button Voice;
+    static final int check=1111;
+    SwipeMenuListView listViewGrupos;
+    EditText editNombreCiclo;
+    //ListView listViewGrupos;
     GrupoAdapter grupoAdapter;
     Grupo grupo;
 
@@ -54,8 +66,80 @@ public class GestionarGrupo extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_grupo);
-        listViewGrupos = (ListView) findViewById(R.id.listViewGrupos);
-        llenarListaGrupos();
+        //listViewGrupos = (ListView) findViewById(R.id.listViewGrupos);
+        listViewGrupos = (SwipeMenuListView) findViewById(R.id.listViewGrupos);
+        Voice=(Button) findViewById(R.id.bvoice);
+        //Voice.setOnClickListener(this);
+        editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
+        llenarListaGrupos(null);
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem editItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //editItem.setBackground(new ColorDrawable(Color.rgb(0xF5, 0xF5,0xF5)));
+                // set item width
+                editItem.setWidth(170);
+                // set a icon
+                editItem.setIcon(R.drawable.ic_edit);
+                // add to menu
+                menu.addMenuItem(editItem);
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                deleteItem.setWidth(170);
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_delete);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        listViewGrupos.setMenuCreator(creator);
+        listViewGrupos.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+
+                Grupo grupoSeleccionado = (grupoAdapter.getItem(position));
+                CicloMateria cicloMateria = new CicloMateria();
+                cicloMateria.consultar(getApplicationContext(), String.valueOf(grupoSeleccionado.getIdCicloMateria()));
+                switch (index) {
+                    case 0:
+                        if(!permisoUpdate){
+                            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        Intent inte = new Intent(getApplicationContext(), EditarGrupo.class);
+                        inte.putExtra("idGrupo", grupoSeleccionado.getIdGrupo());
+                        inte.putExtra("numeroGrupo", grupoSeleccionado.getNumero());
+                        inte.putExtra("idTipoGrupo", grupoSeleccionado.getIdTipoGrupo());
+                        inte.putExtra("materia", cicloMateria.getCodMateria());
+                        inte.putExtra("idCicloMateria", grupoSeleccionado.getIdCicloMateria());
+                        startActivity(inte);
+                        return true;
+                    case 1:
+                        if(!permisoDelete){
+                            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if (grupoSeleccionado != null){
+                            String resEliminados = "";
+                            resEliminados = grupoSeleccionado.eliminar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
+                            llenarListaGrupos(null);
+                        }
+                        return true;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
     }
 
     public void btnNuevoGrupo(View v){
@@ -67,20 +151,26 @@ public class GestionarGrupo extends AppCompatActivity {
         startActivity(inte);
     }
 
-    public void llenarListaGrupos(){
+    public void llenarListaGrupos(String filtro){
         grupo = new Grupo();
-        List objects = grupo.getAll(this);
-        grupoAdapter = new GrupoAdapter(this, objects);
+        List objects;
+        if (filtro == null)
+        {
+            objects = grupo.getAll(this);
+        }else{
+            //objects = grupo.getAllFiltered1(this,filtro);
+        }
+        //grupoAdapter = new GrupoAdapter(this, objects);
         listViewGrupos.setAdapter(grupoAdapter);
-        registerForContextMenu(listViewGrupos);
+        //registerForContextMenu(listViewGrupos);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        llenarListaGrupos();
+        llenarListaGrupos(null);
     }
-
+/*
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -126,4 +216,30 @@ public class GestionarGrupo extends AppCompatActivity {
         }
         return super.onContextItemSelected(item);
     }
+
+ */
+/*
+
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        if (v.getId() == R.id.bvoice) {
+            // Si entramos a dar clic en el boton
+            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hable ahora ");
+            startActivityForResult(i, check); } }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if (requestCode==check && resultCode==RESULT_OK){
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            editNombreCiclo.setText(results.get(0));
+            buscarhorario();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    public void onDestroy(){ super.onDestroy(); }
+*/
+
 }

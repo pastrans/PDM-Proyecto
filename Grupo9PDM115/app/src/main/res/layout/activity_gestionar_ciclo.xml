@@ -34,6 +34,12 @@
             android:onClick="buscarCiclo"
             android:drawableStart="@drawable/ic_boton_buscar"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
+        <Button
+            android:id="@+id/bvoice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mic"
+            android:drawableLeft="@drawable/ic_mic" />
         <EditText
             android:id="@+id/editNombreCiclo"
             android:layout_width="match_parent"
@@ -49,12 +55,21 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listaCiclos"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp">
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+    <!--
     <ListView
         android:id="@+id/listaCiclos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:showDividers="middle"
         android:divider="?android:listDivider"
-        android:dividerPadding="16dp"/>
+        android:dividerPadding="16dp"/>-->
 
 </LinearLayout>

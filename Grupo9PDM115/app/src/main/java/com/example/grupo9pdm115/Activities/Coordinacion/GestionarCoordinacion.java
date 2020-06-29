@@ -5,15 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Activities.Materia.EditarMateria;
 import com.example.grupo9pdm115.Activities.Materia.NuevoMateria;
@@ -25,17 +31,21 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarCoordinacion extends AppCompatActivity {
+public class GestionarCoordinacion extends AppCompatActivity implements View.OnClickListener {
 
     // Permisos acciones
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
 
+    Button Voice;
+    static final int check = 1111;
+    SwipeMenuListView listaCoordinacion;
     //Declarando atributos para manejo del ListView
-    ListView listaCoordinacion;
+    //ListView listaCoordinacion;
     CoordinacionAdapter listaCoordinacionAdapter;
     EditText editNombreUsuario;
     Coordinacion coordinacion;
@@ -60,14 +70,84 @@ public class GestionarCoordinacion extends AppCompatActivity {
         setContentView(R.layout.activity_gestionar_coordinacion);
 
         //Inicializar elementos para llenar lista
-        listaCoordinacion = (ListView) findViewById(R.id.listacoordinacion);
+        listaCoordinacion = (SwipeMenuListView) findViewById(R.id.listacoordinacion);
+        //listaCoordinacion = (ListView) findViewById(R.id.listacoordinacion);
         editNombreUsuario = (EditText) findViewById(R.id.editNombreCoordinador);
+        Voice=(Button) findViewById(R.id.bvoice);
+        Voice.setOnClickListener(this);
 
         //Llamar método para llenar lista
         llenarListaCoordinacion("");
 
         //Asociamos el menú contextual al listview
         registerForContextMenu(listaCoordinacion);
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem editItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //editItem.setBackground(new ColorDrawable(Color.rgb(0xF5, 0xF5,0xF5)));
+                // set item width
+                editItem.setWidth(170);
+                // set a icon
+                editItem.setIcon(R.drawable.ic_edit);
+                // add to menu
+                menu.addMenuItem(editItem);
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                deleteItem.setWidth(170);
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_delete);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        listaCoordinacion.setMenuCreator(creator);
+        listaCoordinacion.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
+                Coordinacion coorActual = (listaCoordinacionAdapter.getItem(position));
+                switch (index) {
+                    case 0:
+                        if(!permisoUpdate){
+                            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if(coorActual != null){
+                            Intent intent = new Intent(getApplicationContext(), EditarCoordinacion.class);
+                            intent.putExtra("idcoordinacion", coorActual.getIdCoodinacion());
+                            intent.putExtra("idusuario", coorActual.getIdUsuario());
+                            intent.putExtra("idciclomateria", coorActual.getIdCicloMateria());
+                            intent.putExtra("tipocoordinacion", coorActual.getTipoCoordinacion());
+                            startActivity(intent);
+                        }
+                        return true;
+                    case 1:
+                        if(!permisoUpdate){
+                            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                        if(coorActual != null){
+                            String regEliminadas;
+                            regEliminadas= coorActual.eliminar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                            llenarListaCoordinacion("");
+                        }
+                        return true;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
     }
 
     //Metodo parra llenar lista de materias
@@ -101,6 +181,10 @@ public class GestionarCoordinacion extends AppCompatActivity {
     }
 
     public void buscarCoordinador(View v) {
+        //llenarListaCoordinacion(editNombreUsuario.getText().toString());
+        buscarCoordinador();
+    }
+    public void buscarCoordinador(){
         llenarListaCoordinacion(editNombreUsuario.getText().toString());
     }
 
@@ -112,6 +196,7 @@ public class GestionarCoordinacion extends AppCompatActivity {
     }
 
     // Para menú contextual
+    /*
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
     {
@@ -165,6 +250,33 @@ public class GestionarCoordinacion extends AppCompatActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+     */
+
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        if (v.getId() == R.id.bvoice) {
+            // Si entramos a dar clic en el boton
+            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hable ahora ");
+            startActivityForResult(i, check); } }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if (requestCode==check && resultCode==RESULT_OK){
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            editNombreUsuario.setText(results.get(0));
+            buscarCoordinador();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    public void onDestroy(){ super.onDestroy(); }
+    public void onPause(){
+        editNombreUsuario.setText("");
+        super.onPause();
     }
 
 }

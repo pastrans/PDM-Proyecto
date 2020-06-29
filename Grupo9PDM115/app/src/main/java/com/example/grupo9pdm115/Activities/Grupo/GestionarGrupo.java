@@ -33,7 +33,7 @@ import com.example.grupo9pdm115.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarGrupo extends AppCompatActivity {
+public class GestionarGrupo extends AppCompatActivity implements View.OnClickListener{
 
     // Permisos acciones
     private boolean permisoInsert = false;
@@ -69,7 +69,7 @@ public class GestionarGrupo extends AppCompatActivity {
         //listViewGrupos = (ListView) findViewById(R.id.listViewGrupos);
         listViewGrupos = (SwipeMenuListView) findViewById(R.id.listViewGrupos);
         Voice=(Button) findViewById(R.id.bvoice);
-        //Voice.setOnClickListener(this);
+        Voice.setOnClickListener(this);
         editNombreCiclo = (EditText) findViewById(R.id.editNombreCiclo);
         llenarListaGrupos(null);
         SwipeMenuCreator creator = new SwipeMenuCreator() {
@@ -158,11 +158,17 @@ public class GestionarGrupo extends AppCompatActivity {
         {
             objects = grupo.getAll(this);
         }else{
-            //objects = grupo.getAllFiltered1(this,filtro);
+            objects = grupo.getAllFiltered1(this,filtro);
         }
-        //grupoAdapter = new GrupoAdapter(this, objects);
+        grupoAdapter = new GrupoAdapter(this, objects);
         listViewGrupos.setAdapter(grupoAdapter);
         //registerForContextMenu(listViewGrupos);
+    }
+    public void buscarGrupo(View v){
+        buscarGrupo();
+    }
+    public void buscarGrupo(){
+        llenarListaGrupos(editNombreCiclo.getText().toString());
     }
 
     @Override
@@ -218,7 +224,7 @@ public class GestionarGrupo extends AppCompatActivity {
     }
 
  */
-/*
+
 
     public void onClick(View v) {
         // TODO Auto-generated method stub
@@ -235,11 +241,11 @@ public class GestionarGrupo extends AppCompatActivity {
         if (requestCode==check && resultCode==RESULT_OK){
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             editNombreCiclo.setText(results.get(0));
-            buscarhorario();
+            buscarGrupo();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
     public void onDestroy(){ super.onDestroy(); }
-*/
+
 
 }

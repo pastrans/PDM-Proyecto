@@ -7,6 +7,9 @@ import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
 import com.example.grupo9pdm115.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grupo extends TablaBD {
     // Atributos
     private int idGrupo;
@@ -152,6 +155,25 @@ public class Grupo extends TablaBD {
         helper.cerrar();
         return false;
     }
+    public List<Grupo> getAllFiltered1(Context context, String filtro) {
+        List<Grupo> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
 
+        String consulta = "select * from grupo where numero like '%" + filtro + "%'";
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+        if (cursor.moveToFirst()) {
+            do {
+                for (int i = 0; i < getCamposTabla().length; i++) {
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add((Grupo) getInstanceOfModel(valores));
+            } while (cursor.moveToNext());
+        }
+        helper.cerrar();
+
+        return listaTablaBD;
+    }
 }
 

@@ -44,7 +44,8 @@
                         android:layout_height="50dp"
                         android:layout_weight="0.5"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_control_usuario"/>
+                        android:src="@mipmap/ic_control_usuario"
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Application.MyApplication"
         android:allowBackup="false"
         android:fullBackupOnly="false"
         android:icon="@drawable/iconoapp"
@@ -20,7 +21,9 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".Activities.MenuPrincipal" />
+        <activity
+            android:name=".Activities.MenuPrincipal"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity android:name=".Activities.DetalleReserva.NuevoDetalleReservaEspecial" />
         <activity
             android:name=".Activities.Solicitud.GestionarSolicitudesEncargado"
@@ -101,11 +104,16 @@
             android:name=".Activities.Feriado.GestionarFeriado"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Activities.Feriado.EditarFeriado" />
-        <activity android:name=".Activities.Ciclo.EditarCiclo" />
-        <activity android:name=".Activities.Ciclo.NuevoCiclo" />
+        <activity
+            android:name=".Activities.Ciclo.EditarCiclo"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
+        <activity
+            android:name=".Activities.Ciclo.NuevoCiclo"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity
             android:name=".Activities.Ciclo.GestionarCiclo"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity android:name=".Activities.IniciarSesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

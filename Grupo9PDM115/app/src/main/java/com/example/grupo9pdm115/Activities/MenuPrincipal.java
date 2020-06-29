@@ -8,8 +8,9 @@ import android.view.View;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
-public class MenuPrincipal extends AppCompatActivity implements View.OnClickListener {
+public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnClickListener {
     // Views que contienen todas las opciones de cada grupo, tanto las opciones principales como los
     // submenú de cada uno que contienen opciones de menú
     public final int[] idContenedores = {R.id.layoutContenedorUsuario, R.id.layoutContenedorAdminAcademica,

@@ -17,10 +17,11 @@ import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Comun.FechasHelper;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import java.util.Calendar;
 
-public class EditarCiclo extends AppCompatActivity implements View.OnClickListener {
+public class EditarCiclo extends CyaneaAppCompatActivity implements View.OnClickListener {
     //Declarando
     Ciclo ciclo;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;

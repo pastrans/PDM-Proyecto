@@ -18,11 +18,12 @@ import com.example.grupo9pdm115.Adapters.CicloAdapter;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import java.util.List;
 
 
-public class GestionarCiclo extends AppCompatActivity {
+public class GestionarCiclo extends CyaneaAppCompatActivity {
     // Permisos acciones
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;

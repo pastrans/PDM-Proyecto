@@ -11,18 +11,16 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.FeriadoAdapter;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import java.util.List;
 
-public class GestionarFeriado extends AppCompatActivity {
+public class GestionarFeriado extends CyaneaAppCompatActivity {
     // Permisos acciones
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;

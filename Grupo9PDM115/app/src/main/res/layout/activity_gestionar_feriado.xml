@@ -29,15 +29,17 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="agregarFeriado"
-            android:drawableStart="@drawable/ic_boton_agregar"
-            android:drawableLeft="@drawable/ic_boton_agregar"/>
+            android:drawableLeft="@drawable/ic_boton_agregar"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"/>
         <Button
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="buscarFeriado"
-            android:drawableStart="@drawable/ic_boton_buscar"
-            android:drawableLeft="@drawable/ic_boton_buscar"/>
+            android:drawableLeft="@drawable/ic_boton_buscar"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"/>
         <EditText
             android:id="@+id/editNombreFeriado"
             android:layout_width="match_parent"

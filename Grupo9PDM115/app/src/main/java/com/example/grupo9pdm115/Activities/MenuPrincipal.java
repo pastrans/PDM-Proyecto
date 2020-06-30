@@ -38,7 +38,7 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
             "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion", "Grupo.GestionarGrupo",
             "Local.GestionarLocal", "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud",
             "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.Tutoriales",
-            "Utilidades.ExportarPDF", "Utilidades.ImportarExcel", "Utilidades.ConsultarQR",
+            "Utilidades.ExportarPDF", "Utilidades.ImportarExcel", "Utilidades.ConsultaQR",
             "Utilidades.EnvioCorreos"};
 
     // Posiciones de inicio y fin en los arreglos activities y idOpcionesMenu que corresponden a cada

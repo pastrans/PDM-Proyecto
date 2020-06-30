@@ -1,21 +1,14 @@
 package com.example.grupo9pdm115.Activities.Local;
 
-import androidx.annotation.NonNull;
+import com.example.grupo9pdm115.Activities.Utilidades.ConsultaQR;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
-
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
@@ -27,7 +20,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-
+import com.google.zxing.integration.android.IntentIntegrator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +30,8 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
+    private IntentIntegrator qrScan;
+    int CAMERA_REQUEST_CODE;
 
     Button Voice;
     static final int check=1111;
@@ -46,6 +41,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     //ListView listaLocal;
     LocalAdapter listaLocalAdapter;
     private MaterialDialog mSimpleDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +65,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
         Voice.setOnClickListener(this);
         //listaLocal = (ListView) findViewById(R.id.idListadoLocales);
         editNombrelocal = (EditText) findViewById(R.id.editNombreLocal);
+        qrScan = new IntentIntegrator(this);
         llenarListaLocales(null);
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
@@ -259,6 +256,27 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     public void onPause (){
         editNombrelocal.setText("");
         super.onPause();
+    }
+
+    /*@Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null){
+            if(result.getContents() == null){
+                Toast.makeText(this, "No encontrado", Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                Log.v("Result: ", result.getContents());
+            }
+        }else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }*/
+
+    public void escanearQR(View v){
+        //qrScan.initiateScan();
+        Intent intent = new Intent(this, ConsultaQR.class);
+        startActivity(intent);
     }
 
 }

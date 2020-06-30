@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.Utilidades.ConsultaQR"
+    android:padding="15dp">
+
+    <Button
+        android:id="@+id/escanear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escanear"
+        android:onClick="escanearQR"/>
+
+    <TextView
+        android:id="@+id/txtConsultarQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No se han encontrado conincidencias"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/listaEventosQR"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp"/>
+
+    <!--TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del local"/-->
+    <!--EditText
+        android:id="@+id/nombreLocalQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/-->
+    <!--Button
+        android:id="@+id/generar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generar"
+        android:onClick="generarQR"/-->
+    <!--ImageView
+        android:id="@+id/imgViewQR"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/-->
+
+</LinearLayout>

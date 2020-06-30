@@ -3,6 +3,11 @@
     package="com.example.grupo9pdm115">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Application.MyApplication"
@@ -19,6 +24,8 @@
             android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity
             android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
+        <activity android:name=".Activities.Utilidades.ConsultaQR"
             android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
 
         <uses-library
@@ -88,7 +95,6 @@
         <activity
             android:name=".Activities.Dia.GestionarDia"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".Activities.Coordinacion.EditarCoordinacion"
             android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>

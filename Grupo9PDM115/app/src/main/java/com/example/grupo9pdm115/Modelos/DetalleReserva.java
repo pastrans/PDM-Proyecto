@@ -3,6 +3,7 @@ package com.example.grupo9pdm115.Modelos;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.BD.TablaBD;
@@ -276,6 +277,55 @@ public class DetalleReserva extends TablaBD {
                 detalleReservas.add(this.getInstanceOfModel(valores));
             }while (cursor.moveToNext());
         }
+        return detalleReservas;
+    }
+
+    public List<DetalleReserva> getEventosDia(Context context, int dia, String local, String fecha){
+        ControlBD helper = new ControlBD(context);
+        List<DetalleReserva> detalleReservas = new ArrayList<DetalleReserva>();
+        helper.abrir();
+        Cursor cursor;
+        String[] valores = new String[getCamposTabla().length];
+        String sqlEspecial = "SELECT de.* FROM DETALLERESERVA de, EVENTOESPECIAL e, CICLOMATERIA cm, MATERIA m, LOCAL l, HORARIO h\n" +
+                "WHERE de.IDDIA = " + dia + "\n" +
+                "AND l.NOMBRELOCAL = '" + local + "'\n" +
+                "AND de.IDLOCAL = l.IDLOCAL\n" +
+                "AND de.IDEVENTOESPECIAL = e.IDEVENTOESPECIAL\n" +
+                "AND h.IDHORA = de.IDHORA\n" +
+                "AND e.IDCICLOMATERIA = cm.IDCICLOMATERIA\n" +
+                "AND cm.CODMATERIA = m.CODMATERIA\n" +
+                "AND (de.INICIOPERIODORESERVA = '" + fecha + "' OR '" + fecha + "' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
+                "AND APROBADO = 1 AND ESTADORESERVA = 1;";
+        //Log.v("SQL 1:", sqlEspecial);
+        cursor = helper.consultar(sqlEspecial);
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                detalleReservas.add(this.getInstanceOfModel(valores));
+            }while (cursor.moveToNext());
+        }
+        String sqlGrupo = "SELECT de.* FROM DETALLERESERVA de, GRUPO g, CICLOMATERIA cm, MATERIA m, LOCAL l, HORARIO h\n" +
+                "WHERE de.IDDIA = "+ dia + "\n" +
+                "AND l.NOMBRELOCAL = '"+ local +"'\n" +
+                "AND de.IDLOCAL = l.IDLOCAL\n" +
+                "AND de.IDGRUPO = g.IDGRUPO\n" +
+                "AND h.IDHORA = de.IDHORA\n" +
+                "AND g.IDCICLOMATERIA = cm.IDCICLOMATERIA\n" +
+                "AND cm.CODMATERIA = m.CODMATERIA\n" +
+                "AND (de.INICIOPERIODORESERVA = '"+ fecha +"' OR '" + fecha + "' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
+                "AND APROBADO = 1 AND ESTADORESERVA = 1;";
+        cursor = helper.consultar(sqlGrupo);
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                detalleReservas.add(this.getInstanceOfModel(valores));
+            }while (cursor.moveToNext());
+        }
+        //Log.v("SQL 2:", sqlGrupo);
         return detalleReservas;
     }
 

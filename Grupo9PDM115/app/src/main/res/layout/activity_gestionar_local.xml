@@ -50,7 +50,6 @@
             android:hint="@string/txtbNombreLocal"
             android:inputType="text"/>
     </LinearLayout>
-
     <TextView
         android:paddingTop="15dp"
         android:text="@string/idListadoLocales"

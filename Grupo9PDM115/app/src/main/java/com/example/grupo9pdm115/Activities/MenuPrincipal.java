@@ -1,16 +1,31 @@
 package com.example.grupo9pdm115.Activities;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
-public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnClickListener {
+public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+
+    private GoogleApiClient googleApiClient;
+    private GoogleSignInOptions gso;
+
     // Views que contienen todas las opciones de cada grupo, tanto las opciones principales como los
     // submenú de cada uno que contienen opciones de menú
     public final int[] idContenedores = {R.id.layoutContenedorUsuario, R.id.layoutContenedorAdminAcademica,
@@ -66,6 +81,11 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
             startActivity(intent);
             finish();
         }
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
+        googleApiClient.connect();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
@@ -124,15 +144,28 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
 
         // Cerrar sesión
         if(v.getId() == R.id.txtCerrarSesion){
-            // Código para cerrar sesión
-            Sesion.setLooggedIn(this, false);
-            Sesion.setNombreUsuario(this, "");
-            Sesion.setAccesoUsuario(this, null);
-            Sesion.setIdUsuario(this, null);
-            Intent intent = new Intent(this, IniciarSesion.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
-            startActivity(intent);
-            finish();
+            if(googleApiClient.isConnected()){
+
+                Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        if(status.isSuccess())
+                            Toast.makeText(getApplicationContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getApplicationContext(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                // Código para cerrar sesión
+                Sesion.setLooggedIn(this, false);
+                Sesion.setNombreUsuario(this, "");
+                Sesion.setAccesoUsuario(this, null);
+                Sesion.setIdUsuario(this, null);
+                Intent intent = new Intent(this, IniciarSesion.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Esta bandera borra el resto de actividades de la cola
+                startActivity(intent);
+                finish();
+            }
         }
     }
 
@@ -197,5 +230,20 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
         }
 
         return posicion;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
+        if(opr.isDone()){
+            GoogleSignInResult result = opr.get();
+            //googleApiClient.connect();
+        }
     }
 }

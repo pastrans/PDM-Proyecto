@@ -119,6 +119,12 @@
                 android:onClick="ingresar"
                 android:text="@string/action_sign_in" />
 
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
 
         </LinearLayout>
     </ScrollView>

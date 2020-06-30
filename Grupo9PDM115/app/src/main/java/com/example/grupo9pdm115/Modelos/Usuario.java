@@ -168,6 +168,29 @@ public class Usuario extends TablaBD {
         return cantidad;
     }
 
+    public int googleUser(Context context, String correoGoogle, Usuario usuario){
+        int result = 0;
+        ControlBD helper = new ControlBD(context);
+        Cursor cursor;
+        int cantidad = 0;
+        String sql = "SELECT * FROM USUARIO WHERE correoPersonal = '" + correoGoogle + "'";
+        helper.abrir();
+        cursor = helper.consultar(sql);
+        while (cursor.moveToNext()){
+            usuario.setIdUsuario(cursor.getString(0));
+            usuario.setIdUnidad(cursor.getInt(1));
+            usuario.setIdRol(cursor.getInt(2));
+            usuario.setNombreUsuario(cursor.getString(3));
+            usuario.setClaveUsuario(cursor.getString(4));
+            usuario.setNombrePersonal(cursor.getString(5));
+            usuario.setApellidoPersonal(cursor.getString(6));
+            usuario.setCorreoPersonal(cursor.getString(7));
+            result = 1;
+        }
+        helper.cerrar();
+        return result;
+    }
+
     public boolean verificar(int accion, Context context){
         ControlBD helper = new ControlBD(context);
         String sql = "";
@@ -191,6 +214,7 @@ public class Usuario extends TablaBD {
         helper.cerrar();
         return false;
     }
+
 
     public List<Usuario> getAllFiltered1(Context context, String filtro){
         List<Usuario> listaTablaBD = new ArrayList<>();

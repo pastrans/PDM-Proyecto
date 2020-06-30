@@ -121,29 +121,7 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
                         startActivity(consultarInte);
                         return true;
                     case 1:
-                        if (solicitudSeleccionada != null){
-                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
 
-                                    switch (which){
-                                        case DialogInterface.BUTTON_POSITIVE:
-                                            String regEliminados;
-                                            regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
-                                            Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
-                                            llenarListaSolicitudes(null);
-                                            break;
-                                        case DialogInterface.BUTTON_NEGATIVE:
-                                            Toast.makeText(getApplicationContext(), "NEGATIVO", Toast.LENGTH_SHORT).show();
-                                            break;
-                                    }
-                                }
-                            };
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                            builder.setMessage("¿Seguro de eliminar la solicitud?").setPositiveButton("Sí", dialogClickListener)
-                                    .setNegativeButton("No", dialogClickListener).show();
-                        }
-                        return true;
                     case 2:
                         Intent revisarInte = new Intent(getApplicationContext(), GestionarDetalleReserva.class);
                         revisarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
@@ -182,7 +160,7 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
     public void buscarSolicitud(){
         llenarListaSolicitudes(editAsunto.getText().toString());
     }
-/*
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -257,7 +235,7 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
                 return super.onContextItemSelected(item);
         }
 
-    }*/
+    }
 
     public void btnNuevoGSolicitud(View v){
         Intent inte = new Intent(this, NuevoSolicitud.class);

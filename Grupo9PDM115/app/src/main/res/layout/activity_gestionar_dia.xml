@@ -23,14 +23,16 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="agregarDia"
-            android:drawableStart="@drawable/ic_boton_agregar"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
             android:drawableLeft="@drawable/ic_boton_agregar"/>
         <Button
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="buscarCiclo"
-            android:drawableStart="@drawable/ic_boton_buscar"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
             android:drawableLeft="@drawable/ic_boton_buscar"/>
         <EditText
             android:id="@+id/editNombreCiclo"

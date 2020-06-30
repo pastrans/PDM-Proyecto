@@ -1,4 +1,4 @@
-package com.example.grupo9pdm115.Utilidades;
+package com.example.grupo9pdm115.Comun;
 
 import com.example.grupo9pdm115.Modelos.DetalleReserva;
 

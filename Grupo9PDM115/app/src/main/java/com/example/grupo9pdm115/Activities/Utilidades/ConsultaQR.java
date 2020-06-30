@@ -1,4 +1,4 @@
-package com.example.grupo9pdm115.Activities.Local;
+package com.example.grupo9pdm115.Activities.Utilidades;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,11 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,15 +17,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.grupo9pdm115.Adapters.DetalleReservaAdapter;
 import com.example.grupo9pdm115.Adapters.EventosQRAdapter;
-import com.example.grupo9pdm115.Adapters.LocalAdapter;
 import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 import com.example.grupo9pdm115.Modelos.DetalleReserva;
 import com.example.grupo9pdm115.Modelos.Horario;
-import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.DetallesQR;
+import com.example.grupo9pdm115.Comun.DetallesQR;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 /*import com.example.grupo9pdm115.Utilidades.FechasHelper;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -39,9 +35,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;*/
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +44,7 @@ import java.util.List;
 
 public class ConsultaQR extends AppCompatActivity {
 
-    /*EditText qr;
+    EditText qr;
     ImageView imgViewQR;
     ListView listaEventos;
     DetalleReserva detalleReserva;
@@ -67,10 +60,10 @@ public class ConsultaQR extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulta_q_r);*/
+        setContentView(R.layout.activity_consulta_q_r);
         //qr = (EditText) findViewById(R.id.nombreLocalQR);
         //imgViewQR = (ImageView) findViewById(R.id.imgViewQR);
-        /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISO_LECTURA_EXTERNA);
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
@@ -83,7 +76,7 @@ public class ConsultaQR extends AppCompatActivity {
         helper = new ControlBD(this);
     }
 
-    public void generarQR(View v) throws WriterException, FileNotFoundException {
+    /*public void generarQR(View v) throws WriterException, FileNotFoundException {
         String txt = qr.getText().toString();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         BitMatrix bitMatrix = multiFormatWriter.encode(txt, BarcodeFormat.QR_CODE, 200, 200);
@@ -103,7 +96,7 @@ public class ConsultaQR extends AppCompatActivity {
         File dest = new File(Environment.getExternalStorageDirectory() + "/" + filename);
         FileOutputStream outputStream = new FileOutputStream(dest);
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-    }
+    }*/
 
     public void llenarListaLocales(String fecha, String local) throws ParseException {
         listaEventos.setAdapter(null);
@@ -230,6 +223,6 @@ public class ConsultaQR extends AppCompatActivity {
                 break;
         }
         return nomDia;
-    }*/
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.grupo9pdm115.Modelos.CicloMateria;
-import com.example.grupo9pdm115.Modelos.DetalleReserva;
 import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.Modelos.EventoEspecial;
 import com.example.grupo9pdm115.Modelos.Grupo;
@@ -18,7 +16,7 @@ import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.DetallesQR;
+import com.example.grupo9pdm115.Comun.DetallesQR;
 
 import java.util.List;
 

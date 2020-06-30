@@ -214,7 +214,7 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
         MenuItem item3 = menu.findItem(R.id.ctxNuevoFinReserva);
         item3.setVisible(false);
     }
-
+/*
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -230,27 +230,10 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
                 return true;
             case R.id.ctxEliminar:
                 if (solicitudSeleccionada != null){
-                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            switch (which){
-                                case DialogInterface.BUTTON_POSITIVE:
                                     String regEliminados;
                                     regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
                                     Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
                                     llenarListaSolicitudes(null);
-                                    break;
-                                case DialogInterface.BUTTON_NEGATIVE:
-                                    Toast.makeText(getApplicationContext(), "NEGATIVO", Toast.LENGTH_SHORT).show();
-                                    break;
-                            }
-                        }
-                    };
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage("¿Seguro de eliminar la solicitud?").setPositiveButton("Sí", dialogClickListener)
-                            .setNegativeButton("No", dialogClickListener).show();
-                }
                 return true;
             case R.id.ctxRevisar:
                 Intent revisarInte = new Intent(this, GestionarDetalleReserva.class);
@@ -264,7 +247,7 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
                 return super.onContextItemSelected(item);
         }
 
-    }
+    }*/
 
     public void btnNuevoGSolicitud(View v){
         Intent inte = new Intent(this, NuevoSolicitud.class);

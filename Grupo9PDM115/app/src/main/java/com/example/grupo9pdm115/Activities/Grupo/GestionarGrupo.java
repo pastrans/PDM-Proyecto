@@ -246,6 +246,4 @@ public class GestionarGrupo extends AppCompatActivity implements View.OnClickLis
         super.onActivityResult(requestCode, resultCode, data);
     }
     public void onDestroy(){ super.onDestroy(); }
-
-
 }

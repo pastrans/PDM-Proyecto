@@ -287,4 +287,16 @@
     <string name="txtImportarExcel">Import Excel</string>
     <string name="txtConsultarQR">Consult QR</string>
     <string name="txtEnvioCorreos">Send mails</string>
+    <string name="label_theme_picker">Reservation of premises FIA</string>
+    <string name="pref_accent_color_summary">Accents select parts of the UI.</string>
+    <string name="pref_background_color_summary">The underlying color of the app’s content.</string>
+    <string name="pref_colored_navigation_bar_summary">Apply the primary color to the navigation bar.</string>
+    <string name="pref_category_appearance">Appearance</string>
+    <string name="pref_theme_title">Themes</string>
+    <string name="pref_theme_summary">Select a pre-installed theme.</string>
+    <string name="pref_accent_color_title">Accent color</string>
+    <string name="pref_background_color_title">Background color</string>
+    <string name="pref_colored_navigation_bar_title">Navigation bar color</string>
+    <string name="pref_primary_color_title">Primary color</string>
+    <string name="pref_primary_color_summary">Displayed most frequently across your app.</string>
 </resources>

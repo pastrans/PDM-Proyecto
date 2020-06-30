@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".Activities.Utilidades.ModificarTema"></activity>
-        <activity android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario" />
+        <activity
+            android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -99,10 +101,13 @@
         <activity
             android:name=".Activities.Unidad.GestionarUnidad"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".Activities.Feriado.NuevoFeriado" />
+        <activity
+            android:name=".Activities.Feriado.NuevoFeriado"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity
             android:name=".Activities.Feriado.GestionarFeriado"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:theme="@style/Theme.Cyanea.Light.DarkActionBar"/>
         <activity android:name=".Activities.Feriado.EditarFeriado" />
         <activity
             android:name=".Activities.Ciclo.EditarCiclo"

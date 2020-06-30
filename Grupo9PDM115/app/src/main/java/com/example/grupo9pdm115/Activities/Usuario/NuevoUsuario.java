@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Usuario;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NuevoUsuario extends AppCompatActivity {
+public class NuevoUsuario extends CyaneaAppCompatActivity {
 
     EditText nombreUsuario, claveUsuario, nombrePersonal, apellidoPersonal, correoPersonal;
     Spinner spinnerUnidad, spinnerRol;

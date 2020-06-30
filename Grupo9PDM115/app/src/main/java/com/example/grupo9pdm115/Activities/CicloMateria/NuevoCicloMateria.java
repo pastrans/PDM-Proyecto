@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.CicloMateria;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
-public class NuevoCicloMateria extends AppCompatActivity {
+public class NuevoCicloMateria extends CyaneaAppCompatActivity {
 
     EditText editCodMateria;
     Spinner idCiclo;

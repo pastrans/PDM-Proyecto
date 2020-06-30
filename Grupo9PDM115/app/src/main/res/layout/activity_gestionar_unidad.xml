@@ -26,15 +26,24 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:onClick="agregarUnidad"
-                    android:drawableStart="@drawable/ic_boton_agregar"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:drawableLeft="@drawable/ic_boton_agregar"/>
                 <Button
                     android:id="@+id/btnBuscarUnidad"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:onClick="buscarUnidad"
-                    android:drawableStart="@drawable/ic_boton_buscar"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:drawableLeft="@drawable/ic_boton_buscar"/>
+                <Button
+                    android:id="@+id/bvoice"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:drawableLeft="@drawable/ic_mic" />
                 <EditText
                     android:id="@+id/editNombreUnidad"
                     android:layout_width="match_parent"
@@ -49,6 +58,15 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
+            <com.baoyz.swipemenulistview.SwipeMenuListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/listUnidad"
+                android:showDividers="middle"
+                android:divider="?android:listDivider"
+                android:dividerPadding="16dp">
+            </com.baoyz.swipemenulistview.SwipeMenuListView>
+            <!--
     <ListView
         android:id="@+id/listUnidad"
         android:layout_width="match_parent"
@@ -56,6 +74,8 @@
         android:showDividers="middle"
         android:divider="?android:listDivider"
         android:dividerPadding="16dp" />
+
+        -->
         </LinearLayout>
 
 

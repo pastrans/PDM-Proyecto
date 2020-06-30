@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.CicloMateria;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +15,17 @@ import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarCicloMateria extends AppCompatActivity {
+public class EditarCicloMateria extends CyaneaAppCompatActivity {
     //Declarando
     EditText editCodMateria;
     Spinner idCiclo;
     CicloSpinner control;
     int posicion, idCicloMateria;
+    private MaterialDialog mSimpleDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Validando usuario y sesión
@@ -54,42 +58,64 @@ public class EditarCicloMateria extends AppCompatActivity {
 
     }
     public void btnactualizarCicloMateria(View v) {
-        String codMaateria = editCodMateria.getText().toString();
-        //limpiamos de espacios en blancos al principio y al final
-        codMaateria = codMaateria.trim();
-        codMaateria = codMaateria.toUpperCase();
-        int posicionCiclo = 0, idCiclo = 0;
-        posicionCiclo = this.idCiclo.getSelectedItemPosition();
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String codMaateria = editCodMateria.getText().toString();
+                        //limpiamos de espacios en blancos al principio y al final
+                        codMaateria = codMaateria.trim();
+                        codMaateria = codMaateria.toUpperCase();
+                        int posicionCiclo = 0, idCiclo = 0;
+                        posicionCiclo = EditarCicloMateria.this.idCiclo.getSelectedItemPosition();
 
-        if(editCodMateria != null){
-            if (posicionCiclo!= 0) {
 
-                if(validarCodMateria(codMaateria) ==1){                    //Instanciando Materia para guardar
-                    CicloMateria cicloMateria = new CicloMateria();
-                    // Obtenemos la posición del spinner
-                    idCiclo = control.getIdCiclo(posicionCiclo);
+                        if(editCodMateria != null){
+                            if (posicionCiclo!= 0) {
 
-                    if(!cicloMateria.verificarRegistro(this,codMaateria, idCiclo)){
-                        cicloMateria.setIdCicloMateria(idCicloMateria);
-                        cicloMateria.setCodMateria(codMaateria);
-                        cicloMateria.setIdCiclo(idCiclo);
-                        String regInsertados = cicloMateria.actualizar(this);
-                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else {
-                        Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
+                                if(validarCodMateria(codMaateria) ==1){                    //Instanciando Materia para guardar
+                                    CicloMateria cicloMateria = new CicloMateria();
+                                    // Obtenemos la posición del spinner
+                                    idCiclo = control.getIdCiclo(posicionCiclo);
+
+                                    if(!cicloMateria.verificarRegistro(getApplicationContext(),codMaateria, idCiclo)){
+                                        cicloMateria.setIdCicloMateria(idCicloMateria);
+                                        cicloMateria.setCodMateria(codMaateria);
+                                        cicloMateria.setIdCiclo(idCiclo);
+                                        String regInsertados = cicloMateria.actualizar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }else {
+                                        Toast.makeText(getApplicationContext(), getApplication().getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
+                                    }
+                                }else {
+                                    Toast.makeText(getApplicationContext(), getApplication().getString(R.string.mnjCMCodNoRegis), Toast.LENGTH_SHORT).show(); // "Código no registrado"
+                                }
+
+                            }else{
+                                Toast.makeText(getApplicationContext(), getApplication().getString(R.string.mnjCMSelecCiclo), Toast.LENGTH_SHORT).show(); // "Selecicone el ciclo"
+                            }
+
+                        }else{
+                            Toast.makeText(getApplicationContext(), getApplication().getString(R.string.mnjCMIngCodMat), Toast.LENGTH_SHORT).show(); // "Ingrese código de materia"
+                        }
+                        dialogInterface.dismiss();
                     }
-                }else {
-                    Toast.makeText(this, this.getString(R.string.mnjCMCodNoRegis), Toast.LENGTH_SHORT).show(); // "Código no registrado"
-                }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
 
-            }else{
-                Toast.makeText(this, this.getString(R.string.mnjCMSelecCiclo), Toast.LENGTH_SHORT).show(); // "Selecicone el ciclo"
-            }
-
-        }else{
-            Toast.makeText(this, this.getString(R.string.mnjCMIngCodMat), Toast.LENGTH_SHORT).show(); // "Ingrese código de materia"
-        }
+        mSimpleDialog.show();
     }
 
     int validarCodMateria(String codigo){

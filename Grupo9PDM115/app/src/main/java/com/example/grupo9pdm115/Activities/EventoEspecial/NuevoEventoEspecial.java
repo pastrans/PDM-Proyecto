@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.EventoEspecial;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -21,11 +21,11 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloMateriaSpinner;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 
 import java.util.Calendar;
 
-public class NuevoEventoEspecial extends AppCompatActivity implements View.OnClickListener {
+public class NuevoEventoEspecial extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     EditText edtNombreEvento, edtFechaEvento, edtDescripcionEvento;
     Spinner spinnerCicloMateria;

@@ -1,15 +1,13 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.icu.util.LocaleData;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,21 +24,17 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.EventoEspecialSpinner;
 import com.example.grupo9pdm115.Spinners.HorarioSpinner;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.example.grupo9pdm115.Comun.FechasHelper;
 
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
-public class NuevoDetalleReservaEspecial extends AppCompatActivity implements View.OnClickListener {
+public class NuevoDetalleReservaEspecial extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     EditText edtLocal, edtCupo, edtFechaReserva;
     Spinner spinnerHoraInicial, spinnerEventoEspecial, spinnerHoraFinal;

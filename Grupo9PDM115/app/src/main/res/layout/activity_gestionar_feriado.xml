@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -27,15 +29,24 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="agregarFeriado"
-            android:drawableStart="@drawable/ic_boton_agregar"
-            android:drawableLeft="@drawable/ic_boton_agregar"/>
+            android:drawableLeft="@drawable/ic_boton_agregar"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"/>
         <Button
             android:id="@+id/btnBuscarCiclo"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:onClick="buscarFeriado"
-            android:drawableStart="@drawable/ic_boton_buscar"
-            android:drawableLeft="@drawable/ic_boton_buscar"/>
+            android:drawableLeft="@drawable/ic_boton_buscar"            
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"/>
+        <Button
+            android:id="@+id/bvoice"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:drawableLeft="@drawable/ic_mic" />            
         <EditText
             android:id="@+id/editNombreFeriado"
             android:layout_width="match_parent"
@@ -44,6 +55,13 @@
             android:inputType="text"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnConsultarFeriadoEnCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="consultarFeriadoEnCalendario"
+        android:text="@string/btnConsultarFeriadoEnCalendario"/>
+
     <!-- Lista feriados -->
     <TextView
         android:text="@string/txtListaFeriado"
@@ -51,6 +69,15 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="5dp"/>
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listaFeriados"
+        android:showDividers="middle"
+        android:divider="?android:listDivider"
+        android:dividerPadding="16dp">
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+    <!--
     <ListView
         android:id="@+id/listaFeriados"
         android:layout_width="match_parent"
@@ -58,5 +85,6 @@
         android:showDividers="middle"
         android:divider="?android:listDivider"
         android:dividerPadding="16dp"/>
+        -->
 
 </LinearLayout>

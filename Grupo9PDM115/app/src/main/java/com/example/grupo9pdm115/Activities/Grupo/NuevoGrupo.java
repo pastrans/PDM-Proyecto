@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Grupo;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.NuevoGrupoSpinners;
 
 
-public class NuevoGrupo extends AppCompatActivity {
+public class NuevoGrupo extends CyaneaAppCompatActivity {
 
     EditText numero;
     Spinner idTipoGrupo;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.TipoLocal;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,14 +15,17 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UsuarioSpinner;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarTipoLocal extends AppCompatActivity {
+public class EditarTipoLocal extends CyaneaAppCompatActivity {
 
     ControlBD helper;
     EditText edtNombreTipo;
     EditText editEncargado;
     TipoLocal tipoLocalClass;
     UsuarioSpinner usuarioSpinnerAdapter;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +62,43 @@ public class EditarTipoLocal extends AppCompatActivity {
     }
 
     public void btnEditarETipoLocal(View v){
-        String regInsertados;
-        //int posUsuario = encargadoSpinner.getSelectedItemPosition();
-        if(edtNombreTipo.getText().toString().equals("")){
-            Toast.makeText(this, "Ingrese un nombre al tipo de local", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if(editEncargado.getText().toString().equals("")){
-            Toast.makeText(this, "Ingrese un encargado", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        tipoLocalClass.setNombreTipo(edtNombreTipo.getText().toString());
-        //tipoLocalClass.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
-        tipoLocalClass.setIdEncargado(editEncargado.getText().toString());
-        regInsertados = tipoLocalClass.actualizar(this);
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String regInsertados;
+                        //int posUsuario = encargadoSpinner.getSelectedItemPosition();
+                        if(edtNombreTipo.getText().toString().equals("")){
+                            Toast.makeText(getApplicationContext(), "Ingrese un nombre al tipo de local", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if(editEncargado.getText().toString().equals("")){
+                            Toast.makeText(getApplicationContext(), "Ingrese un encargado", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        tipoLocalClass.setNombreTipo(edtNombreTipo.getText().toString());
+                        //tipoLocalClass.setIdEncargado(usuarioSpinnerAdapter.getIdUsuario(posUsuario));
+                        tipoLocalClass.setIdEncargado(editEncargado.getText().toString());
+                        regInsertados = tipoLocalClass.actualizar(getApplicationContext());
+                        Toast.makeText(getApplicationContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                        finish();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
+
+        mSimpleDialog.show();
     }
 
     public void btnLimpiarETipoLocal(View v){
@@ -81,8 +106,5 @@ public class EditarTipoLocal extends AppCompatActivity {
         editEncargado.setText("");
     }
 
-    public void btnRegresarETipoLocal(View v){
-        finish();
-    }
 
 }

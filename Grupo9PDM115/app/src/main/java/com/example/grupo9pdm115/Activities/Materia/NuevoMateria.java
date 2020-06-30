@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Materia;
@@ -18,7 +18,7 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 import com.example.grupo9pdm115.WebService.ControlServicio;
 
-public class NuevoMateria  extends AppCompatActivity {
+public class NuevoMateria  extends CyaneaAppCompatActivity {
     //Declarando
     EditText editCodMateria, editNombre;
     RadioButton masivaRadioButton1, masivaRadioButton2;

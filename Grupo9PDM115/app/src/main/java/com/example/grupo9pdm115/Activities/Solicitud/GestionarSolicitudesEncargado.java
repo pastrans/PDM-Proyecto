@@ -2,39 +2,46 @@ package com.example.grupo9pdm115.Activities.Solicitud;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.grupo9pdm115.Activities.DetalleReserva.GestionarDetalleReserva;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.SolicitudAdapter;
-import com.example.grupo9pdm115.Modelos.Local;
-import com.example.grupo9pdm115.Modelos.Reserva;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GestionarSolicitudesEncargado extends AppCompatActivity {
+public class GestionarSolicitudesEncargado extends CyaneaAppCompatActivity {
 
-    ListView listaSolicitud;
+    Button Voice;
+    static final int check=1111;
+    SwipeMenuListView listaSolicitud;
+    //ListView listaSolicitud;
     SolicitudAdapter solicitudAdapter;
     Solicitud solicitud, solicitudActualizarDialog;
     private String nuevaFecha = "";
@@ -53,9 +60,128 @@ public class GestionarSolicitudesEncargado extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_solicitudes_encargado);
-        listaSolicitud = (ListView) findViewById(R.id.listaSolicitud);
+        listaSolicitud = (SwipeMenuListView) findViewById(R.id.listaSolicitud);
+        //listaSolicitud = (ListView) findViewById(R.id.listaSolicitud);
         llenarListaSolicitudes();
         registerForContextMenu(listaSolicitud);
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "consultar" item
+                SwipeMenuItem queryItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //editItem.setBackground(new ColorDrawable(Color.rgb(0xF5, 0xF5,0xF5)));
+                // set item width
+                queryItem.setWidth(170);
+                // set a icon
+                queryItem.setIcon(R.drawable.ic_query);
+                // add to menu
+                menu.addMenuItem(queryItem);
+
+                // create "revisar" item
+                SwipeMenuItem revisarItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                revisarItem.setWidth(170);
+                // set a icon
+                revisarItem.setIcon(R.drawable.ic_revisar);
+                // add to menu
+                menu.addMenuItem(revisarItem);
+
+                // create "enviar" item
+                SwipeMenuItem enviarItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                enviarItem.setWidth(170);
+                // set a icon
+                enviarItem.setIcon(R.drawable.ic_send);
+                // add to menu
+                menu.addMenuItem(enviarItem);
+
+                // create "nuevo" item
+                SwipeMenuItem nuevoItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                nuevoItem.setWidth(170);
+                // set a icon
+                nuevoItem.setIcon(R.drawable.ic_add);
+                // add to menu
+                menu.addMenuItem(nuevoItem);
+            }
+        };
+        listaSolicitud.setMenuCreator(creator);
+        listaSolicitud.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                final Solicitud solicitudSeleccionada = (solicitudAdapter.getItem(position));
+                solicitudActualizarDialog = (solicitudAdapter.getItem(position));
+                switch (index) {
+                    case 0:
+                        Intent consultarInte = new Intent(getApplicationContext(), GestionarDetalleReserva.class);
+                        consultarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
+                        consultarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
+                        consultarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                        consultarInte.putExtra("accion", 1);
+                        startActivity(consultarInte);
+                        return true;
+                    case 1:
+                        Intent revisarInte = new Intent(getApplicationContext(), GestionarDetalleReserva.class);
+                        revisarInte.putExtra("idSolicitud", solicitudSeleccionada.getIdSolicitud());
+                        revisarInte.putExtra("tipoSolicitud", solicitudSeleccionada.getTipoSolicitud());
+                        revisarInte.putExtra("comentario", solicitudSeleccionada.getComentario());
+                        revisarInte.putExtra("accion", 2);
+                        startActivity(revisarInte);
+                        return true;
+                    case 2:
+                        String encargado = solicitudSeleccionada.getEnargadoLocal(getApplicationContext());
+                        solicitudSeleccionada.setIdEncargado(encargado);
+                        String res = solicitudSeleccionada.actualizar(getApplicationContext());
+                        Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                        llenarListaSolicitudes();
+                    case 3:
+                        AlertDialog.Builder msj2 = new AlertDialog.Builder(getApplicationContext());
+                        msj2.setTitle("Asigne la nueva fecha de finalización: (yyyy-MM-dd)");
+                        final EditText input = new EditText(getApplicationContext());
+                        input.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+                        msj2.setView(input);
+                        msj2.setPositiveButton("Asignar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //try {
+                                //Date fecha = FechasHelper.stringToDate(input.getText().toString());
+                                //nuevaFecha = FechasHelper.dateToString(fecha);
+                                nuevaFecha = input.getText().toString();
+                                solicitudActualizarDialog.setNuevoFinPeriodo(nuevaFecha);
+                                String res = solicitudActualizarDialog.actualizar(getApplicationContext());
+                                Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                        /*} catch (ParseException e) {
+                            Toast.makeText(getApplicationContext(), "Error con la fecha", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }*/
+                            }
+                        });
+                        msj2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        msj2.show();
+                        return true;
+
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
     }
 
     public void llenarListaSolicitudes(){

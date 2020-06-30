@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Rol;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class NuevoRol extends AppCompatActivity {
+public class NuevoRol extends CyaneaAppCompatActivity {
 
     ListView listViewAccesoRol;
     AccesoOpcionCrudAdapter accesoOpcionCrudAdapter;

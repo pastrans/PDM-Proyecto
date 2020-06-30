@@ -1,7 +1,7 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class GestionarDetalleReserva extends AppCompatActivity {
+public class GestionarDetalleReserva extends CyaneaAppCompatActivity {
 
     Button Voice;
     static final int check=1111;

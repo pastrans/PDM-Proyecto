@@ -1,7 +1,7 @@
 package com.example.grupo9pdm115.Activities.Grupo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarGrupo extends AppCompatActivity implements View.OnClickListener{
+public class GestionarGrupo extends CyaneaAppCompatActivity implements View.OnClickListener{
 
     // Permisos acciones
     private boolean permisoInsert = false;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Usuario;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EditarUsuario extends AppCompatActivity {
+public class EditarUsuario extends CyaneaAppCompatActivity {
 
     Usuario usuario;
     UsuarioUnidadSpinner usuarioUnidadSpinnerAdapter;

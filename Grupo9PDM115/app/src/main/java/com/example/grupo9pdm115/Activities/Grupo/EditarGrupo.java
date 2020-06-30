@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Grupo;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.example.grupo9pdm115.Spinners.NuevoGrupoSpinners;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarGrupo extends AppCompatActivity {
+public class EditarGrupo extends CyaneaAppCompatActivity {
 
     TextView editNumero;
     Grupo grupo;

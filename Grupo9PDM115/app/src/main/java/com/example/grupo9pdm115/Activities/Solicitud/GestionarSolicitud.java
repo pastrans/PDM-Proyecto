@@ -2,7 +2,7 @@ package com.example.grupo9pdm115.Activities.Solicitud;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarSolicitud extends AppCompatActivity implements View.OnClickListener {
+public class GestionarSolicitud extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     Button Voice;
     static final int check=1111;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Feriado;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class ConsultarFeriadoEnCalendario extends AppCompatActivity {
+public class ConsultarFeriadoEnCalendario extends CyaneaAppCompatActivity {
 
     CalendarView calendarView;
 

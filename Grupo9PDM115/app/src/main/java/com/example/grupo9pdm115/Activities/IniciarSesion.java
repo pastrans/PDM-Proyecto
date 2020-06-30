@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 
-public class IniciarSesion extends AppCompatActivity {
+public class IniciarSesion extends CyaneaAppCompatActivity {
 
     EditText nombreUsuario, claveUsuario;
     ControlBD helper;

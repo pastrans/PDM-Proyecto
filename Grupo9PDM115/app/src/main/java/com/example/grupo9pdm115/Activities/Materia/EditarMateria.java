@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Materia;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import com.example.grupo9pdm115.WebService.ControlServicio;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarMateria extends AppCompatActivity {
+public class EditarMateria extends CyaneaAppCompatActivity {
     //Declarando
     EditText editCodMateria, editNombre;
     RadioButton masivaRadioButton1, masivaRadioButton2;

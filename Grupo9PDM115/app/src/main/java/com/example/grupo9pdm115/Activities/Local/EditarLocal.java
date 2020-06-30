@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Local;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.example.grupo9pdm115.Spinners.TipoLocalSpinner;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarLocal extends AppCompatActivity {
+public class EditarLocal extends CyaneaAppCompatActivity {
 
     EditText nombreLocal;
     EditText capcidad;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Solicitud;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class NuevoSolicitud extends AppCompatActivity {
+public class NuevoSolicitud extends CyaneaAppCompatActivity {
 
     EditText edtEncargado, edtAsunto, edtComentario;
     CheckBox chkIntermediario;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Coordinacion;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,10 +21,11 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import java.util.Calendar;
 
-public class NuevoCoordinacion extends AppCompatActivity {
+public class NuevoCoordinacion extends CyaneaAppCompatActivity {
     ControlBD helper;
     EditText editCodMateria;
     EditText editIdUsuario;

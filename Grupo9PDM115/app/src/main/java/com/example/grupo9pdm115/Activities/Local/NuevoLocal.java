@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Local;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.TipoLocalSpinner;
 
-public class NuevoLocal extends AppCompatActivity {
+public class NuevoLocal extends CyaneaAppCompatActivity {
 
     EditText nombreLocal;
     EditText capcidad;

@@ -2,7 +2,7 @@ package com.example.grupo9pdm115.Activities.Solicitud;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GestionarSolicitudesEncargado extends AppCompatActivity {
+public class GestionarSolicitudesEncargado extends CyaneaAppCompatActivity {
 
     Button Voice;
     static final int check=1111;

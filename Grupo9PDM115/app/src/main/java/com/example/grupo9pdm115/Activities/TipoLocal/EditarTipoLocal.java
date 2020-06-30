@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.TipoLocal;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.example.grupo9pdm115.Spinners.UsuarioSpinner;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarTipoLocal extends AppCompatActivity {
+public class EditarTipoLocal extends CyaneaAppCompatActivity {
 
     ControlBD helper;
     EditText edtNombreTipo;

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,7 +25,7 @@ import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class AsignarLocalDetalleReserva extends AppCompatActivity {
+public class AsignarLocalDetalleReserva extends CyaneaAppCompatActivity {
 
     ListView listaLocal;
     LocalAdapter listaLocalAdapter;

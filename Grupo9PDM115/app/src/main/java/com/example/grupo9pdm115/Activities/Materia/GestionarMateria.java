@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -32,7 +32,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarMateria extends AppCompatActivity implements View.OnClickListener {
+public class GestionarMateria extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     // Permisos acciones
     private boolean permisoInsert = false;

@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.DiaAdapter;
@@ -21,7 +21,7 @@ import com.example.grupo9pdm115.R;
 
 import java.util.List;
 
-public class GestionarDia extends AppCompatActivity {
+public class GestionarDia extends CyaneaAppCompatActivity {
 
     // Permisos acciones
     private boolean permisoInsert = false;

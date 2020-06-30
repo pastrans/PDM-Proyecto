@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Rol;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.List;
 
-public class EditarRol extends AppCompatActivity {
+public class EditarRol extends CyaneaAppCompatActivity {
 
     ListView listViewEditarRol;
     TextView txtNombreRol;

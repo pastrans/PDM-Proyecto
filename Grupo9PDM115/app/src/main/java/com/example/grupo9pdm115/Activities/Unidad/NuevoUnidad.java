@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Unidad;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -23,7 +23,7 @@ import com.example.grupo9pdm115.WebService.ControlServicio;
 
 import org.json.JSONObject;
 
-public class NuevoUnidad extends AppCompatActivity {
+public class NuevoUnidad extends CyaneaAppCompatActivity {
     EditText nombreUnidad;
     EditText descripcionUnidad;
     int PERMISO_INTERNET;

@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
@@ -25,7 +25,7 @@ import com.example.grupo9pdm115.Spinners.CicloSpinnerHelper;
 
 import java.util.Calendar;
 
-public class NuevoFeriado extends AppCompatActivity implements View.OnClickListener {
+public class NuevoFeriado extends CyaneaAppCompatActivity implements View.OnClickListener {
     //Declarando
     EditText editNombreFeriado, editDescripcionFeriado, editInicioFeriado, editFinFeriado;
     Spinner spnCicloFeriado;

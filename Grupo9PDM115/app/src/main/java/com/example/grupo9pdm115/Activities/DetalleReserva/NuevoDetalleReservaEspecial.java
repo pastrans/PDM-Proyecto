@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class NuevoDetalleReservaEspecial extends AppCompatActivity implements View.OnClickListener {
+public class NuevoDetalleReservaEspecial extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     EditText edtLocal, edtCupo, edtFechaReserva;
     Spinner spinnerHoraInicial, spinnerEventoEspecial, spinnerHoraFinal;

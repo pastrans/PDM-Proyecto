@@ -1,7 +1,7 @@
 package com.example.grupo9pdm115.Activities.Feriado;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -27,7 +27,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.text.ParseException;
 import java.util.Calendar;
 
-public class EditarFeriado extends AppCompatActivity implements View.OnClickListener {
+public class EditarFeriado extends CyaneaAppCompatActivity implements View.OnClickListener {
     //Declarando
     EditText editNombreFeriado, editDescripcionFeriado, editInicioFeriado, editFinFeriado;
     Spinner spnCicloFeriado;

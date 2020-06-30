@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Horario;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class NuevoHorario extends AppCompatActivity implements View.OnClickListener{
+public class NuevoHorario extends CyaneaAppCompatActivity implements View.OnClickListener{
     ControlBD helper;
     EditText editHInicio,editHFinal;
 

@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Unidad;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.example.grupo9pdm115.WebService.ControlServicio;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarUnidad extends AppCompatActivity {
+public class EditarUnidad extends CyaneaAppCompatActivity {
     EditText nombreent;
     EditText descripcion;
     Unidad unidad;

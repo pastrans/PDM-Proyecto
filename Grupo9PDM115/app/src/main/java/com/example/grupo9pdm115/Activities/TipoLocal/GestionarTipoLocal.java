@@ -1,7 +1,7 @@
 package com.example.grupo9pdm115.Activities.TipoLocal;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarTipoLocal extends AppCompatActivity implements View.OnClickListener{
+public class GestionarTipoLocal extends CyaneaAppCompatActivity implements View.OnClickListener{
 
     // Permisos acciones
     private boolean permisoInsert = false;

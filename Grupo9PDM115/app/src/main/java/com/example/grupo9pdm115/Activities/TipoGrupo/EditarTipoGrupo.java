@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Sesion;
@@ -15,7 +15,7 @@ import com.example.grupo9pdm115.R;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarTipoGrupo extends AppCompatActivity {
+public class EditarTipoGrupo extends CyaneaAppCompatActivity {
     // Declarando
     EditText editNombreTG;
     TipoGrupo tipoGrupo;

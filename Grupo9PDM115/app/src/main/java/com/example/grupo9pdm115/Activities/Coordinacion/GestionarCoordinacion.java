@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Coordinacion;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,13 +31,14 @@ import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarCoordinacion extends AppCompatActivity implements View.OnClickListener {
+public class GestionarCoordinacion extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     // Permisos acciones
     private boolean permisoInsert = false;

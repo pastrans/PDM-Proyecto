@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 
-public class ErrorDeUsuario extends AppCompatActivity {
+public class ErrorDeUsuario extends CyaneaAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

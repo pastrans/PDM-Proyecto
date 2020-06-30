@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.Coordinacion;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +17,11 @@ import com.example.grupo9pdm115.Modelos.Coordinacion;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
-public class EditarCoordinacion extends AppCompatActivity {
+public class EditarCoordinacion extends CyaneaAppCompatActivity {
     ControlBD helper;
     EditText editCodMateria;
     EditText editIdUsuario;

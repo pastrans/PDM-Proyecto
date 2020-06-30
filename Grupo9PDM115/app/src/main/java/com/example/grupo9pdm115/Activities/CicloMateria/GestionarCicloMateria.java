@@ -1,6 +1,6 @@
 package com.example.grupo9pdm115.Activities.CicloMateria;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,13 +24,14 @@ import com.example.grupo9pdm115.Adapters.CicloMateriaAdapter;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarCicloMateria  extends AppCompatActivity implements View.OnClickListener {
+public class GestionarCicloMateria  extends CyaneaAppCompatActivity implements View.OnClickListener {
 
     // Permisos acciones
     private boolean permisoInsert = false;

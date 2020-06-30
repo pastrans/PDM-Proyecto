@@ -25,6 +25,8 @@ import com.example.grupo9pdm115.Adapters.RolAdapter;
 import com.example.grupo9pdm115.Modelos.Rol;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,7 @@ public class GestionarRol extends AppCompatActivity implements View.OnClickListe
     EditText editNombreCiclo;
     //ListView listaRoles;
     RolAdapter listaRolAdapter;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +104,7 @@ public class GestionarRol extends AppCompatActivity implements View.OnClickListe
         listaRoles.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Rol rolSeleccionado = (listaRolAdapter.getItem(position));
+                final Rol rolSeleccionado = (listaRolAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -119,10 +122,30 @@ public class GestionarRol extends AppCompatActivity implements View.OnClickListe
                             return true;
                         }
                         if (rolSeleccionado != null){
-                            String resEliminados = "";
-                            resEliminados = rolSeleccionado.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
-                            llenarListaRoles(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarRol.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String resEliminados = "";
+                                        resEliminados = rolSeleccionado.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
+                                        llenarListaRoles(null);
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                                Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                                dialogInterface.dismiss();
+                                        }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

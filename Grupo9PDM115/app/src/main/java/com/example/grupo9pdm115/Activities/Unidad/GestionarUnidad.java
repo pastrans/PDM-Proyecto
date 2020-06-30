@@ -27,6 +27,8 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.WebService.ControlServicio;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class GestionarUnidad extends AppCompatActivity implements View.OnClickLi
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
+    private MaterialDialog mSimpleDialog;
 
     Button Voice;
     static final int check=1111;
@@ -114,7 +117,7 @@ public class GestionarUnidad extends AppCompatActivity implements View.OnClickLi
         listUnidad.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Unidad unidadActual = (listaUnidadAdapter.getItem(position));
+                final Unidad unidadActual = (listaUnidadAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -136,11 +139,31 @@ public class GestionarUnidad extends AppCompatActivity implements View.OnClickLi
                             return true;
                         }
                         if(unidadActual != null){
-                            String regEliminadas;
-                            eliminarWeb(unidadActual.getIdUnidad());;
-                            regEliminadas= unidadActual.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaUnidad(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarUnidad.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String regEliminadas;
+                                        eliminarWeb(unidadActual.getIdUnidad());;
+                                        regEliminadas= unidadActual.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                        llenarListaUnidad(null);
+                                        dialogInterface.dismiss();
+                                        }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                    .setAnimation("delete_anim.json")
+                                    .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

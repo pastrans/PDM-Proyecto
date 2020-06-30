@@ -26,6 +26,8 @@ import com.example.grupo9pdm115.Adapters.TipoGrupoAdapter;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,7 @@ public class GestionarTipoGrupo extends AppCompatActivity implements View.OnClic
     EditText editNombreTP;
     TipoGrupoAdapter listaTipoGrupoAdapter;
     TipoGrupo tipoGrupo;
+    private MaterialDialog mSimpleDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Validando permisos para acciones
@@ -108,7 +111,7 @@ public class GestionarTipoGrupo extends AppCompatActivity implements View.OnClic
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
-                TipoGrupo TGActual = (listaTipoGrupoAdapter.getItem(position));
+                final TipoGrupo TGActual = (listaTipoGrupoAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -132,10 +135,30 @@ public class GestionarTipoGrupo extends AppCompatActivity implements View.OnClic
                                 Toast.makeText(getApplicationContext(), "No se puede eliminar debido a dependecias del registro", Toast.LENGTH_SHORT).show();
                                 return true;
                             }
-                            String regEliminadas;
-                            regEliminadas= TGActual.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaTipoGrupo(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarTipoGrupo.this)
+                                    .setTitle("Eliminar")
+                                    .setMessage("¿Está seguro de eliminar?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            String regEliminadas;
+                                            regEliminadas= TGActual.eliminar(getApplicationContext());
+                                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                            llenarListaTipoGrupo(null);
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                    Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                    dialogInterface.dismiss();
+                                 }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

@@ -21,6 +21,8 @@ import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinnerHelper;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -36,6 +38,7 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
 
     Feriado feriado;
     int control;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,31 +103,51 @@ public class EditarFeriado extends AppCompatActivity implements View.OnClickList
 
     //Metodo para actualizar feriado
     public void actualizarFeriado(View v) throws ParseException {
-        // Instanciando feriado para actualizar
-        feriado.setNombreFeriado(editNombreFeriado.getText().toString());
-        feriado.setDescripcionFeriado(editDescripcionFeriado.getText().toString());
-        feriado.setFechaInicioFeriadoFromLocal(editInicioFeriado.getText().toString());
-        feriado.setFechaFinFeriadoFromLocal(editFinFeriado.getText().toString());
-        feriado.setIdCiclo(cicloSpinnerHelper.getIdCiclo(spnCicloFeriado.getSelectedItemPosition()));
-        feriado.setBloquearReservas(rbReservasBloqueadas.isChecked());
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Instanciando feriado para actualizar
+                        feriado.setNombreFeriado(editNombreFeriado.getText().toString());
+                        feriado.setDescripcionFeriado(editDescripcionFeriado.getText().toString());
+                        feriado.setFechaInicioFeriadoFromLocal(editInicioFeriado.getText().toString());
+                        feriado.setFechaFinFeriadoFromLocal(editFinFeriado.getText().toString());
+                        feriado.setIdCiclo(cicloSpinnerHelper.getIdCiclo(spnCicloFeriado.getSelectedItemPosition()));
+                        feriado.setBloquearReservas(rbReservasBloqueadas.isChecked());
 
-        // Validaciones lógicas
-        String mensaje = "";
-        switch (feriado.verificarCampos(this, control)){
-            case 0:
-                mensaje = feriado.actualizar(this);
-                Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-                finish();
-                break;
-            case 1:
-                mensaje = "Todos los campos deben estar llenos."; break;
-            case 2:
-                mensaje = "Las fechas deben estar dentro del ciclo."; break;
-            case 3:
-                mensaje = "La fecha de fin debe ser posterior a la de inicio."; break;
-        }
+                        // Validaciones lógicas
+                        String mensaje = "";
+                        switch (feriado.verificarCampos(getApplicationContext(), control)){
+                            case 0:
+                                mensaje = feriado.actualizar(getApplicationContext());
+                                Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                                finish();
+                                break;
+                            case 1:
+                                mensaje = "Todos los campos deben estar llenos."; break;
+                            case 2:
+                                mensaje = "Las fechas deben estar dentro del ciclo."; break;
+                            case 3:
+                                mensaje = "La fecha de fin debe ser posterior a la de inicio."; break;
+                        }
 
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
+        mSimpleDialog.show();
     }
 
     //Limpiar campos

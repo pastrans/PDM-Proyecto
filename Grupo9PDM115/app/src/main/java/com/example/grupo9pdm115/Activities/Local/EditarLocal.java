@@ -14,6 +14,8 @@ import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.TipoLocalSpinner;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 public class EditarLocal extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class EditarLocal extends AppCompatActivity {
     Spinner tipoLocalSpinner;
     TipoLocalSpinner tipoLocalAdapter;
     Local local;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,30 +66,50 @@ public class EditarLocal extends AppCompatActivity {
     }
 
     public void btnEditarELocal(View v){
-        int posTipoLocal = 0;
-        String res = "";
-        posTipoLocal = tipoLocalSpinner.getSelectedItemPosition();
-        local.setNombreLocal(nombreLocal.getText().toString());
-        local.setCapacidad(Integer.parseInt(capcidad.getText().toString()));
-        local.setIdtipolocal(tipoLocalAdapter.getIdTipoLocal(posTipoLocal));
-        if(local.getNombreLocal().isEmpty()){
-            res="EL nombre está vacio";
-        }
-        else{
-            if(local.getCapacidad() <= 0){
-                res = "La capacidad debe ser mayor a cero";
-            }else {
-                if (local.getIdtipolocal() == 0) {
-                    res = "Escoga un tipo de local";
-                } else {
-                    res = local.actualizar(this);
-                    Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
-                    finish();
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                int posTipoLocal = 0;
+                String res = "";
+                posTipoLocal = tipoLocalSpinner.getSelectedItemPosition();
+                local.setNombreLocal(nombreLocal.getText().toString());
+                local.setCapacidad(Integer.parseInt(capcidad.getText().toString()));
+                local.setIdtipolocal(tipoLocalAdapter.getIdTipoLocal(posTipoLocal));
+                if(local.getNombreLocal().isEmpty()){
+                    res="EL nombre está vacio";
                 }
-            }
-        }
-        //res = local.actualizar(this);
-        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+                else{
+                    if(local.getCapacidad() <= 0){
+                        res = "La capacidad debe ser mayor a cero";
+                    }else {
+                        if (local.getIdtipolocal() == 0) {
+                            res = "Escoga un tipo de local";
+                        } else {
+                            res = local.actualizar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                }
+                //res = local.actualizar(this);
+                Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                dialogInterface.dismiss();
+                }
+            })
+            .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                    Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                    dialogInterface.cancel();
+                }
+            })
+            .setAnimation("edit_anim.json")
+            .build();
+        mSimpleDialog.show();
     }
 
     public void btnLimpiarELocal(View v){

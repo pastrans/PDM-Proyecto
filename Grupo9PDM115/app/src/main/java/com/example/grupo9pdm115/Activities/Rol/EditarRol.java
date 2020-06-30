@@ -19,6 +19,8 @@ import com.example.grupo9pdm115.Modelos.OpcionCrud;
 import com.example.grupo9pdm115.Modelos.Rol;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class EditarRol extends AppCompatActivity {
     List<String> listaAccesoUsuario;
     int[] posiciones;
     OpcionCrud oc;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,44 +125,63 @@ public class EditarRol extends AppCompatActivity {
         });
     }
 
-
-
     public void editarRolGuardar(View v){
-        if (accesoUsuario.getIdRol() == 1){
-            Toast.makeText(this, "No se pueden modificar los permisos para el Administrador", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        String selected = "", opcion = "", regInsertados = "";
-        //List<AccesoUsuario> listaAccesoUsuarioActual = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdRol());
-        int choice = listViewEditarRol.getCount();
-        SparseBooleanArray sparseBooleanArray = listViewEditarRol.getCheckedItemPositions();
-        String cantidad = "";
-        for (int i = 0; i < choice; i++){
-            if(sparseBooleanArray.size() > 0){
-                if(sparseBooleanArray.get(i)){
-                    if(listaAccesoUsuario.size() > 0){
-                        if(!listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
-                            accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
-                            regInsertados = accesoUsuario.guardar(this);
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int j) {
+                if (accesoUsuario.getIdRol() == 1){
+                    Toast.makeText(getApplicationContext(), "No se pueden modificar los permisos para el Administrador", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+                String selected = "", opcion = "", regInsertados = "";
+                //List<AccesoUsuario> listaAccesoUsuarioActual = accesoUsuario.obtenerAccesoUsuario(this, accesoUsuario.getIdRol());
+                int choice = listViewEditarRol.getCount();
+                SparseBooleanArray sparseBooleanArray = listViewEditarRol.getCheckedItemPositions();
+                String cantidad = "";
+                for (int i = 0; i < choice; i++){
+                    if(sparseBooleanArray.size() > 0){
+                        if(sparseBooleanArray.get(i)){
+                            if(listaAccesoUsuario.size() > 0){
+                                if(!listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
+                                    accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
+                                    regInsertados = accesoUsuario.guardar(getApplicationContext());
+                                }
+                            }else{
+                                accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
+                                regInsertados = accesoUsuario.guardar(getApplicationContext());
+                            }
+                        }else{
+                            if (listaAccesoUsuario.size() > 0){
+                                if(listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
+                                    accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
+                                    accesoUsuario.deleteAcceso(getApplicationContext(), accesoUsuario);
+                                }
+                            }
                         }
                     }else{
-                        accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
-                        regInsertados = accesoUsuario.guardar(this);
-                    }
-                }else{
-                    if (listaAccesoUsuario.size() > 0){
-                        if(listaAccesoUsuario.contains(listViewEditarRol.getItemAtPosition(i).toString())){
-                            accesoUsuario.setIdOpcion(listViewEditarRol.getItemAtPosition(i).toString().substring(0, 3));
-                            accesoUsuario.deleteAcceso(this, accesoUsuario);
-                        }
+                        Toast.makeText(getApplicationContext(), "Seleccione al menos 1 permiso al rol", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }else{
-                Toast.makeText(this, "Seleccione al menos 1 permiso al rol", Toast.LENGTH_SHORT).show();
-            }
-        }
-        Toast.makeText(this, "Accesos del rol actualizados con éxito", Toast.LENGTH_LONG).show();
-        finish();
+                Toast.makeText(getApplicationContext(), "Accesos del rol actualizados con éxito", Toast.LENGTH_LONG).show();
+                finish();
+                dialogInterface.dismiss();
+                }
+            })
+            .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                dialogInterface.cancel();
+                }
+            })
+            .setAnimation("edit_anim.json")
+            .build();
+        mSimpleDialog.show();
     }
 
 }

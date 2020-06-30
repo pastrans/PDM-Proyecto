@@ -24,6 +24,8 @@ import com.example.grupo9pdm115.Adapters.CicloAdapter;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,7 @@ public class GestionarCiclo extends AppCompatActivity implements View.OnClickLis
     EditText editNombreCiclo;
     CicloAdapter listaCiclosAdapter;
     Ciclo ciclo;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +125,7 @@ public class GestionarCiclo extends AppCompatActivity implements View.OnClickLis
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
 
-                Ciclo cicloActual = (listaCiclosAdapter.getItem(position));
+                final Ciclo cicloActual = (listaCiclosAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -166,19 +169,38 @@ public class GestionarCiclo extends AppCompatActivity implements View.OnClickLis
                             return true;
                         }
                         if(cicloActual != null){
-                            String regEliminadas;
-                            // Si es ciclo activo no permitir eliminar
-                            if(cicloActual.isEstadoCiclo()){
-                                regEliminadas = getApplicationContext().getString(R.string.mnjNoElimCicloActivo); // "No es posible eliminar un ciclo activo.";
-                            }
-                            else{
-                                regEliminadas= cicloActual.eliminar(getApplicationContext());
-                            }
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaCiclo(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarCiclo.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String regEliminadas;
+                                        // Si es ciclo activo no permitir eliminar
+                                        if(cicloActual.isEstadoCiclo()){
+                                            regEliminadas = getApplicationContext().getString(R.string.mnjNoElimCicloActivo); // "No es posible eliminar un ciclo activo.";
+                                        }
+                                        else{
+                                            regEliminadas= cicloActual.eliminar(getApplicationContext());
+                                        }
+                                        Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                        llenarListaCiclo(null);
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
-
                 }
                 // false : close the menu; true : not close the menu
                 return false;

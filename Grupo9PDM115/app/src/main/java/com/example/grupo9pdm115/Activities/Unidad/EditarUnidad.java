@@ -15,11 +15,14 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.WebService.ControlServicio;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 public class EditarUnidad extends AppCompatActivity {
     EditText nombreent;
     EditText descripcion;
     Unidad unidad;
+    private MaterialDialog mSimpleDialog;
 
     private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Unidad/ws_unidad_editar.php";
 
@@ -56,25 +59,46 @@ public class EditarUnidad extends AppCompatActivity {
     }
     // Método para actualizar
     public void actualizarU(View v) {
-        String estado;
-        String nombreuni = nombreent.getText().toString();
-        unidad.setNombreent(nombreuni);
-        String desc  = descripcion.getText().toString();
-        unidad.setDescripcionent(desc);
-        //unidad.setPrioridad(prio);
-        if(unidad.getNombreent().isEmpty()){
-            estado= "El nombre esta vacio";
-        }else{
-            if(unidad.getDescripcionent().isEmpty()){
-                estado = "La descripción esta vacia";
-            }else{
-                actualizarWeb(unidad);
-                estado = unidad.actualizar(this);
-                Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String estado;
+                        String nombreuni = nombreent.getText().toString();
+                        unidad.setNombreent(nombreuni);
+                        String desc  = descripcion.getText().toString();
+                        unidad.setDescripcionent(desc);
+                        //unidad.setPrioridad(prio);
+                        if(unidad.getNombreent().isEmpty()){
+                            estado= "El nombre esta vacio";
+                        }else{
+                            if(unidad.getDescripcionent().isEmpty()){
+                                estado = "La descripción esta vacia";
+                            }else{
+                                actualizarWeb(unidad);
+                                estado = unidad.actualizar(getApplicationContext());
+                                Toast.makeText(getApplicationContext(), estado, Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                        Toast.makeText(getApplicationContext(), estado, Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
+
+        mSimpleDialog.show();
     }
 
     public void actualizarWeb(Unidad u){

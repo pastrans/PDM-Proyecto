@@ -15,6 +15,8 @@ import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +27,7 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
 
     EditText editHInicio,editHFinal;
     Horario horario;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +80,35 @@ public class EditarHorario extends AppCompatActivity implements View.OnClickList
 
     // Método para actualizar Horario
     public void actualizarH(View v) throws ParseException {
-        String horai = editHInicio.getText().toString();
-        horario.setHoraInicio(horai);
-        String horaf = editHFinal.getText().toString();
-        horario.setHoraFinal(horaf);
-        validarHora(horario.getHoraInicio(),horario.getHoraFinal(),horario);
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                String horai = editHInicio.getText().toString();
+                horario.setHoraInicio(horai);
+                String horaf = editHFinal.getText().toString();
+                horario.setHoraFinal(horaf);
+                try {
+                    validarHora(horario.getHoraInicio(),horario.getHoraFinal(),horario);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                dialogInterface.dismiss();
+                }
+            })
+            .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                    Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                    dialogInterface.cancel();
+                }
+            })
+            .setAnimation("edit_anim.json")
+            .build();
+        mSimpleDialog.show();
     }
 
     public void validarHora(String horai, String horaf, Horario horario) throws ParseException {

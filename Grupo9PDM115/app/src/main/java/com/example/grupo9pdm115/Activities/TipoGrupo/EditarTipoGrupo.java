@@ -12,11 +12,14 @@ import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 public class EditarTipoGrupo extends AppCompatActivity {
     // Declarando
     EditText editNombreTG;
     TipoGrupo tipoGrupo;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,25 +48,46 @@ public class EditarTipoGrupo extends AppCompatActivity {
 
     // Método para actualizar día
     public void btnactualizar(View v) {
-        String estado;
-        String nombreTG = editNombreTG.getText().toString();
-        tipoGrupo.setNombreTipoGrupo(nombreTG);
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String estado;
+                        String nombreTG = editNombreTG.getText().toString();
+                        tipoGrupo.setNombreTipoGrupo(nombreTG);
 
-        String verificar = verificarDatos(tipoGrupo);
-        if(!verificar.equals("")){
-            Toast.makeText(this, verificar, Toast.LENGTH_SHORT).show();
-            return;
-        }
+                        String verificar = verificarDatos(tipoGrupo);
+                        if(!verificar.equals("")){
+                            Toast.makeText(getApplicationContext(), verificar, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
-        if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
-            estado="Nombre está vacío";
-        }
-        else{
-            estado = tipoGrupo.actualizar(this);
-            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+                        if(tipoGrupo.getNombreTipoGrupo().isEmpty()){
+                            estado="Nombre está vacío";
+                        }
+                        else{
+                            estado = tipoGrupo.actualizar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), estado, Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        Toast.makeText(getApplicationContext(), estado, Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
+
+        mSimpleDialog.show();
     }
 
     //Limpiar campos

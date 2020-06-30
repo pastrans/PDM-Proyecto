@@ -125,29 +125,29 @@ public class GestionarSolicitud extends AppCompatActivity implements View.OnClic
                     case 1:
                         if (solicitudSeleccionada != null){
                             mSimpleDialog = new MaterialDialog.Builder(GestionarSolicitud.this)
-                                    .setTitle("Eliminar")
-                                    .setMessage("¿Está seguro de eliminar?")
-                                    .setCancelable(false)
-                                    .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            String regEliminados;
-                                            regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
-                                            Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
-                                            llenarListaSolicitudes(null);
-                                            dialogInterface.dismiss();
-                                        }
-                                    })
-                                    .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int which) {
-                                            Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
-                                            dialogInterface.dismiss();
-                                        }
-                                    })
-                                        .setAnimation("delete_anim.json")
-                                        .build();
-                                    mSimpleDialog.show();
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String regEliminados;
+                                        regEliminados = solicitudSeleccionada.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
+                                        llenarListaSolicitudes(null);
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                    .setAnimation("delete_anim.json")
+                                    .build();
+                                mSimpleDialog.show();
                             return true;
                         }
                         return true;

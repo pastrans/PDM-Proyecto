@@ -25,6 +25,8 @@ import com.example.grupo9pdm115.Adapters.UsuarioAdapter;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ public class GestionarUsuario extends AppCompatActivity implements View.OnClickL
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
     private boolean permisoUpdate = false;
+    private MaterialDialog mSimpleDialog;
 
     Button Voice;
     static final int check=1111;
@@ -102,7 +105,7 @@ public class GestionarUsuario extends AppCompatActivity implements View.OnClickL
         listaUsuarios.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Usuario usuarioSeleccionado = (listaUsuariosAdapter.getItem(position));
+                final Usuario usuarioSeleccionado = (listaUsuariosAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -126,10 +129,30 @@ public class GestionarUsuario extends AppCompatActivity implements View.OnClickL
                             return true;
                         }
                         if (usuarioSeleccionado != null){
-                            String regEliminados;
-                            regEliminados = usuarioSeleccionado.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
-                            llenarListaUsuarios(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarUsuario.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String regEliminados;
+                                        regEliminados = usuarioSeleccionado.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), regEliminados, Toast.LENGTH_SHORT).show();
+                                        llenarListaUsuarios(null);
+                                        dialogInterface.dismiss();
+                                    }
+                                 })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                    .setAnimation("delete_anim.json")
+                                    .build();
+                            mSimpleDialog.show();
                         }
                         //Toast.makeText(this, "Eliminar User", Toast.LENGTH_LONG).show();
                         return true;

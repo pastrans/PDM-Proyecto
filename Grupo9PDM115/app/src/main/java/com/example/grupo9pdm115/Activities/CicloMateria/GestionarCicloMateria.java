@@ -24,6 +24,8 @@ import com.example.grupo9pdm115.Adapters.CicloMateriaAdapter;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class GestionarCicloMateria  extends AppCompatActivity implements View.On
     EditText editCodigoMateria;
     CicloMateriaAdapter listaMateriaAdapter;
     CicloMateria cicloMateria;
-
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +112,7 @@ public class GestionarCicloMateria  extends AppCompatActivity implements View.On
         listaCicloMaterias.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                CicloMateria cmActual = (listaMateriaAdapter.getItem(position));
+                final CicloMateria cmActual = (listaMateriaAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -131,10 +133,30 @@ public class GestionarCicloMateria  extends AppCompatActivity implements View.On
                             return true;
                         }
                         if (cmActual != null) {
-                            String regEliminadas;
-                            regEliminadas = cmActual.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaCicloMateria(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarCicloMateria.this)
+                                    .setTitle("Eliminar")
+                                    .setMessage("¿Está seguro de eliminar?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    String regEliminadas;
+                                                    regEliminadas = cmActual.eliminar(getApplicationContext());
+                                                    Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                                    llenarListaCicloMateria(null);
+                                                    dialogInterface.dismiss();
+                                                }
+                                    })
+                                    .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setAnimation("delete_anim.json")
+                                    .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

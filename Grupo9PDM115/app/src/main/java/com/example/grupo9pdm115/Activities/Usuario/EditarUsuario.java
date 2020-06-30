@@ -17,6 +17,8 @@ import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.RolSpinner;
 import com.example.grupo9pdm115.Spinners.UsuarioUnidadSpinner;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +30,7 @@ public class EditarUsuario extends AppCompatActivity {
     RolSpinner rolSpinnerAdapter;
     EditText editNombreUsuario, editNombrePersona, editApellidoPersona, editCorreoPersona, editClaveUsuario;
     Spinner spinnerEditarUnidadUsuario, spinnerEditarRolUsuario;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,58 +101,78 @@ public class EditarUsuario extends AppCompatActivity {
     }
 
     public void btnEditarEUsuario(View v){
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    int pos = spinnerEditarUnidadUsuario.getSelectedItemPosition();
+                    int posRol = spinnerEditarRolUsuario.getSelectedItemPosition();
+                    usuario.setNombreUsuario(editNombreUsuario.getText().toString());
+                    usuario.setNombrePersonal(editNombrePersona.getText().toString());
+                    usuario.setApellidoPersonal(editApellidoPersona.getText().toString());
+                    usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
+                    if(pos == 0){
+                        Toast.makeText(getApplicationContext(), "Seleccione una unidad", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(posRol == 0){
+                        Toast.makeText(getApplicationContext(), "Seleccione un rol", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
+                    usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
+                    usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
+                    String resultado;
+                    int posicionUnidad = 0, idUnidad = 0, posicionRol =0;
+                    if(!ValidarCorreo(editCorreoPersona.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Correo no valido", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    posicionUnidad = spinnerEditarUnidadUsuario.getSelectedItemPosition();
+                    posicionRol = spinnerEditarRolUsuario.getSelectedItemPosition();
+                    if (posicionUnidad != 0)
+                        usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(posicionUnidad));
+                    if(posicionRol != 0)
+                        usuario.setIdRol(rolSpinnerAdapter.getIdRol(posicionRol));
 
-        int pos = spinnerEditarUnidadUsuario.getSelectedItemPosition();
-        int posRol = spinnerEditarRolUsuario.getSelectedItemPosition();
-        usuario.setNombreUsuario(editNombreUsuario.getText().toString());
-        usuario.setNombrePersonal(editNombrePersona.getText().toString());
-        usuario.setApellidoPersonal(editApellidoPersona.getText().toString());
-        usuario.setCorreoPersonal(editCorreoPersona.getText().toString());
-        if(pos == 0){
-            Toast.makeText(this, "Seleccione una unidad", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if(posRol == 0){
-            Toast.makeText(this, "Seleccione un rol", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(pos));
-        usuario.setIdRol(rolSpinnerAdapter.getIdRol(posRol));
-        usuario.setClaveUsuario(getIntent().getStringExtra("claveUsuario"));
-        String resultado;
-        int posicionUnidad = 0, idUnidad = 0, posicionRol =0;
-        if(!ValidarCorreo(editCorreoPersona.getText().toString())){
-            Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        posicionUnidad = spinnerEditarUnidadUsuario.getSelectedItemPosition();
-        posicionRol = spinnerEditarRolUsuario.getSelectedItemPosition();
-        if (posicionUnidad != 0)
-            usuario.setIdUnidad(usuarioUnidadSpinnerAdapter.getIdUnidad(posicionUnidad));
-        if(posicionRol != 0)
-            usuario.setIdRol(rolSpinnerAdapter.getIdRol(posicionRol));
+                    if (!editClaveUsuario.getText().toString().equals("")) {
+                        if (!(editClaveUsuario.getText().toString().length() < 4)) {
+                            usuario.setClaveUsuario(editClaveUsuario.getText().toString());
+                            Log.v("contra", usuario.getClaveUsuario());
+                        }else {
+                            Toast.makeText(getApplicationContext(), " La contraseña debe tener mínimo 5 caractéres", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
 
-        if (!editClaveUsuario.getText().toString().equals("")) {
-            if (!(editClaveUsuario.getText().toString().length() < 4)) {
-                usuario.setClaveUsuario(editClaveUsuario.getText().toString());
-                Log.v("contra", usuario.getClaveUsuario());
-            }else {
-                Toast.makeText(this, " La contraseña debe tener mínimo 5 caractéres", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
+                    String verifcar = verificarDatos(usuario);
 
-        String verifcar = verificarDatos(usuario);
+                    if (!verifcar.equals("")){
+                        Toast.makeText(getApplicationContext(), verifcar, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, usuario.getClaveUsuario(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-        if (!verifcar.equals("")){
-            Toast.makeText(this, verifcar, Toast.LENGTH_SHORT).show();
-            //Toast.makeText(this, usuario.getClaveUsuario(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+                    resultado = usuario.actualizar(getApplicationContext());
+                    Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+                    finish();
+                    dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
 
-        resultado = usuario.actualizar(this);
-        Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show();
-        finish();
+        mSimpleDialog.show();
 
     }
 

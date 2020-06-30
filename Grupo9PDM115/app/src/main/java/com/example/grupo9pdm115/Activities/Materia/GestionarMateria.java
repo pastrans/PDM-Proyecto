@@ -26,6 +26,8 @@ import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.WebService.ControlServicio;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,7 @@ public class GestionarMateria extends AppCompatActivity implements View.OnClickL
     MateriaAdapter listaMateriasAdapter;
     Materia materia;
     EditText editnombreMateria;
+    private MaterialDialog mSimpleDialog;
 
     //private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_list.php";
     //private String urlPublicoUES = "http://192.168.0.17/LE17004/Proyecto/Materia/ws_materia_list.php";
@@ -119,7 +122,7 @@ public class GestionarMateria extends AppCompatActivity implements View.OnClickL
         listaMaterias.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Materia materiaActual = (listaMateriasAdapter.getItem(position));
+                final Materia materiaActual = (listaMateriasAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -142,11 +145,31 @@ public class GestionarMateria extends AppCompatActivity implements View.OnClickL
                             return true;
                         }
                         if(materiaActual != null){
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarMateria.this)
+                                    .setTitle("Eliminar")
+                                    .setMessage("¿Está seguro de eliminar?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
                             String regEliminadas;
                             eliminarWeb(materiaActual.getCodMateria());
                             regEliminadas= materiaActual.eliminar(getApplicationContext());
                             Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
                             llenarListaMateria(null);
+                            dialogInterface.dismiss();
+                        }
+                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                        .setAnimation("delete_anim.json")
+                        .build();
+                mSimpleDialog.show();
                         }
                         return true;
                 }

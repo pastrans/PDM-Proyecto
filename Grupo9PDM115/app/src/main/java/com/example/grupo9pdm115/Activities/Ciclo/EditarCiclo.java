@@ -17,6 +17,8 @@ import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Utilidades.FechasHelper;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.Calendar;
 
@@ -24,6 +26,7 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
     //Declarando
     Ciclo ciclo;
     EditText editNombreCiclo, editInicioCiclo, editFinCiclo, editInicioClases, editFinClases;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,6 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
             editInicioClases.setText(getIntent().getStringExtra("inicioclases"));
             editFinClases.setText(getIntent().getStringExtra("finclases"));
         }
-
         editInicioCiclo.setOnClickListener(this);
         editFinCiclo.setOnClickListener(this);
         editInicioClases.setOnClickListener(this);
@@ -86,49 +88,70 @@ public class EditarCiclo extends AppCompatActivity implements View.OnClickListen
 
     // Método para actualizar ciclo
     public void actualizarCiclo(View v) {
-        boolean error = false;
-        String mensaje = "";
+        mSimpleDialog = new MaterialDialog.Builder(this)
+                .setTitle("Editar")
+                .setMessage("¿Está seguro de editar los datos?")
+                .setCancelable(false)
+                .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        boolean error = false;
+                        String mensaje = "";
 
-        //Obteniendo valores elementos
-        String nombreCiclo = editNombreCiclo.getText().toString();
-        String inicioCiclo = FechasHelper.cambiarFormatoLocalAIso(editInicioCiclo.getText().toString());
-        String finCiclo = FechasHelper.cambiarFormatoLocalAIso(editFinCiclo.getText().toString());
-        String inicioClases = FechasHelper.cambiarFormatoLocalAIso(editInicioClases.getText().toString());
-        String finClases = FechasHelper.cambiarFormatoLocalAIso(editFinClases.getText().toString());
+                        //Obteniendo valores elementos
+                        String nombreCiclo = editNombreCiclo.getText().toString();
+                        String inicioCiclo = FechasHelper.cambiarFormatoLocalAIso(editInicioCiclo.getText().toString());
+                        String finCiclo = FechasHelper.cambiarFormatoLocalAIso(editFinCiclo.getText().toString());
+                        String inicioClases = FechasHelper.cambiarFormatoLocalAIso(editInicioClases.getText().toString());
+                        String finClases = FechasHelper.cambiarFormatoLocalAIso(editFinClases.getText().toString());
 
-        // Verificando fechas
-        if(!(FechasHelper.fechaEsPosterior(inicioCiclo, finCiclo)
-                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
-                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
-                && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
-            error = true;
-            mensaje = this.getString(R.string.mnjCicloValFechas);
-            // "El fin de ciclo debe ser posterior al inicio de ciclo." +
-            //       "\nEl periodo de clases debe estar dentro del tiempo de duración del ciclo." +
-            //        "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
-        }
-        // Verificando campos vacíos
-        if(nombreCiclo.equals("") || inicioCiclo.equals("") || finCiclo.equals("") || inicioClases.equals("")
-                || finClases.equals("")){
-            error = true;
-            mensaje =  this.getString(R.string.mnjCamposVacios); // "Todos los campos deben estar llenos.";
-        }
+                        // Verificando fechas
+                        if(!(FechasHelper.fechaEsPosterior(inicioCiclo, finCiclo)
+                                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, inicioClases)
+                                && FechasHelper.fechaEstaEnmedio(inicioCiclo, finCiclo, finClases)
+                                && FechasHelper.fechaEsPosterior(inicioClases, finClases))){
+                            error = true;
+                            mensaje = getApplication().getString(R.string.mnjCicloValFechas);
+                            // "El fin de ciclo debe ser posterior al inicio de ciclo." +
+                            //       "\nEl periodo de clases debe estar dentro del tiempo de duración del ciclo." +
+                            //        "\nLa fecha de fin de periodo de clases debe ser posterior a la de inicio de periodo de clases.";
+                        }
+                        // Verificando campos vacíos
+                        if(nombreCiclo.equals("") || inicioCiclo.equals("") || finCiclo.equals("") || inicioClases.equals("")
+                                || finClases.equals("")){
+                            error = true;
+                            mensaje =  getApplication().getString(R.string.mnjCamposVacios); // "Todos los campos deben estar llenos.";
+                        }
 
-        // Operaciones si no hay errores
-        if(!error){
-            //Instanciando ciclo para guardar
-            ciclo.setNombreCiclo(nombreCiclo);
-            ciclo.setInicio(inicioCiclo);
-            ciclo.setFin(finCiclo);
-            ciclo.setInicioPeriodoClase(inicioClases);
-            ciclo.setFinPeriodoClase(finClases);
-            mensaje = ciclo.actualizar(this);
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-            finish();
-        }
+                        // Operaciones si no hay errores
+                        if(!error){
+                            //Instanciando ciclo para guardar
+                            ciclo.setNombreCiclo(nombreCiclo);
+                            ciclo.setInicio(inicioCiclo);
+                            ciclo.setFin(finCiclo);
+                            ciclo.setInicioPeriodoClase(inicioClases);
+                            ciclo.setFinPeriodoClase(finClases);
+                            mensaje = ciclo.actualizar(getApplicationContext());
+                            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        // Mensaje de salida
+                        Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setAnimation("edit_anim.json")
+                .build();
 
-        // Mensaje de salida
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+        mSimpleDialog.show();
+
     }
 
     //Limpiar campos

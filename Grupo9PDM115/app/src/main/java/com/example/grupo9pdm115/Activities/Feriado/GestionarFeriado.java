@@ -19,11 +19,14 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.example.grupo9pdm115.Activities.Ciclo.GestionarCiclo;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.FeriadoAdapter;
 import com.example.grupo9pdm115.Modelos.Feriado;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,7 @@ public class GestionarFeriado extends AppCompatActivity implements View.OnClickL
     EditText editNombreFeriado;
     FeriadoAdapter listaFeriadosAdapter;
     Feriado feriado;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +130,7 @@ public class GestionarFeriado extends AppCompatActivity implements View.OnClickL
         listaFeriados.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Feriado feriadoActual = (listaFeriadosAdapter.getItem(position));
+                final Feriado feriadoActual = (listaFeriadosAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -151,10 +155,30 @@ public class GestionarFeriado extends AppCompatActivity implements View.OnClickL
                             return true;
                         }
                         if(feriadoActual != null){
-                            String regEliminadas;
-                            regEliminadas= feriadoActual.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaFeriado(null);
+                            mSimpleDialog = new MaterialDialog.Builder( GestionarFeriado.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String regEliminadas;
+                                        regEliminadas= feriadoActual.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                        llenarListaFeriado(null);
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

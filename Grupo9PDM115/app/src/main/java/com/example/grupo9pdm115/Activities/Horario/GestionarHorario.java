@@ -27,12 +27,15 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.example.grupo9pdm115.Activities.Ciclo.GestionarCiclo;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.CicloAdapter;
 import com.example.grupo9pdm115.Adapters.HorarioAdapter;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,7 @@ public class GestionarHorario extends AppCompatActivity implements View.OnClickL
     EditText editNombreCiclo;
     Horario horario;
     HorarioAdapter listaHorarioAdapter;
+    private MaterialDialog mSimpleDialog;
 
 
     @Override
@@ -122,7 +126,7 @@ public class GestionarHorario extends AppCompatActivity implements View.OnClickL
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
-                Horario horario = (listaHorarioAdapter.getItem(position));
+                final Horario horario = (listaHorarioAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -144,10 +148,30 @@ public class GestionarHorario extends AppCompatActivity implements View.OnClickL
                             return true;
                         }
                         if(horario != null){
-                            String regEliminadas;
-                            regEliminadas= horario.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaHorario(null);
+                            mSimpleDialog = new MaterialDialog.Builder( GestionarHorario.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    String regEliminadas;
+                                    regEliminadas= horario.eliminar(getApplicationContext());
+                                    Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                    llenarListaHorario(null);
+                                    dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                    Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                    dialogInterface.dismiss();
+                                    }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

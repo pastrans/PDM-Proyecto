@@ -20,6 +20,7 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.example.grupo9pdm115.Activities.Ciclo.GestionarCiclo;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Activities.Rol.EditarRol;
 import com.example.grupo9pdm115.Adapters.GrupoAdapter;
@@ -29,6 +30,8 @@ import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.Modelos.Rol;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,7 @@ public class GestionarGrupo extends AppCompatActivity implements View.OnClickLis
     //ListView listViewGrupos;
     GrupoAdapter grupoAdapter;
     Grupo grupo;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +110,7 @@ public class GestionarGrupo extends AppCompatActivity implements View.OnClickLis
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
 
-                Grupo grupoSeleccionado = (grupoAdapter.getItem(position));
+                final Grupo grupoSeleccionado = (grupoAdapter.getItem(position));
                 CicloMateria cicloMateria = new CicloMateria();
                 cicloMateria.consultar(getApplicationContext(), String.valueOf(grupoSeleccionado.getIdCicloMateria()));
                 switch (index) {
@@ -129,10 +133,30 @@ public class GestionarGrupo extends AppCompatActivity implements View.OnClickLis
                             return true;
                         }
                         if (grupoSeleccionado != null){
-                            String resEliminados = "";
-                            resEliminados = grupoSeleccionado.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
-                            llenarListaGrupos(null);
+                            mSimpleDialog = new MaterialDialog.Builder( GestionarGrupo.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                    String resEliminados = "";
+                                    resEliminados = grupoSeleccionado.eliminar(getApplicationContext());
+                                    Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
+                                    llenarListaGrupos(null);
+                                    dialogInterface.dismiss();
+                                            }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                    Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                    dialogInterface.dismiss();
+                                    }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

@@ -20,6 +20,7 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.example.grupo9pdm115.Activities.Ciclo.GestionarCiclo;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Activities.Materia.EditarMateria;
 import com.example.grupo9pdm115.Activities.Materia.NuevoMateria;
@@ -30,6 +31,8 @@ import com.example.grupo9pdm115.Modelos.Materia;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,7 @@ public class GestionarCoordinacion extends AppCompatActivity implements View.OnC
     CoordinacionAdapter listaCoordinacionAdapter;
     EditText editNombreUsuario;
     Coordinacion coordinacion;
+    private MaterialDialog mSimpleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +119,7 @@ public class GestionarCoordinacion extends AppCompatActivity implements View.OnC
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
-                Coordinacion coorActual = (listaCoordinacionAdapter.getItem(position));
+                final Coordinacion coorActual = (listaCoordinacionAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -137,10 +141,30 @@ public class GestionarCoordinacion extends AppCompatActivity implements View.OnC
                             return true;
                         }
                         if(coorActual != null){
-                            String regEliminadas;
-                            regEliminadas= coorActual.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
-                            llenarListaCoordinacion("");
+                            mSimpleDialog = new MaterialDialog.Builder( GestionarCoordinacion.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    String regEliminadas;
+                                    regEliminadas= coorActual.eliminar(getApplicationContext());
+                                    Toast.makeText(getApplicationContext(), regEliminadas, Toast.LENGTH_SHORT).show();
+                                    llenarListaCoordinacion("");
+                                    dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                    Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                    dialogInterface.dismiss();
+                                    }
+                                })
+                                .setAnimation("delete_anim.json")
+                                .build();
+                            mSimpleDialog.show();
                         }
                         return true;
                 }

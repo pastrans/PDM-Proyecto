@@ -25,6 +25,8 @@ import com.example.grupo9pdm115.Adapters.TipoLocalAdapter;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class GestionarTipoLocal extends AppCompatActivity implements View.OnClic
     EditText editNombreCiclo;
     //ListView listaTipos;
     TipoLocalAdapter listaTipoLocalAdapter;
-
+    private MaterialDialog mSimpleDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Validando permisos para acciones
@@ -100,7 +102,7 @@ public class GestionarTipoLocal extends AppCompatActivity implements View.OnClic
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
-                TipoLocal tipoLocalSeleccionado = (listaTipoLocalAdapter.getItem(position));
+                final TipoLocal tipoLocalSeleccionado = (listaTipoLocalAdapter.getItem(position));
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -119,10 +121,30 @@ public class GestionarTipoLocal extends AppCompatActivity implements View.OnClic
                             return true;
                         }
                         if (tipoLocalSeleccionado != null){
-                            String resEliminados = "";
-                            resEliminados = tipoLocalSeleccionado.eliminar(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
-                            llenarListaTipoLocal(null);
+                            mSimpleDialog = new MaterialDialog.Builder(GestionarTipoLocal.this)
+                                .setTitle("Eliminar")
+                                .setMessage("¿Está seguro de eliminar?")
+                                .setCancelable(false)
+                                .setPositiveButton("Eliminar", R.drawable.ic_delete, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        String resEliminados = "";
+                                        resEliminados = tipoLocalSeleccionado.eliminar(getApplicationContext());
+                                        Toast.makeText(getApplicationContext(), resEliminados, Toast.LENGTH_SHORT).show();
+                                        llenarListaTipoLocal(null);
+                                        dialogInterface.dismiss();
+                                     }
+                                })
+                                .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "Registro no eliminado!", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                    })
+                                    .setAnimation("delete_anim.json")
+                                    .build();
+                                mSimpleDialog.show();
                         }
                         return true;
                 }

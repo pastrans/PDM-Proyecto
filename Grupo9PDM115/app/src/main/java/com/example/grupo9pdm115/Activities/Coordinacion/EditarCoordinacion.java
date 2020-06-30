@@ -17,6 +17,8 @@ import com.example.grupo9pdm115.Modelos.Coordinacion;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Usuario;
 import com.example.grupo9pdm115.R;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 public class EditarCoordinacion extends AppCompatActivity {
     ControlBD helper;
@@ -24,6 +26,7 @@ public class EditarCoordinacion extends AppCompatActivity {
     EditText editIdUsuario;
     Spinner TipoCoordinacion;
     String[] contenidoTipoCoor;
+    private MaterialDialog mSimpleDialog;
 
     private CicloMateria cm = new CicloMateria();
     private Integer idCiclomateria, idCiclo,idCoordinacion ;
@@ -87,50 +90,71 @@ public class EditarCoordinacion extends AppCompatActivity {
     }
 
     public void btnEditarECoordinador(View v) {
-        String codMaateria = editCodMateria.getText().toString();
-        String IdUsuario = editIdUsuario.getText().toString();
-        //limpiamos de espacios en blancos al principio y al final
-        codMaateria.trim();
-        IdUsuario.trim();
-        codMaateria = codMaateria.toUpperCase();
-        IdUsuario = IdUsuario.toUpperCase();
 
-        if( !codMaateria.equals("")){
-            if ( !IdUsuario.equals("")) {
-                if(validarSeleccion()){
-                        // Validar que exista ese id de usuario
-                        if (validarUsuario(IdUsuario) ){
-                            //Instanciando coordinacion para guardar
-                            Coordinacion coordinacion = new Coordinacion();
-                            // valor que se seleeciono en el spinner
-                            String tipoCoordinacion= contenidoTipoCoor[TipoCoordinacion.getSelectedItemPosition()];
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                String codMaateria = editCodMateria.getText().toString();
+                String IdUsuario = editIdUsuario.getText().toString();
+                //limpiamos de espacios en blancos al principio y al final
+                codMaateria.trim();
+                IdUsuario.trim();
+                codMaateria = codMaateria.toUpperCase();
+                IdUsuario = IdUsuario.toUpperCase();
 
-                            //Validar que por si ya existe una coordinación ( con la condición de tipo de coordinación y idCicloMateria)
-                            if(!coordinacion.verificarRegistro(this,cm.getIdCicloMateria(),tipoCoordinacion )){
-                                coordinacion.setIdCoodinacion(idCoordinacion);
-                                coordinacion.setIdCicloMateria(cm.getIdCicloMateria());
-                                coordinacion.setIdUsuario(IdUsuario);
-                                coordinacion.setTipoCoordinacion(tipoCoordinacion);
-                                String regInsertados = coordinacion.actualizar(this);
-                                Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-                                finish();
-                            }else {
-                                Toast.makeText(this, "Ya existe está coordinación", Toast.LENGTH_SHORT).show();
+                if( !codMaateria.equals("")){
+                    if ( !IdUsuario.equals("")) {
+                        if(validarSeleccion()){
+                            // Validar que exista ese id de usuario
+                            if (validarUsuario(IdUsuario) ){
+                                //Instanciando coordinacion para guardar
+                                Coordinacion coordinacion = new Coordinacion();
+                                // valor que se seleeciono en el spinner
+                                String tipoCoordinacion= contenidoTipoCoor[TipoCoordinacion.getSelectedItemPosition()];
+
+                                //Validar que por si ya existe una coordinación ( con la condición de tipo de coordinación y idCicloMateria)
+                                if(!coordinacion.verificarRegistro(getApplicationContext(),cm.getIdCicloMateria(),tipoCoordinacion )){
+                                    coordinacion.setIdCoodinacion(idCoordinacion);
+                                    coordinacion.setIdCicloMateria(cm.getIdCicloMateria());
+                                    coordinacion.setIdUsuario(IdUsuario);
+                                    coordinacion.setTipoCoordinacion(tipoCoordinacion);
+                                    String regInsertados = coordinacion.actualizar(getApplicationContext());
+                                    Toast.makeText(getApplicationContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "Ya existe está coordinación", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
                             }
                         }else{
-                            Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Seleccione un Tipo de Grupo", Toast.LENGTH_SHORT).show();
                         }
+
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Ingrese Un código de Usuario", Toast.LENGTH_SHORT).show();
+                    }
+
                 }else{
-                    Toast.makeText(this, "Seleccione un Tipo de Grupo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Ingrese código de materia", Toast.LENGTH_SHORT).show();
                 }
-
-            }else{
-                Toast.makeText(this, "Ingrese Un código de Usuario", Toast.LENGTH_SHORT).show();
-            }
-
-        }else{
-            Toast.makeText(this, "Ingrese código de materia", Toast.LENGTH_SHORT).show();
-        }
+                dialogInterface.dismiss();
+                }
+            })
+            .setNegativeButton("Cancel", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                    Toast.makeText(getApplicationContext(), "Cancelled!", Toast.LENGTH_SHORT).show();
+                    dialogInterface.dismiss();
+                }
+            })
+            .setAnimation("edit_anim.json")
+            .build();
+        mSimpleDialog.show();
     }
     Boolean validarSeleccion(){
         Boolean bandera= Boolean.TRUE;

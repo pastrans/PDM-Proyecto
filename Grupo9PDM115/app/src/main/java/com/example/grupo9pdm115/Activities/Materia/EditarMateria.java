@@ -20,6 +20,8 @@ import com.example.grupo9pdm115.Modelos.Unidad;
 import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.UnidadSpinner;
 import com.example.grupo9pdm115.WebService.ControlServicio;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 
 public class EditarMateria extends AppCompatActivity {
     //Declarando
@@ -29,6 +31,7 @@ public class EditarMateria extends AppCompatActivity {
     UnidadSpinner control;
     Unidad unidad;
     int posicion;
+    private MaterialDialog mSimpleDialog;
 
     private String urlPublicoUES = "https://eisi.fia.ues.edu.sv/eisi09/LE17004/Proyecto/Materia/ws_materia_update.php";
 
@@ -86,66 +89,73 @@ public class EditarMateria extends AppCompatActivity {
 
     }
     public void actualizarMateria(View v) {
-        String codMaateria = editCodMateria.getText().toString();
-        String nombreMateria = editNombre.getText().toString();
-
-        Boolean masividad = Boolean.FALSE;
-        Boolean bandera= Boolean.TRUE;
-        codMaateria.trim();
-        codMaateria = codMaateria.toUpperCase ();
-        nombreMateria.trim();
-        if(codMaateria.isEmpty()){
-            Toast.makeText(this, "Ingrese un código", Toast.LENGTH_LONG).show();
-        }else {
-            if(nombreMateria.isEmpty()){
-                Toast.makeText(this, "Ingrese un nombre", Toast.LENGTH_LONG).show();
-            }else {
-                if (masivaRadioButton1.isChecked()){
-                    masividad = Boolean.TRUE;
-
-                }else if(masivaRadioButton2.isChecked()){
-                    masividad = Boolean.FALSE;
-
+        mSimpleDialog = new MaterialDialog.Builder(this)
+            .setTitle("Editar")
+            .setMessage("¿Está seguro de editar los datos?")
+            .setCancelable(false)
+            .setPositiveButton("Editar", R.drawable.ic_edit, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                String codMaateria = editCodMateria.getText().toString();
+                String nombreMateria = editNombre.getText().toString();
+                Boolean masividad = Boolean.FALSE;
+                Boolean bandera= Boolean.TRUE;
+                codMaateria.trim();
+                codMaateria = codMaateria.toUpperCase ();
+                nombreMateria.trim();
+                if(codMaateria.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Ingrese un código", Toast.LENGTH_LONG).show();
                 }else {
-                    bandera= Boolean.FALSE;
-                }
+                    if(nombreMateria.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Ingrese un nombre", Toast.LENGTH_LONG).show();
+                    }else {
+                        if (masivaRadioButton1.isChecked()){
+                            masividad = Boolean.TRUE;
+                        }else if(masivaRadioButton2.isChecked()){
+                            masividad = Boolean.FALSE;
+                        }else {
+                            bandera= Boolean.FALSE;
+                        }
+                        if(bandera){
+                            int posicionUnidad = 0, idTP = 0;
+                            posicionUnidad = idUnidad.getSelectedItemPosition();
+                            if (posicionUnidad!= 0) {
+                                //Log.i("posicion: ", String.valueOf(posicion)  );
 
-                if(bandera){
-
-                    int posicionUnidad = 0, idTP = 0;
-                    posicionUnidad = idUnidad.getSelectedItemPosition();
-                    if (posicionUnidad!= 0) {
-                        //Log.i("posicion: ", String.valueOf(posicion)  );
-
-
-                        //Instanciando Materia para guardar
-                        Materia materia = new Materia();
-                        idTP= control.getIdUnidad(posicionUnidad);
-                        materia.setIdUnidad(idTP);
-                        materia.setCodMateria(codMaateria);
-                        materia.setNombreMateria(nombreMateria);
-                        materia.setMasiva(masividad);
-                        actualizarWeb(materia);
-                        String regInsertados = materia.actualizar(this);
-                        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-                        super.onBackPressed();
-
+                                //Instanciando Materia para guardar
+                                Materia materia = new Materia();
+                                idTP= control.getIdUnidad(posicionUnidad);
+                                materia.setIdUnidad(idTP);
+                                materia.setCodMateria(codMaateria);
+                                materia.setNombreMateria(nombreMateria);
+                                materia.setMasiva(masividad);
+                                actualizarWeb(materia);
+                                String regInsertados = materia.actualizar(getApplicationContext());
+                                Toast.makeText(getApplicationContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Seleccione una Unidad ", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Selecicone la masividad", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
-
-                        Toast.makeText(this, "Seleccione una Unidad ", Toast.LENGTH_SHORT).show();
-                    }
                 }
-                else {
-                    Toast.makeText(this, "Selecicone la masividad", Toast.LENGTH_SHORT).show();
+                dialogInterface.dismiss();
                 }
-
-            }
-
-        }
-
-
-
+            })
+            .setNegativeButton("Cancelar", R.drawable.ic_close, new MaterialDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                Toast.makeText(getApplicationContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+                dialogInterface.cancel();
+                }
+            })
+            .setAnimation("edit_anim.json")
+            .build();
+        mSimpleDialog.show();
     }
 
     public void actualizarWeb(Materia m){

@@ -3,4 +3,8 @@
     <color name="colorPrimary">#EF5350</color>
     <color name="colorPrimaryDark">#EF5350</color>
     <color name="colorAccent">#F44336</color>
+
+    <color name="cyanea_primary_reference">#0288D1</color>
+    <color name="cyanea_accent_reference">#FFA000</color>
+    <color name="cyanea_primary_dark_reference">#EF5350</color>
 </resources>

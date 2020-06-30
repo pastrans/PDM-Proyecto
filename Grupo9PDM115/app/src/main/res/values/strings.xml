@@ -47,6 +47,8 @@
     <string name="titGestionarFeriado">Gestionar Feriado</string>
     <string name="txtListaFeriado">Listado de feriados ingresados:</string>
     <string name="txtbNombreFeriado">Nombre del feriado</string>
+    <string name="btnConsultarFeriadoEnCalendario">Ver en calendario</string>
+    <string name="titFeriadosEnCalendario">Feriados</string>
     //Nuevo Feriado
     <string name="titNuevoFeriado">Nuevo Feriado</string>
     <string name="btnAgregarNFeriado">Agregar</string>
@@ -363,6 +365,14 @@
     <string name="txtReservas">Reservas</string>
     <string name="txtGestionarSolicitud">Gestionar solicitudes</string>
     <string name="txtSolicitudesRecibidas">Solicitudes recibidas</string>
+    // Utilidades
+    <string name="txtUtilidades">Utilidades</string>
+    <string name="txtModificarTema">Modificar tema</string>
+    <string name="txtTutoriales">Tutoriales</string>
+    <string name="txtExportarPDF">Exportar PDF</string>
+    <string name="txtImportarExcel">Importar Excel</string>
+    <string name="txtConsultarQR">Consultar QR</string>
+    <string name="txtEnvioCorreos">Envío de correos</string>
     // Otros
     <string name="txtCerrarSesion">Cerrar sesión</string>
 
@@ -418,5 +428,19 @@
     // ROL
     <string name="mnjRolNoElimIntegridad">No se puede eliminar debido a que se tiene un registro relacionado con un usuario.</string>
     <string name="mnjRolNoElim">No se puede eliminar el rol del Administrador.</string>
+
+    // CYANEA SETTINGS
+    <string name="label_theme_picker">Reserva de locales FIA</string>
+    <string name="pref_category_appearance">Apariencia</string>
+    <string name="pref_theme_title">Temas</string>
+    <string name="pref_theme_summary">Seleccione un tema preinstalado.</string>
+    <string name="pref_primary_color_title">Color primario</string>
+    <string name="pref_primary_color_summary"> Se muestra con mayor frecuencia en su aplicación.</string>
+    <string name="pref_accent_color_title">Color de acento</string>
+    <string name="pref_accent_color_summary">Los acentos seleccionan partes de la interfaz de usuario.</string>
+    <string name="pref_background_color_title">Color de fondo</string>
+    <string name="pref_background_color_summary">El color subyacente del contenido de la aplicación.</string>
+    <string name="pref_colored_navigation_bar_title">Color de la barra de navegación</string>
+    <string name="pref_colored_navigation_bar_summary">Aplicar el color primario a la barra de navegación.</string>
 
 </resources>

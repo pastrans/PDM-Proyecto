@@ -8,33 +8,38 @@ import android.view.View;
 
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
-public class MenuPrincipal extends AppCompatActivity implements View.OnClickListener {
+public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnClickListener {
     // Views que contienen todas las opciones de cada grupo, tanto las opciones principales como los
     // submenú de cada uno que contienen opciones de menú
     public final int[] idContenedores = {R.id.layoutContenedorUsuario, R.id.layoutContenedorAdminAcademica,
-            R.id.layoutContenedorCargaAcademina, R.id.layoutContenedorLocales, R.id.layoutContenedorReservas};
+            R.id.layoutContenedorCargaAcademina, R.id.layoutContenedorLocales, R.id.layoutContenedorReservas,
+            R.id.layoutContenedorUtilidades};
 
     // Views principales que solo desplegan sub menús
     public final int[] idOpcionesPrincipales = {R.id.layoutControlUsuario, R.id.layoutAdminAcademica,
-            R.id.layoutCargaAcademica, R.id.layoutControlLocales, R.id.layoutReservas};
+            R.id.layoutCargaAcademica, R.id.layoutControlLocales, R.id.layoutReservas, R.id.layoutUtilidades};
 
     // Views que contienen varias opciones de menú
     public final int[] idGruposOpciones = {R.id.layoutOpcionesUsuario, R.id.layoutOpcionesAdminAcademica,
-            R.id.layoutOpcionesCargaAcademica, R.id.layoutOpcionesControlLocales, R.id.layoutOpcionesReservas};
+            R.id.layoutOpcionesCargaAcademica, R.id.layoutOpcionesControlLocales, R.id.layoutOpcionesReservas,
+            R.id.layoutOpcionesUtilidades};
 
     // Views que son opciones de menú que envían a otras activities
     public final int[] idOpcionesDeMenu = {R.id.txtUsuario, R.id.txtRol, R.id.txtCiclo, R.id.txtFeriado,
             R.id.txtUnidad, R.id.txtMateria, R.id.txtTipoGrupo, R.id.txtHorario, R.id.txtCicloMateria,
             R.id.txtCoordinacion, R.id.txtGrupo, R.id.txtLocal, R.id.txtTipoLocal, R.id.txtSolicitud,
-            R.id.txtSolicitudesRecibidas};
-
+            R.id.txtSolicitudesRecibidas, R.id.txtModificarTema, R.id.txtTutoriales, R.id.txtExportarPDF,
+            R.id.txtImportarExcel, R.id.txtConsultarQR, R.id.txtEnvioCorreos};
     // Activities
     String[] activities = {"Usuario.GestionarUsuario", "Rol.GestionarRol", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado",
             "Unidad.GestionarUnidad", "Materia.GestionarMateria", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario",
             "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion", "Grupo.GestionarGrupo",
             "Local.GestionarLocal", "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud",
-            "Solicitud.GestionarSolicitudesEncargado"};
+            "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.Tutoriales",
+            "Utilidades.ExportarPDF", "Utilidades.ImportarExcel", "Utilidades.ConsultarQR",
+            "Utilidades.EnvioCorreos"};
 
     // Posiciones de inicio y fin en los arreglos activities y idOpcionesMenu que corresponden a cada
     // opción principal
@@ -43,12 +48,13 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
     public final int[] opcionesCargaAcademica = {8, 10};
     public final int[] opcionesControlLocales = {11, 12};
     public final int[] opcionesReservas = {13, 14};
+    public final int[] opcionesUtilidades = {15, 20};
     public final int[][] opcionesPrincipalesIndices = {opcionesUsuario, opcionesAdminAcademica, opcionesCargaAcademica,
-            opcionesControlLocales, opcionesReservas};
+            opcionesControlLocales, opcionesReservas, opcionesUtilidades};
 
     // Opciones crud
     String[] idOpcionCrud = {"CUS", "CRO", "CCL", "CFE", "CUN", "CMA", "CTG", "CHO", "CCM", "CCO", "CGR",
-             "CLO", "CTL", "RSO", "GSO"};
+             "CLO", "CTL", "RSO", "GSO", "GTE", "GTU", "GEP", "GIE", "GQR", "GEC"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,9 @@ public class MenuPrincipal extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.layoutReservas:
                 cambiarVisibilidadGrupoDeOpciones(R.id.layoutOpcionesReservas);
+                break;
+            case R.id.layoutUtilidades:
+                cambiarVisibilidadGrupoDeOpciones(R.id.layoutOpcionesUtilidades);
                 break;
         }
 

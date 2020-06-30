@@ -26,13 +26,10 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.grupo9pdm115.Activities.DetalleReserva.GestionarDetalleReserva;
 import com.example.grupo9pdm115.Activities.ErrorDeUsuario;
 import com.example.grupo9pdm115.Adapters.SolicitudAdapter;
-import com.example.grupo9pdm115.Modelos.Local;
-import com.example.grupo9pdm115.Modelos.Reserva;
 import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.Modelos.Solicitud;
 import com.example.grupo9pdm115.Modelos.TipoLocal;
 import com.example.grupo9pdm115.R;
-import com.example.grupo9pdm115.Utilidades.FechasHelper;
 
 import java.text.ParseException;
 import java.util.ArrayList;

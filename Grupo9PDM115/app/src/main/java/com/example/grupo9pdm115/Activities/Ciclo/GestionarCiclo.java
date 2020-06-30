@@ -26,12 +26,12 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class GestionarCiclo extends AppCompatActivity implements View.OnClickListener{
+public class GestionarCiclo extends CyaneaAppCompatActivity implements View.OnClickListener {
     // Permisos acciones
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;

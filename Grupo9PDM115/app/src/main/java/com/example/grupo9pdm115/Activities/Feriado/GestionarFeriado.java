@@ -27,11 +27,11 @@ import com.example.grupo9pdm115.Modelos.Sesion;
 import com.example.grupo9pdm115.R;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionarFeriado extends AppCompatActivity implements View.OnClickListener{
+public class GestionarFeriado extends CyaneaAppCompatActivity implements View.OnClickListener {
     // Permisos acciones
     private boolean permisoInsert = false;
     private boolean permisoDelete = false;
@@ -205,6 +205,12 @@ public class GestionarFeriado extends AppCompatActivity implements View.OnClickL
     }
     public void buscarFeriado(){
         llenarListaFeriado(editNombreFeriado.getText().toString());
+    }
+
+    // Método para mostrar los feriados en calendario
+    public void consultarFeriadoEnCalendario(View v){
+        Intent inte = new Intent(this, ConsultarFeriadoEnCalendario.class);
+        startActivity(inte);
     }
 
     // Para que actualice la lista cuando se regrese a la ventana

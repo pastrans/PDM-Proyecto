@@ -1,7 +1,9 @@
 package com.example.grupo9pdm115.Adapters;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,23 @@ import android.widget.TextView;
 
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.R;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class CicloAdapter extends ArrayAdapter<Ciclo> {
-    public CicloAdapter (Context context, List<Ciclo> objects) {super(context, 0,objects);}
+    private Context context;
+
+    public CicloAdapter (Context context, List<Ciclo> objects) {
+        super(context, 0,objects);
+        this.context = context;
+    }
+
+    @NotNull
+    public Context getContext(){
+        return this.context;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -49,7 +64,18 @@ public class CicloAdapter extends ArrayAdapter<Ciclo> {
         if(ciclo.isEstadoCiclo()){
             txtEstadoCiclo.setText("Activo");
             // convertView.setBackgroundColor(Color.parseColor("#B2fF59"));
-            convertView.setBackgroundColor(Color.parseColor("#90caf9"));
+            //convertView.setBackgroundColor(Color.parseColor("#90caf9"));
+            /*
+            final TypedValue value = new TypedValue ();
+            context.getTheme().resolveAttribute (R.attr.colorButtonNormal, value, true);
+            convertView.setBackgroundColor(value.data);
+             */
+            TypedValue typedValue = new TypedValue();
+
+            TypedArray a = getContext().obtainStyledAttributes(typedValue.data, new int[] { R.attr.colorAccent });
+            int color = a.getColor(0, 0);
+            convertView.setBackgroundColor(color);
+            a.recycle();
         }
         else
             txtEstadoCiclo.setText("Inactivo");

@@ -1,5 +1,7 @@
 package com.example.grupo9pdm115.Activities.Solicitud;
 
+import com.example.grupo9pdm115.Comun.JavaMailAPI;
+import com.example.grupo9pdm115.Modelos.Usuario;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.Activity;
@@ -44,6 +46,7 @@ public class NuevoSolicitud extends CyaneaAppCompatActivity {
     RadioButton radioNormal, radioEspecial;
     TipoLocalSpinner tipoLocalAdapter;
     ControlBD helper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +174,7 @@ public class NuevoSolicitud extends CyaneaAppCompatActivity {
             Toast.makeText(this, "Error al ingresar la solicitud", Toast.LENGTH_SHORT).show();
             return;
         }
+
         Intent intent;
         if (tipoSolicitud == 1){
             intent = new Intent(this, NuevoDetalleReserva.class);

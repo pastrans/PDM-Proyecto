@@ -1,6 +1,8 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
 import androidx.annotation.NonNull;
+
+import com.example.grupo9pdm115.Comun.JavaMailAPI;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.content.Intent;
@@ -331,7 +333,14 @@ public class GestionarDetalleReserva extends CyaneaAppCompatActivity {
     }
 */
     public void guardarSolicitudRevisar(View v){
+        Solicitud solicitud = new Solicitud();
+        solicitud.consultar(this, String.valueOf(idSolicitud));
+        solicitud.setComentario(edtComentarioSolicitud.getText().toString());
         guardar();
+        JavaMailAPI.sendMail(getApplication(), solicitud, "Nueva solicitud de local",
+                "Una solicitud realizada ha sido revisada por el encargado del local. Por favor, revise sus solicitudes en la aplicación para ver los detalles."
+                        + " Solicitud: " + solicitud.getAsuntoSolicitud()
+                        + ". Comentario: " + solicitud.getComentario());
     }
 
     public void guardar(){
@@ -344,6 +353,7 @@ public class GestionarDetalleReserva extends CyaneaAppCompatActivity {
             if(totalAprobados == totalDetalles && totalAprobados > 0 && totalDetalles > 0){
                 solicitud.setAprobadoTotal(true);
             }
+
         }
         String res = solicitud.actualizar(this);
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();

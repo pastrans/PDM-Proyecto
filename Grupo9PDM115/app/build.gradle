@@ -61,4 +61,10 @@ dependencies {
 
     //Google SignIn
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
+
+    //Mail
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+
 }

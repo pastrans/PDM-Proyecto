@@ -1,5 +1,8 @@
 package com.example.grupo9pdm115.Activities.DetalleReserva;
 
+import com.example.grupo9pdm115.Comun.JavaMailAPI;
+import com.example.grupo9pdm115.Modelos.TipoLocal;
+import com.example.grupo9pdm115.Modelos.Usuario;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -48,7 +51,7 @@ public class NuevoDetalleReserva extends CyaneaAppCompatActivity implements View
     List<Integer> listaIdsDetalles;
     Solicitud solicitud;
     int idSolicitud = 0, idTipoLocal = 0;
-    boolean revision;
+    boolean revision, enviado = false;;
     private int dia, mes, anio;
 
     @Override
@@ -250,10 +253,20 @@ public class NuevoDetalleReserva extends CyaneaAppCompatActivity implements View
         }
 
         res = detalleReserva.guardar(getApplicationContext());
-
         //listaIdsDetalles.add(detalleReserva.getLast(this));
+        if(!enviado){
+            TipoLocal tipoLocal = new TipoLocal();
+            tipoLocal.consultar(this, String.valueOf(idTipoLocal));
+            Usuario usuario = new Usuario();
+            usuario.consultar(this, Sesion.getIdusuario(this));
+            JavaMailAPI.sendMail(getApplication(), solicitud, "Nueva solicitud de local",
+                    "Se ha recibido una nueva solicitud para la reserva del tipo de local " + tipoLocal.getNombreTipo() + "\n"
+                            + "del usuario " + usuario.getNombrePersonal() + " " + usuario.getApellidoPersonal()
+                            + ". Con el asunto " + solicitud.getAsuntoSolicitud()
+                            + ". Comentario: " + solicitud.getComentario());
+            enviado = true;
+        }
         agregarReserva(idSolicitud, detalleReserva.getLast(getApplication()));
-
         Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
     }
 

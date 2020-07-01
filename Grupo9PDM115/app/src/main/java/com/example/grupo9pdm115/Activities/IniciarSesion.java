@@ -113,7 +113,8 @@ public class IniciarSesion extends CyaneaAppCompatActivity implements GoogleApiC
                     Auth.GoogleSignInApi.signOut(googleApiClient);
                 }
             } else{
-                Toast.makeText(this, "Eror al iniciar sesión", Toast.LENGTH_LONG).show();
+                Log.v("Result", result.toString());
+                Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_LONG).show();
             }
         }
     }

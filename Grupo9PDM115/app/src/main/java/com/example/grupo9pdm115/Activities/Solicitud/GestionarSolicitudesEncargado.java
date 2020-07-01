@@ -104,7 +104,7 @@ public class GestionarSolicitudesEncargado extends CyaneaAppCompatActivity {
                 // add to menu
                 menu.addMenuItem(enviarItem);
 
-                // create "nuevo" item
+                /*// create "nuevo" item
                 SwipeMenuItem nuevoItem = new SwipeMenuItem(
                         getApplicationContext());
                 // set item background
@@ -114,7 +114,7 @@ public class GestionarSolicitudesEncargado extends CyaneaAppCompatActivity {
                 // set a icon
                 nuevoItem.setIcon(R.drawable.ic_add);
                 // add to menu
-                menu.addMenuItem(nuevoItem);
+                menu.addMenuItem(nuevoItem);*/
             }
         };
         listaSolicitud.setMenuCreator(creator);
@@ -144,8 +144,9 @@ public class GestionarSolicitudesEncargado extends CyaneaAppCompatActivity {
                         String encargado = solicitudSeleccionada.getEnargadoLocal(getApplicationContext());
                         solicitudSeleccionada.setIdEncargado(encargado);
                         String res = solicitudSeleccionada.actualizar(getApplicationContext());
-                        Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplication(), res, Toast.LENGTH_SHORT).show();
                         llenarListaSolicitudes();
+                        return true;
                     case 3:
                         AlertDialog.Builder msj2 = new AlertDialog.Builder(getApplicationContext());
                         msj2.setTitle("Asigne la nueva fecha de finalización: (yyyy-MM-dd)");

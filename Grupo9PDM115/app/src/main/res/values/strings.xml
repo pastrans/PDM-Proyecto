@@ -92,7 +92,6 @@
     <string name="titNuevoMateria">Nueva Materia</string>
     <string name="btnAgregarNMateria">Agregar</string>
     <string name="btnLimpiarNMateria">Limpiar</string>
-    <string name="btnImportarCicloMateria">Importar</string>
 
     //Editar Materia
     <string name="titEditarCicloMateria">Editar Materia</string>
@@ -101,6 +100,10 @@
 
     //Variables CicloMateria
     //Etiquetas
+    <string name="btnImportarCicloMateria">Importar</string>
+    <string name="titExportar">Importar Materias</string>
+    <string name="btnExtraer">Buscar</string>
+    <string name="btnImportar">Importar</string>
     <string name="txtCodigoCicloMateria">Código de materia:</string>
     <string name="txtCicloMateria">Ciclo:</string>
     //Gestionar CicloMateria
@@ -111,6 +114,7 @@
     <string name="titNuevoCicloMateria">Agregar materia al ciclo</string>
     <string name="btnAgregarNCicloMateria">Agregar</string>
     <string name="btnLimpiarNCicloMateria">Limpiar</string>
+
     //Editar CicloMateria
     <string name="titEditarMateria">Editar materia del ciclo</string>
     <string name="btnLimpiarECicloMateria">Limpiar</string>

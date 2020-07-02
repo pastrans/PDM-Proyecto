@@ -92,6 +92,8 @@
     <string name="titNuevoMateria">Nueva Materia</string>
     <string name="btnAgregarNMateria">Agregar</string>
     <string name="btnLimpiarNMateria">Limpiar</string>
+    <string name="btnImportarCicloMateria">Importar</string>
+
     //Editar Materia
     <string name="titEditarCicloMateria">Editar Materia</string>
     <string name="btnEditarEMateria">Editar</string>

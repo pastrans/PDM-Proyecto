@@ -18,12 +18,14 @@ import com.example.grupo9pdm115.R;
 import com.example.grupo9pdm115.Spinners.CicloSpinner;
 
 public class NuevoCicloMateria extends CyaneaAppCompatActivity {
-
+    private boolean permisoInsert = false;
     EditText editCodMateria;
     Spinner idCiclo;
     CicloSpinner control;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Validando permisos para acciones
+        permisoInsert = Sesion.getAccesoUsuario(getApplicationContext(), "ICM");
         // Validando usuario y sesión
         if((Sesion.getLoggedIn(getApplicationContext()) && !Sesion.getAccesoUsuario(getApplicationContext(), "ICM"))
                 || !Sesion.getLoggedIn(getApplicationContext())){
@@ -44,6 +46,16 @@ public class NuevoCicloMateria extends CyaneaAppCompatActivity {
         control= new CicloSpinner(this);
         idCiclo.setAdapter(control.getAdapterCiclo(this));
 
+    }
+    //Metodo para lLamar a la vista de importar
+    public void btnImportarCicloMateria(View v){
+
+        if(!permisoInsert){
+            Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, ImportarCicloMateria.class);
+        startActivity(intent);
     }
 
     //Metodo para insertar materia

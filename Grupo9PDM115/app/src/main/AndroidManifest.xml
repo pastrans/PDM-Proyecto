@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hardware.camera" />
     <uses-permission android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -19,204 +19,105 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cyanea.Light.DarkActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity
-            android:name=".Activities.MenuPrincipal"/>
-
-        <activity
-            android:name=".Activities.Utilidades.ModificarTema"
-            />
-        <activity
-            android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario"
-            />
-        <activity android:name=".Activities.Utilidades.ConsultaQR"
-            />
+        <activity android:name=".Activities.CicloMateria.ImportarCicloMateria"></activity>
+        <activity android:name=".Activities.MenuPrincipal" />
+        <activity android:name=".Activities.Utilidades.ModificarTema" />
+        <activity android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario" />
+        <activity android:name=".Activities.Utilidades.ConsultaQR" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity
-            android:name=".Activities.DetalleReserva.NuevoDetalleReservaEspecial"
-            />
+        <activity android:name=".Activities.DetalleReserva.NuevoDetalleReservaEspecial" />
         <activity
             android:name=".Activities.Solicitud.GestionarSolicitudesEncargado"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity
-            android:name=".Activities.DetalleReserva.AsignarLocalDetalleReserva"
-            />
-        <activity
-            android:name=".Activities.Solicitud.NuevoSolicitud"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.DetalleReserva.AsignarLocalDetalleReserva" />
+        <activity android:name=".Activities.Solicitud.NuevoSolicitud" />
         <activity
             android:name=".Activities.Solicitud.GestionarSolicitud"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.DetalleReserva.NuevoDetalleReserva"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.DetalleReserva.NuevoDetalleReserva" />
         <activity
             android:name=".Activities.DetalleReserva.GestionarDetalleReserva"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity
-            android:name=".Activities.EventoEspecial.NuevoEventoEspecial"
-            />
-
-        <activity
-            android:name=".Activities.Rol.EditarRol"
-            />
-        <activity
-            android:name=".Activities.Rol.NuevoRol"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.EventoEspecial.NuevoEventoEspecial" />
+        <activity android:name=".Activities.Rol.EditarRol" />
+        <activity android:name=".Activities.Rol.NuevoRol" />
         <activity
             android:name=".Activities.Rol.GestionarRol"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.ErrorDeUsuario"
-            />
-
-        <activity
-            android:name=".Activities.Horario.NuevoHorario"
-            />
-        <activity
-            android:name=".Activities.Horario.EditarHorario"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.ErrorDeUsuario" />
+        <activity android:name=".Activities.Horario.NuevoHorario" />
+        <activity android:name=".Activities.Horario.EditarHorario" />
         <activity
             android:name=".Activities.Horario.GestionarHorario"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Activities.Dia.NuevoDia" />
         <activity android:name=".Activities.Dia.EditarDia" />
         <activity
             android:name=".Activities.Dia.GestionarDia"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".Activities.Coordinacion.EditarCoordinacion"
-            />
-        <activity
-            android:name=".Activities.Coordinacion.NuevoCoordinacion"
-            />
+        <activity android:name=".Activities.Coordinacion.EditarCoordinacion" />
+        <activity android:name=".Activities.Coordinacion.NuevoCoordinacion" />
         <activity
             android:name=".Activities.Coordinacion.GestionarCoordinacion"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Usuario.EditarUsuario"
-            />
-        <activity
-            android:name=".Activities.Usuario.NuevoUsuario"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Usuario.EditarUsuario" />
+        <activity android:name=".Activities.Usuario.NuevoUsuario" />
         <activity
             android:name=".Activities.Usuario.GestionarUsuario"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.CicloMateria.EditarCicloMateria"
-            />
-        <activity
-            android:name=".Activities.CicloMateria.NuevoCicloMateria"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.CicloMateria.EditarCicloMateria" />
+        <activity android:name=".Activities.CicloMateria.NuevoCicloMateria" />
         <activity
             android:name=".Activities.CicloMateria.GestionarCicloMateria"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.TipoGrupo.NuevoTipoGrupo"
-            />
-        <activity
-            android:name=".Activities.TipoGrupo.EditarTipoGrupo"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.TipoGrupo.NuevoTipoGrupo" />
+        <activity android:name=".Activities.TipoGrupo.EditarTipoGrupo" />
         <activity
             android:name=".Activities.TipoGrupo.GestionarTipoGrupo"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Grupo.EditarGrupo"
-             />
-        <activity
-            android:name=".Activities.Grupo.NuevoGrupo"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Grupo.EditarGrupo" />
+        <activity android:name=".Activities.Grupo.NuevoGrupo" />
         <activity
             android:name=".Activities.Grupo.GestionarGrupo"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Local.EditarLocal"
-            />
-        <activity
-            android:name=".Activities.Local.NuevoLocal"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Local.EditarLocal" />
+        <activity android:name=".Activities.Local.NuevoLocal" />
         <activity
             android:name=".Activities.Local.GestionarLocal"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.TipoLocal.EditarTipoLocal"
-            />
-        <activity
-            android:name=".Activities.TipoLocal.NuevoTipoLocal"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.TipoLocal.EditarTipoLocal" />
+        <activity android:name=".Activities.TipoLocal.NuevoTipoLocal" />
         <activity
             android:name=".Activities.TipoLocal.GestionarTipoLocal"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Materia.EditarMateria"
-            />
-        <activity
-            android:name=".Activities.Materia.NuevoMateria"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Materia.EditarMateria" />
+        <activity android:name=".Activities.Materia.NuevoMateria" />
         <activity
             android:name=".Activities.Materia.GestionarMateria"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Unidad.EditarUnidad"
-            />
-        <activity
-            android:name=".Activities.Unidad.NuevoUnidad"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Unidad.EditarUnidad" />
+        <activity android:name=".Activities.Unidad.NuevoUnidad" />
         <activity
             android:name=".Activities.Unidad.GestionarUnidad"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-
-        <activity
-            android:name=".Activities.Feriado.NuevoFeriado"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Feriado.NuevoFeriado" />
         <activity
             android:name=".Activities.Feriado.GestionarFeriado"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity
-            android:name=".Activities.Feriado.EditarFeriado"
-            />
-
-        <activity android:name=".Activities.Ciclo.EditarCiclo"/>
-        <activity
-            android:name=".Activities.Ciclo.NuevoCiclo"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.Feriado.EditarFeriado" />
+        <activity android:name=".Activities.Ciclo.EditarCiclo" />
+        <activity android:name=".Activities.Ciclo.NuevoCiclo" />
         <activity
             android:name=".Activities.Ciclo.GestionarCiclo"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
-
-        <activity
-            android:name=".Activities.IniciarSesion">
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Activities.IniciarSesion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

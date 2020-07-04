@@ -146,5 +146,4 @@ public class ImportarCicloMateria extends AppCompatActivity {
             uri = data.getData(); //obtener el uri content
         }
     }
-
 }

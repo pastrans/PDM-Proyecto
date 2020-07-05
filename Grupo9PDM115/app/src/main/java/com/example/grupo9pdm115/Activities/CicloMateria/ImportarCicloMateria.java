@@ -68,48 +68,39 @@ public class ImportarCicloMateria extends AppCompatActivity {
     }
 
     public void importarCSV() {
+        final String[] split = uri.getPath().split(":");//split the path.
+        String filePath = split[1];//assign it to a string(your choice).
+        File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+        Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
+        if(archivo.exists()) {
+            String cadena;
+            String[] arreglo;
+            try {
+                FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
 
-        File carpeta = new File(Environment.getExternalStorageDirectory() + "/CSV");
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                CicloMateria cm;
+                while ((cadena = bufferedReader.readLine()) != null) {
 
-        String archivoAgenda = carpeta.toString() + "/" + "CargaAcademica.csv";
-        Log.i("CicloMateriaImportar", "ruta   "+archivoAgenda);
-        if(carpeta.exists()) {
-            final String[] split = uri.getPath().split(":");//split the path.
-            String filePath = split[1];//assign it to a string(your choice).
-            File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
-            Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
-            if(archivo.exists()) {
-                String cadena;
-                String[] arreglo;
-                try {
-                    FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
+                    arreglo = cadena.split(";");
+                    cm = new CicloMateria();
+                    cm.setIdCiclo(1);
+                    cm.setCodMateria(arreglo[0]);
+                    listaCicloMateria.add(cm);
 
-                    BufferedReader bufferedReader = new BufferedReader(fileReader);
-                    CicloMateria cm;
-                    while ((cadena = bufferedReader.readLine()) != null) {
+                    cm.guardar(this);
+                    Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
-                        arreglo = cadena.split(";");
-                        cm = new CicloMateria();
-                        cm.setIdCiclo(1);
-                        cm.setCodMateria(arreglo[0]);
-                        listaCicloMateria.add(cm);
-
-                        cm.guardar(this);
-                        Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
-
-                        adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);
-                        rvUsuarios.setAdapter(adaptador);
-                    }
-
-                } catch (Exception e) {
+                    adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);
+                    rvUsuarios.setAdapter(adaptador);
                 }
-            }else {
-                Toast.makeText(this, "No existe el archivo", Toast.LENGTH_SHORT).show();
+
+            } catch (Exception e) {
             }
+        }else {
+            Toast.makeText(this, "No existe el archivo", Toast.LENGTH_SHORT).show();
         }
-        else {
-            Toast.makeText(this, "NO EXISTE LA CARPETA", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     public void pedirPermisos() {

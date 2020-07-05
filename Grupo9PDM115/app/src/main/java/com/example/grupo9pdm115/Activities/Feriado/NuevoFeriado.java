@@ -132,7 +132,6 @@ public class NuevoFeriado extends CyaneaAppCompatActivity implements View.OnClic
         editFinFeriado.setText( "" );
         editHInicio.setText("");
         spnCicloFeriado.setSelection( 0 );
-
     }
 
     //Limpiar campos
@@ -153,7 +152,6 @@ public class NuevoFeriado extends CyaneaAppCompatActivity implements View.OnClic
         }
     }
 
-
     // Método para fechas
     @Override
     public void onClick(View v) {
@@ -168,9 +166,11 @@ public class NuevoFeriado extends CyaneaAppCompatActivity implements View.OnClic
                 @SuppressLint("DefaultLocale")
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    calendar.set(Calendar.YEAR, year);
-                    calendar.set(Calendar.MONTH,monthOfYear);
-                    calendar.set(Calendar.DATE,dayOfMonth);
+                    if(v== editInicioFeriado) {
+                        calendar.set( Calendar.YEAR, year );
+                        calendar.set( Calendar.MONTH, monthOfYear );
+                        calendar.set( Calendar.DATE, dayOfMonth );
+                    }
                     ed.setText( String.format( "%02d/%02d/%d", dayOfMonth, monthOfYear + 1, year ) );
                 }
             }, anio, mes, dia );

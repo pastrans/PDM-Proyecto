@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cyanea.Light.DarkActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.CicloMateria.ImportarCicloMateria"></activity>
+        <activity android:name=".Activities.Local.verPdf"></activity>
+        <activity android:name=".Activities.CicloMateria.ImportarCicloMateria" />
         <activity android:name=".Activities.MenuPrincipal" />
         <activity android:name=".Activities.Utilidades.ModificarTema" />
         <activity android:name=".Activities.Feriado.ConsultarFeriadoEnCalendario" />

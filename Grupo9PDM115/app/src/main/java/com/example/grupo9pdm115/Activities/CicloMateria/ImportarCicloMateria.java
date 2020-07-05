@@ -48,6 +48,8 @@ public class ImportarCicloMateria extends AppCompatActivity {
         rvUsuarios = findViewById(R.id.rvUsuarios);
         btnImportar = findViewById(R.id.btnImportar);
         edtiRuta = findViewById(R.id.editTextRuta);
+        edtiRuta.setEnabled(false);
+        edtiRuta.setFocusable(false);
         rvUsuarios.setLayoutManager(new GridLayoutManager(  this, 1));
         pedirPermisos();
         btnImportar.setOnClickListener(new View.OnClickListener() {
@@ -66,51 +68,68 @@ public class ImportarCicloMateria extends AppCompatActivity {
     }
 
     public void importarCSV() {
+        if(!edtiRuta.getText().toString().equals("")){
+            String texto = uri.getPath();
+            String palabra = ".csv";
+            if(texto.contains(palabra)){
 
-        final String[] split = uri.getPath().split("/external_files/");//split the path.
+                final String[] split = uri.getPath().split("/external_files/");//split the path.
+                final String[] split2 = uri.getPath().split(":");//split the path.
+                Log.v("length" , String.valueOf(split.length));
 
-        Log.v("length" , String.valueOf(split.length));
+                if(split.length == 1 && split2.length == 1 ){
+                    Toast.makeText(this, "El archivo no se encuentra en la raíz", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String filePath = "";
 
-        if(split.length == 1){
-            Toast.makeText(this, "El archivo no se encuentra en la raíz", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Log.i("CicloMateriaImportar", "vemoas:   "+uri.getPath());
-        String filePath = split[1];//assign it to a string(your choice).
-        //File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
-        File archivo = new File(Environment.getExternalStorageDirectory() + "/" + filePath);
-        Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
-        Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
-        Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
-        if(archivo.exists()) {
-            String cadena;
-            String[] arreglo;
-            try {
-                //FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
-                FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/CargaAcademica.csv");
-
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                CicloMateria cm;
-                while ((cadena = bufferedReader.readLine()) != null) {
-
-                    arreglo = cadena.split(";");
-                    cm = new CicloMateria();
-                    cm.setIdCiclo(1);
-                    cm.setCodMateria(arreglo[0]);
-                    listaCicloMateria.add(cm);
-
-                    cm.guardar(this);
-                    Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
-
-                    adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);
-                    rvUsuarios.setAdapter(adaptador);
+                Log.i("CicloMateriaImportar", "vemoas:   "+uri.getPath());
+                if(split.length > 1 ){
+                    filePath = split[1];
+                }
+                if(split2.length > 1 ){
+                    filePath = split2[1];
                 }
 
-            } catch (Exception e) {
+                //File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+                File archivo = new File(Environment.getExternalStorageDirectory() + "/" + filePath);
+                Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
+                Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
+                Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
+                if(archivo.exists()) {
+                    String cadena;
+                    String[] arreglo;
+                    try {
+                        FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
+
+                        BufferedReader bufferedReader = new BufferedReader(fileReader);
+                        CicloMateria cm;
+                        while ((cadena = bufferedReader.readLine()) != null) {
+
+                            arreglo = cadena.split(";");
+                            cm = new CicloMateria();
+                            cm.setIdCiclo(1);
+                            cm.setCodMateria(arreglo[0]);
+                            listaCicloMateria.add(cm);
+
+                            cm.guardar(this);
+                            Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+
+                            adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);
+                            rvUsuarios.setAdapter(adaptador);
+                        }
+
+                    } catch (Exception e) {
+                    }
+                }else {
+                    Toast.makeText(this, "No existe el archivo", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this, "La extención del archivo debe de ser .CSV", Toast.LENGTH_SHORT).show();
             }
-        }else {
-            Toast.makeText(this, "No existe el archivo", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Seleccione un archivo", Toast.LENGTH_SHORT).show();
         }
 
     }

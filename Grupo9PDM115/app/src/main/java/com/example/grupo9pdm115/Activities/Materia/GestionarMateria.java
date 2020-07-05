@@ -185,16 +185,16 @@ public class GestionarMateria extends CyaneaAppCompatActivity implements View.On
         List objetcts = null;
 
         if (filtro == null) {
-            String materiasExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUESFiltro, this);
-            objetcts = Materia.getAllFromJSON(materiasExternas, this);
-            //objetcts = materia.getAll(this);
+            /*String materiasExternas = ControlServicio.obtenerRespuestaPeticion(urlPublicoUESFiltro, this);
+            objetcts = Materia.getAllFromJSON(materiasExternas, this);*/
+            objetcts = materia.getAll(this);
             //Inicializar el adaptador con la información a mostrar
         } else {
-            String nuevo = urlPublicoUESFiltro + "?codmateria=" + filtro.trim();
+            /*String nuevo = urlPublicoUESFiltro + "?codmateria=" + filtro.trim();
             String materiasExternas = ControlServicio.obtenerRespuestaPeticion(nuevo, this);
             //Toast.makeText(this, urlPublicoUES, Toast.LENGTH_LONG).show();
-            objetcts = Materia.getAllFromJSON(materiasExternas, this);
-            //objetcts = materia.getAllFiltered(this, "codmateria", filtro);
+            objetcts = Materia.getAllFromJSON(materiasExternas, this);*/
+            objetcts = materia.getAllFiltered(this, "codmateria", filtro);
         }
 
         listaMateriasAdapter = new MateriaAdapter(this, objetcts);

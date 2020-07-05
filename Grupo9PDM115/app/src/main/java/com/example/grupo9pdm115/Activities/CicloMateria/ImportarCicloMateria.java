@@ -66,11 +66,19 @@ public class ImportarCicloMateria extends AppCompatActivity {
     }
 
     public void importarCSV() {
-        final String[] split = uri.getPath().split(":");//split the path.
+        final String[] split = uri.getPath().split("/external_files/");//split the path.
+
+        Log.v("length" , String.valueOf(split.length));
+
+        if(split.length == 1){
+            Toast.makeText(this, "El archivo no se encuentra en la raíz", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Log.i("CicloMateriaImportar", "vemoas:   "+uri.getPath());
         String filePath = split[1];//assign it to a string(your choice).
-        File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+        //File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+        File archivo = new File(Environment.getExternalStorageDirectory() + "/" + filePath);
         Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
         Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
         Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
@@ -78,7 +86,8 @@ public class ImportarCicloMateria extends AppCompatActivity {
             String cadena;
             String[] arreglo;
             try {
-                FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
+                //FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/"+ filePath);
+                FileReader fileReader = new FileReader(Environment.getExternalStorageDirectory() + "/CargaAcademica.csv");
 
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 CicloMateria cm;
@@ -142,6 +151,7 @@ public class ImportarCicloMateria extends AppCompatActivity {
         }
         if ((resultCode == RESULT_OK) && (requestCode == VALOR_RETORNO )) {
             //Procesar el resultado
+            Log.v("Uri: ", data.toURI());
             String FilePath = data.getData().getPath();
             edtiRuta.setText(FilePath);
             uri = data.getData(); //obtener el uri content

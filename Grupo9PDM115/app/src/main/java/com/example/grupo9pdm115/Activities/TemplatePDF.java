@@ -1,9 +1,14 @@
 package com.example.grupo9pdm115.Activities;
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -109,7 +114,7 @@ public class TemplatePDF {
         }
         for(int indexR=0;indexR<Clients.size(); indexR++ ){
             String[] fow =Clients.get(indexR) ;
-            for(indexC= 0; indexC <Clients.size();indexC++ ){
+            for(indexC= 0; indexC <header.length;indexC++ ){
                 pdfPCell = new PdfPCell(new Phrase(header[indexC++], fSubTitle));
                 pdfPCell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 pdfPCell.setFixedHeight(40);
@@ -124,5 +129,19 @@ public class TemplatePDF {
 
         }
 
+    }
+    public void appViewPDF(Activity activity){
+        if (pdfFile.exists()){
+            Uri uri = Uri.fromFile(pdfFile);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(uri,"application/pdf");
+            try{
+                activity.startActivity(intent);
+            }catch (ActivityNotFoundException e){
+                Toast.makeText(activity.getApplicationContext(),"Descarga PDF Prro",Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(activity.getApplicationContext(),"El archivo no se encontro",Toast.LENGTH_SHORT).show();
+        }
     }
 }

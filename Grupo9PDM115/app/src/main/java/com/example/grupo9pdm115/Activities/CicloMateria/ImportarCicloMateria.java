@@ -67,12 +67,16 @@ public class ImportarCicloMateria extends AppCompatActivity {
 
     public void importarCSV() {
         final String[] split = uri.getPath().split(":");//split the path.
-
+<<<<<<< HEAD
+        String filePath = split[1];//assign it to a string(your choice).
+        File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+=======
         Log.i("CicloMateriaImportar", "vemoas:   "+uri.getPath());
         String filePath = split[1];//assign it to a string(your choice).
         File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
         Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
         Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
+>>>>>>> 10a1b8b4ad2175fd692943a0dae2a303fbfe1f27
         Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
         if(archivo.exists()) {
             String cadena;

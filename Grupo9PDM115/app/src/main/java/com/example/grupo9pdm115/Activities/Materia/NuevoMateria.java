@@ -105,7 +105,7 @@ public class NuevoMateria  extends CyaneaAppCompatActivity {
                             materia.setCodMateria(codMaateria);
                             materia.setNombreMateria(nombreMateria);
                             materia.setMasiva(masividad);
-                            guardarWeb(materia);
+                            //guardarWeb(materia);
                             String regInsertados = materia.guardar(this);
                             Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
                             limpiar();

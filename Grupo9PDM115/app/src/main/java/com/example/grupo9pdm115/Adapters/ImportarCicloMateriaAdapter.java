@@ -34,9 +34,10 @@ public class ImportarCicloMateriaAdapter  extends RecyclerView.Adapter<ImportarC
         holder.tvNombre.setText(cicloMateria.get(position).getCodMateria());
     }
 
+
     @Override
     public int getItemCount() {
-        return 0;
+        return cicloMateria.size();
     }
 
     public class CicloMateriaViewHolder extends RecyclerView.ViewHolder{

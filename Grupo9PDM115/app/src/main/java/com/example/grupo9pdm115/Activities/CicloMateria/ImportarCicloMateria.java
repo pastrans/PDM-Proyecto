@@ -34,7 +34,6 @@ public class ImportarCicloMateria extends AppCompatActivity {
     RecyclerView rvUsuarios;
     Button btnImportar;
     Button btnExaminar;
-    Spinner spCiclo;
     EditText edtiRuta;
     Uri uri;
     List<CicloMateria> listaCicloMateria = new ArrayList<>();
@@ -48,7 +47,6 @@ public class ImportarCicloMateria extends AppCompatActivity {
         btnExaminar = findViewById(R.id.btnExaminar);
         rvUsuarios = findViewById(R.id.rvUsuarios);
         btnImportar = findViewById(R.id.btnImportar);
-        spCiclo =  findViewById(R.id.spCiclo);
         edtiRuta = findViewById(R.id.editTextRuta);
         rvUsuarios.setLayoutManager(new GridLayoutManager(  this, 1));
         pedirPermisos();
@@ -69,8 +67,12 @@ public class ImportarCicloMateria extends AppCompatActivity {
 
     public void importarCSV() {
         final String[] split = uri.getPath().split(":");//split the path.
+
+        Log.i("CicloMateriaImportar", "vemoas:   "+uri.getPath());
         String filePath = split[1];//assign it to a string(your choice).
         File archivo = new File(Environment.getExternalStorageDirectory() + "/"+ filePath);
+        Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
+        Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
         Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
         if(archivo.exists()) {
             String cadena;

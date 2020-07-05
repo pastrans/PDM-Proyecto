@@ -94,6 +94,18 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
                 deleteItem.setIcon(R.drawable.ic_delete);
                 // add to menu
                 menu.addMenuItem(deleteItem);
+
+                // create "delete" item
+                SwipeMenuItem consultarHorario = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                //deleteItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0xFF, 0xFF)));
+                // set item width
+                consultarHorario.setWidth(170);
+                // set a icon
+                consultarHorario.setIcon(R.drawable.ic_pdf);
+                // add to menu
+                menu.addMenuItem(consultarHorario);
             }
         };
         listaLocal.setMenuCreator(creator);
@@ -147,6 +159,8 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
                             mSimpleDialog.show();
                         }
                         return true;
+                    case 3:
+                        
                 }
                 // false : close the menu; true : not close the menu
                 return false;

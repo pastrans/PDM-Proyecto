@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.ImportarCicloMateriaAdapter;
@@ -120,11 +119,14 @@ public class ImportarCicloMateria extends AppCompatActivity {
 
                             arreglo = cadena.split(";");
                             cm = new CicloMateria();
-                            cm.setIdCiclo(cicloActual.getIdCiclo());
-                            cm.setCodMateria(arreglo[0]);
-                            listaCicloMateria.add(cm);
-
-                            cm.guardar(this);
+                            if(!cm.verificarRegistro(this,arreglo[0], cicloActual.getIdCiclo())){
+                                cm.setIdCiclo(cicloActual.getIdCiclo());
+                                cm.setCodMateria(arreglo[0]);
+                                cm.guardar(this);
+                                listaCicloMateria.add(cm);
+                            }else {
+                                Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
+                            }
                             Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
                             adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);

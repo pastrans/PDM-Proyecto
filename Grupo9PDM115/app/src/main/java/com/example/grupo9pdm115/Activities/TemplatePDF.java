@@ -138,7 +138,7 @@ public class TemplatePDF {
             try{
                 activity.startActivity(intent);
             }catch (ActivityNotFoundException e){
-                Toast.makeText(activity.getApplicationContext(),"Descarga PDF Prro",Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity.getApplicationContext(),"Descarga PDF ",Toast.LENGTH_SHORT).show();
             }
         }else {
             Toast.makeText(activity.getApplicationContext(),"El archivo no se encontro",Toast.LENGTH_SHORT).show();

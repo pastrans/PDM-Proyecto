@@ -1,10 +1,15 @@
 package com.example.grupo9pdm115.Activities.Local;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.grupo9pdm115.Activities.CicloMateria.ImportarCicloMateria;
 import com.example.grupo9pdm115.Activities.TemplatePDF;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.R;
@@ -33,8 +38,8 @@ public class verPdf extends AppCompatActivity {
             templatePDF.addTitles("HORARIO " + local.getNombreLocal() ,"",ahora());
             templatePDF.createTable(header,getClients());
             templatePDF.closeDocument();
+            pedirPermisos();
             pdfApp (this);
-
         }
 
     }
@@ -57,5 +62,18 @@ public class verPdf extends AppCompatActivity {
     public void pdfApp (verPdf view){
         templatePDF.appViewPDF(this);
 
+    }
+    public void pedirPermisos() {
+        // PERMISOS PARA ANDROID 6 O SUPERIOR
+        if(ContextCompat.checkSelfPermission(verPdf.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(verPdf.this, new String[]
+                            {Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    0);
+        }
     }
 }

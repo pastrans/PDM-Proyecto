@@ -169,19 +169,14 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
                         }
                         return true;
                     case 3:
-                        templatePDF.openDocument();
-                        templatePDF.addMetaData("Horario local","Ventas","Grupo9-PDM115");
-                        templatePDF.addTitles("HORARIO " + localSeleccionado.getNombreLocal() ,"",ahora());
-                        templatePDF.createTable(header,getClients());
-                        templatePDF.closeDocument();
-                        //pdfApp ();
-                        try {
-                            Class<?> clase = Class.forName("com.example.grupo9pdm115.Activities." + "Local.GestionarLocal");
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        //templatePDF.appViewPDF(clase);
-                        //Intent con el de actualizar y pasar los parametros 
+                        Intent inte2 = new Intent(getApplicationContext(), verPdf.class);
+                        inte2.putExtra("nombreLocal", localSeleccionado.getNombreLocal());
+                        inte2.putExtra("capacidad", localSeleccionado.getCapacidad());
+                        inte2.putExtra("idTipoLocal", localSeleccionado.getIdtipolocal());
+                        inte2.putExtra("idLocal", localSeleccionado.getIdlocal());
+                        startActivity(inte2);
+                        return true;
+
                 }
                 // false : close the menu; true : not close the menu
                 return false;
@@ -198,7 +193,6 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     }
     public void pdfApp (View view){
         templatePDF.appViewPDF(this);
-
     }
 
     public String ahora(){

@@ -22,6 +22,7 @@ import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.google.zxing.integration.android.IntentIntegrator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnClickListener{
@@ -41,6 +42,8 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     //ListView listaLocal;
     LocalAdapter listaLocalAdapter;
     private MaterialDialog mSimpleDialog;
+    // horario/día, Domingo,Lunes,Martes,Miércoles, Jueves, Viernes,Sábado
+    // 0,1,2,3,4,5,6,7
 
 
     @Override

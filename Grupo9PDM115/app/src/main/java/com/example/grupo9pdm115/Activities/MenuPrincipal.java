@@ -52,7 +52,7 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
             "Unidad.GestionarUnidad", "Materia.GestionarMateria", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario",
             "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion", "Grupo.GestionarGrupo",
             "Local.GestionarLocal", "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud",
-            "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.Tutoriales",
+            "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.VideoActivity",
             "Utilidades.ExportarPDF", "Utilidades.ImportarExcel", "Utilidades.ConsultaQR",
             "Utilidades.EnvioCorreos"};
 

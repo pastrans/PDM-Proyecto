@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,10 +17,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.grupo9pdm115.Adapters.ImportarCicloMateriaAdapter;
+import com.example.grupo9pdm115.BD.ControlBD;
+import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.R;
 
@@ -27,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ImportarCicloMateria extends AppCompatActivity {
@@ -39,6 +42,10 @@ public class ImportarCicloMateria extends AppCompatActivity {
     List<CicloMateria> listaCicloMateria = new ArrayList<>();
     ImportarCicloMateriaAdapter adaptador;
     private int VALOR_RETORNO = 1;
+    private int dia, mes, anio;
+    ControlBD helper;
+    Ciclo cicloActual;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,7 @@ public class ImportarCicloMateria extends AppCompatActivity {
         edtiRuta.setFocusable(false);
         rvUsuarios.setLayoutManager(new GridLayoutManager(  this, 1));
         pedirPermisos();
+        helper = new ControlBD(this);
         btnImportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +73,9 @@ public class ImportarCicloMateria extends AppCompatActivity {
                 filePicker();
             }
         });
+        cicloActual = new Ciclo();
+        cicloActual = getCicloActual();
+
     }
 
     public void importarCSV() {
@@ -106,11 +117,14 @@ public class ImportarCicloMateria extends AppCompatActivity {
 
                             arreglo = cadena.split(";");
                             cm = new CicloMateria();
-                            cm.setIdCiclo(1);
-                            cm.setCodMateria(arreglo[0]);
-                            listaCicloMateria.add(cm);
-
-                            cm.guardar(this);
+                            if(!cm.verificarRegistro(this,arreglo[0], cicloActual.getIdCiclo())){
+                                cm.setIdCiclo(cicloActual.getIdCiclo());
+                                cm.setCodMateria(arreglo[0]);
+                                cm.guardar(this);
+                                listaCicloMateria.add(cm);
+                            }else {
+                                Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
+                            }
                             Toast.makeText(ImportarCicloMateria.this, "SE IMPORTO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
                             adaptador = new ImportarCicloMateriaAdapter(ImportarCicloMateria.this, listaCicloMateria);
@@ -175,5 +189,27 @@ public class ImportarCicloMateria extends AppCompatActivity {
             uri = data.getData(); //obtener el uri content
         }
     }
+    public Ciclo getCicloActual(){
+        ahora();
+        Ciclo ciclo = new Ciclo();
+        String sqlCiclo = "SELECT * from CICLO WHERE '" + String.format("%d-%02d-%02d", anio, mes + 1, dia) + "' BETWEEN INICIO AND FIN";
+        helper.abrir();
+        Cursor c3 = helper.consultar(sqlCiclo);
+        if(c3.moveToFirst()){
+            ciclo.setIdCiclo(c3.getInt(0));
+            ciclo.setInicioPeriodoClase(c3.getString(5));
+            ciclo.setFinPeriodoClase(c3.getString(6));
+        }
+        helper.cerrar();
+        return ciclo;
+    }
+    public void ahora(){
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        anio = c.get(Calendar.YEAR);
+    }
+
+
 
 }

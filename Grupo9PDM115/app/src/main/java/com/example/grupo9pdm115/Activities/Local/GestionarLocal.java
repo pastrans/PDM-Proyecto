@@ -1,5 +1,6 @@
 package com.example.grupo9pdm115.Activities.Local;
 
+import com.example.grupo9pdm115.Activities.TemplatePDF;
 import com.example.grupo9pdm115.Activities.Utilidades.ConsultaQR;
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.google.zxing.integration.android.IntentIntegrator;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnClickListener{
@@ -41,9 +43,15 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     EditText editNombrelocal;
     //ListView listaLocal;
     LocalAdapter listaLocalAdapter;
+    private TemplatePDF templatePDF;
     private MaterialDialog mSimpleDialog;
     // horario/día, Domingo,Lunes,Martes,Miércoles, Jueves, Viernes,Sábado
     // 0,1,2,3,4,5,6,7
+
+    private String [] header = {"Hora/Dia,","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"};
+    private View view;
+
+
 
 
     @Override
@@ -62,6 +70,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
             finish();
         }
         super.onCreate(savedInstanceState);
+        templatePDF = new TemplatePDF(this);
         setContentView(R.layout.activity_gestionar_local);
         listaLocal = (SwipeMenuListView) findViewById(R.id.idListadoLocales);
         Voice=(Button) findViewById(R.id.bvoice);
@@ -70,6 +79,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
         editNombrelocal = (EditText) findViewById(R.id.editNombreLocal);
         qrScan = new IntentIntegrator(this);
         llenarListaLocales(null);
+        view = new View(this);
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
             @Override
@@ -117,6 +127,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menu.getMenuItem(index);
                 final Local localSeleccionado = (listaLocalAdapter.getItem(position));
+
                 switch (index) {
                     case 0:
                         if(!permisoUpdate){
@@ -163,12 +174,39 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
                         }
                         return true;
                     case 3:
-                        
+                        Intent inte2 = new Intent(getApplicationContext(), verPdf.class);
+                        inte2.putExtra("nombreLocal", localSeleccionado.getNombreLocal());
+                        inte2.putExtra("capacidad", localSeleccionado.getCapacidad());
+                        inte2.putExtra("idTipoLocal", localSeleccionado.getIdtipolocal());
+                        inte2.putExtra("idLocal", localSeleccionado.getIdlocal());
+                        startActivity(inte2);
+                        return true;
+
                 }
                 // false : close the menu; true : not close the menu
                 return false;
             }
         });
+    }
+    private ArrayList<String[]> getClients(){
+        ArrayList<String[]> rows = new ArrayList<>();
+        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
+        rows.add(new String[]{"8:20-9:50","Mat","Mat","Mat","Mat","Mat","Mat"});
+        rows.add(new String[]{"9:55-11:30","Mat","Mat","Mat","Mat","Mat","Mat"});
+        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
+        return rows;
+    }
+    public void pdfApp (View view){
+        templatePDF.appViewPDF(this);
+    }
+
+    public String ahora(){
+        int dia, mes, anio;
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        anio = c.get(Calendar.YEAR);
+        return String.format("%d-%02d-%02d", anio, mes + 1, dia);
     }
     public void buscarLocal(View v){
         //llenarListaLocales(editNombrelocal.getText().toString());

@@ -88,7 +88,7 @@ public class NuevoCicloMateria extends CyaneaAppCompatActivity {
                         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
                         limpiar();
                     }else {
-                        Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
+                        //Toast.makeText(this, this.getString(R.string.mnjCMYaExiste), Toast.LENGTH_SHORT).show(); //"Ya existe"
                     }
                 }else {
                     Toast.makeText(this, this.getString(R.string.mnjCMCodNoRegis), Toast.LENGTH_SHORT).show(); // "Código no registrado"

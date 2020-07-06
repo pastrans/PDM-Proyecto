@@ -415,4 +415,38 @@ public class DetalleReserva extends TablaBD {
         return result;
     }
 
+
+
+    public List<DetalleReserva> getAllFiltered1(Context context, Integer Idlocal, String fechaActual){
+        List<DetalleReserva> listaTablaBD = new ArrayList<>();
+        ControlBD helper = new ControlBD(context);
+        String[] valores = new String[getCamposTabla().length];
+
+        String consulta = "SELECT de.* FROM DETALLERESERVA de, GRUPO g, CICLOMATERIA cm, MATERIA m, LOCAL l, HORARIO h\n" +
+                "WHERE de.IDLOCAL = "+ Idlocal+ "\n" +
+                "AND de.IDLOCAL = l.IDLOCAL\n" +
+                "AND de.IDGRUPO = g.IDGRUPO\n" +
+                "AND h.IDHORA = de.IDHORA\n" +
+                "AND g.IDCICLOMATERIA = cm.IDCICLOMATERIA\n" +
+                "AND cm.CODMATERIA = m.CODMATERIA\n" +
+                "AND ('" +fechaActual + "' BETWEEN de.INICIOPERIODORESERVA AND de.FINPERIODORESERVA)\n" +
+                "AND APROBADO = 1 AND ESTADORESERVA = 1" +
+                " Order by de.IDHORA  ;";
+        helper.abrir();
+        Cursor cursor = helper.consultar(consulta);
+
+        if(cursor.moveToFirst()){
+            do{
+                for(int i = 0; i < getCamposTabla().length; i++){
+                    valores[i] = cursor.getString(i);
+                }
+                listaTablaBD.add((DetalleReserva) getInstanceOfModel(valores) );
+            }while (cursor.moveToNext());
+        }
+        Log.v( "PDF: ", consulta);
+        helper.cerrar();
+
+        return listaTablaBD;
+    }
+
 }

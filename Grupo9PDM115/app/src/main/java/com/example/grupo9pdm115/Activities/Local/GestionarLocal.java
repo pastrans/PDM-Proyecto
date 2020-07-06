@@ -190,6 +190,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
     }
 
 
+
     public String ahora(){
         int dia, mes, anio;
         final Calendar c = Calendar.getInstance();

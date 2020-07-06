@@ -209,7 +209,4 @@ public class ImportarCicloMateria extends AppCompatActivity {
         mes = c.get(Calendar.MONTH);
         anio = c.get(Calendar.YEAR);
     }
-
-
-
 }

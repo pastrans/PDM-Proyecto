@@ -188,17 +188,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
             }
         });
     }
-    private ArrayList<String[]> getClients(){
-        ArrayList<String[]> rows = new ArrayList<>();
-        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"8:20-9:50","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"9:55-11:30","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
-        return rows;
-    }
-    public void pdfApp (View view){
-        templatePDF.appViewPDF(this);
-    }
+
 
     public String ahora(){
         int dia, mes, anio;

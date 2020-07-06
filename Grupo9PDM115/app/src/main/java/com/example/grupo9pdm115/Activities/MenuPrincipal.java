@@ -45,16 +45,13 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
     public final int[] idOpcionesDeMenu = {R.id.txtUsuario, R.id.txtRol, R.id.txtCiclo, R.id.txtFeriado,
             R.id.txtUnidad, R.id.txtMateria, R.id.txtTipoGrupo, R.id.txtHorario, R.id.txtCicloMateria,
             R.id.txtCoordinacion, R.id.txtGrupo, R.id.txtLocal, R.id.txtTipoLocal, R.id.txtSolicitud,
-            R.id.txtSolicitudesRecibidas, R.id.txtModificarTema, R.id.txtTutoriales, R.id.txtExportarPDF,
-            R.id.txtImportarExcel, R.id.txtConsultarQR, R.id.txtEnvioCorreos};
+            R.id.txtSolicitudesRecibidas, R.id.txtModificarTema, R.id.txtTutoriales, R.id.txtConsultarQR};
     // Activities
     String[] activities = {"Usuario.GestionarUsuario", "Rol.GestionarRol", "Ciclo.GestionarCiclo", "Feriado.GestionarFeriado",
             "Unidad.GestionarUnidad", "Materia.GestionarMateria", "TipoGrupo.GestionarTipoGrupo", "Horario.GestionarHorario",
             "CicloMateria.GestionarCicloMateria", "Coordinacion.GestionarCoordinacion", "Grupo.GestionarGrupo",
             "Local.GestionarLocal", "TipoLocal.GestionarTipoLocal", "Solicitud.GestionarSolicitud",
-            "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.VideoActivity",
-            "Utilidades.ExportarPDF", "Utilidades.ImportarExcel", "Utilidades.ConsultaQR",
-            "Utilidades.EnvioCorreos"};
+            "Solicitud.GestionarSolicitudesEncargado","Utilidades.ModificarTema", "Utilidades.VideoActivity", "Utilidades.ConsultaQR"};
 
     // Posiciones de inicio y fin en los arreglos activities y idOpcionesMenu que corresponden a cada
     // opción principal
@@ -63,7 +60,7 @@ public class MenuPrincipal extends CyaneaAppCompatActivity implements View.OnCli
     public final int[] opcionesCargaAcademica = {8, 10};
     public final int[] opcionesControlLocales = {11, 12};
     public final int[] opcionesReservas = {13, 14};
-    public final int[] opcionesUtilidades = {15, 20};
+    public final int[] opcionesUtilidades = {15, 17};
     public final int[][] opcionesPrincipalesIndices = {opcionesUsuario, opcionesAdminAcademica, opcionesCargaAcademica,
             opcionesControlLocales, opcionesReservas, opcionesUtilidades};
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -53,9 +52,10 @@ public class TemplatePDF {
     }
     private void CreateFile(){
         File folder =  new File(Environment.getExternalStorageDirectory().toString(), "PDF");
+        Log.i("TemplatePDF", "vemoas:   "+!folder.exists());
         if(!folder.exists()){
             folder.mkdir();
-            pdfFile= new File(folder, "Horario");
+            pdfFile= new File(folder, "Horario.pdf");
         }
     }
 
@@ -78,7 +78,6 @@ public class TemplatePDF {
         }catch (Exception e){
             Log.e("addTitles",e.toString());
         }
-
     }
     public void addChildP(Paragraph childParagraph){
         childParagraph.setAlignment(Element.ALIGN_CENTER);
@@ -113,20 +112,19 @@ public class TemplatePDF {
             pdfPTable.addCell(pdfPCell);
         }
         for(int indexR=0;indexR<Clients.size(); indexR++ ){
-            String[] fow =Clients.get(indexR) ;
-            for(indexC= 0; indexC <header.length;indexC++ ){
-                pdfPCell = new PdfPCell(new Phrase(header[indexC++], fSubTitle));
+            String[] row =Clients.get(indexR) ;
+            for(indexC= 0; indexC <Clients.get(indexR).length;indexC++ ){
+                pdfPCell = new PdfPCell(new Phrase(row[indexC]));
                 pdfPCell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 pdfPCell.setFixedHeight(40);
                 pdfPTable.addCell(pdfPCell);
             }
-            try{
+        }
+        try{
             paragraph.add(pdfPTable);
             document.add(paragraph);
-            }catch (Exception e) {
-                Log.e("createTable: ",e.toString() );
-            }
-
+        }catch (Exception e) {
+            Log.e("createTable: ",e.toString() );
         }
 
     }
@@ -136,7 +134,7 @@ public class TemplatePDF {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(uri,"application/pdf");
             try{
-                activity.startActivity(intent);
+//                activity.startActivity(intent);
             }catch (ActivityNotFoundException e){
                 Toast.makeText(activity.getApplicationContext(),"Descarga PDF ",Toast.LENGTH_SHORT).show();
             }

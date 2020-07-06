@@ -26,7 +26,7 @@ public class verPdf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_pdf);
         local = new Local();
-
+        pedirPermisos();
         templatePDF = new TemplatePDF(this);
         if (getIntent().getExtras() != null){
             local.setIdlocal(getIntent().getIntExtra("idLocal", 0));
@@ -38,7 +38,7 @@ public class verPdf extends AppCompatActivity {
             templatePDF.addTitles("HORARIO " + local.getNombreLocal() ,"",ahora());
             templatePDF.createTable(header,getClients());
             templatePDF.closeDocument();
-            pedirPermisos();
+
             pdfApp (this);
         }
 
@@ -60,8 +60,7 @@ public class verPdf extends AppCompatActivity {
         return rows;
     }
     public void pdfApp (verPdf view){
-        templatePDF.appViewPDF(this);
-
+        templatePDF.appViewPDF( verPdf.this);
     }
     public void pedirPermisos() {
         // PERMISOS PARA ANDROID 6 O SUPERIOR

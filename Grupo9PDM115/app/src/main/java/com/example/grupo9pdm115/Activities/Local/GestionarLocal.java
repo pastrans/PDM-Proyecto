@@ -173,7 +173,7 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
                             mSimpleDialog.show();
                         }
                         return true;
-                    case 3:
+                    case 2:
                         Intent inte2 = new Intent(getApplicationContext(), verPdf.class);
                         inte2.putExtra("nombreLocal", localSeleccionado.getNombreLocal());
                         inte2.putExtra("capacidad", localSeleccionado.getCapacidad());
@@ -235,50 +235,6 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
         super.onRestart();
         llenarListaLocales(null);
     }
-/*
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        String nombreLocal = listaLocalAdapter.getItem(info.position).getNombreLocal();
-        menu.setHeaderTitle("Acciones para "+ nombreLocal);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_ctx_lista_tipo_local, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Local localSeleccionado = (listaLocalAdapter.getItem(info.position));
-        switch (item.getItemId()){
-            case R.id.ctxActualizar:
-                if(!permisoUpdate){
-                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                Intent inte = new Intent(this, EditarLocal.class);
-                inte.putExtra("nombreLocal", localSeleccionado.getNombreLocal());
-                inte.putExtra("capacidad", localSeleccionado.getCapacidad());
-                inte.putExtra("idTipoLocal", localSeleccionado.getIdtipolocal());
-                inte.putExtra("idLocal", localSeleccionado.getIdlocal());
-                startActivity(inte);
-                return true;
-            case R.id.ctxEliminar:
-                if(!permisoDelete){
-                    Toast.makeText(getApplicationContext(), this.getString(R.string.mnjPermisoAccion), Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                if (localSeleccionado != null){
-                    String resEliminados = "";
-                    resEliminados = localSeleccionado.eliminar(this);
-                    Toast.makeText(this, resEliminados, Toast.LENGTH_SHORT).show();
-                    llenarListaLocales(null);
-                }
-                return true;
-        }
-        return super.onContextItemSelected(item);
-    }
-    */
 
     public void btnNuevoGLocal(View v){
         if(!permisoInsert){
@@ -312,21 +268,6 @@ public class GestionarLocal extends CyaneaAppCompatActivity implements View.OnCl
         editNombrelocal.setText("");
         super.onPause();
     }
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null){
-            if(result.getContents() == null){
-                Toast.makeText(this, "No encontrado", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                Log.v("Result: ", result.getContents());
-            }
-        }else{
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }*/
 
     public void escanearQR(View v){
         //qrScan.initiateScan();

@@ -114,11 +114,21 @@ public class TemplatePDF {
         for(int indexR=0;indexR<Clients.size(); indexR++ ){
             String[] row =Clients.get(indexR) ;
             for(indexC= 0; indexC <Clients.get(indexR).length;indexC++ ){
-                pdfPCell = new PdfPCell(new Phrase(row[indexC]));
+                pdfPCell = new PdfPCell(new Phrase(Clients.get(indexR)[indexC]));
                 pdfPCell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 pdfPCell.setFixedHeight(40);
                 pdfPTable.addCell(pdfPCell);
+                //Log.v("Que tiene esto 0 -> ", row[0]);
+                Log.v("Dato" + indexR + " " + indexC, Clients.get(indexR)[indexC]);
             }
+            /*Log.v("Que tiene esto 0 -> ", Clients.get(indexR)[0]);
+            Log.v("Que tiene esto 1 -> ", Clients.get(indexR)[1]);
+            Log.v("Que tiene esto 2 -> ", Clients.get(indexR)[2]);
+            Log.v("Que tiene esto 3 -> ", Clients.get(indexR)[3]);
+            Log.v("Que tiene esto 4 -> ", Clients.get(indexR)[4]);
+            Log.v("Que tiene esto 5 -> ", Clients.get(indexR)[5]);
+            Log.v("Que tiene esto 6 -> ", Clients.get(indexR)[6]);
+            Log.v("**************** ", "****************");*/
         }
         try{
             paragraph.add(pdfPTable);

@@ -94,10 +94,10 @@ public class verPdf extends AppCompatActivity {
         ArrayList<String[]> rows = new ArrayList<>();
         horas = hora.getAll(this);
         listDetalleReserve = detalleReserve.getAllFiltered1(this,idlocal ,ahora()) ;
-        String[] fila = new String[] {"", "", "", "", "", "", ""};
         // inf para validar las horas
         int contador = 0;
         for( int i = 0; i< listDetalleReserve.size(); i++ ) {
+            String[] fila = new String[] {"", "", "", "", "", "", ""};
             detalleReserve = listDetalleReserve.get(i);
             //for para controlar los días de la semana
             contador = 0;
@@ -125,6 +125,18 @@ public class verPdf extends AppCompatActivity {
                 //Log.v("Array: ", regitro);
             }
             rows.add(fila);
+            //Log.v("Tamaño: ", String.valueOf(rows.size()));
+            //rows.add(fila);
+            /*for(int k = 0; k < rows.size(); k++){
+                Log.v("VERPDF 1"+ k, rows.get(k)[0]);
+                Log.v("VERPDF 2"+ k, rows.get(k)[1]);
+                Log.v("VERPDF 3"+ k, rows.get(k)[2]);
+                Log.v("VERPDF 4"+ k, rows.get(k)[3]);
+                Log.v("VERPDF 5"+ k, rows.get(k)[4]);
+                Log.v("VERPDF 6"+ k, rows.get(k)[5]);
+                Log.v("VERPDF 7"+ k, rows.get(k)[6]);
+                Log.v("**************** ", "****************");
+            }*/
         }
         return rows;
     }

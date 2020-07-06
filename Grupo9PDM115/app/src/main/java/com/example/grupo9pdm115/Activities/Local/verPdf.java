@@ -32,7 +32,7 @@ public class verPdf extends AppCompatActivity {
     Local local;
     private TemplatePDF templatePDF;
     private String [] header = {"Hora/Dia","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"};
-    private Integer [] numeroDia = {0,2,3,4,5,6,7};
+    private int [] numeroDia = new int[] {0,2,3,4,5,6,7};
     ControlBD helper;
     private int dia, mes, anio;
     private List<DetalleReserva> listDetalleReserve ;
@@ -90,41 +90,41 @@ public class verPdf extends AppCompatActivity {
     }
 
 
-    private ArrayList<String[]> getTabla(Integer idlocal){
+    private ArrayList<String[]> getTabla(int idlocal){
         ArrayList<String[]> rows = new ArrayList<>();
         horas = hora.getAll(this);
         listDetalleReserve = detalleReserve.getAllFiltered1(this,idlocal ,ahora()) ;
-        String[] fila = new String[7];
+        String[] fila = new String[] {"", "", "", "", "", "", ""};
         // inf para validar las horas
-        Integer contador = 0;
+        int contador = 0;
         for( int i = 0; i< listDetalleReserve.size(); i++ ) {
             detalleReserve = listDetalleReserve.get(i);
-            Log.v( "PDF: ", String.valueOf(detalleReserve.toString()));
             //for para controlar los días de la semana
             contador = 0;
             for( int j = 0; j< numeroDia.length; j++ ) {
                 // valido que no sea domingo porque en el horario no presentara ese día
                 //Datos quemados en la base
-
-                    //para el primer registro encabezado por la horas;
-                    if(numeroDia[j]== 0 ){
-                        hora.consultar(this, String.valueOf(detalleReserve.getIdHora()));
-                        regitro= hora.getHoraInicio() + " - "+hora.getHoraFinal() ;
-                        contador++;
-                    }
-                    if (detalleReserve.getIdDia()== numeroDia[j]){
+                //para el primer registro encabezado por la horas;
+                if(numeroDia[j]== 0){
+                    hora.consultar(this, String.valueOf(detalleReserve.getIdHora()));
+                    regitro= hora.getHoraInicio() + " - "+hora.getHoraFinal();
+                    fila[0] = regitro;
+                    contador++;
+                }else{
+                    if(detalleReserve.getIdDia() == numeroDia[j]){
                         grupo.consultar(this, String.valueOf(detalleReserve.getIdGrupo()));
                         tipoGrupo.consultar(this,String.valueOf(grupo.getIdTipoGrupo()));
                         cicloMateria.consultar(this,String.valueOf(grupo.getIdCicloMateria()));
-                        regitro = cicloMateria.getCodMateria() +" "+ tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
+                        regitro = cicloMateria.getCodMateria() + " " + tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
                         contador ++;
                     }else{
-                        regitro= "       ";
+                        regitro= "  ";
                     }
-                    fila[contador]= regitro ;
-
+                    fila[j] = regitro;
+                }
+                //Log.v("Array: ", regitro);
             }
-
+            rows.add(fila);
         }
         return rows;
     }

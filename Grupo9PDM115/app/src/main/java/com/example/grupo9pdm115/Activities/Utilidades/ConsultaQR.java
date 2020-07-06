@@ -71,6 +71,7 @@ public class ConsultaQR extends AppCompatActivity {
         }
         txtConsultarQR = (TextView) findViewById(R.id.txtConsultarQR);
         txtConsultarQR.setVisibility(View.GONE);
+        txtConsultarQR.setEnabled(false);
         qrScan = new IntentIntegrator(this);
         listaEventos = (ListView) findViewById(R.id.listaEventosQR);
         helper = new ControlBD(this);

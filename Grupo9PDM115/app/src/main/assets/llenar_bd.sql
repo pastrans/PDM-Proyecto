@@ -120,6 +120,14 @@ INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
 INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
     VALUES ("PRN115", "Programación I", 0, 2);
 INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("PRN215", "Programación II", 0, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("PRN315", "Programación III", 0, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("PRN415", "Programación IV", 0, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
+    VALUES ("PRN515", "Programación V", 0, 2);
+INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
     VALUES ("FIR115", "Física I", 1, 3);
 INSERT INTO MATERIA (codmateria, nombremat, masiva, idunidad)
     VALUES ("TSI115", "Teoría de Sistemas", 0, 2);

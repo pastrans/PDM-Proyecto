@@ -41,7 +41,6 @@ public class verPdf extends AppCompatActivity {
     private Grupo grupo ;
     private TipoGrupo tipoGrupo;
     private CicloMateria cicloMateria;
-    private String regitro;
     private List<Horario>  horas;
     private Horario hora;
     //0, 2, 3, 4, 5,6,7
@@ -68,8 +67,6 @@ public class verPdf extends AppCompatActivity {
             templatePDF.addTitles("HORARIO " + local.getNombreLocal() ,"",ahora());
             templatePDF.createTable(header,getTabla(local.getIdlocal()));
             templatePDF.closeDocument();
-
-//            pdfApp (this);
         }
     }
     public String ahora(){
@@ -94,8 +91,67 @@ public class verPdf extends AppCompatActivity {
         ArrayList<String[]> rows = new ArrayList<>();
         horas = hora.getAll(this);
         listDetalleReserve = detalleReserve.getAllFiltered1(this,idlocal ,ahora()) ;
-        // inf para validar las horas
+        ArrayList<Integer> filasHoras = new ArrayList<Integer>();
+        //Cantidad de filas que debe de tener nuestra tabla
         int contador = 0;
+        for( int i = 0; i< listDetalleReserve.size(); i++ ) {
+            detalleReserve = listDetalleReserve.get(i);
+            Log.i("id Del detalle reserva ", "" +  detalleReserve.getIdHora());
+
+            for( int k = 0; k< horas.size(); k++ ) {
+                hora = horas.get(k);
+               if( detalleReserve.getIdHora() == hora.getIdHora()){
+                   filasHoras.add(detalleReserve.getIdHora() );
+                   Log.i("Cantidad de filas: ", "" +filasHoras.get(contador) );
+                   contador++;
+               }
+            }
+        }
+//1 1 3 4
+        Log.i("Cantidad de filas: ", "" +filasHoras.toString());
+        filasHoras = eliminarRepetidos(filasHoras) ;
+        Log.i("Cantidad de filas: ", "" +filasHoras.toString());
+        // controlador de filas
+        String[] fila;
+        String regitro = "";
+        for( int k = 0; k< filasHoras.size(); k++ ) {
+            fila = new String[] {"", "", "", "", "", "", ""};
+            //controlador de las columnas
+            for( int j = 0; j< numeroDia.length; j++ ) {
+
+                if(numeroDia[j]== 0){
+                    hora.consultar(this, String.valueOf(filasHoras.get(k)));
+                    regitro= hora.getHoraInicio() + " - "+hora.getHoraFinal();
+                    fila[0] = regitro;
+                }else{
+                    // recorrer el los elemtos
+                    for(int i =0 ; i<listDetalleReserve.size(); i++ ){
+                        detalleReserve = listDetalleReserve.get(i);
+                        //compara cada elemento con el día y hora para ver si debe de llenarse
+                        if(detalleReserve.getIdDia() == numeroDia[j] && detalleReserve.getIdHora() == filasHoras.get(k)){
+                            Log.i("iguales", " son regitros iguales" );
+                            grupo.consultar(this, String.valueOf(detalleReserve.getIdGrupo()));
+                            tipoGrupo.consultar(this,String.valueOf(grupo.getIdTipoGrupo()));
+                            cicloMateria.consultar(this,String.valueOf(grupo.getIdCicloMateria()));
+                            regitro = cicloMateria.getCodMateria() + " " + tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
+                                Log.i("registro ", " "+regitro );
+                            fila[j] = regitro;
+                        }else{
+                            regitro= "    ";
+                            fila[j] = regitro;
+                        }
+
+                    }
+
+                }
+                Log.i("columna", ", "+fila[j] + " pos " +j + "valor del registro " + regitro);
+            }
+            Log.i("Registro ", " Valor del registro" );
+            Log.i("como queda", " " + fila[0]  +" ,"+ fila[1]  + "," + fila[2]  + ","+ fila[3]  + ","+ fila[4]  + ","+ fila[5]  + ","+ fila[6]  );
+            rows.add(fila);
+        }
+
+/*
         for( int i = 0; i< listDetalleReserve.size(); i++ ) {
             String[] fila = new String[] {"", "", "", "", "", "", ""};
             detalleReserve = listDetalleReserve.get(i);
@@ -137,9 +193,42 @@ public class verPdf extends AppCompatActivity {
                 Log.v("VERPDF 7"+ k, rows.get(k)[6]);
                 Log.v("**************** ", "****************");
             }*/
-        }
+       // }
+
         return rows;
     }
+
+    private ArrayList<Integer> eliminarRepetidos(ArrayList<Integer> filasHoras) {
+        ArrayList<Integer> outArray = new ArrayList<Integer>();
+        boolean doAdd = true;
+        for (int i = 0; i < filasHoras.size(); i++)
+        {
+            int elemento = filasHoras.get(i);
+            for (int j = 0; j < filasHoras.size(); j++)
+            {
+                if (i == j)
+                {
+                    break;
+                }
+                else if (filasHoras.get(j).equals(elemento))
+                {
+                    doAdd = false;
+                    break;
+                }
+
+            }
+            if (doAdd)
+            {
+                outArray.add(elemento);
+            }
+            else
+            {
+                doAdd = true;
+            }
+        }
+        return outArray;
+    }
+
     public void pdfApp (verPdf view){
         templatePDF.appViewPDF( verPdf.this);
     }

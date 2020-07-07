@@ -112,19 +112,19 @@ public class verPdf extends AppCompatActivity {
         filasHoras = eliminarRepetidos(filasHoras) ;
         Log.i("Cantidad de filas: ", "" +filasHoras.toString());
         // controlador de filas
-        String[] fila;
+
         String regitro = "";
         for( int k = 0; k< filasHoras.size(); k++ ) {
-            fila = new String[] {"", "", "", "", "", "", ""};
             //controlador de las columnas
+            String[] fila = new String[] {"", "", "", "", "", "", ""};
             for( int j = 0; j< numeroDia.length; j++ ) {
-
                 if(numeroDia[j]== 0){
                     hora.consultar(this, String.valueOf(filasHoras.get(k)));
                     regitro= hora.getHoraInicio() + " - "+hora.getHoraFinal();
                     fila[0] = regitro;
                 }else{
                     // recorrer el los elemtos
+                    int contador1 = numeroDia[j] - 1;
                     for(int i =0 ; i<listDetalleReserve.size(); i++ ){
                         detalleReserve = listDetalleReserve.get(i);
                         //compara cada elemento con el día y hora para ver si debe de llenarse
@@ -135,14 +135,14 @@ public class verPdf extends AppCompatActivity {
                             cicloMateria.consultar(this,String.valueOf(grupo.getIdCicloMateria()));
                             regitro = cicloMateria.getCodMateria() + " " + tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
                                 Log.i("registro ", " "+regitro );
+                            //fila[detalleReserve.getIdDia() - 1] = regitro;
                             fila[j] = regitro;
-                        }else{
-                            regitro= "    ";
+                        }else if(fila[j].equals("")){
+                            regitro = " ";
                             fila[j] = regitro;
                         }
-
+                        //contador1++;
                     }
-
                 }
                 Log.i("columna", ", "+fila[j] + " pos " +j + "valor del registro " + regitro);
             }

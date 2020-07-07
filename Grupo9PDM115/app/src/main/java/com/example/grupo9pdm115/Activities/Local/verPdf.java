@@ -6,24 +6,19 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.widget.Toast;
 
-import com.example.grupo9pdm115.Activities.CicloMateria.ImportarCicloMateria;
 import com.example.grupo9pdm115.Activities.TemplatePDF;
 import com.example.grupo9pdm115.BD.ControlBD;
 import com.example.grupo9pdm115.Modelos.Ciclo;
 import com.example.grupo9pdm115.Modelos.CicloMateria;
 import com.example.grupo9pdm115.Modelos.DetalleReserva;
-import com.example.grupo9pdm115.Modelos.Dia;
 import com.example.grupo9pdm115.Modelos.Grupo;
 import com.example.grupo9pdm115.Modelos.Horario;
 import com.example.grupo9pdm115.Modelos.Local;
 import com.example.grupo9pdm115.Modelos.TipoGrupo;
 import com.example.grupo9pdm115.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -43,7 +38,6 @@ public class verPdf extends AppCompatActivity {
     private CicloMateria cicloMateria;
     private List<Horario>  horas;
     private Horario hora;
-    //0, 2, 3, 4, 5,6,7
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +56,13 @@ public class verPdf extends AppCompatActivity {
             local.setIdtipolocal(getIntent().getIntExtra("idTipoLocal", 0));
             local.setNombreLocal(getIntent().getStringExtra("nombreLocal"));
             local.setCapacidad(getIntent().getIntExtra("capacidad", 0));
-            templatePDF.openDocument();
+            templatePDF.openDocument("horario del " + local.getNombreLocal());
             templatePDF.addMetaData("Horario local","Ventas","Grupo9-PDM115");
-            templatePDF.addTitles("HORARIO " + local.getNombreLocal() ,"",ahora());
+            templatePDF.addTitles("HORARIO " + local.getNombreLocal() ,"",ahora() +" a las " +hora() );
             templatePDF.createTable(header,getTabla(local.getIdlocal()));
             templatePDF.closeDocument();
+            Toast.makeText(getApplicationContext(), "PDF CREADO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
     public String ahora(){
@@ -77,15 +73,13 @@ public class verPdf extends AppCompatActivity {
         anio = c.get(Calendar.YEAR);
         return String.format("%d-%02d-%02d", anio, mes + 1, dia);
     }
-    private ArrayList<String[]> getClients(){
-        ArrayList<String[]> rows = new ArrayList<>();
-        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"8:20-9:50","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"9:55-11:30","Mat","Mat","Mat","Mat","Mat","Mat"});
-        rows.add(new String[]{"6:20-8:05","Mat","Mat","Mat","Mat","Mat","Mat"});
-        return rows;
+    public  String hora() {
+        final Calendar calendario = Calendar.getInstance();
+        String hora = String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));
+        String minutos = String.valueOf(calendario.get(Calendar.MINUTE));
+        String segundos = String.valueOf(calendario.get(Calendar.SECOND));
+        return   hora + ":" + minutos + ":" + segundos;
     }
-
 
     private ArrayList<String[]> getTabla(int idlocal){
         ArrayList<String[]> rows = new ArrayList<>();
@@ -96,21 +90,16 @@ public class verPdf extends AppCompatActivity {
         int contador = 0;
         for( int i = 0; i< listDetalleReserve.size(); i++ ) {
             detalleReserve = listDetalleReserve.get(i);
-            Log.i("id Del detalle reserva ", "" +  detalleReserve.getIdHora());
-
             for( int k = 0; k< horas.size(); k++ ) {
                 hora = horas.get(k);
                if( detalleReserve.getIdHora() == hora.getIdHora()){
                    filasHoras.add(detalleReserve.getIdHora() );
-                   Log.i("Cantidad de filas: ", "" +filasHoras.get(contador) );
                    contador++;
                }
             }
         }
-//1 1 3 4
-        Log.i("Cantidad de filas: ", "" +filasHoras.toString());
+
         filasHoras = eliminarRepetidos(filasHoras) ;
-        Log.i("Cantidad de filas: ", "" +filasHoras.toString());
         // controlador de filas
 
         String regitro = "";
@@ -129,71 +118,20 @@ public class verPdf extends AppCompatActivity {
                         detalleReserve = listDetalleReserve.get(i);
                         //compara cada elemento con el día y hora para ver si debe de llenarse
                         if(detalleReserve.getIdDia() == numeroDia[j] && detalleReserve.getIdHora() == filasHoras.get(k)){
-                            Log.i("iguales", " son regitros iguales" );
                             grupo.consultar(this, String.valueOf(detalleReserve.getIdGrupo()));
                             tipoGrupo.consultar(this,String.valueOf(grupo.getIdTipoGrupo()));
                             cicloMateria.consultar(this,String.valueOf(grupo.getIdCicloMateria()));
                             regitro = cicloMateria.getCodMateria() + " " + tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
-                                Log.i("registro ", " "+regitro );
-                            //fila[detalleReserve.getIdDia() - 1] = regitro;
                             fila[j] = regitro;
                         }else if(fila[j].equals("")){
                             regitro = " ";
                             fila[j] = regitro;
                         }
-                        //contador1++;
                     }
                 }
-                Log.i("columna", ", "+fila[j] + " pos " +j + "valor del registro " + regitro);
             }
-            Log.i("Registro ", " Valor del registro" );
-            Log.i("como queda", " " + fila[0]  +" ,"+ fila[1]  + "," + fila[2]  + ","+ fila[3]  + ","+ fila[4]  + ","+ fila[5]  + ","+ fila[6]  );
             rows.add(fila);
         }
-
-/*
-        for( int i = 0; i< listDetalleReserve.size(); i++ ) {
-            String[] fila = new String[] {"", "", "", "", "", "", ""};
-            detalleReserve = listDetalleReserve.get(i);
-            //for para controlar los días de la semana
-            contador = 0;
-            for( int j = 0; j< numeroDia.length; j++ ) {
-                // valido que no sea domingo porque en el horario no presentara ese día
-                //Datos quemados en la base
-                //para el primer registro encabezado por la horas;
-                if(numeroDia[j]== 0){
-                    hora.consultar(this, String.valueOf(detalleReserve.getIdHora()));
-                    regitro= hora.getHoraInicio() + " - "+hora.getHoraFinal();
-                    fila[0] = regitro;
-                    contador++;
-                }else{
-                    if(detalleReserve.getIdDia() == numeroDia[j]){
-                        grupo.consultar(this, String.valueOf(detalleReserve.getIdGrupo()));
-                        tipoGrupo.consultar(this,String.valueOf(grupo.getIdTipoGrupo()));
-                        cicloMateria.consultar(this,String.valueOf(grupo.getIdCicloMateria()));
-                        regitro = cicloMateria.getCodMateria() + " " + tipoGrupo.getNombreTipoGrupo()  +" " + grupo.getNumero();
-                        contador ++;
-                    }else{
-                        regitro= "  ";
-                    }
-                    fila[j] = regitro;
-                }
-                //Log.v("Array: ", regitro);
-            }
-            rows.add(fila);
-            //Log.v("Tamaño: ", String.valueOf(rows.size()));
-            //rows.add(fila);
-            /*for(int k = 0; k < rows.size(); k++){
-                Log.v("VERPDF 1"+ k, rows.get(k)[0]);
-                Log.v("VERPDF 2"+ k, rows.get(k)[1]);
-                Log.v("VERPDF 3"+ k, rows.get(k)[2]);
-                Log.v("VERPDF 4"+ k, rows.get(k)[3]);
-                Log.v("VERPDF 5"+ k, rows.get(k)[4]);
-                Log.v("VERPDF 6"+ k, rows.get(k)[5]);
-                Log.v("VERPDF 7"+ k, rows.get(k)[6]);
-                Log.v("**************** ", "****************");
-            }*/
-       // }
 
         return rows;
     }
@@ -245,18 +183,5 @@ public class verPdf extends AppCompatActivity {
                     0);
         }
     }
-/*    public Ciclo getCicloActual(){
-        ahora();
-        Ciclo ciclo = new Ciclo();
-        String sqlCiclo = "SELECT * from CICLO WHERE '" + String.format("%d-%02d-%02d", anio, mes + 1, dia) + "' BETWEEN INICIO AND FIN";
-        helper.abrir();
-        Cursor c3 = helper.consultar(sqlCiclo);
-        if(c3.moveToFirst()){
-            ciclo.setIdCiclo(c3.getInt(0));
-            ciclo.setInicioPeriodoClase(c3.getString(5));
-            ciclo.setFinPeriodoClase(c3.getString(6));
-        }
-        helper.cerrar();
-        return ciclo;
-    }*/
+
 }

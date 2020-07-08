@@ -102,7 +102,7 @@ public class ImportarCicloMateria extends AppCompatActivity {
                     filePath = split2[1];
                 }
                 File archivo = new File(Environment.getExternalStorageDirectory() + "/" + filePath);
-                Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory());
+                Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageDirectory().toString());
                 Log.i("CicloMateriaImportar", "vemoas:   "+Environment.getExternalStorageState());
                 Log.i("CicloMateriaImportar", "vemoas:   "+archivo.getAbsolutePath());
                 if(archivo.exists()) {

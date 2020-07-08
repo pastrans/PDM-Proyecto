@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
-
+import java.util.Calendar;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -24,6 +24,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class TemplatePDF {
@@ -40,8 +41,8 @@ public class TemplatePDF {
     public TemplatePDF(Context context) {
         this.context = context;
     }
-    public void openDocument(){
-        CreateFile();
+    public void openDocument(String nombreDoc){
+        CreateFile(nombreDoc);
         try{
             document= new Document(PageSize.A4);
             pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
@@ -50,15 +51,37 @@ public class TemplatePDF {
             Log.e("openDocument: ",e.toString() );
         }
     }
-    private void CreateFile(){
+    private void CreateFile(String nombreDoc){
+        String hora = hora();
+        nombreDoc = nombreDoc + " "+hora+".pdf";
         File folder =  new File(Environment.getExternalStorageDirectory().toString(), "PDF");
         Log.i("TemplatePDF", "vemoas:   "+!folder.exists());
         if(!folder.exists()){
+            //ni no existe crea el folder
             folder.mkdir();
-            pdfFile= new File(folder, "Horario.pdf");
+            pdfFile= new File(folder, nombreDoc);
+        }else {
+            //si existe debe de verificar si existe el archivo
+            File archivo =  new File(Environment.getExternalStorageDirectory().toString() + "/PDF/"+nombreDoc);
+            if(!archivo.exists()){
+                // si el archivo no existe lo crar
+                pdfFile= new File(folder, nombreDoc);
+            }else {
+                // si no existe lo elimina para sobre escribirlo
+                if (archivo.delete()){
+                    Log.i("TemplatePDF", "Se borro");
+                    pdfFile= new File(folder, nombreDoc);
+                }
+            }
         }
     }
-
+    public  String hora() {
+        final Calendar calendario = Calendar.getInstance();
+        String hora = String.valueOf(calendario.get(Calendar.HOUR_OF_DAY));
+        String minutos = String.valueOf(calendario.get(Calendar.MINUTE));
+        String segundos = String.valueOf(calendario.get(Calendar.SECOND));
+        return   hora + ":" + minutos + ":" + segundos;
+    }
     public void closeDocument(){
             document.close();
     }
@@ -121,14 +144,6 @@ public class TemplatePDF {
                 //Log.v("Que tiene esto 0 -> ", row[0]);
                 Log.v("Dato" + indexR + " " + indexC, Clients.get(indexR)[indexC]);
             }
-            /*Log.v("Que tiene esto 0 -> ", Clients.get(indexR)[0]);
-            Log.v("Que tiene esto 1 -> ", Clients.get(indexR)[1]);
-            Log.v("Que tiene esto 2 -> ", Clients.get(indexR)[2]);
-            Log.v("Que tiene esto 3 -> ", Clients.get(indexR)[3]);
-            Log.v("Que tiene esto 4 -> ", Clients.get(indexR)[4]);
-            Log.v("Que tiene esto 5 -> ", Clients.get(indexR)[5]);
-            Log.v("Que tiene esto 6 -> ", Clients.get(indexR)[6]);
-            Log.v("**************** ", "****************");*/
         }
         try{
             paragraph.add(pdfPTable);
